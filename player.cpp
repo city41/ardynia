@@ -2,19 +2,19 @@
 
 void Player::update(Arduboy2* arduboy, byte frame) {
     if (arduboy->pressed(DOWN_BUTTON)) {
-        y += 1;
+        y += delta;
     }
 
     if (arduboy->pressed(UP_BUTTON)) {
-        y -= 1;
+        y -= delta;
     }
 
     if (arduboy->pressed(LEFT_BUTTON)) {
-        x -= 1;
+        x -= delta;
     }
 
     if (arduboy->pressed(RIGHT_BUTTON)) {
-        x += 1;
+        x += delta;
     }
 }
 

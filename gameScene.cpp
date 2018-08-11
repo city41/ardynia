@@ -11,7 +11,6 @@ Scene GameScene::update(byte frame) {
 }
 
 void GameScene::render(byte frame) {
-    arduboy->print(F("arduzel game scene"));
-
+    room.render(arduboy, frame);
     player.render(arduboy, frame);
 }
