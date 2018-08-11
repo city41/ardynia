@@ -2,32 +2,53 @@
 #include "titleScene.h"
 #include "gameScene.h"
 
-void SceneManager::switchScenes(Scene nextSceneId) {
-    if (nextSceneId != currentSceneId) {
-        currentSceneId = nextSceneId;
+void SceneManager::setScene(Scene nextSceneId) {
+    currentSceneId = nextSceneId;
 
-        delete currentScene;
-        currentScene = NULL;
+    delete currentScene;
+    currentScene = NULL;
 
-        switch (nextSceneId) {
-            case NO_SCENE:
-                currentScene = NULL;
-                break;
-            case TITLE:
-                currentScene = new TitleScene(arduboy);
-                break;
-            case GAME:
-                currentScene = new GameScene(arduboy);
-                break;
+    switch (nextSceneId) {
+        case NO_SCENE:
+            currentScene = NULL;
+            break;
+        case TITLE:
+            currentScene = new TitleScene(arduboy);
+            break;
+        case GAME:
+            currentScene = new GameScene(arduboy);
+            break;
+    }
+}
+
+void SceneManager::transitionScene(Scene ns) {
+    nextSceneId = ns;
+    transitionCount = 128;
+}
+
+void SceneManager::updateTransition(byte frame) {
+    transitionCount -= 4;
+
+    if (transitionCount <= 0) {
+        setScene(nextSceneId);
+    } else {
+        currentScene->render();
+
+        for (char i = 127; i >= transitionCount; --i) {
+            arduboy->drawLine(i, 0, i, 63, BLACK);
         }
     }
 }
 
 void SceneManager::update(byte frame) {
-    if (currentScene != NULL) {
+    if (transitionCount > 0) {
+        updateTransition(frame);
+    } else if (currentScene != NULL) {
         Scene nextSceneId = currentScene->update(frame);
         currentScene->render();
 
-        switchScenes(nextSceneId);
+        if (nextSceneId != currentSceneId) {
+            transitionScene(nextSceneId);
+        }
     }
 }

@@ -10,16 +10,23 @@ class SceneManager {
     private:
         Arduboy2* arduboy;
         Scene currentSceneId;
+        Scene nextSceneId;
         BaseScene* currentScene;
-        void switchScenes(Scene nextSceneId);
+        byte transitionCount;
+
+        void transitionScene(Scene nextSceneId);
+        void updateTransition(byte frame);
+        void setScene(Scene nextSceneId);
 
     public:
         SceneManager(Arduboy2* arduboy, Scene startingSceneId):
             arduboy(arduboy),
             currentSceneId(NO_SCENE),
-            currentScene(NULL)
+            nextSceneId(NO_SCENE),
+            currentScene(NULL),
+            transitionCount(0)
         {
-            switchScenes(startingSceneId);
+            setScene(startingSceneId);
         }
 
         void update(byte frame);
