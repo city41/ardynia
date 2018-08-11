@@ -5,11 +5,10 @@
 #include <Arduboy2.h>
 
 class BaseEntity {
-    protected:
+    public:
         char x;
         char y;
 
-    public:
         BaseEntity(char x, char y):
             x(x),
             y(y)

@@ -20,7 +20,10 @@ void TileRoom::render(Arduboy2* arduboy, byte frame) {
 
         }
     }
+}
 
+Tiles TileRoom::getTileAt(char px, char py) const {
+    return layout[py >> 3][px >> 3];
 }
 
 

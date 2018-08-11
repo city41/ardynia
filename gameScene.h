@@ -15,14 +15,19 @@ class GameScene: public BaseScene {
     private:
         Arduboy2* arduboy;
         Player player;
-        TileRoom room;
+        TileRoom room1;
+        TileRoom room2;
+        TileRoom* currentRoom;
 
     public:
         GameScene(Arduboy2* arduboy):
             arduboy(arduboy),
             player(64, 32),
-            room(firstRoom)
-        {}
+            room1(firstRoom),
+            room2(secondRoom)
+        {
+            currentRoom = &room1;
+        }
 
         Scene update(byte frame);
         void render(byte frame);

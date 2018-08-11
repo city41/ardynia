@@ -18,6 +18,7 @@ class TileRoom {
         {}
 
         void render(Arduboy2* arduboy, byte frame);
+        Tiles getTileAt(char px, char py) const;
 };
 
 #endif
