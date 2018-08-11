@@ -20,5 +20,4 @@ void Player::update(Arduboy2* arduboy, byte frame) {
 
 void Player::render(Arduboy2* arduboy, byte frame) {
     arduboy->fillCircle(x, y, 4, BLACK);
-    arduboy->drawCircle(x, y, 4, WHITE);
 }
