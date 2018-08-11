@@ -8,6 +8,6 @@ Scene TitleScene::update(byte frame) {
     return TITLE;
 }
 
-void TitleScene::render(void) {
+void TitleScene::render(byte frame) {
     arduboy->print(F("press A"));
 }

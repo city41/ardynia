@@ -14,7 +14,7 @@ class TitleScene: public BaseScene {
     public:
         TitleScene(Arduboy2* arduboy): arduboy(arduboy) {}
         Scene update(byte frame);
-        void render(void);
+        void render(byte frame);
 };
 
 #endif

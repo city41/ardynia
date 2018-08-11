@@ -7,15 +7,21 @@
 #include "baseScene.h"
 #include "scenes.h"
 
+#include "player.h"
+
 class GameScene: public BaseScene {
     private:
         Arduboy2* arduboy;
+        Player player;
 
     public:
-        GameScene(Arduboy2* arduboy): arduboy(arduboy) {}
+        GameScene(Arduboy2* arduboy):
+            arduboy(arduboy),
+            player(64, 32)
+        {}
 
         Scene update(byte frame);
-        void render(void);
+        void render(byte frame);
 };
 
 #endif

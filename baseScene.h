@@ -6,7 +6,7 @@
 class BaseScene {
     public:
         virtual Scene update(byte frame) = 0;
-        virtual void render(void) = 0;
+        virtual void render(byte frame) = 0;
         ~BaseScene() {}
 };
 

@@ -32,7 +32,7 @@ void SceneManager::updateTransition(byte frame) {
     if (transitionCount <= 0) {
         setScene(nextSceneId);
     } else {
-        currentScene->render();
+        currentScene->render(frame);
 
         for (char i = 127; i >= transitionCount; --i) {
             arduboy->drawLine(i, 0, i, 63, BLACK);
@@ -45,7 +45,7 @@ void SceneManager::update(byte frame) {
         updateTransition(frame);
     } else if (currentScene != NULL) {
         Scene nextSceneId = currentScene->update(frame);
-        currentScene->render();
+        currentScene->render(frame);
 
         if (nextSceneId != currentSceneId) {
             transitionScene(nextSceneId);
