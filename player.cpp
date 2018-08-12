@@ -50,8 +50,8 @@ void Player::update(Arduboy2* arduboy, byte frame) {
     moveTo(newX, newY);
 }
 
-void Player::onCollide(Tiles tile) {
-    if (tile == WALL) {
+void Player::onCollide(uint8_t tile) {
+    if ((tile & SOLID_MASK) == SOLID_MASK) {
         undoMove();
     }
 }

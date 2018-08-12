@@ -5,20 +5,17 @@
 #include <Arduboy2.h>
 #include "tiles.h"
 
-#define TILE_SIZE 8
-#define ROOM_TILE_WIDTH 16
-#define ROOM_TILE_HEIGHT 8
 
 class TileRoom {
     private:
-        const Tiles (*layout)[ROOM_TILE_WIDTH];
+        const uint8_t (*layout)[ROOM_TILE_WIDTH];
 
     public:
-        TileRoom(const Tiles (*layout)[ROOM_TILE_WIDTH]): layout(layout)
+        TileRoom(const uint8_t (*layout)[ROOM_TILE_WIDTH]): layout(layout)
         {}
 
         void render(Arduboy2* arduboy, byte frame);
-        Tiles getTileAt(char px, char py) const;
+        uint8_t getTileAt(char px, char py) const;
 };
 
 #endif

@@ -11,7 +11,7 @@ class Player: public BaseEntity {
 
         virtual void render(Arduboy2* arduboy, byte frame) override;
         virtual void update(Arduboy2* arduboy, byte frame) override;
-        virtual void onCollide(Tiles tile) override;
+        virtual void onCollide(uint8_t tile) override;
 };
 
 #endif

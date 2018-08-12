@@ -6,14 +6,14 @@ void TileRoom::render(Arduboy2* arduboy, byte frame) {
             switch (layout[y][x]) {
                 case NO_TILE:
                     break;
-                case FLOOR:
+                case DIRT_FLOOR:
                     arduboy->fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, WHITE);
                     break;
-                case WALL:
+                case STONE_WALL:
                     arduboy->fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, WHITE);
                     arduboy->drawRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, BLACK);
                     break;
-                case DOOR:
+                case UNLOCKED_DOOR:
                     arduboy->fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE, BLACK);
                     break;
             }
@@ -22,7 +22,7 @@ void TileRoom::render(Arduboy2* arduboy, byte frame) {
     }
 }
 
-Tiles TileRoom::getTileAt(char px, char py) const {
+uint8_t TileRoom::getTileAt(char px, char py) const {
     return layout[py >> 3][px >> 3];
 }
 

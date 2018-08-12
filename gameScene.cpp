@@ -1,16 +1,14 @@
 #include "gameScene.h"
 
 void GameScene::detectTileCollisions(void) {
-    Tiles tile = currentRoom->getTileAt(player.x, player.y);
+    uint8_t tile = currentRoom->getTileAt(player.x, player.y);
     player.onCollide(tile);
 
-    if (tile == DOOR) {
+    if ((tile & TELEPORTER_MASK) == TELEPORTER_MASK) {
         if (currentRoom == &room1) {
             currentRoom = &room2;
-            player.moveTo(50, 14);
         } else {
             currentRoom = &room1;
-            player.moveTo(50, 50);
         }
     }
 }

@@ -69,7 +69,7 @@ class BaseEntity {
         }
 
         virtual void onCollide(BaseEntity* other) {}
-        virtual void onCollide(Tiles tile) {}
+        virtual void onCollide(uint8_t tile) {}
 };
 
 #endif
