@@ -35,7 +35,7 @@ void SceneManager::updateTransition(byte frame) {
         currentScene->render(frame);
 
         for (char i = 127; i >= transitionCount; --i) {
-            arduboy->drawLine(i, 0, i, 63, BLACK);
+            arduboy->drawFastVLine(i, 0, 64, BLACK);
         }
     }
 }
