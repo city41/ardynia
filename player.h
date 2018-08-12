@@ -6,11 +6,12 @@
 class Player: public BaseEntity {
     public:
         Player(char x, char y):
-            BaseEntity(x, y, 2)
+            BaseEntity(PLAYER, x, y, 2, DOWN)
         {}
 
-        virtual void update(Arduboy2* arduboy, byte frame);
-        virtual void render(Arduboy2* arduboy, byte frame);
+        virtual void render(Arduboy2* arduboy, byte frame) override;
+        virtual void update(Arduboy2* arduboy, byte frame) override;
+        virtual void onCollide(Tiles tile) override;
 };
 
 #endif

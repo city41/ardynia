@@ -19,14 +19,14 @@ class GameScene: public BaseScene {
         TileRoom room2;
         TileRoom* currentRoom;
 
-        void updatePlayer(void);
+        void detectTileCollisions(void);
 
     public:
         GameScene(Arduboy2* arduboy):
             arduboy(arduboy),
             player(64, 32),
-            room1(firstRoom),
-            room2(secondRoom)
+            room1(firstRoomDef.tiles),
+            room2(secondRoomDef.tiles)
         {
             currentRoom = &room1;
         }

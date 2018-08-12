@@ -1,23 +1,38 @@
 #include "player.h"
+#include "bitmaps.h"
+
+Sprites sprites;
+
+void Player::render(Arduboy2* arduboy, byte frame) {
+    sprites.drawOverwrite(x - 12, y - 8, playerAttackBmp, 0);
+}
 
 void Player::update(Arduboy2* arduboy, byte frame) {
+    char newX = x, newY = y;
+
     if (arduboy->pressed(DOWN_BUTTON)) {
-        y += delta;
+        newY += v;
     }
 
     if (arduboy->pressed(UP_BUTTON)) {
-        y -= delta;
+        newY -= v;
     }
 
     if (arduboy->pressed(LEFT_BUTTON)) {
-        x -= delta;
+        newX -= v;
     }
 
     if (arduboy->pressed(RIGHT_BUTTON)) {
-        x += delta;
+        newX += v;
+    }
+
+    moveTo(newX, newY);
+}
+
+void Player::onCollide(Tiles tile) {
+    if (tile == WALL) {
+        undoMove();
     }
 }
 
-void Player::render(Arduboy2* arduboy, byte frame) {
-    arduboy->fillCircle(x, y, 4, BLACK);
-}
+
