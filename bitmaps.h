@@ -1,6 +1,13 @@
 #ifndef bitmaps_h
 #define bitmaps_h
 
+const uint8_t PROGMEM tileBmp[] = {
+// width, height,
+8, 8,
+// TILE 00
+0xff, 0xdf, 0xff, 0xfd, 0xff, 0xff, 0x77, 0xff, 
+};
+
 const uint8_t PROGMEM playerWalkBmp[] = {
 // width, height,
 16, 16,

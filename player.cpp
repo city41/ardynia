@@ -29,7 +29,7 @@ void Player::render(Arduboy2* arduboy, byte frame) {
 }
 
 void Player::update(Arduboy2* arduboy, byte frame) {
-    char newX = x, newY = y;
+    int16_t newX = x, newY = y;
 
     if (arduboy->pressed(DOWN_BUTTON)) {
         newY += v;

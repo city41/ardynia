@@ -8,27 +8,28 @@
 #include "scenes.h"
 
 #include "player.h"
+#include "overworldMap.h"
 #include "tileRoom.h"
-#include "rooms.h"
 
 class GameScene: public BaseScene {
     private:
         Arduboy2* arduboy;
         Player player;
-        TileRoom room1;
-        TileRoom room2;
-        TileRoom* currentRoom;
+        const MapRoomDef* map;
+        uint8_t currentRoomIndex;
+        TileRoom* tileRoom;
 
         void detectTileCollisions(void);
+        void goToNextRoom(int16_t x, int16_t y);
 
     public:
         GameScene(Arduboy2* arduboy):
             arduboy(arduboy),
             player(64, 32),
-            room1(firstRoomDef.tiles),
-            room2(secondRoomDef.tiles)
+            map(overworldMap),
+            currentRoomIndex(1)
         {
-            currentRoom = &room1;
+            tileRoom = new TileRoom(map[currentRoomIndex].roomDef);
         }
 
         Scene update(byte frame);

@@ -34,14 +34,14 @@ class BaseEntity {
 
     public:
         EntityType type;
-        char x;
-        char y;
-        char v;
+        int16_t x;
+        int16_t y;
+        int8_t v;
         Direction d;
-        char prevX;
-        char prevY;
+        int16_t prevX;
+        int16_t prevY;
 
-        BaseEntity(EntityType type, char x, char y, char v, Direction d):
+        BaseEntity(EntityType type, int16_t x, int16_t y, int8_t v, Direction d):
             type(type),
             x(x),
             y(y),
@@ -54,7 +54,7 @@ class BaseEntity {
         virtual void render(Arduboy2* arduboy, byte frame) = 0;
         virtual void update(Arduboy2* arduboy, byte frame) {}
 
-        virtual void moveTo(char newX, char newY) {
+        virtual void moveTo(int16_t newX, int16_t newY) {
             prevX = x;
             prevY = y;
             x = newX;
