@@ -19,6 +19,8 @@ class GameScene: public BaseScene {
         TileRoom room2;
         TileRoom* currentRoom;
 
+        void updatePlayer(void);
+
     public:
         GameScene(Arduboy2* arduboy):
             arduboy(arduboy),

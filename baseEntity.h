@@ -8,10 +8,12 @@ class BaseEntity {
     public:
         char x;
         char y;
+        char delta;
 
-        BaseEntity(char x, char y):
+        BaseEntity(char x, char y, char delta):
             x(x),
-            y(y)
+            y(y),
+            delta(delta)
         {}
 
         virtual void update(Arduboy2* arduboy, byte frame) = 0;

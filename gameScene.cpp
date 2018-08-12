@@ -1,13 +1,34 @@
 #include "gameScene.h"
 
-Scene GameScene::update(byte frame) {
-    if (arduboy->pressed(B_BUTTON)) {
-        return TITLE;
+void GameScene::updatePlayer(void) {
+    char x = player.x;
+    char y = player.y;
+    char delta = player.delta;
+
+    if (arduboy->pressed(DOWN_BUTTON)) {
+        y += delta;
     }
 
-    player.update(arduboy, frame);
+    if (arduboy->pressed(UP_BUTTON)) {
+        y -= delta;
+    }
 
-    Tiles tile = currentRoom->getTileAt(player.x, player.y);
+    if (arduboy->pressed(LEFT_BUTTON)) {
+        x -= delta;
+    }
+
+    if (arduboy->pressed(RIGHT_BUTTON)) {
+        x += delta;
+    }
+
+    Tiles tile = currentRoom->getTileAt(x, y);
+
+    if (tile == WALL) {
+        return;
+    }
+
+    player.x = x;
+    player.y = y;
 
     if (tile == DOOR) {
         if (currentRoom == &room1) {
@@ -20,6 +41,14 @@ Scene GameScene::update(byte frame) {
             player.y = 50;
         }
     }
+}
+
+Scene GameScene::update(byte frame) {
+    if (arduboy->pressed(B_BUTTON)) {
+        return TITLE;
+    }
+
+    updatePlayer();
 
     return GAME;
 }
