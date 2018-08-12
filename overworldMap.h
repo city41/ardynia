@@ -20,26 +20,47 @@ const MapRoomDef overworldMap[] = {
         0
     },
     {
-        &firstRoomDef,
+        &upperCenterRoomDef,
         0,
         2,
         3,
-        0
+        6
     },
     {
-        &secondRoomDef,
+        &lowerCenterRoomDef,
         1,
         0,
+        5,
+        4
+    },
+    {
+        &upperLeftRoomDef,
         0,
+        5,
+        0,
+        1
+    },
+    {
+        &lowerRightRoomDef,
+        6,
+        0,
+        2,
         0
     },
     {
-        &leftRoomDef,
+        &lowerLeftRoomDef,
+        3,
         0,
         0,
+        2
+    },
+    {
+        &upperRightRoomDef,
         0,
-        1
-    }
+        4,
+        1,
+        0
+    },
 };
 
 #endif
