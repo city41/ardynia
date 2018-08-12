@@ -4,7 +4,7 @@
 Sprites sprites;
 
 void Player::render(Arduboy2* arduboy, byte frame) {
-    sprites.drawOverwrite(x - 12, y - 8, playerAttackBmp, 0);
+    sprites.drawErase(x - 12, y - 8, playerAttackBmp, 0);
 }
 
 void Player::update(Arduboy2* arduboy, byte frame) {
