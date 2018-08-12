@@ -13,6 +13,25 @@ enum EntityType {
 };
 
 class BaseEntity {
+    protected:
+        Direction determineDirection(char px, char py, char x, char y, Direction pd) {
+            if (px == x && py == y) {
+                return pd;
+            }
+
+            if (px == x) {
+                if (py > y) {
+                    return UP;
+                }
+                return DOWN;
+            } else {
+                if (px > x) {
+                    return LEFT;
+                }
+                return RIGHT;
+            }
+        }
+
     public:
         EntityType type;
         char x;
@@ -40,6 +59,8 @@ class BaseEntity {
             prevY = y;
             x = newX;
             y = newY;
+
+            d = determineDirection(prevX, prevY, x, y, d);
         }
 
         virtual void undoMove() {

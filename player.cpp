@@ -4,7 +4,28 @@
 Sprites sprites;
 
 void Player::render(Arduboy2* arduboy, byte frame) {
-    sprites.drawErase(x - 12, y - 8, playerAttackBmp, 0);
+    char spriteIndex = 0;
+
+    switch(d) {
+        case LEFT:
+            spriteIndex = 0;
+            break;
+        case DOWN:
+            spriteIndex = 2;
+            break;
+        case UP:
+            spriteIndex = 4;
+            break;
+        case RIGHT:
+            spriteIndex = 6;
+            break;
+    }
+
+    if (frame > 30) {
+        ++spriteIndex;
+    }
+
+    sprites.drawErase(x - 8, y - 8, playerWalkBmp, spriteIndex);
 }
 
 void Player::update(Arduboy2* arduboy, byte frame) {
