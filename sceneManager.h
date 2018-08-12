@@ -5,10 +5,12 @@
 #include <Arduboy2.h>
 #include "baseScene.h"
 #include "scenes.h"
+#include "renderer.h"
 
 class SceneManager {
     private:
         Arduboy2* arduboy;
+        Renderer* renderer;
         Scene currentSceneId;
         Scene nextSceneId;
         BaseScene* currentScene;
@@ -19,8 +21,9 @@ class SceneManager {
         void setScene(Scene nextSceneId);
 
     public:
-        SceneManager(Arduboy2* arduboy, Scene startingSceneId):
+        SceneManager(Arduboy2* arduboy, Renderer* renderer, Scene startingSceneId):
             arduboy(arduboy),
+            renderer(renderer),
             currentSceneId(NO_SCENE),
             nextSceneId(NO_SCENE),
             currentScene(NULL),

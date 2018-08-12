@@ -1,18 +1,12 @@
 #ifndef titleScene_h
 #define titleScene_h
 
-#include <Arduino.h>
-#include <Arduboy2.h>
-
 #include "baseScene.h"
 #include "scenes.h"
 
 class TitleScene: public BaseScene {
-    private:
-        Arduboy2* arduboy;
-
     public:
-        TitleScene(Arduboy2* arduboy): arduboy(arduboy) {}
+        TitleScene(Arduboy2* arduboy, Renderer* renderer): BaseScene(arduboy, renderer) {}
         Scene update(byte frame);
         void render(byte frame);
 };

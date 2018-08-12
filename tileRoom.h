@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <Arduboy2.h>
+#include "renderer.h"
 #include "rooms.h"
 #include "tiles.h"
 
@@ -16,7 +17,7 @@ class TileRoom {
             roomDef(roomDef)
         {}
 
-        void render(Arduboy2* arduboy, byte frame);
+        void render(Renderer *renderer, byte frame);
         uint8_t getTileAt(char px, char py) const;
 };
 

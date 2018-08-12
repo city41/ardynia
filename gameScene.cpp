@@ -50,6 +50,6 @@ Scene GameScene::update(byte frame) {
 }
 
 void GameScene::render(byte frame) {
-    tileRoom->render(arduboy, frame);
-    player.render(arduboy, frame);
+    tileRoom->render(renderer, frame);
+    player.render(renderer, frame);
 }

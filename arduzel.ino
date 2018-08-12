@@ -5,9 +5,11 @@
 
 #include "scenes.h"
 #include "sceneManager.h"
+#include "renderer.h"
 
 Arduboy2 arduboy;
-SceneManager sceneManager(&arduboy, TITLE);
+Renderer renderer(&arduboy);
+SceneManager sceneManager(&arduboy, &renderer, TITLE);
 
 
 void setup() {

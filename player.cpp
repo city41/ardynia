@@ -1,9 +1,7 @@
 #include "player.h"
 #include "bitmaps.h"
 
-Sprites sprites;
-
-void Player::render(Arduboy2* arduboy, byte frame) {
+void Player::render(Renderer *renderer, byte frame) {
     char spriteIndex = 0;
 
     switch(d) {
@@ -25,7 +23,7 @@ void Player::render(Arduboy2* arduboy, byte frame) {
         ++spriteIndex;
     }
 
-    sprites.drawErase(x - 8, y - 8, playerWalkBmp, spriteIndex);
+    renderer->drawErase(x - 8, y - 8, playerWalkBmp, spriteIndex);
 }
 
 void Player::update(Arduboy2* arduboy, byte frame) {

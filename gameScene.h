@@ -1,9 +1,6 @@
 #ifndef gameScene_h
 #define gameScene_h
 
-#include <Arduino.h>
-#include <Arduboy2.h>
-
 #include "baseScene.h"
 #include "scenes.h"
 
@@ -13,7 +10,6 @@
 
 class GameScene: public BaseScene {
     private:
-        Arduboy2* arduboy;
         Player player;
         const MapRoomDef* map;
         uint8_t currentRoomIndex;
@@ -23,8 +19,8 @@ class GameScene: public BaseScene {
         void goToNextRoom(int16_t x, int16_t y);
 
     public:
-        GameScene(Arduboy2* arduboy):
-            arduboy(arduboy),
+        GameScene(Arduboy2* arduboy, Renderer* renderer):
+            BaseScene(arduboy, renderer),
             player(64, 32),
             map(overworldMap),
             currentRoomIndex(1)

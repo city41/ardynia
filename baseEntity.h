@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <Arduboy2.h>
+#include "renderer.h"
 #include "direction.h"
 #include "tiles.h"
 
@@ -51,7 +52,7 @@ class BaseEntity {
             prevY(y)
         {}
 
-        virtual void render(Arduboy2* arduboy, byte frame) = 0;
+        virtual void render(Renderer* renderer, byte frame) = 0;
         virtual void update(Arduboy2* arduboy, byte frame) {}
 
         virtual void moveTo(int16_t newX, int16_t newY) {

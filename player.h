@@ -9,7 +9,7 @@ class Player: public BaseEntity {
             BaseEntity(PLAYER, x, y, 2, DOWN)
         {}
 
-        virtual void render(Arduboy2* arduboy, byte frame) override;
+        virtual void render(Renderer* renderer, byte frame) override;
         virtual void update(Arduboy2* arduboy, byte frame) override;
         virtual void onCollide(uint8_t tile) override;
 };

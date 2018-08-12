@@ -13,10 +13,10 @@ void SceneManager::setScene(Scene nextSceneId) {
             currentScene = NULL;
             break;
         case TITLE:
-            currentScene = new TitleScene(arduboy);
+            currentScene = new TitleScene(arduboy, renderer);
             break;
         case GAME:
-            currentScene = new GameScene(arduboy);
+            currentScene = new GameScene(arduboy, renderer);
             break;
     }
 }
