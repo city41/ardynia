@@ -4,9 +4,13 @@
 #include "baseEntity.h"
 
 class Player: public BaseEntity {
+    private:
+        bool movedThisFrame;
+
     public:
         Player(char x, char y):
-            BaseEntity(PLAYER, x, y, 2, DOWN)
+            BaseEntity(PLAYER, x, y, 2, DOWN),
+            movedThisFrame(false)
         {}
 
         virtual void render(Renderer* renderer, byte frame) override;

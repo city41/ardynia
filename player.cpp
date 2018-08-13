@@ -19,7 +19,7 @@ void Player::render(Renderer *renderer, byte frame) {
             break;
     }
 
-    if (frame > 30) {
+    if (movedThisFrame && ((frame / 6) % 2) == 0) {
         ++spriteIndex;
     }
 
@@ -45,7 +45,11 @@ void Player::update(Arduboy2* arduboy, byte frame) {
         newX += v;
     }
 
-    moveTo(newX, newY);
+    movedThisFrame = false;
+    if (newX != x || newY != y) {
+        movedThisFrame = true;
+        moveTo(newX, newY);
+    }
 }
 
 void Player::onCollide(uint8_t tile) {
