@@ -15,7 +15,7 @@ enum EntityType {
 
 class BaseEntity {
     protected:
-        Direction determineDirection(char px, char py, char x, char y, Direction pd) {
+        Direction determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction pd) {
             if (px == x && py == y) {
                 return pd;
             }
