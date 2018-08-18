@@ -4,8 +4,8 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 
-#define PAUSE 1
-#define QUIT 2
+#define PAUSE 0
+#define QUIT 1
 
 #define MAX_DECISION 2
 
