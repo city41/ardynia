@@ -13,10 +13,9 @@ class GameScene: public BaseScene {
         Player player;
         const uint8_t* map;
         const uint8_t* tiles;
-        uint8_t currentRoomIndex;
-        uint8_t nextRoomIndex;
-        TileRoom* tileRoom;
-        TileRoom* nextRoom;
+        uint8_t nextRoomX;
+        uint8_t nextRoomY;
+        TileRoom tileRoom;
 
         int16_t horizontalRoomTransitionCount;
         int16_t verticalRoomTransitionCount;
@@ -32,12 +31,12 @@ class GameScene: public BaseScene {
             player(64, 32),
             map(overworld_map),
             tiles(overworld_tiles),
-            currentRoomIndex(1),
-            nextRoomIndex(0),
+            nextRoomX(1),
+            nextRoomY(0),
+            tileRoom(map, tiles, 0, 0),
             horizontalRoomTransitionCount(0),
             verticalRoomTransitionCount(0)
         {
-            tileRoom = new TileRoom(map, tiles, 0, 0);
         }
 
         Scene update(byte frame);

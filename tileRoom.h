@@ -22,6 +22,7 @@ class TileRoom {
             y(y)
         {}
 
+        void render(Renderer *renderer, byte frame, uint8_t roomX, uint8_t roomY);
         void render(Renderer *renderer, byte frame);
         uint8_t getTileAt(char px, char py) const;
 };

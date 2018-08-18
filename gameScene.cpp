@@ -1,31 +1,36 @@
 #include "gameScene.h"
 
-# define ROOM_TRANSITION_VELOCITY 4
+# define ROOM_TRANSITION_VELOCITY 2
 
 bool isOffscreen(int16_t x, int16_t y) {
     return x < 0 || y < 0 || x > WIDTH || y > HEIGHT;
 }
 
 void GameScene::detectTileCollisions(void) {
-    uint8_t tile = tileRoom->getTileAt(player.x, player.y);
+    uint8_t tile = tileRoom.getTileAt(player.x, player.y);
     player.onCollide(tile);
 }
 
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
-        tileRoom->x -= 1;
-        player.moveTo(WIDTH - 1, player.y);
+        nextRoomX = tileRoom.x - 1;
+        nextRoomY = tileRoom.y;
+        horizontalRoomTransitionCount = -WIDTH;
 
     } else if (x > WIDTH) {
-        tileRoom->x += 1;
-        player.moveTo(1, player.y);
+        nextRoomX = tileRoom.x + 1;
+        nextRoomY = tileRoom.y;
+        horizontalRoomTransitionCount = WIDTH;
+
 
     } else if (y < 0) {
-        tileRoom->y -= 1;
-        player.moveTo(player.x, HEIGHT - 1);
+        nextRoomX = tileRoom.x;
+        nextRoomY = tileRoom.y - 1;
+        verticalRoomTransitionCount = -HEIGHT;
     } else if (y > HEIGHT) {
-        tileRoom->y += 1;
-        player.moveTo(player.x, 1);
+        nextRoomX = tileRoom.x;
+        nextRoomY = tileRoom.y + 1;
+        verticalRoomTransitionCount = HEIGHT;
     }
 }
 
@@ -57,7 +62,7 @@ void GameScene::renderVerticalRoomTransition(uint8_t frame) {
     } else {
         renderer->translateY = HEIGHT + verticalRoomTransitionCount;
     }
-    tileRoom->render(renderer, frame);
+    tileRoom.render(renderer, frame);
 
     if (goingToRoomBelow) {
         renderer->translateY = verticalRoomTransitionCount;
@@ -65,7 +70,7 @@ void GameScene::renderVerticalRoomTransition(uint8_t frame) {
         renderer->translateY = verticalRoomTransitionCount;
     }
 
-    nextRoom->render(renderer, frame);
+    tileRoom.render(renderer, frame, nextRoomX, nextRoomY);
 
     if (goingToRoomBelow) {
         renderer->translateY = verticalRoomTransitionCount - HEIGHT;
@@ -83,11 +88,8 @@ void GameScene::renderVerticalRoomTransition(uint8_t frame) {
 
     if (verticalRoomTransitionCount == 0) {
         renderer->translateY = 0;
-        delete tileRoom;
-        tileRoom = nextRoom;
-        currentRoomIndex = nextRoomIndex;
-        nextRoomIndex = 0;
-        nextRoom = NULL;
+        tileRoom.x = nextRoomX;
+        tileRoom.y = nextRoomY;
 
         if (goingToRoomBelow) {
             player.moveTo(player.x, 1);
@@ -105,7 +107,7 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
     } else {
         renderer->translateX = WIDTH + horizontalRoomTransitionCount;
     }
-    tileRoom->render(renderer, frame);
+    tileRoom.render(renderer, frame);
 
     if (goingToRoomToRight) {
         renderer->translateX = horizontalRoomTransitionCount;
@@ -113,7 +115,7 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
         renderer->translateX = horizontalRoomTransitionCount;
     }
 
-    nextRoom->render(renderer, frame);
+    tileRoom.render(renderer, frame, nextRoomX, nextRoomY);
 
     if (goingToRoomToRight) {
         renderer->translateX = horizontalRoomTransitionCount - WIDTH;
@@ -131,11 +133,8 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
 
     if (horizontalRoomTransitionCount == 0) {
         renderer->translateX = 0;
-        delete tileRoom;
-        tileRoom = nextRoom;
-        currentRoomIndex = nextRoomIndex;
-        nextRoomIndex = 0;
-        nextRoom = NULL;
+        tileRoom.x = nextRoomX;
+        tileRoom.y = nextRoomY;
 
         if (goingToRoomToRight) {
             player.moveTo(1, player.y);
@@ -151,7 +150,7 @@ void GameScene::render(uint8_t frame) {
     } else if (horizontalRoomTransitionCount != 0) {
         renderHorizontalRoomTransition(frame);
     } else {
-        tileRoom->render(renderer, frame);
+        tileRoom.render(renderer, frame);
         player.render(renderer, frame);
     }
 }
