@@ -133,13 +133,26 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 }
 
 Scene GameScene::update(uint8_t frame) {
+    if (paused) {
+        if (arduboy->justPressed(B_BUTTON)) {
+            paused = false;
+        } else {
+            return GAME;
+        }
+    }
+
     if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
         if (currentUpdate != &GameScene::updateMenu) {
             push(&GameScene::updateMenu, &GameScene::renderMenu);
         }
     } else {
         if (currentUpdate == &GameScene::updateMenu) {
-            // TODO: respond to menu choice here
+            if (menu.decision == QUIT) {
+                return TITLE;
+            }
+            if (menu.decision == PAUSE) {
+                paused = true;
+            }
             pop();
         }
     }
@@ -157,6 +170,10 @@ Scene GameScene::update(uint8_t frame) {
 
 void GameScene::render(uint8_t frame) {
     (this->*currentRender)(frame);
+
+    if (paused) {
+        renderer->print(32, 30, F(" paused "));
+    }
 
     if (nextRender != NULL) {
         prevRender = currentRender;

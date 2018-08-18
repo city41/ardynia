@@ -32,6 +32,8 @@ class GameScene: public BaseScene {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
+        bool paused;
+
         void detectTileCollisions(void);
         void goToNextRoom(int16_t x, int16_t y);
         void renderVerticalRoomTransition(uint8_t frame);
@@ -65,7 +67,8 @@ class GameScene: public BaseScene {
             nextUpdate(NULL),
             prevRender(NULL),
             currentRender(&GameScene::renderPlay),
-            nextRender(NULL)
+            nextRender(NULL),
+            paused(false)
         {
         }
 
