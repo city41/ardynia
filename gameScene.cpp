@@ -1,9 +1,10 @@
 #include "gameScene.h"
 
-# define ROOM_TRANSITION_VELOCITY 2
+#define ROOM_TRANSITION_VELOCITY 2
+const uint8_t ROOM_WIDTH = TILES_PER_ROW * TILE_SIZE;
 
 bool isOffscreen(int16_t x, int16_t y) {
-    return x < 0 || y < 0 || x > WIDTH || y > HEIGHT;
+    return x < 0 || y < 0 || x > ROOM_WIDTH || y > HEIGHT;
 }
 
 void GameScene::detectTileCollisions(void) {
@@ -15,12 +16,12 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
         nextRoomX = tileRoom.x - 1;
         nextRoomY = tileRoom.y;
-        horizontalRoomTransitionCount = -WIDTH;
+        horizontalRoomTransitionCount = -ROOM_WIDTH;
 
-    } else if (x > WIDTH) {
+    } else if (x > ROOM_WIDTH) {
         nextRoomX = tileRoom.x + 1;
         nextRoomY = tileRoom.y;
-        horizontalRoomTransitionCount = WIDTH;
+        horizontalRoomTransitionCount = ROOM_WIDTH;
 
 
     } else if (y < 0) {
@@ -103,9 +104,9 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
     bool goingToRoomToRight = horizontalRoomTransitionCount > 0;
 
     if (goingToRoomToRight) {
-        renderer->translateX = horizontalRoomTransitionCount - WIDTH;
+        renderer->translateX = horizontalRoomTransitionCount - ROOM_WIDTH;
     } else {
-        renderer->translateX = WIDTH + horizontalRoomTransitionCount;
+        renderer->translateX = ROOM_WIDTH + horizontalRoomTransitionCount;
     }
     tileRoom.render(renderer, frame);
 
@@ -118,9 +119,9 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
     tileRoom.render(renderer, frame, nextRoomX, nextRoomY);
 
     if (goingToRoomToRight) {
-        renderer->translateX = horizontalRoomTransitionCount - WIDTH;
+        renderer->translateX = horizontalRoomTransitionCount - ROOM_WIDTH;
     } else {
-        renderer->translateX = WIDTH + horizontalRoomTransitionCount;
+        renderer->translateX = ROOM_WIDTH + horizontalRoomTransitionCount;
     }
 
     player.render(renderer, frame);
@@ -139,7 +140,7 @@ void GameScene::renderHorizontalRoomTransition(uint8_t frame) {
         if (goingToRoomToRight) {
             player.moveTo(1, player.y);
         } else {
-            player.moveTo(WIDTH - 1, player.y);
+            player.moveTo(ROOM_WIDTH - 1, player.y);
         }
     }
 }

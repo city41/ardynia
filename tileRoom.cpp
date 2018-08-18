@@ -1,9 +1,6 @@
 #include "tileRoom.h"
 #include "bitmaps.h"
 
-#define TILES_PER_ROW 16
-#define TILES_PER_COLUMN 8
-#define TILE_SIZE 8
 
 void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
