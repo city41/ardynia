@@ -5,13 +5,14 @@
 #include "scenes.h"
 
 #include "player.h"
-#include "overworldMap.h"
+#include "overworld.h"
 #include "tileRoom.h"
 
 class GameScene: public BaseScene {
     private:
         Player player;
-        const MapRoomDef* map;
+        const uint8_t* map;
+        const uint8_t* tiles;
         uint8_t currentRoomIndex;
         uint8_t nextRoomIndex;
         TileRoom* tileRoom;
@@ -29,13 +30,14 @@ class GameScene: public BaseScene {
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             BaseScene(arduboy, renderer),
             player(64, 32),
-            map(overworldMap),
+            map(overworld_map),
+            tiles(overworld_tiles),
             currentRoomIndex(1),
             nextRoomIndex(0),
             horizontalRoomTransitionCount(0),
             verticalRoomTransitionCount(0)
         {
-            tileRoom = new TileRoom(map[currentRoomIndex].roomDef);
+            tileRoom = new TileRoom(map, tiles, 0, 0);
         }
 
         Scene update(byte frame);

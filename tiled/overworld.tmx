@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="16" height="8" tilewidth="8" tileheight="8" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" source="overworld.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="16" height="8">
+  <data encoding="csv">
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1,
+1,2,3,4,5,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+</map>

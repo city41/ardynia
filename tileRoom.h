@@ -4,17 +4,21 @@
 #include <Arduino.h>
 #include <Arduboy2.h>
 #include "renderer.h"
-#include "rooms.h"
-#include "tiles.h"
 
 
 class TileRoom {
     private:
-        const RoomDef* roomDef;
+        const uint8_t* map;
+        const uint8_t* tiles;
+        const uint8_t roomX;
+        const uint8_t roomY;
 
     public:
-        TileRoom(const RoomDef* roomDef):
-            roomDef(roomDef)
+        TileRoom(const uint8_t* map, const uint8_t* tiles, uint8_t roomX, uint8_t roomY):
+            map(map),
+            tiles(tiles),
+            roomX(roomX),
+            roomY(roomY)
         {}
 
         void render(Renderer *renderer, byte frame);

@@ -12,38 +12,6 @@ void GameScene::detectTileCollisions(void) {
 }
 
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
-    int8_t newRoomIndex = -1;
-    int16_t newVerticalRoomTransitionCount = 0;
-    int16_t newHorizontalRoomTransitionCount = 0;
-
-    if (y > HEIGHT) {
-        newRoomIndex = map[currentRoomIndex].down;
-        newVerticalRoomTransitionCount = HEIGHT;
-    } else if (y < 0) {
-        newRoomIndex = map[currentRoomIndex].up;
-        newVerticalRoomTransitionCount = -HEIGHT;
-    } else if (x < 0) {
-        newRoomIndex = map[currentRoomIndex].left;
-        newHorizontalRoomTransitionCount = -WIDTH;
-        /* player.moveTo(WIDTH - 1, player.y); */
-    } else if (x > WIDTH) {
-        newRoomIndex = map[currentRoomIndex].right;
-        newHorizontalRoomTransitionCount = WIDTH;
-        /* player.moveTo(1, player.y); */
-    }
-
-    if (newRoomIndex > 0) {
-        nextRoomIndex = newRoomIndex;
-        nextRoom = new TileRoom(map[nextRoomIndex].roomDef);
-
-        if (newVerticalRoomTransitionCount != 0) {
-            verticalRoomTransitionCount = newVerticalRoomTransitionCount;
-        }
-
-        if (newHorizontalRoomTransitionCount != 0) {
-            horizontalRoomTransitionCount = newHorizontalRoomTransitionCount;
-        }
-    }
 }
 
 Scene GameScene::update(byte frame) {

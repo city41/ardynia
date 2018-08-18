@@ -1,33 +1,31 @@
-{ "columns":2,
- "image":"..\/pngs\/playerWalk.png",
- "imageheight":128,
- "imagewidth":16,
- "margin":0,
- "name":"overworld",
- "spacing":0,
- "tilecount":32,
+{ "height":8,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+         "height":8,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"2018.08.06",
  "tileheight":8,
- "tiles":[
+ "tilesets":[
         {
-         "id":0,
-         "properties":[
-                {
-                 "name":"sosolid",
-                 "type":"int",
-                 "value":1
-                }],
-         "type":"yyyyyyyy"
-        }, 
-        {
-         "id":6,
-         "properties":[
-                {
-                 "name":"solid",
-                 "type":"int",
-                 "value":1
-                }]
+         "firstgid":1,
+         "source":"overworld.tsx"
         }],
  "tilewidth":8,
- "type":"tileset",
- "version":1.2
+ "type":"map",
+ "version":1.2,
+ "width":16
 }
