@@ -7,7 +7,7 @@
 #define PAUSE 0
 #define QUIT 1
 
-#define MAX_DECISION 2
+#define NUM_DECISIONS 2
 
 class InGameMenu {
     public:

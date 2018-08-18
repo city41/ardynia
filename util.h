@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "math.h"
 
-uint8_t clamp(uint8_t val, uint8_t minVal, uint8_t maxVal);
+uint8_t clamp(int8_t val, int8_t minVal, int8_t maxVal);
 
 #endif
 
