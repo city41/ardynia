@@ -5,3 +5,6 @@ BOARD_TAG = leonardo
 LOCAL_CPP_SRCS = $(wildcard *.cpp)
 
 include $(ARDMK_DIR)/Arduino.mk
+
+emu: build-leonardo/arduzel.hex
+	pabe build-leonardo/arduzel.hex
