@@ -12,6 +12,21 @@ void GameScene::detectTileCollisions(void) {
 }
 
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
+    if (x < 0) {
+        tileRoom->x -= 1;
+        player.moveTo(WIDTH - 1, player.y);
+
+    } else if (x > WIDTH) {
+        tileRoom->x += 1;
+        player.moveTo(1, player.y);
+
+    } else if (y < 0) {
+        tileRoom->y -= 1;
+        player.moveTo(player.x, HEIGHT - 1);
+    } else if (y > HEIGHT) {
+        tileRoom->y += 1;
+        player.moveTo(player.x, 1);
+    }
 }
 
 Scene GameScene::update(byte frame) {

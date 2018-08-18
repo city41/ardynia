@@ -10,15 +10,16 @@ class TileRoom {
     private:
         const uint8_t* map;
         const uint8_t* tiles;
-        const uint8_t roomX;
-        const uint8_t roomY;
 
     public:
-        TileRoom(const uint8_t* map, const uint8_t* tiles, uint8_t roomX, uint8_t roomY):
+        uint8_t x;
+        uint8_t y;
+
+        TileRoom(const uint8_t* map, const uint8_t* tiles, const uint8_t x, const uint8_t y):
             map(map),
             tiles(tiles),
-            roomX(roomX),
-            roomY(roomY)
+            x(x),
+            y(y)
         {}
 
         void render(Renderer *renderer, byte frame);
