@@ -63,6 +63,10 @@ Scene GameScene::updatePlay(uint8_t frame) {
 void GameScene::renderPlay(uint8_t frame) {
     tileRoom.render(renderer, frame);
     player.render(renderer, frame);
+
+    renderer->translateX = WIDTH - 16;
+    renderer->translateY = 0;
+    hud.render(renderer, frame);
 }
 
 Scene GameScene::updateMenu(uint8_t frame) {
@@ -128,8 +132,9 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     renderer->translateY = translateY;
     player.render(renderer, frame);
 
-    renderer->translateX = 0;
+    renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
+    hud.render(renderer, frame);
 }
 
 Scene GameScene::update(uint8_t frame) {
@@ -169,7 +174,13 @@ Scene GameScene::update(uint8_t frame) {
 }
 
 void GameScene::render(uint8_t frame) {
+    renderer->translateX = 0;
+    renderer->translateY = 0;
+
     (this->*currentRender)(frame);
+
+    renderer->translateX = 0;
+    renderer->translateY = 0;
 
     if (paused) {
         renderer->print(32, 30, F(" paused "));
