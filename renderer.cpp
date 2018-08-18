@@ -16,3 +16,8 @@ void Renderer::drawErase(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t fr
     sprite.drawErase(x + translateX, y + translateY, bitmap, frame);
 }
 
+void Renderer::print(int16_t x, int16_t y, const __FlashStringHelper* msg) {
+    arduboy->setCursor(x + translateX, y + translateY);
+    arduboy->print(msg);
+}
+

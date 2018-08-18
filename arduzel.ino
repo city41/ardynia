@@ -6,6 +6,7 @@
 #include "scenes.h"
 #include "sceneManager.h"
 #include "renderer.h"
+#include "util.h"
 
 Arduboy2 arduboy;
 Renderer renderer(&arduboy);

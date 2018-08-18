@@ -7,6 +7,7 @@
 #include "player.h"
 #include "overworld.h"
 #include "tileRoom.h"
+#include "inGameMenu.h"
 
 class GameScene: public BaseScene {
     private:
@@ -16,6 +17,7 @@ class GameScene: public BaseScene {
         uint8_t nextRoomX;
         uint8_t nextRoomY;
         TileRoom tileRoom;
+        InGameMenu menu;
 
         int16_t horizontalRoomTransitionCount;
         int16_t verticalRoomTransitionCount;
@@ -34,6 +36,7 @@ class GameScene: public BaseScene {
             nextRoomX(1),
             nextRoomY(0),
             tileRoom(map, tiles, 0, 0),
+            menu(),
             horizontalRoomTransitionCount(0),
             verticalRoomTransitionCount(0)
         {

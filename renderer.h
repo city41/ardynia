@@ -23,7 +23,7 @@ class Renderer {
         void drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE);
         void drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame);
         void drawErase(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame);
-        void print(uint8_t* message);
+        void print(int16_t x, int16_t y, const __FlashStringHelper* message);
         
 };
 

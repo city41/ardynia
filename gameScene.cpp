@@ -40,8 +40,9 @@ Scene GameScene::update(byte frame) {
         return GAME;
     }
 
-    if (arduboy->pressed(B_BUTTON)) {
-        return TITLE;
+    if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
+        menu.update(arduboy, frame);
+        return GAME;
     }
 
     player.update(arduboy, frame);
@@ -151,6 +152,12 @@ void GameScene::render(uint8_t frame) {
     } else if (horizontalRoomTransitionCount != 0) {
         renderHorizontalRoomTransition(frame);
     } else {
+
+        if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
+            menu.render(renderer, frame);
+            return;
+        }
+
         tileRoom.render(renderer, frame);
         player.render(renderer, frame);
     }
