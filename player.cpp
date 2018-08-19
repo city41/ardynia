@@ -23,7 +23,7 @@ void Player::render(Renderer *renderer, byte frame) {
         ++spriteIndex;
     }
 
-    renderer->drawErase(x - 8, y - 8, playerWalkBmp, spriteIndex);
+    renderer->drawErase(x - 8, y - 8, playerWalk_tiles, spriteIndex);
 }
 
 void Player::update(Arduboy2* arduboy, byte frame) {

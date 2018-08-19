@@ -6,6 +6,7 @@
 
 #include "player.h"
 #include "overworld.h"
+#include "bitmaps.h"
 #include "tileRoom.h"
 #include "inGameMenu.h"
 #include "hud.h"
