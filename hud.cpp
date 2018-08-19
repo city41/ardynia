@@ -20,8 +20,8 @@ void Hud::render(Renderer* renderer, uint8_t frame) {
     // health dots
     drawDots(renderer, 2, 1, 9);
 
-    renderer->drawOverwrite(1, 7, weaponsAndItemIconsBmp, 0);
-    renderer->drawOverwrite(1, 23, weaponsAndItemIconsBmp, 2);
+    renderer->drawOverwrite(1, 7, weaponsAndItemIconsBmp, 1);
+    renderer->drawOverwrite(1, 23, weaponsAndItemIconsBmp, 3);
 
     // item dots
     drawDots(renderer, 2, 40, 3);
