@@ -86,7 +86,7 @@ Scene GameScene::updatePlay(uint8_t frame) {
         detectEntityCollisions();
     }
 
-    if (player.health < 0) {
+    if (player.health <= 0) {
         return TITLE;
     } else {
         return GAME;

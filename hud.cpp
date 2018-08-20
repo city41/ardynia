@@ -4,13 +4,16 @@ void drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t m
     uint8_t origX = x;
 
     for (uint8_t i = 0; i < maxCount; ++i) {
-        if (i < count || (frame % 2) == 1) {
-            renderer->fillRect(x, y, 2, 2, WHITE);
+        if (i < count) {
+            renderer->fillRect(x, y, 3, 3, WHITE);
+        } else {
+            renderer->drawRect(x, y, 3, 3, WHITE);
         }
-        x += 3;
 
-        if (i == 4) {
-            y += 3;
+        x += 4;
+
+        if (i == 3) {
+            y += 4;
             x = origX;
         }
     }
@@ -20,17 +23,17 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 2, 1, player.health, player.totalHealth, frame);
+    drawDots(renderer, 1, 1, player.health, player.totalHealth, frame);
 
-    renderer->drawOverwrite(1, 7, weaponsAndItemIcons_tiles, 1);
-    renderer->drawOverwrite(1, 23, weaponsAndItemIcons_tiles, 3);
+    renderer->drawOverwrite(1, 9, weaponsAndItemIcons_tiles, 1);
+    renderer->drawOverwrite(1, 25, weaponsAndItemIcons_tiles, 3);
 
     // item dots
-    drawDots(renderer, 2, 40, 3, 3, frame);
+    drawDots(renderer, 1, 42, 3, 3, frame);
 
-    renderer->print(3, 54, 88);
+    renderer->print(3, 56, 88);
 
     // draw current room coord
-    renderer->print(3, 45, roomX);
-    renderer->print(11, 45, roomY);
+    renderer->print(3, 47, roomX);
+    renderer->print(11, 47, roomY);
 }
