@@ -25,3 +25,8 @@ void Renderer::print(int16_t x, int16_t y, const __FlashStringHelper* msg) {
     arduboy->print(msg);
 }
 
+void Renderer::print(int16_t x, int16_t y, int16_t num) {
+    arduboy->setCursor(x + translateX, y + translateY);
+    arduboy->print(num);
+}
+

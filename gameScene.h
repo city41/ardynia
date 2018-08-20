@@ -4,12 +4,15 @@
 #include "baseScene.h"
 #include "scenes.h"
 
-#include "player.h"
 #include "overworld.h"
 #include "bitmaps.h"
 #include "tileRoom.h"
 #include "inGameMenu.h"
 #include "hud.h"
+#include "player.h"
+#include "entity.h"
+
+const uint8_t MAX_ENTITIES = 8;
 
 class GameScene: public BaseScene {
     typedef Scene (GameScene::*UpdatePtr)(uint8_t);
@@ -17,7 +20,10 @@ class GameScene: public BaseScene {
 
     private:
         Player player;
+        Entity entities[MAX_ENTITIES];
         const uint8_t* map;
+        const uint8_t*** entityDefs;
+        uint8_t numEntitiesInCurrentRoom;
         const uint8_t* tiles;
         uint8_t nextRoomX;
         uint8_t nextRoomY;
@@ -38,7 +44,8 @@ class GameScene: public BaseScene {
         bool paused;
 
         void detectTileCollisions(void);
-        void goToNextRoom(int16_t x, int16_t y);
+        void goToNextRoom(int16_t playerX, int16_t playerY);
+        void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);
         void renderVerticalRoomTransition(uint8_t frame);
         void renderHorizontalRoomTransition(uint8_t frame);
 
@@ -57,10 +64,12 @@ class GameScene: public BaseScene {
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             BaseScene(arduboy, renderer),
-            player(64, 32),
+            player(64, 32, 5),
             map(overworld_map),
+            entityDefs(overworld_entities),
+            numEntitiesInCurrentRoom(0),
             tiles(overworld_tiles),
-            nextRoomX(1),
+            nextRoomX(0),
             nextRoomY(0),
             tileRoom(map, tiles, 0, 0),
             menu(),
@@ -73,6 +82,7 @@ class GameScene: public BaseScene {
             currentRender(&GameScene::renderPlay),
             nextRender(NULL)
         {
+            setEntitiesInRoom(0, 0);
         }
 
         Scene update(uint8_t frame);

@@ -8,9 +8,9 @@
 #include "tiles.h"
 
 enum EntityType {
-    PLAYER,
-    ENEMY,
-    ITEM
+    UNSET = 0,
+    PLAYER = 1,
+    BLOB = 2
 };
 
 class BaseEntity {
@@ -42,6 +42,16 @@ class BaseEntity {
         int16_t prevX;
         int16_t prevY;
 
+        BaseEntity():
+            type(UNSET),
+            x(0),
+            y(0),
+            v(0),
+            d(DOWN),
+            prevX(0),
+            prevY(0)
+        {}
+
         BaseEntity(EntityType type, int16_t x, int16_t y, int8_t v, Direction d):
             type(type),
             x(x),
@@ -51,9 +61,6 @@ class BaseEntity {
             prevX(x),
             prevY(y)
         {}
-
-        virtual void render(Renderer* renderer, byte frame) = 0;
-        virtual void update(Arduboy2* arduboy, byte frame) {}
 
         virtual void moveTo(int16_t newX, int16_t newY) {
             prevX = x;
@@ -69,8 +76,10 @@ class BaseEntity {
             y = prevY;
         }
 
-        virtual void onCollide(BaseEntity* other) {}
-        virtual void onCollide(uint8_t tile) {}
+        virtual void render(Renderer* renderer, uint8_t frame) = 0;
+        virtual EntityType update(Arduboy2* arduboy, uint8_t frame) = 0;
+        virtual void onCollide(BaseEntity* other) = 0;
+        virtual void onCollide(uint8_t tile) = 0;
 };
 
 #endif

@@ -25,7 +25,7 @@ class Renderer {
         void drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame);
         void drawErase(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame);
         void print(int16_t x, int16_t y, const __FlashStringHelper* message);
-        
+        void print(int16_t x, int16_t y, int16_t num);
 };
 
 #endif

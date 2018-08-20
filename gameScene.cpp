@@ -1,4 +1,5 @@
 #include "gameScene.h"
+#include "util.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH = TILES_PER_ROW * TILE_SIZE;
@@ -38,7 +39,7 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
         nextRoomX = tileRoom.x;
         nextRoomY = tileRoom.y - 1;
         roomTransitionCount = ROOM_HEIGHT;
-
+ 
     } else if (y > HEIGHT) {
         nextRoomX = tileRoom.x;
         nextRoomY = tileRoom.y + 1;
@@ -47,6 +48,22 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
 
     push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
 }
+
+void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
+    uint8_t** rowPtr = pgm_read_word(&(entityDefs[y]));
+    uint8_t* roomPtr = pgm_read_word(&(rowPtr[x]));
+
+    numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
+
+    uint8_t i = 0;
+    for (i = 0; i < numEntitiesInCurrentRoom; ++i) {
+        entities[i].type = (EntityType)pgm_read_byte(roomPtr++);
+        entities[i].x = pgm_read_byte(roomPtr++);
+        entities[i].y = pgm_read_byte(roomPtr++);
+        entities[i].tiles = blob_tiles;
+    }
+}
+
 
 Scene GameScene::updatePlay(uint8_t frame) {
     player.update(arduboy, frame);
@@ -64,9 +81,13 @@ void GameScene::renderPlay(uint8_t frame) {
     tileRoom.render(renderer, frame);
     player.render(renderer, frame);
 
+    for(uint8_t e = 0; e < numEntitiesInCurrentRoom; ++e) {
+        entities[e].render(renderer, frame);
+    }
+
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    hud.render(renderer, frame);
+    hud.render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
 Scene GameScene::updateMenu(uint8_t frame) {
@@ -95,6 +116,8 @@ Scene GameScene::updateRoomTransition(uint8_t frame) {
 
         tileRoom.x = nextRoomX;
         tileRoom.y = nextRoomY;
+
+        setEntitiesInRoom(nextRoomX, nextRoomY);
 
         pop();
     }
@@ -134,7 +157,7 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    hud.render(renderer, frame);
+    hud.render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
 Scene GameScene::update(uint8_t frame) {

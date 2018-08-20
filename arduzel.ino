@@ -8,6 +8,7 @@
 #include "renderer.h"
 #include "util.h"
 
+
 Arduboy2 arduboy;
 Renderer renderer(&arduboy);
 SceneManager sceneManager(&arduboy, &renderer, TITLE);
@@ -18,6 +19,14 @@ void setup() {
 
     arduboy.begin();
     arduboy.setFrameRate(60);
+
+#ifdef SERIAL_LOG
+    Serial.begin(9600);
+    delay(2000);
+#endif
+
+
+    LOG("setup done");
 }
 
 char loopCounter = 1;

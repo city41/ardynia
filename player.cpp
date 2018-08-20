@@ -26,7 +26,7 @@ void Player::render(Renderer *renderer, byte frame) {
     renderer->drawErase(x - 8, y - 8, playerWalk_tiles, spriteIndex);
 }
 
-void Player::update(Arduboy2* arduboy, byte frame) {
+EntityType Player::update(Arduboy2* arduboy, byte frame) {
     int16_t newX = x, newY = y;
 
     if (arduboy->pressed(DOWN_BUTTON)) {
@@ -50,12 +50,17 @@ void Player::update(Arduboy2* arduboy, byte frame) {
         movedThisFrame = true;
         moveTo(newX, newY);
     }
+
+    return PLAYER;
 }
 
 void Player::onCollide(uint8_t tile) {
     if ((tile & SOLID_MASK) == SOLID_MASK) {
         undoMove();
     }
+}
+
+void Player::onCollide(BaseEntity* other) {
 }
 
 
