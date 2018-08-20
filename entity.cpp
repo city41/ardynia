@@ -8,6 +8,10 @@ void Entity::render(Renderer* renderer, uint8_t frame) {
     } else {
         renderer->drawOverwrite(x, y, tiles, 0);
     }
+
+#ifdef DRAW_HITBOXES
+    renderer->drawRect(x, y, w, h, BLACK);
+#endif
 }
 
 EntityType Entity::update(Arduboy2* arduboy, uint8_t frame) {

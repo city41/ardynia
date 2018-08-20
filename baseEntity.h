@@ -37,6 +37,8 @@ class BaseEntity {
         EntityType type;
         int16_t x;
         int16_t y;
+        uint8_t w;
+        uint8_t h;
         int8_t v;
         Direction d;
         int16_t prevX;
@@ -52,10 +54,12 @@ class BaseEntity {
             prevY(0)
         {}
 
-        BaseEntity(EntityType type, int16_t x, int16_t y, int8_t v, Direction d):
+        BaseEntity(EntityType type, int16_t x, int16_t y, uint8_t w, uint8_t h, int8_t v, Direction d):
             type(type),
             x(x),
             y(y),
+            w(w),
+            h(h),
             v(v),
             d(d),
             prevX(x),
@@ -80,6 +84,8 @@ class BaseEntity {
         virtual EntityType update(Arduboy2* arduboy, uint8_t frame) = 0;
         virtual void onCollide(BaseEntity* other) = 0;
         virtual void onCollide(uint8_t tile) = 0;
+
+        bool overlaps(BaseEntity* other);
 };
 
 #endif

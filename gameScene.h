@@ -44,6 +44,7 @@ class GameScene: public BaseScene {
         bool paused;
 
         void detectTileCollisions(void);
+        void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);
         void renderVerticalRoomTransition(uint8_t frame);
@@ -64,7 +65,7 @@ class GameScene: public BaseScene {
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             BaseScene(arduboy, renderer),
-            player(64, 32, 5),
+            player(64, 16, 5),
             map(overworld_map),
             entityDefs(overworld_entities),
             numEntitiesInCurrentRoom(0),

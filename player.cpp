@@ -1,6 +1,8 @@
 #include "player.h"
 #include "bitmaps.h"
 
+const uint8_t BOUNCE_AMOUNT = 8;
+
 void Player::render(Renderer *renderer, byte frame) {
     char spriteIndex = 0;
 
@@ -23,11 +25,18 @@ void Player::render(Renderer *renderer, byte frame) {
         ++spriteIndex;
     }
 
-    renderer->drawExternalMask(x - 8, y - 8, playerWalk_tiles, playerWalk_mask_tiles, spriteIndex, spriteIndex);
-    /* renderer->drawOverwrite(x - 8, y - 8, playerWalk_tiles, spriteIndex); */
+    renderer->drawExternalMask(x, y, playerWalk_tiles, playerWalk_mask_tiles, spriteIndex, spriteIndex);
+
+#ifdef DRAW_HITBOXES
+    renderer->drawRect(x, y, w, h, BLACK);
+#endif
 }
 
 EntityType Player::update(Arduboy2* arduboy, byte frame) {
+    if (ignoreMovementCount > 0) {
+        ignoreMovementCount -= 1;
+    }
+
     int16_t newX = x, newY = y;
 
     if (arduboy->pressed(DOWN_BUTTON)) {
@@ -47,7 +56,7 @@ EntityType Player::update(Arduboy2* arduboy, byte frame) {
     }
 
     movedThisFrame = false;
-    if (newX != x || newY != y) {
+    if (ignoreMovementCount == 0 && (newX != x || newY != y)) {
         movedThisFrame = true;
         moveTo(newX, newY);
     }
@@ -61,7 +70,30 @@ void Player::onCollide(uint8_t tile) {
     }
 }
 
+void Player::bounceBack(void) {
+    switch (d) {
+        case UP:
+            moveTo(x, y + BOUNCE_AMOUNT);
+            break;
+        case DOWN:
+            moveTo(x, y - BOUNCE_AMOUNT);
+            break;
+        case LEFT:
+            moveTo(x + BOUNCE_AMOUNT, y);
+            break;
+        case RIGHT:
+            moveTo(x - BOUNCE_AMOUNT, y);
+            break;
+    }
+
+    ignoreMovementCount = 30;
+}
+
 void Player::onCollide(BaseEntity* other) {
+    if (other-> type == BLOB) {
+        health -= 1;
+        bounceBack();
+    }
 }
 
 

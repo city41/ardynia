@@ -24,6 +24,14 @@ void GameScene::detectTileCollisions(void) {
     player.onCollide(tile);
 }
 
+void GameScene::detectEntityCollisions(void) {
+    for (uint8_t i = 0; i < numEntitiesInCurrentRoom; ++i) {
+        if (entities[i].overlaps(&player)) {
+            player.onCollide(&entities[i]);
+        }
+    }
+}
+
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
         nextRoomX = tileRoom.x - 1;
@@ -60,6 +68,8 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
         entities[i].type = (EntityType)pgm_read_byte(roomPtr++);
         entities[i].x = pgm_read_byte(roomPtr++);
         entities[i].y = pgm_read_byte(roomPtr++);
+        entities[i].w = 16;
+        entities[i].h = 16;
         entities[i].tiles = blob_tiles;
         entities[i].maskTiles = blob_mask_tiles;
     }
@@ -73,6 +83,7 @@ Scene GameScene::updatePlay(uint8_t frame) {
         goToNextRoom(player.x, player.y);
     } else {
         detectTileCollisions();
+        detectEntityCollisions();
     }
 
     return GAME;
