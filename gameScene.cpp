@@ -80,11 +80,12 @@ Scene GameScene::updatePlay(uint8_t frame) {
 
 void GameScene::renderPlay(uint8_t frame) {
     tileRoom.render(renderer, frame);
-    player.render(renderer, frame);
 
     for(uint8_t e = 0; e < numEntitiesInCurrentRoom; ++e) {
         entities[e].render(renderer, frame);
     }
+
+    player.render(renderer, frame);
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
