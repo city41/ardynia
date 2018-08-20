@@ -65,7 +65,7 @@ class GameScene: public BaseScene {
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             BaseScene(arduboy, renderer),
-            player(64, 16, 5, 5),
+            player(64, 16, 3, 3),
             map(overworld_map),
             entityDefs(overworld_entities),
             numEntitiesInCurrentRoom(0),
