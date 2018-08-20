@@ -81,7 +81,8 @@ class GameScene: public BaseScene {
             nextUpdate(NULL),
             prevRender(NULL),
             currentRender(&GameScene::renderPlay),
-            nextRender(NULL)
+            nextRender(NULL),
+            paused(false)
         {
             setEntitiesInRoom(0, 0);
         }
