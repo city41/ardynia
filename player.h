@@ -13,12 +13,14 @@ class Player: public BaseEntity {
 
     public:
         uint8_t health;
+        uint8_t totalHealth;
 
-        Player(int16_t x, int16_t y, uint8_t health):
+        Player(int16_t x, int16_t y, uint8_t health, uint8_t totalHealth):
             BaseEntity(PLAYER, x, y, 16, 16, 2, DOWN),
             movedThisFrame(false),
             tookDamageCount(0),
-            health(health)
+            health(health),
+            totalHealth(totalHealth)
         {}
 
         virtual void render(Renderer* renderer, uint8_t frame) override;

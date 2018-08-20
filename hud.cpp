@@ -20,7 +20,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 2, 1, player.health, 15, frame);
+    drawDots(renderer, 2, 1, player.health, player.totalHealth, frame);
 
     renderer->drawOverwrite(1, 7, weaponsAndItemIcons_tiles, 1);
     renderer->drawOverwrite(1, 23, weaponsAndItemIcons_tiles, 3);
