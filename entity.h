@@ -11,11 +11,14 @@ class Entity: public BaseEntity {
         EntityUpdatePtr updatePtr;
         EntityRenderPtr renderPtr;
         uint8_t* tiles;
+        uint8_t* maskTiles;
 
         Entity():
             BaseEntity(),
             updatePtr(NULL),
-            renderPtr(NULL)
+            renderPtr(NULL),
+            tiles(NULL),
+            maskTiles(NULL)
         {}
 
         virtual void render(Renderer* renderer, uint8_t frame) override;

@@ -16,6 +16,10 @@ void Renderer::drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_
     sprite.drawOverwrite(x + translateX, y + translateY, bitmap, frame);
 }
 
+void Renderer::drawExternalMask(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t frame, uint8_t maskFrame) {
+    sprite.drawExternalMask(x + translateX, y + translateY, bitmap, mask, frame, maskFrame);
+}
+
 void Renderer::drawErase(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame) {
     sprite.drawErase(x + translateX, y + translateY, bitmap, frame);
 }

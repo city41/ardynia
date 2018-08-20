@@ -23,7 +23,8 @@ void Player::render(Renderer *renderer, byte frame) {
         ++spriteIndex;
     }
 
-    renderer->drawErase(x - 8, y - 8, playerWalk_tiles, spriteIndex);
+    renderer->drawExternalMask(x - 8, y - 8, playerWalk_tiles, playerWalk_mask_tiles, spriteIndex, spriteIndex);
+    /* renderer->drawOverwrite(x - 8, y - 8, playerWalk_tiles, spriteIndex); */
 }
 
 EntityType Player::update(Arduboy2* arduboy, byte frame) {

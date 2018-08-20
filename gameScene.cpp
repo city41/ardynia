@@ -61,6 +61,7 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
         entities[i].x = pgm_read_byte(roomPtr++);
         entities[i].y = pgm_read_byte(roomPtr++);
         entities[i].tiles = blob_tiles;
+        entities[i].maskTiles = blob_mask_tiles;
     }
 }
 

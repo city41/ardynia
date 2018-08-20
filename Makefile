@@ -8,3 +8,6 @@ include $(ARDMK_DIR)/Arduino.mk
 
 emu: build-leonardo/arduzel.hex
 	pabe build-leonardo/arduzel.hex
+
+bmp: pngs/*.png
+	ardusprites --src pngs --dest bitmaps.h

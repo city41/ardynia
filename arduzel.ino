@@ -10,6 +10,7 @@
 
 
 Arduboy2 arduboy;
+Sprites sprite;
 Renderer renderer(&arduboy);
 SceneManager sceneManager(&arduboy, &renderer, TITLE);
 
