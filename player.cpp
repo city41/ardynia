@@ -4,6 +4,10 @@
 const uint8_t BOUNCE_AMOUNT = 8;
 
 void Player::render(Renderer *renderer, byte frame) {
+    if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {
+        return;
+    }
+
     char spriteIndex = 0;
 
     switch(d) {
@@ -33,8 +37,8 @@ void Player::render(Renderer *renderer, byte frame) {
 }
 
 EntityType Player::update(Arduboy2* arduboy, byte frame) {
-    if (ignoreMovementCount > 0) {
-        ignoreMovementCount -= 1;
+    if (tookDamageCount > 0) {
+        tookDamageCount -= 1;
     }
 
     int16_t newX = x, newY = y;
@@ -56,7 +60,7 @@ EntityType Player::update(Arduboy2* arduboy, byte frame) {
     }
 
     movedThisFrame = false;
-    if (ignoreMovementCount == 0 && (newX != x || newY != y)) {
+    if (tookDamageCount == 0 && (newX != x || newY != y)) {
         movedThisFrame = true;
         moveTo(newX, newY);
     }
@@ -71,28 +75,36 @@ void Player::onCollide(uint8_t tile) {
 }
 
 void Player::bounceBack(void) {
+    int16_t nx, ny;
     switch (d) {
         case UP:
-            moveTo(x, y + BOUNCE_AMOUNT);
+            nx = x;
+            ny = y + BOUNCE_AMOUNT;
             break;
         case DOWN:
-            moveTo(x, y - BOUNCE_AMOUNT);
+            nx = x;
+            ny = y - BOUNCE_AMOUNT;
             break;
         case LEFT:
-            moveTo(x + BOUNCE_AMOUNT, y);
+            nx = x + BOUNCE_AMOUNT;
+            ny = y;
             break;
         case RIGHT:
-            moveTo(x - BOUNCE_AMOUNT, y);
+            nx = x - BOUNCE_AMOUNT;
+            ny = y;
             break;
     }
 
-    ignoreMovementCount = 30;
+    Direction curD = d;
+    moveTo(nx, ny);
+    d = curD;
 }
 
 void Player::onCollide(BaseEntity* other) {
     if (other-> type == BLOB) {
         health -= 1;
         bounceBack();
+        tookDamageCount = 30;
     }
 }
 
