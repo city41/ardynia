@@ -25,22 +25,8 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         return UNSET;
     }
 
-    char spriteIndex = 0;
-
-    switch(dir) {
-        case LEFT:
-            spriteIndex = 0;
-            break;
-        case DOWN:
-            spriteIndex = 2;
-            break;
-        case UP:
-            spriteIndex = 4;
-            break;
-        case RIGHT:
-            spriteIndex = 6;
-            break;
-    }
+    // Direction is LRUD and so are the player sprites
+    uint8_t spriteIndex = dir < 1;
 
     // choose the other walking frame to cause walking animation
     // TODO: see if this can be generalized to "progress player's current animation"
