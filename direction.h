@@ -1,11 +1,11 @@
 #ifndef direction_h
 #define direction_h
 
-enum Direction {
-    UP = 0,
-    DOWN = 1,
-    LEFT = 2,
-    RIGHT = 3
-};
+typedef uint8_t Direction;
+
+const Direction LEFT = 0;
+const Direction RIGHT = 1;
+const Direction UP = 2;
+const Direction DOWN = 3;
 
 #endif
