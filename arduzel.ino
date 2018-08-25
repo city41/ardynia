@@ -9,7 +9,6 @@
 #include "util.h"
 
 Arduboy2 arduboy;
-Sprites sprite;
 Renderer renderer(&arduboy);
 SceneManager sceneManager(&arduboy, &renderer, TITLE);
 
@@ -29,7 +28,7 @@ void setup() {
     LOG("setup done");
 }
 
-char loopCounter = 1;
+uint8_t loopCounter = 1;
 
 void loop() {
     if (!arduboy.nextFrame()) {
