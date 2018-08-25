@@ -7,7 +7,7 @@
 class Renderer {
     private:
         Arduboy2* arduboy;
-        Sprites sprite;
+        SpritesB sprite;
 
     public:
         Renderer(Arduboy2* arduboy):
