@@ -3,6 +3,10 @@
 
 #include <Arduino.h>
 #include "baseEntity.h"
+#include "entity.h"
+#include "bitmaps.h"
+
+const uint8_t MAX_PLAYER_ENTITIES = 2;
 
 class Player: public BaseEntity {
     private:
@@ -10,23 +14,42 @@ class Player: public BaseEntity {
         uint8_t tookDamageCount;
 
         void bounceBack(void);
+        void aButtonAction(void);
+        void bButtonAction(void);
 
     public:
-        uint8_t health;
-        uint8_t totalHealth;
+        int8_t totalHealth;
+        Entity entities[MAX_PLAYER_ENTITIES];
+        EntityType aButtonEntityType;
+        EntityType bButtonEntityType;
 
-        Player(int16_t x, int16_t y, uint8_t health, uint8_t totalHealth):
-            BaseEntity(PLAYER, x, y, 16, 16, 2, DOWN),
+
+        Player(int16_t x, int16_t y, int8_t health, int8_t totalHealth):
+            BaseEntity(
+                PLAYER,
+                16,  // width
+                16,  // height
+                DOWN,
+                playerWalk_tiles,
+                playerWalk_mask_tiles,
+                health,
+                0,   // damage
+                0    // duration
+            ),
             movedThisFrame(false),
             tookDamageCount(0),
-            health(health),
-            totalHealth(totalHealth)
-        {}
+            totalHealth(totalHealth),
+            aButtonEntityType(SWORD),
+            bButtonEntityType(UNSET)
+        {
+            this->prevX = this->x = x;
+            this->prevY = this->y = y;
+        }
 
-        virtual void render(Renderer* renderer, uint8_t frame) override;
-        virtual EntityType update(Arduboy2* arduboy, uint8_t frame) override;
-        virtual void onCollide(uint8_t tile) override;
-        virtual void onCollide(BaseEntity* other) override;
+        virtual EntityType render(Renderer* renderer, uint8_t frame) override;
+        virtual EntityType update(void* parent, Arduboy2* arduboy, uint8_t frame) override;
+        virtual EntityType onCollide(uint8_t tile) override;
+        virtual EntityType onCollide(BaseEntity* other) override;
 };
 
 #endif

@@ -1,3 +1,5 @@
+CPPFLAGS += -DSERIAL_LOG=1
+
 ARDUINO_DIR = $(HOME)/.arduino_ide
 ARDMK_DIR = $(HOME)/.arduino_mk
 BOARD_TAG = leonardo

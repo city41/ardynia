@@ -2,9 +2,9 @@
 
 bool BaseEntity::overlaps(BaseEntity* other) {
     return !(
-        other->x            >= x + w ||
-        other->x + other->w <= x     ||
-        other->y            >= y + h ||
-        other->y + other->h <= y
+        other->x                 >= x + width  ||
+        other->x + other->width  <= x          ||
+        other->y                 >= y + height ||
+        other->y + other->height <= y
     );
 }

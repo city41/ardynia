@@ -17,8 +17,6 @@ void InGameMenu::update(Arduboy2* arduboy, byte frame) {
 }
 
 void InGameMenu::render(Renderer* renderer, byte frame) {
-    __FlashStringHelper* pauseM = pgm_read_word(menuMessages);
-
     for (uint8_t i = 0; i < NUM_DECISIONS; ++i) {
         __FlashStringHelper* msg = pgm_read_word(menuMessages + i);
         renderer->print(16, 12 * i, msg);

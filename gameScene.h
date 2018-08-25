@@ -23,7 +23,7 @@ class GameScene: public BaseScene {
         Entity entities[MAX_ENTITIES];
         const uint8_t* map;
         const uint8_t*** entityDefs;
-        uint8_t numEntitiesInCurrentRoom;
+        int8_t numEntitiesInCurrentRoom;
         const uint8_t* tiles;
         uint8_t nextRoomX;
         uint8_t nextRoomY;
@@ -47,8 +47,6 @@ class GameScene: public BaseScene {
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);
-        void renderVerticalRoomTransition(uint8_t frame);
-        void renderHorizontalRoomTransition(uint8_t frame);
 
         Scene updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);

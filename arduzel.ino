@@ -8,8 +8,6 @@
 #include "renderer.h"
 #include "util.h"
 
-
-
 Arduboy2 arduboy;
 Sprites sprite;
 Renderer renderer(&arduboy);

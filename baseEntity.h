@@ -6,12 +6,8 @@
 #include "renderer.h"
 #include "direction.h"
 #include "tiles.h"
+#include "entityTypes.h"
 
-enum EntityType {
-    UNSET = 0,
-    PLAYER = 1,
-    BLOB = 2
-};
 
 class BaseEntity {
     protected:
@@ -37,33 +33,60 @@ class BaseEntity {
         EntityType type;
         int16_t x;
         int16_t y;
-        uint8_t w;
-        uint8_t h;
-        int8_t v;
-        Direction d;
         int16_t prevX;
         int16_t prevY;
+        uint8_t width;
+        uint8_t height;
+        Direction dir;
+        uint8_t* tiles;
+        uint8_t* maskTiles;
+        int8_t health;
+        int8_t damage;
+        uint8_t duration;
+        uint8_t currentFrame;
 
         BaseEntity():
             type(UNSET),
             x(0),
             y(0),
-            v(0),
-            d(DOWN),
             prevX(0),
-            prevY(0)
+            prevY(0),
+            width(0),
+            height(0),
+            dir(DOWN),
+            tiles(NULL),
+            maskTiles(NULL),
+            health(0),
+            damage(0),
+            duration(0),
+            currentFrame(0)
         {}
 
-        BaseEntity(EntityType type, int16_t x, int16_t y, uint8_t w, uint8_t h, int8_t v, Direction d):
+        BaseEntity(
+            EntityType type,
+            uint8_t width,
+            uint8_t height,
+            Direction dir,
+            uint8_t* tiles,
+            uint8_t* maskTiles,
+            int8_t health,
+            int8_t damage,
+            uint8_t duration
+        ):
             type(type),
-            x(x),
-            y(y),
-            w(w),
-            h(h),
-            v(v),
-            d(d),
-            prevX(x),
-            prevY(y)
+            x(-5000),
+            y(-5000),
+            prevX(-5000),
+            prevY(-5000),
+            width(width),
+            height(height),
+            dir(dir),
+            tiles(tiles),
+            maskTiles(maskTiles),
+            health(health),
+            damage(damage),
+            duration(duration),
+            currentFrame(0)
         {}
 
         virtual void moveTo(int16_t newX, int16_t newY) {
@@ -72,7 +95,7 @@ class BaseEntity {
             x = newX;
             y = newY;
 
-            d = determineDirection(prevX, prevY, x, y, d);
+            dir = determineDirection(prevX, prevY, x, y, dir);
         }
 
         virtual void undoMove() {
@@ -80,10 +103,10 @@ class BaseEntity {
             y = prevY;
         }
 
-        virtual void render(Renderer* renderer, uint8_t frame) = 0;
-        virtual EntityType update(Arduboy2* arduboy, uint8_t frame) = 0;
-        virtual void onCollide(BaseEntity* other) = 0;
-        virtual void onCollide(uint8_t tile) = 0;
+        virtual EntityType render(Renderer* renderer, uint8_t frame) = 0;
+        virtual EntityType update(void* parent, Arduboy2* arduboy, uint8_t frame) = 0;
+        virtual EntityType onCollide(BaseEntity* other) = 0;
+        virtual EntityType onCollide(uint8_t tile) = 0;
 
         bool overlaps(BaseEntity* other);
 };

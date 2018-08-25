@@ -1,16 +1,33 @@
 #include "player.h"
 #include "bitmaps.h"
+#include "entityTemplates.h"
 
 const uint8_t BOUNCE_AMOUNT = 8;
+const uint8_t PLAYER_VELOCITY = 2;
 
-void Player::render(Renderer *renderer, byte frame) {
-    if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {
+void Player::aButtonAction(void) {
+    // don't have anything equiped on A, or whatever is equipped is
+    // currently active? then nothing to do here
+    if (aButtonEntityType == UNSET || entities[0].type != UNSET) {
         return;
+    }
+
+    entities[0] = entityTemplates[aButtonEntityType];
+    entities[0].spawn(this);
+}
+
+void Player::bButtonAction(void) {
+}
+
+EntityType Player::render(Renderer *renderer, byte frame) {
+    // recovering from damage? "flash" the player every third frame
+    if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {
+        return UNSET;
     }
 
     char spriteIndex = 0;
 
-    switch(d) {
+    switch(dir) {
         case LEFT:
             spriteIndex = 0;
             break;
@@ -25,6 +42,8 @@ void Player::render(Renderer *renderer, byte frame) {
             break;
     }
 
+    // choose the other walking frame to cause walking animation
+    // TODO: see if this can be generalized to "progress player's current animation"
     if (movedThisFrame && ((frame / 6) % 2) == 0) {
         ++spriteIndex;
     }
@@ -34,9 +53,11 @@ void Player::render(Renderer *renderer, byte frame) {
 #ifdef DRAW_HITBOXES
     renderer->drawRect(x, y, w, h, BLACK);
 #endif
+
+    return UNSET;
 }
 
-EntityType Player::update(Arduboy2* arduboy, byte frame) {
+EntityType Player::update(void* parent, Arduboy2* arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }
@@ -44,19 +65,27 @@ EntityType Player::update(Arduboy2* arduboy, byte frame) {
     int16_t newX = x, newY = y;
 
     if (arduboy->pressed(DOWN_BUTTON)) {
-        newY += v;
+        newY += PLAYER_VELOCITY;
     }
 
     if (arduboy->pressed(UP_BUTTON)) {
-        newY -= v;
+        newY -= PLAYER_VELOCITY;
     }
 
     if (arduboy->pressed(LEFT_BUTTON)) {
-        newX -= v;
+        newX -= PLAYER_VELOCITY;
     }
 
     if (arduboy->pressed(RIGHT_BUTTON)) {
-        newX += v;
+        newX += PLAYER_VELOCITY;
+    }
+
+    if (arduboy->justPressed(A_BUTTON)) {
+        aButtonAction();
+    }
+
+    if (arduboy->justPressed(B_BUTTON)) {
+        bButtonAction();
     }
 
     movedThisFrame = false;
@@ -65,18 +94,20 @@ EntityType Player::update(Arduboy2* arduboy, byte frame) {
         moveTo(newX, newY);
     }
 
-    return PLAYER;
+    return UNSET;
 }
 
-void Player::onCollide(uint8_t tile) {
+EntityType Player::onCollide(uint8_t tile) {
     if ((tile & SOLID_MASK) == SOLID_MASK) {
         undoMove();
     }
+
+    return UNSET;
 }
 
 void Player::bounceBack(void) {
     int16_t nx, ny;
-    switch (d) {
+    switch (dir) {
         case UP:
             nx = x;
             ny = y + BOUNCE_AMOUNT;
@@ -95,17 +126,19 @@ void Player::bounceBack(void) {
             break;
     }
 
-    Direction curD = d;
+    Direction curDir = dir;
     moveTo(nx, ny);
-    d = curD;
+    dir = curDir;
 }
 
-void Player::onCollide(BaseEntity* other) {
-    if (other-> type == BLOB) {
+EntityType Player::onCollide(BaseEntity* other) {
+    if (other->type == BLOB) {
         health -= 1;
         bounceBack();
         tookDamageCount = 30;
     }
+
+    return UNSET;
 }
 
 

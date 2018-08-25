@@ -1,5 +1,6 @@
 #include "gameScene.h"
 #include "util.h"
+#include "entityTemplates.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH = TILES_PER_ROW * TILE_SIZE;
@@ -25,9 +26,23 @@ void GameScene::detectTileCollisions(void) {
 }
 
 void GameScene::detectEntityCollisions(void) {
-    for (uint8_t i = 0; i < numEntitiesInCurrentRoom; ++i) {
-        if (entities[i].overlaps(&player)) {
-            player.onCollide(&entities[i]);
+    for (uint8_t ge = 0; ge < numEntitiesInCurrentRoom; ++ge) {
+        if (entities[ge].type == UNSET) {
+            continue;
+        }
+
+        if (entities[ge].overlaps(&player)) {
+            player.onCollide(&entities[ge]);
+        }
+
+        for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
+            if (player.entities[pe].type == UNSET) {
+                continue;
+            }
+
+            if (entities[ge].overlaps(&player.entities[pe])) {
+                entities[ge].onCollide(&player.entities[pe]);
+            }
         }
     }
 }
@@ -63,21 +78,26 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
 
     numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
-    uint8_t i = 0;
-    for (i = 0; i < numEntitiesInCurrentRoom; ++i) {
-        entities[i].type = (EntityType)pgm_read_byte(roomPtr++);
+    for (int8_t i = 0; i < numEntitiesInCurrentRoom; ++i) {
+        entities[i] = entityTemplates[(EntityType)pgm_read_byte(roomPtr++)];
         entities[i].x = pgm_read_byte(roomPtr++);
         entities[i].y = pgm_read_byte(roomPtr++);
-        entities[i].w = 16;
-        entities[i].h = 16;
-        entities[i].tiles = blob_tiles;
-        entities[i].maskTiles = blob_mask_tiles;
+        entities[i].prevX = x;
+        entities[i].prevY = y;
     }
 }
 
 
 Scene GameScene::updatePlay(uint8_t frame) {
-    player.update(arduboy, frame);
+    player.update(this, arduboy, frame);
+
+    for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
+        Entity& entity = player.entities[e];
+
+        if (entity.type != UNSET) {
+            entity.update(&player, arduboy, frame);
+        }
+    }
 
     if (isOffscreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
@@ -87,6 +107,7 @@ Scene GameScene::updatePlay(uint8_t frame) {
     }
 
     if (player.health <= 0) {
+        LOG("player lost all health, exiting game scene");
         return TITLE;
     } else {
         return GAME;
@@ -96,11 +117,23 @@ Scene GameScene::updatePlay(uint8_t frame) {
 void GameScene::renderPlay(uint8_t frame) {
     tileRoom.render(renderer, frame);
 
-    for(uint8_t e = 0; e < numEntitiesInCurrentRoom; ++e) {
+    for(int8_t e = 0; e < numEntitiesInCurrentRoom; ++e) {
+        if (entities[e].type == UNSET) {
+            continue;
+        }
+
         entities[e].render(renderer, frame);
     }
 
     player.render(renderer, frame);
+
+    for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
+        Entity& entity = player.entities[e];
+
+        if (entity.type != UNSET) {
+            entity.render(renderer, frame);
+        }
+    }
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
