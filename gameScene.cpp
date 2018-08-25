@@ -34,6 +34,7 @@ void GameScene::detectEntityCollisions(void) {
         if (entities[ge].overlaps(&player)) {
             if (entities[ge].type == OVERWORLD_DOOR) {
                 map = dungeons_map;
+                entityDefs = dungeons_entities;
                 tiles = dungeon_tiles;
                 tileRoom.map = map;
                 tileRoom.tiles = tiles;

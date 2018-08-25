@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const ROOM_WIDTH_PX = 128 - 16;
 const ROOM_HEIGHT_PX = 64;
 const COMPRESSION_TILE = 0xf;
@@ -58,6 +59,13 @@ function compressRoom(roomData) {
     // console.log("compressed room", compressedData.join(", "));
     // console.log("non compressed room", roomData.length);
     // console.log("compressed room", compressedData.length);
+    // console.log(
+    //     "hash",
+    //     crypto
+    //         .createHash("sha1")
+    //         .update(compressedData.join(""))
+    //         .digest("hex")
+    // );
 
     return compressedData;
 }
@@ -78,7 +86,6 @@ function roomBasedCompression(data, linearRoomSize) {
         compressedRoomIndices.push(compressedRoomsData.length);
         compressedRoomsData = compressedRoomsData.concat(compressedRoomData);
     }
-    console.log("roomIndices (byte based)", compressedRoomIndices.join(","));
 
     return {
         roomIndices: compressedRoomIndices,
