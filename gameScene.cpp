@@ -137,7 +137,7 @@ void GameScene::renderPlay(uint8_t frame) {
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    hud.render(renderer, frame, player, tileRoom.x, tileRoom.y);
+    Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
 Scene GameScene::updateMenu(uint8_t frame) {
@@ -207,7 +207,7 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    hud.render(renderer, frame, player, tileRoom.x, tileRoom.y);
+    Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
 Scene GameScene::update(uint8_t frame) {

@@ -29,7 +29,6 @@ class GameScene: public BaseScene {
         uint8_t nextRoomY;
         TileRoom tileRoom;
         InGameMenu menu;
-        Hud hud;
 
         int16_t roomTransitionCount;
 
@@ -72,7 +71,6 @@ class GameScene: public BaseScene {
             nextRoomY(0),
             tileRoom(map, tiles, 0, 0),
             menu(),
-            hud(),
             roomTransitionCount(0),
             prevUpdate(NULL),
             currentUpdate(&GameScene::updatePlay),

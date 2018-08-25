@@ -8,7 +8,7 @@
 
 class Hud {
     public:
-        void render(Renderer* renderer, uint8_t frame, Player& player, uint8_t roomX, uint8_t roomY);
+        static void render(Renderer* renderer, uint8_t frame, Player& player, uint8_t roomX, uint8_t roomY);
 };
 
 #endif
