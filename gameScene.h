@@ -63,14 +63,14 @@ class GameScene: public BaseScene {
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             BaseScene(arduboy, renderer),
-            player(64, 16, 3, 3),
+            player(6, 16, 3, 3),
             map(overworld_map),
             entityDefs(overworld_entities),
             numEntitiesInCurrentRoom(0),
             tiles(overworld_tiles),
-            nextRoomX(0),
+            nextRoomX(1),
             nextRoomY(0),
-            tileRoom(map, tiles, 0, 0),
+            tileRoom(map, tiles, 1, 0),
             menu(),
             roomTransitionCount(0),
             prevUpdate(NULL),
@@ -81,7 +81,7 @@ class GameScene: public BaseScene {
             nextRender(NULL),
             paused(false)
         {
-            setEntitiesInRoom(0, 0);
+            setEntitiesInRoom(1, 0);
         }
 
         Scene update(uint8_t frame);
