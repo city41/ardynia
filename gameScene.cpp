@@ -3,8 +3,8 @@
 #include "entityTemplates.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
-const uint8_t ROOM_WIDTH = TILES_PER_ROW * TILE_SIZE;
-const uint8_t ROOM_HEIGHT = TILES_PER_COLUMN * TILE_SIZE;
+const uint8_t ROOM_WIDTH = WIDTH - 16;
+const uint8_t ROOM_HEIGHT = HEIGHT;
 
 void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
     nextUpdate = newUpdate;
@@ -32,6 +32,17 @@ void GameScene::detectEntityCollisions(void) {
         }
 
         if (entities[ge].overlaps(&player)) {
+            if (entities[ge].type == OVERWORLD_DOOR) {
+                map = dungeons_map;
+                tiles = dungeon_tiles;
+                tileRoom.map = map;
+                tileRoom.tiles = tiles;
+
+                tileRoom.x = entities[ge].prevX;
+                tileRoom.y = entities[ge].prevY;
+                setEntitiesInRoom(tileRoom.x, tileRoom.y);
+            }
+
             player.onCollide(&entities[ge]);
         }
 
@@ -79,11 +90,23 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
     for (int8_t i = 0; i < numEntitiesInCurrentRoom; ++i) {
-        entities[i] = entityTemplates[(EntityType)pgm_read_byte(roomPtr++)];
+        uint8_t rawEntityType = pgm_read_byte(roomPtr++);
+        EntityType type = rawEntityType & ENTITY_MASK;
+
+        entities[i] = entityTemplates[type];
         entities[i].x = pgm_read_byte(roomPtr++);
         entities[i].y = pgm_read_byte(roomPtr++);
-        entities[i].prevX = x;
-        entities[i].prevY = y;
+
+        if (type == OVERWORLD_DOOR) {
+            uint8_t doorId = (rawEntityType >> 4) & DOOR_ID_MASK;
+
+            // reuse prevX/Y for destX/Y for doors
+            entities[i].prevX = overworld_doors[doorId * 2];
+            entities[i].prevY = overworld_doors[doorId * 2 + 1];
+        } else {
+            entities[i].prevX = x;
+            entities[i].prevY = y;
+        }
     }
 }
 

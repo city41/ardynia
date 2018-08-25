@@ -40,6 +40,23 @@ const Entity entityTemplates[] = {
         NULL, // update, TODO: implement
         NULL, // render
         Blob::onCollide
+    ),
+
+    // 2, OVERWORLD_DOOR
+    Entity(
+        OVERWORLD_DOOR,
+        16,
+        16,
+        DOWN,
+        overworld_door_tiles,
+        overworld_door_mask_tiles,
+        0, // health
+        0, // damage
+        0, // duration
+        NULL, // spawn
+        NULL, // update, TODO: implement
+        NULL, // render
+        NULL  // onCollide
     )
 };
 

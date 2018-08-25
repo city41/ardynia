@@ -77,6 +77,29 @@
                  "width":0,
                  "x":60,
                  "y":236.5
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"DEST_ROOM_X",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"DEST_ROOM_Y",
+                         "type":"int",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"OVERWORLD_DOOR",
+                 "visible":true,
+                 "width":0,
+                 "x":169.5,
+                 "y":20
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -85,7 +108,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

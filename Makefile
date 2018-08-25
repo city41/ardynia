@@ -13,3 +13,6 @@ emu: build-leonardo/arduzel.hex
 
 bmp: pngs/*.png
 	ardusprites --src pngs --dest bitmaps.h
+
+map:
+	node ./maptool/ -s ./tiled/ -o .

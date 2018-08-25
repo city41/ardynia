@@ -26,7 +26,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
     }
 
     // Direction is LRUD and so are the player sprites
-    uint8_t spriteIndex = dir < 1;
+    uint8_t spriteIndex = dir << 1;
 
     // choose the other walking frame to cause walking animation
     // TODO: see if this can be generalized to "progress player's current animation"

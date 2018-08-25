@@ -5,6 +5,7 @@
 #include "scenes.h"
 
 #include "overworld.h"
+#include "dungeons.h"
 #include "bitmaps.h"
 #include "tileRoom.h"
 #include "inGameMenu.h"

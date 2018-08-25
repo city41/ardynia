@@ -5,16 +5,11 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 
-#define TILES_PER_ROW 14
-#define TILES_PER_COLUMN 8
-#define TILE_SIZE 8
-
 class TileRoom {
-    private:
+    public:
         const uint8_t* map;
         const uint8_t* tiles;
 
-    public:
         uint8_t x;
         uint8_t y;
 

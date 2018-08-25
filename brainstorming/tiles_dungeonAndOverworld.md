@@ -16,11 +16,12 @@ upper wall
 right wall
 stone
 ladder
+water
 compression
 
-TOTAL: 12
+TOTAL: 13
 
-room for 4 more!
+room for 3 more!
 
 
 # overworld tiles
@@ -42,10 +43,9 @@ right wall
 stone/cliff
 ladder
 water
-door
 compression
 
-TOTAL: 14
+TOTAL: 13
 
-room for two more!
+room for 3 more!
 

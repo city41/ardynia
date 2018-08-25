@@ -1,6 +1,8 @@
 #include "tileRoom.h"
 #include "bitmaps.h"
 
+const uint8_t MAP_HEADER_SIZE = 3;
+
 
 void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
@@ -8,22 +10,29 @@ void TileRoom::render(Renderer* renderer, byte frame) {
 
 void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roomY) {
     uint8_t mapWidth = pgm_read_byte(map);
+    // the map height is at map + 1
+    uint8_t tileSize = pgm_read_byte(map + 2);
+    uint8_t tilesPerRow = ((WIDTH - 16) / tileSize) / 2;
+    uint8_t tilesPerColumn = HEIGHT / tileSize;
 
-    for (uint8_t tx = 0; tx < TILES_PER_ROW; ++tx) {
-        for (uint8_t ty = 0; ty < TILES_PER_COLUMN; ++ty) {
+
+    for (uint8_t tx = 0; tx < tilesPerRow; ++tx) {
+        for (uint8_t ty = 0; ty < tilesPerColumn; ++ty) {
             uint16_t tileIndex = 
-                (mapWidth * TILES_PER_ROW * TILES_PER_COLUMN * roomY) + 
-                (TILES_PER_ROW * roomX) +
-                (mapWidth * TILES_PER_ROW * ty) +
+                (mapWidth * tilesPerRow * tilesPerColumn * roomY) + 
+                (tilesPerRow * roomX) +
+                (mapWidth * tilesPerRow * ty) +
                 tx +
-                2;
+                MAP_HEADER_SIZE;
 
-            uint8_t tileNumber = pgm_read_byte(map + tileIndex);
-            renderer->drawOverwrite(tx * TILE_SIZE, ty * TILE_SIZE, tiles, tileNumber);
+            uint8_t tileNibbles = pgm_read_byte(map + tileIndex);
+            uint8_t upperTile = (tileNibbles >> 4) & 0x0F;
+            uint8_t lowerTile = tileNibbles & 0x0F;
+
+            renderer->drawOverwrite((tx * 2) * tileSize, ty * tileSize, tiles, upperTile);
+            renderer->drawOverwrite((tx * 2 + 1) * tileSize, ty * tileSize, tiles, lowerTile);
         }
     }
-
-
 }
 
 uint8_t TileRoom::getTileAt(char px, char py) const {
