@@ -2,7 +2,6 @@
 #define hud_h
 
 #include <Arduino.h>
-#include "bitmaps.h"
 #include "renderer.h"
 #include "player.h"
 
