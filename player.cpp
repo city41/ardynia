@@ -1,6 +1,7 @@
 #include "player.h"
 #include "bitmaps.h"
 #include "entityTemplates.h"
+#include "drawBitmap.h"
 
 const uint8_t BOUNCE_AMOUNT = 8;
 const uint8_t PLAYER_VELOCITY = 2;
@@ -25,16 +26,34 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         return UNSET;
     }
 
-    // Direction is LRUD and so are the player sprites
-    uint8_t spriteIndex = dir << 1;
+    uint8_t spriteIndex;
+    MirrorMode mirror = 0;
 
-    // choose the other walking frame to cause walking animation
-    // TODO: see if this can be generalized to "progress player's current animation"
-    if (movedThisFrame && ((frame / 6) % 2) == 0) {
-        ++spriteIndex;
+    switch (dir) {
+        case LEFT:
+            spriteIndex = 0;
+            break;
+        case RIGHT:
+            spriteIndex = 0;
+            mirror = MIRROR_HORIZONTAL;
+            break;
+        case UP:
+            spriteIndex = 2;
+            break;
+        case DOWN:
+            spriteIndex = 3;
+            break;
     }
 
-    renderer->drawExternalMask(x, y, playerWalk_tiles, playerWalk_mask_tiles, spriteIndex, spriteIndex);
+    if (movedThisFrame && ((frame / 6) % 2) == 0) {
+        if (dir == LEFT || dir == RIGHT) {
+            ++spriteIndex;
+        } else {
+            mirror = MIRROR_HORIZONTAL;
+        }
+    }
+
+    renderer->drawExternalMask(x, y, playerWalk_tiles, playerWalk_mask_tiles, spriteIndex, mirror);
 
 #ifdef DRAW_HITBOXES
     renderer->drawRect(x, y, w, h, BLACK);

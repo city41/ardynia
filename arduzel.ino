@@ -12,7 +12,6 @@ Arduboy2 arduboy;
 Renderer renderer(&arduboy);
 SceneManager sceneManager(&arduboy, &renderer, TITLE);
 
-
 void setup() {
     randomSeed(analogRead(0));
 

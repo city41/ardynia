@@ -5,7 +5,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     if (renderPtr != NULL) {
         result = renderPtr(this, renderer, renderFrame);
     } else if (tiles != NULL && maskTiles != NULL) {
-        renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame, currentFrame);
+        renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame);
     } else {
         renderer->drawOverwrite(x, y, tiles, currentFrame);
     }
