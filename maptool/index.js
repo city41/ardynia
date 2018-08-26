@@ -39,7 +39,8 @@ function createHeaderFile(tiledJson, baseName, outDir) {
         baseName,
         findLayer(tiledJson.layers, "objects"),
         tiledJson.width,
-        tiledJson.height
+        tiledJson.height,
+        tiledJson.tilewidth
     );
 
     const ifndef = `#ifndef ${baseName}_h\n#define ${baseName}_h`;

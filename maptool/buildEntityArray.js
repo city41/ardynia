@@ -1,8 +1,5 @@
-const TILES_PER_ROW = 14;
-const TILES_PER_COLUMN = 8;
-
-const ROOM_HEIGHT_IN_PX = TILES_PER_COLUMN * 8;
-const ROOM_WIDTH_IN_PX = TILES_PER_ROW * 8;
+const ROOM_WIDTH_PX = 128 - 16;
+const ROOM_HEIGHT_PX = 64;
 
 const EntityTypes = {
     UNSET: -1,
@@ -12,14 +9,14 @@ const EntityTypes = {
 };
 
 function getRoomAt(mapX, mapY) {
-    const roomX = Math.floor(mapX / ROOM_WIDTH_IN_PX);
-    const roomY = Math.floor(mapY / ROOM_HEIGHT_IN_PX);
+    const roomX = Math.floor(mapX / ROOM_WIDTH_PX);
+    const roomY = Math.floor(mapY / ROOM_HEIGHT_PX);
 
     return {
         roomX,
         roomY,
-        roomPxX: roomX * ROOM_WIDTH_IN_PX,
-        roomPxY: roomY * ROOM_HEIGHT_IN_PX
+        roomPxX: roomX * ROOM_WIDTH_PX,
+        roomPxY: roomY * ROOM_HEIGHT_PX
     };
 }
 
@@ -165,10 +162,14 @@ module.exports = function buildEntityArrays(
     name,
     objectLayer,
     mapWidthInTiles,
-    mapHeightInTiles
+    mapHeightInTiles,
+    tileSize
 ) {
-    const mapWidthInRooms = mapWidthInTiles / TILES_PER_ROW;
-    const mapHeightInRooms = mapHeightInTiles / TILES_PER_COLUMN;
+    const tilesPerRow = ROOM_WIDTH_PX / tileSize;
+    const tilesPerColumn = ROOM_HEIGHT_PX / tileSize;
+
+    const mapWidthInRooms = mapWidthInTiles / tilesPerRow;
+    const mapHeightInRooms = mapHeightInTiles / tilesPerColumn;
 
     const roomArrayData = getRoomArrayData(
         name,
