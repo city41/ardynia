@@ -10,6 +10,9 @@ const EntityType UNSET = -1;
 const EntityType SWORD = 0;
 const EntityType BLOB = 1;
 const EntityType OVERWORLD_DOOR = 2;
+const EntityType BOOMERANG = 4;
+const EntityType BOMB = 5;
+const EntityType CANDLE = 6;
 
 const EntityType PLAYER = 255;
 
