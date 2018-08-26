@@ -27,8 +27,43 @@
                  "type":"BLOB",
                  "visible":true,
                  "width":0,
-                 "x":78.7878787878788,
-                 "y":236.363636363636
+                 "x":78.7879,
+                 "y":236.364
+                }, 
+                {
+                 "height":0,
+                 "id":2,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"DEST_ROOM_X",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"DEST_ROOM_Y",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"OVERWORLD_DOOR",
+                 "visible":true,
+                 "width":0,
+                 "x":278.666666666667,
+                 "y":33.3333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":-114.666666666667,
+                 "y":492
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -37,7 +72,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":2,
+ "nextobjectid":4,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
