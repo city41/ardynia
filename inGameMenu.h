@@ -4,17 +4,19 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 
-#define PAUSE 0
-#define QUIT 1
+typedef uint8_t Decision;
 
-#define NUM_DECISIONS 2
+const Decision Pause = 0;
+const Decision Quit = 1;
+
+const uint8_t NUM_DECISIONS = 2;
 
 class InGameMenu {
     public:
         uint8_t decision;
 
         InGameMenu():
-            decision(PAUSE)
+            decision(Pause)
         {}
 
         void update(Arduboy2* arduboy, byte frame);

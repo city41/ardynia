@@ -249,10 +249,10 @@ Scene GameScene::update(uint8_t frame) {
         }
     } else {
         if (currentUpdate == &GameScene::updateMenu) {
-            if (menu.decision == QUIT) {
+            if (menu.decision == Quit) {
                 return TITLE;
             }
-            if (menu.decision == PAUSE) {
+            if (menu.decision == Pause) {
                 paused = true;
             }
             pop();
