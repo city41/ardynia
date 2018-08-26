@@ -14,13 +14,12 @@ class Player: public BaseEntity {
         uint8_t tookDamageCount;
 
         void bounceBack(void);
-        void aButtonAction(void);
+        void useSword(void);
         void bButtonAction(void);
 
     public:
         int8_t totalHealth;
         Entity entities[MAX_PLAYER_ENTITIES];
-        EntityType aButtonEntityType;
         EntityType bButtonEntityType;
 
 
@@ -39,7 +38,6 @@ class Player: public BaseEntity {
             movedThisFrame(false),
             tookDamageCount(0),
             totalHealth(totalHealth),
-            aButtonEntityType(SWORD),
             bButtonEntityType(UNSET)
         {
             this->prevX = this->x = x;

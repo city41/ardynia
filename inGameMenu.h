@@ -7,9 +7,8 @@
 typedef uint8_t Decision;
 
 const Decision Pause = 0;
-const Decision Quit = 1;
 
-const uint8_t NUM_DECISIONS = 2;
+const uint8_t NUM_DECISIONS = 1;
 
 class InGameMenu {
     public:

@@ -25,15 +25,12 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     // health dots
     drawDots(renderer, 1, 1, player.health, player.totalHealth, frame);
 
-    renderer->drawOverwrite(1, 9, weaponsAndItemIcons_tiles, 1);
-    renderer->drawOverwrite(1, 25, weaponsAndItemIcons_tiles, 3);
+    renderer->drawOverwrite(1, 9, itemIcons_tiles, 1);
 
     // item dots
-    drawDots(renderer, 1, 42, 3, 3, frame);
-
-    renderer->print(3, 56, 88);
+    drawDots(renderer, 1, 26, 3, 3, frame);
 
     // draw current room coord
     renderer->print(3, 47, roomX);
-    renderer->print(11, 47, roomY);
+    renderer->print(3, 56, roomY);
 }

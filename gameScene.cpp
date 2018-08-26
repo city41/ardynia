@@ -112,7 +112,7 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
 }
 
 
-Scene GameScene::updatePlay(uint8_t frame) {
+void GameScene::updatePlay(uint8_t frame) {
     player.update(this, arduboy, frame);
 
     for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
@@ -130,12 +130,12 @@ Scene GameScene::updatePlay(uint8_t frame) {
         detectEntityCollisions();
     }
 
-    if (player.health <= 0) {
-        LOG("player lost all health, exiting game scene");
-        return TITLE;
-    } else {
-        return GAME;
-    }
+    /* if (player.health <= 0) { */
+    /*     LOG("player lost all health, exiting game scene"); */
+    /*     return TITLE; */
+    /* } else { */
+    /*     return GAME; */
+    /* } */
 }
 
 void GameScene::renderPlay(uint8_t frame) {
@@ -164,16 +164,15 @@ void GameScene::renderPlay(uint8_t frame) {
     Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
-Scene GameScene::updateMenu(uint8_t frame) {
+void GameScene::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
-    return GAME;
 }
 
 void GameScene::renderMenu(uint8_t frame) {
     menu.render(renderer, frame);
 }
 
-Scene GameScene::updateRoomTransition(uint8_t frame) {
+void GameScene::updateRoomTransition(uint8_t frame) {
     roomTransitionCount -= ROOM_TRANSITION_VELOCITY;
 
     if (roomTransitionCount == 0) {
@@ -195,8 +194,6 @@ Scene GameScene::updateRoomTransition(uint8_t frame) {
 
         pop();
     }
-
-    return GAME;
 }
 
 void GameScene::renderRoomTransition(uint8_t frame) {
@@ -234,12 +231,12 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
 }
 
-Scene GameScene::update(uint8_t frame) {
+void GameScene::update(uint8_t frame) {
     if (paused) {
         if (arduboy->justPressed(B_BUTTON)) {
             paused = false;
         } else {
-            return GAME;
+            return;
         }
     }
 
@@ -249,9 +246,6 @@ Scene GameScene::update(uint8_t frame) {
         }
     } else {
         if (currentUpdate == &GameScene::updateMenu) {
-            if (menu.decision == Quit) {
-                return TITLE;
-            }
             if (menu.decision == Pause) {
                 paused = true;
             }
@@ -259,15 +253,13 @@ Scene GameScene::update(uint8_t frame) {
         }
     }
 
-    Scene nextScene = (this->*currentUpdate)(frame);
+    (this->*currentUpdate)(frame);
 
     if (nextUpdate != NULL) {
         prevUpdate = currentUpdate;
         currentUpdate = nextUpdate;
         nextUpdate = NULL;
     }
-
-    return nextScene;
 }
 
 void GameScene::render(uint8_t frame) {

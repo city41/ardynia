@@ -6,14 +6,13 @@
 const uint8_t BOUNCE_AMOUNT = 8;
 const uint8_t PLAYER_VELOCITY = 2;
 
-void Player::aButtonAction(void) {
-    // don't have anything equiped on A, or whatever is equipped is
-    // currently active? then nothing to do here
-    if (aButtonEntityType == UNSET || entities[0].type != UNSET) {
+void Player::useSword(void) {
+    // currently swinging the sword? do nothing
+    if (entities[0].type != UNSET) {
         return;
     }
 
-    entities[0] = entityTemplates[aButtonEntityType];
+    entities[0] = entityTemplates[SWORD];
     entities[0].spawn(this);
 }
 
@@ -86,7 +85,7 @@ EntityType Player::update(void* parent, Arduboy2* arduboy, byte frame) {
     }
 
     if (arduboy->justPressed(A_BUTTON)) {
-        aButtonAction();
+        useSword();
     }
 
     if (arduboy->justPressed(B_BUTTON)) {

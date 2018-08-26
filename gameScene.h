@@ -1,9 +1,8 @@
 #ifndef gameScene_h
 #define gameScene_h
 
-#include "baseScene.h"
-#include "scenes.h"
-
+#include <Arduboy2.h>
+#include "renderer.h"
 #include "overworld.h"
 #include "dungeons.h"
 #include "bitmaps.h"
@@ -15,11 +14,13 @@
 
 const uint8_t MAX_ENTITIES = 8;
 
-class GameScene: public BaseScene {
-    typedef Scene (GameScene::*UpdatePtr)(uint8_t);
+class GameScene {
+    typedef void (GameScene::*UpdatePtr)(uint8_t);
     typedef void (GameScene::*RenderPtr)(uint8_t);
 
     private:
+        Arduboy2* arduboy;
+        Renderer* renderer;
         Player player;
         Entity entities[MAX_ENTITIES];
         const uint8_t* map;
@@ -48,13 +49,13 @@ class GameScene: public BaseScene {
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);
 
-        Scene updatePlay(uint8_t frame);
+        void updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);
 
-        Scene updateRoomTransition(uint8_t frame);
+        void updateRoomTransition(uint8_t frame);
         void renderRoomTransition(uint8_t frame);
 
-        Scene updateMenu(uint8_t frame);
+        void updateMenu(uint8_t frame);
         void renderMenu(uint8_t frame);
 
         void push(UpdatePtr newUpdate, RenderPtr newRender);
@@ -62,7 +63,8 @@ class GameScene: public BaseScene {
 
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
-            BaseScene(arduboy, renderer),
+            arduboy(arduboy),
+            renderer(renderer),
             player(6, 16, 3, 3),
             map(overworld_map),
             entityDefs(overworld_entities),
@@ -84,7 +86,7 @@ class GameScene: public BaseScene {
             setEntitiesInRoom(1, 0);
         }
 
-        Scene update(uint8_t frame);
+        void update(uint8_t frame);
         void render(uint8_t frame);
 };
 

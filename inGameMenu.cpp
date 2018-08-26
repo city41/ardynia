@@ -2,9 +2,8 @@
 #include "util.h"
 
 const char pauseMsg[] PROGMEM = "pause";
-const char quitMsg[] PROGMEM = "quit";
 
-const char* const menuMessages[] PROGMEM = { pauseMsg, quitMsg };
+const char* const menuMessages[] PROGMEM = { pauseMsg };
 
 void InGameMenu::update(Arduboy2* arduboy, byte frame) {
     if (arduboy->justPressed(UP_BUTTON)) {

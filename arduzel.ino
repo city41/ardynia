@@ -3,14 +3,13 @@
 #include <Arduboy2.h>
 #include <math.h>
 
-#include "scenes.h"
-#include "sceneManager.h"
+#include "gameScene.h"
 #include "renderer.h"
 #include "util.h"
 
 Arduboy2 arduboy;
 Renderer renderer(&arduboy);
-SceneManager sceneManager(&arduboy, &renderer, TITLE);
+GameScene gameScene(&arduboy, &renderer);
 
 void setup() {
     randomSeed(analogRead(0));
@@ -43,7 +42,8 @@ void loop() {
     arduboy.clear();
     arduboy.pollButtons();
 
-    sceneManager.update(loopCounter);
+    gameScene.update(loopCounter);
+    gameScene.render(loopCounter);
     arduboy.display();
 }
 
