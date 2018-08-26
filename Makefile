@@ -1,4 +1,4 @@
-CPPFLAGS += -DSERIAL_LOG=1
+CPPFLAGS += -DSERIAL_LOG=0
 
 ARDUINO_DIR = $(HOME)/.arduino_ide
 ARDMK_DIR = $(HOME)/.arduino_mk

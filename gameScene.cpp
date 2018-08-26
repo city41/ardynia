@@ -241,7 +241,7 @@ void GameScene::update(uint8_t frame) {
     }
 
     if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
-        if (currentUpdate != &GameScene::updateMenu) {
+        if (currentUpdate != &updateMenu) {
             if (player.bButtonEntityType != UNSET) {
                 menu.decision = player.bButtonEntityType;
                 menu.column = 1;
@@ -253,7 +253,7 @@ void GameScene::update(uint8_t frame) {
             push(&GameScene::updateMenu, &GameScene::renderMenu);
         }
     } else {
-        if (currentUpdate == &GameScene::updateMenu) {
+        if (currentUpdate == &updateMenu) {
             if (menu.decision == Pause) {
                 paused = true;
             } else if (menu.decision >= BOOMERANG && menu.decision <= CANDLE) {
