@@ -32,21 +32,21 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     uint8_t spriteIndex;
     MirrorMode mirror = 0;
-    bool attackingWithSword = entities[0].type == SWORD;
+    bool attacking = entities[0].type == SWORD || entities[1].type == BOOMERANG;
 
     switch (dir) {
         case LEFT:
-            spriteIndex = attackingWithSword ? 4 : 0;
+            spriteIndex = attacking ? 4 : 0;
             break;
         case RIGHT:
-            spriteIndex = attackingWithSword ? 4 : 0;
+            spriteIndex = attacking ? 4 : 0;
             mirror = MIRROR_HORIZONTAL;
             break;
         case UP:
-            spriteIndex = attackingWithSword ? 5 : 2;
+            spriteIndex = attacking ? 5 : 2;
             break;
         case DOWN:
-            spriteIndex = attackingWithSword ? 6 : 3;
+            spriteIndex = attacking ? 6 : 3;
             break;
     }
 
