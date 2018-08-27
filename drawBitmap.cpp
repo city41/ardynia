@@ -1,12 +1,17 @@
 #include "drawBitmap.h"
 #include <Arduboy2.h>
-
 /**
  * draw a bitmap with an optional mask and optional mirroring
  *
- * This code is a combination of Arduboy2's Sprite::drawExternalMask and Ardbitmap's drawBitmap
+ * This code is a combination of Arduboy2's Sprite::drawExternalMask() and Ardbitmap's drawBitmap()
  *
- * Self masking can be accomplished by passing the pointer for both bitmap and mask
+ * This method can accomplish the same effect as most of Sprite's methods:
+ * drawOverwrite: pass in a mask of NULL
+ * drawExternalMask: pass in a separate mask
+ * drawSelfMasked: pass in the same pointer for bitmap and mask
+ *
+ * To mirror the sprite, pass in MIRROR_HORIZONTAL or MIRROR_VERTICAL as the mirror parameter.
+ * To mirrow both ways at once, pass in MIRROR_HORIZONTAL | MIRROR_VERTICAL as the parameter
  */
 void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t frame, uint8_t mirror) {
     if (bitmap == NULL)
@@ -14,18 +19,25 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
 
     uint16_t frame_offset;
 
+    // if using the same bitmap pointer for masking (to accomplish a self mask)
+    // then need to move the mask pointer past the width/height bites, otherwise assume
+    // the mask does not have the widht/height header
+    if (mask == bitmap) {
+        mask += 2;
+    }
+  
+    const bool hasMask = mask != NULL;
+
     uint8_t w = pgm_read_byte(bitmap++);
     uint8_t h = pgm_read_byte(bitmap++);
 
-    // no need to draw at all of we're offscreen
+    // no need to draw at all if we're offscreen
     if (x + w <= 0 || x > WIDTH - 1 || y + h <= 0 || y > HEIGHT - 1)
         return;
 
     if (frame > 0) {
         frame_offset = (w * ( h / 8 + ( h % 8 == 0 ? 0 : 1)));
-        if (mask != NULL) {
-            mask += frame * frame_offset;
-        }
+        mask += frame * frame_offset;
         bitmap += frame * frame_offset;
     }
 
@@ -110,7 +122,7 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
     for (uint8_t a = 0; a < loop_h; a++) {
         for (uint8_t iCol = 0; iCol < rendered_width; iCol++) {
             data = pgm_read_byte(bofs);
-            mask_data = mask != NULL ? pgm_read_byte(mask_ofs) : 0xFF;
+            mask_data = hasMask ? pgm_read_byte(mask_ofs) : 0xFF;
 
             if (mirror & MIRROR_VERTICAL) {
                 //reverse bits
@@ -167,3 +179,4 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
         ofs += WIDTH - rendered_width;
     }
 }
+
