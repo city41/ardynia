@@ -13,7 +13,6 @@ class Player: public BaseEntity {
         bool movedThisFrame;
         uint8_t tookDamageCount;
 
-        void bounceBack(void);
         void useSword(void);
         void bButtonAction(void);
 

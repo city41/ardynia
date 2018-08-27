@@ -7,6 +7,8 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other) {
 
         if (me->health <= 0) {
             me->type = UNSET;
+        } else {
+            me->bounceBack();
         }
     }
 

@@ -109,6 +109,7 @@ class BaseEntity {
         virtual EntityType onCollide(uint8_t tile) = 0;
 
         bool overlaps(BaseEntity* other);
+        void bounceBack(void);
 };
 
 #endif
