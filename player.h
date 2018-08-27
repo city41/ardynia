@@ -11,7 +11,6 @@ const uint8_t MAX_PLAYER_ENTITIES = 2;
 class Player: public BaseEntity {
     private:
         bool movedThisFrame;
-        uint8_t tookDamageCount;
 
         void useSword(void);
         void bButtonAction(void);
@@ -35,7 +34,6 @@ class Player: public BaseEntity {
                 0    // duration
             ),
             movedThisFrame(false),
-            tookDamageCount(0),
             totalHealth(totalHealth),
             bButtonEntityType(UNSET)
         {

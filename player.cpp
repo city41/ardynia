@@ -116,8 +116,8 @@ EntityType Player::onCollide(uint8_t tile) {
 
 
 EntityType Player::onCollide(BaseEntity* other) {
-    if (other->type == BLOB) {
-        health -= 1;
+    if (other->damage) {
+        health -= other->damage;
         bounceBack();
         tookDamageCount = 30;
     }

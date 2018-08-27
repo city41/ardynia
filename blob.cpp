@@ -2,13 +2,14 @@
 #include "util.h"
 
 EntityType Blob::onCollide(Entity* me, BaseEntity* other) {
-    if (other->type == SWORD) {
+    if (other->damage) {
         me->health -= other->damage;
 
         if (me->health <= 0) {
             me->type = UNSET;
         } else {
             me->bounceBack();
+            me->tookDamageCount = 20;
         }
     }
 

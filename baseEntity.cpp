@@ -1,6 +1,6 @@
 #include "baseEntity.h"
 
-const uint8_t BOUNCE_AMOUNT = 8;
+const uint8_t BOUNCE_AMOUNT = 16;
 
 bool BaseEntity::overlaps(BaseEntity* other) {
     return !(

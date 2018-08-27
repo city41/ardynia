@@ -1,10 +1,19 @@
 #include "entity.h"
+#include "util.h"
 
 EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
+    if (tookDamageCount > 0) {
+        tookDamageCount -= 1;
+
+        if (tookDamageCount % 3 == 1) {
+            return UNSET;
+        }
+    }
+
     EntityType result = UNSET;
     if (renderPtr != NULL) {
         result = renderPtr(this, renderer, renderFrame);
-    } else if (tiles != NULL && maskTiles != NULL) {
+    } else if (tiles != NULL) {
         renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame);
     } else {
         renderer->drawOverwrite(x, y, tiles, currentFrame);

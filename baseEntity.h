@@ -44,6 +44,7 @@ class BaseEntity {
         int8_t damage;
         uint8_t duration;
         uint8_t currentFrame;
+        uint8_t tookDamageCount;
 
         BaseEntity():
             type(UNSET),
@@ -59,7 +60,8 @@ class BaseEntity {
             health(0),
             damage(0),
             duration(0),
-            currentFrame(0)
+            currentFrame(0),
+            tookDamageCount(0)
         {}
 
         BaseEntity(
@@ -86,7 +88,8 @@ class BaseEntity {
             health(health),
             damage(damage),
             duration(duration),
-            currentFrame(0)
+            currentFrame(0),
+            tookDamageCount(0)
         {}
 
         virtual void moveTo(int16_t newX, int16_t newY) {

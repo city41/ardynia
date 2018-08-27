@@ -76,6 +76,18 @@
                  "width":0,
                  "x":28,
                  "y":244
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"Blob",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":172,
+                 "y":25.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -84,7 +96,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":6,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
