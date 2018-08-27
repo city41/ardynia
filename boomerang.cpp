@@ -70,3 +70,7 @@ EntityType Boomerang::render(Entity* me, Renderer* renderer, uint8_t frame) {
 
     renderer->drawExternalMask(me->x, me->y, itemIcons_tiles, itemIcons_mask_tiles, 0, mirror);
 }
+
+EntityType Boomerang::onCollide(Entity* me, BaseEntity* other) {
+    me->duration = 0;
+}

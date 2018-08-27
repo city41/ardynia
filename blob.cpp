@@ -11,6 +11,8 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other) {
             me->bounceBack();
             me->tookDamageCount = 20;
         }
+    } else if (other->type == BOOMERANG) {
+        me->stunCount = 100;
     }
 
     return UNSET;

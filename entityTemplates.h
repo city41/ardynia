@@ -90,7 +90,7 @@ const void* const PROGMEM entityPointers[] = {
     Boomerang::spawn,
     Boomerang::update,
     Boomerang::render,
-    NULL
+    Boomerang::onCollide
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

@@ -35,6 +35,11 @@ EntityType Entity::spawn(BaseEntity* player) {
 }
 
 EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
+    if (stunCount > 0) {
+        stunCount -= 1;
+        return UNSET;
+    }
+
     if (updatePtr != NULL) {
         return updatePtr(this, player, arduboy, frame);
     }
