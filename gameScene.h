@@ -33,6 +33,8 @@ class GameScene {
         InGameMenu menu;
 
         int16_t roomTransitionCount;
+        uint8_t mapWidthInRooms;
+        uint8_t mapHeightInRooms;
 
         UpdatePtr prevUpdate;
         UpdatePtr currentUpdate;
@@ -45,6 +47,7 @@ class GameScene {
         bool paused;
 
         void detectTileCollisions(void);
+        bool playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);

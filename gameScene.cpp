@@ -3,8 +3,8 @@
 #include "entityTemplates.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
-const uint8_t ROOM_WIDTH = WIDTH - 16;
-const uint8_t ROOM_HEIGHT = HEIGHT;
+const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
+const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 
 void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
     nextUpdate = newUpdate;
@@ -17,7 +17,7 @@ void GameScene::pop() {
 }
 
 bool isOffscreen(int16_t x, int16_t y) {
-    return x < 0 || y < 0 || x > ROOM_WIDTH || y > HEIGHT;
+    return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
 }
 
 void GameScene::detectTileCollisions(void) {
@@ -64,22 +64,22 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
         nextRoomX = tileRoom.x - 1;
         nextRoomY = tileRoom.y;
-        roomTransitionCount = ROOM_WIDTH;
+        roomTransitionCount = ROOM_WIDTH_PX;
 
-    } else if (x > ROOM_WIDTH) {
+    } else if (x > ROOM_WIDTH_PX) {
         nextRoomX = tileRoom.x + 1;
         nextRoomY = tileRoom.y;
-        roomTransitionCount = ROOM_WIDTH;
+        roomTransitionCount = ROOM_WIDTH_PX;
 
     } else if (y < 0) {
         nextRoomX = tileRoom.x;
         nextRoomY = tileRoom.y - 1;
-        roomTransitionCount = ROOM_HEIGHT;
+        roomTransitionCount = ROOM_HEIGHT_PX;
  
     } else if (y > HEIGHT) {
         nextRoomX = tileRoom.x;
         nextRoomY = tileRoom.y + 1;
-        roomTransitionCount = ROOM_HEIGHT;
+        roomTransitionCount = ROOM_HEIGHT_PX;
     }
 
     push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
@@ -115,11 +115,38 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     for (; i < MAX_ENTITIES; ++i) {
         entities[i].type = UNSET;
     }
+
+    mapWidthInRooms = pgm_read_byte(map + 2);
+    mapHeightInRooms = pgm_read_byte(map + 3);
+}
+
+bool GameScene::playerLeftMap(void) {
+    if (tileRoom.x == 0 && player.x < 0) {
+        return true;
+    }
+
+    if (tileRoom.x == mapWidthInRooms - 1 && player.x + player.height > ROOM_WIDTH_PX) {
+        return true;
+    }
+
+    if (tileRoom.y == 0 && player.y < 0) {
+        return true;
+    }
+
+    if (tileRoom.y == mapHeightInRooms - 1 && player.y + player.height > ROOM_HEIGHT_PX) {
+        return true;
+    }
+
+    return false;
 }
 
 
 void GameScene::updatePlay(uint8_t frame) {
     player.update(&player, arduboy, frame);
+
+    if (playerLeftMap()) {
+        player.undoMove();
+    }
 
     int8_t e = 0;
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
@@ -195,11 +222,11 @@ void GameScene::updateRoomTransition(uint8_t frame) {
     if (roomTransitionCount == 0) {
 
         if (nextRoomX < tileRoom.x) {
-            player.moveTo(ROOM_WIDTH - 1, player.y);
+            player.moveTo(ROOM_WIDTH_PX - 1, player.y);
         } else if (nextRoomX > tileRoom.x) {
             player.moveTo(1, player.y);
         } else if (nextRoomY < tileRoom.y) {
-            player.moveTo(player.x, ROOM_HEIGHT - 1);
+            player.moveTo(player.x, ROOM_HEIGHT_PX - 1);
         } else {
             player.moveTo(player.x, 1);
         }
@@ -224,13 +251,13 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 
     // draw current room translated
     if (nextRoomX < tileRoom.x) {
-        translateX = ROOM_WIDTH - roomTransitionCount;
+        translateX = ROOM_WIDTH_PX - roomTransitionCount;
     } else if (nextRoomX > tileRoom.x) {
-        translateX = roomTransitionCount - ROOM_WIDTH;
+        translateX = roomTransitionCount - ROOM_WIDTH_PX;
     } else if (nextRoomY < tileRoom.y) {
-        translateY = ROOM_HEIGHT - roomTransitionCount;
+        translateY = ROOM_HEIGHT_PX - roomTransitionCount;
     } else if (nextRoomY > tileRoom.y) {
-        translateY = roomTransitionCount - ROOM_HEIGHT;
+        translateY = roomTransitionCount - ROOM_HEIGHT_PX;
     }
 
     renderer->translateX = translateX;
@@ -240,8 +267,8 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     // draw next room translated
     int16_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
-    renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH * s) : 0;
-    renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT * s) : 0;
+    renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
+    renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
     tileRoom.render(renderer, frame, nextRoomX, nextRoomY);
     
     // draw player translated
