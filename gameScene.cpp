@@ -94,7 +94,7 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
         uint8_t rawEntityType = pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
 
-        entities[i] = entityTemplates[type];
+        loadEntity(entities[i], type);
         entities[i].x = pgm_read_byte(roomPtr++);
         entities[i].y = pgm_read_byte(roomPtr++);
 
@@ -149,8 +149,6 @@ void GameScene::renderPlay(uint8_t frame) {
         entities[e].render(renderer, frame);
     }
 
-    player.render(renderer, frame);
-
     for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
@@ -158,6 +156,9 @@ void GameScene::renderPlay(uint8_t frame) {
             entity.render(renderer, frame);
         }
     }
+
+    player.render(renderer, frame);
+
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;

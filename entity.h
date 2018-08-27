@@ -4,12 +4,12 @@
 #include "baseEntity.h"
 
 class Entity: public BaseEntity {
-    typedef EntityType (*EntitySpawnPtr)(Entity* me, void* parent);
-    typedef EntityType (*EntityUpdatePtr)(Entity* me, void* parent, Arduboy2* arduboy, uint8_t frame);
-    typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer* renderer, uint8_t frame);
-    typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, BaseEntity* other);
-
     public:
+        typedef EntityType (*EntitySpawnPtr)(Entity* me, void* parent);
+        typedef EntityType (*EntityUpdatePtr)(Entity* me, void* parent, Arduboy2* arduboy, uint8_t frame);
+        typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer* renderer, uint8_t frame);
+        typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, BaseEntity* other);
+
         EntitySpawnPtr spawnPtr;
         EntityUpdatePtr updatePtr;
         EntityRenderPtr renderPtr;

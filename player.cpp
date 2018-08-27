@@ -12,11 +12,17 @@ void Player::useSword(void) {
         return;
     }
 
-    entities[0] = entityTemplates[SWORD];
+    loadEntity(entities[0], SWORD);
     entities[0].spawn(this);
 }
 
 void Player::bButtonAction(void) {
+    if (entities[1].type != UNSET || bButtonEntityType == UNSET) {
+        return;
+    }
+
+    loadEntity(entities[1], bButtonEntityType);
+    entities[1].spawn(this);
 }
 
 EntityType Player::render(Renderer *renderer, byte frame) {
