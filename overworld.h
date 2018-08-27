@@ -30,12 +30,22 @@ const uint8_t PROGMEM overworld_room0_2[] = {
 
 
 const uint8_t PROGMEM overworld_room0_3[] = {
-    1, // number of entities
+    3, // number of entities
 
     // entity 0, BLOB
     1,
     78, //x
-    44  //y
+    44, //y
+
+    // entity 1, BLOB
+    1,
+    92, //x
+    54, //y
+
+    // entity 2, BLOB
+    1,
+    28, //x
+    52  //y
 };
 
 

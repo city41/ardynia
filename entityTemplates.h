@@ -19,8 +19,8 @@ const uint8_t PROGMEM entityProperties[] = {
     20,           // duration
 
     // 1 BLOB
-    16,
-    16,
+    8,
+    8,
     DOWN,
     2, // health
     1, // damage
@@ -64,7 +64,7 @@ const void* const PROGMEM entityPointers[] = {
     blob_tiles,
     blob_mask_tiles,
     NULL,
-    NULL,
+    Blob::update,
     NULL,
     Blob::onCollide,
 

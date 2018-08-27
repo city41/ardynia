@@ -8,7 +8,7 @@
 
 struct Blob {
     static EntityType onCollide(Entity* me, BaseEntity* other);
-    static EntityType update(Entity* me, void* parent, Arduboy2* arduboy, uint8_t frame);
+    static EntityType update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame);
 };
 
 #endif
