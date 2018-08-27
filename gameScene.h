@@ -69,13 +69,13 @@ class GameScene {
             arduboy(arduboy),
             renderer(renderer),
             player(6, 16, 3, 3),
-            map(overworld_map),
-            entityDefs(overworld_entities),
+            map(dungeons_map),
+            entityDefs(dungeons_entities),
             numEntitiesInCurrentRoom(0),
-            tiles(overworld_tiles),
-            nextRoomX(1),
+            tiles(dungeon_tiles),
+            nextRoomX(0),
             nextRoomY(0),
-            tileRoom(map, tiles, 1, 0),
+            tileRoom(map, tiles, 0, 0),
             menu(),
             roomTransitionCount(0),
             prevUpdate(NULL),
@@ -86,7 +86,7 @@ class GameScene {
             nextRender(NULL),
             paused(false)
         {
-            setEntitiesInRoom(1, 0);
+            setEntitiesInRoom(0, 0);
         }
 
         void update(uint8_t frame);

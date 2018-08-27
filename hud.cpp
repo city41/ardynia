@@ -33,8 +33,4 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->drawSelfMasked(1, 12, hudBFrame_tiles, 0);
     // quanity of secondary item if applicable
     renderer->print(3, 31, 12);
-
-    // draw current room coord
-    renderer->print(3, 47, roomX);
-    renderer->print(3, 56, roomY);
 }
