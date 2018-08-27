@@ -6,7 +6,6 @@
 EntityType Boomerang::spawn(Entity* me, void* parent) {
     BaseEntity* player = (BaseEntity*)parent;
 
-    me->duration = 20;
     me->dir = player->dir;
     me->x = player->x;
     me->y = player->y;

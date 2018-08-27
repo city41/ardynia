@@ -48,7 +48,7 @@ const uint8_t PROGMEM entityProperties[] = {
     DOWN,
     0,
     0,
-    0
+    20
 };
 
 const void* const PROGMEM entityPointers[] = {
