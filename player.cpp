@@ -67,7 +67,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
     return UNSET;
 }
 
-EntityType Player::update(void* parent, Arduboy2* arduboy, byte frame) {
+EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }

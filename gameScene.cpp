@@ -90,7 +90,8 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
 
     numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
-    for (int8_t i = 0; i < numEntitiesInCurrentRoom; ++i) {
+    int8_t i = 0;
+    for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
 
@@ -109,14 +110,27 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
             entities[i].prevY = y;
         }
     }
+
+    for (; i < MAX_ENTITIES; ++i) {
+        entities[i].type = UNSET;
+    }
 }
 
 
 void GameScene::updatePlay(uint8_t frame) {
-    player.update(this, arduboy, frame);
+    player.update(&player, arduboy, frame);
 
-    for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
+    int8_t e = 0;
+    for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
+
+        if (entity.type != UNSET) {
+            entity.update(&player, arduboy, frame);
+        }
+    }
+
+    for (e = 0; e < MAX_ENTITIES; ++e) {
+        Entity& entity = entities[e];
 
         if (entity.type != UNSET) {
             entity.update(&player, arduboy, frame);
@@ -141,15 +155,16 @@ void GameScene::updatePlay(uint8_t frame) {
 void GameScene::renderPlay(uint8_t frame) {
     tileRoom.render(renderer, frame);
 
-    for(int8_t e = 0; e < numEntitiesInCurrentRoom; ++e) {
-        if (entities[e].type == UNSET) {
-            continue;
-        }
+    int8_t e = 0;
+    for(; e < MAX_ENTITIES; ++e) {
+        Entity& entity = entities[e];
 
-        entities[e].render(renderer, frame);
+        if (entity.type != UNSET) {
+            entity.render(renderer, frame);
+        }
     }
 
-    for (int8_t e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
+    for (e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
         if (entity.type != UNSET) {

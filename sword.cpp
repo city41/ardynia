@@ -2,8 +2,7 @@
 #include "baseEntity.h"
 #include "util.h"
 
-EntityType Sword::spawn(Entity* me, void* parent) {
-    BaseEntity* player = (BaseEntity*)parent;
+EntityType Sword::spawn(Entity* me, BaseEntity* player) {
     int16_t px = player->x;
     int16_t py = player->y;
 
@@ -31,8 +30,7 @@ EntityType Sword::spawn(Entity* me, void* parent) {
     }
 }
 
-EntityType Sword::update(Entity* me, void* parent, Arduboy2* arduoboy, uint8_t frame) {
-    BaseEntity* player = (BaseEntity*)parent;
+EntityType Sword::update(Entity* me, BaseEntity* player, Arduboy2* arduoboy, uint8_t frame) {
     int16_t px = player->x;
     int16_t py = player->y;
 

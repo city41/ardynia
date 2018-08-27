@@ -3,16 +3,13 @@
 #include "math.h"
 
 
-EntityType Boomerang::spawn(Entity* me, void* parent) {
-    BaseEntity* player = (BaseEntity*)parent;
-
+EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
     me->dir = player->dir;
     me->x = player->x;
     me->y = player->y;
 }
 
-EntityType Boomerang::update(Entity* me, void* parent, Arduboy2* arduboy, uint8_t frame) {
-    BaseEntity* player = (BaseEntity*)parent;
+EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
     int16_t px = player->x;
     int16_t py = player->y;
 

@@ -17,17 +17,17 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     return result;
 }
 
-EntityType Entity::spawn(void* parent) {
+EntityType Entity::spawn(BaseEntity* player) {
     if (spawnPtr != NULL) {
-        return spawnPtr(this, parent);
+        return spawnPtr(this, player);
     }
 
     return UNSET;
 }
 
-EntityType Entity::update(void* parent, Arduboy2* arduboy, uint8_t frame) {
+EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
     if (updatePtr != NULL) {
-        return updatePtr(this, parent, arduboy, frame);
+        return updatePtr(this, player, arduboy, frame);
     }
 
     return UNSET;

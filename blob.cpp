@@ -12,3 +12,6 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other) {
 
     return UNSET;
 }
+
+EntityType Blob::update(Entity* me, void* parent, Arduboy2* arduboy, uint8_t frame) {
+}
