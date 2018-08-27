@@ -99,7 +99,9 @@ EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
     }
 
     movedThisFrame = false;
-    if (tookDamageCount == 0 && (newX != x || newY != y)) {
+    bool attackingWithSword = entities[0].type == SWORD;
+
+    if (tookDamageCount == 0 && !attackingWithSword && (newX != x || newY != y)) {
         movedThisFrame = true;
         moveTo(newX, newY);
     }
@@ -117,7 +119,7 @@ EntityType Player::onCollide(uint8_t tile) {
 
 
 EntityType Player::onCollide(BaseEntity* other) {
-    if (other->damage) {
+    if (other->damage && other->type != SWORD) {
         health -= other->damage;
         bounceBack();
         tookDamageCount = 30;
