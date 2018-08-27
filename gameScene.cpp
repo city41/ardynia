@@ -193,6 +193,12 @@ void GameScene::updateRoomTransition(uint8_t frame) {
 
         setEntitiesInRoom(nextRoomX, nextRoomY);
 
+        // for example, if the player had a flying boomerang,
+        // this causes it to go away, easier than trying to deal
+        // with items that can span across rooms O_o
+        player.entities[0].type = UNSET;
+        player.entities[1].type = UNSET;
+
         pop();
     }
 }
