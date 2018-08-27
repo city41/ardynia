@@ -1,5 +1,6 @@
 #include "blob.h"
 #include "util.h"
+#include "drawBitmap.h"
 
 EntityType Blob::onCollide(Entity* me, BaseEntity* other) {
     if (other->damage) {
@@ -28,8 +29,10 @@ EntityType Blob::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8
 
         if (nx - px > 0) {
             nx -= 1;
+            me->mirror = 0;
         } else if (nx - px < 0) {
             nx += 1;
+            me->mirror = MIRROR_HORIZONTAL;
         }
 
         if (ny - py > 0) {

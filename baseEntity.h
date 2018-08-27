@@ -7,6 +7,7 @@
 #include "direction.h"
 #include "tiles.h"
 #include "entityTypes.h"
+#include "drawBitmap.h"
 
 
 class BaseEntity {
@@ -44,6 +45,7 @@ class BaseEntity {
         int8_t damage;
         uint8_t duration;
         uint8_t currentFrame;
+        MirrorMode mirror;
         uint8_t tookDamageCount;
         uint8_t stunCount;
 
@@ -62,6 +64,7 @@ class BaseEntity {
             damage(0),
             duration(0),
             currentFrame(0),
+            mirror(0),
             tookDamageCount(0),
             stunCount(0)
         {}
@@ -91,6 +94,7 @@ class BaseEntity {
             damage(damage),
             duration(duration),
             currentFrame(0),
+            mirror(0),
             tookDamageCount(0),
             stunCount(0)
         {}
