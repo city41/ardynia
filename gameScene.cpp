@@ -38,6 +38,7 @@ void GameScene::detectEntityCollisions(void) {
                 tiles = dungeon_tiles;
                 tileRoom.map = map;
                 tileRoom.tiles = tiles;
+                player.entities[0].invert = true;
 
                 tileRoom.x = entities[ge].prevX;
                 tileRoom.y = entities[ge].prevY;

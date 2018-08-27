@@ -8,26 +8,26 @@ EntityType Sword::spawn(Entity* me, BaseEntity* player) {
 
     switch (player->dir) {
         case LEFT:
-            me->x = px - 16;
-            me->y = py;
+            me->x = px - 14;
+            me->y = py + 4;
             me->currentFrame = 0;
             me->mirror = 0;
             break;
         case RIGHT:
-            me->x = px + 16;
-            me->y = py;
+            me->x = px + 14;
+            me->y = py + 4;
             me->currentFrame = 0;
             me->mirror = MIRROR_HORIZONTAL;
             break;
         case UP:
-            me->x = px;
-            me->y = py - 16;
+            me->x = px - 3;
+            me->y = py - 12;
             me->currentFrame = 1;
             me->mirror = MIRROR_VERTICAL;
             break;
         case DOWN:
-            me->x = px;
-            me->y = py + 16;
+            me->x = px + 3;
+            me->y = py + 14;
             me->currentFrame = 1;
             me->mirror = 0;
             break;
@@ -39,11 +39,6 @@ EntityType Sword::update(Entity* me, BaseEntity* player, Arduboy2* arduoboy, uin
     int16_t py = player->y;
 
     me->duration -= 1;
-
-    if (me->duration == 12) {
-        me->tiles = NULL;
-        me->maskTiles = NULL;
-    }
 
     if (me->duration == 0) {
         me->type = UNSET;

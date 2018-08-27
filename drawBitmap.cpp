@@ -13,7 +13,7 @@
  * To mirror the sprite, pass in MIRROR_HORIZONTAL or MIRROR_VERTICAL as the mirror parameter.
  * To mirrow both ways at once, pass in MIRROR_HORIZONTAL | MIRROR_VERTICAL as the parameter
  */
-void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t frame, uint8_t mirror) {
+void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t frame, uint8_t mirror, bool invert) {
     if (bitmap == NULL)
         return;
 
@@ -123,6 +123,10 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
         for (uint8_t iCol = 0; iCol < rendered_width; iCol++) {
             data = pgm_read_byte(bofs);
             mask_data = hasMask ? pgm_read_byte(mask_ofs) : 0xFF;
+
+            if (invert) {
+                data = ~data & mask_data;
+            }
 
             if (mirror & MIRROR_VERTICAL) {
                 //reverse bits

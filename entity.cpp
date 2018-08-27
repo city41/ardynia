@@ -14,7 +14,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     if (renderPtr != NULL) {
         result = renderPtr(this, renderer, renderFrame);
     } else {
-        renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame, mirror);
+        renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame, mirror, invert);
     }
 
 #ifdef DRAW_HITBOXES
