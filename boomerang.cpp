@@ -51,9 +51,7 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
             me->moveTo(nx, ny);
         }
     }
-}
 
-EntityType Boomerang::render(Entity* me, Renderer* renderer, uint8_t frame) {
     MirrorMode mirror = 0;
 
     if (frame > 49) {
@@ -68,7 +66,7 @@ EntityType Boomerang::render(Entity* me, Renderer* renderer, uint8_t frame) {
         mirror = MIRROR_HORIZONTAL;
     }
 
-    renderer->drawExternalMask(me->x, me->y, itemIcons_tiles, itemIcons_mask_tiles, 0, mirror);
+    me->mirror = mirror;
 }
 
 EntityType Boomerang::onCollide(Entity* me, BaseEntity* other) {

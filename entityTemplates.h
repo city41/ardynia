@@ -85,11 +85,11 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     
     // 4 BOOMERANG
-    NULL,
-    NULL,
+    itemIcons_tiles,
+    itemIcons_mask_tiles,
     Boomerang::spawn,
     Boomerang::update,
-    Boomerang::render,
+    NULL,
     Boomerang::onCollide
 };
 
