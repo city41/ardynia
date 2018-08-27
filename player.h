@@ -35,7 +35,7 @@ class Player: public BaseEntity {
             ),
             movedThisFrame(false),
             totalHealth(totalHealth),
-            bButtonEntityType(UNSET)
+            bButtonEntityType(BOOMERANG)
         {
             this->prevX = this->x = x;
             this->prevY = this->y = y;
