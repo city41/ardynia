@@ -6,7 +6,7 @@
 EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
     me->dir = player->dir;
     me->x = player->x;
-    me->y = player->y;
+    me->y = player->y - 6;
 }
 
 EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
@@ -70,5 +70,7 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
 }
 
 EntityType Boomerang::onCollide(Entity* me, BaseEntity* other) {
-    me->duration = 0;
+    if (other->type != BUMPER) {
+        me->duration = 0;
+    }
 }
