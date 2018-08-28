@@ -8,6 +8,7 @@ EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
     me->dir = player->dir;
     me->x = player->x;
     me->y = player->y - 6;
+    me->currentFrame = 1;
 }
 
 EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="16">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="17">
  <tileset firstgid="1" source="dungeon.tsx"/>
  <tileset firstgid="14" source="overworld.tsx"/>
  <layer id="1" name="Tile Layer 1" width="56" height="48">
@@ -77,6 +77,9 @@
    <point/>
   </object>
   <object id="15" name="Chest" type="CHEST" x="80.125" y="6.625">
+   <point/>
+  </object>
+  <object id="16" name="Bomb" type="BOMB" x="48.6667" y="44.3333">
    <point/>
   </object>
  </objectgroup>

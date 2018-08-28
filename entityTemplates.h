@@ -51,12 +51,12 @@ const uint8_t PROGMEM entityProperties[] = {
     20,
 
     // 5, BOMB
-    0,
-    0,
+    16,
+    16,
     DOWN,
     0,
-    0,
-    0,
+    1,
+    120,
 
     // 6, CANDLE
     0,
@@ -133,8 +133,8 @@ const void* const PROGMEM entityPointers[] = {
     Boomerang::onCollide,
 
     // 5 BOMB
-    NULL,
-    NULL,
+    itemIcons_tiles,
+    itemIcons_mask,
     NULL,
     NULL,
     NULL,

@@ -176,6 +176,18 @@
                  "width":0,
                  "x":80.125,
                  "y":6.625
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"Bomb",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BOMB",
+                 "visible":true,
+                 "width":0,
+                 "x":48.6666666666667,
+                 "y":44.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -184,7 +196,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":16,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
