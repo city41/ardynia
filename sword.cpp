@@ -6,8 +6,6 @@ EntityType Sword::spawn(Entity* me, BaseEntity* player) {
     int16_t px = player->x;
     int16_t py = player->y;
 
-    me->invert = true;
-
     switch (player->dir) {
         case LEFT:
             me->x = px - 19;
