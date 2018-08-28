@@ -54,7 +54,7 @@ const uint8_t PROGMEM entityProperties[] = {
 const void* const PROGMEM entityPointers[] = {
     // 0 SWORD
     sword_tiles,        // tiles
-    sword_mask_tiles,   // masks
+    sword_mask,         // masks
     Sword::spawn,       // spawn
     Sword::update,      // update
     NULL,               // render
@@ -62,15 +62,15 @@ const void* const PROGMEM entityPointers[] = {
 
     // 1 BLOB
     blob_tiles,
-    blob_mask_tiles,
+    blob_mask,
     NULL,
     Blob::update,
     NULL,
     Blob::onCollide,
 
     // 2 OVERWORLD_DOOR
-    overworld_door_tiles,
-    overworld_door_mask_tiles,
+    overworldDoor_tiles,
+    overworldDoor_mask,
     NULL,
     NULL,
     NULL,
@@ -86,7 +86,7 @@ const void* const PROGMEM entityPointers[] = {
     
     // 4 BOOMERANG
     itemIcons_tiles,
-    itemIcons_mask_tiles,
+    itemIcons_mask,
     Boomerang::spawn,
     Boomerang::update,
     NULL,

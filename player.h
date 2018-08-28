@@ -28,7 +28,7 @@ class Player: public BaseEntity {
                 16,  // height
                 DOWN,
                 playerWalk_tiles,
-                playerWalk_mask_tiles,
+                playerWalk_mask,
                 health,
                 0,   // damage
                 0    // duration
