@@ -36,7 +36,7 @@ class GameScene {
         TileRoom tileRoom;
         InGameMenu menu;
 
-        int16_t roomTransitionCount;
+        uint8_t roomTransitionCount;
         uint8_t mapWidthInRooms;
         uint8_t mapHeightInRooms;
 
