@@ -12,8 +12,6 @@ Renderer renderer(&arduboy);
 GameScene gameScene(&arduboy, &renderer);
 
 void setup() {
-    randomSeed(analogRead(0));
-
     arduboy.begin();
     arduboy.setFrameRate(60);
 

@@ -9,7 +9,12 @@ void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
 }
 
-void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId) {   
+void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
+    if (tileId == 0 && (roomIndex + 1) % seed == 0) {
+        renderer->drawOverwrite(x, y, tiles, 8, uniqueSeed % 2);
+        return;
+    }
+
     if (tileId < 8) {
         renderer->drawOverwrite(x, y, tiles, tileId, 0);
         return;
@@ -102,7 +107,7 @@ void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roo
                 uint8_t tx = (curTileIndex + c) % tilesPerRow;
                 uint8_t ty = (curTileIndex + c) / tilesPerRow;
 
-                renderTile(renderer, tx * tileSize, ty * tileSize, tiles, tileId);
+                renderTile(renderer, tx * tileSize, ty * tileSize, tiles, tileId, roomIndex, tx + ty + count, c);
             }
 
             curTileIndex += count;
@@ -111,7 +116,7 @@ void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roo
             // render curTile at appropriate tx/ty
             uint8_t tx = curTileIndex % tilesPerRow;
             uint8_t ty = curTileIndex / tilesPerRow;
-            renderTile(renderer, tx * tileSize, ty * tileSize, tiles, nibble);
+            renderTile(renderer, tx * tileSize, ty * tileSize, tiles, nibble, roomIndex, tx + ty, tx);
 
             curNibbleIndex += 1;
             curTileIndex += 1;

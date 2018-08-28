@@ -197,8 +197,8 @@ const void* const PROGMEM entityPointers[] = {
     Blob::onCollide,
 
     // 2 OVERWORLD_DOOR
-    overworldDoor_tiles,
-    overworldDoor_mask,
+    NULL,
+    NULL,
     NULL,
     NULL,
     NULL,
