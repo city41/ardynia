@@ -72,7 +72,7 @@ class GameScene {
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             arduboy(arduboy),
             renderer(renderer),
-            player(6, 16, 2, 3),
+            player(30, 36, 2, 3),
             map(overworld_map),
             entityDefs(overworld_entities),
             doorDefs(overworld_doors),
