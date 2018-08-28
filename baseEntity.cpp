@@ -1,4 +1,5 @@
 #include "baseEntity.h"
+#include "util.h"
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
@@ -34,7 +35,7 @@ void BaseEntity::bounceBack(void) {
     }
 
     Direction curDir = dir;
-    moveTo(nx, ny);
+    moveTo(clamp(nx, 0, 110), clamp(ny, 0, HEIGHT - 2));
     dir = curDir;
 }
 
