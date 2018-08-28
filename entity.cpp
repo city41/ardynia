@@ -13,12 +13,12 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     EntityType result = UNSET;
     if (renderPtr != NULL) {
         result = renderPtr(this, renderer, renderFrame);
-    } else {
+    } else if (tiles) {
         renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame, mirror, invert || type == BLOB);
     }
 
 #ifdef DRAW_HITBOXES
-    renderer->drawRect(x, y, w, h, BLACK);
+    renderer->drawRect(x, y, width, height, WHITE);
 #endif
 
     return result;
@@ -53,4 +53,3 @@ EntityType Entity::onCollide(BaseEntity* other) {
     return UNSET;
 }
 
-EntityType Entity::onCollide(uint8_t tile) { return UNSET; }

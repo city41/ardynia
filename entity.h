@@ -60,8 +60,6 @@ class Entity: public BaseEntity {
         virtual EntityType render(Renderer* renderer, uint8_t frame) override;
         virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) override;
         virtual EntityType onCollide(BaseEntity* other) override;
-        virtual EntityType onCollide(uint8_t tile) override;
-
 };
 
 #endif

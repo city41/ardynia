@@ -5,7 +5,8 @@ const EntityTypes = {
     UNSET: -1,
     SWORD: 0,
     BLOB: 1,
-    OVERWORLD_DOOR: 2
+    OVERWORLD_DOOR: 2,
+    BUMPER: 3
 };
 
 function getRoomAt(mapX, mapY) {
@@ -28,22 +29,29 @@ function getPropertyInt(props, propName) {
 // for non-OVERWORLD_DOOR, just return the type directly, for doors,
 // encode the door id into the type
 function getTypeInt(entity) {
-    if (entity.typeName !== "OVERWORLD_DOOR") {
-        return entity.type;
-    }
+    const typeInt = entity.type | (entity.encodedId << 4);
 
-    const typeInt = "0x" + ((entity.doorId << 4) | entity.type).toString(16);
-    return typeInt;
+    return "0x" + typeInt.toString(16);
 }
 
 function getDoorArrayData(name, doors) {
     const dataStringForDoors = `const uint8_t PROGMEM ${name}_doors[] = {\n    // dest x, dest y (in rooms)`;
 
     const doorData = doors.reduce((building, door) => {
-        return "\n" + building + `    ${door.destX}, ${door.destY}`;
+        return building + `\n    ${door.destX}, ${door.destY},`;
     }, "");
 
     return dataStringForDoors + doorData + "\n};";
+}
+
+function getBumperArrayData(name, bumpers) {
+    const dataStringForBumpers = `const uint8_t PROGMEM ${name}_bumpers[] = {\n    // width, height`;
+
+    const bumperData = bumpers.reduce((building, bumper) => {
+        return building + `\n    ${bumper.width}, ${bumper.height},`;
+    }, "");
+
+    return dataStringForBumpers + bumperData + "\n};";
 }
 
 function getRoomArrayData(
@@ -57,6 +65,7 @@ function getRoomArrayData(
     const { objects } = objectLayer;
     let rooms = [[]];
     const doors = [];
+    const bumpers = [];
 
     objects.forEach((obj, i) => {
         const { roomX, roomY, roomPxX, roomPxY } = getRoomAt(obj.x, obj.y);
@@ -71,7 +80,12 @@ function getRoomArrayData(
             y: entityY,
             type,
             typeName: obj.type,
-            doorId: obj.type === "OVERWORLD_DOOR" ? doors.length : null
+            encodedId:
+                obj.type === "OVERWORLD_DOOR"
+                    ? doors.length
+                    : obj.type === "BUMPER"
+                        ? bumpers.length
+                        : 0
         });
 
         if (obj.type === "OVERWORLD_DOOR") {
@@ -79,6 +93,12 @@ function getRoomArrayData(
                 id: doors.length,
                 destX: getPropertyInt(obj.properties, "DEST_ROOM_X"),
                 destY: getPropertyInt(obj.properties, "DEST_ROOM_Y")
+            });
+        } else if (obj.type === "BUMPER") {
+            bumpers.push({
+                id: bumpers.length,
+                width: obj.width,
+                height: obj.height
             });
         }
     });
@@ -116,8 +136,15 @@ function getRoomArrayData(
     }
 
     const doorArrayString = getDoorArrayData(name, doors);
+    const bumperArrayString = getBumperArrayData(name, bumpers);
 
-    return roomArrayStrings.join("\n\n") + doorArrayString + "\n\n";
+    return (
+        roomArrayStrings.join("\n\n") +
+        doorArrayString +
+        "\n\n" +
+        "\n\n" +
+        bumperArrayString
+    );
 }
 
 function getRowArrayData(name, mapWidthInRooms, mapHeightInRooms) {

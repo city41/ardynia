@@ -34,7 +34,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
 
-    // 3 empty for now
+    // 3, BUMPER
     0,
     0,
     DOWN,
@@ -76,7 +76,7 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
 
-    // 3 empty for now
+    // 3 BUMPER
     NULL,
     NULL,
     NULL,

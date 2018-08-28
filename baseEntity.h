@@ -5,7 +5,6 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 #include "direction.h"
-#include "tiles.h"
 #include "entityTypes.h"
 #include "drawBitmap.h"
 
@@ -119,7 +118,6 @@ class BaseEntity {
         virtual EntityType render(Renderer* renderer, uint8_t frame) = 0;
         virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) = 0;
         virtual EntityType onCollide(BaseEntity* other) = 0;
-        virtual EntityType onCollide(uint8_t tile) = 0;
 
         bool overlaps(BaseEntity* other);
         void bounceBack(void);

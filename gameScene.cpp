@@ -20,32 +20,34 @@ bool isOffscreen(int16_t x, int16_t y) {
     return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
 }
 
-void GameScene::detectTileCollisions(void) {
-    uint8_t tile = tileRoom.getTileAt(player.x, player.y);
-    player.onCollide(tile);
-}
-
 void GameScene::detectEntityCollisions(void) {
-    for (uint8_t ge = 0; ge < numEntitiesInCurrentRoom; ++ge) {
+    for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == UNSET) {
             continue;
         }
 
         if (entities[ge].overlaps(&player)) {
-            if (entities[ge].type == OVERWORLD_DOOR) {
+            if (entities[ge].type == BUMPER) {
+                player.undoMove();
+            } else if (entities[ge].type == OVERWORLD_DOOR) {
                 map = dungeons_map;
                 entityDefs = dungeons_entities;
                 tiles = dungeon_tiles;
+                doorDefs = dungeons_doors;
+                bumperDefs = dungeons_bumpers;
                 tileRoom.map = map;
                 tileRoom.tiles = tiles;
+
+                // TODO: invert the sword properly
                 player.entities[0].invert = true;
 
                 tileRoom.x = entities[ge].prevX;
                 tileRoom.y = entities[ge].prevY;
-                setEntitiesInRoom(tileRoom.x, tileRoom.y);
-            }
 
-            player.onCollide(&entities[ge]);
+                setEntitiesInRoom(tileRoom.x, tileRoom.y);
+            } else {
+                player.onCollide(&entities[ge]);
+            }
         }
 
         for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
@@ -90,26 +92,32 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(&(entityDefs[y]));
     uint8_t* roomPtr = pgm_read_word(&(rowPtr[x]));
 
-    numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
+    uint8_t numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
     int8_t i = 0;
+
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
+        uint8_t entityId = (rawEntityType & ENTITY_ID_MASK) >> 4;
 
-        loadEntity(entities[i], type);
-        entities[i].x = pgm_read_byte(roomPtr++);
-        entities[i].y = pgm_read_byte(roomPtr++);
+        Entity& currentEntity = entities[i];
 
-        if (type == OVERWORLD_DOOR) {
-            uint8_t doorId = (rawEntityType >> 4) & DOOR_ID_MASK;
+        loadEntity(currentEntity, type);
 
+        currentEntity.x = pgm_read_byte(roomPtr++);
+        currentEntity.y = pgm_read_byte(roomPtr++);
+
+        if (type == BUMPER) {
+            currentEntity.width = pgm_read_byte(bumperDefs + entityId * 2);
+            currentEntity.height = pgm_read_byte(bumperDefs + entityId * 2 + 1);
+        } else if (type == OVERWORLD_DOOR) {
             // reuse prevX/Y for destX/Y for doors
-            entities[i].prevX = overworld_doors[doorId * 2];
-            entities[i].prevY = overworld_doors[doorId * 2 + 1];
+            currentEntity.prevX = pgm_read_byte(doorDefs + entityId * 2);
+            currentEntity.prevY = pgm_read_byte(doorDefs + entityId * 2 + 1);
         } else {
-            entities[i].prevX = x;
-            entities[i].prevY = y;
+            currentEntity.prevX = x;
+            currentEntity.prevY = y;
         }
     }
 
@@ -169,7 +177,6 @@ void GameScene::updatePlay(uint8_t frame) {
     if (isOffscreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
     } else {
-        detectTileCollisions();
         detectEntityCollisions();
     }
 

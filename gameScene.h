@@ -12,7 +12,7 @@
 #include "player.h"
 #include "entity.h"
 
-const uint8_t MAX_ENTITIES = 8;
+const uint8_t MAX_ENTITIES = 10;
 
 class GameScene {
     typedef void (GameScene::*UpdatePtr)(uint8_t);
@@ -22,10 +22,14 @@ class GameScene {
         Arduboy2* arduboy;
         Renderer* renderer;
         Player player;
+
         Entity entities[MAX_ENTITIES];
+
         const uint8_t* map;
         const uint8_t*** entityDefs;
-        int8_t numEntitiesInCurrentRoom;
+        const uint8_t* doorDefs;
+        const uint8_t* bumperDefs;
+
         const uint8_t* tiles;
         uint8_t nextRoomX;
         uint8_t nextRoomY;
@@ -46,7 +50,6 @@ class GameScene {
 
         bool paused;
 
-        void detectTileCollisions(void);
         bool playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
@@ -71,7 +74,8 @@ class GameScene {
             player(6, 16, 3, 3),
             map(dungeons_map),
             entityDefs(dungeons_entities),
-            numEntitiesInCurrentRoom(0),
+            doorDefs(dungeons_doors),
+            bumperDefs(dungeons_bumpers),
             tiles(dungeon_tiles),
             nextRoomX(0),
             nextRoomY(0),
