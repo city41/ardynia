@@ -19,14 +19,18 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 1, 1, player.health, player.totalHealth, frame);
+    drawDots(renderer, 1, 1, player.health, 8, frame);
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
-        renderer->drawOverwrite(4, 12, itemIcons_tiles, player.bButtonEntityType - 4);
+        renderer->drawOverwrite(4, 11, itemIcons_tiles, player.bButtonEntityType - 4);
     }
 
-    renderer->drawSelfMasked(1, 12, hudBFrame_tiles, 0);
+    renderer->drawSelfMasked(1, 11, hudBFrame_tiles, 0);
     // quanity of secondary item if applicable
-    renderer->print(3, 31, 12);
+    drawDots(renderer, 1, 31, 8, 8, frame);
+
+    // keys
+    renderer->drawOverwrite(3, 39, itemIcons_tiles, 3);
+    drawDots(renderer, 1, 56, 8, 8, frame);
 }
