@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="14">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="16">
  <tileset firstgid="1" source="dungeon.tsx"/>
  <tileset firstgid="14" source="overworld.tsx"/>
  <layer id="1" name="Tile Layer 1" width="56" height="48">
@@ -58,10 +58,10 @@
   <object id="1" name="Blob" type="BLOB" x="54.5455" y="175.758">
    <point/>
   </object>
-  <object id="2" name="Blob" type="BLOB" x="95.3333" y="52.3333">
+  <object id="2" name="Blob" type="BLOB" x="24.9583" y="100.083">
    <point/>
   </object>
-  <object id="3" name="Blob" type="BLOB" x="62.6667" y="47.3333">
+  <object id="3" name="Blob" type="BLOB" x="17.0417" y="93.8333">
    <point/>
   </object>
   <object id="4" name="Bumper" type="BUMPER" x="3.375" y="59" width="39.75" height="4"/>
@@ -73,5 +73,11 @@
   <object id="11" name="Bumper" type="BUMPER" x="71.375" y="59.125" width="37.5" height="4"/>
   <object id="12" name="Bumper" type="BUMPER" x="70.875" y="64.875" width="38.125" height="4"/>
   <object id="13" name="Bumper" type="BUMPER" x="3.375" y="65.125" width="39.75" height="4"/>
+  <object id="14" name="Key" type="KEY" x="23.25" y="38.125">
+   <point/>
+  </object>
+  <object id="15" name="Chest" type="CHEST" x="80.125" y="6.625">
+   <point/>
+  </object>
  </objectgroup>
 </map>

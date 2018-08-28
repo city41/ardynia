@@ -58,7 +58,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         }
     }
 
-    renderer->drawExternalMask(x, y, playerWalk_tiles, playerWalk_mask, spriteIndex, mirror);
+    renderer->drawExternalMask(x - 4, y - 8, playerWalk_tiles, playerWalk_mask, spriteIndex, mirror);
 
 #ifdef DRAW_HITBOXES
     renderer->drawRect(x, y, w, h, BLACK);

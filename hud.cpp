@@ -15,6 +15,20 @@ void drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t m
     }
 }
 
+void drawKeys(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count) {
+    uint8_t origX = x;
+
+    for (uint8_t i = 0; i < count; ++i) {
+        renderer->drawExternalMask(x, y, key_tiles, key_mask, 0);
+        x += 5;
+
+        if (i == 2) {
+            y += 9;
+            x = origX;
+        }
+    }
+}
+
 void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t roomX, uint8_t roomY) {
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
@@ -23,14 +37,14 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
-        renderer->drawOverwrite(4, 11, itemIcons_tiles, player.bButtonEntityType - 4);
+        renderer->drawOverwrite(4, 13, itemIcons_tiles, player.bButtonEntityType - 4);
     }
 
-    renderer->drawSelfMasked(1, 11, hudBFrame_tiles, 0);
+    renderer->drawSelfMasked(1, 13, hudBFrame_tiles, 0);
     // quanity of secondary item if applicable
-    drawDots(renderer, 1, 31, 8, 8, frame);
+    drawDots(renderer, 1, 32, 8, 8, frame);
 
     // keys
-    renderer->drawOverwrite(3, 39, key_tiles, 0);
-    drawDots(renderer, 1, 56, 8, 8, frame);
+    renderer->fillRect(0, 44, 16, 18, WHITE);
+    drawKeys(renderer, 1, 45, 6);
 }

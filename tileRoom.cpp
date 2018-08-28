@@ -9,7 +9,7 @@ void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
 }
 
-void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId) {
+void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId) {   
     if (tileId < 8) {
         renderer->drawOverwrite(x, y, tiles, tileId, 0);
         return;

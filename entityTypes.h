@@ -5,7 +5,7 @@ typedef uint8_t EntityType;
 
 // max of 32 entities, and max of 8 ids per room
 const EntityType ENTITY_MASK = 0b00011111;
-const EntityType ENTITY_ID_MASK = 0x11100000;
+const EntityType ENTITY_ID_MASK = 0b11100000;
 
 const EntityType UNSET = -1;
 const EntityType SWORD = 0;
@@ -17,7 +17,7 @@ const EntityType BOMB = 5;
 const EntityType CANDLE = 6;
 const EntityType CHEST = 7;
 const EntityType KEY = 8;
-const EntityType LOCK = 8;
+const EntityType LOCK = 9;
 const EntityType BUSH = 10;
 const EntityType ENEMY2 = 11;
 const EntityType ENEMY3 = 12;

@@ -97,9 +97,9 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     int8_t i = 0;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
-        uint8_t rawEntityType = pgm_read_byte(roomPtr++);
+        uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
-        uint8_t entityId = (rawEntityType & ENTITY_ID_MASK) >> 4;
+        uint8_t entityId = (rawEntityType & ENTITY_ID_MASK) >> 5;
 
         Entity& currentEntity = entities[i];
 
@@ -130,19 +130,19 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
 }
 
 boolean GameScene::playerLeftMap(void) {
-    if (tileRoom.x == 0 && player.x < 0) {
+    if (tileRoom.x == 0 && player.x < 4) {
         return true;
     }
 
-    if (tileRoom.x == mapWidthInRooms - 1 && player.x + player.height > ROOM_WIDTH_PX) {
+    if (tileRoom.x == mapWidthInRooms - 1 && player.x + player.width - 4 > ROOM_WIDTH_PX) {
         return true;
     }
 
-    if (tileRoom.y == 0 && player.y < 0) {
+    if (tileRoom.y == 0 && player.y < 8) {
         return true;
     }
 
-    if (tileRoom.y == mapHeightInRooms - 1 && player.y + player.height > ROOM_HEIGHT_PX) {
+    if (tileRoom.y == mapHeightInRooms - 1 && player.y + player.height - 8 > ROOM_HEIGHT_PX) {
         return true;
     }
 

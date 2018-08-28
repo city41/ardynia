@@ -39,8 +39,8 @@
                  "type":"BLOB",
                  "visible":true,
                  "width":0,
-                 "x":95.3333,
-                 "y":52.3333
+                 "x":24.9583,
+                 "y":100.083
                 }, 
                 {
                  "height":0,
@@ -51,8 +51,8 @@
                  "type":"BLOB",
                  "visible":true,
                  "width":0,
-                 "x":62.6667,
-                 "y":47.3333
+                 "x":17.0417,
+                 "y":93.8333
                 }, 
                 {
                  "height":4,
@@ -152,6 +152,30 @@
                  "width":39.75,
                  "x":3.375,
                  "y":65.125
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"Key",
+                 "point":true,
+                 "rotation":0,
+                 "type":"KEY",
+                 "visible":true,
+                 "width":0,
+                 "x":23.25,
+                 "y":38.125
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"Chest",
+                 "point":true,
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":80.125,
+                 "y":6.625
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -160,7 +184,7 @@
          "y":0
         }],
  "nextlayerid":3,
- "nextobjectid":14,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

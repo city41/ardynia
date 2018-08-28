@@ -130,7 +130,47 @@ const void* const PROGMEM entityPointers[] = {
     Boomerang::spawn,
     Boomerang::update,
     NULL,
-    Boomerang::onCollide
+    Boomerang::onCollide,
+
+    // 5 BOMB
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 6 CANDLE
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 7 CHEST
+    chest_tiles,
+    chest_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 8 KEY
+    key_tiles,
+    key_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 9 LOCK
+    lock_tiles,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

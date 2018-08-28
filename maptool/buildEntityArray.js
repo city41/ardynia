@@ -6,7 +6,14 @@ const EntityTypes = {
     SWORD: 0,
     BLOB: 1,
     OVERWORLD_DOOR: 2,
-    BUMPER: 3
+    BUMPER: 3,
+    BOOMERANG: 4,
+    BOMB: 5,
+    CANDLE: 6,
+    CHEST: 7,
+    KEY: 8,
+    LOCK: 9,
+    BUSH: 10
 };
 
 function getRoomAt(mapX, mapY) {
@@ -97,8 +104,8 @@ function getRoomArrayData(
         } else if (obj.type === "BUMPER") {
             bumpers.push({
                 id: bumpers.length,
-                width: obj.width,
-                height: obj.height
+                width: Math.floor(obj.width),
+                height: Math.floor(obj.height)
             });
         }
     });

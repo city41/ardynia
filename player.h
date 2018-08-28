@@ -24,8 +24,8 @@ class Player: public BaseEntity {
         Player(int16_t x, int16_t y, int8_t health, int8_t totalHealth):
             BaseEntity(
                 PLAYER,
-                16,  // width
-                16,  // height
+                8,  // width
+                8,  // height
                 DOWN,
                 playerWalk_tiles,
                 playerWalk_mask,

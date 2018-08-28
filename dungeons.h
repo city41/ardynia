@@ -14,58 +14,68 @@ const uint8_t PROGMEM dungeons_map[832] = {
 const uint8_t PROGMEM dungeons_room0_0[] = {
     8, // number of entities
 
-    // entity 0, BLOB
-    0x1,
-    95, //x
-    52, //y
-
-    // entity 1, BLOB
-    0x1,
-    62, //x
-    47, //y
-
-    // entity 2, BUMPER
+    // entity 0, BUMPER
     0x3,
     3, //x
     59, //y
 
-    // entity 3, BUMPER
+    // entity 1, BUMPER
     0x23,
     64, //x
     26, //y
 
-    // entity 4, BUMPER
+    // entity 2, BUMPER
     0x43,
     98, //x
     26, //y
 
-    // entity 5, BUMPER
+    // entity 3, BUMPER
     0x63,
     65, //x
     6, //y
 
-    // entity 6, BUMPER
+    // entity 4, BUMPER
     0x83,
     107, //x
     7, //y
 
-    // entity 7, BUMPER
+    // entity 5, BUMPER
     0xc3,
     71, //x
-    59  //y
+    59, //y
+
+    // entity 6, KEY
+    0x8,
+    23, //x
+    38, //y
+
+    // entity 7, CHEST
+    0x7,
+    80, //x
+    6  //y
 };
 
 
 
 const uint8_t PROGMEM dungeons_room0_1[] = {
-    2, // number of entities
+    4, // number of entities
 
-    // entity 0, BUMPER
+    // entity 0, BLOB
+    0x1,
+    24, //x
+    36, //y
+
+    // entity 1, BLOB
+    0x1,
+    17, //x
+    29, //y
+
+    // entity 2, BUMPER
     0xe3,
     70, //x
     0, //y
 
-    // entity 1, BUMPER
+    // entity 3, BUMPER
     0x103,
     3, //x
     1  //y
@@ -653,15 +663,15 @@ const uint8_t PROGMEM dungeons_doors[] = {
 
 const uint8_t PROGMEM dungeons_bumpers[] = {
     // width, height
-    39.75, 4,
+    39, 4,
     12, 4,
     12, 4,
-    2.75, 17.25,
-    2.75, 17.25,
-    2.75, 23.75,
-    37.5, 4,
-    38.125, 4,
-    39.75, 4,
+    2, 17,
+    2, 17,
+    2, 23,
+    37, 4,
+    38, 4,
+    39, 4,
 };
 
 const uint8_t * const PROGMEM dungeons_row0[8] = {
