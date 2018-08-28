@@ -119,7 +119,7 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
 
     if (other->type == KEY) {
         other->type = UNSET;
-        keyCount += 1;
+        keyCount = clamp(keyCount + 1, 0, MAX_KEYS);
     }
 
     if (other->type == HEART) {

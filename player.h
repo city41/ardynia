@@ -7,6 +7,7 @@
 #include "bitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
+const uint8_t MAX_KEYS = 6;
 
 class Player: public BaseEntity {
     private:
@@ -37,7 +38,7 @@ class Player: public BaseEntity {
             ),
             movedThisFrame(false),
             totalHealth(totalHealth),
-            bButtonEntityType(BOOMERANG),
+            bButtonEntityType(UNSET),
             keyCount(0)
         {
             this->prevX = this->x = x;

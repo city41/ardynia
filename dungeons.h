@@ -55,7 +55,7 @@ const uint8_t PROGMEM dungeons_room0_0[] = {
     6, //y
 
     // entity 8, BOMB
-    0x5,
+    0x4,
     48, //x
     44, //y
 
