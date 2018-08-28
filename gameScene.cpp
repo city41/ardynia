@@ -46,7 +46,10 @@ void GameScene::detectEntityCollisions(void) {
 
                 setEntitiesInRoom(tileRoom.x, tileRoom.y);
             } else {
-                player.onCollide(&entities[ge], &player);
+                EntityType newEntity = player.onCollide(&entities[ge], &player);
+                if (newEntity != UNSET) {
+                    spawnNewEntity(newEntity, player);
+                }
             }
         }
 
@@ -56,8 +59,17 @@ void GameScene::detectEntityCollisions(void) {
             }
 
             if (entities[ge].overlaps(&player.entities[pe])) {
-                entities[ge].onCollide(&player.entities[pe], &player);
-                player.entities[pe].onCollide(&entities[ge], &player);
+                EntityType newEntity = entities[ge].onCollide(&player.entities[pe], &player);
+
+                if (newEntity != UNSET) {
+                    spawnNewEntity(newEntity, entities[ge]);
+                }
+
+                newEntity = player.entities[pe].onCollide(&entities[ge], &player);
+
+                if (newEntity != UNSET) {
+                    spawnNewEntity(newEntity, player.entities[pe]);
+                }
             }
         }
     }
@@ -86,6 +98,24 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
     }
 
     push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
+}
+
+void GameScene::spawnNewEntity(EntityType entityType, BaseEntity& spawner) {
+    uint8_t e = 0;
+    for (; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == UNSET) {
+            break;
+        }
+    }
+
+    // no room! can't spawn anything right now
+    if (e == MAX_ENTITIES) {
+        return;
+    }
+
+    loadEntity(entities[e], entityType);
+    entities[e].x = spawner.x;
+    entities[e].y = spawner.y;
 }
 
 void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
