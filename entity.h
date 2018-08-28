@@ -8,7 +8,7 @@ class Entity: public BaseEntity {
         typedef EntityType (*EntitySpawnPtr)(Entity* me, BaseEntity* player);
         typedef EntityType (*EntityUpdatePtr)(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame);
         typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer* renderer, uint8_t frame);
-        typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, BaseEntity* other);
+        typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, BaseEntity* other, BaseEntity* player);
 
         EntitySpawnPtr spawnPtr;
         EntityUpdatePtr updatePtr;
@@ -59,7 +59,7 @@ class Entity: public BaseEntity {
 
         virtual EntityType render(Renderer* renderer, uint8_t frame) override;
         virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) override;
-        virtual EntityType onCollide(BaseEntity* other) override;
+        virtual EntityType onCollide(BaseEntity* other, BaseEntity* player) override;
 };
 
 #endif

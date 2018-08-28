@@ -109,11 +109,16 @@ EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
     return UNSET;
 }
 
-EntityType Player::onCollide(BaseEntity* other) {
+EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     if (other->damage && tookDamageCount == 0) {
         health -= other->damage;
         bounceBack();
         tookDamageCount = 30;
+    }
+
+    if (other->type == KEY) {
+        other->type = UNSET;
+        keyCount += 1;
     }
 
     return UNSET;

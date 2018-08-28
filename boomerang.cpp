@@ -1,6 +1,7 @@
 #include "boomerang.h"
 #include "bitmaps.h"
 #include "math.h"
+#include "player.h"
 
 
 EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
@@ -69,8 +70,13 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
     me->mirror = mirror;
 }
 
-EntityType Boomerang::onCollide(Entity* me, BaseEntity* other) {
+EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
     if (other->type != BUMPER) {
         me->duration = 0;
+    }
+
+    if (other->type == KEY) {
+        other->type = UNSET;
+        ((Player*)player)->keyCount += 1;
     }
 }

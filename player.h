@@ -20,6 +20,8 @@ class Player: public BaseEntity {
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
 
+        uint8_t keyCount;
+
 
         Player(int16_t x, int16_t y, int8_t health, int8_t totalHealth):
             BaseEntity(
@@ -35,7 +37,8 @@ class Player: public BaseEntity {
             ),
             movedThisFrame(false),
             totalHealth(totalHealth),
-            bButtonEntityType(BOOMERANG)
+            bButtonEntityType(BOOMERANG),
+            keyCount(0)
         {
             this->prevX = this->x = x;
             this->prevY = this->y = y;
@@ -43,7 +46,7 @@ class Player: public BaseEntity {
 
         virtual EntityType render(Renderer* renderer, uint8_t frame) override;
         virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) override;
-        virtual EntityType onCollide(BaseEntity* other) override;
+        virtual EntityType onCollide(BaseEntity* other, BaseEntity* player) override;
 };
 
 #endif

@@ -45,9 +45,9 @@ EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) 
     return UNSET;
 }
 
-EntityType Entity::onCollide(BaseEntity* other) {
+EntityType Entity::onCollide(BaseEntity* other, BaseEntity* player) {
     if (collideOtherEntityPtr != NULL) {
-        return collideOtherEntityPtr(this, other);
+        return collideOtherEntityPtr(this, other, player);
     }
 
     return UNSET;

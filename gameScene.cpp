@@ -46,7 +46,7 @@ void GameScene::detectEntityCollisions(void) {
 
                 setEntitiesInRoom(tileRoom.x, tileRoom.y);
             } else {
-                player.onCollide(&entities[ge]);
+                player.onCollide(&entities[ge], &player);
             }
         }
 
@@ -56,8 +56,8 @@ void GameScene::detectEntityCollisions(void) {
             }
 
             if (entities[ge].overlaps(&player.entities[pe])) {
-                entities[ge].onCollide(&player.entities[pe]);
-                player.entities[pe].onCollide(&entities[ge]);
+                entities[ge].onCollide(&player.entities[pe], &player);
+                player.entities[pe].onCollide(&entities[ge], &player);
             }
         }
     }
