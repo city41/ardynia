@@ -31,6 +31,6 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     drawDots(renderer, 1, 31, 8, 8, frame);
 
     // keys
-    renderer->drawOverwrite(3, 39, itemIcons_tiles, 3);
+    renderer->drawOverwrite(3, 39, key_tiles, 0);
     drawDots(renderer, 1, 56, 8, 8, frame);
 }

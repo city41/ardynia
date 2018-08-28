@@ -48,7 +48,47 @@ const uint8_t PROGMEM entityProperties[] = {
     DOWN,
     0,
     0,
-    20
+    20,
+
+    // 5, BOMB
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 6, CANDLE
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 7, CHEST
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 8, KEY
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 9, LOCK
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
 };
 
 const void* const PROGMEM entityPointers[] = {

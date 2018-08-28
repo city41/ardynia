@@ -29,7 +29,7 @@ function getPropertyInt(props, propName) {
 // for non-OVERWORLD_DOOR, just return the type directly, for doors,
 // encode the door id into the type
 function getTypeInt(entity) {
-    const typeInt = entity.type | (entity.encodedId << 4);
+    const typeInt = entity.type | (entity.encodedId << 5);
 
     return "0x" + typeInt.toString(16);
 }
