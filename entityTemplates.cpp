@@ -2,6 +2,7 @@
 
 void loadEntity(Entity& entity, EntityType entityType) {
     entity.type = entityType;
+    entity.currentFrame = 0;
 
     uint8_t* start = entityProperties + (entityType * 6);
 

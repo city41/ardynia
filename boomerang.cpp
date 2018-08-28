@@ -72,11 +72,13 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
 }
 
 EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
+    if (other->type == KEY || other->type == HEART) {
+        return ((Player*)player)->onCollide(other, player);
+    }
+
     if (other->type != BUMPER) {
         me->duration = 0;
     }
 
-    if (other->type == KEY || other->type == HEART) {
-        ((Player*)player)->onCollide(other, player);
-    }
+    return UNSET;
 }
