@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="18">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="28">
  <tileset firstgid="1" source="dungeon.tsx"/>
  <tileset firstgid="14" source="overworld.tsx"/>
  <layer id="1" name="Tile Layer 1" width="56" height="48">
@@ -79,10 +79,40 @@
   <object id="15" name="Chest" type="CHEST" x="80.125" y="6.625">
    <point/>
   </object>
-  <object id="16" name="Bomb" type="BOMB" x="48.6667" y="44.3333">
+  <object id="16" name="Bomb" type="BOMB" x="127.667" y="14.3333">
    <point/>
   </object>
   <object id="17" name="Heart" type="HEART" x="32.6667" y="45">
+   <point/>
+  </object>
+  <object id="18" name="Blob" type="BLOB" x="17.6667" y="107.333">
+   <point/>
+  </object>
+  <object id="19" name="Blob" type="BLOB" x="24.3333" y="163">
+   <point/>
+  </object>
+  <object id="20" name="Blob" type="BLOB" x="145.667" y="24">
+   <point/>
+  </object>
+  <object id="21" name="Blob" type="BLOB" x="147.667" y="17.6667">
+   <point/>
+  </object>
+  <object id="22" name="Blob" type="BLOB" x="155.333" y="22">
+   <point/>
+  </object>
+  <object id="23" name="Blob" type="BLOB" x="161.667" y="27">
+   <point/>
+  </object>
+  <object id="24" name="Blob" type="BLOB" x="162.333" y="20.3333">
+   <point/>
+  </object>
+  <object id="25" name="Blob" type="BLOB" x="307.667" y="29.6667">
+   <point/>
+  </object>
+  <object id="26" name="Blob" type="BLOB" x="322.667" y="41.3333">
+   <point/>
+  </object>
+  <object id="27" name="Blob" type="BLOB" x="338" y="36.6667">
    <point/>
   </object>
  </objectgroup>

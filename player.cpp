@@ -112,7 +112,7 @@ EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
 
 EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     if (other->damage && tookDamageCount == 0) {
-        health -= other->damage;
+        health = clamp(health - other->damage, 0, totalHealth);
         bounceBack();
         tookDamageCount = 30;
     }
