@@ -3,7 +3,7 @@
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
-bool BaseEntity::overlaps(BaseEntity* other) {
+boolean BaseEntity::overlaps(BaseEntity* other) {
     return !(
         other->x                 >= x + width  ||
         other->x + other->width  <= x          ||

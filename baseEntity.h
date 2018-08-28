@@ -45,7 +45,7 @@ class BaseEntity {
         uint8_t duration;
         uint8_t currentFrame;
         MirrorMode mirror;
-        bool invert;
+        boolean invert;
         uint8_t tookDamageCount;
         uint8_t stunCount;
 
@@ -119,7 +119,7 @@ class BaseEntity {
         virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) = 0;
         virtual EntityType onCollide(BaseEntity* other) = 0;
 
-        bool overlaps(BaseEntity* other);
+        boolean overlaps(BaseEntity* other);
         void bounceBack(void);
 };
 

@@ -48,9 +48,9 @@ class GameScene {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
-        bool paused;
+        boolean paused;
 
-        bool playerLeftMap(void);
+        boolean playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);

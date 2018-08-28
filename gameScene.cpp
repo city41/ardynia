@@ -16,7 +16,7 @@ void GameScene::pop() {
     nextRender = prevRender;
 }
 
-bool isOffscreen(int16_t x, int16_t y) {
+boolean isOffscreen(int16_t x, int16_t y) {
     return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
 }
 
@@ -129,7 +129,7 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     mapHeightInRooms = pgm_read_byte(map + 3);
 }
 
-bool GameScene::playerLeftMap(void) {
+boolean GameScene::playerLeftMap(void) {
     if (tileRoom.x == 0 && player.x < 0) {
         return true;
     }

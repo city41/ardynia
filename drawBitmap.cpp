@@ -26,7 +26,7 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
         mask += 2;
     }
   
-    const bool hasMask = mask != NULL;
+    const boolean hasMask = mask != NULL;
 
     uint8_t w = pgm_read_byte(bitmap++);
     uint8_t h = pgm_read_byte(bitmap++);
