@@ -76,7 +76,7 @@ EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* playe
         return ((Player*)player)->onCollide(other, player);
     }
 
-    if (other->type != BUMPER) {
+    if (other->type != BUMPER && other->type != BOMB) {
         me->duration = 0;
     }
 

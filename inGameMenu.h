@@ -18,7 +18,7 @@ class InGameMenu {
     public:
         Decision decisions[NUM_DECISION_COLUMNS][NUM_DECISION_ROWS] = {
             { Pause, Save, Load },
-            { BOOMERANG, BOMB, CANDLE }
+            { BOMB, BOOMERANG, CANDLE }
         };
 
         uint8_t column;
