@@ -52,6 +52,6 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     }
 
     // keys
-    renderer->fillRect(0, 44, 16, 18, WHITE);
+    renderer->fillRect(1, 44, 15, 18, WHITE);
     drawKeys(renderer, 1, 45, player.keyCount);
 }
