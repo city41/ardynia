@@ -71,7 +71,7 @@ class GameScene {
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             arduboy(arduboy),
             renderer(renderer),
-            player(6, 16, 3, 3),
+            player(6, 16, 2, 3),
             map(dungeons_map),
             entityDefs(dungeons_entities),
             doorDefs(dungeons_doors),

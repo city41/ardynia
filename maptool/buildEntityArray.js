@@ -13,7 +13,17 @@ const EntityTypes = {
     CHEST: 7,
     KEY: 8,
     LOCK: 9,
-    BUSH: 10
+    BUSH: 10,
+    ENEMY2: 11,
+    ENEMY3: 12,
+    ENEMY4: 13,
+    ENEMY5: 14,
+    ENEMY6: 15,
+    BOSS1: 16,
+    BOSS2: 17,
+    BOSS3: 18,
+    HEART: 19,
+    HEART_CONTAINER: 20
 };
 
 function getRoomAt(mapX, mapY) {

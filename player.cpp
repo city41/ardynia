@@ -2,6 +2,7 @@
 #include "bitmaps.h"
 #include "entityTemplates.h"
 #include "drawBitmap.h"
+#include "util.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -119,6 +120,11 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     if (other->type == KEY) {
         other->type = UNSET;
         keyCount += 1;
+    }
+
+    if (other->type == HEART) {
+        other->type = UNSET;
+        health = clamp(health + 1, 0, totalHealth);
     }
 
     return UNSET;

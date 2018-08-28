@@ -27,7 +27,7 @@ const EntityType ENEMY6 = 15;
 const EntityType BOSS1 = 16;
 const EntityType BOSS2 = 17;
 const EntityType BOSS3 = 18;
-const EntityType LIFEUP = 19;
+const EntityType HEART = 19;
 const EntityType HEART_CONTAINER = 20;
 
 const EntityType PLAYER = 255;

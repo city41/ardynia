@@ -76,8 +76,7 @@ EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* playe
         me->duration = 0;
     }
 
-    if (other->type == KEY) {
-        other->type = UNSET;
-        ((Player*)player)->keyCount += 1;
+    if (other->type == KEY || other->type == HEART) {
+        ((Player*)player)->onCollide(other, player);
     }
 }

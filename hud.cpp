@@ -38,7 +38,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 1, 1, player.health, 8, frame, false);
+    drawDots(renderer, 1, 1, player.health, player.totalHealth, frame, false);
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {

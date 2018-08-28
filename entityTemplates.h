@@ -89,6 +89,94 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+
+    // 10, BUSH
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 11, ENEMY2
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 12, ENEMY3
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 13, ENEMY4
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 14, ENEMY5
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 15, ENEMY6
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 16, BOSS1
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 17, BOSS2
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 18, BOSS3
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
+
+    // 19, HEART
+    8,
+    8,
+    DOWN,
+    0,
+    0,
+    180,
+
+    // 20, HEART_CONTAINER
+    0,
+    0,
+    DOWN,
+    0,
+    0,
+    0,
 };
 
 const void* const PROGMEM entityPointers[] = {
@@ -166,6 +254,94 @@ const void* const PROGMEM entityPointers[] = {
 
     // 9 LOCK
     lock_tiles,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 10 BUSH
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 11 ENEMY2
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 12 ENEMY3
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 13 ENEMY4
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 15 ENEMY5
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 16 ENEMY6
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 17 BOSS1
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 18 BOSS2
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 19 BOSS3
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 19 HEART
+    heart_tiles,
+    heart_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 20 HEART_CONTAINER
+    NULL,
     NULL,
     NULL,
     NULL,

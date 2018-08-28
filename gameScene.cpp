@@ -119,6 +119,8 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
             currentEntity.prevX = x;
             currentEntity.prevY = y;
         }
+
+        currentEntity.invert = type == HEART;
     }
 
     for (; i < MAX_ENTITIES; ++i) {
