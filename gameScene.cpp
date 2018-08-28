@@ -1,6 +1,7 @@
 #include "gameScene.h"
 #include "util.h"
 #include "entityTemplates.h"
+#include "state.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -29,22 +30,21 @@ void GameScene::detectEntityCollisions(void) {
         if (entities[ge].overlaps(&player)) {
             if (entities[ge].type == BUMPER) {
                 player.undoMove();
-            } else if (entities[ge].type == OVERWORLD_DOOR) {
-                map = dungeons_map;
-                entityDefs = dungeons_entities;
-                tiles = dungeon_tiles;
-                doorDefs = dungeons_doors;
-                bumperDefs = dungeons_bumpers;
-                tileRoom.map = map;
-                tileRoom.tiles = tiles;
+            } else if (entities[ge].type == TELEPORTER) {
+                entityDefs = entityDefs == dungeons_entities ? overworld_entities : dungeons_entities;
+                doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
+                bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
+                TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
+                TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
 
-                // TODO: invert the sword properly
-                player.entities[0].invert = true;
+                TileRoom::x = entities[ge].prevX;
+                TileRoom::y = entities[ge].prevY;
 
-                tileRoom.x = entities[ge].prevX;
-                tileRoom.y = entities[ge].prevY;
+                setEntitiesInRoom(TileRoom::x, TileRoom::y);
 
-                setEntitiesInRoom(tileRoom.x, tileRoom.y);
+                // for now, place player in the middle of the room
+                player.moveTo(57, 28);
+                player.moveTo(57, 28);
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
                 if (newEntity != UNSET) {
@@ -77,23 +77,23 @@ void GameScene::detectEntityCollisions(void) {
 
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
-        nextRoomX = tileRoom.x - 1;
-        nextRoomY = tileRoom.y;
+        nextRoomX = TileRoom::x - 1;
+        nextRoomY = TileRoom::y;
         roomTransitionCount = ROOM_WIDTH_PX;
 
     } else if (x > ROOM_WIDTH_PX) {
-        nextRoomX = tileRoom.x + 1;
-        nextRoomY = tileRoom.y;
+        nextRoomX = TileRoom::x + 1;
+        nextRoomY = TileRoom::y;
         roomTransitionCount = ROOM_WIDTH_PX;
 
     } else if (y < 0) {
-        nextRoomX = tileRoom.x;
-        nextRoomY = tileRoom.y - 1;
+        nextRoomX = TileRoom::x;
+        nextRoomY = TileRoom::y - 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
  
     } else if (y > HEIGHT) {
-        nextRoomX = tileRoom.x;
-        nextRoomY = tileRoom.y + 1;
+        nextRoomX = TileRoom::x;
+        nextRoomY = TileRoom::y + 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
     }
 
@@ -122,6 +122,11 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(&(entityDefs[y]));
     uint8_t* roomPtr = pgm_read_word(&(rowPtr[x]));
 
+    mapWidthInRooms = pgm_read_byte(TileRoom::map + 2);
+    mapHeightInRooms = pgm_read_byte(TileRoom::map + 3);
+
+    uint8_t roomIndex = mapWidthInRooms * y + x;
+
     uint8_t numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
     int8_t i = 0;
@@ -141,10 +146,19 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
         if (type == BUMPER) {
             currentEntity.width = pgm_read_byte(bumperDefs + entityId * 2);
             currentEntity.height = pgm_read_byte(bumperDefs + entityId * 2 + 1);
-        } else if (type == OVERWORLD_DOOR) {
+        } else if (type == TELEPORTER) {
             // reuse prevX/Y for destX/Y for doors
             currentEntity.prevX = pgm_read_byte(doorDefs + entityId * 2);
             currentEntity.prevY = pgm_read_byte(doorDefs + entityId * 2 + 1);
+        } else if (type == CHEST) {
+            // take what is in the chest (which here is entityId), and stick
+            // it in the chest's health
+            currentEntity.health = entityId;
+            if (State::isTriggered(roomIndex, State::overworldRoomStates)) {
+                // frame 1 is the open chest frame, indicates this chest
+                // has already been looted
+                currentEntity.currentFrame = 1;
+            }
         } else {
             currentEntity.prevX = x;
             currentEntity.prevY = y;
@@ -154,25 +168,22 @@ void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
     for (; i < MAX_ENTITIES; ++i) {
         entities[i].type = UNSET;
     }
-
-    mapWidthInRooms = pgm_read_byte(map + 2);
-    mapHeightInRooms = pgm_read_byte(map + 3);
 }
 
 boolean GameScene::playerLeftMap(void) {
-    if (tileRoom.x == 0 && player.x < 4) {
+    if (TileRoom::x == 0 && player.x < 6) {
         return true;
     }
 
-    if (tileRoom.x == mapWidthInRooms - 1 && player.x + player.width - 4 > ROOM_WIDTH_PX) {
+    if (TileRoom::x == mapWidthInRooms - 1 && player.x + player.width > ROOM_WIDTH_PX - 6) {
         return true;
     }
 
-    if (tileRoom.y == 0 && player.y < 8) {
+    if (TileRoom::y == 0 && player.y < 8) {
         return true;
     }
 
-    if (tileRoom.y == mapHeightInRooms - 1 && player.y + player.height - 8 > ROOM_HEIGHT_PX) {
+    if (TileRoom::y == mapHeightInRooms - 1 && player.y + player.height > ROOM_HEIGHT_PX - 8) {
         return true;
     }
 
@@ -182,6 +193,12 @@ boolean GameScene::playerLeftMap(void) {
 
 void GameScene::updatePlay(uint8_t frame) {
     player.update(&player, arduboy, frame);
+
+    // player is in the middle of showing off a new item,
+    // freeze the game while this is happening
+    if (player.receiveItemCount > 0) {
+        return;
+    }
 
     if (playerLeftMap()) {
         player.undoMove();
@@ -219,7 +236,7 @@ void GameScene::updatePlay(uint8_t frame) {
 }
 
 void GameScene::renderPlay(uint8_t frame) {
-    tileRoom.render(renderer, frame);
+    TileRoom::render(renderer, frame);
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
@@ -243,7 +260,7 @@ void GameScene::renderPlay(uint8_t frame) {
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
+    Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
 void GameScene::updateMenu(uint8_t frame) {
@@ -259,18 +276,18 @@ void GameScene::updateRoomTransition(uint8_t frame) {
 
     if (roomTransitionCount == 0) {
 
-        if (nextRoomX < tileRoom.x) {
+        if (nextRoomX < TileRoom::x) {
             player.moveTo(ROOM_WIDTH_PX - 1, player.y);
-        } else if (nextRoomX > tileRoom.x) {
+        } else if (nextRoomX > TileRoom::x) {
             player.moveTo(1, player.y);
-        } else if (nextRoomY < tileRoom.y) {
+        } else if (nextRoomY < TileRoom::y) {
             player.moveTo(player.x, ROOM_HEIGHT_PX - 1);
         } else {
             player.moveTo(player.x, 1);
         }
 
-        tileRoom.x = nextRoomX;
-        tileRoom.y = nextRoomY;
+        TileRoom::x = nextRoomX;
+        TileRoom::y = nextRoomY;
 
         setEntitiesInRoom(nextRoomX, nextRoomY);
 
@@ -288,26 +305,26 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     int16_t translateX = 0, translateY = 0;
 
     // draw current room translated
-    if (nextRoomX < tileRoom.x) {
+    if (nextRoomX < TileRoom::x) {
         translateX = ROOM_WIDTH_PX - roomTransitionCount;
-    } else if (nextRoomX > tileRoom.x) {
+    } else if (nextRoomX > TileRoom::x) {
         translateX = roomTransitionCount - ROOM_WIDTH_PX;
-    } else if (nextRoomY < tileRoom.y) {
+    } else if (nextRoomY < TileRoom::y) {
         translateY = ROOM_HEIGHT_PX - roomTransitionCount;
-    } else if (nextRoomY > tileRoom.y) {
+    } else if (nextRoomY > TileRoom::y) {
         translateY = roomTransitionCount - ROOM_HEIGHT_PX;
     }
 
     renderer->translateX = translateX;
     renderer->translateY = translateY;
-    tileRoom.render(renderer, frame);
+    TileRoom::render(renderer, frame);
 
     // draw next room translated
     int16_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
     renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
     renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
-    tileRoom.render(renderer, frame, nextRoomX, nextRoomY);
+    TileRoom::render(renderer, frame, nextRoomX, nextRoomY);
     
     // draw player translated
     renderer->translateX = translateX;
@@ -316,7 +333,7 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
-    Hud::render(renderer, frame, player, tileRoom.x, tileRoom.y);
+    Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
 void GameScene::update(uint8_t frame) {
@@ -333,7 +350,7 @@ void GameScene::update(uint8_t frame) {
             if (player.bButtonEntityType != UNSET) {
                 menu.decision = player.bButtonEntityType;
                 menu.column = 1;
-                menu.row = player.bButtonEntityType - 4;
+                menu.row = player.bButtonEntityType - 1;
             } else {
                 menu.column = 1;
                 menu.row = 0;

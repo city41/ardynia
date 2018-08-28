@@ -1,36 +1,50 @@
 #ifndef entityTypes_h
 #define entityTypes_h
 
-typedef uint8_t EntityType;
+typedef int8_t EntityType;
 
 // max of 32 entities, and max of 8 ids per room
 const EntityType ENTITY_MASK = 0b00011111;
 const EntityType ENTITY_ID_MASK = 0b11100000;
 
 const EntityType UNSET = -1;
-const EntityType SWORD = 0;
-const EntityType BLOB = 1;
-const EntityType OVERWORLD_DOOR = 2;
-const EntityType BUMPER = 3;
-const EntityType BOMB = 4;
-const EntityType BOOMERANG = 5;
-const EntityType CANDLE = 6;
-const EntityType CHEST = 7;
-const EntityType KEY = 8;
-const EntityType LOCK = 9;
-const EntityType BUSH = 10;
-const EntityType ENEMY2 = 11;
-const EntityType ENEMY3 = 12;
-const EntityType ENEMY4 = 13;
-const EntityType ENEMY5 = 14;
-const EntityType ENEMY6 = 15;
-const EntityType BOSS1 = 16;
-const EntityType BOSS2 = 17;
-const EntityType BOSS3 = 18;
-const EntityType HEART = 19;
-const EntityType HEART_CONTAINER = 20;
 
-const EntityType PLAYER = 255;
+// items the player can use, anything with ID less than 8
+// can be stored in a chest
+const EntityType SWORD = 0;
+const EntityType BOMB = 1;
+const EntityType BOOMERANG = 2;
+const EntityType CANDLE = 3;
+const EntityType KEY = 4;
+const EntityType HEART = 5;
+const EntityType HEART_CONTAINER = 6;
+const EntityType CHEST = 7;
+
+// enemies, to be named
+const EntityType BLOB = 8;
+const EntityType ENEMY2 = 9;
+const EntityType ENEMY3 = 10;
+const EntityType ENEMY4 = 11;
+const EntityType ENEMY5 = 12;
+const EntityType ENEMY6 = 13;
+
+// bosses, to be named
+const EntityType BOSS1 = 14;
+const EntityType BOSS2 = 15;
+const EntityType BOSS3 = 16;
+
+// things related to navigating maps
+// and interacting with the world
+const EntityType BUMPER = 17;
+const EntityType TELEPORTER = 18; // aka a door
+const EntityType BUSH = 19;
+const EntityType LOCK = 20;
+
+// projectiles
+const EntityType FLAME = 21;
+const EntityType PROJECTILE = 22;
+
+const EntityType PLAYER = 127;
 
 #endif
 

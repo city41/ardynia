@@ -4,26 +4,28 @@ const ROOM_HEIGHT_PX = 64;
 const EntityTypes = {
     UNSET: -1,
     SWORD: 0,
-    BLOB: 1,
-    OVERWORLD_DOOR: 2,
-    BUMPER: 3,
-    BOMB: 4,
-    BOOMERANG: 5,
-    CANDLE: 6,
+    BOMB: 1,
+    BOOMERANG: 2,
+    CANDLE: 3,
+    KEY: 4,
+    HEART: 5,
+    HEART_CONTAINER: 6,
     CHEST: 7,
-    KEY: 8,
-    LOCK: 9,
-    BUSH: 10,
-    ENEMY2: 11,
-    ENEMY3: 12,
-    ENEMY4: 13,
-    ENEMY5: 14,
-    ENEMY6: 15,
-    BOSS1: 16,
-    BOSS2: 17,
-    BOSS3: 18,
-    HEART: 19,
-    HEART_CONTAINER: 20
+    BLOB: 8,
+    ENEMY2: 9,
+    ENEMY3: 10,
+    ENEMY4: 11,
+    ENEMY5: 12,
+    ENEMY6: 13,
+    BOSS1: 14,
+    BOSS2: 15,
+    BOSS3: 16,
+    BUMPER: 17,
+    TELEPORTER: 18,
+    BUSH: 19,
+    LOCK: 20,
+    FLAME: 21,
+    PROJECTILE: 22
 };
 
 function getRoomAt(mapX, mapY) {
@@ -38,27 +40,29 @@ function getRoomAt(mapX, mapY) {
     };
 }
 
-// for OVERWORLD_DOOR, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
-function getPropertyInt(props, propName) {
-    return props.find(p => p.name === propName).value;
+// for TELEPORTER, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
+// for CHEST, dig in and find out what the chest contains
+function getPropertyValue(props, propName) {
+    return props && props.find(p => p.name === propName).value;
 }
 
-// for non-OVERWORLD_DOOR, just return the type directly, for doors,
-// encode the door id into the type
+// combine the entity type plus its encoded id into one value
+// for most entities, the encoded id is zero, it's only used by a few
+// entity types to sneak in a bit more info (what's inside a chest for example)
 function getTypeInt(entity) {
     const typeInt = entity.type | (entity.encodedId << 5);
 
     return "0x" + typeInt.toString(16);
 }
 
-function getDoorArrayData(name, doors) {
-    const dataStringForDoors = `const uint8_t PROGMEM ${name}_doors[] = {\n    // dest x, dest y (in rooms)`;
+function getTeleporterArrayData(name, teleporters) {
+    const dataStringForTeleporters = `const uint8_t PROGMEM ${name}_teleporters[] = {\n    // dest x, dest y (in rooms)`;
 
-    const doorData = doors.reduce((building, door) => {
-        return building + `\n    ${door.destX}, ${door.destY},`;
+    const teleporterData = teleporters.reduce((building, teleporter) => {
+        return building + `\n    ${teleporter.destX}, ${teleporter.destY},`;
     }, "");
 
-    return dataStringForDoors + doorData + "\n};";
+    return dataStringForTeleporters + teleporterData + "\n};";
 }
 
 function getBumperArrayData(name, bumpers) {
@@ -81,14 +85,66 @@ function getRoomArrayData(
 ) {
     const { objects } = objectLayer;
     let rooms = [[]];
-    const doors = [];
+    const teleporters = [];
     const bumpers = [];
+
+    function getBumperIdWithSize(width, height) {
+        const bumper = bumpers.find(
+            b =>
+                b.width === Math.floor(width) && b.height === Math.floor(height)
+        );
+
+        if (bumper) {
+            return bumper.id;
+        }
+
+        return null;
+    }
+
+    // the entity type can also encode other data
+    // teleporters: an index into the teleporters array to find out where to teleport to
+    // bumpers: an index into the bumpers array to find out how big the bumper is
+    // chest: an entity type id that indicates what is in the chest (must be [0,8))
+    //
+    // TODO: bumpers can share indices if they are the same size, this is a decent size win
+    function getEncodedId(obj) {
+        if (obj.type === "TELEPORTER") {
+            return teleporters.length;
+        }
+        if (obj.type === "BUMPER") {
+            const encodedId = getBumperIdWithSize(obj.width, obj.height);
+            if (encodedId === null) {
+                throw new Error("failed to get an encoded id for a bumper");
+            }
+            return encodedId;
+        }
+
+        if (obj.type === "CHEST") {
+            const containedTypeName = getPropertyValue(
+                obj.properties,
+                "CONTAINED_TYPE"
+            );
+            return EntityTypes[containedTypeName];
+        }
+
+        return 0;
+    }
 
     objects.forEach((obj, i) => {
         const { roomX, roomY, roomPxX, roomPxY } = getRoomAt(obj.x, obj.y);
         const entityX = obj.x - roomPxX;
         const entityY = obj.y - roomPxY;
         const type = EntityTypes[obj.type];
+
+        if (obj.type === "BUMPER") {
+            if (getBumperIdWithSize(obj.width, obj.height) === null) {
+                bumpers.push({
+                    id: bumpers.length,
+                    width: Math.floor(obj.width),
+                    height: Math.floor(obj.height)
+                });
+            }
+        }
 
         rooms[roomX] = rooms[roomX] || [];
         rooms[roomX][roomY] = rooms[roomX][roomY] || [];
@@ -97,25 +153,14 @@ function getRoomArrayData(
             y: entityY,
             type,
             typeName: obj.type,
-            encodedId:
-                obj.type === "OVERWORLD_DOOR"
-                    ? doors.length
-                    : obj.type === "BUMPER"
-                        ? bumpers.length
-                        : 0
+            encodedId: getEncodedId(obj)
         });
 
-        if (obj.type === "OVERWORLD_DOOR") {
-            doors.push({
-                id: doors.length,
-                destX: getPropertyInt(obj.properties, "DEST_ROOM_X"),
-                destY: getPropertyInt(obj.properties, "DEST_ROOM_Y")
-            });
-        } else if (obj.type === "BUMPER") {
-            bumpers.push({
-                id: bumpers.length,
-                width: Math.floor(obj.width),
-                height: Math.floor(obj.height)
+        if (obj.type === "TELEPORTER") {
+            teleporters.push({
+                id: teleporters.length,
+                destX: getPropertyValue(obj.properties, "DEST_ROOM_X"),
+                destY: getPropertyValue(obj.properties, "DEST_ROOM_Y")
             });
         }
     });
@@ -152,12 +197,20 @@ function getRoomArrayData(
         }
     }
 
-    const doorArrayString = getDoorArrayData(name, doors);
+    if (bumpers.length > 7) {
+        throw new Error(
+            "over bumper limit of 7, have " + bumpers.length + " bumpers"
+        );
+    } else {
+        console.log("number of bumpers for", name, bumpers.length);
+    }
+
+    const teleporterArrayString = getTeleporterArrayData(name, teleporters);
     const bumperArrayString = getBumperArrayData(name, bumpers);
 
     return (
         roomArrayStrings.join("\n\n") +
-        doorArrayString +
+        teleporterArrayString +
         "\n\n" +
         "\n\n" +
         bumperArrayString

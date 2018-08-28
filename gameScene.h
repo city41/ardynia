@@ -25,15 +25,12 @@ class GameScene {
 
         Entity entities[MAX_ENTITIES];
 
-        const uint8_t* map;
         const uint8_t*** entityDefs;
         const uint8_t* doorDefs;
         const uint8_t* bumperDefs;
 
-        const uint8_t* tiles;
         uint8_t nextRoomX;
         uint8_t nextRoomY;
-        TileRoom tileRoom;
         InGameMenu menu;
 
         uint8_t roomTransitionCount;
@@ -73,14 +70,11 @@ class GameScene {
             arduboy(arduboy),
             renderer(renderer),
             player(30, 36, 2, 3),
-            map(overworld_map),
             entityDefs(overworld_entities),
-            doorDefs(overworld_doors),
+            doorDefs(overworld_teleporters),
             bumperDefs(overworld_bumpers),
-            tiles(overworld_tiles),
-            nextRoomX(0),
-            nextRoomY(0),
-            tileRoom(map, tiles, 0, 0),
+            nextRoomX(1),
+            nextRoomY(1),
             menu(),
             roomTransitionCount(0),
             prevUpdate(NULL),
@@ -91,7 +85,12 @@ class GameScene {
             nextRender(NULL),
             paused(false)
         {
-            setEntitiesInRoom(0, 0);
+            TileRoom::map = overworld_map;
+            TileRoom::tiles = overworld_tiles;
+            TileRoom::x = 1;
+            TileRoom::y = 1;
+
+            setEntitiesInRoom(1, 1);
         }
 
         void update(uint8_t frame);

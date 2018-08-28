@@ -72,13 +72,19 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
 }
 
 EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
-    if (other->type == KEY || other->type == HEART) {
+    EntityType otherType = other->type;
+
+    // hit something the user can collect? collect it and keep going
+    if (otherType >= 4 && otherType <= 5) {
         return ((Player*)player)->onCollide(other, player);
     }
 
-    if (other->type != BUMPER && other->type != BOMB) {
+    // hit an enemy? then begin returning to the player
+    if (otherType >= 8 && otherType <= 16) {
         me->duration = 0;
     }
+
+    // hit anything else? don't care, keep flying
 
     return UNSET;
 }

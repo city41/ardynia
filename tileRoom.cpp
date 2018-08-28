@@ -5,6 +5,11 @@
 
 const uint8_t MAP_HEADER_SIZE = 5;
 
+uint8_t* TileRoom::map = NULL;
+uint8_t* TileRoom::tiles = NULL;
+uint8_t TileRoom::x = 0;
+uint8_t TileRoom::y = 0;
+
 void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
 }
@@ -37,6 +42,11 @@ void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, 
             renderer->drawOverwrite(x, y, tiles, LeftWall, MIRROR_HORIZONTAL);
             break;
     }
+}
+
+uint8_t TileRoom::getRoomIndex(uint8_t ry, uint8_t rx) {
+    uint8_t mapWidth = pgm_read_byte(map + 2);
+    return mapWidth * ry + rx;
 }
 
 /**
@@ -73,7 +83,7 @@ void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roo
     uint8_t tilesPerRoom = tilesPerRow * tilesPerColumn;
 
     // how far into the dungeon is this room?
-    uint8_t roomNumber = mapWidth * roomY + roomX;
+    uint8_t roomNumber = getRoomIndex(roomY, roomX);
 
     // grab its starting data index out of the room indices header
     // the stored index does not account for the headers, so tack them on

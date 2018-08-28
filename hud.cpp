@@ -42,7 +42,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
-        renderer->drawOverwrite(4, 13, itemIcons_tiles, player.bButtonEntityType - 4);
+        renderer->drawOverwrite(4, 13, itemIcons_tiles, player.bButtonEntityType - 1);
     }
 
     renderer->drawSelfMasked(1, 13, hudBFrame_tiles, 0);

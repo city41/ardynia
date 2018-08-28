@@ -27,21 +27,15 @@ const TileDef Compression = 0xF;
 
 class TileRoom {
     public:
-        const uint8_t* map;
-        const uint8_t* tiles;
+        static uint8_t* map;
+        static uint8_t* tiles;
 
-        uint8_t x;
-        uint8_t y;
+        static uint8_t x;
+        static uint8_t y;
 
-        TileRoom(const uint8_t* map, const uint8_t* tiles, const uint8_t x, const uint8_t y):
-            map(map),
-            tiles(tiles),
-            x(x),
-            y(y)
-        {}
-
-        void render(Renderer *renderer, byte frame, uint8_t roomX, uint8_t roomY);
-        void render(Renderer *renderer, byte frame);
+        static uint8_t getRoomIndex(uint8_t x, uint8_t y);
+        static void render(Renderer *renderer, byte frame, uint8_t roomX, uint8_t roomY);
+        static void render(Renderer *renderer, byte frame);
 };
 
 #endif

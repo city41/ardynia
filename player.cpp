@@ -3,6 +3,8 @@
 #include "entityTemplates.h"
 #include "drawBitmap.h"
 #include "util.h"
+#include "tileRoom.h"
+#include "state.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -33,29 +35,36 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     uint8_t spriteIndex;
     MirrorMode mirror = 0;
-    bool attacking = entities[0].type == SWORD || entities[1].type == BOOMERANG;
 
-    switch (dir) {
-        case LEFT:
-            spriteIndex = attacking ? 4 : 0;
-            break;
-        case RIGHT:
-            spriteIndex = attacking ? 4 : 0;
-            mirror = MIRROR_HORIZONTAL;
-            break;
-        case UP:
-            spriteIndex = attacking ? 5 : 2;
-            break;
-        case DOWN:
-            spriteIndex = attacking ? 6 : 3;
-            break;
-    }
+    if (receiveItemCount > 0) {
+        spriteIndex = 7;
+        /* renderer->fillRect(x -4, y - 24, 16, 16, WHITE); */
+        renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem - 1, 0);
+    } else {
+        bool attacking = entities[0].type == SWORD || entities[1].type == BOOMERANG;
 
-    if (movedThisFrame && ((frame / 6) % 2) == 0) {
-        if (dir == LEFT || dir == RIGHT) {
-            ++spriteIndex;
-        } else {
-            mirror = MIRROR_HORIZONTAL;
+        switch (dir) {
+            case LEFT:
+                spriteIndex = attacking ? 4 : 0;
+                break;
+            case RIGHT:
+                spriteIndex = attacking ? 4 : 0;
+                mirror = MIRROR_HORIZONTAL;
+                break;
+            case UP:
+                spriteIndex = attacking ? 5 : 2;
+                break;
+            case DOWN:
+                spriteIndex = attacking ? 6 : 3;
+                break;
+        }
+
+        if (movedThisFrame && ((frame / 6) % 2) == 0) {
+            if (dir == LEFT || dir == RIGHT) {
+                ++spriteIndex;
+            } else {
+                mirror = MIRROR_HORIZONTAL;
+            }
         }
     }
 
@@ -71,6 +80,11 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
+    }
+
+    if (receiveItemCount > 0) {
+        receiveItemCount -= 1;
+        return UNSET;
     }
 
     int16_t newX = x, newY = y;
@@ -111,6 +125,12 @@ EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
 }
 
 EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
+    if (other->type == CHEST) {
+        undoMove();
+        receiveItemFromChest(other);
+        return UNSET;
+    }
+
     if (other->damage && tookDamageCount == 0) {
         health = clamp(health - other->damage, 0, totalHealth);
         bounceBack();
@@ -130,4 +150,24 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     return UNSET;
 }
 
+void Player::receiveItemFromChest(BaseEntity* chest) {
+    if (
+        y >= (chest->y + chest->height) &&
+        chest->currentFrame == 0
+    ) {
+        EntityType item = chest->health;
+        chest->currentFrame = 1;
+
+        if (item == KEY) {
+            keyCount = clamp(keyCount + 1, 0, MAX_KEYS);
+        } else if (item >= BOMB && item <= CANDLE) {
+            receiveItemCount = 180;
+            receivedItem = item;
+            bButtonEntityType = receivedItem;
+        }
+
+        const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
+        State::setTriggered(roomIndex, State::overworldRoomStates);
+    }
+}
 

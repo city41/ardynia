@@ -17,11 +17,15 @@ class Player: public BaseEntity {
         void bButtonAction(void);
 
     public:
+        uint8_t receiveItemCount;
+        EntityType receivedItem;
         int8_t totalHealth;
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
 
         uint8_t keyCount;
+
+        void receiveItemFromChest(BaseEntity* chest);
 
 
         Player(int16_t x, int16_t y, int8_t health, int8_t totalHealth):
@@ -37,6 +41,8 @@ class Player: public BaseEntity {
                 0    // duration
             ),
             movedThisFrame(false),
+            receiveItemCount(0),
+            receivedItem(UNSET),
             totalHealth(totalHealth),
             bButtonEntityType(UNSET),
             keyCount(0)

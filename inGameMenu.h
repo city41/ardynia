@@ -7,9 +7,9 @@
 
 typedef uint8_t Decision;
 
-const Decision Pause = 1;
-const Decision Save = 2;
-const Decision Load = 3;
+const Decision Pause = 11;
+const Decision Save = 12;
+const Decision Load = 13;
 
 const uint8_t NUM_DECISION_COLUMNS = 2;
 const uint8_t NUM_DECISION_ROWS = 3;

@@ -8,13 +8,13 @@ EntityType Sword::spawn(Entity* me, BaseEntity* player) {
 
     switch (player->dir) {
         case LEFT:
-            me->x = px - 19;
+            me->x = px - 18;
             me->y = py - 4;
             me->currentFrame = 0;
             me->mirror = 0;
             break;
         case RIGHT:
-            me->x = px + 12;
+            me->x = px + 11;
             me->y = py - 4;
             me->currentFrame = 0;
             me->mirror = MIRROR_HORIZONTAL;

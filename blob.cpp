@@ -12,6 +12,8 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
 
             if (player->health < ((Player*)player)->totalHealth && random(0, 3) == 1) {
                 return HEART;
+            } else {
+                return UNSET;
             }
         } else {
             me->bounceBack();
