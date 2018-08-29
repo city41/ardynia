@@ -38,10 +38,11 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 7;
-        /* renderer->fillRect(x -4, y - 24, 16, 16, WHITE); */
         renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem - 1, 0);
     } else {
-        bool attacking = entities[0].type == SWORD || entities[1].type == BOOMERANG;
+        // for the boomerang, only want to hold the attack pose as long as they don't move
+        // as soon as they start moving, they should go into normal movement frames
+        bool attacking = entities[0].type == SWORD || (entities[1].type == BOOMERANG && !movedThisFrame);
 
         switch (dir) {
             case LEFT:
