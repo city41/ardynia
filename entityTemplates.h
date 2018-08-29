@@ -18,7 +18,7 @@ const uint8_t PROGMEM entityProperties[] = {
     16,           // height
     DOWN,         // direction
     0,            // health
-    2,            // damage
+    1,            // damage
     20,           // duration
     TRUE,         // invertInDungeon
 
