@@ -15,6 +15,8 @@ class Entity: public BaseEntity {
         EntityRenderPtr renderPtr;
         EntityCollideOtherEntityPtr collideOtherEntityPtr;
 
+        uint8_t invertInDungeon;
+
         Entity():
             BaseEntity(),
             spawnPtr(NULL),
@@ -52,7 +54,8 @@ class Entity: public BaseEntity {
             spawnPtr(spawnPtr),
             updatePtr(updatePtr),
             renderPtr(renderPtr),
-            collideOtherEntityPtr(collideOtherEntityPtr)
+            collideOtherEntityPtr(collideOtherEntityPtr),
+            invertInDungeon(0)
         {}
 
         EntityType spawn(BaseEntity* player);

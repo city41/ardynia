@@ -45,7 +45,6 @@ class BaseEntity {
         uint8_t duration;
         uint8_t currentFrame;
         MirrorMode mirror;
-        boolean invert;
         uint8_t tookDamageCount;
         uint8_t stunCount;
 
@@ -65,7 +64,6 @@ class BaseEntity {
             duration(0),
             currentFrame(0),
             mirror(0),
-            invert(false),
             tookDamageCount(0),
             stunCount(0)
         {}
@@ -96,7 +94,6 @@ class BaseEntity {
             duration(duration),
             currentFrame(0),
             mirror(0),
-            invert(false),
             tookDamageCount(0),
             stunCount(0)
         {}

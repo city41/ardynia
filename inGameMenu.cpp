@@ -41,7 +41,7 @@ void InGameMenu::render(Renderer* renderer, byte frame) {
 
     // second column, items
     for (uint8_t i = 0; i < NUM_DECISION_ROWS; ++i) {
-        renderer->drawOverwrite(63, 4 + 20 * i, itemIcons_tiles, i);
+        renderer->drawExternalMask(63, 4 + 20 * i, itemIcons_tiles, itemIcons_mask, i, 0, true);
 
         if (i == row && column == 1) {
             renderer->drawSelfMasked(60, 4 + 20 * i, hudBFrame_tiles, 0);

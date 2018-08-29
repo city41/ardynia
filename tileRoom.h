@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <Arduboy2.h>
 #include "renderer.h"
+#include "dungeons.h"
 
 typedef uint8_t TileDef;
 
@@ -25,14 +26,20 @@ const TileDef UpperWall = 11;
 const TileDef RightWall = 12;
 const TileDef Compression = 0xF;
 
+typedef uint8_t MapType;
+const MapType OVERWORLD = 0;
+const MapType DUNGEON = 1;
+
 class TileRoom {
     public:
+        static MapType mapType;
         static uint8_t* map;
         static uint8_t* tiles;
 
         static uint8_t x;
         static uint8_t y;
 
+        static boolean isInDungeon() { return mapType == DUNGEON; }
         static uint8_t getRoomIndex(uint8_t x, uint8_t y);
         static void render(Renderer *renderer, byte frame, uint8_t roomX, uint8_t roomY);
         static void render(Renderer *renderer, byte frame);

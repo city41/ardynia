@@ -89,6 +89,7 @@ class GameScene {
             TileRoom::tiles = overworld_tiles;
             TileRoom::x = 1;
             TileRoom::y = 1;
+            TileRoom::mapType = OVERWORLD;
 
             setEntitiesInRoom(1, 1);
         }

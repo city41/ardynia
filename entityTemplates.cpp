@@ -1,10 +1,14 @@
 #include "entityTemplates.h"
+#include "util.h"
+
+const uint8_t NUM_ENTITY_PROPS = 7;
+const uint8_t NUM_ENTITY_POINTERS = 6;
 
 void loadEntity(Entity& entity, EntityType entityType) {
     entity.type = entityType;
     entity.currentFrame = 0;
 
-    uint8_t* start = entityProperties + (entityType * 6);
+    uint8_t* start = entityProperties + (entityType * NUM_ENTITY_PROPS);
 
     entity.width = pgm_read_byte(start++);
     entity.height = pgm_read_byte(start++);
@@ -12,8 +16,12 @@ void loadEntity(Entity& entity, EntityType entityType) {
     entity.health = pgm_read_byte(start++);
     entity.damage = pgm_read_byte(start++);
     entity.duration = pgm_read_byte(start++);
+    const uint8_t invertInDungeon = pgm_read_byte(start++);
+    LOGV(invertInDungeon);
+    entity.invertInDungeon = invertInDungeon;
 
-    void** pStart = entityPointers + (entityType * 6);
+
+    void** pStart = entityPointers + (entityType * NUM_ENTITY_POINTERS);
 
     entity.tiles = (uint8_t*)pgm_read_word(pStart++);
     entity.maskTiles = (uint8_t*)pgm_read_word(pStart++);

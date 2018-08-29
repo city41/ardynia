@@ -9,14 +9,18 @@
 #include "sword.h"
 #include "boomerang.h"
 
+const uint8_t TRUE = 1;
+const uint8_t FALSE = 0;
+
 const uint8_t PROGMEM entityProperties[] = {
     // 0 SWORD
     16,           // width
     16,           // height
     DOWN,         // direction
     0,            // health
-    1,            // damage
+    2,            // damage
     20,           // duration
+    TRUE,         // invertInDungeon
 
     // 1, BOMB
     16,
@@ -25,6 +29,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     1,
     120,
+    TRUE,
 
     // 2, BOOMERANG
     16,
@@ -33,6 +38,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     20,
+    TRUE,
 
     // 3, CANDLE
     0,
@@ -41,6 +47,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 4, KEY
     8,
@@ -49,6 +56,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 5, HEART
     8,
@@ -57,6 +65,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     180,
+    TRUE,
 
     // 6, HEART_CONTAINER
     0,
@@ -65,6 +74,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 7, CHEST
     16,
@@ -73,6 +83,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 8, BLOB
     8,
@@ -81,6 +92,7 @@ const uint8_t PROGMEM entityProperties[] = {
     2, // health
     1, // damage
     0, // duration
+    TRUE, // invertInDungeon
 
     // 9, ENEMY2
     0,
@@ -89,6 +101,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 10, ENEMY3
     0,
@@ -97,6 +110,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 11, ENEMY4
     0,
@@ -105,6 +119,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 12, ENEMY5
     0,
@@ -113,6 +128,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 13, ENEMY6
     0,
@@ -121,6 +137,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 14, BOSS1
     0,
@@ -129,6 +146,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 15, BOSS2
     0,
@@ -137,6 +155,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 16, BOSS3
     0,
@@ -145,6 +164,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 17, BUMPER
     0,
@@ -153,6 +173,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 18, TELEPORTER
     4,
@@ -161,6 +182,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 19, BUSH
     0,
@@ -169,6 +191,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 20, LOCK
     0,
@@ -177,6 +200,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 21, FLAME
     0,
@@ -185,6 +209,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 
     // 22, PROJECTILE
     0,
@@ -193,6 +218,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     0,
+    FALSE,
 };
 
 const void* const PROGMEM entityPointers[] = {

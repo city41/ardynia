@@ -9,6 +9,7 @@ uint8_t* TileRoom::map = NULL;
 uint8_t* TileRoom::tiles = NULL;
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
+uint8_t TileRoom::mapType = OVERWORLD;
 
 void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);

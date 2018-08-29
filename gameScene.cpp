@@ -36,6 +36,8 @@ void GameScene::detectEntityCollisions(void) {
                 bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
                 TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
                 TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
+                // mapType is either 0 or 1 for dungeon and overworld
+                TileRoom::mapType = 1 - TileRoom::mapType;
 
                 TileRoom::x = entities[ge].prevX;
                 TileRoom::y = entities[ge].prevY;
@@ -256,7 +258,6 @@ void GameScene::renderPlay(uint8_t frame) {
     }
 
     player.render(renderer, frame);
-
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
