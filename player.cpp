@@ -135,6 +135,13 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     if (other->damage && tookDamageCount == 0) {
         health = clamp(health - other->damage, 0, totalHealth);
         bounceBack();
+
+        // hack: make the sword bounce back too, in case we
+        // were hit while attacking. If not attacking and sword
+        // is UNSET, then this is basically a noop
+        entities[0].dir = dir;
+        entities[0].bounceBack();
+
         tookDamageCount = 30;
     }
 
