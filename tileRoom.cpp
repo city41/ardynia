@@ -15,8 +15,11 @@ void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
 }
 
-void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
-    if (tileId == 0 && (roomIndex + 1) % seed == 0) {
+void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
+    // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
+    // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
+    // doesn't look good
+    if (tileId == 0 && (roomIndex + 1) % seed == 0 && mapType == OVERWORLD) {
         renderer->drawOverwrite(x, y, tiles, 8, uniqueSeed % 2);
         return;
     }

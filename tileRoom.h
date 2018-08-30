@@ -31,6 +31,9 @@ const MapType OVERWORLD = 0;
 const MapType DUNGEON = 1;
 
 class TileRoom {
+    private:
+        static void renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed);
+
     public:
         static MapType mapType;
         static uint8_t* map;
