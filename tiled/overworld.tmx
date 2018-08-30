@@ -47,7 +47,7 @@
   <object id="125" name="old man" type="OLD_MAN" x="318.667" y="394.667">
    <point/>
   </object>
-  <object id="126" name="Chest with boomerang" type="CHEST" x="404.667" y="277.333">
+  <object id="126" name="Chest with boomerang" type="CHEST" x="54.6667" y="352.667">
    <properties>
     <property name="CONTAINED_TYPE" value="BOOMERANG"/>
    </properties>
