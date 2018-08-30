@@ -2,13 +2,13 @@
 #define overworld_h
 
 
-const uint8_t PROGMEM overworld_map[53] = {
+const uint8_t PROGMEM overworld_map[49] = {
     // array length (16 bit, little endian), map width, map height (in rooms), tile size (in pixels)
-    53, 0, 2, 2, 16,
+    49, 0, 2, 2, 16,
     // room indices (16 bit, little endian), 8 bytes
-    0, 0, 9, 0, 19, 0, 27, 0,
-    // compressed room data, 40 bytes
-    27, 127, 75, 47, 96, 47, 96, 47, 96, 246, 185, 246, 12, 246, 12, 0, 1, 187, 144, 47, 96, 47, 96, 47, 96, 143, 99, 0, 2, 0, 192, 0, 131, 58, 0, 4, 116, 79, 99, 160
+    0, 0, 9, 0, 18, 0, 26, 0,
+    // compressed room data, 36 bytes
+    27, 127, 75, 47, 96, 47, 96, 47, 96, 246, 185, 246, 12, 246, 12, 244, 1, 185, 47, 96, 47, 96, 47, 96, 143, 99, 244, 2, 246, 8, 51, 244, 4, 116, 246, 58
 };
 
 const uint8_t PROGMEM overworld_room0_0[] = {
@@ -53,7 +53,7 @@ const uint8_t PROGMEM overworld_room1_0[] = {
 
     // entity 0, BUMPER
     0x31,
-    49, //x
+    65, //x
     49  //y
 };
 
@@ -64,12 +64,12 @@ const uint8_t PROGMEM overworld_room1_1[] = {
 
     // entity 0, BUMPER
     0x11,
-    49, //x
+    65, //x
     1, //y
 
     // entity 1, TELEPORTER
     0x32,
-    70, //x
+    86, //x
     38  //y
 };
 
@@ -83,8 +83,8 @@ const uint8_t PROGMEM overworld_teleporters[] = {
 
 const uint8_t PROGMEM overworld_bumpers[] = {
     // width, height
-    58, 39,
-    58, 12,
+    42, 39,
+    42, 12,
 };
 
 const uint8_t * const PROGMEM overworld_row0[2] = {
