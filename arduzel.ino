@@ -6,6 +6,7 @@
 #include "gameScene.h"
 #include "renderer.h"
 #include "util.h"
+#include "state.h"
 
 Arduboy2 arduboy;
 Renderer renderer(&arduboy);
@@ -17,9 +18,11 @@ void setup() {
 
 #ifdef SERIAL_LOG
     Serial.begin(9600);
-    delay(2000);
+    delay(1500);
 #endif
 
+    delay(500);
+    State::load();
 
     LOG("setup done");
 }

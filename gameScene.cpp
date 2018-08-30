@@ -408,6 +408,8 @@ void GameScene::update(uint8_t frame) {
         if (currentUpdate == &updateMenu) {
             if (menu.decision == Pause) {
                 paused = true;
+            } else if (menu.decision == Save) {
+                State::saveToEEPROM();
             } else if (menu.decision >= BOMB && menu.decision <= CANDLE) {
                 player.bButtonEntityType = menu.decision;
                 player.entities[1].type = UNSET;
