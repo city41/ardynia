@@ -98,9 +98,22 @@ class BaseEntity {
             stunCount(0)
         {}
 
-        virtual void moveTo(int16_t newX, int16_t newY) {
-            prevX = x;
-            prevY = y;
+        /**
+         * Move the entity to a new location
+         * @param {uint8_t} x new x location
+         * @param {uint8_t} y new y location
+         * @param {boolean} resetPrev whether to clear out prevX/prevY, this is needed
+         * if the entity is moving to an entirely new location, ie from overworld->dungeon
+         */ 
+        inline virtual void moveTo(int16_t newX, int16_t newY, boolean resetPrev = false) {
+            if (resetPrev) {
+                prevX = newX;
+                prevY = newY;
+            } else {
+                prevX = x;
+                prevY = y;
+            }
+
             x = newX;
             y = newY;
 

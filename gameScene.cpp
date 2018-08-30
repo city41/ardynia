@@ -21,6 +21,58 @@ boolean isOffscreen(int16_t x, int16_t y) {
     return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
 }
 
+void GameScene::updateTeleportTransition(uint8_t frame) {
+    teleportTransitionCount -= 1;
+
+    if (teleportTransitionCount == WIDTH / 4) {
+        entityDefs = entityDefs == dungeons_entities ? overworld_entities : dungeons_entities;
+        doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
+        bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
+        TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
+        TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
+        // mapType is either 0 or 1 for dungeon and overworld
+        TileRoom::mapType = 1 - TileRoom::mapType;
+
+        TileRoom::x = nextRoomX;
+        TileRoom::y = nextRoomY;
+
+        setEntitiesInRoom(TileRoom::x, TileRoom::y);
+
+        // for now, place player in the middle of the room
+        // TODO: store dest pixel x/y in teleporter
+        player.moveTo(57, 28, true);
+        player.dir = DOWN;
+
+    } else if (teleportTransitionCount == 0) {
+        pop();
+    }
+}
+
+void GameScene::renderTeleportTransition(uint8_t frame) {
+    renderPlay(frame);
+
+    renderer->translateX = 0;
+    renderer->translateY = 0;
+
+    uint8_t rectH;
+
+    if (teleportTransitionCount > 32) {
+        // draw a black rectangle in the middle of the screen that grows
+        // as the transition progresses
+        rectH = 128 - (teleportTransitionCount * 2);
+    } else {
+        // now we've switched to the new map, draw a large rectangle that
+        // shrinks to nothing
+        rectH = teleportTransitionCount * 2;
+    }
+
+    uint8_t rectW = rectH * 2;
+    uint8_t rectX = 64 - rectW / 2;
+    uint8_t rectY = 32 - rectH / 2;
+
+    renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
+}
+
 void GameScene::detectEntityCollisions(void) {
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == UNSET) {
@@ -31,22 +83,13 @@ void GameScene::detectEntityCollisions(void) {
             if (entities[ge].type == BUMPER) {
                 player.undoMove();
             } else if (entities[ge].type == TELEPORTER) {
-                entityDefs = entityDefs == dungeons_entities ? overworld_entities : dungeons_entities;
-                doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
-                bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
-                TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
-                TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
-                // mapType is either 0 or 1 for dungeon and overworld
-                TileRoom::mapType = 1 - TileRoom::mapType;
-
-                TileRoom::x = entities[ge].prevX;
-                TileRoom::y = entities[ge].prevY;
-
-                setEntitiesInRoom(TileRoom::x, TileRoom::y);
-
-                // for now, place player in the middle of the room
-                player.moveTo(57, 28);
-                player.moveTo(57, 28);
+                // to save memory, teleporters store the next room coordinates
+                // in prevX/prevY, two variables they otherwise wouldn't need
+                // TODO: is it possible to save the memory without being confusing?
+                nextRoomX = entities[ge].prevX;
+                nextRoomY = entities[ge].prevY;
+                teleportTransitionCount = WIDTH / 2;
+                push(&GameScene::updateTeleportTransition, &GameScene::renderTeleportTransition);
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
                 if (newEntity != UNSET) {

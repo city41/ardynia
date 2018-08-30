@@ -34,6 +34,7 @@ class GameScene {
         InGameMenu menu;
 
         uint8_t roomTransitionCount;
+        uint8_t teleportTransitionCount;
         uint8_t mapWidthInRooms;
         uint8_t mapHeightInRooms;
 
@@ -59,6 +60,9 @@ class GameScene {
         void updateRoomTransition(uint8_t frame);
         void renderRoomTransition(uint8_t frame);
 
+        void updateTeleportTransition(uint8_t frame);
+        void renderTeleportTransition(uint8_t frame);
+
         void updateMenu(uint8_t frame);
         void renderMenu(uint8_t frame);
 
@@ -77,6 +81,7 @@ class GameScene {
             nextRoomY(1),
             menu(),
             roomTransitionCount(0),
+            teleportTransitionCount(0),
             prevUpdate(NULL),
             currentUpdate(&GameScene::updatePlay),
             nextUpdate(NULL),
