@@ -64,8 +64,8 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
         // as the transition progresses
         rectH = 128 - (teleportTransitionCount * 2);
     } else {
-        // now we've switched to the new map, draw a large rectangle that
-        // shrinks to nothing
+        // now we've switched to the new map, reverse the rectangle
+        // and shrink it to nothing
         rectH = teleportTransitionCount * 2;
     }
 
