@@ -1,7 +1,7 @@
 #include "map.h"
 #include "state.h"
 
-uint8_t Map::visitedRooms[MAX_NUM_VISITED_ROOMS / 8];
+uint8_t Map::visitedRooms[MAX_NUM_VISITED_ROOMS / 8 + 1];
 
 void Map::render(Renderer* renderer, uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
     for (uint8_t roomIndex = 0; roomIndex < MAX_NUM_VISITED_ROOMS; ++roomIndex) {
