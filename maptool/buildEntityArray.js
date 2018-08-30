@@ -4,8 +4,8 @@ const ROOM_HEIGHT_PX = 64;
 const EntityTypes = {
     UNSET: -1,
     SWORD: 0,
-    BOMB: 1,
-    BOOMERANG: 2,
+    BOOMERANG: 1,
+    BOMB: 2,
     CANDLE: 3,
     KEY: 4,
     HEART: 5,
@@ -25,7 +25,8 @@ const EntityTypes = {
     BUSH: 19,
     LOCK: 20,
     FLAME: 21,
-    PROJECTILE: 22
+    PROJECTILE: 22,
+    OLD_MAN: 23
 };
 
 function getRoomAt(mapX, mapY) {

@@ -43,7 +43,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
-        renderer->drawExternalMask(4, 13, itemIcons_tiles, itemIcons_mask, player.bButtonEntityType - 1, 0, true);
+        renderer->drawExternalMask(4, 13, itemIcons_tiles, itemIcons_mask, player.bButtonEntityType, 0, true);
     }
 
     renderer->drawSelfMasked(1, 13, hudBFrame_tiles, 0);

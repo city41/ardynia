@@ -15,10 +15,10 @@ const uint8_t EEPROM_START = 64;
 struct GameState {
     int8_t health;
     int8_t totalHealth;
-    uint8_t acquiredItemsBitMask;
+    int8_t numAcquiredItems;
     uint8_t beatenBossesBitMask;
-    uint8_t numKeys;
-    uint8_t numBombs;
+    int8_t numKeys;
+    int8_t numBombs;
 
     // the room states. Each room gets one bit. This means each room
     // can only have ONE thing about it that is stateful. That means each

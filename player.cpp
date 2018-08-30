@@ -9,8 +9,8 @@
 const uint8_t PLAYER_VELOCITY = 2;
 
 void Player::useSword(void) {
-    // currently swinging the sword? do nothing
-    if (entities[0].type != UNSET) {
+    // currently swinging the sword or dont even have it yet? do nothing
+    if (entities[0].type != UNSET || State::gameState.numAcquiredItems == 0) {
         return;
     }
 
@@ -38,7 +38,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 7;
-        renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem - 1, 0);
+        renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem, 0);
     } else if (State::gameState.health <= 0) {
         spriteIndex = 8;
     } else {
@@ -170,10 +170,15 @@ void Player::receiveItemFromChest(Entity* chest) {
 
         if (item == KEY) {
             State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
-        } else if (item >= BOMB && item <= CANDLE) {
-            receiveItemCount = 180;
+        } else if (item >= SWORD && item <= CANDLE) {
+            receiveItemCount = 120;
             receivedItem = item;
-            bButtonEntityType = receivedItem;
+
+            if (receivedItem != SWORD) {
+                bButtonEntityType = receivedItem;
+            }
+
+            State::gameState.numAcquiredItems += 1;
         }
 
         const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);

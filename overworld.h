@@ -8,7 +8,7 @@ const uint8_t PROGMEM overworld_map[49] = {
     // room indices (16 bit, little endian), 8 bytes
     0, 0, 9, 0, 18, 0, 26, 0,
     // compressed room data, 36 bytes
-    27, 127, 75, 47, 96, 47, 96, 47, 96, 246, 185, 246, 12, 246, 12, 244, 1, 185, 47, 96, 47, 96, 47, 96, 143, 99, 244, 2, 246, 8, 51, 244, 4, 116, 246, 58
+    27, 127, 75, 47, 96, 47, 96, 47, 96, 246, 185, 246, 12, 246, 12, 244, 49, 185, 47, 96, 47, 96, 47, 96, 143, 99, 244, 178, 246, 8, 51, 244, 4, 116, 246, 58
 };
 
 const uint8_t PROGMEM overworld_room0_0[] = {
@@ -36,7 +36,7 @@ const uint8_t PROGMEM overworld_room0_1[] = {
     43, //y
 
     // entity 1, CHEST
-    0x47,
+    0x27,
     23, //x
     20, //y
 
@@ -49,18 +49,23 @@ const uint8_t PROGMEM overworld_room0_1[] = {
 
 
 const uint8_t PROGMEM overworld_room1_0[] = {
-    1, // number of entities
+    2, // number of entities
 
     // entity 0, BUMPER
     0x31,
     65, //x
-    49  //y
+    49, //y
+
+    // entity 1, BUMPER
+    0x51,
+    1, //x
+    59  //y
 };
 
 
 
 const uint8_t PROGMEM overworld_room1_1[] = {
-    2, // number of entities
+    5, // number of entities
 
     // entity 0, BUMPER
     0x11,
@@ -70,7 +75,22 @@ const uint8_t PROGMEM overworld_room1_1[] = {
     // entity 1, TELEPORTER
     0x32,
     86, //x
-    38  //y
+    38, //y
+
+    // entity 2, CHEST
+    0x7,
+    26, //x
+    28, //y
+
+    // entity 3, OLD_MAN
+    0x17,
+    8, //x
+    10, //y
+
+    // entity 4, BUMPER
+    0x51,
+    1, //x
+    1  //y
 };
 
 const uint8_t PROGMEM overworld_teleporters[] = {
@@ -85,6 +105,7 @@ const uint8_t PROGMEM overworld_bumpers[] = {
     // width, height
     42, 39,
     42, 12,
+    62, 3,
 };
 
 const uint8_t * const PROGMEM overworld_row0[2] = {

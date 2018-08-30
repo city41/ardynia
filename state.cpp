@@ -57,7 +57,7 @@ void State::load() {
     } else {
         gameState.totalHealth = 2;
         gameState.health = 2;
-        gameState.acquiredItemsBitMask = 0;
+        gameState.numAcquiredItems = 0;
         gameState.beatenBossesBitMask = 0;
         gameState.numKeys = 0;
         gameState.numBombs = 0;

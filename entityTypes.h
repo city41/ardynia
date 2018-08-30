@@ -12,8 +12,8 @@ const EntityType UNSET = -1;
 // items the player can use, anything with ID less than 8
 // can be stored in a chest
 const EntityType SWORD = 0;
-const EntityType BOMB = 1;
-const EntityType BOOMERANG = 2;
+const EntityType BOOMERANG = 1;
+const EntityType BOMB = 2;
 const EntityType CANDLE = 3;
 const EntityType KEY = 4;
 const EntityType HEART = 5;
@@ -43,6 +43,9 @@ const EntityType LOCK = 20;
 // projectiles
 const EntityType FLAME = 21;
 const EntityType PROJECTILE = 22;
+
+// misc
+const EntityType OLD_MAN = 23;
 
 const EntityType PLAYER = 127;
 

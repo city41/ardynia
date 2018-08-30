@@ -157,6 +157,11 @@ void GameScene::detectEntityCollisions(void) {
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
                 push(&GameScene::updateTeleportTransition, &GameScene::renderTeleportTransition);
+            } else if (entities[ge].type == OLD_MAN) {
+                if (State::gameState.numAcquiredItems == 0) {
+                    player.undoMove();
+                    swordWarningCount = 20;
+                }
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
                 if (newEntity != UNSET) {
@@ -339,6 +344,10 @@ void GameScene::updatePlay(uint8_t frame) {
         player.undoMove();
     }
 
+    if (swordWarningCount > 0) {
+        swordWarningCount -= 1;
+    }
+
     int8_t e = 0;
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
@@ -390,6 +399,10 @@ void GameScene::renderPlay(uint8_t frame) {
     }
 
     player.render(renderer, frame);
+
+    if (swordWarningCount > 0) {
+        renderer->print(0, HEIGHT - 8, F("you need a sword   "));
+    }
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;

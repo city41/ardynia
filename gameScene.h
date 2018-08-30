@@ -35,6 +35,7 @@ class GameScene {
 
         uint8_t roomTransitionCount;
         uint8_t teleportTransitionCount;
+        uint8_t swordWarningCount;
         uint8_t mapWidthInRooms;
         uint8_t mapHeightInRooms;
 
@@ -87,6 +88,7 @@ class GameScene {
             menu(),
             roomTransitionCount(0),
             teleportTransitionCount(0),
+            swordWarningCount(0),
             prevUpdate(NULL),
             nextUpdate(NULL),
             prevRender(NULL),

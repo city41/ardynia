@@ -19,22 +19,22 @@ const uint8_t PROGMEM entityProperties[] = {
     20,           // duration
     true,         // invertInDungeon
 
-    // 1, BOMB
-    16,
-    16,
-    DOWN,
-    0,
-    1,
-    120,
-    true,
-
-    // 2, BOOMERANG
+    // 1, BOOMERANG
     16,
     16,
     DOWN,
     0,
     0,
     20,
+    true,
+
+    // 2, BOMB
+    16,
+    16,
+    DOWN,
+    0,
+    1,
+    120,
     true,
 
     // 3, CANDLE
@@ -216,6 +216,15 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     0,
     false,
+
+    // 23, OLD_MAN
+    8,
+    HEIGHT, // whole screen, this guy is basically a total bumper
+    DOWN,
+    0,
+    0,
+    0,
+    false,
 };
 
 const void* const PROGMEM entityPointers[] = {
@@ -227,21 +236,22 @@ const void* const PROGMEM entityPointers[] = {
     NULL,               // render
     NULL,               // onCollide
 
-    // 1, BOMB
-    itemIcons_tiles,
-    itemIcons_mask,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
 
-    // 2, BOOMERANG
+    // 1, BOOMERANG
     itemIcons_tiles,
     itemIcons_mask,
     Boomerang::spawn,
     Boomerang::update,
     NULL,
     Boomerang::onCollide,
+
+    // 2, BOMB
+    itemIcons_tiles,
+    itemIcons_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
 
     // 3, CANDLE
     NULL,
@@ -398,6 +408,14 @@ const void* const PROGMEM entityPointers[] = {
     // 22, PROJECTILE
     NULL,
     NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 23, OLD_MAN
+    oldMan_tiles,
+    oldMan_mask,
     NULL,
     NULL,
     NULL,
