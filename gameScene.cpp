@@ -202,7 +202,7 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
             // take what is in the chest (which here is entityId), and stick
             // it in the chest's health
             currentEntity.health = entityId;
-            if (State::isTriggered(roomIndex, State::overworldRoomStates)) {
+            if (State::isTriggered(roomIndex)) {
                 // frame 1 is the open chest frame, indicates this chest
                 // has already been looted
                 currentEntity.currentFrame = 1;

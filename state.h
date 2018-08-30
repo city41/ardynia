@@ -3,14 +3,14 @@
 
 #include <Arduino.h>
 
-const uint8_t MAX_NUM_OVERWORLD_ROOMS = 8;
-const uint8_t MAX_NUM_DUNGEON_ROOMS = 0;
+const uint8_t MAX_ROOM_COUNT = 152;
+const uint8_t DUNGEON_ROOM_OFFSET = 4; // this will be 64 for the full map
 
 class State {
     public:
-        static uint8_t overworldRoomStates[MAX_NUM_OVERWORLD_ROOMS / 8];
-        static bool isTriggered(uint8_t roomIndex, uint8_t* roomStates);
-        static void setTriggered(uint8_t roomIndex, uint8_t* roomStates);
+        static uint8_t roomStates[MAX_ROOM_COUNT / 8];
+        static bool isTriggered(uint8_t roomIndex);
+        static void setTriggered(uint8_t roomIndex);
 };
 
 #endif
