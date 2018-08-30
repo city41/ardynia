@@ -7,6 +7,23 @@ const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 
+void GameScene::loadSave() {
+    State::load();
+
+    TileRoom::map = overworld_map;
+    TileRoom::tiles = overworld_tiles;
+    TileRoom::x = 1;
+    TileRoom::y = 1;
+    TileRoom::mapType = OVERWORLD;
+
+    loadEntitiesinRoom(1, 1);
+    player.moveTo(WIDTH / 2 - player.width, HEIGHT / 2 - player.height, true);
+    player.dir = DOWN;
+
+    currentUpdate = &GameScene::updatePlay;
+    currentRender = &GameScene::renderPlay;
+}
+
 void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
     nextUpdate = newUpdate;
     nextRender = newRender;
@@ -240,6 +257,29 @@ boolean GameScene::playerLeftMap(void) {
 
 
 void GameScene::updatePlay(uint8_t frame) {
+    if (paused) {
+        if (arduboy->justPressed(B_BUTTON)) {
+            paused = false;
+        } else {
+            return;
+        }
+    }
+
+    if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
+        if (player.bButtonEntityType != UNSET) {
+            menu.decision = player.bButtonEntityType;
+            menu.column = 1;
+            menu.row = player.bButtonEntityType - 1;
+        } else {
+            menu.column = 1;
+            menu.row = 0;
+        }
+
+        push(&GameScene::updateMenu, &GameScene::renderMenu);
+
+        return;
+    }
+
     player.update(&player, arduboy, frame);
 
     // player is in the middle of showing off a new item,
@@ -312,6 +352,36 @@ void GameScene::renderPlay(uint8_t frame) {
 
 void GameScene::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
+
+    if (arduboy->justPressed(A_BUTTON)) {
+        // respond to the decision
+        if (menu.decision == Pause) {
+            paused = true;
+        } else if (menu.decision == Save) {
+            State::saveToEEPROM();
+            toastCount = 60;
+            toast = F("saved");
+        } else if (menu.decision == Load) {
+            loadSave();
+            toast = F("loaded save");
+            toastCount = 60;
+            return;
+        } else if (menu.decision == DeleteSave) {
+            State::clearEEPROM();
+            loadSave();
+            toast = F("deleted!");
+            toastCount = 60;
+            return;
+        } else if (menu.decision >= BOMB && menu.decision <= CANDLE) {
+            player.bButtonEntityType = menu.decision;
+            player.entities[1].type = UNSET;
+        }
+
+        pop();
+    } else if (arduboy->justPressed(B_BUTTON)) {
+        // user canceled
+        pop();
+    }
 }
 
 void GameScene::renderMenu(uint8_t frame) {
@@ -384,38 +454,8 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 }
 
 void GameScene::update(uint8_t frame) {
-    if (paused) {
-        if (arduboy->justPressed(B_BUTTON)) {
-            paused = false;
-        } else {
-            return;
-        }
-    }
-
-    if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
-        if (currentUpdate != &updateMenu) {
-            if (player.bButtonEntityType != UNSET) {
-                menu.decision = player.bButtonEntityType;
-                menu.column = 1;
-                menu.row = player.bButtonEntityType - 1;
-            } else {
-                menu.column = 1;
-                menu.row = 0;
-            }
-            push(&GameScene::updateMenu, &GameScene::renderMenu);
-        }
-    } else {
-        if (currentUpdate == &updateMenu) {
-            if (menu.decision == Pause) {
-                paused = true;
-            } else if (menu.decision == Save) {
-                State::saveToEEPROM();
-            } else if (menu.decision >= BOMB && menu.decision <= CANDLE) {
-                player.bButtonEntityType = menu.decision;
-                player.entities[1].type = UNSET;
-            }
-            pop();
-        }
+    if (toastCount > 0) {
+        toastCount -= 1;
     }
 
     (this->*currentUpdate)(frame);
@@ -437,7 +477,11 @@ void GameScene::render(uint8_t frame) {
     renderer->translateY = 0;
 
     if (paused) {
-        renderer->print(32, 30, F(" paused "));
+        renderer->print(0, 30, F("  press B to play  "));
+    }
+
+    if (toastCount > 0) {
+        renderer->print(0, HEIGHT - 8, toast);
     }
 
     if (nextRender != NULL) {

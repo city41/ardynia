@@ -15,6 +15,7 @@ class Entity: public BaseEntity {
         EntityRenderPtr renderPtr;
         EntityCollideOtherEntityPtr collideOtherEntityPtr;
 
+        int8_t health;
         uint8_t invertInDungeon;
 
         Entity():
@@ -22,40 +23,9 @@ class Entity: public BaseEntity {
             spawnPtr(NULL),
             updatePtr(NULL),
             renderPtr(NULL),
-            collideOtherEntityPtr(NULL)
-        {}
-
-        Entity(
-            EntityType type,
-            uint8_t width,
-            uint8_t height,
-            Direction dir,
-            uint8_t* tiles,
-            uint8_t* maskTiles,
-            int8_t health,
-            int8_t damage,
-            uint8_t duration,
-            EntitySpawnPtr spawnPtr,
-            EntityUpdatePtr updatePtr,
-            EntityRenderPtr renderPtr, 
-            EntityCollideOtherEntityPtr collideOtherEntityPtr
-        ):
-            BaseEntity(
-                type,
-                width,
-                height,
-                dir,
-                tiles,
-                maskTiles,
-                health,
-                damage,
-                duration
-            ),
-            spawnPtr(spawnPtr),
-            updatePtr(updatePtr),
-            renderPtr(renderPtr),
-            collideOtherEntityPtr(collideOtherEntityPtr),
-            invertInDungeon(0)
+            collideOtherEntityPtr(NULL),
+            health(0),
+            invertInDungeon(false)
         {}
 
         EntityType spawn(BaseEntity* player);

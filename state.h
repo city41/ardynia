@@ -5,6 +5,7 @@
 
 const uint8_t MAX_ROOM_COUNT = 152;
 const uint8_t DUNGEON_ROOM_OFFSET = 4; // this will be 64 for the full map
+const uint8_t MAX_KEYS = 6;
 
 // hoo boy, just randomly grabbed this
 const uint8_t GAME_ID = 81;
@@ -12,8 +13,8 @@ const uint8_t GAME_ID = 81;
 const uint8_t EEPROM_START = 64;
 
 struct GameState {
-    uint8_t numHeartContainers;
-    uint8_t health;
+    int8_t health;
+    int8_t totalHealth;
     uint8_t acquiredItemsBitMask;
     uint8_t beatenBossesBitMask;
     uint8_t numKeys;

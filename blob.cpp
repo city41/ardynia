@@ -2,6 +2,7 @@
 #include "util.h"
 #include "drawBitmap.h"
 #include "player.h"
+#include "state.h"
 
 EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
     if (other->damage) {
@@ -10,7 +11,7 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
         if (me->health <= 0) {
             me->type = UNSET;
 
-            if (player->health < ((Player*)player)->totalHealth && random(0, 3) == 1) {
+            if (State::gameState.health < State::gameState.totalHealth && random(0, 3) == 1) {
                 return HEART;
             } else {
                 return UNSET;

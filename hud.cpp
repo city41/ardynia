@@ -1,5 +1,6 @@
 #include "hud.h"
 #include "bitmaps.h"
+#include "state.h"
 
 void drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, uint8_t frame, bool useFillRect) {
     uint8_t origX = x;
@@ -38,7 +39,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 1, 1, player.health, player.totalHealth, frame, false);
+    drawDots(renderer, 1, 1, State::gameState.health, State::gameState.totalHealth, frame, false);
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
@@ -53,5 +54,5 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
 
     // keys
     renderer->fillRect(1, 44, 15, 18, WHITE);
-    drawKeys(renderer, 1, 45, player.keyCount);
+    drawKeys(renderer, 1, 45, State::gameState.numKeys);
 }

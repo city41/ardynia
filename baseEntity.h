@@ -40,7 +40,6 @@ class BaseEntity {
         Direction dir;
         uint8_t* tiles;
         uint8_t* maskTiles;
-        int8_t health;
         int8_t damage;
         uint8_t duration;
         uint8_t currentFrame;
@@ -59,7 +58,6 @@ class BaseEntity {
             dir(DOWN),
             tiles(NULL),
             maskTiles(NULL),
-            health(0),
             damage(0),
             duration(0),
             currentFrame(0),
@@ -75,7 +73,6 @@ class BaseEntity {
             Direction dir,
             uint8_t* tiles,
             uint8_t* maskTiles,
-            int8_t health,
             int8_t damage,
             uint8_t duration
         ):
@@ -89,7 +86,6 @@ class BaseEntity {
             dir(dir),
             tiles(tiles),
             maskTiles(maskTiles),
-            health(health),
             damage(damage),
             duration(duration),
             currentFrame(0),

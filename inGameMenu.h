@@ -10,14 +10,16 @@ typedef uint8_t Decision;
 const Decision Pause = 11;
 const Decision Save = 12;
 const Decision Load = 13;
+const Decision Gap = 14;
+const Decision DeleteSave = 15;
 
 const uint8_t NUM_DECISION_COLUMNS = 2;
-const uint8_t NUM_DECISION_ROWS = 3;
+const uint8_t NUM_DECISION_ROWS = 5;
 
 class InGameMenu {
     public:
         Decision decisions[NUM_DECISION_COLUMNS][NUM_DECISION_ROWS] = {
-            { Pause, Save, Load },
+            { Pause, Save, Load, Gap, DeleteSave  },
             { BOMB, BOOMERANG, CANDLE }
         };
 

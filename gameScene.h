@@ -48,6 +48,9 @@ class GameScene {
 
         boolean paused;
 
+        __FlashStringHelper* toast;
+        uint8_t toastCount;
+
         boolean playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
@@ -69,11 +72,13 @@ class GameScene {
         void push(UpdatePtr newUpdate, RenderPtr newRender);
         void pop();
 
+        void loadSave();
+
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             arduboy(arduboy),
             renderer(renderer),
-            player(30, 36, 2, 3),
+            player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             entityDefs(overworld_entities),
             doorDefs(overworld_teleporters),
             bumperDefs(overworld_bumpers),
@@ -83,20 +88,15 @@ class GameScene {
             roomTransitionCount(0),
             teleportTransitionCount(0),
             prevUpdate(NULL),
-            currentUpdate(&GameScene::updatePlay),
             nextUpdate(NULL),
             prevRender(NULL),
-            currentRender(&GameScene::renderPlay),
             nextRender(NULL),
-            paused(false)
+            paused(false),
+            toast(NULL),
+            toastCount(0)
         {
-            TileRoom::map = overworld_map;
-            TileRoom::tiles = overworld_tiles;
-            TileRoom::x = 1;
-            TileRoom::y = 1;
-            TileRoom::mapType = OVERWORLD;
+            loadSave();
 
-            loadEntitiesinRoom(1, 1);
         }
 
         void update(uint8_t frame);

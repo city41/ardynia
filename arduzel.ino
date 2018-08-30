@@ -6,7 +6,6 @@
 #include "gameScene.h"
 #include "renderer.h"
 #include "util.h"
-#include "state.h"
 
 Arduboy2 arduboy;
 Renderer renderer(&arduboy);
@@ -22,7 +21,6 @@ void setup() {
 #endif
 
     delay(500);
-    State::load();
 
     LOG("setup done");
 }

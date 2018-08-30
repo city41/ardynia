@@ -133,7 +133,7 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     }
 
     if (other->damage && tookDamageCount == 0) {
-        health = clamp(health - other->damage, 0, totalHealth);
+        State::gameState.health = clamp(State::gameState.health - other->damage, 0, State::gameState.totalHealth);
         bounceBack();
 
         // hack: make the sword bounce back too, in case we
@@ -147,18 +147,18 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
 
     if (other->type == KEY) {
         other->type = UNSET;
-        keyCount = clamp(keyCount + 1, 0, MAX_KEYS);
+        State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
     }
 
     if (other->type == HEART) {
         other->type = UNSET;
-        health = clamp(health + 1, 0, totalHealth);
+        State::gameState.health = clamp(State::gameState.health + 1, 0, State::gameState.totalHealth);
     }
 
     return UNSET;
 }
 
-void Player::receiveItemFromChest(BaseEntity* chest) {
+void Player::receiveItemFromChest(Entity* chest) {
     if (
         y >= (chest->y + chest->height) &&
         chest->currentFrame == 0
@@ -167,7 +167,7 @@ void Player::receiveItemFromChest(BaseEntity* chest) {
         chest->currentFrame = 1;
 
         if (item == KEY) {
-            keyCount = clamp(keyCount + 1, 0, MAX_KEYS);
+            State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
         } else if (item >= BOMB && item <= CANDLE) {
             receiveItemCount = 180;
             receivedItem = item;

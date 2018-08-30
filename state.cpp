@@ -1,6 +1,7 @@
 #include "state.h"
 #include "tileRoom.h"
 
+
 GameState State::gameState = {};
 
 /**
@@ -54,7 +55,7 @@ void State::load() {
     if (userHasSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
-        gameState.numHeartContainers = 0;
+        gameState.totalHealth = 2;
         gameState.health = 2;
         gameState.acquiredItemsBitMask = 0;
         gameState.beatenBossesBitMask = 0;
