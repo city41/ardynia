@@ -51,7 +51,7 @@ class GameScene {
         boolean playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
-        void setEntitiesInRoom(uint8_t roomX, uint8_t roomy);
+        void loadEntitiesinRoom(uint8_t roomX, uint8_t roomy);
         void spawnNewEntity(EntityType, BaseEntity& spawner);
 
         void updatePlay(uint8_t frame);
@@ -96,7 +96,7 @@ class GameScene {
             TileRoom::y = 1;
             TileRoom::mapType = OVERWORLD;
 
-            setEntitiesInRoom(1, 1);
+            loadEntitiesinRoom(1, 1);
         }
 
         void update(uint8_t frame);

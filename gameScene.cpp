@@ -30,13 +30,16 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
         bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
         TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
+
+        // TODO: get rid of this! this is here because for some crazy reason, sometimes
+        // TileRoom::map == dungeons_map while in the dungeon is false. No idea why
         // mapType is either 0 or 1 for dungeon and overworld
         TileRoom::mapType = 1 - TileRoom::mapType;
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        setEntitiesInRoom(TileRoom::x, TileRoom::y);
+        loadEntitiesinRoom(TileRoom::x, TileRoom::y);
 
         // for now, place player in the middle of the room
         // TODO: store dest pixel x/y in teleporter
@@ -163,7 +166,7 @@ void GameScene::spawnNewEntity(EntityType entityType, BaseEntity& spawner) {
     entities[e].y = spawner.y;
 }
 
-void GameScene::setEntitiesInRoom(uint8_t x, uint8_t y) {
+void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(&(entityDefs[y]));
     uint8_t* roomPtr = pgm_read_word(&(rowPtr[x]));
 
@@ -333,7 +336,7 @@ void GameScene::updateRoomTransition(uint8_t frame) {
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        setEntitiesInRoom(nextRoomX, nextRoomY);
+        loadEntitiesinRoom(nextRoomX, nextRoomY);
 
         // for example, if the player had a flying boomerang,
         // this causes it to go away, easier than trying to deal
