@@ -39,7 +39,7 @@ void State::setTriggered(uint8_t roomIndex) {
     gameState.roomStates[byteToSet] |= bitMask;
 }
 
-bool State::userHasSaved() {
+bool State::hasUserSaved() {
     uint8_t id;
     EEPROM.get(EEPROM_START, id);
 
@@ -52,7 +52,7 @@ void State::saveToEEPROM() {
 }
 
 void State::load() {
-    if (userHasSaved()) {
+    if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.totalHealth = 2;
@@ -68,7 +68,7 @@ void State::load() {
 }
 
 void State::clearEEPROM() {
-    if (userHasSaved()) {
+    if (hasUserSaved()) {
         EEPROM.put(EEPROM_START, 0);
     }
 }

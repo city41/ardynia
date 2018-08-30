@@ -39,6 +39,8 @@ EntityType Player::render(Renderer *renderer, byte frame) {
     if (receiveItemCount > 0) {
         spriteIndex = 7;
         renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem - 1, 0);
+    } else if (State::gameState.health <= 0) {
+        spriteIndex = 8;
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames

@@ -10,12 +10,12 @@ const uint8_t MAX_PLAYER_ENTITIES = 2;
 
 class Player: public BaseEntity {
     private:
-        boolean movedThisFrame;
 
         void useSword(void);
         void bButtonAction(void);
 
     public:
+        boolean movedThisFrame;
         uint8_t receiveItemCount;
         EntityType receivedItem;
         Entity entities[MAX_PLAYER_ENTITIES];

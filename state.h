@@ -33,7 +33,7 @@ class State {
         static bool isTriggered(uint8_t roomIndex);
         static void setTriggered(uint8_t roomIndex);
 
-        static bool userHasSaved();
+        static bool hasUserSaved();
         static void saveToEEPROM();
         static void clearEEPROM();
         static void load();

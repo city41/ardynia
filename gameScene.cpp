@@ -16,6 +16,10 @@ void GameScene::loadSave() {
     TileRoom::y = 1;
     TileRoom::mapType = OVERWORLD;
 
+    entityDefs = overworld_entities;
+    doorDefs = overworld_teleporters;
+    bumperDefs = overworld_bumpers;
+
     loadEntitiesinRoom(1, 1);
     player.moveTo(WIDTH / 2 - player.width, HEIGHT / 2 - player.height, true);
     player.dir = DOWN;
@@ -36,6 +40,49 @@ void GameScene::pop() {
 
 boolean isOffscreen(int16_t x, int16_t y) {
     return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
+}
+
+void GameScene::updateGameOver(uint8_t frame) {
+    // ghost "floats" into sky
+    if (frame == 15 || frame == 30) {
+        player.moveTo(player.x + 1, player.y);
+    } else if (frame == 45 || frame == 60) {
+        player.moveTo(player.x - 1, player.y);
+    }
+
+    if (frame % 4 == 1) {
+        player.moveTo(player.x, player.y - 1);
+    }
+
+    if (teleportTransitionCount > 0) {
+        teleportTransitionCount -= 1;
+    } else if (arduboy->justPressed(A_BUTTON)) {
+        loadSave();
+    }
+}
+
+void GameScene::renderGameOver(uint8_t frame) {
+    renderPlay(frame);
+
+    renderer->translateX = 0;
+    renderer->translateY = 0;
+
+        // draw a black rectangle in the middle of the screen that grows
+        // as the transition progresses
+    uint8_t rectW = 128 - (teleportTransitionCount * 4);
+    uint8_t rectH = rectW / 2;
+    uint8_t rectX = 64 - rectW / 2;
+    uint8_t rectY = 32 - rectH / 2;
+
+    renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
+
+    renderer->print(40, 20, F("game over"));
+
+    if (teleportTransitionCount == 0) {
+        renderer->print(4, HEIGHT - 8, F("press A to load save"));
+    }
+
+    player.render(renderer, frame);
 }
 
 void GameScene::updateTeleportTransition(uint8_t frame) {
@@ -315,12 +362,11 @@ void GameScene::updatePlay(uint8_t frame) {
         detectEntityCollisions();
     }
 
-    /* if (player.health <= 0) { */
-    /*     LOG("player lost all health, exiting game scene"); */
-    /*     return TITLE; */
-    /* } else { */
-    /*     return GAME; */
-    /* } */
+    if (State::gameState.health <= 0) {
+        teleportTransitionCount = WIDTH / 4;
+        player.movedThisFrame = false;
+        push(&GameScene::updateGameOver, &GameScene::renderGameOver);
+    }
 }
 
 void GameScene::renderPlay(uint8_t frame) {

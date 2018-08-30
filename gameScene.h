@@ -66,6 +66,9 @@ class GameScene {
         void updateTeleportTransition(uint8_t frame);
         void renderTeleportTransition(uint8_t frame);
 
+        void updateGameOver(uint8_t frame);
+        void renderGameOver(uint8_t frame);
+
         void updateMenu(uint8_t frame);
         void renderMenu(uint8_t frame);
 
@@ -79,9 +82,6 @@ class GameScene {
             arduboy(arduboy),
             renderer(renderer),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
-            entityDefs(overworld_entities),
-            doorDefs(overworld_teleporters),
-            bumperDefs(overworld_bumpers),
             nextRoomX(1),
             nextRoomY(1),
             menu(),
