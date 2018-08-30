@@ -33,8 +33,8 @@ class InGameMenu {
             decision(decisions[column][row])
         {}
 
-        void update(Arduboy2* arduboy, byte frame);
-        void render(Renderer* renderer, byte frame);
+        void update(Arduboy2* arduboy, uint8_t frame);
+        void render(Renderer* renderer, uint8_t frame);
 };
 
 #endif

@@ -2,6 +2,7 @@
 #include "util.h"
 #include "entityTemplates.h"
 #include "state.h"
+#include "map.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -26,6 +27,9 @@ void GameScene::loadSave() {
 
     currentUpdate = &GameScene::updatePlay;
     currentRender = &GameScene::renderPlay;
+
+    Map::reset();
+    Map::visitRoom(START_ROOM_X, START_ROOM_Y, OVERWORLD_WIDTH_IN_ROOMS);
 }
 
 void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
@@ -105,8 +109,12 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
 
         loadEntitiesinRoom(TileRoom::x, TileRoom::y);
 
-        // for now, place player in the middle of the room
-        // TODO: store dest pixel x/y in teleporter
+        Map::reset();
+        const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+        Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
+
+        // plop player in the center of the rooms
+        // dest rooms must be able to accomodate this!
         player.moveTo(57, 28, true);
         player.dir = DOWN;
 
@@ -453,6 +461,12 @@ void GameScene::updateMenu(uint8_t frame) {
 
 void GameScene::renderMenu(uint8_t frame) {
     menu.render(renderer, frame);
+
+    renderer->translateX = 79;
+    renderer->translateY = 17;
+
+    const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+    Map::render(renderer, mapWidthInRooms, TileRoom::x, TileRoom::y);
 }
 
 void GameScene::updateRoomTransition(uint8_t frame) {
@@ -472,6 +486,9 @@ void GameScene::updateRoomTransition(uint8_t frame) {
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
+
+        const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+        Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         loadEntitiesinRoom(nextRoomX, nextRoomY);
 

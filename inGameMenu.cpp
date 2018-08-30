@@ -41,9 +41,7 @@ void InGameMenu::update(Arduboy2* arduboy, byte frame) {
     decision = decisions[column][row];
 }
 
-void InGameMenu::render(Renderer* renderer, byte frame) {
-    LOGV(column);
-    LOGV(row);
+void InGameMenu::render(Renderer* renderer, uint8_t frame) {
     // first column, text
     for (uint8_t i = 0; i < NUM_DECISION_ROWS; ++i) {
         __FlashStringHelper* label = pgm_read_word(menuLabels + i);
@@ -64,4 +62,5 @@ void InGameMenu::render(Renderer* renderer, byte frame) {
             renderer->drawSelfMasked(60, 4 + 20 * i, hudBFrame_tiles, 0);
         }
     }
+
 }
