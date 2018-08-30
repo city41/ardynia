@@ -14,6 +14,9 @@
 
 const uint8_t MAX_ENTITIES = 10;
 
+const uint8_t START_ROOM_X = 1;
+const uint8_t START_ROOM_Y = 4;
+
 class GameScene {
     typedef void (GameScene::*UpdatePtr)(uint8_t);
     typedef void (GameScene::*RenderPtr)(uint8_t);
@@ -83,8 +86,8 @@ class GameScene {
             arduboy(arduboy),
             renderer(renderer),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
-            nextRoomX(1),
-            nextRoomY(1),
+            nextRoomX(START_ROOM_X),
+            nextRoomY(START_ROOM_Y),
             menu(),
             roomTransitionCount(0),
             teleportTransitionCount(0),

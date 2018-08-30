@@ -16,7 +16,7 @@
         {
          "draworder":"topdown",
          "id":2,
-         "name":"Entities",
+         "name":"entities",
          "objects":[
                 {
                  "height":5,

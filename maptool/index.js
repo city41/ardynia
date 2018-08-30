@@ -9,6 +9,10 @@ function findLayer(layers, prop) {
     return layers.find(l => !!l[prop]);
 }
 
+function findEntityLayer(layers) {
+    return layers.find(l => !!l.objects && l.name == "entities");
+}
+
 program
     .version(packageJson.version)
     .option(
@@ -35,9 +39,17 @@ function createHeaderFile(tiledJson, baseName, outDir) {
         tiledJson.tilewidth
     );
 
+    const entityLayer = findEntityLayer(tiledJson.layers);
+
+    if (!entityLayer) {
+        throw new Error(
+            'must have an object layer for entities named "entities"'
+        );
+    }
+
     const entityArrayString = buildEntityArray(
         baseName,
-        findLayer(tiledJson.layers, "objects"),
+        entityLayer,
         tiledJson.width,
         tiledJson.height,
         tiledJson.tilewidth

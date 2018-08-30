@@ -44,6 +44,7 @@ class TileRoom {
 
         static boolean isInDungeon() { return mapType == DUNGEON; }
         static uint8_t getRoomIndex(uint8_t x, uint8_t y);
+        static uint8_t getTileAt(uint8_t rx, uint8_t ry, uint8_t px, uint8_t py);
         static void render(Renderer *renderer, byte frame, uint8_t roomX, uint8_t roomY);
         static void render(Renderer *renderer, byte frame);
 };

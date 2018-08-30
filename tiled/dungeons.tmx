@@ -22,7 +22,7 @@
 9,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,11
 </data>
  </layer>
- <objectgroup id="2" name="Entities">
+ <objectgroup id="2" name="entities">
   <object id="28" name="Bumper" type="BUMPER" x="1.5" y="57.875" width="109" height="5"/>
   <object id="30" name="Bumper" type="BUMPER" x="2" y="65.125" width="109" height="5"/>
   <object id="31" name="Bumper" type="BUMPER" x="225.125" y="57.5" width="109" height="5"/>

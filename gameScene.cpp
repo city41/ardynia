@@ -12,15 +12,15 @@ void GameScene::loadSave() {
 
     TileRoom::map = overworld_map;
     TileRoom::tiles = overworld_tiles;
-    TileRoom::x = 1;
-    TileRoom::y = 1;
+    TileRoom::x = START_ROOM_X;
+    TileRoom::y = START_ROOM_Y;
     TileRoom::mapType = OVERWORLD;
 
     entityDefs = overworld_entities;
     doorDefs = overworld_teleporters;
     bumperDefs = overworld_bumpers;
 
-    loadEntitiesinRoom(1, 1);
+    loadEntitiesinRoom(START_ROOM_X, START_ROOM_Y);
     player.moveTo(WIDTH / 2 - player.width, HEIGHT / 2 - player.height, true);
     player.dir = DOWN;
 
@@ -141,6 +141,14 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
 }
 
 void GameScene::detectEntityCollisions(void) {
+    if (!TileRoom::isInDungeon()) {
+        const uint8_t tileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
+
+        if (tileId == Water || tileId == Stone) {
+            player.undoMove();
+        }
+    }
+
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == UNSET) {
             continue;
