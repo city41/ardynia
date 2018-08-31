@@ -26,6 +26,9 @@ class GameScene {
     private:
         Arduboy2* arduboy;
         Renderer* renderer;
+
+        uint8_t titleRow;
+
         Player player;
 
         Entity entities[MAX_ENTITIES];
@@ -40,7 +43,6 @@ class GameScene {
 
         uint8_t roomTransitionCount;
         uint8_t teleportTransitionCount;
-        uint8_t swordWarningCount;
         uint8_t mapWidthInRooms;
         uint8_t mapHeightInRooms;
 
@@ -63,6 +65,9 @@ class GameScene {
         void loadEntitiesinRoom(uint8_t roomX, uint8_t roomy);
         void spawnNewEntity(EntityType, BaseEntity& spawner);
 
+        void updateTitle(uint8_t frame);
+        void renderTitle(uint8_t frame);
+
         void updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);
 
@@ -81,19 +86,19 @@ class GameScene {
         void push(UpdatePtr newUpdate, RenderPtr newRender);
         void pop();
 
-        void loadSave();
+        void loadSave(bool straightToPlay = false);
 
     public:
         GameScene(Arduboy2* arduboy, Renderer* renderer):
             arduboy(arduboy),
             renderer(renderer),
+            titleRow(0),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             nextRoomX(START_ROOM_X),
             nextRoomY(START_ROOM_Y),
             menu(),
             roomTransitionCount(0),
             teleportTransitionCount(0),
-            swordWarningCount(0),
             prevUpdate(NULL),
             nextUpdate(NULL),
             prevRender(NULL),

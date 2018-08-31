@@ -3,16 +3,19 @@
 
 #include <Arduino.h>
 #include <Arduboy2.h>
+#include "tinyfont.h"
 #include "drawBitmap.h"
 
 class Renderer {
     private:
         Arduboy2* arduboy;
         SpritesB sprite;
+        Tinyfont tinyFont;
 
     public:
         Renderer(Arduboy2* arduboy):
             arduboy(arduboy),
+            tinyFont(arduboy->sBuffer, WIDTH, HEIGHT),
             translateX(0),
             translateY(0)
         {}

@@ -20,13 +20,12 @@ const EntityTypes = {
     BLOB_WHISPERER: 14,
     NECROMANCER: 15,
     NEMESIS: 16,
-    BUMPER: 17,
-    TELEPORTER: 18,
-    BUSH: 19,
-    LOCK: 20,
-    FLAME: 21,
-    PROJECTILE: 22,
-    OLD_MAN: 23
+    TELEPORTER: 17,
+    BUSH: 18,
+    LOCK: 18,
+    FLAME: 20,
+    PROJECTILE: 21,
+    OLD_MAN: 22
 };
 
 function getRoomAt(mapX, mapY) {

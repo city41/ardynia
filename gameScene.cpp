@@ -9,7 +9,16 @@ const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 
-void GameScene::loadSave() {
+const int8_t playLabel[] PROGMEM = "PLAY";
+const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
+const int8_t needSwordLabel[] PROGMEM = "YOU NEED A SWORD";
+
+const uint8_t PLAY_GAME = 0;
+const uint8_t DELETE_SAVE = 1;
+const uint8_t MAX_TITLE_LABELS = 2;
+const int8_t* const titleLabels[MAX_TITLE_LABELS] PROGMEM = { playLabel, deleteSaveLabel };
+
+void GameScene::loadSave(bool straightToPlay = false) {
     State::load();
 
     TileRoom::map = overworld_map;
@@ -26,8 +35,13 @@ void GameScene::loadSave() {
 
     player.reset();
 
-    currentUpdate = &GameScene::updatePlay;
-    currentRender = &GameScene::renderPlay;
+    if (straightToPlay) {
+        currentUpdate = &GameScene::updatePlay;
+        currentRender = &GameScene::renderPlay;
+    } else {
+        currentUpdate = &GameScene::updateTitle;
+        currentRender = &GameScene::renderTitle;
+    }
 
     Map::reset();
     Map::visitRoom(START_ROOM_X, START_ROOM_Y, OVERWORLD_WIDTH_IN_ROOMS);
@@ -62,6 +76,8 @@ void GameScene::updateGameOver(uint8_t frame) {
     if (teleportTransitionCount > 0) {
         teleportTransitionCount -= 1;
     } else if (arduboy->justPressed(A_BUTTON)) {
+        loadSave(true);
+    } else if (arduboy->justPressed(B_BUTTON)) {
         loadSave();
     }
 }
@@ -81,10 +97,11 @@ void GameScene::renderGameOver(uint8_t frame) {
 
     renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
 
-    renderer->print(40, 20, F("game over"));
+    renderer->print(40, 20, F("GAME OVER"));
 
     if (teleportTransitionCount == 0) {
-        renderer->print(4, HEIGHT - 8, F("press A to load save"));
+        renderer->print(32, HEIGHT - 10, F("A: CONTINUE"));
+        renderer->print(32, HEIGHT - 5, F("B: QUIT"));
     }
 
     player.render(renderer, frame);
@@ -192,7 +209,8 @@ void GameScene::detectEntityCollisions(void) {
             } else if (entities[ge].type == OLD_MAN) {
                 if (State::gameState.numAcquiredItems == 0) {
                     player.undoMove();
-                    swordWarningCount = 20;
+                    toastCount = 40;
+                    toast = (__FlashStringHelper*)needSwordLabel;
                 }
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
@@ -336,6 +354,41 @@ boolean GameScene::playerLeftMap(void) {
     return false;
 }
 
+void GameScene::updateTitle(uint8_t frame) {
+    if (arduboy->justPressed(A_BUTTON)) {
+        if (titleRow == PLAY_GAME) {
+            push(&GameScene::updatePlay, &GameScene::renderPlay);
+        } else if (titleRow == DELETE_SAVE) {
+            State::clearEEPROM();
+            toastCount = 30;
+            toast = F("DELETED!");
+        }
+    }
+
+    if (arduboy->justPressed(UP_BUTTON)) {
+        titleRow = clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
+    }
+
+    if (arduboy->justPressed(DOWN_BUTTON)) {
+        titleRow = clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
+    }
+}
+
+void GameScene::renderTitle(uint8_t frame) {
+    renderer->drawOverwrite(35, 7, title_tiles, 0);
+    renderer->fillRect(0, 26, 75, 8, WHITE);
+    renderer->fillRect(86, 26, 44, 8, WHITE);
+    renderer->fillRect(75, 32, 20, 2, WHITE);
+
+    for (uint8_t i = 0; i < MAX_TITLE_LABELS; ++i) {
+        __FlashStringHelper* label = pgm_read_word(titleLabels + i);
+        renderer->print(42, 46 + i * 8, label);
+
+        if (i == titleRow) {
+            renderer->drawRect(34, 46 + i * 8, 4, 4, WHITE);
+        }
+    }
+}
 
 void GameScene::updatePlay(uint8_t frame) {
     if (paused) {
@@ -370,11 +423,6 @@ void GameScene::updatePlay(uint8_t frame) {
     // freeze the game while this is happening
     if (player.receiveItemCount > 0) {
         return;
-    }
-
-
-    if (swordWarningCount > 0) {
-        swordWarningCount -= 1;
     }
 
     int8_t e = 0;
@@ -428,10 +476,6 @@ void GameScene::renderPlay(uint8_t frame) {
     }
 
     player.render(renderer, frame);
-
-    if (swordWarningCount > 0) {
-        renderer->print(0, HEIGHT - 8, F("you need a sword   "));
-    }
 
     renderer->translateX = WIDTH - 16;
     renderer->translateY = 0;
@@ -559,11 +603,13 @@ void GameScene::render(uint8_t frame) {
     renderer->translateY = 0;
 
     if (paused) {
-        renderer->print(0, 30, F("  press B to play  "));
+        renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
+        renderer->print(0, HEIGHT - 4, F("PAUSED: PRESS B TO PLAY"));
     }
 
     if (toastCount > 0) {
-        renderer->print(0, HEIGHT - 8, toast);
+        renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
+        renderer->print(0, HEIGHT - 4, toast);
     }
 
     if (nextRender != NULL) {
