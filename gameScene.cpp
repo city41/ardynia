@@ -43,8 +43,8 @@ void GameScene::pop() {
     nextRender = prevRender;
 }
 
-boolean isOffscreen(int16_t x, int16_t y) {
-    return x < 0 || y < 0 || x > ROOM_WIDTH_PX || y > HEIGHT;
+boolean isOffScreen(int16_t x, int16_t y) {
+    return x < 0 || y < 0 || x >= ROOM_WIDTH_PX || y >= ROOM_HEIGHT_PX;
 }
 
 void GameScene::updateGameOver(uint8_t frame) {
@@ -150,10 +150,27 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
 }
 
 void GameScene::detectEntityCollisions(void) {
-    if (!TileRoom::isInDungeon()) {
-        const uint8_t tileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
+    if (playerLeftMap()) {
+        player.undoMove();
+    } else if (isOffScreen(player.x, player.y)) {
+        // if the player just went off the screen, did they legit go through a "passageway"?
+        // if not, prevent them leaving the screen
+        const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
 
-        if (tileId == Water || tileId == Stone) {
+        if (
+            (player.x < 0 && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != RightWall) ||
+            (player.x >= ROOM_WIDTH_PX && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != LeftWall) ||
+            (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
+            (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
+        ) {
+            player.undoMove();
+        }
+    } else {
+        // otherwise the player is on screen, did they just walk onto something that is solid?
+        // then prevent them walking on it
+        const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
+
+        if (currentTileId == Water || currentTileId == Stone) {
             player.undoMove();
         }
     }
@@ -215,7 +232,7 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
         nextRoomY = TileRoom::y;
         roomTransitionCount = ROOM_WIDTH_PX;
 
-    } else if (x > ROOM_WIDTH_PX) {
+    } else if (x >= ROOM_WIDTH_PX) {
         nextRoomX = TileRoom::x + 1;
         nextRoomY = TileRoom::y;
         roomTransitionCount = ROOM_WIDTH_PX;
@@ -225,7 +242,7 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
         nextRoomY = TileRoom::y - 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
  
-    } else if (y > HEIGHT) {
+    } else if (y >= ROOM_HEIGHT_PX) {
         nextRoomX = TileRoom::x;
         nextRoomY = TileRoom::y + 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
@@ -357,9 +374,6 @@ void GameScene::updatePlay(uint8_t frame) {
         return;
     }
 
-    if (playerLeftMap()) {
-        player.undoMove();
-    }
 
     if (swordWarningCount > 0) {
         swordWarningCount -= 1;
@@ -382,10 +396,10 @@ void GameScene::updatePlay(uint8_t frame) {
         }
     }
 
-    if (isOffscreen(player.x, player.y)) {
+    detectEntityCollisions();
+
+    if (isOffScreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
-    } else {
-        detectEntityCollisions();
     }
 
     if (State::gameState.health <= 0) {
@@ -476,14 +490,16 @@ void GameScene::updateRoomTransition(uint8_t frame) {
     if (roomTransitionCount == 0) {
 
         if (nextRoomX < TileRoom::x) {
-            player.moveTo(ROOM_WIDTH_PX - 1, player.y);
+            player.moveTo(ROOM_WIDTH_PX, player.y, true);
         } else if (nextRoomX > TileRoom::x) {
-            player.moveTo(1, player.y);
+            player.moveTo(0, player.y, true);
         } else if (nextRoomY < TileRoom::y) {
-            player.moveTo(player.x, ROOM_HEIGHT_PX - 1);
+            player.moveTo(player.x, ROOM_HEIGHT_PX, true);
         } else {
-            player.moveTo(player.x, 1);
+            player.moveTo(player.x, 0, true);
         }
+
+        player.stayInside(4, ROOM_WIDTH_PX - 4, 4, ROOM_HEIGHT_PX - 4);
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;

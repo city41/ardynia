@@ -7,6 +7,7 @@
 #include "direction.h"
 #include "entityTypes.h"
 #include "drawBitmap.h"
+#include "util.h"
 
 
 class BaseEntity {
@@ -101,7 +102,7 @@ class BaseEntity {
             if (resetPrev) {
                 prevX = newX;
                 prevY = newY;
-            } else {
+            } else if (prevX != x || prevY != y) {
                 prevX = x;
                 prevY = y;
             }
@@ -110,6 +111,11 @@ class BaseEntity {
             y = newY;
 
             dir = determineDirection(prevX, prevY, x, y, dir);
+        }
+
+        inline void stayInside(uint8_t minX, uint8_t maxX, uint8_t minY, uint8_t maxY) {
+            x = clamp(x, minX, maxX);
+            y = clamp(y, minY, maxY);
         }
 
         virtual void undoMove() {
