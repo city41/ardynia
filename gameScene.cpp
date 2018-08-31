@@ -9,14 +9,14 @@ const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 
-const int8_t playLabel[] PROGMEM = "PLAY";
+const uint8_t MAX_TITLE_LABELS = 2;
+const int8_t newGameLabel[] PROGMEM = "NEW GAME";
+const int8_t continueLabel[] PROGMEM = "CONTINUE";
 const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
 const int8_t needSwordLabel[] PROGMEM = "YOU NEED A SWORD";
 
 const uint8_t PLAY_GAME = 0;
 const uint8_t DELETE_SAVE = 1;
-const uint8_t MAX_TITLE_LABELS = 2;
-const int8_t* const titleLabels[MAX_TITLE_LABELS] PROGMEM = { playLabel, deleteSaveLabel };
 
 void GameScene::loadSave(bool straightToPlay = false) {
     State::load();
@@ -359,18 +359,19 @@ void GameScene::updateTitle(uint8_t frame) {
         if (titleRow == PLAY_GAME) {
             push(&GameScene::updatePlay, &GameScene::renderPlay);
         } else if (titleRow == DELETE_SAVE) {
+            titleRow = 0;
             State::clearEEPROM();
-            toastCount = 30;
-            toast = F("DELETED!");
         }
     }
 
-    if (arduboy->justPressed(UP_BUTTON)) {
-        titleRow = clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
-    }
+    if (State::hasUserSaved()) {
+        if (arduboy->justPressed(UP_BUTTON)) {
+            titleRow = clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
+        }
 
-    if (arduboy->justPressed(DOWN_BUTTON)) {
-        titleRow = clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
+        if (arduboy->justPressed(DOWN_BUTTON)) {
+            titleRow = clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
+        }
     }
 }
 
@@ -380,14 +381,15 @@ void GameScene::renderTitle(uint8_t frame) {
     renderer->fillRect(86, 26, 44, 8, WHITE);
     renderer->fillRect(75, 32, 20, 2, WHITE);
 
-    for (uint8_t i = 0; i < MAX_TITLE_LABELS; ++i) {
-        __FlashStringHelper* label = pgm_read_word(titleLabels + i);
-        renderer->print(42, 46 + i * 8, label);
+    __FlashStringHelper* startGameLabel = State::hasUserSaved() ? (__FlashStringHelper*)continueLabel : (__FlashStringHelper*)newGameLabel;
 
-        if (i == titleRow) {
-            renderer->drawRect(34, 46 + i * 8, 4, 4, WHITE);
-        }
+    renderer->print(42, 46, startGameLabel);
+
+    if (State::hasUserSaved()) {
+        renderer->print(42, 54, (__FlashStringHelper*)deleteSaveLabel);
     }
+
+    renderer->drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
 }
 
 void GameScene::updatePlay(uint8_t frame) {

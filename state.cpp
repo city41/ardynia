@@ -70,6 +70,7 @@ void State::load() {
 void State::clearEEPROM() {
     if (hasUserSaved()) {
         EEPROM.put(EEPROM_START, 0);
+        load();
     }
 }
 
