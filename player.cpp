@@ -191,6 +191,7 @@ void Player::receiveItemFromChest(Entity* chest) {
 
         const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
         State::setTriggered(roomIndex);
+        State::saveToEEPROM();
     }
 }
 

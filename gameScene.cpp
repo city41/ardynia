@@ -346,6 +346,11 @@ void GameScene::updatePlay(uint8_t frame) {
         }
     }
 
+    if (arduboy->pressed(LEFT_BUTTON | RIGHT_BUTTON | DOWN_BUTTON)) {
+        paused = true;
+        return;
+    }
+
     if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
             menu.chosenItem = player.bButtonEntityType;
