@@ -173,8 +173,8 @@ const uint8_t PROGMEM entityProperties[] = {
     false,
 
     // 18, TELEPORTER
-    4,
-    4,
+    18,
+    8,
     DOWN,
     0,
     0,

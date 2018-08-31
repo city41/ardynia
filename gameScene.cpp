@@ -115,7 +115,7 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
 
         // plop player in the center of the rooms
         // dest rooms must be able to accomodate this!
-        player.moveTo(57, 28, true);
+        player.moveTo(57, 33, true);
         player.dir = DOWN;
 
     } else if (teleportTransitionCount == 0) {

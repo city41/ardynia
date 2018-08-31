@@ -1,7 +1,7 @@
 #include "map.h"
 #include "state.h"
 
-uint8_t Map::visitedRooms[MAX_NUM_VISITED_ROOMS / 8 + 1];
+uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
 void Map::render(Renderer* renderer, uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
     for (uint8_t roomIndex = 0; roomIndex < MAX_NUM_VISITED_ROOMS; ++roomIndex) {
@@ -32,5 +32,5 @@ void Map::visitRoom(uint8_t roomX, uint8_t roomY, uint8_t mapWidthInRooms) {
 }
 
 void Map::reset() {
-    memset(visitedRooms, 0, MAX_NUM_VISITED_ROOMS / 8);
+    memset(visitedRooms, 0, VISITED_ROOMS_BYTE_COUNT);
 }
