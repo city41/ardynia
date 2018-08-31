@@ -22,16 +22,16 @@ const EntityType CHEST = 7;
 
 // enemies, to be named
 const EntityType BLOB = 8;
-const EntityType ENEMY2 = 9;
-const EntityType ENEMY3 = 10;
-const EntityType ENEMY4 = 11;
-const EntityType ENEMY5 = 12;
-const EntityType ENEMY6 = 13;
+const EntityType BAT = 9;
+const EntityType SPIKE = 10;
+const EntityType SKULL = 11;
+const EntityType OCTO = 12;
+const EntityType GHOST = 13;
 
 // bosses, to be named
-const EntityType BOSS1 = 14;
-const EntityType BOSS2 = 15;
-const EntityType BOSS3 = 16;
+const EntityType BLOB_WHISPERER = 14;
+const EntityType NECROMANCER = 15;
+const EntityType NEMESIS = 16;
 
 // things related to navigating maps
 // and interacting with the world

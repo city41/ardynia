@@ -91,7 +91,52 @@ const uint8_t PROGMEM entityProperties[] = {
     0, // duration
     true, // invertInDungeon
 
-    // 9, ENEMY2
+    // 9, BAT
+    8,
+    8,
+    DOWN,
+    1,
+    1,
+    0,
+    true,
+
+    // 10, SPIKE
+    8,
+    8,
+    DOWN,
+    255,
+    1,
+    0,
+    false,
+
+    // 11, SKULL
+    16,
+    16,
+    DOWN,
+    1,
+    2,
+    0,
+    false,
+
+    // 12, OCTO
+    16,
+    16,
+    DOWN,
+    4,
+    1,
+    0,
+    false,
+
+    // 13, GHOST
+    8,
+    16,
+    DOWN,
+    1,
+    2,
+    0,
+    false,
+
+    // 14, BLOB_WHISPERER
     0,
     0,
     DOWN,
@@ -100,7 +145,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     false,
 
-    // 10, ENEMY3
+    // 15, NECROMANCER
     0,
     0,
     DOWN,
@@ -109,52 +154,7 @@ const uint8_t PROGMEM entityProperties[] = {
     0,
     false,
 
-    // 11, ENEMY4
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 12, ENEMY5
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 13, ENEMY6
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 14, BOSS1
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 15, BOSS2
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 16, BOSS3
+    // 16, NEMESIS
     0,
     0,
     DOWN,
@@ -301,7 +301,23 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     Blob::onCollide,
 
-    // 9, ENEMY2
+    // 9, BAT
+    bat_tiles,
+    bat_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 10, SPIKE
+    spike_tiles,
+    spike_mask,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+
+    // 11, SKULL
     NULL,
     NULL,
     NULL,
@@ -309,7 +325,7 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
 
-    // 10, ENEMY3
+    // 12, OCTO
     NULL,
     NULL,
     NULL,
@@ -317,25 +333,9 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
 
-    // 11, ENEMY4
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 12, ENEMY5
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 13, ENEMY6
-    NULL,
-    NULL,
+    // 13, GHOST
+    ghost_tiles,
+    ghost_mask,
     NULL,
     NULL,
     NULL,
