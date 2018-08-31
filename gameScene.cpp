@@ -348,11 +348,9 @@ void GameScene::updatePlay(uint8_t frame) {
 
     if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
-            menu.decision = player.bButtonEntityType;
-            menu.column = 1;
+            menu.chosenItem = player.bButtonEntityType;
             menu.row = player.bButtonEntityType - 1;
         } else {
-            menu.column = 1;
             menu.row = 0;
         }
 
@@ -440,25 +438,8 @@ void GameScene::updateMenu(uint8_t frame) {
 
     if (arduboy->justPressed(A_BUTTON)) {
         // respond to the decision
-        if (menu.decision == Pause) {
-            paused = true;
-        } else if (menu.decision == Save) {
-            State::saveToEEPROM();
-            toastCount = 60;
-            toast = F("saved");
-        } else if (menu.decision == Load) {
-            loadSave();
-            toast = F("loaded save");
-            toastCount = 60;
-            return;
-        } else if (menu.decision == DeleteSave) {
-            State::clearEEPROM();
-            loadSave();
-            toast = F("deleted!");
-            toastCount = 60;
-            return;
-        } else if (menu.decision >= BOOMERANG && menu.decision <= CANDLE) {
-            player.bButtonEntityType = menu.decision;
+        if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
+            player.bButtonEntityType = menu.chosenItem;
             player.entities[1].type = UNSET;
         }
 

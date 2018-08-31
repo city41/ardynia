@@ -7,30 +7,14 @@
 
 typedef uint8_t Decision;
 
-const Decision Pause = 11;
-const Decision Save = 12;
-const Decision Load = 13;
-const Decision Gap = 14;
-const Decision DeleteSave = 15;
-
-const uint8_t NUM_DECISION_COLUMNS = 2;
-const uint8_t NUM_DECISION_ROWS = 5;
-
 class InGameMenu {
     public:
-        Decision decisions[NUM_DECISION_COLUMNS][NUM_DECISION_ROWS] = {
-            { Pause, Save, Load, Gap, DeleteSave  },
-            { BOOMERANG, BOMB, CANDLE }
-        };
-
-        uint8_t column;
         uint8_t row;
-        Decision decision;
+        EntityType chosenItem;
 
         InGameMenu():
-            column(1),
             row(0),
-            decision(decisions[column][row])
+            chosenItem(UNSET)
         {}
 
         void update(Arduboy2* arduboy, uint8_t frame);
