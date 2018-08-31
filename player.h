@@ -22,6 +22,7 @@ class Player: public BaseEntity {
         EntityType bButtonEntityType;
 
         void receiveItemFromChest(Entity* chest);
+        void reset();
 
         Player(int16_t x, int16_t y):
             BaseEntity(

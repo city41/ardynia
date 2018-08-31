@@ -86,7 +86,7 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":862.916666666667,
+                 "x":862.917,
                  "y":23
                 }, 
                 {
@@ -132,8 +132,116 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":511.083333333333,
-                 "y":455.333333333333
+                 "x":511.083,
+                 "y":455.333
+                }, 
+                {
+                 "height":0,
+                 "id":130,
+                 "name":"Chest with key",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":390.5,
+                 "y":143
+                }, 
+                {
+                 "height":0,
+                 "id":131,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":135,
+                 "y":419
+                }, 
+                {
+                 "height":0,
+                 "id":132,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":152,
+                 "y":430.5
+                }, 
+                {
+                 "height":0,
+                 "id":133,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":20,
+                 "y":356
+                }, 
+                {
+                 "height":0,
+                 "id":134,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":22,
+                 "y":455
+                }, 
+                {
+                 "height":0,
+                 "id":135,
+                 "name":"Chest with boomerang",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"BOOMERANG"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":22.5,
+                 "y":482.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -857,7 +965,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":130,
+ "nextobjectid":136,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

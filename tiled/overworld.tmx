@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="130">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="136">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="4" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -71,6 +71,42 @@
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
     <property name="DEST_ROOM_Y" type="int" value="3"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="130" name="Chest with key" type="CHEST" x="390.5" y="143">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="131" name="blob" type="BLOB" x="135" y="419">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="132" name="blob" type="BLOB" x="152" y="430.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="133" name="blob" type="BLOB" x="20" y="356">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="134" name="blob" type="BLOB" x="22" y="455">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="135" name="Chest with boomerang" type="CHEST" x="22.5" y="482.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOOMERANG"/>
    </properties>
    <point/>
   </object>

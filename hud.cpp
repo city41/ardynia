@@ -25,7 +25,7 @@ void drawKeys(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count) {
     uint8_t origX = x;
 
     for (uint8_t i = 0; i < count; ++i) {
-        renderer->drawExternalMask(x, y, key_tiles, key_mask, 0);
+        renderer->drawExternalMask(x, y, key_tiles, key_mask, 0, 0, true);
         x += 5;
 
         if (i == 2) {
@@ -53,6 +53,5 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     }
 
     // keys
-    renderer->fillRect(1, 44, 15, 18, WHITE);
     drawKeys(renderer, 1, 45, State::gameState.numKeys);
 }

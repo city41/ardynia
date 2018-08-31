@@ -8,6 +8,15 @@
 
 const uint8_t PLAYER_VELOCITY = 2;
 
+void Player::reset() {
+    moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
+    dir = DOWN;
+
+    bButtonEntityType = UNSET;
+    entities[0].type = UNSET;
+    entities[1].type = UNSET;
+}
+
 void Player::useSword(void) {
     // currently swinging the sword or dont even have it yet? do nothing
     if (entities[0].type != UNSET || State::gameState.numAcquiredItems == 0) {

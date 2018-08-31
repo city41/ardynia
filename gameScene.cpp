@@ -22,8 +22,8 @@ void GameScene::loadSave() {
     bumperDefs = overworld_bumpers;
 
     loadEntitiesinRoom(START_ROOM_X, START_ROOM_Y);
-    player.moveTo(WIDTH / 2 - player.width, HEIGHT / 2 - player.height, true);
-    player.dir = DOWN;
+
+    player.reset();
 
     currentUpdate = &GameScene::updatePlay;
     currentRender = &GameScene::renderPlay;
@@ -447,7 +447,7 @@ void GameScene::updateMenu(uint8_t frame) {
             toast = F("deleted!");
             toastCount = 60;
             return;
-        } else if (menu.decision >= BOMB && menu.decision <= CANDLE) {
+        } else if (menu.decision >= BOOMERANG && menu.decision <= CANDLE) {
             player.bButtonEntityType = menu.decision;
             player.entities[1].type = UNSET;
         }
