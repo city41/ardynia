@@ -36,17 +36,16 @@ const EntityType NEMESIS = 16;
 
 // things related to navigating maps
 // and interacting with the world
-const EntityType BUMPER = 17;
-const EntityType TELEPORTER = 18; // aka a door
-const EntityType BUSH = 19;
-const EntityType LOCK = 20;
+const EntityType TELEPORTER = 17; // aka a door
+const EntityType BUSH = 18;
+const EntityType LOCK = 19;
 
 // projectiles
-const EntityType FLAME = 21;
-const EntityType PROJECTILE = 22;
+const EntityType FLAME = 20;
+const EntityType PROJECTILE = 21;
 
 // misc
-const EntityType OLD_MAN = 23;
+const EntityType OLD_MAN = 22;
 
 const EntityType PLAYER = 127;
 

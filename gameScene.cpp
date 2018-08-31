@@ -181,9 +181,7 @@ void GameScene::detectEntityCollisions(void) {
         }
 
         if (entities[ge].overlaps(&player)) {
-            if (entities[ge].type == BUMPER) {
-                player.undoMove();
-            } else if (entities[ge].type == TELEPORTER) {
+            if (entities[ge].type == TELEPORTER) {
                 // to save memory, teleporters store the next room coordinates
                 // in prevX/prevY, two variables they otherwise wouldn't need
                 // TODO: is it possible to save the memory without being confusing?
@@ -294,10 +292,7 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
         currentEntity.x = pgm_read_byte(roomPtr++);
         currentEntity.y = pgm_read_byte(roomPtr++);
 
-        if (type == BUMPER) {
-            currentEntity.width = pgm_read_byte(bumperDefs + entityId * 2);
-            currentEntity.height = pgm_read_byte(bumperDefs + entityId * 2 + 1);
-        } else if (type == TELEPORTER) {
+        if (type == TELEPORTER) {
             // reuse prevX/Y for destX/Y for doors
             currentEntity.prevX = pgm_read_byte(doorDefs + entityId * 2);
             currentEntity.prevY = pgm_read_byte(doorDefs + entityId * 2 + 1);

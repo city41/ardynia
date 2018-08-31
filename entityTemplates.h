@@ -166,16 +166,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 17, BUMPER
-    0,
-    0,
-    DOWN,
-    0,
-    0,
-    0,
-    false,
-
-    // 18, TELEPORTER
+    // 17, TELEPORTER
     18,
     8,
     DOWN,
@@ -184,7 +175,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 19, BUSH
+    // 18, BUSH
     0,
     0,
     DOWN,
@@ -193,7 +184,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 20, LOCK
+    // 19, LOCK
     0,
     0,
     DOWN,
@@ -202,7 +193,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 21, FLAME
+    // 20, FLAME
     0,
     0,
     DOWN,
@@ -211,7 +202,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 22, PROJECTILE
+    // 21, PROJECTILE
     0,
     0,
     DOWN,
@@ -220,7 +211,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 23, OLD_MAN
+    // 22, OLD_MAN
     8,
     HEIGHT, // whole screen, this guy is basically a total bumper
     DOWN,
@@ -351,49 +342,42 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 17, BUMPER
+    // 17, TELEPORTER
     NULL,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 18, TELEPORTER
+    // 18, BUSH
     NULL,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 19, BUSH
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 20, LOCK
+    // 19, LOCK
     lock_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 21, FLAME
+    // 20, FLAME
     NULL,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 22, PROJECTILE
+    // 21, PROJECTILE
     NULL,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 23, OLD_MAN
+    // 22, OLD_MAN
     oldMan_plus_mask,
     NULL,
     NULL,
