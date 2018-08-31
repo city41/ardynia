@@ -39,7 +39,6 @@ class BaseEntity {
         uint8_t height;
         Direction dir;
         uint8_t* tiles;
-        uint8_t* maskTiles;
         int8_t damage;
         uint8_t duration;
         uint8_t currentFrame;
@@ -57,7 +56,6 @@ class BaseEntity {
             height(0),
             dir(DOWN),
             tiles(NULL),
-            maskTiles(NULL),
             damage(0),
             duration(0),
             currentFrame(0),
@@ -72,7 +70,6 @@ class BaseEntity {
             uint8_t height,
             Direction dir,
             uint8_t* tiles,
-            uint8_t* maskTiles,
             int8_t damage,
             uint8_t duration
         ):
@@ -85,7 +82,6 @@ class BaseEntity {
             height(height),
             dir(dir),
             tiles(tiles),
-            maskTiles(maskTiles),
             damage(damage),
             duration(duration),
             currentFrame(0),

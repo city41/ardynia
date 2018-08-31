@@ -4,12 +4,15 @@
 #include <Arduino.h>
 #include "entityTypes.h"
 #include "entity.h"
-#include "bitmaps.h"
+#include "spriteBitmaps.h"
 #include "blob.h"
 #include "sword.h"
 #include "boomerang.h"
 
-const uint8_t PROGMEM entityProperties[] = {
+const uint8_t NUM_ENTITY_PROPS = 7;
+const uint8_t NUM_ENTITY_POINTERS = 5;
+
+const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
     16,           // width
     16,           // height
@@ -227,10 +230,9 @@ const uint8_t PROGMEM entityProperties[] = {
     false,
 };
 
-const void* const PROGMEM entityPointers[] = {
+const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 0, SWORD
-    sword_tiles,        // tiles
-    sword_mask,         // masks
+    sword_plus_mask,    // tiles
     Sword::spawn,       // spawn
     Sword::update,      // update
     NULL,               // render
@@ -238,16 +240,14 @@ const void* const PROGMEM entityPointers[] = {
 
 
     // 1, BOOMERANG
-    itemIcons_tiles,
-    itemIcons_mask,
+    itemIcons_plus_mask,
     Boomerang::spawn,
     Boomerang::update,
     NULL,
     Boomerang::onCollide,
 
     // 2, BOMB
-    itemIcons_tiles,
-    itemIcons_mask,
+    itemIcons_plus_mask,
     NULL,
     NULL,
     NULL,
@@ -259,19 +259,16 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 4, KEY
-    key_tiles,
-    key_mask,
+    key_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 5, HEART
-    heart_tiles,
-    heart_mask,
+    heart_plus_mask,
     NULL,
     NULL,
     NULL,
@@ -283,42 +280,36 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 7, CHEST
-    chest_tiles,
-    chest_mask,
+    chest_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 8, BLOB
-    blob_tiles,
-    blob_mask,
+    blob_plus_mask,
     NULL,
     Blob::update,
     NULL,
     Blob::onCollide,
 
     // 9, BAT
-    bat_tiles,
-    bat_mask,
+    bat_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 10, SPIKE
-    spike_tiles,
-    spike_mask,
+    spike_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 11, SKULL
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -331,18 +322,15 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 13, GHOST
-    ghost_tiles,
-    ghost_mask,
+    ghost_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 14, BOSS1
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -355,10 +343,8 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 16, BOSS3
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -371,10 +357,8 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 18, TELEPORTER
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -387,18 +371,15 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 20, LOCK
-    lock_tiles,
-    NULL,
+    lock_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
     // 21, FLAME
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -411,11 +392,9 @@ const void* const PROGMEM entityPointers[] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 23, OLD_MAN
-    oldMan_tiles,
-    oldMan_mask,
+    oldMan_plus_mask,
     NULL,
     NULL,
     NULL,

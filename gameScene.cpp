@@ -3,6 +3,7 @@
 #include "entityTemplates.h"
 #include "state.h"
 #include "map.h"
+#include "tileBitmaps.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;

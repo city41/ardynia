@@ -13,20 +13,9 @@
  * To mirror the sprite, pass in MIRROR_HORIZONTAL or MIRROR_VERTICAL as the mirror parameter.
  * To mirrow both ways at once, pass in MIRROR_HORIZONTAL | MIRROR_VERTICAL as the parameter
  */
-void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t frame, uint8_t mirror, bool invert) {
+void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, bool plusMask, uint8_t frame, uint8_t mirror, bool invert) {
     if (bitmap == NULL)
         return;
-
-    uint16_t frame_offset;
-
-    // if using the same bitmap pointer for masking (to accomplish a self mask)
-    // then need to move the mask pointer past the width/height bites, otherwise assume
-    // the mask does not have the widht/height header
-    if (mask == bitmap) {
-        mask += 2;
-    }
-  
-    const boolean hasMask = mask != NULL;
 
     uint8_t w = pgm_read_byte(bitmap++);
     uint8_t h = pgm_read_byte(bitmap++);
@@ -35,10 +24,25 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
     if (x + w <= 0 || x > WIDTH - 1 || y + h <= 0 || y > HEIGHT - 1)
         return;
 
+    const uint8_t* mask = plusMask ? bitmap : NULL;
+    const boolean hasMask = mask != NULL;
+
+    uint16_t frame_offset = (w * ( h / 8 + ( h % 8 == 0 ? 0 : 1)));
+
     if (frame > 0) {
-        frame_offset = (w * ( h / 8 + ( h % 8 == 0 ? 0 : 1)));
         mask += frame * frame_offset;
         bitmap += frame * frame_offset;
+        
+        // plusMask means the sprite is frame,mask,frame,mask
+        // jump ahead one more tiem to get to the correct frame
+        if (plusMask) {
+            mask += frame * frame_offset;
+            bitmap += frame * frame_offset;
+        }
+    }
+
+    if (plusMask) {
+        mask += frame_offset;
     }
 
     // xOffset technically doesn't need to be 16 bit but the math operations

@@ -1,9 +1,6 @@
 #include "entityTemplates.h"
 #include "util.h"
 
-const uint8_t NUM_ENTITY_PROPS = 7;
-const uint8_t NUM_ENTITY_POINTERS = 6;
-
 void loadEntity(Entity& entity, EntityType entityType) {
     entity.type = entityType;
     entity.currentFrame = 0;
@@ -22,7 +19,6 @@ void loadEntity(Entity& entity, EntityType entityType) {
     void** pStart = entityPointers + (entityType * NUM_ENTITY_POINTERS);
 
     entity.tiles = (uint8_t*)pgm_read_word(pStart++);
-    entity.maskTiles = (uint8_t*)pgm_read_word(pStart++);
     entity.spawnPtr = (Entity::EntitySpawnPtr)pgm_read_word(pStart++);
     entity.updatePtr = (Entity::EntityUpdatePtr)pgm_read_word(pStart++);
     entity.renderPtr = (Entity::EntityRenderPtr)pgm_read_word(pStart++);

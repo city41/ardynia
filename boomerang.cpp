@@ -1,5 +1,5 @@
 #include "boomerang.h"
-#include "bitmaps.h"
+#include "spriteBitmaps.h"
 #include "math.h"
 #include "player.h"
 

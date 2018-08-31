@@ -1,0 +1,19 @@
+{
+  "name": "@city41/ardusprites",
+  "version": "2.0.3",
+  "description": "convert pngs to sprites for ArduBoy programs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+      "ardusprites": "./index.js"
+  },
+  "preferGlobal": true,
+  "author": "Matt Greer <matt.e.greer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^1.6.11",
+    "commander": "^2.17.1"
+  }
+}

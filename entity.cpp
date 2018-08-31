@@ -1,7 +1,7 @@
 #include "entity.h"
 #include "util.h"
 #include "tileRoom.h"
-#include "bitmaps.h"
+#include "spriteBitmaps.h"
 
 EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     if (tookDamageCount > 0) {
@@ -17,7 +17,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
         result = renderPtr(this, renderer, renderFrame);
     } else if (tiles) {
         boolean invert = invertInDungeon == 1 && TileRoom::isInDungeon();
-        renderer->drawExternalMask(x, y, tiles, maskTiles, currentFrame, mirror, invert);
+        renderer->drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
     }
 
 #ifdef DRAW_HITBOXES

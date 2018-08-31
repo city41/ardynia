@@ -11,8 +11,9 @@ include $(ARDMK_DIR)/Arduino.mk
 emu: build-leonardo/arduzel.hex
 	pabe build-leonardo/arduzel.hex
 
-bmp: pngs/*.png
-	ardusprites --src pngs --dest bitmaps.h
+bmp:
+	node ./bmptool/ --src spritePngs --dest spriteBitmaps.h --type combined && \
+    node ./bmptool/ --src tilePngs --dest tileBitmaps.h --type bitmap
 
 map:
 	node ./maptool/ -s ./tiled/ -o .

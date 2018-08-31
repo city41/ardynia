@@ -1,5 +1,4 @@
 #include "player.h"
-#include "bitmaps.h"
 #include "entityTemplates.h"
 #include "drawBitmap.h"
 #include "util.h"
@@ -47,7 +46,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 7;
-        renderer->drawExternalMask(x - 2, y - 24, itemIcons_tiles, itemIcons_mask, receivedItem, 0);
+        renderer->drawPlusMask(x - 2, y - 24, itemIcons_plus_mask, receivedItem, 0);
     } else if (State::gameState.health <= 0) {
         spriteIndex = 8;
     } else {
@@ -80,7 +79,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         }
     }
 
-    renderer->drawExternalMask(x - 4, y - 8, playerWalk_tiles, playerWalk_mask, spriteIndex, mirror);
+    renderer->drawPlusMask(x - 4, y - 8, player_plus_mask, spriteIndex, mirror);
 
 #ifdef DRAW_HITBOXES
     renderer->drawRect(x, y, w, h, BLACK);

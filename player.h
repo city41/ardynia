@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include "baseEntity.h"
 #include "entity.h"
-#include "bitmaps.h"
+#include "spriteBitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
 
@@ -30,8 +30,7 @@ class Player: public BaseEntity {
                 8,  // width
                 8,  // height
                 DOWN,
-                playerWalk_tiles,
-                playerWalk_mask,
+                player_plus_mask,
                 0,   // damage
                 0    // duration
             ),

@@ -1,5 +1,5 @@
 #include "tileRoom.h"
-#include "bitmaps.h"
+#include "tileBitmaps.h"
 #include "util.h"
 #include "drawBitmap.h"
 

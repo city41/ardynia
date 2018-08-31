@@ -1,5 +1,5 @@
 #include "inGameMenu.h"
-#include "bitmaps.h"
+#include "spriteBitmaps.h"
 #include "util.h"
 #include "state.h"
 
@@ -56,11 +56,12 @@ void InGameMenu::render(Renderer* renderer, uint8_t frame) {
 
     // second column, items
     for (uint8_t i = 0; i < numAcquiredEquippableItems; ++i) {
-        renderer->drawExternalMask(63, 4 + 20 * i, itemIcons_tiles, itemIcons_mask, i + 1, 0, true);
 
         if (i == row && column == 1) {
-            renderer->drawSelfMasked(60, 4 + 20 * i, hudBFrame_tiles, 0);
+            renderer->drawPlusMask(60, 4 + 20 * i, hudBFrame_plus_mask, 0);
         }
+
+        renderer->drawPlusMask(63, 4 + 20 * i, itemIcons_plus_mask, i + 1, 0, true);
     }
 
 }

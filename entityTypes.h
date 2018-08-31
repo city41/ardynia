@@ -9,6 +9,7 @@ const EntityType ENTITY_ID_MASK = 0b11100000;
 
 const EntityType UNSET = -1;
 
+
 // items the player can use, anything with ID less than 8
 // can be stored in a chest
 const EntityType SWORD = 0;
@@ -48,6 +49,10 @@ const EntityType PROJECTILE = 22;
 const EntityType OLD_MAN = 23;
 
 const EntityType PLAYER = 127;
+
+// player isn't really an "entity"
+// TODO: can we kill PLAYER EntityType?
+const uint8_t NUM_ENTITIES = OLD_MAN + 1;
 
 #endif
 

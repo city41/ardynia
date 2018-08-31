@@ -24,8 +24,7 @@ class Renderer {
         void drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE);
         void fillCircle(int16_t x, int16_t y, uint8_t r, uint8_t color = WHITE);
         void drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false);
-        void drawExternalMask(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, uint8_t bitmapFrame, MirrorMode mirror = 0, bool invert = false);
-        void drawSelfMasked(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false);
+        void drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false);
         void print(int16_t x, int16_t y, const __FlashStringHelper* message);
         void print(int16_t x, int16_t y, int16_t num);
 };
