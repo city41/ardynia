@@ -17,13 +17,15 @@ const TileDef Stone = 4;
 const TileDef Ladder = 5;
 const TileDef Water = 6;
 const TileDef Door = 7;
+const TileDef LeftFlavor = 8;
+const TileDef RightFlavor = 9;
 
 // these tiles are mirrors of the above sprites
-const TileDef LowerLeftCorner = 8;
-const TileDef UpperRightCorner = 9;
-const TileDef LowerRightCorner = 10;
-const TileDef UpperWall = 11;
-const TileDef RightWall = 12;
+const TileDef LowerLeftCorner = 10;
+const TileDef UpperRightCorner = 11;
+const TileDef LowerRightCorner = 12;
+const TileDef UpperWall = 13;
+const TileDef RightWall = 14;
 const TileDef Compression = 0xF;
 
 typedef uint8_t MapType;

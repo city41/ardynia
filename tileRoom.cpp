@@ -25,11 +25,11 @@ void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
     if (tileId == 0 && (roomIndex + 1) % seed == 0 && mapType == OVERWORLD) {
-        renderer->drawOverwrite(x, y, tiles, 8, uniqueSeed % 2);
+        renderer->drawOverwrite(x, y, tiles, 10, uniqueSeed % 2);
         return;
     }
 
-    if (tileId < 8) {
+    if (tileId < 10) {
         renderer->drawOverwrite(x, y, tiles, tileId, 0);
         return;
     }
