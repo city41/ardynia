@@ -4,6 +4,10 @@
 uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
 void Map::render(Renderer* renderer, uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
+    // boundary rectangle
+    renderer->print(0, 0, F("MAP"));
+    renderer->drawRect(0, 6, mapWidthInRooms * 4 + 3, 40, WHITE);
+
     for (uint8_t roomIndex = 0; roomIndex < MAX_NUM_VISITED_ROOMS; ++roomIndex) {
         const uint8_t roomY = roomIndex / mapWidthInRooms;
         const uint8_t roomX = roomIndex % mapWidthInRooms;
@@ -15,9 +19,9 @@ void Map::render(Renderer* renderer, uint8_t mapWidthInRooms, uint8_t currentRoo
         const bool hasVisited = visitedRooms[byteToGrab] & bitMask;
 
         if (roomX == currentRoomX && roomY == currentRoomY) {
-            renderer->drawRect(roomX * 4, roomY * 4, 3, 3, WHITE);
+            renderer->drawRect(2 + roomX * 4, 8 + roomY * 4, 3, 3, WHITE);
         } else if (hasVisited) {
-            renderer->fillRect(roomX * 4, roomY * 4, 3, 3, WHITE);
+            renderer->fillRect(2 + roomX * 4, 8 + roomY * 4, 3, 3, WHITE);
         }
     }
 }

@@ -490,7 +490,7 @@ void GameScene::renderPlay(uint8_t frame) {
 void GameScene::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
 
-    if (arduboy->justPressed(A_BUTTON)) {
+    if (arduboy->justPressed(A_BUTTON | B_BUTTON)) {
         // respond to the decision
         if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
             player.bButtonEntityType = menu.chosenItem;
@@ -498,17 +498,14 @@ void GameScene::updateMenu(uint8_t frame) {
         }
 
         pop();
-    } else if (arduboy->justPressed(B_BUTTON)) {
-        // user canceled
-        pop();
     }
 }
 
 void GameScene::renderMenu(uint8_t frame) {
     menu.render(renderer, frame);
 
-    renderer->translateX = 79;
-    renderer->translateY = 17;
+    renderer->translateX = 54;
+    renderer->translateY = 0;
 
     const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
     Map::render(renderer, mapWidthInRooms, TileRoom::x, TileRoom::y);
