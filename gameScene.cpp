@@ -490,7 +490,7 @@ void GameScene::renderPlay(uint8_t frame) {
 void GameScene::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
 
-    if (arduboy->justPressed(A_BUTTON | B_BUTTON)) {
+    if (!arduboy->pressed(A_BUTTON) || !arduboy->pressed(B_BUTTON)) {
         // respond to the decision
         if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
             player.bButtonEntityType = menu.chosenItem;
