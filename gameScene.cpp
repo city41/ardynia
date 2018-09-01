@@ -4,6 +4,7 @@
 #include "state.h"
 #include "map.h"
 #include "tileBitmaps.h"
+#include "toast.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -212,8 +213,7 @@ void GameScene::detectEntityCollisions(void) {
             } else if (entities[ge].type == OLD_MAN) {
                 if (State::gameState.numAcquiredItems == 0) {
                     player.undoMove();
-                    toastCount = 40;
-                    toast = (__FlashStringHelper*)needSwordLabel;
+                    Toast::toast((__FlashStringHelper*)needSwordLabel, 40);
                 }
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
@@ -583,10 +583,6 @@ void GameScene::renderRoomTransition(uint8_t frame) {
 }
 
 void GameScene::update(uint8_t frame) {
-    if (toastCount > 0) {
-        toastCount -= 1;
-    }
-
     (this->*currentUpdate)(frame);
 
     if (nextUpdate != NULL) {
@@ -610,9 +606,8 @@ void GameScene::render(uint8_t frame) {
         renderer->print(0, HEIGHT - 4, F("PAUSED: PRESS B TO PLAY"));
     }
 
-    if (toastCount > 0) {
-        renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer->print(0, HEIGHT - 4, toast);
+    if (Toast::duration > 0) {
+        Toast::render(renderer);
     }
 
     if (nextRender != NULL) {

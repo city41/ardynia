@@ -4,8 +4,17 @@
 #include "util.h"
 #include "tileRoom.h"
 #include "state.h"
+#include "toast.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
+
+const int8_t swordLabel[] PROGMEM = "YOU GOT THE SWORD";
+const int8_t boomerangLabel[] PROGMEM = "YOU GOT THE BOOMERANG";
+const int8_t bombLabel[] PROGMEM = "YOU GOT THE BOMBS";
+const int8_t candleLabel[] PROGMEM = "YOU GOT THE CANDLE";
+const int8_t keyLabel[] PROGMEM = "YOU GOT A KEY";
+
+const int8_t* const itemToastLabels[] PROGMEM = { swordLabel, boomerangLabel, bombLabel, candleLabel, keyLabel };
 
 void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
@@ -46,7 +55,9 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 7;
-        renderer->drawPlusMask(x - 2, y - 24, itemIcons_plus_mask, receivedItem, 0);
+        renderer->fillRect(x - 4, y - 26, 16, 16, WHITE);
+        renderer->drawRect(x - 5, y - 27, 18, 18, BLACK);
+        renderer->drawPlusMask(x - 2, y - 25, itemIcons_plus_mask, receivedItem, 0);
     } else if (State::gameState.health <= 0) {
         spriteIndex = 8;
     } else {
@@ -178,15 +189,22 @@ void Player::receiveItemFromChest(Entity* chest) {
 
         if (item == KEY) {
             State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
-        } else if (item >= SWORD && item <= CANDLE) {
-            receiveItemCount = 120;
+        }
+
+        if (item >= SWORD && item <= KEY) {
+            receiveItemCount = 100;
             receivedItem = item;
 
-            if (receivedItem != SWORD) {
+            if (receivedItem > SWORD && receivedItem < KEY) {
                 bButtonEntityType = receivedItem;
             }
 
-            State::gameState.numAcquiredItems += 1;
+            if (receivedItem != KEY) {
+                State::gameState.numAcquiredItems += 1;
+            }
+
+            __FlashStringHelper* toastMsg = (__FlashStringHelper*)pgm_read_word(itemToastLabels + receivedItem);
+            Toast::toast(toastMsg, receiveItemCount);
         }
 
         const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);

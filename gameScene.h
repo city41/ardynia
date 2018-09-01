@@ -57,9 +57,6 @@ class GameScene {
 
         boolean paused;
 
-        __FlashStringHelper* toast;
-        uint8_t toastCount;
-
         boolean playerLeftMap(void);
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
@@ -104,9 +101,7 @@ class GameScene {
             nextUpdate(NULL),
             prevRender(NULL),
             nextRender(NULL),
-            paused(false),
-            toast(NULL),
-            toastCount(0)
+            paused(false)
         {
             loadSave();
 
