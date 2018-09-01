@@ -13,6 +13,6 @@ void Toast::render(Renderer* renderer) {
         Toast::duration -= 1;
 
         renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer->print(0, HEIGHT - 4, Toast::msg);
+        renderer->print(1, HEIGHT - 4, Toast::msg);
     }
 }
