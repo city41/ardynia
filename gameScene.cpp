@@ -508,7 +508,8 @@ void GameScene::renderMenu(uint8_t frame) {
     renderer->translateY = 0;
 
     const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
-    Map::render(renderer, mapWidthInRooms, TileRoom::x, TileRoom::y);
+    const uint8_t mapHeightInRooms = TileRoom::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
+    Map::render(renderer, mapWidthInRooms, mapHeightInRooms, TileRoom::x, TileRoom::y);
 }
 
 void GameScene::updateRoomTransition(uint8_t frame) {
