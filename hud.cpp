@@ -53,5 +53,6 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     }
 
     // keys
-    drawKeys(renderer, 1, 45, State::gameState.numKeys);
+    renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
+    renderer->print(11, 56, State::gameState.numKeys);
 }

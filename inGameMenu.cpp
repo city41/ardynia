@@ -27,6 +27,10 @@ void InGameMenu::render(Renderer* renderer, uint8_t frame) {
         renderer->drawPlusMask(3, 8, itemIcons_plus_mask, 0, 0, true);
     }
 
+    // draw key count
+    renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
+    renderer->print(11, 56, State::gameState.numKeys);
+
     const uint8_t x = 20;
 
     renderer->print(x, 0, F("ITEMS"));

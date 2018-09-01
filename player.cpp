@@ -57,7 +57,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         spriteIndex = 7;
         renderer->fillRect(x - 4, y - 26, 16, 16, WHITE);
         renderer->drawRect(x - 5, y - 27, 18, 18, BLACK);
-        renderer->drawPlusMask(x - 2, y - 25, itemIcons_plus_mask, receivedItem, 0);
+        renderer->drawPlusMask(x - 2, y - 26, itemIcons_plus_mask, receivedItem, 0);
     } else if (State::gameState.health <= 0) {
         spriteIndex = 8;
     } else {
