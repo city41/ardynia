@@ -180,7 +180,10 @@ void GameScene::detectEntityCollisions(void) {
             (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
             (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
         ) {
-            player.undoMove();
+            if (TileRoom::isInDungeon() && (prevTileId == LeftFlavor || prevTileId == RightFlavor)) {
+            } else {
+                player.undoMove();
+            }
         }
     } else {
         // otherwise the player is on screen, did they just walk onto something that is solid?
