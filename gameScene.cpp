@@ -137,6 +137,11 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
         player.moveTo(57, 33, true);
         player.dir = DOWN;
 
+        // for example, if the player had a flying boomerang,
+        // this causes it to go away, doesn't make sense
+        // for it to survive a teleport
+        player.entities[0].type = UNSET;
+        player.entities[1].type = UNSET;
     } else if (teleportTransitionCount == 0) {
         pop();
     }
