@@ -19,10 +19,19 @@ const int8_t* const itemToastLabels[] PROGMEM = { swordLabel, boomerangLabel, bo
 void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
     dir = DOWN;
+    tookDamageCount = 0;
 
     bButtonEntityType = UNSET;
     entities[0].type = UNSET;
     entities[1].type = UNSET;
+
+    // if player found the boomerang, equip it. Can't save last equipped
+    // item in EEPROM as it'd require a save on each equip change
+    // this is a compromise, better than having nothing equipped, and the boomerang
+    // is the most useful item
+    if (State::gameState.numAcquiredItems > 1) {
+        bButtonEntityType = BOOMERANG;
+    }
 }
 
 void Player::useSword(void) {
