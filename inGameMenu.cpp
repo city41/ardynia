@@ -28,8 +28,10 @@ void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     }
 
     // draw bomb count
-    renderer->drawPlusMask(0, 29, itemIcons_plus_mask, BOMB, 0, true);
-    renderer->print(11, 36, player.numBombs);
+    if (State::gameState.numAcquiredItems > 2) {
+        renderer->drawPlusMask(0, 27, itemIcons_plus_mask, BOMB, 0, true);
+        renderer->print(11, 34, player.numBombs);
+    }
 
     // draw key count
     renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
