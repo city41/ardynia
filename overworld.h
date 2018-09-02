@@ -2,9 +2,9 @@
 #define overworld_h
 
 
-const uint8_t PROGMEM overworld_map[605] = {
-    // array length (16 bit, little endian), map width, map height (in rooms), tile size (in pixels)
-    93, 2, 8, 8, 16,
+const uint8_t PROGMEM overworld_map[604] = {
+    // array length (16 bit, little endian), map width, map height (in rooms)
+    92, 2, 8, 8,
     // room indices (16 bit, little endian), 128 bytes
     0, 0, 8, 0, 17, 0, 22, 0, 30, 0, 33, 0, 36, 0, 45, 0, 53, 0, 61, 0, 67, 0, 72, 0, 81, 0, 92, 0, 96, 0, 106, 0, 113, 0, 124, 0, 130, 0, 135, 0, 142, 0, 150, 0, 155, 0, 166, 0, 174, 0, 180, 0, 190, 0, 193, 0, 196, 0, 202, 0, 206, 0, 211, 0, 220, 0, 229, 0, 235, 0, 240, 0, 247, 0, 255, 0, 7, 1, 15, 1, 24, 1, 32, 1, 36, 1, 46, 1, 53, 1, 58, 1, 66, 1, 72, 1, 82, 1, 91, 1, 96, 1, 102, 1, 112, 1, 119, 1, 126, 1, 133, 1, 144, 1, 153, 1, 163, 1, 171, 1, 180, 1, 190, 1, 199, 1, 204, 1,
     // compressed room data, 472 bytes

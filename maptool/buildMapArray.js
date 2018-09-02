@@ -170,7 +170,7 @@ module.exports = function buildMapArray(name, layer, tileSize) {
         roomIndices
     );
 
-    const arrayLength = nibbles.length + roomIndicesEncodedto16Bit.length + 5;
+    const arrayLength = nibbles.length + roomIndicesEncodedto16Bit.length + 4;
     const arrayLengthAs16Bit = encodeRoomIndicesBasedOnNibbles([
         arrayLength * 2
     ]);
@@ -185,8 +185,8 @@ module.exports = function buildMapArray(name, layer, tileSize) {
 
     return `
 const uint8_t PROGMEM ${name}_map[${arrayLength}] = {
-    // array length (16 bit, little endian), map width, map height (in rooms), tile size (in pixels)
-    ${arrayLengthAs16Bit.join(", ")}, ${mapWidth}, ${mapHeight}, ${tileSize},
+    // array length (16 bit, little endian), map width, map height (in rooms)
+    ${arrayLengthAs16Bit.join(", ")}, ${mapWidth}, ${mapHeight},
     // room indices (16 bit, little endian), ${
         roomIndicesEncodedto16Bit.length
     } bytes

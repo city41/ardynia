@@ -8,7 +8,12 @@ const uint8_t TILES_PER_ROW = (WIDTH - 16) / TILE_SIZE;
 const uint8_t TILES_PER_COLUMN = HEIGHT / TILE_SIZE;
 const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
 
-const uint8_t MAP_HEADER_SIZE = 5;
+// header consists of
+// length of the data (two bytes)
+// map width (one byte)
+// map height (one byte)
+// for a total of 4 bytes
+const uint8_t MAP_HEADER_SIZE = 4;
 
 uint8_t* TileRoom::map = NULL;
 uint8_t* TileRoom::tiles = NULL;
