@@ -40,20 +40,19 @@ const EntityType BUSH = 17;
 const EntityType LOCK = 18;
 
 // projectiles
-const EntityType FLAME = 19;
-const EntityType PROJECTILE = 20;
-const EntityType EXPLOSION = 21;
+const EntityType PROJECTILE = 19;
+const EntityType EXPLOSION = 20;
 
 // misc
 
 // prevents the user from going to the first dungeon if they
 // haven't yet found the sword. This is required because the game
 // assumes the player acquires the items in order: sword->boomerang->bombs->candle
-const EntityType OLD_MAN = 22;
+const EntityType OLD_MAN = 21;
 // this is the little "poof" as an enemy dies
 // it also randomly leaves behind a heart for the player
-const EntityType DEATH = 23;
-const EntityType SECRET_WALL = 24;
+const EntityType DEATH = 22;
+const EntityType SECRET_WALL = 23;
 
 const EntityType PLAYER = 127;
 

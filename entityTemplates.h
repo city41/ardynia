@@ -172,15 +172,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     true,
 
-    // 19, FLAME
-    0,
-    0,
-    0,
-    0,
-    0,
-    false,
-
-    // 20, PROJECTILE
+    // 19, PROJECTILE
     0,
     0,
     0,
@@ -188,7 +180,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     false,
 
-    // 21, EXPLOSION
+    // 20, EXPLOSION
     16,
     16,
     0,
@@ -196,7 +188,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     true,
 
-    // 22, OLD_MAN
+    // 21, OLD_MAN
     11,
     HEIGHT, // whole screen, this guy is basically a total bumper
     0,
@@ -204,7 +196,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 23, DEATH
+    // 22, DEATH
     8,
     8,
     0,
@@ -212,7 +204,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     24,
     true,
 
-    // 24, SECRET_WALL
+    // 23, SECRET_WALL
     16,
     16,
     1,
@@ -337,37 +329,31 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     Lock::onCollide,
 
-    // 19, FLAME
+    // 19, PROJECTILE
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 20, PROJECTILE
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 21, EXPLOSION
+    // 20, EXPLOSION
     explosion_plus_mask,
     Explosion::update,
     NULL,
     NULL,
 
-    // 22, OLD_MAN
+    // 21, OLD_MAN
     oldMan_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 23, DEATH
-    death_plus_mask,
+    // 22, DEATH
+    NULL,
     Death::update,
     NULL,
     NULL,
 
-    // 24, SECRET_WALL
+    // 23, SECRET_WALL
     NULL,
     NULL,
     SecretWall::render,

@@ -22,12 +22,11 @@ const EntityTypes = {
     TELEPORTER: 16,
     BUSH: 17,
     LOCK: 18,
-    FLAME: 19,
-    PROJECTILE: 20,
-    EXPLOSION: 21,
-    OLD_MAN: 22,
-    DEATH: 23,
-    SECRET_WALL: 24
+    PROJECTILE: 19,
+    EXPLOSION: 20,
+    OLD_MAN: 21,
+    DEATH: 22,
+    SECRET_WALL: 23
 };
 
 function getRoomAt(mapX, mapY) {
