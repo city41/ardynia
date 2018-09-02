@@ -72,7 +72,7 @@
    </properties>
    <point/>
   </object>
-  <object id="174" name="lock" type="LOCK" x="48.6667" y="135.333">
+  <object id="174" name="lock" type="LOCK" x="48.6667" y="128">
    <properties>
     <property name="CONTAINED_TYPE" value="KEY"/>
    </properties>

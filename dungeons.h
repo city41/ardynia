@@ -39,7 +39,7 @@ const uint8_t PROGMEM dungeons_room0_2[] = {
     // entity 1, LOCK
     0x12,
     48, //x
-    7  //y
+    0  //y
 };
 
 
