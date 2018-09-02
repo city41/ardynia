@@ -12,7 +12,7 @@ Renderer renderer(&arduboy);
 GameScene gameScene(&arduboy, &renderer);
 
 void setup() {
-    arduboy.begin();
+    arduboy.boot();
     arduboy.setFrameRate(60);
 
 #ifdef SERIAL_LOG
