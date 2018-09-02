@@ -54,12 +54,13 @@ const EntityType OLD_MAN = 23;
 // this is the little "poof" as an enemy dies
 // it also randomly leaves behind a heart for the player
 const EntityType DEATH = 24;
+const EntityType SECRET_WALL = 25;
 
 const EntityType PLAYER = 127;
 
 // player isn't really an "entity"
 // TODO: can we kill PLAYER EntityType?
-const uint8_t NUM_ENTITIES = DEATH + 1;
+const uint8_t NUM_ENTITIES = SECRET_WALL + 1;
 
 #endif
 

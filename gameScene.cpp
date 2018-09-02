@@ -173,41 +173,16 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
 }
 
 void GameScene::detectEntityCollisions(void) {
-    if (playerLeftMap()) {
-        player.undoMove();
-    } else if (isOffScreen(player.x, player.y)) {
-        // if the player just went off the screen, did they legit go through a "passageway"?
-        // if not, prevent them leaving the screen
-        const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
-
-        if (
-            (player.x < 0 && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != RightWall) ||
-            (player.x >= ROOM_WIDTH_PX && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != LeftWall) ||
-            (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
-            (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
-        ) {
-            if (TileRoom::isInDungeon() && (prevTileId == LeftFlavor || prevTileId == RightFlavor)) {
-            } else {
-                player.undoMove();
-            }
-        }
-    } else {
-        // otherwise the player is on screen, did they just walk onto something that is solid?
-        // then prevent them walking on it
-        const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
-
-        if (currentTileId == Water || currentTileId == Stone) {
-            player.undoMove();
-        }
-    }
-
+    // first let the entities duke it out
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == UNSET) {
             continue;
         }
 
         if (entities[ge].overlaps(&player)) {
-            if (entities[ge].type == TELEPORTER) {
+            if (entities[ge].type == TELEPORTER || 
+                // or a secret wall the player has discovered?
+                (entities[ge].type == SECRET_WALL && entities[ge].health == 0)) {
                 // to save memory, teleporters store the next room coordinates
                 // in prevX/prevY, two variables they otherwise wouldn't need
                 // TODO: is it possible to save the memory without being confusing?
@@ -219,6 +194,10 @@ void GameScene::detectEntityCollisions(void) {
                 if (State::gameState.numAcquiredItems == 0) {
                     player.undoMove();
                     Toast::toast((__FlashStringHelper*)needSwordLabel, 40);
+                }
+            } else if (entities[ge].type == SECRET_WALL) {
+                if (entities[ge].health == 1) {
+                    player.undoMove();
                 }
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
@@ -248,6 +227,37 @@ void GameScene::detectEntityCollisions(void) {
             }
         }
     }
+
+    // now let's confirm the player has stayed on the screen
+
+    if (playerLeftMap()) {
+        player.undoMove();
+    } else if (isOffScreen(player.x, player.y)) {
+        // if the player just went off the screen, did they legit go through a "passageway"?
+        // if not, prevent them leaving the screen
+        const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
+
+        if (
+            (player.x < 0 && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != RightWall) ||
+            (player.x >= ROOM_WIDTH_PX && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != LeftWall) ||
+            (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
+            (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
+        ) {
+            if (TileRoom::isInDungeon() && (prevTileId == LeftFlavor || prevTileId == RightFlavor)) {
+            } else {
+                player.undoMove();
+            }
+        }
+    } else {
+        // otherwise the player is on screen, did they just walk onto something that is solid?
+        // then prevent them walking on it
+        const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
+
+        if (currentTileId == Water || currentTileId == Stone) {
+            player.undoMove();
+        }
+    }
+
 }
 
 void GameScene::goToNextRoom(int16_t x, int16_t y) {
@@ -321,10 +331,17 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
         currentEntity.x = pgm_read_byte(roomPtr++);
         currentEntity.y = pgm_read_byte(roomPtr++);
 
-        if (type == TELEPORTER) {
+        if (type == TELEPORTER || type == SECRET_WALL) {
             // reuse prevX/Y for destX/Y for doors
             currentEntity.prevX = pgm_read_byte(doorDefs + entityId * 2);
             currentEntity.prevY = pgm_read_byte(doorDefs + entityId * 2 + 1);
+
+            if (type == SECRET_WALL) {
+                // wall has already been blown up
+                if (State::isTriggered(roomIndex)) {
+                    currentEntity.health = 0;
+                }
+            }
         } else if (type == CHEST) {
             // take what is in the chest (which here is entityId), and stick
             // it in the chest's health
@@ -445,7 +462,8 @@ void GameScene::updatePlay(uint8_t frame) {
         if (entity.type != UNSET) {
             EntityType newEntity = entity.update(&player, arduboy, frame);
             if (newEntity != UNSET) {
-                spawnNewEntity(newEntity, entity);
+                loadEntity(player.entities[e], newEntity);
+                player.entities[e].spawn(&player, &player);
             }
         }
     }

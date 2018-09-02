@@ -5,12 +5,14 @@
 #include "entityTypes.h"
 #include "entity.h"
 #include "spriteBitmaps.h"
+#include "tileBitmaps.h"
 #include "blob.h"
 #include "sword.h"
 #include "boomerang.h"
 #include "bomb.h"
 #include "explosion.h"
 #include "death.h"
+#include "secretWall.h"
 
 const uint8_t NUM_ENTITY_PROPS = 7;
 const uint8_t NUM_ENTITY_POINTERS = 5;
@@ -239,7 +241,16 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     24,
-    true
+    true,
+
+    // 25, SECRET_WALL
+    16,
+    16,
+    DOWN,
+    1,
+    0,
+    0,
+    false,
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -418,6 +429,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     Death::update,
     NULL,
     NULL,
+
+    // 25, SECRET_WALL
+    NULL,
+    NULL,
+    NULL,
+    SecretWall::render,
+    SecretWall::onCollide,
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

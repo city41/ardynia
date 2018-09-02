@@ -98,6 +98,29 @@
                  "width":0,
                  "x":1300,
                  "y":339.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":163,
+                 "name":"Secret 1 door to overworld",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"DEST_ROOM_X",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
+                         "name":"DEST_ROOM_Y",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"TELEPORTER",
+                 "visible":true,
+                 "width":0,
+                 "x":48.6666666666667,
+                 "y":378.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1051,7 +1074,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":162,
+ "nextobjectid":164,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="84" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="162">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="84" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="164">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="7" name="Tile Layer 1" width="84" height="28">
   <data encoding="csv">
@@ -56,6 +56,13 @@
    <point/>
   </object>
   <object id="161" name="Blob" type="BLOB" x="1300" y="339.333">
+   <point/>
+  </object>
+  <object id="163" name="Secret 1 door to overworld" type="TELEPORTER" x="48.6667" y="378.667">
+   <properties>
+    <property name="DEST_ROOM_X" type="int" value="3"/>
+    <property name="DEST_ROOM_Y" type="int" value="0"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

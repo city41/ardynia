@@ -47,7 +47,12 @@ const uint8_t PROGMEM dungeons_room0_4[] = {
 
 
 const uint8_t PROGMEM dungeons_room0_5[] = {
-    0 // number of entities
+    1, // number of entities
+
+    // entity 0, TELEPORTER
+    0x71,
+    48, //x
+    58  //y
 };
 
 
@@ -538,6 +543,7 @@ const uint8_t PROGMEM dungeons_teleporters[] = {
     4, 7,
     7, 0,
     0, 4,
+    3, 0,
 };
 
 

@@ -27,7 +27,8 @@ const EntityTypes = {
     PROJECTILE: 21,
     EXPLOSION: 22,
     OLD_MAN: 23,
-    DEATH: 24
+    DEATH: 24,
+    SECRET_WALL: 25
 };
 
 function getRoomAt(mapX, mapY) {
@@ -42,7 +43,7 @@ function getRoomAt(mapX, mapY) {
     };
 }
 
-// for TELEPORTER, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
+// for TELEPORTER and SECRET_WALL, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
 // for CHEST, dig in and find out what the chest contains
 function getPropertyValue(props, propName) {
     return props && props.find(p => p.name === propName).value;
@@ -110,7 +111,7 @@ function getRoomArrayData(
     //
     // TODO: bumpers can share indices if they are the same size, this is a decent size win
     function getEncodedId(obj) {
-        if (obj.type === "TELEPORTER") {
+        if (obj.type === "TELEPORTER" || obj.type === "SECRET_WALL") {
             return teleporters.length;
         }
         if (obj.type === "BUMPER") {
@@ -158,7 +159,7 @@ function getRoomArrayData(
             encodedId: getEncodedId(obj)
         });
 
-        if (obj.type === "TELEPORTER") {
+        if (obj.type === "TELEPORTER" || obj.type === "SECRET_WALL") {
             teleporters.push({
                 id: teleporters.length,
                 destX: getPropertyValue(obj.properties, "DEST_ROOM_X"),
