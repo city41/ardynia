@@ -20,8 +20,6 @@ void setup() {
     delay(1500);
 #endif
 
-    delay(500);
-
     LOG("setup done");
 }
 
