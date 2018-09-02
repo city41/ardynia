@@ -79,12 +79,12 @@ EntityType Player::render(Renderer *renderer, byte frame) {
     MirrorMode mirror = 0;
 
     if (receiveItemCount > 0) {
-        spriteIndex = 7;
-        renderer->fillRect(x - 4, y - 26, 16, 16, WHITE);
-        renderer->drawRect(x - 5, y - 27, 18, 18, BLACK);
-        renderer->drawPlusMask(x - 2, y - 26, itemIcons_plus_mask, receivedItem, 0);
+        spriteIndex = 2;
+        /* renderer->fillRect(x - 4, y - 26, 16, 16, WHITE); */
+        /* renderer->drawRect(x - 5, y - 27, 18, 18, BLACK); */
+        renderer->drawPlusMask(x - 2, y - 20 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
     } else if (health <= 0) {
-        spriteIndex = 8;
+        spriteIndex = 7;
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
@@ -222,7 +222,7 @@ void Player::receiveItemFromChest(Entity* chest) {
         }
 
         if (item >= SWORD && item <= KEY) {
-            receiveItemCount = 100;
+            receiveItemCount = 60;
             receivedItem = item;
 
             if (receivedItem > SWORD && receivedItem < KEY) {
