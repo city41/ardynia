@@ -335,6 +335,8 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
+        } else if (type == BLOB_MOTHER && State::gameState.beatenBossesBitMask & 1) {
+            currentEntity.type = UNSET;
         } else {
             currentEntity.prevX = x;
             currentEntity.prevY = y;

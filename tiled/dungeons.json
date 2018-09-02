@@ -139,6 +139,24 @@
                  "width":0,
                  "x":48,
                  "y":276
+                }, 
+                {
+                 "height":0,
+                 "id":165,
+                 "name":"chest with heart container",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"HEART"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":1286.66666666667,
+                 "y":275.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1092,7 +1110,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":165,
+ "nextobjectid":166,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

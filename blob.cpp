@@ -6,12 +6,22 @@
 #include "entityCommon.h"
 
 EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
-    if (other->damage > 0) {
+    if (other->damage > 0 && me->tookDamageCount == 0) {
         me->health -= other->damage;
 
         if (me->health <= 0) {
-            me->type = UNSET;
-            return DEATH;
+
+            if (me->type == BLOB_MOTHER) {
+                me->type = UNSET;
+
+                State::gameState.beatenBossesBitMask |= 1;
+                State::saveToEEPROM();
+
+                return KEY;
+            } else {
+                me->type = UNSET;
+                return DEATH;
+            }
         } else {
             me->bounceBack();
             me->tookDamageCount = 20;

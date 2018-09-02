@@ -126,7 +126,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 13, BLOB_MOTHER
     16,
     16,
-    10,
+    6,
     1,
     10,
     false,

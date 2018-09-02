@@ -35,7 +35,7 @@ void BaseEntity::bounceBack(void) {
     }
 
     Direction curDir = dir;
-    moveTo(clamp(nx, 0, 110), clamp(ny, 0, HEIGHT - 2));
+    moveTo(clamp(nx, 0, WIDTH - 13 - width), clamp(ny, 0, HEIGHT - height - 1));
     dir = curDir;
 }
 
