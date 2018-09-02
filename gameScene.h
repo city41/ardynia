@@ -43,6 +43,7 @@ class GameScene {
         InGameMenu menu;
 
         uint8_t roomTransitionCount;
+        bool firstRoomTransitionFrame;
         uint8_t teleportTransitionCount;
         uint8_t mapWidthInRooms;
         uint8_t mapHeightInRooms;
@@ -96,6 +97,7 @@ class GameScene {
             nextRoomY(START_ROOM_Y),
             menu(),
             roomTransitionCount(0),
+            firstRoomTransitionFrame(false),
             teleportTransitionCount(0),
             prevUpdate(NULL),
             nextUpdate(NULL),

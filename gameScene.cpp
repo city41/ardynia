@@ -269,6 +269,7 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
         roomTransitionCount = ROOM_HEIGHT_PX;
     }
 
+    firstRoomTransitionFrame = true;
     push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
 }
 
@@ -530,6 +531,11 @@ void GameScene::renderMenu(uint8_t frame) {
 void GameScene::updateRoomTransition(uint8_t frame) {
     roomTransitionCount -= ROOM_TRANSITION_VELOCITY;
 
+    if (firstRoomTransitionFrame) {
+        firstRoomTransitionFrame = false;
+        loadEntitiesinRoom(nextRoomX, nextRoomY);
+    }
+
     if (roomTransitionCount == 0) {
 
         if (nextRoomX < TileRoom::x) {
@@ -549,8 +555,6 @@ void GameScene::updateRoomTransition(uint8_t frame) {
 
         const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
-
-        loadEntitiesinRoom(nextRoomX, nextRoomY);
 
         // for example, if the player had a flying boomerang,
         // this causes it to go away, easier than trying to deal
@@ -586,8 +590,14 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
     renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
     TileRoom::render(renderer, frame, nextRoomX, nextRoomY);
+
+    for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
+        if (entities[ge].type != UNSET) {
+            entities[ge].render(renderer, frame);
+        }
+    }
     
-    // draw player translated
+    // draw player and entities translated
     renderer->translateX = translateX;
     renderer->translateY = translateY;
     player.render(renderer, frame);
