@@ -82,7 +82,7 @@ EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* playe
     }
 
     // hit an enemy? then begin returning to the player
-    if (otherType >= 8 && otherType <= 16) {
+    if (otherType >= 7 && otherType < 16) {
         me->duration = 0;
     }
 
