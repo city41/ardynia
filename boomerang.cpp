@@ -77,7 +77,7 @@ EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* playe
     EntityType otherType = other->type;
 
     // hit something the user can collect? collect it and keep going
-    if (otherType >= 4 && otherType <= 5) {
+    if ((otherType >= 4 && otherType <= 5) || otherType == BOMB) {
         return ((Player*)player)->onCollide(other, player);
     }
 
