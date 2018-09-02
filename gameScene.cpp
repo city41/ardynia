@@ -179,7 +179,7 @@ void GameScene::detectEntityCollisions(void) {
                     player.undoMove();
                     Toast::toast((__FlashStringHelper*)needSwordLabel, 40);
                 }
-            } else if (entities[ge].type == SECRET_WALL) {
+            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK) {
                 if (entities[ge].health == 1) {
                     player.undoMove();
                 }
@@ -189,6 +189,8 @@ void GameScene::detectEntityCollisions(void) {
                     spawnNewEntity(newEntity, player);
                 }
             }
+
+            entities[ge].onCollide(&player, &player);
         }
 
         for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
@@ -302,6 +304,7 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     uint8_t numEntitiesInCurrentRoom = pgm_read_byte(roomPtr++);
 
     int8_t i = 0;
+    bool roomIsTriggered = State::isTriggered(roomIndex);
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
@@ -322,7 +325,7 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
             if (type == SECRET_WALL) {
                 // wall has already been blown up
-                if (State::isTriggered(roomIndex)) {
+                if (roomIsTriggered) {
                     currentEntity.health = 0;
                 }
             }
@@ -330,12 +333,15 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
             // take what is in the chest (which here is entityId), and stick
             // it in the chest's health
             currentEntity.health = entityId;
-            if (State::isTriggered(roomIndex)) {
+            if (roomIsTriggered) {
                 // frame 1 is the open chest frame, indicates this chest
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if (type == BLOB_MOTHER && State::gameState.beatenBossesBitMask & 1) {
+        } else if (
+                (type == BLOB_MOTHER && State::gameState.beatenBossesBitMask & 1) ||
+                (type == LOCK && roomIsTriggered)
+            ) {
             currentEntity.type = UNSET;
         } else {
             currentEntity.prevX = x;

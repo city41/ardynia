@@ -21,7 +21,7 @@ const EntityTypes = {
     NEMESIS: 15,
     TELEPORTER: 16,
     BUSH: 17,
-    LOCK: 19,
+    LOCK: 18,
     FLAME: 19,
     PROJECTILE: 20,
     EXPLOSION: 21,

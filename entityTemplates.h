@@ -14,6 +14,7 @@
 #include "death.h"
 #include "secretWall.h"
 #include "blobMother.h"
+#include "lock.h"
 
 const uint8_t NUM_ENTITY_PROPS = 6;
 const uint8_t NUM_ENTITY_POINTERS = 4;
@@ -164,12 +165,12 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     false,
 
     // 18, LOCK
+    18,
+    8,
+    1,
     0,
     0,
-    0,
-    0,
-    0,
-    false,
+    true,
 
     // 19, FLAME
     0,
@@ -334,7 +335,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     lock_plus_mask,
     NULL,
     NULL,
-    NULL,
+    Lock::onCollide,
 
     // 19, FLAME
     NULL,

@@ -21,7 +21,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     }
 
 #ifdef DRAW_HITBOXES
-    renderer->drawRect(x, y, width, height, WHITE);
+    renderer->drawRect(x, y, width, height, BLACK);
 #endif
 
     return result;
