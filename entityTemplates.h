@@ -196,7 +196,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 22, OLD_MAN
-    8,
+    11,
     HEIGHT, // whole screen, this guy is basically a total bumper
     0,
     0,
