@@ -63,17 +63,6 @@ boolean isOffScreen(int16_t x, int16_t y) {
 }
 
 void GameScene::updateGameOver(uint8_t frame) {
-    // ghost "floats" into sky
-    if (frame == 15 || frame == 30) {
-        player.moveTo(player.x + 1, player.y);
-    } else if (frame == 45 || frame == 60) {
-        player.moveTo(player.x - 1, player.y);
-    }
-
-    if (frame % 4 == 1) {
-        player.moveTo(player.x, player.y - 1);
-    }
-
     if (teleportTransitionCount > 0) {
         teleportTransitionCount -= 1;
     } else if (arduboy->justPressed(A_BUTTON)) {
@@ -104,8 +93,6 @@ void GameScene::renderGameOver(uint8_t frame) {
         renderer->print(32, HEIGHT - 10, F("A: CONTINUE"));
         renderer->print(32, HEIGHT - 5, F("B: QUIT"));
     }
-
-    player.render(renderer, frame);
 }
 
 void GameScene::updateTeleportTransition(uint8_t frame) {

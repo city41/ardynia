@@ -83,8 +83,6 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         /* renderer->fillRect(x - 4, y - 26, 16, 16, WHITE); */
         /* renderer->drawRect(x - 5, y - 27, 18, 18, BLACK); */
         renderer->drawPlusMask(x - 2, y - 20 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
-    } else if (health <= 0) {
-        spriteIndex = 7;
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
