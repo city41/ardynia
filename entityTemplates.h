@@ -66,23 +66,15 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     180,
     true,
 
-    // 6, HEART_CONTAINER
-    0,
-    0,
-    0,
-    0,
-    0,
-    false,
-
-    // 7, CHEST
+    // 6, CHEST
     16,
     16,
     0,
     0,
     0,
-    false,
+    true,
 
-    // 8, BLOB
+    // 7, BLOB
     8,
     8,
     2, // health
@@ -90,7 +82,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0, // duration
     true, // invertInDungeon
 
-    // 9, BAT
+    // 8, BAT
     8,
     8,
     1,
@@ -98,7 +90,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     true,
 
-    // 10, SPIKE
+    // 9, SPIKE
     8,
     8,
     255,
@@ -106,7 +98,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 11, SKULL
+    // 10, SKULL
     16,
     16,
     1,
@@ -114,7 +106,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 12, OCTO
+    // 11, OCTO
     16,
     16,
     4,
@@ -122,7 +114,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 13, GHOST
+    // 12, GHOST
     8,
     16,
     1,
@@ -130,7 +122,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 14, BLOB_WHISPERER
+    // 13, BLOB_WHISPERER
     0,
     0,
     0,
@@ -138,7 +130,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 15, NECROMANCER
+    // 14, NECROMANCER
     0,
     0,
     0,
@@ -146,7 +138,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 16, NEMESIS
+    // 15, NEMESIS
     0,
     0,
     0,
@@ -154,7 +146,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 17, TELEPORTER
+    // 16, TELEPORTER
     18,
     8,
     0,
@@ -162,7 +154,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 18, BUSH
+    // 17, BUSH
     0,
     0,
     0,
@@ -170,7 +162,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 19, LOCK
+    // 18, LOCK
     0,
     0,
     0,
@@ -178,7 +170,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 20, FLAME
+    // 19, FLAME
     0,
     0,
     0,
@@ -186,7 +178,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 21, PROJECTILE
+    // 20, PROJECTILE
     0,
     0,
     0,
@@ -194,7 +186,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     false,
 
-    // 22, EXPLOSION
+    // 21, EXPLOSION
     16,
     16,
     0,
@@ -202,7 +194,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     true,
 
-    // 23, OLD_MAN
+    // 22, OLD_MAN
     8,
     HEIGHT, // whole screen, this guy is basically a total bumper
     0,
@@ -210,7 +202,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 24, DEATH
+    // 23, DEATH
     8,
     8,
     0,
@@ -218,7 +210,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     24,
     true,
 
-    // 25, SECRET_WALL
+    // 24, SECRET_WALL
     16,
     16,
     1,
@@ -265,121 +257,115 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 6, HEART_CONTAINER
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 7, CHEST
+    // 6, CHEST
     chest_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 8, BLOB
+    // 7, BLOB
     blob_plus_mask,
     Blob::update,
     NULL,
     Blob::onCollide,
 
-    // 9, BAT
+    // 8, BAT
     bat_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 10, SPIKE
+    // 9, SPIKE
     spike_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 11, SKULL
+    // 10, SKULL
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 12, OCTO
+    // 11, OCTO
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 13, GHOST
+    // 12, GHOST
     ghost_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 14, BOSS1
+    // 13, BOSS1
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 15, BOSS2
+    // 14, BOSS2
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 16, BOSS3
+    // 15, BOSS3
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 17, TELEPORTER
+    // 16, TELEPORTER
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 18, BUSH
+    // 17, BUSH
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 19, LOCK
+    // 18, LOCK
     lock_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 20, FLAME
+    // 19, FLAME
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 21, PROJECTILE
+    // 20, PROJECTILE
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 22, EXPLOSION
+    // 21, EXPLOSION
     explosion_plus_mask,
     Explosion::update,
     NULL,
     NULL,
 
-    // 23, OLD_MAN
+    // 22, OLD_MAN
     oldMan_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 24, DEATH
+    // 23, DEATH
     death_plus_mask,
     Death::update,
     NULL,
     NULL,
 
-    // 25, SECRET_WALL
+    // 24, SECRET_WALL
     NULL,
     NULL,
     SecretWall::render,

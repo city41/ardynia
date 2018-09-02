@@ -39,7 +39,7 @@ const uint8_t PROGMEM overworld_room0_4[] = {
     1, // number of entities
 
     // entity 0, TELEPORTER
-    0x31,
+    0x30,
     31, //x
     6  //y
 };
@@ -50,12 +50,12 @@ const uint8_t PROGMEM overworld_room0_5[] = {
     2, // number of entities
 
     // entity 0, CHEST
-    0x27,
+    0x26,
     54, //x
     32, //y
 
     // entity 1, BLOB
-    0x8,
+    0x7,
     20, //x
     36  //y
 };
@@ -72,12 +72,12 @@ const uint8_t PROGMEM overworld_room0_7[] = {
     2, // number of entities
 
     // entity 0, BLOB
-    0x8,
+    0x7,
     22, //x
     7, //y
 
     // entity 1, CHEST
-    0x27,
+    0x26,
     22, //x
     34  //y
 };
@@ -100,7 +100,7 @@ const uint8_t PROGMEM overworld_room1_2[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0x47,
+    0x46,
     37, //x
     8  //y
 };
@@ -129,12 +129,12 @@ const uint8_t PROGMEM overworld_room1_6[] = {
     2, // number of entities
 
     // entity 0, BLOB
-    0x8,
+    0x7,
     23, //x
     35, //y
 
     // entity 1, BLOB
-    0x8,
+    0x7,
     40, //x
     46  //y
 };
@@ -187,7 +187,7 @@ const uint8_t PROGMEM overworld_room2_6[] = {
     1, // number of entities
 
     // entity 0, OLD_MAN
-    0x17,
+    0x16,
     94, //x
     10  //y
 };
@@ -204,7 +204,7 @@ const uint8_t PROGMEM overworld_room3_0[] = {
     1, // number of entities
 
     // entity 0, SECRET_WALL
-    0x79,
+    0x78,
     80, //x
     0  //y
 };
@@ -221,7 +221,7 @@ const uint8_t PROGMEM overworld_room3_2[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0x87,
+    0x86,
     54, //x
     15  //y
 };
@@ -238,7 +238,7 @@ const uint8_t PROGMEM overworld_room3_4[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0x7,
+    0x6,
     50, //x
     19  //y
 };
@@ -309,7 +309,7 @@ const uint8_t PROGMEM overworld_room4_7[] = {
     1, // number of entities
 
     // entity 0, TELEPORTER
-    0x51,
+    0x50,
     63, //x
     7  //y
 };
@@ -416,7 +416,7 @@ const uint8_t PROGMEM overworld_room7_0[] = {
     1, // number of entities
 
     // entity 0, TELEPORTER
-    0x11,
+    0x10,
     78, //x
     23  //y
 };

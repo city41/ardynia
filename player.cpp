@@ -13,8 +13,9 @@ const int8_t boomerangLabel[] PROGMEM = "GOT THE BOOMERANG";
 const int8_t bombLabel[] PROGMEM = "GOT THE BOMBS";
 const int8_t candleLabel[] PROGMEM = "GOT THE CANDLE";
 const int8_t keyLabel[] PROGMEM = "GOT A KEY";
+const int8_t heartContainerLabel[] PROGMEM = "GOT A HEART CONTAINER";
 
-const int8_t* const itemToastLabels[] PROGMEM = { swordLabel, boomerangLabel, bombLabel, candleLabel, keyLabel };
+const int8_t* const itemToastLabels[] PROGMEM = { swordLabel, boomerangLabel, bombLabel, candleLabel, keyLabel, heartContainerLabel };
 
 void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
@@ -219,7 +220,7 @@ void Player::receiveItemFromChest(Entity* chest) {
             State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
         }
 
-        if (item >= SWORD && item <= KEY) {
+        if (item >= SWORD && item <= HEART) {
             receiveItemCount = 60;
             receivedItem = item;
 
@@ -233,6 +234,11 @@ void Player::receiveItemFromChest(Entity* chest) {
 
             if (receivedItem != KEY) {
                 State::gameState.numAcquiredItems += 1;
+            }
+
+            if (receivedItem == HEART) {
+                State::gameState.totalHealth += 1;
+                health = State::gameState.totalHealth;
             }
 
             __FlashStringHelper* toastMsg = (__FlashStringHelper*)pgm_read_word(itemToastLabels + receivedItem);

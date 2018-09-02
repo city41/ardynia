@@ -18,43 +18,42 @@ const EntityType BOMB = 2;
 const EntityType CANDLE = 3;
 const EntityType KEY = 4;
 const EntityType HEART = 5;
-const EntityType HEART_CONTAINER = 6;
-const EntityType CHEST = 7;
+const EntityType CHEST = 6;
 
 // enemies, to be named
-const EntityType BLOB = 8;
-const EntityType BAT = 9;
-const EntityType SPIKE = 10;
-const EntityType SKULL = 11;
-const EntityType OCTO = 12;
-const EntityType GHOST = 13;
+const EntityType BLOB = 7;
+const EntityType BAT = 8;
+const EntityType SPIKE = 9;
+const EntityType SKULL = 10;
+const EntityType OCTO = 11;
+const EntityType GHOST = 12;
 
 // bosses, to be named
-const EntityType BLOB_WHISPERER = 14;
-const EntityType NECROMANCER = 15;
-const EntityType NEMESIS = 16;
+const EntityType BLOB_WHISPERER = 13;
+const EntityType NECROMANCER = 14;
+const EntityType NEMESIS = 15;
 
 // things related to navigating maps
 // and interacting with the world
-const EntityType TELEPORTER = 17; // aka a door
-const EntityType BUSH = 18;
-const EntityType LOCK = 19;
+const EntityType TELEPORTER = 16; // aka a door
+const EntityType BUSH = 17;
+const EntityType LOCK = 18;
 
 // projectiles
-const EntityType FLAME = 20;
-const EntityType PROJECTILE = 21;
-const EntityType EXPLOSION = 22;
+const EntityType FLAME = 19;
+const EntityType PROJECTILE = 20;
+const EntityType EXPLOSION = 21;
 
 // misc
 
 // prevents the user from going to the first dungeon if they
 // haven't yet found the sword. This is required because the game
 // assumes the player acquires the items in order: sword->boomerang->bombs->candle
-const EntityType OLD_MAN = 23;
+const EntityType OLD_MAN = 22;
 // this is the little "poof" as an enemy dies
 // it also randomly leaves behind a heart for the player
-const EntityType DEATH = 24;
-const EntityType SECRET_WALL = 25;
+const EntityType DEATH = 23;
+const EntityType SECRET_WALL = 24;
 
 const EntityType PLAYER = 127;
 

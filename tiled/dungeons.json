@@ -97,7 +97,7 @@
                  "visible":true,
                  "width":0,
                  "x":1300,
-                 "y":339.333333333333
+                 "y":339.333
                 }, 
                 {
                  "height":0,
@@ -119,8 +119,26 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":48.6666666666667,
-                 "y":378.666666666667
+                 "x":48.6667,
+                 "y":378.667
+                }, 
+                {
+                 "height":0,
+                 "id":164,
+                 "name":"Chest with heart container",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"HEART"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":48,
+                 "y":276
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1074,7 +1092,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":164,
+ "nextobjectid":165,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
