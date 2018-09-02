@@ -16,9 +16,9 @@ const uint8_t MAX_ENTITIES = 10;
 const uint8_t START_ROOM_X = 1;
 const uint8_t START_ROOM_Y = 4;
 
-const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 8;
+const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 7;
 const uint8_t OVERWORLD_HEIGHT_IN_ROOMS = 8;
-const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 12;
+const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 10;
 
 class GameScene {
     typedef void (GameScene::*UpdatePtr)(uint8_t);

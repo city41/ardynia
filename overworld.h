@@ -2,13 +2,13 @@
 #define overworld_h
 
 
-const uint8_t PROGMEM overworld_map[603] = {
+const uint8_t PROGMEM overworld_map[538] = {
     // array length (16 bit, little endian), map width, map height (in rooms)
-    91, 2, 8, 8,
-    // room indices (16 bit, little endian), 128 bytes
-    0, 0, 8, 0, 17, 0, 22, 0, 30, 0, 33, 0, 36, 0, 41, 0, 49, 0, 58, 0, 64, 0, 69, 0, 78, 0, 89, 0, 93, 0, 105, 0, 110, 0, 121, 0, 127, 0, 132, 0, 139, 0, 147, 0, 152, 0, 162, 0, 173, 0, 179, 0, 189, 0, 192, 0, 195, 0, 201, 0, 205, 0, 210, 0, 219, 0, 228, 0, 234, 0, 239, 0, 246, 0, 254, 0, 6, 1, 14, 1, 23, 1, 31, 1, 35, 1, 45, 1, 52, 1, 57, 1, 65, 1, 71, 1, 81, 1, 90, 1, 95, 1, 101, 1, 111, 1, 118, 1, 125, 1, 132, 1, 143, 1, 152, 1, 162, 1, 170, 1, 179, 1, 189, 1, 198, 1, 203, 1,
-    // compressed room data, 471 bytes
-    31, 109, 47, 96, 47, 96, 47, 96, 214, 245, 208, 111, 96, 111, 96, 111, 80, 247, 223, 240, 246, 0, 221, 245, 64, 4, 68, 4, 254, 0, 254, 79, 224, 254, 79, 224, 254, 79, 176, 102, 96, 251, 72, 121, 246, 12, 244, 100, 68, 47, 96, 102, 95, 70, 47, 96, 47, 96, 6, 245, 15, 118, 254, 0, 247, 15, 118, 253, 4, 247, 15, 118, 245, 6, 100, 244, 6, 96, 247, 6, 102, 244, 6, 102, 244, 6, 102, 244, 0, 255, 15, 192, 64, 244, 6, 102, 244, 6, 102, 0, 68, 111, 100, 100, 64, 251, 111, 228, 0, 64, 47, 96, 68, 244, 4, 68, 244, 4, 68, 245, 0, 247, 4, 246, 4, 253, 0, 246, 4, 255, 15, 96, 79, 64, 102, 245, 6, 111, 224, 102, 111, 64, 102, 111, 240, 0, 0, 246, 4, 255, 15, 96, 244, 70, 68, 0, 245, 96, 15, 86, 247, 0, 244, 64, 4, 102, 244, 14, 102, 244, 14, 246, 14, 68, 245, 15, 244, 246, 64, 247, 4, 246, 4, 102, 101, 100, 79, 80, 64, 254, 15, 228, 254, 15, 228, 254, 4, 246, 4, 246, 0, 255, 15, 192, 64, 255, 15, 96, 247, 64, 246, 14, 246, 14, 246, 14, 68, 15, 68, 72, 121, 68, 66, 246, 2, 246, 15, 116, 79, 80, 79, 224, 79, 96, 247, 79, 240, 15, 84, 247, 79, 80, 68, 245, 15, 148, 79, 96, 79, 96, 79, 96, 79, 96, 246, 4, 246, 4, 246, 4, 15, 100, 248, 79, 96, 79, 96, 79, 80, 64, 68, 15, 68, 246, 14, 246, 14, 247, 64, 247, 66, 246, 2, 246, 2, 246, 0, 79, 240, 252, 0, 0, 245, 64, 15, 84, 0, 245, 64, 15, 84, 248, 79, 96, 79, 96, 247, 64, 79, 240, 245, 15, 116, 15, 100, 4, 246, 4, 245, 15, 116, 79, 80, 79, 224, 247, 64, 247, 64, 0, 244, 64, 0, 245, 64, 15, 68, 47, 96, 47, 96, 47, 96, 47, 80, 64, 255, 15, 96, 79, 96, 0, 245, 79, 240, 245, 4, 247, 79, 80, 68, 245, 4, 68, 244, 4, 64, 248, 79, 96, 79, 96, 247, 64, 247, 79, 224, 64, 0, 68, 64, 247, 79, 96, 79, 96, 248, 64, 64, 15, 84, 0, 245, 64, 15, 84, 0, 244, 64, 47, 80, 79, 118, 47, 80, 74, 245, 52, 79, 96, 102, 245, 4, 111, 80, 70, 245, 48, 246, 4, 246, 4, 246, 4, 246, 52, 79, 64, 68, 79, 96, 79, 96, 79, 99, 68, 72, 121, 79, 96, 79, 96, 79, 99, 64, 64, 0, 244, 79, 96, 79, 96, 79, 99, 247, 79, 224, 247, 48, 64, 15, 68, 0, 15, 68, 0, 15, 68, 51, 63, 68
+    26, 2, 7, 8,
+    // room indices (16 bit, little endian), 112 bytes
+    0, 0, 11, 0, 20, 0, 25, 0, 32, 0, 35, 0, 39, 0, 47, 0, 56, 0, 62, 0, 67, 0, 76, 0, 87, 0, 95, 0, 100, 0, 111, 0, 117, 0, 122, 0, 129, 0, 137, 0, 145, 0, 156, 0, 162, 0, 172, 0, 175, 0, 178, 0, 184, 0, 188, 0, 197, 0, 204, 0, 210, 0, 215, 0, 222, 0, 230, 0, 238, 0, 248, 0, 0, 1, 4, 1, 14, 1, 21, 1, 26, 1, 34, 1, 46, 1, 55, 1, 60, 1, 66, 1, 76, 1, 85, 1, 92, 1, 103, 1, 111, 1, 120, 1, 128, 1, 137, 1, 146, 1, 155, 1,
+    // compressed room data, 422 bytes
+    31, 109, 32, 68, 0, 2, 4, 64, 0, 47, 96, 214, 245, 208, 111, 96, 111, 96, 111, 80, 247, 223, 240, 246, 0, 221, 245, 64, 15, 84, 254, 0, 254, 79, 224, 254, 79, 208, 96, 251, 72, 121, 246, 12, 244, 100, 68, 47, 96, 102, 95, 70, 47, 96, 47, 96, 6, 245, 15, 118, 254, 0, 247, 15, 118, 253, 4, 247, 15, 118, 245, 6, 100, 244, 6, 96, 247, 6, 102, 244, 6, 102, 244, 6, 102, 244, 0, 246, 6, 246, 6, 246, 6, 246, 4, 251, 111, 228, 0, 64, 47, 96, 68, 244, 4, 68, 244, 4, 68, 245, 0, 247, 4, 246, 4, 253, 0, 246, 4, 255, 15, 96, 79, 64, 102, 245, 6, 111, 224, 102, 111, 64, 102, 111, 240, 0, 0, 246, 4, 246, 6, 246, 6, 247, 0, 244, 64, 4, 102, 244, 14, 102, 244, 14, 246, 14, 68, 245, 15, 244, 246, 64, 247, 4, 246, 4, 102, 101, 100, 79, 80, 64, 254, 15, 228, 254, 15, 228, 254, 4, 246, 4, 246, 0, 255, 15, 192, 64, 246, 14, 246, 14, 246, 14, 68, 15, 68, 247, 66, 246, 2, 246, 15, 116, 79, 80, 79, 224, 79, 96, 247, 79, 240, 15, 84, 247, 79, 80, 68, 245, 15, 148, 79, 96, 79, 96, 79, 96, 79, 96, 246, 4, 246, 4, 246, 4, 15, 100, 68, 15, 68, 246, 14, 246, 14, 244, 64, 68, 247, 66, 246, 2, 246, 2, 246, 0, 79, 240, 252, 0, 0, 245, 64, 15, 84, 0, 245, 64, 15, 84, 248, 79, 96, 79, 96, 247, 64, 79, 240, 245, 15, 116, 15, 100, 4, 246, 4, 245, 15, 116, 244, 64, 68, 0, 4, 4, 79, 80, 68, 64, 15, 68, 47, 96, 47, 96, 47, 96, 47, 80, 64, 255, 15, 96, 79, 96, 0, 245, 79, 240, 245, 4, 247, 79, 80, 68, 245, 4, 68, 244, 4, 64, 72, 121, 244, 79, 96, 79, 96, 247, 64, 247, 79, 224, 64, 0, 68, 64, 64, 15, 84, 0, 245, 64, 15, 84, 0, 244, 64, 47, 80, 79, 118, 47, 80, 79, 118, 79, 96, 102, 245, 4, 111, 80, 247, 96, 246, 4, 246, 4, 246, 4, 247, 96, 79, 64, 68, 79, 96, 79, 96, 247, 96, 68, 72, 121, 79, 96, 79, 96, 79, 118, 64, 0, 244, 79, 96, 79, 96, 247, 96, 64, 15, 68, 0, 15, 68, 0, 15, 68, 247, 96
 };
 
 const uint8_t PROGMEM overworld_room0_0[] = {
@@ -36,12 +36,7 @@ const uint8_t PROGMEM overworld_room0_3[] = {
 
 
 const uint8_t PROGMEM overworld_room0_4[] = {
-    1, // number of entities
-
-    // entity 0, TELEPORTER
-    0x30,
-    31, //x
-    6  //y
+    0 // number of entities
 };
 
 
@@ -211,12 +206,7 @@ const uint8_t PROGMEM overworld_room2_7[] = {
 
 
 const uint8_t PROGMEM overworld_room3_0[] = {
-    1, // number of entities
-
-    // entity 0, SECRET_WALL
-    0x77,
-    80, //x
-    0  //y
+    0 // number of entities
 };
 
 
@@ -305,7 +295,12 @@ const uint8_t PROGMEM overworld_room4_5[] = {
 
 
 const uint8_t PROGMEM overworld_room4_6[] = {
-    0 // number of entities
+    1, // number of entities
+
+    // entity 0, TELEPORTER
+    0x30,
+    31, //x
+    5  //y
 };
 
 
@@ -352,7 +347,12 @@ const uint8_t PROGMEM overworld_room5_4[] = {
 
 
 const uint8_t PROGMEM overworld_room5_5[] = {
-    0 // number of entities
+    1, // number of entities
+
+    // entity 0, SECRET_WALL
+    0x77,
+    48, //x
+    1  //y
 };
 
 
@@ -370,7 +370,12 @@ const uint8_t PROGMEM overworld_room5_7[] = {
 
 
 const uint8_t PROGMEM overworld_room6_0[] = {
-    0 // number of entities
+    1, // number of entities
+
+    // entity 0, TELEPORTER
+    0x10,
+    77, //x
+    23  //y
 };
 
 
@@ -415,64 +420,11 @@ const uint8_t PROGMEM overworld_room6_7[] = {
     0 // number of entities
 };
 
-
-
-const uint8_t PROGMEM overworld_room7_0[] = {
-    1, // number of entities
-
-    // entity 0, TELEPORTER
-    0x10,
-    78, //x
-    23  //y
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_5[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_6[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room7_7[] = {
-    0 // number of entities
-};
-
 const uint8_t PROGMEM overworld_teleporters[] = {
     // dest x, dest y (in rooms)
-    5, 6,
-    11, 6,
-    0, 3,
+    1, 2,
+    8, 5,
+    0, 5,
     0, 5,
 };
 
@@ -482,99 +434,91 @@ const uint8_t PROGMEM overworld_bumpers[] = {
     // width, height
 };
 
-const uint8_t * const PROGMEM overworld_row0[8] = {
+const uint8_t * const PROGMEM overworld_row0[7] = {
     overworld_room0_0,
     overworld_room1_0,
     overworld_room2_0,
     overworld_room3_0,
     overworld_room4_0,
     overworld_room5_0,
-    overworld_room6_0,
-    overworld_room7_0
+    overworld_room6_0
 };
 
 
-const uint8_t * const PROGMEM overworld_row1[8] = {
+const uint8_t * const PROGMEM overworld_row1[7] = {
     overworld_room0_1,
     overworld_room1_1,
     overworld_room2_1,
     overworld_room3_1,
     overworld_room4_1,
     overworld_room5_1,
-    overworld_room6_1,
-    overworld_room7_1
+    overworld_room6_1
 };
 
 
-const uint8_t * const PROGMEM overworld_row2[8] = {
+const uint8_t * const PROGMEM overworld_row2[7] = {
     overworld_room0_2,
     overworld_room1_2,
     overworld_room2_2,
     overworld_room3_2,
     overworld_room4_2,
     overworld_room5_2,
-    overworld_room6_2,
-    overworld_room7_2
+    overworld_room6_2
 };
 
 
-const uint8_t * const PROGMEM overworld_row3[8] = {
+const uint8_t * const PROGMEM overworld_row3[7] = {
     overworld_room0_3,
     overworld_room1_3,
     overworld_room2_3,
     overworld_room3_3,
     overworld_room4_3,
     overworld_room5_3,
-    overworld_room6_3,
-    overworld_room7_3
+    overworld_room6_3
 };
 
 
-const uint8_t * const PROGMEM overworld_row4[8] = {
+const uint8_t * const PROGMEM overworld_row4[7] = {
     overworld_room0_4,
     overworld_room1_4,
     overworld_room2_4,
     overworld_room3_4,
     overworld_room4_4,
     overworld_room5_4,
-    overworld_room6_4,
-    overworld_room7_4
+    overworld_room6_4
 };
 
 
-const uint8_t * const PROGMEM overworld_row5[8] = {
+const uint8_t * const PROGMEM overworld_row5[7] = {
     overworld_room0_5,
     overworld_room1_5,
     overworld_room2_5,
     overworld_room3_5,
     overworld_room4_5,
     overworld_room5_5,
-    overworld_room6_5,
-    overworld_room7_5
+    overworld_room6_5
 };
 
 
-const uint8_t * const PROGMEM overworld_row6[8] = {
+const uint8_t * const PROGMEM overworld_row6[7] = {
     overworld_room0_6,
     overworld_room1_6,
     overworld_room2_6,
     overworld_room3_6,
     overworld_room4_6,
     overworld_room5_6,
-    overworld_room6_6,
-    overworld_room7_6
+    overworld_room6_6
 };
 
 
-const uint8_t * const PROGMEM overworld_row7[8] = {
+const uint8_t * const PROGMEM overworld_row7[7] = {
     overworld_room0_7,
     overworld_room1_7,
     overworld_room2_7,
     overworld_room3_7,
     overworld_room4_7,
     overworld_room5_7,
-    overworld_room6_7,
-    overworld_room7_7
+    overworld_room6_7
 };
 
 
