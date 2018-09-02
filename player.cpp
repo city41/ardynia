@@ -21,6 +21,7 @@ void Player::reset() {
     dir = DOWN;
     tookDamageCount = 0;
     numBombs = 0;
+    health = 2;
 
     bButtonEntityType = UNSET;
     entities[0].type = UNSET;
@@ -42,7 +43,7 @@ void Player::useSword(void) {
     }
 
     loadEntity(entities[0], SWORD);
-    entities[0].spawn(this);
+    entities[0].spawn(this, this);
 }
 
 void Player::bButtonAction(void) {
@@ -59,7 +60,7 @@ void Player::bButtonAction(void) {
     }
 
     loadEntity(entities[1], bButtonEntityType);
-    entities[1].spawn(this);
+    entities[1].spawn(this, this);
 }
 
 EntityType Player::render(Renderer *renderer, byte frame) {
@@ -76,7 +77,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         renderer->fillRect(x - 4, y - 26, 16, 16, WHITE);
         renderer->drawRect(x - 5, y - 27, 18, 18, BLACK);
         renderer->drawPlusMask(x - 2, y - 26, itemIcons_plus_mask, receivedItem, 0);
-    } else if (State::gameState.health <= 0) {
+    } else if (health <= 0) {
         spriteIndex = 8;
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
@@ -172,7 +173,7 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
     }
 
     if (other->damage && tookDamageCount == 0) {
-        State::gameState.health = clamp(State::gameState.health - other->damage, 0, State::gameState.totalHealth);
+        health = clamp(health - other->damage, 0, State::gameState.totalHealth);
         bounceBack();
 
         // hack: make the sword bounce back too, in case we
@@ -191,7 +192,12 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
 
     if (other->type == HEART) {
         other->type = UNSET;
-        State::gameState.health = clamp(State::gameState.health + 1, 0, State::gameState.totalHealth);
+        health = clamp(health + 1, 0, State::gameState.totalHealth);
+    }
+
+    if (other->type == BOMB) {
+        other->type = UNSET;
+        numBombs = clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
     }
 
     return UNSET;

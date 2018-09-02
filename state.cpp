@@ -56,7 +56,6 @@ void State::load() {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.totalHealth = 2;
-        gameState.health = 2;
         gameState.numAcquiredItems = 0;
         gameState.beatenBossesBitMask = 0;
         gameState.numKeys = 0;

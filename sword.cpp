@@ -2,7 +2,7 @@
 #include "baseEntity.h"
 #include "util.h"
 
-EntityType Sword::spawn(Entity* me, BaseEntity* player) {
+EntityType Sword::spawn(Entity* me, BaseEntity* spawner, BaseEntity* player) {
     int16_t px = player->x;
     int16_t py = player->y;
 

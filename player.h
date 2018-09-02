@@ -7,6 +7,7 @@
 #include "spriteBitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
+const uint8_t MAX_BOMB_COUNT = 9;
 
 class Player: public BaseEntity {
     private:
@@ -21,6 +22,7 @@ class Player: public BaseEntity {
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
         uint8_t numBombs;
+        int8_t health;
 
         void receiveItemFromChest(Entity* chest);
         void reset();
@@ -39,7 +41,8 @@ class Player: public BaseEntity {
             receiveItemCount(0),
             receivedItem(UNSET),
             bButtonEntityType(UNSET),
-            numBombs(0)
+            numBombs(0),
+            health(0)
         {
             this->prevX = this->x = x;
             this->prevY = this->y = y;

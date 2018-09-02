@@ -13,7 +13,6 @@ const uint8_t GAME_ID = 81;
 const uint8_t EEPROM_START = 64;
 
 struct GameState {
-    int8_t health;
     int8_t totalHealth;
     int8_t numAcquiredItems;
     uint8_t beatenBossesBitMask;

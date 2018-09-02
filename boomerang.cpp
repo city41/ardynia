@@ -4,10 +4,10 @@
 #include "player.h"
 
 
-EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
-    me->dir = player->dir;
-    me->x = player->x;
-    me->y = player->y - 6;
+EntityType Boomerang::spawn(Entity* me, BaseEntity* spawner, BaseEntity* player) {
+    me->dir = spawner->dir;
+    me->x = spawner->x;
+    me->y = spawner->y - 6;
     me->currentFrame = 1;
 
     return UNSET;

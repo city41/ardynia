@@ -40,7 +40,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     renderer->fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 1, 1, State::gameState.health, State::gameState.totalHealth, frame, false);
+    drawDots(renderer, 1, 1, player.health, State::gameState.totalHealth, frame, false);
 
     // secondary item
     renderer->drawPlusMask(1, 13, hudBFrame_plus_mask, 0);

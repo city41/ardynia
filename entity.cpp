@@ -27,9 +27,9 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     return result;
 }
 
-EntityType Entity::spawn(BaseEntity* player) {
+EntityType Entity::spawn(BaseEntity* spawner, BaseEntity* player) {
     if (spawnPtr != NULL) {
-        return spawnPtr(this, player);
+        return spawnPtr(this, spawner, player);
     }
 
     return UNSET;
