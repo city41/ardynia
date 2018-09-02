@@ -8,11 +8,11 @@
 
 const uint8_t PLAYER_VELOCITY = 2;
 
-const int8_t swordLabel[] PROGMEM = "YOU GOT THE SWORD";
-const int8_t boomerangLabel[] PROGMEM = "YOU GOT THE BOOMERANG";
-const int8_t bombLabel[] PROGMEM = "YOU GOT THE BOMBS";
-const int8_t candleLabel[] PROGMEM = "YOU GOT THE CANDLE";
-const int8_t keyLabel[] PROGMEM = "YOU GOT A KEY";
+const int8_t swordLabel[] PROGMEM = "GOT THE SWORD";
+const int8_t boomerangLabel[] PROGMEM = "GOT THE BOOMERANG";
+const int8_t bombLabel[] PROGMEM = "GOT THE BOMBS";
+const int8_t candleLabel[] PROGMEM = "GOT THE CANDLE";
+const int8_t keyLabel[] PROGMEM = "GOT A KEY";
 
 const int8_t* const itemToastLabels[] PROGMEM = { swordLabel, boomerangLabel, bombLabel, candleLabel, keyLabel };
 
