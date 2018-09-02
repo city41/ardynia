@@ -15,7 +15,7 @@
 #include "secretWall.h"
 
 const uint8_t NUM_ENTITY_PROPS = 6;
-const uint8_t NUM_ENTITY_POINTERS = 5;
+const uint8_t NUM_ENTITY_POINTERS = 4;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
@@ -230,7 +230,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 0, SWORD
     sword_plus_mask,    // tiles
-    Sword::spawn,       // spawn
     Sword::update,      // update
     NULL,               // render
     NULL,               // onCollide
@@ -238,20 +237,17 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 1, BOOMERANG
     itemIcons_plus_mask,
-    Boomerang::spawn,
     Boomerang::update,
     NULL,
     Boomerang::onCollide,
 
     // 2, BOMB
     itemIcons_plus_mask,
-    Bomb::spawn,
     Bomb::update,
     NULL,
     NULL,
 
     // 3, CANDLE
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -262,17 +258,14 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 5, HEART
     heart_plus_mask,
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 6, HEART_CONTAINER
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -283,11 +276,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 8, BLOB
     blob_plus_mask,
-    NULL,
     Blob::update,
     NULL,
     Blob::onCollide,
@@ -297,17 +288,14 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 10, SPIKE
     spike_plus_mask,
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 11, SKULL
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -318,17 +306,14 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 13, GHOST
     ghost_plus_mask,
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 14, BOSS1
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -339,10 +324,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 16, BOSS3
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -353,10 +336,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 18, BUSH
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -367,10 +348,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 20, FLAME
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -381,11 +360,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 22, EXPLOSION
     explosion_plus_mask,
-    NULL,
     Explosion::update,
     NULL,
     NULL,
@@ -395,17 +372,14 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 24, DEATH
     death_plus_mask,
-    NULL,
     Death::update,
     NULL,
     NULL,
 
     // 25, SECRET_WALL
-    NULL,
     NULL,
     NULL,
     SecretWall::render,

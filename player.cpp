@@ -43,7 +43,6 @@ void Player::useSword(void) {
     }
 
     loadEntity(entities[0], SWORD);
-    entities[0].spawn(this, this);
 }
 
 void Player::bButtonAction(void) {
@@ -60,7 +59,14 @@ void Player::bButtonAction(void) {
     }
 
     loadEntity(entities[1], bButtonEntityType);
-    entities[1].spawn(this, this);
+
+    if (bButtonEntityType == BOMB) {
+        // send a hint this is an active bomb
+        // instead of an item drop
+        entities[1].health = 1;
+        entities[1].x = x;
+        entities[1].y = y - 4;
+    }
 }
 
 EntityType Player::render(Renderer *renderer, byte frame) {

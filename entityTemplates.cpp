@@ -18,7 +18,6 @@ void loadEntity(Entity& entity, EntityType entityType) {
     void** pStart = entityPointers + (entityType * NUM_ENTITY_POINTERS);
 
     entity.tiles = (uint8_t*)pgm_read_word(pStart++);
-    entity.spawnPtr = (Entity::EntitySpawnPtr)pgm_read_word(pStart++);
     entity.updatePtr = (Entity::EntityUpdatePtr)pgm_read_word(pStart++);
     entity.renderPtr = (Entity::EntityRenderPtr)pgm_read_word(pStart++);
     entity.collideOtherEntityPtr = (Entity::EntityCollideOtherEntityPtr)pgm_read_word(pStart++);

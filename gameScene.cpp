@@ -303,7 +303,6 @@ void GameScene::spawnNewEntity(EntityType entityType, BaseEntity& spawner) {
     int16_t offsetY = (entities[e].height - spawner.height) / 2;
     entities[e].x = spawner.x - offsetX;
     entities[e].y = spawner.y - offsetY;
-    entities[e].spawn(&spawner,  &player);
 }
 
 void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
@@ -463,7 +462,6 @@ void GameScene::updatePlay(uint8_t frame) {
             EntityType newEntity = entity.update(&player, arduboy, frame);
             if (newEntity != UNSET) {
                 loadEntity(player.entities[e], newEntity);
-                player.entities[e].spawn(&player, &player);
             }
         }
     }

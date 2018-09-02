@@ -27,14 +27,6 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     return result;
 }
 
-EntityType Entity::spawn(BaseEntity* spawner, BaseEntity* player) {
-    if (spawnPtr != NULL) {
-        return spawnPtr(this, spawner, player);
-    }
-
-    return UNSET;
-}
-
 EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
     if (stunCount > 0) {
         stunCount -= 1;

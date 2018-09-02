@@ -3,19 +3,17 @@
 #include "math.h"
 #include "player.h"
 
-
-EntityType Boomerang::spawn(Entity* me, BaseEntity* spawner, BaseEntity* player) {
-    me->dir = spawner->dir;
-    me->x = spawner->x;
-    me->y = spawner->y - 6;
-    me->currentFrame = 1;
-
-    return UNSET;
-}
-
 EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
     int16_t px = player->x;
     int16_t py = player->y;
+    
+    // initial duration? then "spawn"
+    if (me->duration == 20) {
+        me->dir = player->dir;
+        me->x = player->x;
+        me->y = player->y - 6;
+        me->currentFrame = 1;
+    }
 
     if (me->duration > 0) {
         me->duration -= 1;
