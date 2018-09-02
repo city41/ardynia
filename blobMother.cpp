@@ -8,7 +8,7 @@ EntityType BlobMother::update(Entity* me, BaseEntity* player, Arduboy2* arduboy,
 
     if (me->duration == 10) {
         me->dir = random(0, 2);
-        me->duration = random(0, 2) + 2;
+        me->duration = UP;
     }
 
     int16_t nx = me->x;
