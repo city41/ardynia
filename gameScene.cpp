@@ -391,9 +391,6 @@ void GameScene::updateTitle(uint8_t frame) {
 
 void GameScene::renderTitle(uint8_t frame) {
     renderer->drawOverwrite(35, 7, title_tiles, 0);
-    renderer->fillRect(0, 26, 75, 8, WHITE);
-    renderer->fillRect(86, 26, 44, 8, WHITE);
-    renderer->fillRect(75, 32, 20, 2, WHITE);
 
     __FlashStringHelper* startGameLabel = State::hasUserSaved() ? (__FlashStringHelper*)continueLabel : (__FlashStringHelper*)newGameLabel;
 
