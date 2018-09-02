@@ -16,7 +16,7 @@ const EntityTypes = {
     SKILL: 10,
     OCTO: 11,
     GHOST: 12,
-    BLOB_WHISPERER: 13,
+    BLOB_MOTHER: 13,
     NECROMANCER: 14,
     NEMESIS: 15,
     TELEPORTER: 16,

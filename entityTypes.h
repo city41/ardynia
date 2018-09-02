@@ -28,8 +28,8 @@ const EntityType SKULL = 10;
 const EntityType OCTO = 11;
 const EntityType GHOST = 12;
 
-// bosses, to be named
-const EntityType BLOB_WHISPERER = 13;
+// bosses
+const EntityType BLOB_MOTHER = 13;
 const EntityType NECROMANCER = 14;
 const EntityType NEMESIS = 15;
 

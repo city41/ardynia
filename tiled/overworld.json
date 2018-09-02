@@ -258,8 +258,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":149.5,
-                 "y":136.5
+                 "x":248.833333333333,
+                 "y":145.166666666667
                 }, 
                 {
                  "height":0,
@@ -1006,7 +1006,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":139,
+ "nextobjectid":140,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

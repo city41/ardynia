@@ -13,6 +13,7 @@
 #include "explosion.h"
 #include "death.h"
 #include "secretWall.h"
+#include "blobMother.h"
 
 const uint8_t NUM_ENTITY_PROPS = 6;
 const uint8_t NUM_ENTITY_POINTERS = 4;
@@ -122,12 +123,12 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 13, BLOB_WHISPERER
-    0,
-    0,
-    0,
-    0,
-    0,
+    // 13, BLOB_MOTHER
+    16,
+    16,
+    10,
+    1,
+    10,
     false,
 
     // 14, NECROMANCER
@@ -299,19 +300,19 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 13, BOSS1
+    // 13, BLOB_MOTHER
+    blobMother_plus_mask,
+    BlobMother::update,
+    NULL,
+    Blob::onCollide,
+
+    // 14, NECROMANCER
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 14, BOSS2
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 15, BOSS3
+    // 15, NEMESIS
     NULL,
     NULL,
     NULL,

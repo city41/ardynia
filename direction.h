@@ -1,7 +1,7 @@
 #ifndef direction_h
 #define direction_h
 
-typedef uint8_t Direction;
+typedef int8_t Direction;
 
 const Direction LEFT = 0;
 const Direction RIGHT = 1;

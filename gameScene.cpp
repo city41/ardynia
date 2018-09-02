@@ -5,6 +5,7 @@
 #include "map.h"
 #include "tileBitmaps.h"
 #include "toast.h"
+#include "entityCommon.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -56,10 +57,6 @@ void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
 void GameScene::pop() {
     nextUpdate = prevUpdate;
     nextRender = prevRender;
-}
-
-boolean isOffScreen(int16_t x, int16_t y) {
-    return x < 0 || y < 0 || x >= ROOM_WIDTH_PX || y >= ROOM_HEIGHT_PX;
 }
 
 void GameScene::updateGameOver(uint8_t frame) {
@@ -219,7 +216,7 @@ void GameScene::detectEntityCollisions(void) {
 
     if (playerLeftMap()) {
         player.undoMove();
-    } else if (isOffScreen(player.x, player.y)) {
+    } else if (EntityCommon::isOffScreen(player.x, player.y)) {
         // if the player just went off the screen, did they legit go through a "passageway"?
         // if not, prevent them leaving the screen
         const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
@@ -465,7 +462,7 @@ void GameScene::updatePlay(uint8_t frame) {
 
     detectEntityCollisions();
 
-    if (isOffScreen(player.x, player.y)) {
+    if (EntityCommon::isOffScreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
     }
 

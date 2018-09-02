@@ -526,8 +526,8 @@ const uint8_t PROGMEM dungeons_room11_4[] = {
 const uint8_t PROGMEM dungeons_room11_5[] = {
     1, // number of entities
 
-    // entity 0, BLOB
-    0x7,
+    // entity 0, BLOB_MOTHER
+    0xd,
     68, //x
     19  //y
 };

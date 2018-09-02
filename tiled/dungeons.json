@@ -90,10 +90,10 @@
                 {
                  "height":0,
                  "id":161,
-                 "name":"Blob",
+                 "name":"Blob Mother",
                  "point":true,
                  "rotation":0,
-                 "type":"BLOB",
+                 "type":"BLOB_MOTHER",
                  "visible":true,
                  "width":0,
                  "x":1300,

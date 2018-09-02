@@ -55,7 +55,7 @@
    </properties>
    <point/>
   </object>
-  <object id="161" name="Blob" type="BLOB" x="1300" y="339.333">
+  <object id="161" name="Blob Mother" type="BLOB_MOTHER" x="1300" y="339.333">
    <point/>
   </object>
   <object id="163" name="Secret 1 door to overworld" type="TELEPORTER" x="48.6667" y="378.667">
