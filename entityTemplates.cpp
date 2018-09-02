@@ -9,7 +9,6 @@ void loadEntity(Entity& entity, EntityType entityType) {
 
     entity.width = pgm_read_byte(start++);
     entity.height = pgm_read_byte(start++);
-    entity.dir = pgm_read_byte(start++);
     entity.health = pgm_read_byte(start++);
     entity.damage = pgm_read_byte(start++);
     entity.duration = pgm_read_byte(start++);

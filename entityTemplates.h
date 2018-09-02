@@ -14,14 +14,13 @@
 #include "death.h"
 #include "secretWall.h"
 
-const uint8_t NUM_ENTITY_PROPS = 7;
+const uint8_t NUM_ENTITY_PROPS = 6;
 const uint8_t NUM_ENTITY_POINTERS = 5;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
     16,           // width
     16,           // height
-    DOWN,         // direction
     0,            // health
     1,            // damage
     20,           // duration
@@ -30,7 +29,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 1, BOOMERANG
     16,
     16,
-    DOWN,
     0,
     0,
     20,
@@ -39,7 +37,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 2, BOMB
     11,
     16,
-    DOWN,
     0,
     0,
     150,
@@ -48,7 +45,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 3, CANDLE
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -57,7 +53,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 4, KEY
     8,
     8,
-    DOWN,
     0,
     0,
     0,
@@ -66,7 +61,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 5, HEART
     8,
     8,
-    DOWN,
     0,
     0,
     180,
@@ -75,7 +69,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 6, HEART_CONTAINER
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -84,7 +77,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 7, CHEST
     16,
     16,
-    DOWN,
     0,
     0,
     0,
@@ -93,7 +85,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 8, BLOB
     8,
     8,
-    DOWN,
     2, // health
     1, // damage
     0, // duration
@@ -102,7 +93,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 9, BAT
     8,
     8,
-    DOWN,
     1,
     1,
     0,
@@ -111,7 +101,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 10, SPIKE
     8,
     8,
-    DOWN,
     255,
     1,
     0,
@@ -120,7 +109,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 11, SKULL
     16,
     16,
-    DOWN,
     1,
     2,
     0,
@@ -129,7 +117,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 12, OCTO
     16,
     16,
-    DOWN,
     4,
     1,
     0,
@@ -138,7 +125,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 13, GHOST
     8,
     16,
-    DOWN,
     1,
     2,
     0,
@@ -147,7 +133,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 14, BLOB_WHISPERER
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -156,7 +141,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 15, NECROMANCER
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -165,7 +149,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 16, NEMESIS
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -174,7 +157,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 17, TELEPORTER
     18,
     8,
-    DOWN,
     0,
     0,
     0,
@@ -183,7 +165,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 18, BUSH
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -192,7 +173,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 19, LOCK
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -201,7 +181,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 20, FLAME
     0,
     0,
-    DOWN,
     0,
     0,
     0,
@@ -210,7 +189,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 21, PROJECTILE
     0,
     0,
-    DOWN,
     0,
     0,
     20,
@@ -219,7 +197,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 22, EXPLOSION
     16,
     16,
-    DOWN,
     0,
     1,
     20,
@@ -228,7 +205,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 23, OLD_MAN
     8,
     HEIGHT, // whole screen, this guy is basically a total bumper
-    DOWN,
     0,
     0,
     0,
@@ -237,7 +213,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 24, DEATH
     8,
     8,
-    DOWN,
     0,
     0,
     24,
@@ -246,7 +221,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 25, SECRET_WALL
     16,
     16,
-    DOWN,
     1,
     0,
     0,
