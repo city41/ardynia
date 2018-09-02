@@ -9,6 +9,8 @@ EntityType Boomerang::spawn(Entity* me, BaseEntity* player) {
     me->x = player->x;
     me->y = player->y - 6;
     me->currentFrame = 1;
+
+    return UNSET;
 }
 
 EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
@@ -69,6 +71,8 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
     }
 
     me->mirror = mirror;
+
+    return UNSET;
 }
 
 EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {

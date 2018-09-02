@@ -4,6 +4,7 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 #include "entityTypes.h"
+#include "player.h"
 
 typedef uint8_t Decision;
 
@@ -18,7 +19,7 @@ class InGameMenu {
         {}
 
         void update(Arduboy2* arduboy, uint8_t frame);
-        void render(Renderer* renderer, uint8_t frame);
+        void render(Renderer* renderer, Player& player, uint8_t frame);
 };
 
 #endif

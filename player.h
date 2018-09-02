@@ -20,6 +20,7 @@ class Player: public BaseEntity {
         EntityType receivedItem;
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
+        uint8_t numBombs;
 
         void receiveItemFromChest(Entity* chest);
         void reset();
@@ -37,7 +38,8 @@ class Player: public BaseEntity {
             movedThisFrame(false),
             receiveItemCount(0),
             receivedItem(UNSET),
-            bButtonEntityType(UNSET)
+            bButtonEntityType(UNSET),
+            numBombs(0)
         {
             this->prevX = this->x = x;
             this->prevY = this->y = y;

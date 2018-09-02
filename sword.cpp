@@ -32,6 +32,8 @@ EntityType Sword::spawn(Entity* me, BaseEntity* player) {
             me->mirror = 0;
             break;
     }
+
+    return UNSET;
 }
 
 EntityType Sword::update(Entity* me, BaseEntity* player, Arduboy2* arduoboy, uint8_t frame) {

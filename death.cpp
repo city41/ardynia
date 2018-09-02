@@ -13,4 +13,6 @@ EntityType Death::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint
             return UNSET;
         }
     }
+
+    return UNSET;
 }

@@ -18,7 +18,6 @@ struct GameState {
     int8_t numAcquiredItems;
     uint8_t beatenBossesBitMask;
     int8_t numKeys;
-    int8_t numBombs;
 
     // the room states. Each room gets one bit. This means each room
     // can only have ONE thing about it that is stateful. That means each

@@ -5,7 +5,7 @@
 #include "state.h"
 
 EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
-    if (other->damage) {
+    if (other->damage > 0) {
         me->health -= other->damage;
 
         if (me->health <= 0) {
@@ -21,6 +21,7 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
         return UNSET;
     }
 
+    return UNSET;
 }
 
 EntityType Blob::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
@@ -56,4 +57,6 @@ EntityType Blob::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8
             me->currentFrame = 0;
         }
     }
+
+    return UNSET;
 }

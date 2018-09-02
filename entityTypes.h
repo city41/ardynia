@@ -43,16 +43,17 @@ const EntityType LOCK = 19;
 // projectiles
 const EntityType FLAME = 20;
 const EntityType PROJECTILE = 21;
+const EntityType EXPLOSION = 22;
 
 // misc
 
 // prevents the user from going to the first dungeon if they
 // haven't yet found the sword. This is required because the game
 // assumes the player acquires the items in order: sword->boomerang->bombs->candle
-const EntityType OLD_MAN = 22;
+const EntityType OLD_MAN = 23;
 // this is the little "poof" as an enemy dies
 // it also randomly leaves behind a heart for the player
-const EntityType DEATH = 23;
+const EntityType DEATH = 24;
 
 const EntityType PLAYER = 127;
 

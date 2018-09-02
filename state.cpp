@@ -60,7 +60,6 @@ void State::load() {
         gameState.numAcquiredItems = 0;
         gameState.beatenBossesBitMask = 0;
         gameState.numKeys = 0;
-        gameState.numBombs = 0;
         
         // this may not be necessary, but rather play it safe
         memset(gameState.roomStates, 0, MAX_ROOM_COUNT);

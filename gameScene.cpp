@@ -289,8 +289,10 @@ void GameScene::spawnNewEntity(EntityType entityType, BaseEntity& spawner) {
     }
 
     loadEntity(entities[e], entityType);
-    entities[e].x = spawner.x;
-    entities[e].y = spawner.y;
+    int16_t offsetX = (entities[e].width - spawner.width) / 2;
+    int16_t offsetY = (entities[e].height - spawner.height) / 2;
+    entities[e].x = spawner.x - offsetX;
+    entities[e].y = spawner.y - offsetY;
 }
 
 void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
@@ -440,7 +442,10 @@ void GameScene::updatePlay(uint8_t frame) {
         Entity& entity = player.entities[e];
 
         if (entity.type != UNSET) {
-            entity.update(&player, arduboy, frame);
+            EntityType newEntity = entity.update(&player, arduboy, frame);
+            if (newEntity != UNSET) {
+                spawnNewEntity(newEntity, entity);
+            }
         }
     }
 
@@ -448,7 +453,11 @@ void GameScene::updatePlay(uint8_t frame) {
         Entity& entity = entities[e];
 
         if (entity.type != UNSET) {
-            entity.update(&player, arduboy, frame);
+            EntityType newEntity = entity.update(&player, arduboy, frame);
+
+            if (newEntity != UNSET) {
+                spawnNewEntity(newEntity, entity);
+            }
         }
     }
 
@@ -507,7 +516,7 @@ void GameScene::updateMenu(uint8_t frame) {
 }
 
 void GameScene::renderMenu(uint8_t frame) {
-    menu.render(renderer, frame);
+    menu.render(renderer, player, frame);
 
     renderer->translateX = 54;
     renderer->translateY = 0;

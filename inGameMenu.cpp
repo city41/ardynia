@@ -21,11 +21,15 @@ void InGameMenu::update(Arduboy2* arduboy, byte frame) {
     chosenItem = row + 1;
 }
 
-void InGameMenu::render(Renderer* renderer, uint8_t frame) {
+void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     // draw the sword
     if (State::gameState.numAcquiredItems > 0) {
         renderer->drawPlusMask(3, 8, itemIcons_plus_mask, 0, 0, true);
     }
+
+    // draw bomb count
+    renderer->drawPlusMask(0, 29, itemIcons_plus_mask, BOMB, 0, true);
+    renderer->print(11, 36, player.numBombs);
 
     // draw key count
     renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
@@ -33,7 +37,7 @@ void InGameMenu::render(Renderer* renderer, uint8_t frame) {
 
     const uint8_t x = 20;
 
-    renderer->print(x, 0, F("ITEMS"));
+    renderer->print(x, 0, F("EQUIP"));
     // boundary rectangle
     renderer->drawRect(x, 7, 21, HEIGHT - 7, WHITE);
 

@@ -20,6 +20,7 @@ void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
     dir = DOWN;
     tookDamageCount = 0;
+    numBombs = 0;
 
     bButtonEntityType = UNSET;
     entities[0].type = UNSET;
@@ -47,6 +48,14 @@ void Player::useSword(void) {
 void Player::bButtonAction(void) {
     if (entities[1].type != UNSET || bButtonEntityType == UNSET) {
         return;
+    }
+
+    if (bButtonEntityType == BOMB) {
+        if (numBombs == 0) {
+            return;
+        } else {
+            numBombs -= 1;
+        }
     }
 
     loadEntity(entities[1], bButtonEntityType);
@@ -206,6 +215,10 @@ void Player::receiveItemFromChest(Entity* chest) {
 
             if (receivedItem > SWORD && receivedItem < KEY) {
                 bButtonEntityType = receivedItem;
+            }
+
+            if (receivedItem == BOMB) {
+                numBombs = 3;
             }
 
             if (receivedItem != KEY) {

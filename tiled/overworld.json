@@ -242,6 +242,24 @@
                  "width":0,
                  "x":22.5,
                  "y":482.5
+                }, 
+                {
+                 "height":0,
+                 "id":136,
+                 "name":"Chest with bombs",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"BOMB"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":149.5,
+                 "y":136.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -965,7 +983,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":136,
+ "nextobjectid":137,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

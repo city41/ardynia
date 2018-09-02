@@ -8,6 +8,8 @@
 #include "blob.h"
 #include "sword.h"
 #include "boomerang.h"
+#include "bomb.h"
+#include "explosion.h"
 #include "death.h"
 
 const uint8_t NUM_ENTITY_PROPS = 7;
@@ -33,12 +35,12 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 2, BOMB
-    16,
+    11,
     16,
     DOWN,
     0,
-    1,
-    120,
+    0,
+    150,
     true,
 
     // 3, CANDLE
@@ -209,10 +211,19 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     DOWN,
     0,
     0,
-    0,
+    20,
     false,
 
-    // 22, OLD_MAN
+    // 22, EXPLOSION
+    16,
+    16,
+    DOWN,
+    0,
+    1,
+    20,
+    true,
+
+    // 23, OLD_MAN
     8,
     HEIGHT, // whole screen, this guy is basically a total bumper
     DOWN,
@@ -221,7 +232,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 23, DEATH
+    // 24, DEATH
     8,
     8,
     DOWN,
@@ -249,8 +260,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 2, BOMB
     itemIcons_plus_mask,
-    NULL,
-    NULL,
+    Bomb::spawn,
+    Bomb::update,
     NULL,
     NULL,
 
@@ -387,14 +398,21 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 22, OLD_MAN
+    // 22, EXPLOSION
+    explosion_plus_mask,
+    NULL,
+    Explosion::update,
+    NULL,
+    NULL,
+
+    // 23, OLD_MAN
     oldMan_plus_mask,
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 23, DEATH
+    // 24, DEATH
     death_plus_mask,
     NULL,
     Death::update,

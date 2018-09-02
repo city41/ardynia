@@ -48,11 +48,13 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
         renderer->drawPlusMask(4, 13, itemIcons_plus_mask, player.bButtonEntityType, 0, true);
     }
 
-    if (player.bButtonEntityType == BOMB) {
-        drawDots(renderer, 1, 32, 8, 8, frame, true);
+    // draw bomb count
+    if (State::gameState.numAcquiredItems > 2) {
+        renderer->drawPlusMask(0, 31, itemIcons_plus_mask, BOMB, 0, true);
+        renderer->print(11, 38, player.numBombs);
     }
 
-    // keys
+    // draw keys count
     renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
     renderer->print(11, 56, State::gameState.numKeys);
 }
