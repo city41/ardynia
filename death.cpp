@@ -12,7 +12,8 @@ EntityType Death::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint
         uint8_t numBombs = ((Player*)player)->numBombs;
         uint8_t playerHealth = ((Player*)player)->health;
         bool playerIsFullHealth = State::gameState.totalHealth == playerHealth;
-        bool playerIsFullBombs = numBombs == MAX_BOMB_COUNT;
+        // if the user hasn't even acquired bombs yet, then in this context they are "full" on bombs
+        bool playerIsFullBombs = numBombs == MAX_BOMB_COUNT || State::gameState.numAcquiredItems < 3;
 
         if (
             playerIsFullHealth
