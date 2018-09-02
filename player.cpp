@@ -232,7 +232,7 @@ void Player::receiveItemFromChest(Entity* chest) {
                 numBombs = 3;
             }
 
-            if (receivedItem != KEY) {
+            if (receivedItem < KEY) {
                 State::gameState.numAcquiredItems += 1;
             }
 
