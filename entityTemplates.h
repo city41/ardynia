@@ -8,6 +8,7 @@
 #include "blob.h"
 #include "sword.h"
 #include "boomerang.h"
+#include "death.h"
 
 const uint8_t NUM_ENTITY_PROPS = 7;
 const uint8_t NUM_ENTITY_POINTERS = 5;
@@ -219,6 +220,15 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     false,
+
+    // 23, DEATH
+    8,
+    8,
+    DOWN,
+    0,
+    0,
+    24,
+    true
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -381,6 +391,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     oldMan_plus_mask,
     NULL,
     NULL,
+    NULL,
+    NULL,
+
+    // 23, DEATH
+    death_plus_mask,
+    NULL,
+    Death::update,
     NULL,
     NULL,
 };

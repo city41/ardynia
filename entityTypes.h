@@ -45,13 +45,20 @@ const EntityType FLAME = 20;
 const EntityType PROJECTILE = 21;
 
 // misc
+
+// prevents the user from going to the first dungeon if they
+// haven't yet found the sword. This is required because the game
+// assumes the player acquires the items in order: sword->boomerang->bombs->candle
 const EntityType OLD_MAN = 22;
+// this is the little "poof" as an enemy dies
+// it also randomly leaves behind a heart for the player
+const EntityType DEATH = 23;
 
 const EntityType PLAYER = 127;
 
 // player isn't really an "entity"
 // TODO: can we kill PLAYER EntityType?
-const uint8_t NUM_ENTITIES = OLD_MAN + 1;
+const uint8_t NUM_ENTITIES = DEATH + 1;
 
 #endif
 

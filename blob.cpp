@@ -10,12 +10,7 @@ EntityType Blob::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
 
         if (me->health <= 0) {
             me->type = UNSET;
-
-            if (State::gameState.health < State::gameState.totalHealth && random(0, 3) == 1) {
-                return HEART;
-            } else {
-                return UNSET;
-            }
+            return DEATH;
         } else {
             me->bounceBack();
             me->tookDamageCount = 20;
