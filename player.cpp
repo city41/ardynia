@@ -200,7 +200,8 @@ EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
 
 void Player::receiveItemFromChest(Entity* chest) {
     if (
-        y >= (chest->y + chest->height) &&
+        // hardcoding chest height saves 4 bytes, win!
+        y >= (chest->y + 8) &&
         chest->currentFrame == 0
     ) {
         EntityType item = chest->health;
