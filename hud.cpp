@@ -11,7 +11,7 @@ void drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t m
         if (useFillRect) {
             renderer->fillRect(x, y, 3, 3, WHITE);
         } else {
-            renderer->drawPlusMask(x, y, heartDot_plus_mask, i < count ? 0 : 1);
+            renderer->drawOverwrite(x, y, heartDot_tiles, i < count ? 0 : 1);
         }
 
         x += 4;
