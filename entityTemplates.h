@@ -16,7 +16,7 @@
 #include "blobMother.h"
 #include "lock.h"
 
-const uint8_t NUM_ENTITY_PROPS = 6;
+const uint8_t NUM_ENTITY_PROPS = 5;
 const uint8_t NUM_ENTITY_POINTERS = 4;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
@@ -26,7 +26,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,            // health
     1,            // damage
     20,           // duration
-    true,         // invertInDungeon
 
     // 1, BOOMERANG
     16,
@@ -34,7 +33,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     20,
-    true,
 
     // 2, BOMB
     11,
@@ -42,7 +40,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     150,
-    true,
 
     // 3, CANDLE
     0,
@@ -50,7 +47,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     0,
-    false,
 
     // 4, KEY
     8,
@@ -58,7 +54,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     0,
-    false,
 
     // 5, HEART
     8,
@@ -66,7 +61,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     180,
-    true,
 
     // 6, CHEST
     16,
@@ -74,7 +68,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     0,
-    true,
 
     // 7, BLOB
     8,
@@ -82,7 +75,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     2, // health
     1, // damage
     0, // duration
-    true, // invertInDungeon
 
     // 8, SPIKE
     8,
@@ -90,7 +82,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     255,
     1,
     0,
-    false,
 
     // 9, ENEMY3
     16,
@@ -98,7 +89,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     1,
     2,
     0,
-    false,
 
     // 10, BLOB_MOTHER
     16,
@@ -106,7 +96,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     6,
     1,
     10,
-    false,
 
     // 11, NEMESIS
     0,
@@ -114,7 +103,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     0,
-    false,
 
     // 12, TELEPORTER
     18,
@@ -122,7 +110,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     0,
-    false,
 
     // 13, LOCK
     18,
@@ -130,7 +117,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     1,
     0,
     0,
-    true,
 
     // 14, PROJECTILE
     0,
@@ -138,7 +124,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     20,
-    false,
 
     // 15, EXPLOSION
     16,
@@ -146,7 +131,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     1,
     20,
-    true,
 
     // 16, DEATH
     8,
@@ -154,7 +138,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     0,
     24,
-    true,
 
     // 17, SECRET_WALL
     16,
@@ -162,7 +145,6 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     1,
     0,
     0,
-    false,
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {

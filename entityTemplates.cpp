@@ -12,8 +12,6 @@ void loadEntity(Entity& entity, EntityType entityType) {
     entity.health = pgm_read_byte(start++);
     entity.damage = pgm_read_byte(start++);
     entity.duration = pgm_read_byte(start++);
-    entity.invertInDungeon = pgm_read_byte(start++);
-
 
     void** pStart = entityPointers + (entityType * NUM_ENTITY_POINTERS);
 

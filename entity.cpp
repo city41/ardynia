@@ -16,7 +16,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     if (renderPtr != NULL) {
         result = renderPtr(this, renderer, renderFrame);
     } else if (tiles) {
-        boolean invert = invertInDungeon == 1 && TileRoom::isInDungeon();
+        bool invert = TileRoom::isInDungeon();
         renderer->drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
     }
 

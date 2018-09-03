@@ -14,15 +14,13 @@ class Entity: public BaseEntity {
         EntityCollideOtherEntityPtr collideOtherEntityPtr;
 
         int8_t health;
-        uint8_t invertInDungeon;
 
         Entity():
             BaseEntity(),
             updatePtr(NULL),
             renderPtr(NULL),
             collideOtherEntityPtr(NULL),
-            health(0),
-            invertInDungeon(false)
+            health(0)
         {}
 
         virtual EntityType render(Renderer* renderer, uint8_t frame) override;

@@ -49,7 +49,6 @@ EntityType BlobMother::update(Entity* me, BaseEntity* player, Arduboy2* arduboy,
         me->dir = 1 - me->dir;
     }
 
-    me->invertInDungeon = me->dir == LEFT || me->duration == UP;
     me->mirror = me->x < player->x ? MIRROR_HORIZONTAL : 0;
 
     if (shouldUndo) {
