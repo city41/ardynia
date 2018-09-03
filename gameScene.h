@@ -11,7 +11,7 @@
 #include "player.h"
 #include "entity.h"
 
-const uint8_t MAX_ENTITIES = 10;
+const uint8_t MAX_ENTITIES = 8;
 
 const uint8_t START_ROOM_X = 1;
 const uint8_t START_ROOM_Y = 4;
