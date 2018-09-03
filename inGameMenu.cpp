@@ -5,7 +5,7 @@
 #include "state.h"
 
 void InGameMenu::update(Arduboy2* arduboy, byte frame) {
-    const int8_t maxRows = max(State::gameState.numAcquiredItems - 1, 0);
+    const int8_t maxRows = State::gameState.numAcquiredItems;
 
     if (maxRows == 0) {
         return;
@@ -24,12 +24,10 @@ void InGameMenu::update(Arduboy2* arduboy, byte frame) {
 
 void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     // draw the sword
-    if (State::gameState.numAcquiredItems > 0) {
-        renderer->drawPlusMask(3, 8, itemIcons_plus_mask, 0, 0, true);
-    }
+    renderer->drawPlusMask(3, 8, itemIcons_plus_mask, 0, 0, true);
 
     // draw bomb count
-    if (State::gameState.numAcquiredItems > 2) {
+    if (State::gameState.numAcquiredItems > 1) {
         renderer->drawPlusMask(0, 27, itemIcons_plus_mask, BOMB, 0, true);
         renderer->print(11, 34, player.numBombs);
     }
@@ -44,10 +42,8 @@ void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     // boundary rectangle
     renderer->drawRect(x, 7, 21, HEIGHT - 7, WHITE);
 
-    const int8_t maxRows = max(State::gameState.numAcquiredItems - 1, 0);
-
     // items
-    for (uint8_t i = 0; i < maxRows; ++i) {
+    for (uint8_t i = 0; i < State::gameState.numAcquiredItems; ++i) {
 
         if (i == row) {
             renderer->drawOverwrite(x + 3, 9 + 18 * i, hudBFrame_tiles, 0);

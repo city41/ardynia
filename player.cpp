@@ -32,14 +32,14 @@ void Player::reset() {
     // item in EEPROM as it'd require a save on each equip change
     // this is a compromise, better than having nothing equipped, and the boomerang
     // is the most useful item
-    if (State::gameState.numAcquiredItems > 1) {
+    if (State::gameState.numAcquiredItems > 0) {
         bButtonEntityType = BOOMERANG;
     }
 }
 
 void Player::useSword(void) {
     // currently swinging the sword or dont even have it yet? do nothing
-    if (entities[0].type != UNSET || State::gameState.numAcquiredItems == 0) {
+    if (entities[0].type != UNSET) {
         return;
     }
 

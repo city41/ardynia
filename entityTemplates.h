@@ -188,15 +188,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     true,
 
-    // 21, OLD_MAN
-    11,
-    HEIGHT, // whole screen, this guy is basically a total bumper
-    0,
-    0,
-    0,
-    false,
-
-    // 22, DEATH
+    // 21, DEATH
     8,
     8,
     0,
@@ -204,7 +196,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     24,
     true,
 
-    // 23, SECRET_WALL
+    // 22, SECRET_WALL
     16,
     16,
     1,
@@ -341,19 +333,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 21, OLD_MAN
-    oldMan_plus_mask,
-    NULL,
-    NULL,
-    NULL,
-
-    // 22, DEATH
+    // 21, DEATH
     NULL,
     Death::update,
     NULL,
     NULL,
 
-    // 23, SECRET_WALL
+    // 22, SECRET_WALL
     NULL,
     NULL,
     SecretWall::render,

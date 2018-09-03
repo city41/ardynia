@@ -38,15 +38,6 @@
 </data>
  </layer>
  <objectgroup id="2" name="entities">
-  <object id="124" name="Chest with sword" type="CHEST" x="386.667" y="275.333">
-   <properties>
-    <property name="CONTAINED_TYPE" value="SWORD"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="125" name="old man" type="OLD_MAN" x="318.667" y="394.667">
-   <point/>
-  </object>
   <object id="127" name="Door to dungeon 2" type="TELEPORTER" x="749.333" y="23">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="1"/>

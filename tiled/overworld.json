@@ -20,54 +20,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":124,
-                 "name":"Chest with sword",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"SWORD"
-                        }],
-                 "rotation":0,
-                 "type":"CHEST",
-                 "visible":true,
-                 "width":0,
-                 "x":386.667,
-                 "y":275.333
-                }, 
-                {
-                 "height":0,
-                 "id":125,
-                 "name":"old man",
-                 "point":true,
-                 "rotation":0,
-                 "type":"OLD_MAN",
-                 "visible":true,
-                 "width":0,
-                 "x":318.667,
-                 "y":394.667
-                }, 
-                {
-                 "height":0,
-                 "id":126,
-                 "name":"Chest with boomerang",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"BOOMERANG"
-                        }],
-                 "rotation":0,
-                 "type":"CHEST",
-                 "visible":true,
-                 "width":0,
-                 "x":54.6667,
-                 "y":352.667
-                }, 
-                {
-                 "height":0,
                  "id":127,
                  "name":"Door to dungeon 2",
                  "point":true,

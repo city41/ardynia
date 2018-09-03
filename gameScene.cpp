@@ -174,11 +174,6 @@ void GameScene::detectEntityCollisions(void) {
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
                 push(&GameScene::updateTeleportTransition, &GameScene::renderTeleportTransition);
-            } else if (entities[ge].type == OLD_MAN) {
-                if (State::gameState.numAcquiredItems == 0) {
-                    player.undoMove();
-                    Toast::toast((__FlashStringHelper*)needSwordLabel, 40);
-                }
             } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK) {
                 if (entities[ge].health == 1) {
                     player.undoMove();

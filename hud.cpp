@@ -50,7 +50,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     }
 
     // draw bomb count
-    if (State::gameState.numAcquiredItems > 2) {
+    if (State::gameState.numAcquiredItems > 1) {
         renderer->drawPlusMask(0, 31, itemIcons_plus_mask, BOMB, 0, true);
         renderer->print(11, 38, player.numBombs);
     }
