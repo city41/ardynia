@@ -4,7 +4,6 @@
 #include "state.h"
 #include "map.h"
 #include "tileBitmaps.h"
-#include "toast.h"
 #include "entityCommon.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
@@ -629,10 +628,6 @@ void GameScene::render(uint8_t frame) {
     if (paused) {
         renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
         renderer->print(0, HEIGHT - 4, F("PAUSED: PRESS B TO PLAY"));
-    }
-
-    if (Toast::duration > 0) {
-        Toast::render(renderer);
     }
 
     if (nextRender != NULL) {
