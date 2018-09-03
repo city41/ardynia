@@ -84,15 +84,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0, // duration
     true, // invertInDungeon
 
-    // 8, BAT
-    8,
-    8,
-    1,
-    1,
-    0,
-    true,
-
-    // 9, SPIKE
+    // 8, SPIKE
     8,
     8,
     255,
@@ -100,7 +92,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 10, SKULL
+    // 9, ENEMY3
     16,
     16,
     1,
@@ -108,23 +100,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 11, OCTO
-    16,
-    16,
-    4,
-    1,
-    0,
-    false,
-
-    // 12, GHOST
-    8,
-    16,
-    1,
-    2,
-    0,
-    false,
-
-    // 13, BLOB_MOTHER
+    // 10, BLOB_MOTHER
     16,
     16,
     6,
@@ -132,7 +108,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     10,
     false,
 
-    // 14, NECROMANCER
+    // 11, NEMESIS
     0,
     0,
     0,
@@ -140,15 +116,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 15, NEMESIS
-    0,
-    0,
-    0,
-    0,
-    0,
-    false,
-
-    // 16, TELEPORTER
+    // 12, TELEPORTER
     18,
     8,
     0,
@@ -156,15 +124,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 17, BUSH
-    0,
-    0,
-    0,
-    0,
-    0,
-    false,
-
-    // 18, LOCK
+    // 13, LOCK
     18,
     8,
     1,
@@ -172,7 +132,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     true,
 
-    // 19, PROJECTILE
+    // 14, PROJECTILE
     0,
     0,
     0,
@@ -180,7 +140,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     false,
 
-    // 20, EXPLOSION
+    // 15, EXPLOSION
     16,
     16,
     0,
@@ -188,7 +148,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     20,
     true,
 
-    // 21, DEATH
+    // 16, DEATH
     8,
     8,
     0,
@@ -196,7 +156,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     24,
     true,
 
-    // 22, SECRET_WALL
+    // 17, SECRET_WALL
     16,
     16,
     1,
@@ -255,91 +215,61 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     Blob::onCollide,
 
-    // 8, BAT
-    bat_plus_mask,
-    NULL,
-    NULL,
-    NULL,
-
-    // 9, SPIKE
+    // 8, SPIKE
     spike_plus_mask,
     NULL,
     NULL,
     NULL,
 
-    // 10, SKULL
+    // 9, ENEMY3
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 11, OCTO
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 12, GHOST
-    ghost_plus_mask,
-    NULL,
-    NULL,
-    NULL,
-
-    // 13, BLOB_MOTHER
+    // 10, BLOB_MOTHER
     blobMother_plus_mask,
     BlobMother::update,
     NULL,
     Blob::onCollide,
 
-    // 14, NECROMANCER
+    // 11, NEMESIS
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 15, NEMESIS
+    // 12, TELEPORTER
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 16, TELEPORTER
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 17, BUSH
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-
-    // 18, LOCK
+    // 13, LOCK
     lock_plus_mask,
     NULL,
     NULL,
     Lock::onCollide,
 
-    // 19, PROJECTILE
+    // 14, PROJECTILE
     NULL,
     NULL,
     NULL,
     NULL,
 
-    // 20, EXPLOSION
+    // 15, EXPLOSION
     explosion_plus_mask,
     Explosion::update,
     NULL,
     NULL,
 
-    // 21, DEATH
+    // 16, DEATH
     NULL,
     Death::update,
     NULL,
     NULL,
 
-    // 22, SECRET_WALL
+    // 17, SECRET_WALL
     NULL,
     NULL,
     SecretWall::render,

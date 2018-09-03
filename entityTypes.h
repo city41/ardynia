@@ -22,26 +22,21 @@ const EntityType CHEST = 6;
 
 // enemies, to be named
 const EntityType BLOB = 7;
-const EntityType BAT = 8;
-const EntityType SPIKE = 9;
-const EntityType SKULL = 10;
-const EntityType OCTO = 11;
-const EntityType GHOST = 12;
+const EntityType SPIKE = 8;
+const EntityType ENEMY3 = 9;
 
 // bosses
-const EntityType BLOB_MOTHER = 13;
-const EntityType NECROMANCER = 14;
-const EntityType NEMESIS = 15;
+const EntityType BLOB_MOTHER = 10;
+const EntityType NEMESIS = 11;
 
 // things related to navigating maps
 // and interacting with the world
-const EntityType TELEPORTER = 16; // aka a door
-const EntityType BUSH = 17;
-const EntityType LOCK = 18;
+const EntityType TELEPORTER = 12; // aka a door
+const EntityType LOCK = 13;
 
 // projectiles
-const EntityType PROJECTILE = 19;
-const EntityType EXPLOSION = 20;
+const EntityType PROJECTILE = 14;
+const EntityType EXPLOSION = 15;
 
 // misc
 
@@ -50,8 +45,8 @@ const EntityType EXPLOSION = 20;
 // assumes the player acquires the items in order: sword->boomerang->bombs->candle
 // this is the little "poof" as an enemy dies
 // it also randomly leaves behind a heart for the player
-const EntityType DEATH = 21;
-const EntityType SECRET_WALL = 22;
+const EntityType DEATH = 16;
+const EntityType SECRET_WALL = 17;
 
 const EntityType PLAYER = 127;
 

@@ -11,22 +11,16 @@ const EntityTypes = {
     HEART: 5,
     CHEST: 6,
     BLOB: 7,
-    BAT: 8,
-    SPIKE: 9,
-    SKILL: 10,
-    OCTO: 11,
-    GHOST: 12,
-    BLOB_MOTHER: 13,
-    NECROMANCER: 14,
-    NEMESIS: 15,
-    TELEPORTER: 16,
-    BUSH: 17,
-    LOCK: 18,
-    PROJECTILE: 19,
-    EXPLOSION: 20,
-    OLD_MAN: 21,
-    DEATH: 22,
-    SECRET_WALL: 23
+    SPIKE: 8,
+    ENEMY3: 9,
+    BLOB_MOTHER: 10,
+    NEMESIS: 11,
+    TELEPORTER: 12,
+    LOCK: 13,
+    PROJECTILE: 14,
+    EXPLOSION: 15,
+    DEATH: 16,
+    SECRET_WALL: 17
 };
 
 function getRoomAt(mapX, mapY) {
