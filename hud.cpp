@@ -1,5 +1,6 @@
 #include "hud.h"
 #include "spriteBitmaps.h"
+#include "tileBitmaps.h"
 #include "state.h"
 #include "util.h"
 
@@ -43,7 +44,7 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     drawDots(renderer, 1, 1, player.health, State::gameState.totalHealth, frame, false);
 
     // secondary item
-    renderer->drawPlusMask(1, 13, hudBFrame_plus_mask, 0);
+    renderer->drawOverwrite(1, 13, hudBFrame_tiles, 0);
     if (player.bButtonEntityType != UNSET) {
         renderer->drawPlusMask(4, 13, itemIcons_plus_mask, player.bButtonEntityType, 0, true);
     }

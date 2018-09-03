@@ -1,5 +1,6 @@
 #include "inGameMenu.h"
 #include "spriteBitmaps.h"
+#include "tileBitmaps.h"
 #include "util.h"
 #include "state.h"
 
@@ -49,7 +50,7 @@ void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     for (uint8_t i = 0; i < maxRows; ++i) {
 
         if (i == row) {
-            renderer->drawPlusMask(x + 3, 9 + 18 * i, hudBFrame_plus_mask, 0);
+            renderer->drawOverwrite(x + 3, 9 + 18 * i, hudBFrame_tiles, 0);
         }
 
         renderer->drawPlusMask(x + 6, 9 + 18 * i, itemIcons_plus_mask, i + 1, 0, true);
