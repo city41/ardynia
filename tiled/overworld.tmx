@@ -108,7 +108,7 @@
    </properties>
    <point/>
   </object>
-  <object id="140" name="Lock" type="LOCK" x="178" y="236">
+  <object id="140" name="Lock" type="LOCK" x="179" y="236">
    <point/>
   </object>
  </objectgroup>

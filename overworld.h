@@ -97,7 +97,7 @@ const uint8_t PROGMEM overworld_room1_3[] = {
 
     // entity 0, LOCK
     0x12,
-    66, //x
+    67, //x
     44  //y
 };
 
