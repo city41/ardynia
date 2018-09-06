@@ -18,4 +18,5 @@ bmp:
 map:
 	node ./maptool/ -s ./tiled/ -o .
 
-
+strings:
+	node ./stringtool/ -s ./strings.json -o ./strings.h

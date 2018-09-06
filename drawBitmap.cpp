@@ -13,9 +13,15 @@
  * To mirror the sprite, pass in MIRROR_HORIZONTAL or MIRROR_VERTICAL as the mirror parameter.
  * To mirrow both ways at once, pass in MIRROR_HORIZONTAL | MIRROR_VERTICAL as the parameter
  */
-void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, bool plusMask, uint8_t frame, uint8_t mirror, bool invert) {
+void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, bool plusMask, uint8_t frame, uint8_t mirror, bool invert, uint8_t maskFrame = 255) {
     if (bitmap == NULL)
         return;
+
+    if (maskFrame == 255) {
+        maskFrame = frame;
+    } else {
+        maskFrame = 0;
+    }
 
     uint8_t w = pgm_read_byte(bitmap++);
     uint8_t h = pgm_read_byte(bitmap++);
@@ -24,19 +30,21 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, bool plusMask, uint
     if (x + w <= 0 || x > WIDTH - 1 || y + h <= 0 || y > HEIGHT - 1)
         return;
 
-    const uint8_t* mask = plusMask ? bitmap : NULL;
+    if (plusMask) {
+        mask = bitmap;
+    }
     const boolean hasMask = mask != NULL;
 
     uint16_t frame_offset = (w * ( h / 8 + ( h % 8 == 0 ? 0 : 1)));
 
     if (frame > 0) {
-        mask += frame * frame_offset;
+        mask += maskFrame * frame_offset;
         bitmap += frame * frame_offset;
         
         // plusMask means the sprite is frame,mask,frame,mask
-        // jump ahead one more tiem to get to the correct frame
+        // jump ahead one more time to get to the correct frame
         if (plusMask) {
-            mask += frame * frame_offset;
+            mask += maskFrame * frame_offset;
             bitmap += frame * frame_offset;
         }
     }

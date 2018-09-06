@@ -1,11 +1,12 @@
 #include "map.h"
 #include "state.h"
+#include "strings.h"
 
 uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
 void Map::render(Renderer* renderer, uint8_t mapWidthInRooms, uint8_t mapHeightInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
     // boundary rectangle
-    renderer->print(0, 0, F("MAP"));
+    renderer->drawString(0, 0, map_string);
 
     if (mapHeightInRooms > 0) {
         renderer->drawRect(0, 6, mapWidthInRooms * 4 + 3, mapHeightInRooms * 4 + 3, WHITE);

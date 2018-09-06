@@ -5,6 +5,7 @@
 #include "map.h"
 #include "tileBitmaps.h"
 #include "entityCommon.h"
+#include "strings.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -14,7 +15,6 @@ const uint8_t MAX_TITLE_LABELS = 2;
 const int8_t newGameLabel[] PROGMEM = "NEW GAME";
 const int8_t continueLabel[] PROGMEM = "CONTINUE";
 const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
-const int8_t needSwordLabel[] PROGMEM = "YOU NEED A SWORD";
 
 const uint8_t PLAY_GAME = 0;
 const uint8_t DELETE_SAVE = 1;
@@ -83,11 +83,11 @@ void GameScene::renderGameOver(uint8_t frame) {
 
     renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
 
-    renderer->print(40, 20, F("GAME OVER"));
+    renderer->drawString(40, 20, gameOver_string);
 
     if (teleportTransitionCount == 0) {
-        renderer->print(32, HEIGHT - 10, F("A: CONTINUE"));
-        renderer->print(32, HEIGHT - 5, F("B: QUIT"));
+        renderer->drawString(32, HEIGHT - 10, continueFromGameOver_string);
+        renderer->drawString(32, HEIGHT - 5, quitFromGameOver_string);
     }
 }
 
@@ -392,12 +392,12 @@ void GameScene::updateTitle(uint8_t frame) {
 void GameScene::renderTitle(uint8_t frame) {
     renderer->drawOverwrite(35, 7, title_tiles, 0);
 
-    __FlashStringHelper* startGameLabel = State::hasUserSaved() ? (__FlashStringHelper*)continueLabel : (__FlashStringHelper*)newGameLabel;
+    const uint8_t* startGameLabel = State::hasUserSaved() ? continue_string : newGame_string;
 
-    renderer->print(42, 46, startGameLabel);
+    renderer->drawString(42, 46, startGameLabel);
 
     if (State::hasUserSaved()) {
-        renderer->print(42, 54, (__FlashStringHelper*)deleteSaveLabel);
+        renderer->drawString(42, 54, deleteSave_string);
     }
 
     renderer->drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
@@ -627,7 +627,7 @@ void GameScene::render(uint8_t frame) {
 
     if (paused) {
         renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer->print(0, HEIGHT - 4, F("PAUSED: PRESS B TO PLAY"));
+        renderer->drawString(0, HEIGHT - 4, paused_string);
     }
 
     if (nextRender != NULL) {

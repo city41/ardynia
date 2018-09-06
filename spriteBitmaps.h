@@ -1,6 +1,15 @@
 #ifndef spriteBitmaps_h
 #define spriteBitmaps_h
 
+const uint8_t PROGMEM a_plus_mask[] = {
+    // width, height,
+    4, 8,
+    // frame 0 
+    0x0f,0x05,0x05,0x0f,
+    // mask 0 
+    0x0f,0x0f,0x0f,0x0f,
+};
+
 const uint8_t PROGMEM bat_plus_mask[] = {
     // width, height,
     8, 8,

@@ -39,6 +39,7 @@ void loop() {
     arduboy.clear();
     arduboy.pollButtons();
 
+    
     gameScene.update(loopCounter);
     gameScene.render(loopCounter);
     arduboy.display();

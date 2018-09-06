@@ -3,6 +3,8 @@
 #include "tileBitmaps.h"
 #include "util.h"
 #include "state.h"
+#include "strings.h"
+#include "hud.h"
 
 void InGameMenu::update(Arduboy2* arduboy, byte frame) {
     const int8_t maxRows = State::gameState.numAcquiredItems;
@@ -29,16 +31,16 @@ void InGameMenu::render(Renderer* renderer, Player& player, uint8_t frame) {
     // draw bomb count
     if (State::gameState.numAcquiredItems > 1) {
         renderer->drawPlusMask(0, 27, itemIcons_plus_mask, BOMB, 0, true);
-        renderer->print(11, 34, player.numBombs);
+        Hud::drawDots(renderer, 0, 27, player.numBombs, player.numBombs, 0, true);
     }
 
     // draw key count
     renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
-    renderer->print(11, 56, State::gameState.numKeys);
+    Hud::drawDots(renderer, 11, 56, State::gameState.numKeys, State::gameState.numKeys, 0, true);
 
     const uint8_t x = 20;
 
-    renderer->print(x, 0, F("EQUIP"));
+    renderer->drawString(x, 0, equip_string);
     // boundary rectangle
     renderer->drawRect(x, 7, 21, HEIGHT - 7, WHITE);
 

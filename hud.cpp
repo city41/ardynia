@@ -4,7 +4,7 @@
 #include "state.h"
 #include "util.h"
 
-void drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, uint8_t frame, bool useFillRect) {
+void Hud::drawDots(Renderer* renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, uint8_t frame, bool useFillRect) {
     uint8_t origX = x;
 
     for (uint8_t i = 0; i < maxCount; ++i) {
@@ -52,10 +52,10 @@ void Hud::render(Renderer* renderer, uint8_t frame, Player& player, uint8_t room
     // draw bomb count
     if (State::gameState.numAcquiredItems > 1) {
         renderer->drawPlusMask(0, 31, itemIcons_plus_mask, BOMB, 0, true);
-        renderer->print(11, 38, player.numBombs);
+        drawDots(renderer, 11, 38, player.numBombs, player.numBombs, 0, true);
     }
 
     // draw keys count
     renderer->drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
-    renderer->print(11, 56, State::gameState.numKeys);
+    drawDots(renderer, 11, 56, State::gameState.numKeys, State::gameState.numKeys, 0, true);
 }
