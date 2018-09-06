@@ -8,7 +8,7 @@
  * the player's health and bomb levels, but that cost way more bytes than the value
  * it provided
  */
-EntityType Death::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType Death::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
     if (me->duration > 0) {
         me->duration -= 1;
     } else {

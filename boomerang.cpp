@@ -3,7 +3,7 @@
 #include "math.h"
 #include "player.h"
 
-EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType Boomerang::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
     int16_t px = player->x;
     int16_t py = player->y;
     
@@ -73,7 +73,7 @@ EntityType Boomerang::update(Entity* me, BaseEntity* player, Arduboy2* arduboy, 
     return UNSET;
 }
 
-EntityType Boomerang::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
+EntityType Boomerang::onCollide(Entity* me, Entity* other, Entity* player) {
     EntityType otherType = other->type;
 
     // hit something the user can collect? collect it and keep going

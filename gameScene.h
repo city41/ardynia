@@ -62,7 +62,7 @@ class GameScene {
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void loadEntitiesinRoom(uint8_t roomX, uint8_t roomy);
-        void spawnNewEntity(EntityType, BaseEntity& spawner);
+        void spawnNewEntity(EntityType, Entity& spawner);
 
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);

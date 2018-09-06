@@ -1,6 +1,6 @@
 #include "entityCommon.h"
 
-void EntityCommon::moveTowardsOtherEntity(Entity* me, BaseEntity* other, uint8_t amount) {
+void EntityCommon::moveTowardsOtherEntity(Entity* me, Entity* other, uint8_t amount) {
     int16_t ox = other->x;
     int16_t oy = other->y;
 

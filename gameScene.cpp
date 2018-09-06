@@ -266,7 +266,7 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
     push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
 }
 
-void GameScene::spawnNewEntity(EntityType entityType, BaseEntity& spawner) {
+void GameScene::spawnNewEntity(EntityType entityType, Entity& spawner) {
     uint8_t e = 0;
     for (; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == UNSET) {

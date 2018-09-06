@@ -113,7 +113,7 @@ EntityType Player::render(Renderer *renderer, byte frame) {
     return UNSET;
 }
 
-EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
+EntityType Player::update(Entity* player, Arduboy2* arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }
@@ -160,7 +160,7 @@ EntityType Player::update(BaseEntity* player, Arduboy2* arduboy, byte frame) {
     return UNSET;
 }
 
-EntityType Player::onCollide(BaseEntity* other, BaseEntity* player) {
+EntityType Player::onCollide(Entity* other, Entity* player) {
     if (other->type == CHEST) {
         undoMove();
         receiveItemFromChest(other);

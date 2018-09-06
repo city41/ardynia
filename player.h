@@ -2,14 +2,13 @@
 #define player_h
 
 #include <Arduino.h>
-#include "baseEntity.h"
 #include "entity.h"
 #include "spriteBitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
 const uint8_t MAX_BOMB_COUNT = 9;
 
-class Player: public BaseEntity {
+class Player: public Entity {
     private:
 
         void useSword(void);
@@ -22,35 +21,28 @@ class Player: public BaseEntity {
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
         uint8_t numBombs;
-        int8_t health;
-
         void receiveItemFromChest(Entity* chest);
         void reset();
 
-        Player(int16_t x, int16_t y):
-            BaseEntity(
-                PLAYER,
-                8,  // width
-                8,  // height
-                DOWN,
-                player_plus_mask,
-                0,   // damage
-                0    // duration
-            ),
+        Player(int16_t px, int16_t py):
+            Entity(),
             movedThisFrame(false),
             receiveItemCount(0),
             receivedItem(UNSET),
             bButtonEntityType(UNSET),
-            numBombs(0),
-            health(0)
+            numBombs(0)
         {
-            this->prevX = this->x = x;
-            this->prevY = this->y = y;
+            this->type = PLAYER;
+            this->width = 8;
+            this->height = 8;
+            this->tiles = player_plus_mask;
+
+            moveTo(px, py, true);
         }
 
         virtual EntityType render(Renderer* renderer, uint8_t frame) override;
-        virtual EntityType update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) override;
-        virtual EntityType onCollide(BaseEntity* other, BaseEntity* player) override;
+        virtual EntityType update(Entity* player, Arduboy2* arduboy, uint8_t frame) override;
+        virtual EntityType onCollide(Entity* other, Entity* player) override;
 };
 
 #endif

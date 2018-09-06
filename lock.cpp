@@ -2,7 +2,7 @@
 #include "state.h"
 #include "tileRoom.h"
 
-EntityType Lock::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
+EntityType Lock::onCollide(Entity* me, Entity* other, Entity* player) {
     if (other == player && State::gameState.numKeys > 0) {
         State::gameState.numKeys -= 1;
 

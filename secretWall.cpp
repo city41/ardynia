@@ -11,7 +11,7 @@ EntityType SecretWall::render(Entity* me, Renderer* renderer, uint8_t frame) {
     }
 }
 
-EntityType SecretWall::onCollide(Entity* me, BaseEntity* other, BaseEntity* player) {
+EntityType SecretWall::onCollide(Entity* me, Entity* other, Entity* player) {
     if (other->type == EXPLOSION) {
         me->health = 0;
         me->currentFrame = 11;

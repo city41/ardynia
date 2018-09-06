@@ -3,6 +3,44 @@
 #include "tileRoom.h"
 #include "spriteBitmaps.h"
 
+const uint8_t BOUNCE_AMOUNT = 16;
+
+boolean Entity::overlaps(Entity* other) {
+    return !(
+        other->x                 >= x + width  ||
+        other->x + other->width  <= x          ||
+        other->y                 >= y + height ||
+        other->y + other->height <= y
+    );
+}
+
+void Entity::bounceBack(void) {
+    int16_t nx, ny;
+
+    switch (dir) {
+        case UP:
+            nx = x;
+            ny = y + BOUNCE_AMOUNT;
+            break;
+        case DOWN:
+            nx = x;
+            ny = y - BOUNCE_AMOUNT;
+            break;
+        case LEFT:
+            nx = x + BOUNCE_AMOUNT;
+            ny = y;
+            break;
+        case RIGHT:
+            nx = x - BOUNCE_AMOUNT;
+            ny = y;
+            break;
+    }
+
+    Direction curDir = dir;
+    moveTo(clamp(nx, 0, WIDTH - 13 - width), clamp(ny, 0, HEIGHT - height - 1));
+    dir = curDir;
+}
+
 EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
@@ -27,7 +65,7 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
     return result;
 }
 
-EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType Entity::update(Entity* player, Arduboy2* arduboy, uint8_t frame) {
     if (stunCount > 0) {
         stunCount -= 1;
         return UNSET;
@@ -40,7 +78,7 @@ EntityType Entity::update(BaseEntity* player, Arduboy2* arduboy, uint8_t frame) 
     return UNSET;
 }
 
-EntityType Entity::onCollide(BaseEntity* other, BaseEntity* player) {
+EntityType Entity::onCollide(Entity* other, Entity* player) {
     if (collideOtherEntityPtr != NULL) {
         return collideOtherEntityPtr(this, other, player);
     }

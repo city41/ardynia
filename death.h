@@ -6,7 +6,7 @@
 #include "entityTypes.h"
 
 struct Death {
-    static EntityType update(Entity* me, BaseEntity* player, Arduboy2* arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame);
 };
 
 #endif
