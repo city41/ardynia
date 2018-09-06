@@ -25,6 +25,19 @@ void TileRoom::render(Renderer* renderer, byte frame) {
     render(renderer, frame, x, y);
 }
 
+const uint8_t PROGMEM mirroredTiles[] = {
+    UpperLeftCorner,
+    MIRROR_VERTICAL,
+    UpperLeftCorner,
+    MIRROR_HORIZONTAL,
+    UpperLeftCorner,
+    MIRROR_HORIZONTAL | MIRROR_VERTICAL,
+    LowerWall,
+    MIRROR_VERTICAL,
+    LeftWall,
+    MIRROR_HORIZONTAL
+};
+
 void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
@@ -34,28 +47,9 @@ void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_
         return;
     }
 
-    if (tileId < 10) {
-        renderer->drawOverwrite(x, y, tiles, tileId, 0);
-        return;
-    }
-
-    switch (tileId) {
-        case LowerLeftCorner:
-            renderer->drawOverwrite(x, y, tiles, UpperLeftCorner, MIRROR_VERTICAL);
-            break;
-        case UpperRightCorner:
-            renderer->drawOverwrite(x, y, tiles, UpperLeftCorner, MIRROR_HORIZONTAL);
-            break;
-        case LowerRightCorner:
-            renderer->drawOverwrite(x, y, tiles, UpperLeftCorner, MIRROR_HORIZONTAL | MIRROR_VERTICAL);
-            break;
-        case UpperWall:
-            renderer->drawOverwrite(x, y, tiles, LowerWall, MIRROR_VERTICAL);
-            break;
-        case RightWall:
-            renderer->drawOverwrite(x, y, tiles, LeftWall, MIRROR_HORIZONTAL);
-            break;
-    }
+    TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner));
+    MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) + 1);
+    renderer->drawOverwrite(x, y, tiles, tile, mirror);
 }
 
 uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
