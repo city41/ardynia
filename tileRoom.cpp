@@ -47,8 +47,8 @@ void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_
         return;
     }
 
-    TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner));
-    MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) + 1);
+    TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
+    MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     renderer->drawOverwrite(x, y, tiles, tile, mirror);
 }
 
