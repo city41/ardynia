@@ -81,7 +81,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
 
     // 12, TELEPORTER
-    17 << 4 | 7,
+    15 << 4 | 7,
     0,
     0,
 
