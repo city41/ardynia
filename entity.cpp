@@ -14,30 +14,21 @@ boolean Entity::overlaps(Entity* other) {
     );
 }
 
-void Entity::bounceBack(void) {
-    int16_t nx, ny;
+void Entity::bounceBack(Entity* bounceAwayFrom) {
+    int8_t diffX = x - bounceAwayFrom->x;
+    int8_t diffY = y - bounceAwayFrom->y;
 
-    switch (dir) {
-        case UP:
-            nx = x;
-            ny = y + BOUNCE_AMOUNT;
-            break;
-        case DOWN:
-            nx = x;
-            ny = y - BOUNCE_AMOUNT;
-            break;
-        case LEFT:
-            nx = x + BOUNCE_AMOUNT;
-            ny = y;
-            break;
-        case RIGHT:
-            nx = x - BOUNCE_AMOUNT;
-            ny = y;
-            break;
+    int8_t bounceXAmount = 0;
+    int8_t bounceYAmount = 0;
+
+    if (abs(diffX) > abs(diffY)) {
+        bounceXAmount = diffX > 0 ? BOUNCE_AMOUNT : -BOUNCE_AMOUNT;
+    } else {
+        bounceYAmount = diffY > 0 ? BOUNCE_AMOUNT : -BOUNCE_AMOUNT;
     }
 
     Direction curDir = dir;
-    moveTo(clamp(nx, 0, WIDTH - 13 - width), clamp(ny, 0, HEIGHT - height - 1));
+    moveTo(clamp(x + bounceXAmount, 0, WIDTH - 13 - width), clamp(y + bounceYAmount, 0, HEIGHT - height - 1));
     dir = curDir;
 }
 

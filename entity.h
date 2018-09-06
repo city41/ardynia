@@ -112,7 +112,7 @@ class Entity {
         virtual EntityType onCollide(Entity* other, Entity* player);
 
         boolean overlaps(Entity* other);
-        void bounceBack(void);
+        void bounceBack(Entity* bounceAwayFrom);
 };
 
 #endif

@@ -23,7 +23,7 @@ EntityType Blob::onCollide(Entity* me, Entity* other, Entity* player) {
                 return DEATH;
             }
         } else {
-            me->bounceBack();
+            me->bounceBack(other);
             me->tookDamageCount = 20;
             return UNSET;
         }
