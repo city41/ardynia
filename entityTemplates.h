@@ -16,134 +16,98 @@
 #include "blobMother.h"
 #include "lock.h"
 
-const uint8_t NUM_ENTITY_PROPS = 5;
+const uint8_t NUM_ENTITY_PROPS = 3;
 const uint8_t NUM_ENTITY_POINTERS = 4;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
-    16,           // width
-    16,           // height
-    0,            // health
-    1,            // damage
-    20,           // duration
+    15 << 4 | 15,   // width - 1 | height - 1
+    0 << 4 | 1,     // health | damage
+    20,             // duration
 
     // 1, BOOMERANG
-    16,
-    16,
-    0,
-    0,
+    15 << 4 | 15,
+    0 << 4 | 0,
     20,
 
     // 2, BOMB
-    11,
-    16,
-    0,
-    0,
+    10 << 4 | 15,
+    0 << 4 | 0,
     150,
 
     // 3, CANDLE
     0,
-    0,
-    0,
-    0,
+    0 << 4 | 0,
     0,
 
     // 4, KEY
-    8,
-    8,
-    0,
-    0,
+    7 << 4 | 7,
+    0 << 4 | 0,
     0,
 
     // 5, HEART
-    8,
-    8,
-    0,
-    0,
+    7 << 4 | 7,
+    0 << 4 | 0,
     180,
 
     // 6, CHEST
-    16,
-    16,
-    0,
-    0,
+    15 << 4 | 15,
+    0 << 4 | 0,
     0,
 
     // 7, BLOB
-    8,
-    8,
-    2, // health
-    1, // damage
-    0, // duration
+    7 << 4 | 7, // width - 1 | height - 1
+    2 << 4 | 1, // health | damage
+    0,          // duration
 
     // 8, SPIKE
-    8,
-    8,
-    255,
-    1,
+    7 << 4 | 7,
+    0 << 4 | 0,
     0,
 
     // 9, ENEMY3
-    16,
-    16,
-    1,
-    2,
+    0,
+    0,
     0,
 
     // 10, BLOB_MOTHER
-    16,
-    16,
-    6,
-    1,
+    15 << 4 | 15,
+    6 << 4 | 1,
     10,
 
     // 11, NEMESIS
     0,
     0,
     0,
-    0,
-    0,
 
     // 12, TELEPORTER
-    18,
-    8,
-    0,
+    17 << 4 | 7,
     0,
     0,
 
     // 13, LOCK
-    18,
-    8,
-    1,
-    0,
+    15 << 4 | 7,
+    1 << 4 | 0,
     0,
 
     // 14, PROJECTILE
     0,
     0,
     0,
-    0,
-    20,
 
     // 15, EXPLOSION
-    16,
-    16,
-    0,
-    1,
+    15 << 4 | 15,
+    0 << 4 | 1,
     20,
 
     // 16, DEATH
-    8,
-    8,
-    0,
-    0,
+    7 << 4 | 7,
+    0 << 4 | 0,
     24,
 
     // 17, SECRET_WALL
-    16,
-    16,
-    1,
-    0,
+    15 << 4 | 15,
+    1 << 4 | 0,
     0,
 };
 

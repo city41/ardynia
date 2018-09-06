@@ -7,11 +7,14 @@ void loadEntity(Entity& entity, EntityType entityType) {
 
     uint8_t* start = entityProperties + (entityType * NUM_ENTITY_PROPS);
 
-    entity.width = pgm_read_byte(start++);
-    entity.height = pgm_read_byte(start++);
-    entity.health = pgm_read_byte(start++);
-    entity.damage = pgm_read_byte(start++);
+    const uint8_t widthAndHeight = pgm_read_byte(start++);
+    const uint8_t healthAndDamage = pgm_read_byte(start++);
     entity.duration = pgm_read_byte(start++);
+
+    entity.width = (widthAndHeight >> 4) + 1;
+    entity.height = (widthAndHeight & 0xF) + 1;
+    entity.health = healthAndDamage >> 4;
+    entity.damage = healthAndDamage & 0xF;
 
     void** pStart = entityPointers + (entityType * NUM_ENTITY_POINTERS);
 
