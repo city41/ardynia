@@ -21,7 +21,7 @@ uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
 uint8_t TileRoom::mapType = OVERWORLD;
 
-void TileRoom::render(Renderer* renderer, byte frame) {
+void TileRoom::render(Renderer& renderer, byte frame) {
     render(renderer, frame, x, y);
 }
 
@@ -38,18 +38,18 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(Renderer* renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
+void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
     if (tileId == 0 && ((roomIndex + 1) % seed == 0 || (roomIndex + 1) % seed == 2) && mapType == OVERWORLD) {
-        renderer->drawOverwrite(x, y, tiles, 10, uniqueSeed % 2);
+        renderer.drawOverwrite(x, y, tiles, 10, uniqueSeed % 2);
         return;
     }
 
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    renderer->drawOverwrite(x, y, tiles, tile, mirror);
+    renderer.drawOverwrite(x, y, tiles, tile, mirror);
 }
 
 uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
@@ -71,8 +71,8 @@ uint8_t TileRoom::getTileAt(uint8_t roomX, uint8_t roomY, uint8_t px, uint8_t py
 
     // grab its starting data index out of the room indices header
     // the stored index does not account for the headers, so tack them on
-    // numRooms * 2 -> get past the room indice words
-    // + MAP_HEADER_SIZE -> get past the map width, map height and tile size
+    // numRooms * 2 . get past the room indice words
+    // + MAP_HEADER_SIZE . get past the map width, map height and tile size
     uint16_t roomIndex = pgm_read_word(map + MAP_HEADER_SIZE + roomNumber * 2) + (numRooms * 2) + MAP_HEADER_SIZE;
     uint16_t nextRoomIndex;
 
@@ -134,7 +134,7 @@ uint8_t TileRoom::getTileAt(uint8_t roomX, uint8_t roomY, uint8_t px, uint8_t py
  *      to learn what the tile to render is
  *      render that tile count times
  */
-void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roomY) {
+void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roomY) {
     uint16_t lengthOfMap = pgm_read_word(map);
     uint8_t mapWidth = pgm_read_byte(map + 2);
     uint8_t mapHeight = pgm_read_byte(map + 3);
@@ -145,8 +145,8 @@ void TileRoom::render(Renderer* renderer, byte frame, uint8_t roomX, uint8_t roo
 
     // grab its starting data index out of the room indices header
     // the stored index does not account for the headers, so tack them on
-    // numRooms * 2 -> get past the room indice words
-    // + MAP_HEADER_SIZE -> get past the map width, map height and tile size
+    // numRooms * 2 . get past the room indice words
+    // + MAP_HEADER_SIZE . get past the map width, map height and tile size
     uint16_t roomIndex = pgm_read_word(map + MAP_HEADER_SIZE + roomNumber * 2) + (numRooms * 2) + MAP_HEADER_SIZE;
     uint16_t nextRoomIndex;
 

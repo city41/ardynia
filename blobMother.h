@@ -6,7 +6,7 @@
 #include "entityTypes.h"
 
 struct BlobMother {
-    static EntityType update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
 };
 
 #endif

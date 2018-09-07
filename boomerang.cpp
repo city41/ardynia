@@ -4,15 +4,15 @@
 #include "player.h"
 #include "sfx.h"
 
-EntityType Boomerang::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
-    int16_t px = player->x;
-    int16_t py = player->y;
+EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
+    int16_t px = player.x;
+    int16_t py = player.y;
     
     // initial duration? then "spawn"
     if (me->duration == 20) {
-        me->dir = player->dir;
-        me->x = player->x;
-        me->y = player->y - 6;
+        me->dir = player.dir;
+        me->x = player.x;
+        me->y = player.y - 6;
         me->currentFrame = 1;
         Sfx::boomerang();
     }
@@ -75,12 +75,12 @@ EntityType Boomerang::update(Entity* me, Entity* player, Arduboy2* arduboy, uint
     return UNSET;
 }
 
-EntityType Boomerang::onCollide(Entity* me, Entity* other, Entity* player) {
-    EntityType otherType = other->type;
+EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player) {
+    EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
     if ((otherType >= 4 && otherType <= 5) || otherType == BOMB) {
-        return ((Player*)player)->onCollide(other, player);
+        return player.onCollide(other, player);
     }
 
     // hit an enemy? then begin returning to the player

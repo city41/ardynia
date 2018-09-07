@@ -4,7 +4,6 @@
 #include "state.h"
 #include "map.h"
 #include "tileBitmaps.h"
-#include "entityCommon.h"
 #include "strings.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
@@ -61,9 +60,9 @@ void GameScene::pop() {
 void GameScene::updateGameOver(uint8_t frame) {
     if (teleportTransitionCount > 0) {
         teleportTransitionCount -= 1;
-    } else if (arduboy->justPressed(A_BUTTON)) {
+    } else if (arduboy.justPressed(A_BUTTON)) {
         loadSave(true);
-    } else if (arduboy->justPressed(B_BUTTON)) {
+    } else if (arduboy.justPressed(B_BUTTON)) {
         loadSave();
     }
 }
@@ -71,8 +70,8 @@ void GameScene::updateGameOver(uint8_t frame) {
 void GameScene::renderGameOver(uint8_t frame) {
     renderPlay(frame);
 
-    renderer->translateX = 0;
-    renderer->translateY = 0;
+    renderer.translateX = 0;
+    renderer.translateY = 0;
 
         // draw a black rectangle in the middle of the screen that grows
         // as the transition progresses
@@ -81,13 +80,13 @@ void GameScene::renderGameOver(uint8_t frame) {
     uint8_t rectX = 64 - rectW / 2;
     uint8_t rectY = 32 - rectH / 2;
 
-    renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
+    renderer.fillRect(rectX, rectY, rectW, rectH, BLACK);
 
-    renderer->drawString(40, 20, gameOver_string);
+    renderer.drawString(40, 20, gameOver_string);
 
     if (teleportTransitionCount == 0) {
-        renderer->drawString(32, HEIGHT - 10, continueFromGameOver_string);
-        renderer->drawString(32, HEIGHT - 5, quitFromGameOver_string);
+        renderer.drawString(32, HEIGHT - 10, continueFromGameOver_string);
+        renderer.drawString(32, HEIGHT - 5, quitFromGameOver_string);
     }
 }
 
@@ -133,8 +132,8 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
 void GameScene::renderTeleportTransition(uint8_t frame) {
     renderPlay(frame);
 
-    renderer->translateX = 0;
-    renderer->translateY = 0;
+    renderer.translateX = 0;
+    renderer.translateY = 0;
 
     uint8_t rectH;
 
@@ -152,7 +151,7 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
     uint8_t rectX = 64 - rectW / 2;
     uint8_t rectY = 32 - rectH / 2;
 
-    renderer->fillRect(rectX, rectY, rectW, rectH, BLACK);
+    renderer.fillRect(rectX, rectY, rectW, rectH, BLACK);
 }
 
 void GameScene::detectEntityCollisions(void) {
@@ -162,7 +161,7 @@ void GameScene::detectEntityCollisions(void) {
             continue;
         }
 
-        if (entities[ge].overlaps(&player)) {
+        if (entities[ge].overlaps(player)) {
             if (entities[ge].type == TELEPORTER || 
                 // or a secret wall the player has discovered?
                 (entities[ge].type == SECRET_WALL && entities[ge].health == 0)) {
@@ -178,11 +177,11 @@ void GameScene::detectEntityCollisions(void) {
                     player.undoMove();
                 }
             } else {
-                EntityType newEntity = player.onCollide(&entities[ge], &player);
+                EntityType newEntity = player.onCollide(entities[ge], player);
                 spawnNewEntity(newEntity, player);
             }
 
-            entities[ge].onCollide(&player, &player);
+            entities[ge].onCollide(player, player);
         }
 
         for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
@@ -190,12 +189,12 @@ void GameScene::detectEntityCollisions(void) {
                 continue;
             }
 
-            if (entities[ge].overlaps(&player.entities[pe])) {
-                EntityType newEntity = entities[ge].onCollide(&player.entities[pe], &player);
+            if (entities[ge].overlaps(player.entities[pe])) {
+                EntityType newEntity = entities[ge].onCollide(player.entities[pe], player);
 
                 spawnNewEntity(newEntity, entities[ge]);
 
-                newEntity = player.entities[pe].onCollide(&entities[ge], &player);
+                newEntity = player.entities[pe].onCollide(entities[ge], player);
                 spawnNewEntity(newEntity, player.entities[pe]);
             }
         }
@@ -203,7 +202,7 @@ void GameScene::detectEntityCollisions(void) {
 
     // now let's confirm the player has stayed on the screen
 
-    if (EntityCommon::isOffScreen(player.x, player.y)) {
+    if (isOffScreen(player.x, player.y)) {
         // if the player just went off the screen, did they legit go through a "passageway"?
         // if not, prevent them leaving the screen
         const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
@@ -349,7 +348,7 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 }
 
 void GameScene::updateTitle(uint8_t frame) {
-    if (arduboy->justPressed(A_BUTTON)) {
+    if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
             push(&GameScene::updatePlay, &GameScene::renderPlay);
         } else if (titleRow == DELETE_SAVE) {
@@ -359,45 +358,45 @@ void GameScene::updateTitle(uint8_t frame) {
     }
 
     if (State::hasUserSaved()) {
-        if (arduboy->justPressed(UP_BUTTON)) {
+        if (arduboy.justPressed(UP_BUTTON)) {
             titleRow = clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
         }
 
-        if (arduboy->justPressed(DOWN_BUTTON)) {
+        if (arduboy.justPressed(DOWN_BUTTON)) {
             titleRow = clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
         }
     }
 }
 
 void GameScene::renderTitle(uint8_t frame) {
-    renderer->drawOverwrite(35, 7, title_tiles, 0);
+    renderer.drawOverwrite(35, 7, title_tiles, 0);
 
     const uint8_t* startGameLabel = State::hasUserSaved() ? continue_string : newGame_string;
 
-    renderer->drawString(42, 46, startGameLabel);
+    renderer.drawString(42, 46, startGameLabel);
 
     if (State::hasUserSaved()) {
-        renderer->drawString(42, 54, deleteSave_string);
+        renderer.drawString(42, 54, deleteSave_string);
     }
 
-    renderer->drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
+    renderer.drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
 }
 
 void GameScene::updatePlay(uint8_t frame) {
     if (paused) {
-        if (arduboy->justPressed(B_BUTTON)) {
+        if (arduboy.justPressed(B_BUTTON)) {
             paused = false;
         } else {
             return;
         }
     }
 
-    if (arduboy->pressed(LEFT_BUTTON | RIGHT_BUTTON | DOWN_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON | RIGHT_BUTTON | DOWN_BUTTON)) {
         paused = true;
         return;
     }
 
-    if (arduboy->pressed(A_BUTTON) && arduboy->pressed(B_BUTTON)) {
+    if (arduboy.pressed(A_BUTTON) && arduboy.pressed(B_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
             menu.chosenItem = player.bButtonEntityType;
             menu.row = player.bButtonEntityType - 1;
@@ -410,7 +409,7 @@ void GameScene::updatePlay(uint8_t frame) {
         return;
     }
 
-    player.update(&player, arduboy, frame);
+    player.update(player, arduboy, frame);
 
     // player is in the middle of showing off a new item,
     // freeze the game while this is happening
@@ -422,20 +421,20 @@ void GameScene::updatePlay(uint8_t frame) {
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        EntityType newEntity = entity.update(&player, arduboy, frame);
+        EntityType newEntity = entity.update(player, arduboy, frame);
         loadEntity(player.entities[e], newEntity);
     }
 
     for (e = 0; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        EntityType newEntity = entity.update(&player, arduboy, frame);
+        EntityType newEntity = entity.update(player, arduboy, frame);
         spawnNewEntity(newEntity, entity);
     }
 
     detectEntityCollisions();
 
-    if (EntityCommon::isOffScreen(player.x, player.y)) {
+    if (isOffScreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
     }
 
@@ -464,15 +463,15 @@ void GameScene::renderPlay(uint8_t frame) {
 
     player.render(renderer, frame);
 
-    renderer->translateX = WIDTH - 16;
-    renderer->translateY = 0;
+    renderer.translateX = WIDTH - 16;
+    renderer.translateY = 0;
     Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
 void GameScene::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
 
-    if (!arduboy->pressed(A_BUTTON) || !arduboy->pressed(B_BUTTON)) {
+    if (!arduboy.pressed(A_BUTTON) || !arduboy.pressed(B_BUTTON)) {
         // respond to the decision
         if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
             player.bButtonEntityType = menu.chosenItem;
@@ -486,8 +485,8 @@ void GameScene::updateMenu(uint8_t frame) {
 void GameScene::renderMenu(uint8_t frame) {
     menu.render(renderer, player, frame);
 
-    renderer->translateX = 54;
-    renderer->translateY = 0;
+    renderer.translateX = 54;
+    renderer.translateY = 0;
 
     const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
     const uint8_t mapHeightInRooms = TileRoom::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
@@ -546,15 +545,15 @@ void GameScene::renderRoomTransition(uint8_t frame) {
         translateY = roomTransitionCount - ROOM_HEIGHT_PX;
     }
 
-    renderer->translateX = translateX;
-    renderer->translateY = translateY;
+    renderer.translateX = translateX;
+    renderer.translateY = translateY;
     TileRoom::render(renderer, frame);
 
     // draw next room translated
     int8_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
-    renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
-    renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
+    renderer.translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
+    renderer.translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
     TileRoom::render(renderer, frame, nextRoomX, nextRoomY);
 
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
@@ -562,12 +561,12 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     }
     
     // draw player and entities translated
-    renderer->translateX = translateX;
-    renderer->translateY = translateY;
+    renderer.translateX = translateX;
+    renderer.translateY = translateY;
     player.render(renderer, frame);
 
-    renderer->translateX = WIDTH - 16;
-    renderer->translateY = 0;
+    renderer.translateX = WIDTH - 16;
+    renderer.translateY = 0;
     Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
@@ -582,17 +581,17 @@ void GameScene::update(uint8_t frame) {
 }
 
 void GameScene::render(uint8_t frame) {
-    renderer->translateX = 0;
-    renderer->translateY = 0;
+    renderer.translateX = 0;
+    renderer.translateY = 0;
 
     (this->*currentRender)(frame);
 
-    renderer->translateX = 0;
-    renderer->translateY = 0;
+    renderer.translateX = 0;
+    renderer.translateY = 0;
 
     if (paused) {
-        renderer->fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer->drawString(0, HEIGHT - 4, paused_string);
+        renderer.fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
+        renderer.drawString(0, HEIGHT - 4, paused_string);
     }
 
     if (nextRender != NULL) {

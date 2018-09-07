@@ -62,8 +62,9 @@ void Player::bButtonAction(void) {
     }
 }
 
-EntityType Player::render(Renderer *renderer, byte frame) {
+EntityType Player::render(Renderer& renderer, byte frame) {
     // recovering from damage? "flash" the player every third frame
+    // TODO: this is duplicated in Entity::render, DRY?
     if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {
         return UNSET;
     }
@@ -73,14 +74,15 @@ EntityType Player::render(Renderer *renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        /* renderer->fillRect(x - 4, y - 26, 16, 16, WHITE); */
-        /* renderer->drawRect(x - 5, y - 27, 18, 18, BLACK); */
-        renderer->drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
+        /* renderer.fillRect(x - 4, y - 26, 16, 16, WHITE); */
+        /* renderer.drawRect(x - 5, y - 27, 18, 18, BLACK); */
+        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
         bool attacking = entities[0].type == SWORD || (entities[1].type == BOOMERANG && !movedThisFrame);
 
+        // TODO: convert this to a PROGMEM array
         switch (dir) {
             case LEFT:
                 spriteIndex = attacking ? 4 : 0;
@@ -106,16 +108,16 @@ EntityType Player::render(Renderer *renderer, byte frame) {
         }
     }
 
-    renderer->drawPlusMask(x - 4, y - 8, player_plus_mask, spriteIndex, mirror);
+    renderer.drawPlusMask(x - 4, y - 8, player_plus_mask, spriteIndex, mirror);
 
 #ifdef DRAW_HITBOXES
-    renderer->drawRect(x, y, w, h, BLACK);
+    renderer.drawRect(x, y, w, h, BLACK);
 #endif
 
     return UNSET;
 }
 
-EntityType Player::update(Entity* player, Arduboy2* arduboy, byte frame) {
+EntityType Player::update(Entity& player, Arduboy2& arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }
@@ -127,27 +129,27 @@ EntityType Player::update(Entity* player, Arduboy2* arduboy, byte frame) {
 
     int16_t newX = x, newY = y;
 
-    if (arduboy->pressed(DOWN_BUTTON)) {
+    if (arduboy.pressed(DOWN_BUTTON)) {
         newY += PLAYER_VELOCITY;
     }
 
-    if (arduboy->pressed(UP_BUTTON)) {
+    if (arduboy.pressed(UP_BUTTON)) {
         newY -= PLAYER_VELOCITY;
     }
 
-    if (arduboy->pressed(LEFT_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON)) {
         newX -= PLAYER_VELOCITY;
     }
 
-    if (arduboy->pressed(RIGHT_BUTTON)) {
+    if (arduboy.pressed(RIGHT_BUTTON)) {
         newX += PLAYER_VELOCITY;
     }
 
-    if (arduboy->justPressed(A_BUTTON)) {
+    if (arduboy.justPressed(A_BUTTON)) {
         useSword();
     }
 
-    if (arduboy->justPressed(B_BUTTON)) {
+    if (arduboy.justPressed(B_BUTTON)) {
         bButtonAction();
     }
 
@@ -162,15 +164,15 @@ EntityType Player::update(Entity* player, Arduboy2* arduboy, byte frame) {
     return UNSET;
 }
 
-EntityType Player::onCollide(Entity* other, Entity* player) {
-    if (other->type == CHEST) {
+EntityType Player::onCollide(Entity& other, Entity& player) {
+    if (other.type == CHEST) {
         undoMove();
         receiveItemFromChest(other);
         return UNSET;
     }
 
-    if (other->damage && tookDamageCount == 0) {
-        health = clamp(health - other->damage, 0, State::gameState.totalHealth);
+    if (other.damage && tookDamageCount == 0) {
+        health = clamp(health - other.damage, 0, State::gameState.totalHealth);
         bounceBack(other);
         Sfx::playerDamage();
 
@@ -183,20 +185,20 @@ EntityType Player::onCollide(Entity* other, Entity* player) {
         tookDamageCount = 30;
     }
 
-    if (other->type == KEY) {
-        other->type = UNSET;
+    if (other.type == KEY) {
+        other.type = UNSET;
         State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
         Sfx::pickUpItem();
     }
 
-    if (other->type == HEART) {
-        other->type = UNSET;
+    if (other.type == HEART) {
+        other.type = UNSET;
         health = clamp(health + 1, 0, State::gameState.totalHealth);
         Sfx::pickUpItem();
     }
 
-    if (other->type == BOMB) {
-        other->type = UNSET;
+    if (other.type == BOMB) {
+        other.type = UNSET;
         numBombs = clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
         Sfx::pickUpItem();
     }
@@ -204,14 +206,14 @@ EntityType Player::onCollide(Entity* other, Entity* player) {
     return UNSET;
 }
 
-void Player::receiveItemFromChest(Entity* chest) {
+void Player::receiveItemFromChest(Entity& chest) {
     if (
         // hardcoding chest height saves 4 bytes, win!
-        y >= (chest->y + 8) &&
-        chest->currentFrame == 0
+        y >= (chest.y + 8) &&
+        chest.currentFrame == 0
     ) {
-        EntityType item = chest->health;
-        chest->currentFrame = 1;
+        EntityType item = chest.health;
+        chest.currentFrame = 1;
 
         if (item == KEY) {
             State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);

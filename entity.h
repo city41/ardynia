@@ -28,9 +28,9 @@ class Entity {
         }
 
     public:
-        typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame);
-        typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer* renderer, uint8_t frame);
-        typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity* other, Entity* player);
+        typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
+        typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer& renderer, uint8_t frame);
+        typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity& other, Entity& player);
 
         EntityUpdatePtr updatePtr;
         EntityRenderPtr renderPtr;
@@ -52,6 +52,8 @@ class Entity {
         MirrorMode mirror;
         uint8_t tookDamageCount;
         uint8_t stunCount;
+
+        void moveTowardsOtherEntity(Entity& otherEntity, uint8_t amount);
 
         Entity():
             updatePtr(NULL),
@@ -102,17 +104,21 @@ class Entity {
             y = clamp(y, minY, maxY);
         }
 
+        inline bool isOffScreen() {
+            return x < 0 || y < 0 || x >= WIDTH - 16 || y >= HEIGHT;
+        }
+
         virtual void undoMove() {
             x = prevX;
             y = prevY;
         }
 
-        virtual EntityType render(Renderer* renderer, uint8_t frame);
-        virtual EntityType update(Entity* player, Arduboy2* arduboy, uint8_t frame);
-        virtual EntityType onCollide(Entity* other, Entity* player);
+        virtual EntityType render(Renderer& renderer, uint8_t frame);
+        virtual EntityType update(Entity& player, Arduboy2& arduboy, uint8_t frame);
+        virtual EntityType onCollide(Entity& other, Entity& player);
 
-        boolean overlaps(Entity* other);
-        void bounceBack(Entity* bounceAwayFrom);
+        bool overlaps(Entity& other);
+        void bounceBack(Entity& bounceAwayFrom);
 };
 
 #endif

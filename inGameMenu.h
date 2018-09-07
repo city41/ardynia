@@ -18,8 +18,8 @@ class InGameMenu {
             chosenItem(UNSET)
         {}
 
-        void update(Arduboy2* arduboy, uint8_t frame);
-        void render(Renderer* renderer, Player& player, uint8_t frame);
+        void update(Arduboy2& arduboy, uint8_t frame);
+        void render(Renderer& renderer, Player& player, uint8_t frame);
 };
 
 #endif

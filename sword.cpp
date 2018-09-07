@@ -1,13 +1,13 @@
 #include "sword.h"
 #include "util.h"
 
-EntityType Sword::update(Entity* me, Entity* player, Arduboy2* arduoboy, uint8_t frame) {
-    int16_t px = player->x;
-    int16_t py = player->y;
+EntityType Sword::update(Entity* me, Entity& player, Arduboy2& arduoboy, uint8_t frame) {
+    int16_t px = player.x;
+    int16_t py = player.y;
 
     // initial duration? then "spawn"
     if (me->duration == 20) {
-        switch (player->dir) {
+        switch (player.dir) {
             case LEFT:
                 me->x = px - 18;
                 me->y = py - 4;

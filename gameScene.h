@@ -25,8 +25,8 @@ class GameScene {
     typedef void (GameScene::*RenderPtr)(uint8_t);
 
     private:
-        Arduboy2* arduboy;
-        Renderer* renderer;
+        Arduboy2& arduboy;
+        Renderer& renderer;
 
         uint8_t titleRow;
 
@@ -87,7 +87,7 @@ class GameScene {
         void loadSave(bool straightToPlay = false);
 
     public:
-        GameScene(Arduboy2* arduboy, Renderer* renderer):
+        GameScene(Arduboy2& arduboy, Renderer& renderer):
             arduboy(arduboy),
             renderer(renderer),
             titleRow(0),

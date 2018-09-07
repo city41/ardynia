@@ -5,6 +5,7 @@
 #include "math.h"
 
 uint8_t clamp(int8_t val, int8_t minVal, int8_t maxVal);
+bool isOffScreen(int16_t x, int16_t y);
 
 #define LOG(msg) \
     do { if (SERIAL_LOG) Serial.println(msg); } while (0)

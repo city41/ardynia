@@ -7,11 +7,11 @@
 
 class Renderer {
     private:
-        Arduboy2* arduboy;
+        Arduboy2& arduboy;
         SpritesB sprite;
 
     public:
-        Renderer(Arduboy2* arduboy):
+        Renderer(Arduboy2& arduboy):
             arduboy(arduboy),
             translateX(0),
             translateY(0)

@@ -1,7 +1,7 @@
 #include "blobMother.h"
-#include "entityCommon.h"
+#include "util.h"
 
-EntityType BlobMother::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType BlobMother::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
     if (frame % 4 == 1) {
         return UNSET;
     }
@@ -35,21 +35,21 @@ EntityType BlobMother::update(Entity* me, Entity* player, Arduboy2* arduboy, uin
     me->moveTo(nx, ny);
 
     bool shouldUndo = false;
-    if (EntityCommon::isOffScreen(20, ny)) {
+    if (isOffScreen(20, ny)) {
         shouldUndo = true;
 
         // flip UP<->DOWN
         me->duration = 5 - me->duration;
     }
 
-    if (EntityCommon::isOffScreen(nx, 20)) {
+    if (isOffScreen(nx, 20)) {
         shouldUndo = true;
 
         // flip LEFT<->RIGHT
         me->dir = 1 - me->dir;
     }
 
-    me->mirror = me->x < player->x ? MIRROR_HORIZONTAL : 0;
+    me->mirror = me->x < player.x ? MIRROR_HORIZONTAL : 0;
 
     if (shouldUndo) {
         me->undoMove();

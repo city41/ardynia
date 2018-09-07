@@ -5,18 +5,42 @@
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
-boolean Entity::overlaps(Entity* other) {
+void Entity::moveTowardsOtherEntity(Entity& other, uint8_t amount) {
+    int16_t ox = other.x;
+    int16_t oy = other.y;
+
+    int16_t nx = x;
+    int16_t ny = y;
+
+    if (nx - ox > 0) {
+        nx -= amount;
+        mirror = 0;
+    } else if (nx - ox < 0) {
+        nx += amount;
+        mirror = MIRROR_HORIZONTAL;
+    }
+
+    if (ny - oy > 0) {
+        ny -= amount;
+    } else if (ny - oy < 0) {
+        ny += amount;
+    }
+
+    moveTo(nx, ny);
+}
+
+bool Entity::overlaps(Entity& other) {
     return !(
-        other->x                 >= x + width  ||
-        other->x + other->width  <= x          ||
-        other->y                 >= y + height ||
-        other->y + other->height <= y
+        other.x                 >= x + width  ||
+        other.x + other.width  <= x          ||
+        other.y                 >= y + height ||
+        other.y + other.height <= y
     );
 }
 
-void Entity::bounceBack(Entity* bounceAwayFrom) {
-    int8_t diffX = x - bounceAwayFrom->x;
-    int8_t diffY = y - bounceAwayFrom->y;
+void Entity::bounceBack(Entity& bounceAwayFrom) {
+    int8_t diffX = x - bounceAwayFrom.x;
+    int8_t diffY = y - bounceAwayFrom.y;
 
     int8_t bounceXAmount = 0;
     int8_t bounceYAmount = 0;
@@ -32,7 +56,7 @@ void Entity::bounceBack(Entity* bounceAwayFrom) {
     dir = curDir;
 }
 
-EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
+EntityType Entity::render(Renderer& renderer, uint8_t renderFrame) {
     if (type == UNSET) {
         return UNSET;
     }
@@ -50,17 +74,17 @@ EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
         result = renderPtr(this, renderer, renderFrame);
     } else if (tiles) {
         bool invert = TileRoom::isInDungeon();
-        renderer->drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
+        renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
     }
 
 #ifdef DRAW_HITBOXES
-    renderer->drawRect(x, y, width, height, BLACK);
+    renderer.drawRect(x, y, width, height, BLACK);
 #endif
 
     return result;
 }
 
-EntityType Entity::update(Entity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType Entity::update(Entity& player, Arduboy2& arduboy, uint8_t frame) {
     if (stunCount > 0) {
         stunCount -= 1;
         return UNSET;
@@ -73,7 +97,7 @@ EntityType Entity::update(Entity* player, Arduboy2* arduboy, uint8_t frame) {
     return UNSET;
 }
 
-EntityType Entity::onCollide(Entity* other, Entity* player) {
+EntityType Entity::onCollide(Entity& other, Entity& player) {
     if (type == UNSET) {
         return UNSET;
     }

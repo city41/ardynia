@@ -11,8 +11,8 @@
 #include "sfx.h"
 
 Arduboy2 arduboy;
-Renderer renderer(&arduboy);
-GameScene gameScene(&arduboy, &renderer);
+Renderer renderer(arduboy);
+GameScene gameScene(arduboy, renderer);
 
 void setup() {
     arduboy.boot();
