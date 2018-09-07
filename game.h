@@ -20,9 +20,9 @@ const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 7;
 const uint8_t OVERWORLD_HEIGHT_IN_ROOMS = 8;
 const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 10;
 
-class GameScene {
-    typedef void (GameScene::*UpdatePtr)(uint8_t);
-    typedef void (GameScene::*RenderPtr)(uint8_t);
+class Game {
+    typedef void (Game::*UpdatePtr)(uint8_t);
+    typedef void (Game::*RenderPtr)(uint8_t);
 
     private:
         Arduboy2& arduboy;
@@ -87,7 +87,7 @@ class GameScene {
         void loadSave(bool straightToPlay = false);
 
     public:
-        GameScene(Arduboy2& arduboy, Renderer& renderer):
+        Game(Arduboy2& arduboy, Renderer& renderer):
             arduboy(arduboy),
             renderer(renderer),
             titleRow(0),

@@ -1,4 +1,4 @@
-#include "gameScene.h"
+#include "game.h"
 #include "util.h"
 #include "entityTemplates.h"
 #include "state.h"
@@ -18,7 +18,7 @@ const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
 const uint8_t PLAY_GAME = 0;
 const uint8_t DELETE_SAVE = 1;
 
-void GameScene::loadSave(bool straightToPlay = false) {
+void Game::loadSave(bool straightToPlay = false) {
     State::load();
 
     TileRoom::map = overworld_map;
@@ -36,28 +36,28 @@ void GameScene::loadSave(bool straightToPlay = false) {
     player.reset();
 
     if (straightToPlay) {
-        currentUpdate = &GameScene::updatePlay;
-        currentRender = &GameScene::renderPlay;
+        currentUpdate = &Game::updatePlay;
+        currentRender = &Game::renderPlay;
     } else {
-        currentUpdate = &GameScene::updateTitle;
-        currentRender = &GameScene::renderTitle;
+        currentUpdate = &Game::updateTitle;
+        currentRender = &Game::renderTitle;
     }
 
     Map::reset();
     Map::visitRoom(START_ROOM_X, START_ROOM_Y, OVERWORLD_WIDTH_IN_ROOMS);
 }
 
-void GameScene::push(UpdatePtr newUpdate, RenderPtr newRender) {
+void Game::push(UpdatePtr newUpdate, RenderPtr newRender) {
     nextUpdate = newUpdate;
     nextRender = newRender;
 }
 
-void GameScene::pop() {
+void Game::pop() {
     nextUpdate = prevUpdate;
     nextRender = prevRender;
 }
 
-void GameScene::updateGameOver(uint8_t frame) {
+void Game::updateGameOver(uint8_t frame) {
     if (teleportTransitionCount > 0) {
         teleportTransitionCount -= 1;
     } else if (arduboy.justPressed(A_BUTTON)) {
@@ -67,7 +67,7 @@ void GameScene::updateGameOver(uint8_t frame) {
     }
 }
 
-void GameScene::renderGameOver(uint8_t frame) {
+void Game::renderGameOver(uint8_t frame) {
     renderPlay(frame);
 
     renderer.translateX = 0;
@@ -90,7 +90,7 @@ void GameScene::renderGameOver(uint8_t frame) {
     }
 }
 
-void GameScene::updateTeleportTransition(uint8_t frame) {
+void Game::updateTeleportTransition(uint8_t frame) {
     teleportTransitionCount -= 1;
 
     if (teleportTransitionCount == WIDTH / 4) {
@@ -129,7 +129,7 @@ void GameScene::updateTeleportTransition(uint8_t frame) {
     }
 }
 
-void GameScene::renderTeleportTransition(uint8_t frame) {
+void Game::renderTeleportTransition(uint8_t frame) {
     renderPlay(frame);
 
     renderer.translateX = 0;
@@ -154,7 +154,7 @@ void GameScene::renderTeleportTransition(uint8_t frame) {
     renderer.fillRect(rectX, rectY, rectW, rectH, BLACK);
 }
 
-void GameScene::detectEntityCollisions(void) {
+void Game::detectEntityCollisions(void) {
     // first let the entities duke it out
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == UNSET) {
@@ -171,7 +171,7 @@ void GameScene::detectEntityCollisions(void) {
                 nextRoomX = entities[ge].prevX;
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
-                push(&GameScene::updateTeleportTransition, &GameScene::renderTeleportTransition);
+                push(&Game::updateTeleportTransition, &Game::renderTeleportTransition);
             } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK) {
                 if (entities[ge].health == 1) {
                     player.undoMove();
@@ -235,7 +235,7 @@ void GameScene::detectEntityCollisions(void) {
 
 }
 
-void GameScene::goToNextRoom(int16_t x, int16_t y) {
+void Game::goToNextRoom(int16_t x, int16_t y) {
     if (x < 0) {
         nextRoomX = TileRoom::x - 1;
         nextRoomY = TileRoom::y;
@@ -258,10 +258,10 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
     }
 
     firstRoomTransitionFrame = true;
-    push(&GameScene::updateRoomTransition, &GameScene::renderRoomTransition);
+    push(&Game::updateRoomTransition, &Game::renderRoomTransition);
 }
 
-void GameScene::spawnNewEntity(EntityType entityType, Entity& spawner) {
+void Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     if (entityType == UNSET) {
         return;
     }
@@ -285,7 +285,7 @@ void GameScene::spawnNewEntity(EntityType entityType, Entity& spawner) {
     entities[e].y = spawner.y - offsetY;
 }
 
-void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
+void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(entityDefs + y);
     uint8_t* roomPtr = pgm_read_word(rowPtr + x);
 
@@ -347,10 +347,10 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     }
 }
 
-void GameScene::updateTitle(uint8_t frame) {
+void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
-            push(&GameScene::updatePlay, &GameScene::renderPlay);
+            push(&Game::updatePlay, &Game::renderPlay);
         } else if (titleRow == DELETE_SAVE) {
             titleRow = 0;
             State::clearEEPROM();
@@ -368,7 +368,7 @@ void GameScene::updateTitle(uint8_t frame) {
     }
 }
 
-void GameScene::renderTitle(uint8_t frame) {
+void Game::renderTitle(uint8_t frame) {
     renderer.drawOverwrite(35, 7, title_tiles, 0);
 
     const uint8_t* startGameLabel = State::hasUserSaved() ? continue_string : newGame_string;
@@ -382,7 +382,7 @@ void GameScene::renderTitle(uint8_t frame) {
     renderer.drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
 }
 
-void GameScene::updatePlay(uint8_t frame) {
+void Game::updatePlay(uint8_t frame) {
     if (paused) {
         if (arduboy.justPressed(B_BUTTON)) {
             paused = false;
@@ -404,7 +404,7 @@ void GameScene::updatePlay(uint8_t frame) {
             menu.row = 0;
         }
 
-        push(&GameScene::updateMenu, &GameScene::renderMenu);
+        push(&Game::updateMenu, &Game::renderMenu);
 
         return;
     }
@@ -441,11 +441,11 @@ void GameScene::updatePlay(uint8_t frame) {
     if (player.health <= 0) {
         teleportTransitionCount = WIDTH / 4;
         player.movedThisFrame = false;
-        push(&GameScene::updateGameOver, &GameScene::renderGameOver);
+        push(&Game::updateGameOver, &Game::renderGameOver);
     }
 }
 
-void GameScene::renderPlay(uint8_t frame) {
+void Game::renderPlay(uint8_t frame) {
     TileRoom::render(renderer, frame);
 
     int8_t e = 0;
@@ -468,7 +468,7 @@ void GameScene::renderPlay(uint8_t frame) {
     Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
-void GameScene::updateMenu(uint8_t frame) {
+void Game::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
 
     if (!arduboy.pressed(A_BUTTON) || !arduboy.pressed(B_BUTTON)) {
@@ -482,7 +482,7 @@ void GameScene::updateMenu(uint8_t frame) {
     }
 }
 
-void GameScene::renderMenu(uint8_t frame) {
+void Game::renderMenu(uint8_t frame) {
     menu.render(renderer, player, frame);
 
     renderer.translateX = 54;
@@ -493,7 +493,7 @@ void GameScene::renderMenu(uint8_t frame) {
     Map::render(renderer, mapWidthInRooms, mapHeightInRooms, TileRoom::x, TileRoom::y);
 }
 
-void GameScene::updateRoomTransition(uint8_t frame) {
+void Game::updateRoomTransition(uint8_t frame) {
     roomTransitionCount -= ROOM_TRANSITION_VELOCITY;
 
     if (firstRoomTransitionFrame) {
@@ -531,7 +531,7 @@ void GameScene::updateRoomTransition(uint8_t frame) {
     }
 }
 
-void GameScene::renderRoomTransition(uint8_t frame) {
+void Game::renderRoomTransition(uint8_t frame) {
     int16_t translateX = 0, translateY = 0;
 
     // draw current room translated
@@ -570,7 +570,7 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
 }
 
-void GameScene::update(uint8_t frame) {
+void Game::update(uint8_t frame) {
     (this->*currentUpdate)(frame);
 
     if (nextUpdate != NULL) {
@@ -580,7 +580,7 @@ void GameScene::update(uint8_t frame) {
     }
 }
 
-void GameScene::render(uint8_t frame) {
+void Game::render(uint8_t frame) {
     renderer.translateX = 0;
     renderer.translateY = 0;
 

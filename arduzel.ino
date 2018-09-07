@@ -5,14 +5,14 @@
 #include <Arduboy2Audio.h>
 #include <math.h>
 
-#include "gameScene.h"
+#include "game.h"
 #include "renderer.h"
 #include "util.h"
 #include "sfx.h"
 
 Arduboy2 arduboy;
 Renderer renderer(arduboy);
-GameScene gameScene(arduboy, renderer);
+Game game(arduboy, renderer);
 
 void setup() {
     arduboy.boot();
@@ -45,8 +45,8 @@ void loop() {
     arduboy.pollButtons();
     
     Sfx::update();
-    gameScene.update(loopCounter);
-    gameScene.render(loopCounter);
+    game.update(loopCounter);
+    game.render(loopCounter);
     arduboy.display();
 }
 
