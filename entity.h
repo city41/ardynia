@@ -29,7 +29,7 @@ class Entity {
 
     public:
         typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
-        typedef EntityType (*EntityRenderPtr)(Entity* me, Renderer& renderer, uint8_t frame);
+        typedef void (*EntityRenderPtr)(Entity* me, Renderer& renderer, uint8_t frame);
         typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity& other, Entity& player);
 
         EntityUpdatePtr updatePtr;
@@ -113,7 +113,7 @@ class Entity {
             y = prevY;
         }
 
-        virtual EntityType render(Renderer& renderer, uint8_t frame);
+        virtual void render(Renderer& renderer, uint8_t frame);
         virtual EntityType update(Entity& player, Arduboy2& arduboy, uint8_t frame);
         virtual EntityType onCollide(Entity& other, Entity& player);
 

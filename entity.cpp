@@ -56,22 +56,21 @@ void Entity::bounceBack(Entity& bounceAwayFrom) {
     dir = curDir;
 }
 
-EntityType Entity::render(Renderer& renderer, uint8_t renderFrame) {
+void Entity::render(Renderer& renderer, uint8_t renderFrame) {
     if (type == UNSET) {
-        return UNSET;
+        return;
     }
 
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
 
         if (tookDamageCount % 3 == 1) {
-            return UNSET;
+            return;
         }
     }
 
-    EntityType result = UNSET;
     if (renderPtr != NULL) {
-        result = renderPtr(this, renderer, renderFrame);
+        renderPtr(this, renderer, renderFrame);
     } else if (tiles) {
         bool invert = TileRoom::isInDungeon();
         renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
@@ -80,8 +79,6 @@ EntityType Entity::render(Renderer& renderer, uint8_t renderFrame) {
 #ifdef DRAW_HITBOXES
     renderer.drawRect(x, y, width, height, BLACK);
 #endif
-
-    return result;
 }
 
 EntityType Entity::update(Entity& player, Arduboy2& arduboy, uint8_t frame) {

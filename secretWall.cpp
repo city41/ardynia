@@ -3,16 +3,16 @@
 #include "tileRoom.h"
 #include "state.h"
 
-EntityType SecretWall::render(Entity* me, Renderer* renderer, uint8_t frame) {
+void SecretWall::render(Entity* me, Renderer& renderer, uint8_t frame) {
     if (me->health == 1) {
-        renderer->drawOverwrite(me->x, me->y, overworld_tiles, Stone);
+        renderer.drawOverwrite(me->x, me->y, overworld_tiles, Stone);
     } else {
-        renderer->drawOverwrite(me->x, me->y, secretOpening_tiles, 0);
+        renderer.drawOverwrite(me->x, me->y, secretOpening_tiles, 0);
     }
 }
 
-EntityType SecretWall::onCollide(Entity* me, Entity* other, Entity* player) {
-    if (other->type == EXPLOSION) {
+EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
+    if (other.type == EXPLOSION) {
         me->health = 0;
         me->currentFrame = 11;
 

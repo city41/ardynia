@@ -62,11 +62,11 @@ void Player::bButtonAction(void) {
     }
 }
 
-EntityType Player::render(Renderer& renderer, byte frame) {
+void Player::render(Renderer& renderer, byte frame) {
     // recovering from damage? "flash" the player every third frame
     // TODO: this is duplicated in Entity::render, DRY?
     if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {
-        return UNSET;
+        return;
     }
 
     uint8_t spriteIndex;
@@ -113,8 +113,6 @@ EntityType Player::render(Renderer& renderer, byte frame) {
 #ifdef DRAW_HITBOXES
     renderer.drawRect(x, y, w, h, BLACK);
 #endif
-
-    return UNSET;
 }
 
 EntityType Player::update(Entity& player, Arduboy2& arduboy, byte frame) {

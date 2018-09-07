@@ -7,8 +7,8 @@
 #include "renderer.h"
 
 struct SecretWall {
-    static EntityType render(Entity* me, Renderer* renderer, uint8_t frame);
-    static EntityType onCollide(Entity* me, Entity* other, Entity* player);
+    static void render(Entity* me, Renderer& renderer, uint8_t frame);
+    static EntityType onCollide(Entity* me, Entity& other, Entity& player);
 };
 
 #endif
