@@ -56,7 +56,7 @@ class GameScene {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
-        boolean paused;
+        bool paused;
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);

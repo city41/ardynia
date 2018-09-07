@@ -154,7 +154,7 @@ EntityType Player::update(Entity& player, Arduboy2& arduboy, byte frame) {
     }
 
     movedThisFrame = false;
-    boolean attackingWithSword = entities[0].type == SWORD;
+    bool attackingWithSword = entities[0].type == SWORD;
 
     if (!attackingWithSword && (newX != x || newY != y)) {
         movedThisFrame = true;

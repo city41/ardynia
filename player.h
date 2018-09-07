@@ -15,7 +15,7 @@ class Player: public Entity {
         void bButtonAction(void);
 
     public:
-        boolean movedThisFrame;
+        bool movedThisFrame;
         uint8_t receiveItemCount;
         EntityType receivedItem;
         Entity entities[MAX_PLAYER_ENTITIES];
