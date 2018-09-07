@@ -2,6 +2,7 @@
 #include "spriteBitmaps.h"
 #include "math.h"
 #include "player.h"
+#include "sfx.h"
 
 EntityType Boomerang::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
     int16_t px = player->x;
@@ -13,6 +14,7 @@ EntityType Boomerang::update(Entity* me, Entity* player, Arduboy2* arduboy, uint
         me->x = player->x;
         me->y = player->y - 6;
         me->currentFrame = 1;
+        Sfx::boomerang();
     }
 
     if (me->duration > 0) {

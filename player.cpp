@@ -4,6 +4,7 @@
 #include "util.h"
 #include "tileRoom.h"
 #include "state.h"
+#include "sfx.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -34,6 +35,7 @@ void Player::useSword(void) {
     }
 
     loadEntity(entities[0], SWORD);
+    Sfx::sword();
 }
 
 void Player::bButtonAction(void) {
@@ -170,6 +172,7 @@ EntityType Player::onCollide(Entity* other, Entity* player) {
     if (other->damage && tookDamageCount == 0) {
         health = clamp(health - other->damage, 0, State::gameState.totalHealth);
         bounceBack(other);
+        Sfx::playerDamage();
 
         // hack: make the sword bounce back too, in case we
         // were hit while attacking. If not attacking and sword
@@ -183,16 +186,19 @@ EntityType Player::onCollide(Entity* other, Entity* player) {
     if (other->type == KEY) {
         other->type = UNSET;
         State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
+        Sfx::pickUpItem();
     }
 
     if (other->type == HEART) {
         other->type = UNSET;
         health = clamp(health + 1, 0, State::gameState.totalHealth);
+        Sfx::pickUpItem();
     }
 
     if (other->type == BOMB) {
         other->type = UNSET;
         numBombs = clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
+        Sfx::pickUpItem();
     }
 
     return UNSET;
@@ -231,6 +237,8 @@ void Player::receiveItemFromChest(Entity* chest) {
                 State::gameState.totalHealth += 1;
                 health = State::gameState.totalHealth;
             }
+
+            Sfx::successJingle();
         }
 
         const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
