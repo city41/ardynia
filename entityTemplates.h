@@ -100,12 +100,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0 << 4 | 1,
     20,
 
-    // 16, DEATH
-    7 << 4 | 7,
-    0 << 4 | 0,
-    24,
-
-    // 17, SECRET_WALL
+    // 16, SECRET_WALL
     15 << 4 | 15,
     1 << 4 | 0,
     0,
@@ -193,12 +188,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     Explosion::update,
     NULL,
 
-    // 16, DEATH
-    NULL,
-    Death::update,
-    NULL,
-
-    // 17, SECRET_WALL
+    // 16, SECRET_WALL
     secretWall_plus_mask,
     NULL,
     SecretWall::onCollide,

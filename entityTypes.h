@@ -39,20 +39,13 @@ const EntityType PROJECTILE = 14;
 const EntityType EXPLOSION = 15;
 
 // misc
+const EntityType SECRET_WALL = 16;
 
-// prevents the user from going to the first dungeon if they
-// haven't yet found the sword. This is required because the game
-// assumes the player acquires the items in order: sword->boomerang->bombs->candle
-// this is the little "poof" as an enemy dies
-// it also randomly leaves behind a heart for the player
-const EntityType DEATH = 16;
-const EntityType SECRET_WALL = 17;
-
-const EntityType PLAYER = 127;
-
-// player isn't really an "entity"
-// TODO: can we kill PLAYER EntityType?
 const uint8_t NUM_ENTITIES = SECRET_WALL + 1;
 
+// these are entities in a sense, but they don't fully participate
+// in the entity system
+const EntityType ITEM_DROP = 126;
+const EntityType PLAYER = 127;
 #endif
 

@@ -5,6 +5,12 @@
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
+const uint8_t PROGMEM itemDropItems[] = {
+    UNSET,
+    HEART,
+    BOMB
+};
+
 void Entity::moveTowardsOtherEntity(Entity& other, uint8_t amount) {
     int16_t ox = other.x;
     int16_t oy = other.y;
@@ -96,7 +102,14 @@ EntityType Entity::onCollide(Entity& other, Entity& player) {
     }
 
     if (collideOtherEntityPtr != NULL) {
-        return collideOtherEntityPtr(this, other, player);
+        EntityType result = collideOtherEntityPtr(this, other, player);
+
+        if (result == ITEM_DROP) {
+            uint8_t diceRoll = random(0, 3);
+            return pgm_read_byte(itemDropItems + diceRoll);
+        } else {
+            return result;
+        }
     }
 
     return UNSET;

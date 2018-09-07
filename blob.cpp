@@ -19,7 +19,7 @@ EntityType Blob::onCollide(Entity* me, Entity& other, Entity& player) {
                 return KEY;
             } else {
                 me->type = UNSET;
-                return DEATH;
+                return ITEM_DROP;
             }
         } else {
             me->bounceBack(other);
