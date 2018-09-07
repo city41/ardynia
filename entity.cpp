@@ -33,6 +33,10 @@ void Entity::bounceBack(Entity* bounceAwayFrom) {
 }
 
 EntityType Entity::render(Renderer* renderer, uint8_t renderFrame) {
+    if (type == UNSET) {
+        return UNSET;
+    }
+
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
 
@@ -70,6 +74,10 @@ EntityType Entity::update(Entity* player, Arduboy2* arduboy, uint8_t frame) {
 }
 
 EntityType Entity::onCollide(Entity* other, Entity* player) {
+    if (type == UNSET) {
+        return UNSET;
+    }
+
     if (collideOtherEntityPtr != NULL) {
         return collideOtherEntityPtr(this, other, player);
     }

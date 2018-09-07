@@ -179,9 +179,7 @@ void GameScene::detectEntityCollisions(void) {
                 }
             } else {
                 EntityType newEntity = player.onCollide(&entities[ge], &player);
-                if (newEntity != UNSET) {
-                    spawnNewEntity(newEntity, player);
-                }
+                spawnNewEntity(newEntity, player);
             }
 
             entities[ge].onCollide(&player, &player);
@@ -195,15 +193,10 @@ void GameScene::detectEntityCollisions(void) {
             if (entities[ge].overlaps(&player.entities[pe])) {
                 EntityType newEntity = entities[ge].onCollide(&player.entities[pe], &player);
 
-                if (newEntity != UNSET) {
-                    spawnNewEntity(newEntity, entities[ge]);
-                }
+                spawnNewEntity(newEntity, entities[ge]);
 
                 newEntity = player.entities[pe].onCollide(&entities[ge], &player);
-
-                if (newEntity != UNSET) {
-                    spawnNewEntity(newEntity, player.entities[pe]);
-                }
+                spawnNewEntity(newEntity, player.entities[pe]);
             }
         }
     }
@@ -223,8 +216,7 @@ void GameScene::detectEntityCollisions(void) {
             (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
             (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
         ) {
-            if (TileRoom::isInDungeon() && (prevTileId == LeftFlavor || prevTileId == RightFlavor)) {
-            } else {
+            if (!TileRoom::isInDungeon() || prevTileId != LeftFlavor || prevTileId != RightFlavor) {
                 player.undoMove();
             }
         }
@@ -233,7 +225,13 @@ void GameScene::detectEntityCollisions(void) {
         // then prevent them walking on it
         const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
 
-        if (currentTileId == Water || currentTileId == Stone) {
+        if (
+            currentTileId == Water ||
+            currentTileId == Stone || 
+            (!TileRoom::isInDungeon() 
+                && (currentTileId == LeftFlavor || currentTileId == RightFlavor)
+            )
+        ) {
             player.undoMove();
         }
     }
@@ -267,6 +265,10 @@ void GameScene::goToNextRoom(int16_t x, int16_t y) {
 }
 
 void GameScene::spawnNewEntity(EntityType entityType, Entity& spawner) {
+    if (entityType == UNSET) {
+        return;
+    }
+
     uint8_t e = 0;
     for (; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == UNSET) {
@@ -442,24 +444,15 @@ void GameScene::updatePlay(uint8_t frame) {
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        if (entity.type != UNSET) {
-            EntityType newEntity = entity.update(&player, arduboy, frame);
-            if (newEntity != UNSET) {
-                loadEntity(player.entities[e], newEntity);
-            }
-        }
+        EntityType newEntity = entity.update(&player, arduboy, frame);
+        loadEntity(player.entities[e], newEntity);
     }
 
     for (e = 0; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        if (entity.type != UNSET) {
-            EntityType newEntity = entity.update(&player, arduboy, frame);
-
-            if (newEntity != UNSET) {
-                spawnNewEntity(newEntity, entity);
-            }
-        }
+        EntityType newEntity = entity.update(&player, arduboy, frame);
+        spawnNewEntity(newEntity, entity);
     }
 
     detectEntityCollisions();
@@ -482,17 +475,13 @@ void GameScene::renderPlay(uint8_t frame) {
     for(; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        if (entity.type != UNSET) {
-            entity.render(renderer, frame);
-        }
+        entity.render(renderer, frame);
     }
 
     for (e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        if (entity.type != UNSET) {
-            entity.render(renderer, frame);
-        }
+        entity.render(renderer, frame);
     }
 
     player.render(renderer, frame);
@@ -584,16 +573,14 @@ void GameScene::renderRoomTransition(uint8_t frame) {
     TileRoom::render(renderer, frame);
 
     // draw next room translated
-    int16_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
+    int8_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
     renderer->translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
     renderer->translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
     TileRoom::render(renderer, frame, nextRoomX, nextRoomY);
 
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
-        if (entities[ge].type != UNSET) {
-            entities[ge].render(renderer, frame);
-        }
+        entities[ge].render(renderer, frame);
     }
     
     // draw player and entities translated

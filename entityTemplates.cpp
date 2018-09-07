@@ -2,6 +2,10 @@
 #include "util.h"
 
 void loadEntity(Entity& entity, EntityType entityType) {
+    if (entityType == UNSET) {
+        return;
+    }
+
     entity.type = entityType;
     entity.currentFrame = 0;
 
