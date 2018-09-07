@@ -69,12 +69,8 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
         }
     }
 
-    if (renderPtr != NULL) {
-        renderPtr(this, renderer, renderFrame);
-    } else if (tiles) {
-        bool invert = TileRoom::isInDungeon();
-        renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
-    }
+    bool invert = TileRoom::isInDungeon();
+    renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
 
 #ifdef DRAW_HITBOXES
     renderer.drawRect(x, y, width, height, BLACK);

@@ -17,7 +17,7 @@
 #include "lock.h"
 
 const uint8_t NUM_ENTITY_PROPS = 3;
-const uint8_t NUM_ENTITY_POINTERS = 4;
+const uint8_t NUM_ENTITY_POINTERS = 3;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
@@ -115,24 +115,20 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 0, SWORD
     sword_plus_mask,    // tiles
     Sword::update,      // update
-    NULL,               // render
     NULL,               // onCollide
 
 
     // 1, BOOMERANG
     itemIcons_plus_mask,
     Boomerang::update,
-    NULL,
     Boomerang::onCollide,
 
     // 2, BOMB
     itemIcons_plus_mask,
     Bomb::update,
     NULL,
-    NULL,
 
     // 3, CANDLE
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -141,11 +137,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     key_plus_mask,
     NULL,
     NULL,
-    NULL,
 
     // 5, HEART
     heart_plus_mask,
-    NULL,
     NULL,
     NULL,
 
@@ -153,17 +147,14 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     chest_plus_mask,
     NULL,
     NULL,
-    NULL,
 
     // 7, BLOB
     blob_plus_mask,
     Blob::update,
-    NULL,
     Blob::onCollide,
 
     // 8, SPIKE
     spike_plus_mask,
-    NULL,
     NULL,
     NULL,
 
@@ -171,16 +162,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 10, BLOB_MOTHER
     blobMother_plus_mask,
     BlobMother::update,
-    NULL,
     Blob::onCollide,
 
     // 11, NEMESIS
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -189,16 +177,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
     NULL,
-    NULL,
 
     // 13, LOCK
     lock_plus_mask,
     NULL,
-    NULL,
     Lock::onCollide,
 
     // 14, PROJECTILE
-    NULL,
     NULL,
     NULL,
     NULL,
@@ -207,18 +192,15 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     explosion_plus_mask,
     Explosion::update,
     NULL,
-    NULL,
 
     // 16, DEATH
     NULL,
     Death::update,
     NULL,
-    NULL,
 
     // 17, SECRET_WALL
+    secretWall_plus_mask,
     NULL,
-    NULL,
-    SecretWall::render,
     SecretWall::onCollide,
 };
 

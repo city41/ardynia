@@ -29,11 +29,9 @@ class Entity {
 
     public:
         typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
-        typedef void (*EntityRenderPtr)(Entity* me, Renderer& renderer, uint8_t frame);
         typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity& other, Entity& player);
 
         EntityUpdatePtr updatePtr;
-        EntityRenderPtr renderPtr;
         EntityCollideOtherEntityPtr collideOtherEntityPtr;
 
         EntityType type;
@@ -57,7 +55,6 @@ class Entity {
 
         Entity():
             updatePtr(NULL),
-            renderPtr(NULL),
             collideOtherEntityPtr(NULL),
             type(UNSET),
             x(0),

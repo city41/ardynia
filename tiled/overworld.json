@@ -227,14 +227,14 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":5
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"SECRET_WALL",
                  "visible":true,
                  "width":0,
-                 "x":608.667,
-                 "y":321.333
+                 "x":48,
+                 "y":32
                 }, 
                 {
                  "height":0,

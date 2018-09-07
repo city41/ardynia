@@ -2,19 +2,15 @@
 #include "tileBitmaps.h"
 #include "tileRoom.h"
 #include "state.h"
-
-void SecretWall::render(Entity* me, Renderer& renderer, uint8_t frame) {
-    if (me->health == 1) {
-        renderer.drawOverwrite(me->x, me->y, overworld_tiles, Stone);
-    } else {
-        renderer.drawOverwrite(me->x, me->y, secretOpening_tiles, 0);
-    }
-}
+#include "util.h"
 
 EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
+    uint8_t w = me->width;
+    uint8_t h = me->height;
+
     if (other.type == EXPLOSION) {
         me->health = 0;
-        me->currentFrame = 11;
+        me->currentFrame = 1;
 
         const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
         State::setTriggered(roomIndex);

@@ -101,10 +101,10 @@
    </properties>
    <point/>
   </object>
-  <object id="138" name="Secret Wall" type="SECRET_WALL" x="608.667" y="321.333">
+  <object id="138" name="Secret Wall" type="SECRET_WALL" x="48" y="32">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
-    <property name="DEST_ROOM_Y" type="int" value="5"/>
+    <property name="DEST_ROOM_Y" type="int" value="4"/>
    </properties>
    <point/>
   </object>
