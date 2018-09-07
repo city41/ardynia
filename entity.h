@@ -100,8 +100,8 @@ class Entity {
         }
 
         inline void stayInside(uint8_t minX, uint8_t maxX, uint8_t minY, uint8_t maxY) {
-            x = clamp(x, minX, maxX);
-            y = clamp(y, minY, maxY);
+            x = Util::clamp(x, minX, maxX);
+            y = Util::clamp(y, minY, maxY);
         }
 
         inline bool isOffScreen() {

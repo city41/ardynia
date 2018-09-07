@@ -172,7 +172,7 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
     }
 
     if (other.damage && tookDamageCount == 0) {
-        health = clamp(health - other.damage, 0, State::gameState.totalHealth);
+        health = Util::clamp(health - other.damage, 0, State::gameState.totalHealth);
         bounceBack(other);
         Sfx::playerDamage();
 
@@ -187,19 +187,19 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
 
     if (other.type == KEY) {
         other.type = UNSET;
-        State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
+        State::gameState.numKeys = Util::clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
         Sfx::pickUpItem();
     }
 
     if (other.type == HEART) {
         other.type = UNSET;
-        health = clamp(health + 1, 0, State::gameState.totalHealth);
+        health = Util::clamp(health + 1, 0, State::gameState.totalHealth);
         Sfx::pickUpItem();
     }
 
     if (other.type == BOMB) {
         other.type = UNSET;
-        numBombs = clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
+        numBombs = Util::clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
         Sfx::pickUpItem();
     }
 
@@ -216,7 +216,7 @@ void Player::receiveItemFromChest(Entity& chest) {
         chest.currentFrame = 1;
 
         if (item == KEY) {
-            State::gameState.numKeys = clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
+            State::gameState.numKeys = Util::clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
         }
 
         if (item >= SWORD && item <= HEART) {

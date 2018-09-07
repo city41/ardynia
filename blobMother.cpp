@@ -35,14 +35,14 @@ EntityType BlobMother::update(Entity* me, Entity& player, Arduboy2& arduboy, uin
     me->moveTo(nx, ny);
 
     bool shouldUndo = false;
-    if (isOffScreen(20, ny)) {
+    if (Util::isOffScreen(20, ny)) {
         shouldUndo = true;
 
         // flip UP<->DOWN
         me->duration = 5 - me->duration;
     }
 
-    if (isOffScreen(nx, 20)) {
+    if (Util::isOffScreen(nx, 20)) {
         shouldUndo = true;
 
         // flip LEFT<->RIGHT

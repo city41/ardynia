@@ -202,7 +202,7 @@ void Game::detectEntityCollisions(void) {
 
     // now let's confirm the player has stayed on the screen
 
-    if (isOffScreen(player.x, player.y)) {
+    if (Util::isOffScreen(player.x, player.y)) {
         // if the player just went off the screen, did they legit go through a "passageway"?
         // if not, prevent them leaving the screen
         const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
@@ -359,11 +359,11 @@ void Game::updateTitle(uint8_t frame) {
 
     if (State::hasUserSaved()) {
         if (arduboy.justPressed(UP_BUTTON)) {
-            titleRow = clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
+            titleRow = Util::clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
         }
 
         if (arduboy.justPressed(DOWN_BUTTON)) {
-            titleRow = clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
+            titleRow = Util::clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
         }
     }
 }
@@ -434,7 +434,7 @@ void Game::updatePlay(uint8_t frame) {
 
     detectEntityCollisions();
 
-    if (isOffScreen(player.x, player.y)) {
+    if (Util::isOffScreen(player.x, player.y)) {
         goToNextRoom(player.x, player.y);
     }
 
