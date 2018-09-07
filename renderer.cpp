@@ -9,10 +9,6 @@ void Renderer::drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t colo
     arduboy->drawRect(x + translateX, y + translateY, w, h, color);
 }
 
-void Renderer::fillCircle(int16_t x, int16_t y, uint8_t r, uint8_t color = WHITE) {
-    arduboy->fillCircle(x + translateX, y + translateY, r, color);
-}
-
 void Renderer::drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false) {
     drawBitmap(x + translateX, y + translateY, bitmap, NULL, false, frame, mirror, invert);
 }
