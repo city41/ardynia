@@ -203,9 +203,7 @@ void GameScene::detectEntityCollisions(void) {
 
     // now let's confirm the player has stayed on the screen
 
-    if (playerLeftMap()) {
-        player.undoMove();
-    } else if (EntityCommon::isOffScreen(player.x, player.y)) {
+    if (EntityCommon::isOffScreen(player.x, player.y)) {
         // if the player just went off the screen, did they legit go through a "passageway"?
         // if not, prevent them leaving the screen
         const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
@@ -289,8 +287,8 @@ void GameScene::spawnNewEntity(EntityType entityType, Entity& spawner) {
 }
 
 void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
-    uint8_t** rowPtr = pgm_read_word(&(entityDefs[y]));
-    uint8_t* roomPtr = pgm_read_word(&(rowPtr[x]));
+    uint8_t** rowPtr = pgm_read_word(entityDefs + y);
+    uint8_t* roomPtr = pgm_read_word(rowPtr + x);
 
     mapWidthInRooms = pgm_read_byte(TileRoom::map + 2);
     mapHeightInRooms = pgm_read_byte(TileRoom::map + 3);
@@ -348,26 +346,6 @@ void GameScene::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     for (; i < MAX_ENTITIES; ++i) {
         entities[i].type = UNSET;
     }
-}
-
-boolean GameScene::playerLeftMap(void) {
-    if (TileRoom::x == 0 && player.x < 6) {
-        return true;
-    }
-
-    if (TileRoom::x == mapWidthInRooms - 1 && player.x + player.width > ROOM_WIDTH_PX - 6) {
-        return true;
-    }
-
-    if (TileRoom::y == 0 && player.y < 8) {
-        return true;
-    }
-
-    if (TileRoom::y == mapHeightInRooms - 1 && player.y + player.height > ROOM_HEIGHT_PX - 8) {
-        return true;
-    }
-
-    return false;
 }
 
 void GameScene::updateTitle(uint8_t frame) {
