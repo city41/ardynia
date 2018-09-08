@@ -46,7 +46,7 @@ const uint8_t PROGMEM overworld_room1_2[] = {
 
     // entity 1, SWITCH
     0x12,
-    4 << 4 | 6, // x/8 | y/4
+    4 << 4 | 5, // x/8 | y/4
 };
 
 

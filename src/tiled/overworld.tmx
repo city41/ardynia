@@ -73,7 +73,7 @@
   <object id="141" name="secret wall" type="SECRET_WALL" x="48" y="32">
    <point/>
   </object>
-  <object id="143" name="switch" type="SWITCH" x="145.667" y="151">
+  <object id="143" name="switch" type="SWITCH" x="146.334" y="147">
    <point/>
   </object>
   <object id="144" name="teleporter" type="TELEPORTER" x="48" y="32">
