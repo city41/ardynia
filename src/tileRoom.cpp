@@ -16,7 +16,6 @@ const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
 const uint8_t MAP_HEADER_SIZE = 4;
 
 const uint8_t* TileRoom::map = NULL;
-const uint8_t* TileRoom::tiles = NULL;
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
 uint8_t TileRoom::mapType = OVERWORLD;
@@ -38,18 +37,19 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
+void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
     if (tileId == 0 && ((roomIndex + 1) % seed == 0 || (roomIndex + 1) % seed == 2) && mapType == OVERWORLD) {
-        renderer.drawOverwrite(x, y, tiles, 10, uniqueSeed % 2);
+        renderer.drawOverwrite(x, y, dungeon_tiles, 10, uniqueSeed % 2);
         return;
     }
 
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    renderer.drawOverwrite(x, y, tiles, tile, mirror);
+    bool dontInvert = mapType == DUNGEON || (tileId >= 7 && tileId <= 9);
+    renderer.drawOverwrite(x, y, dungeon_tiles, tile, mirror, !dontInvert);
 }
 
 uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
@@ -175,7 +175,7 @@ void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roo
                 uint8_t tx = (curTileIndex + c) % TILES_PER_ROW;
                 uint8_t ty = (curTileIndex + c) / TILES_PER_ROW;
 
-                renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tiles, tileId, roomIndex, tx + ty + count, c);
+                renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tileId, roomIndex, tx + ty + count, c);
             }
 
             curTileIndex += count;
@@ -184,7 +184,7 @@ void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roo
             // render curTile at appropriate tx/ty
             uint8_t tx = curTileIndex % TILES_PER_ROW;
             uint8_t ty = curTileIndex / TILES_PER_ROW;
-            renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tiles, nibble, roomIndex, tx + ty, tx);
+            renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, nibble, roomIndex, tx + ty, tx);
 
             curNibbleIndex += 1;
             curTileIndex += 1;

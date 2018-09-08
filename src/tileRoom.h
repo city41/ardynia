@@ -34,12 +34,11 @@ const MapType DUNGEON = 1;
 
 class TileRoom {
     private:
-        static void renderTile(Renderer& renderer, uint8_t x, uint8_t y, const uint8_t* tiles, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed);
+        static void renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed);
 
     public:
         static MapType mapType;
         static const uint8_t* map;
-        static const uint8_t* tiles;
 
         static uint8_t x;
         static uint8_t y;

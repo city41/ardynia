@@ -24,7 +24,6 @@ void Game::loadSave(bool straightToPlay) {
     State::load();
 
     TileRoom::map = overworld_map;
-    TileRoom::tiles = overworld_tiles;
     TileRoom::x = START_ROOM_X;
     TileRoom::y = START_ROOM_Y;
     TileRoom::mapType = OVERWORLD;
@@ -98,7 +97,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
         entityDefs = entityDefs == dungeons_entities ? overworld_entities : dungeons_entities;
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
-        TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
 
         // TODO: get rid of this! this is here because for some crazy reason, sometimes
         // TileRoom::map == dungeons_map while in the dungeon is false. No idea why
@@ -226,12 +224,13 @@ void Game::detectEntityCollisions(void) {
         // then prevent them walking on it
         const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
 
+        // TODO: can we group these together so this can become a >=|<= check?
+        // or add a solid mask to the tile id
         if (
             currentTileId == Water ||
             currentTileId == Stone || 
-            (!TileRoom::isInDungeon() 
-                && (currentTileId == LeftFlavor || currentTileId == RightFlavor)
-            )
+            currentTileId == LeftFlavor ||
+            currentTileId == RightFlavor
         ) {
             player.undoMove();
         }
