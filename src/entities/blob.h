@@ -5,9 +5,11 @@
 #include "../entity.h"
 #include "../entityTypes.h"
 
+class Game;
+
 struct Blob {
     static EntityType update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
-    static EntityType onCollide(Entity* me, Entity& other, Entity& player);
+    static EntityType onCollide(Entity* me, Entity& other, Entity& player, Game& game);
 };
 
 #endif

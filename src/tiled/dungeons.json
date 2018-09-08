@@ -84,7 +84,7 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":944.666666666667,
+                 "x":944.667,
                  "y":373
                 }, 
                 {
@@ -96,8 +96,8 @@
                  "type":"BLOB_MOTHER",
                  "visible":true,
                  "width":0,
-                 "x":38.6666666666667,
-                 "y":145.333333333333
+                 "x":38.6667,
+                 "y":145.333
                 }, 
                 {
                  "height":0,
@@ -114,8 +114,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":39.3333333333333,
-                 "y":86.6666666666667
+                 "x":39.3333,
+                 "y":86.6667
                 }, 
                 {
                  "height":0,
@@ -132,8 +132,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":387.333333333333,
-                 "y":340.666666666667
+                 "x":387.333,
+                 "y":340.667
                 }, 
                 {
                  "height":0,
@@ -150,8 +150,8 @@
                  "type":"LOCK",
                  "visible":true,
                  "width":0,
-                 "x":49.3333333333333,
-                 "y":196.666666666667
+                 "x":49.3333,
+                 "y":196.667
                 }, 
                 {
                  "height":0,
@@ -168,7 +168,7 @@
                  "type":"LOCK",
                  "visible":true,
                  "width":0,
-                 "x":48.6666666666667,
+                 "x":48.6667,
                  "y":128
                 }, 
                 {
@@ -188,6 +188,42 @@
                  "width":0,
                  "x":526,
                  "y":200
+                }, 
+                {
+                 "height":0,
+                 "id":176,
+                 "name":"boss door",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"TRIGGER_DOOR",
+                 "visible":true,
+                 "width":0,
+                 "x":48.6666666666667,
+                 "y":185.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":177,
+                 "name":"boss door",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"TRIGGER_DOOR",
+                 "visible":true,
+                 "width":0,
+                 "x":48.6666666666667,
+                 "y":129.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -197,7 +233,7 @@
         }, 
         {
          "id":8,
-         "image":"dungeonOverlay.png",
+         "image":"..\/..\/tiled\/dungeonOverlay.png",
          "name":"Image Layer 1",
          "opacity":1,
          "type":"imagelayer",
@@ -877,7 +913,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":176,
+ "nextobjectid":178,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
@@ -885,7 +921,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"overworld.tsx"
+         "source":"..\/..\/tiled\/overworld.tsx"
         }],
  "tilewidth":16,
  "type":"map",

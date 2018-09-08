@@ -296,11 +296,14 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
     int8_t i = 0;
     bool roomIsTriggered = State::isTriggered(roomIndex);
+    isBossRoom = false;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
         uint8_t entityId = (rawEntityType >> 5) & ENTITY_ID_MASK;
+
+        isBossRoom = isBossRoom || type == BLOB_MOTHER;
 
         Entity& currentEntity = entities[i];
 
@@ -397,6 +400,11 @@ void Game::updatePlay(uint8_t frame) {
 
     if (arduboy.pressed(LEFT_BUTTON | RIGHT_BUTTON | DOWN_BUTTON)) {
         paused = true;
+        return;
+    }
+
+    if (bossDelayCount > 0) {
+        bossDelayCount -= 1;
         return;
     }
 
@@ -517,7 +525,9 @@ void Game::updateRoomTransition(uint8_t frame) {
             player.moveTo(player.x, 0, true);
         }
 
-        player.stayInside(4, ROOM_WIDTH_PX - 4, 4, ROOM_HEIGHT_PX - 4);
+        uint8_t offset = isBossRoom ? 17 : 4;
+        player.stayInside(offset, ROOM_WIDTH_PX - offset, offset, ROOM_HEIGHT_PX - offset);
+        bossDelayCount = isBossRoom ? 120 : 0;
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;

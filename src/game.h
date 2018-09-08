@@ -38,6 +38,8 @@ class Game {
 
         uint8_t nextRoomX;
         uint8_t nextRoomY;
+        bool isBossRoom;
+        uint8_t bossDelayCount;
         InGameMenu menu;
 
         uint8_t roomTransitionCount;
@@ -94,6 +96,8 @@ class Game {
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             nextRoomX(START_ROOM_X),
             nextRoomY(START_ROOM_Y),
+            isBossRoom(false),
+            bossDelayCount(0),
             menu(),
             roomTransitionCount(0),
             firstRoomTransitionFrame(false),

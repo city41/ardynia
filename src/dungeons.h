@@ -24,7 +24,7 @@ const uint8_t PROGMEM dungeons_room0_1[] = {
 
 
 const uint8_t PROGMEM dungeons_room0_2[] = {
-    2, // number of entities
+    4, // number of entities
 
     // entity 0, BLOB_MOTHER
     0xa,
@@ -32,6 +32,14 @@ const uint8_t PROGMEM dungeons_room0_2[] = {
 
     // entity 1, LOCK
     0xd,
+    6 << 4 | 0, // x/8 | y/4
+
+    // entity 2, TRIGGER_DOOR
+    0x11,
+    6 << 4 | 14, // x/8 | y/4
+
+    // entity 3, TRIGGER_DOOR
+    0x11,
     6 << 4 | 0, // x/8 | y/4
 };
 
