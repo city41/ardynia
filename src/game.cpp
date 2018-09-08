@@ -331,6 +331,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
             if (type == SECRET_WALL) {
                 // wall has already been blown up
                 if (roomIsTriggered) {
+                    currentEntity.currentFrame = 1;
                     currentEntity.health = 0;
                 }
             }

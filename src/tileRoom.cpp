@@ -48,7 +48,7 @@ void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tile
 
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    bool dontInvert = mapType == DUNGEON || (tileId >= 7 && tileId <= 9);
+    bool dontInvert = mapType == OVERWORLD || (tileId >= 7 && tileId <= 9);
     renderer.drawOverwrite(x, y, dungeon_tiles, tile, mirror, !dontInvert);
 }
 
