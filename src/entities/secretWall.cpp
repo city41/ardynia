@@ -1,8 +1,7 @@
 #include "secretWall.h"
-#include "tileBitmaps.h"
-#include "tileRoom.h"
-#include "state.h"
-#include "util.h"
+#include "../tileRoom.h"
+#include "../state.h"
+#include "../util.h"
 
 EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.type == EXPLOSION) {

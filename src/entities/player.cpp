@@ -1,10 +1,9 @@
 #include "player.h"
-#include "entityTemplates.h"
-#include "drawBitmap.h"
-#include "util.h"
-#include "tileRoom.h"
-#include "state.h"
-#include "sfx.h"
+#include "../entityTemplates.h"
+#include "../util.h"
+#include "../tileRoom.h"
+#include "../state.h"
+#include "../sfx.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 

@@ -2,8 +2,8 @@
 #define secretWall_h
 
 #include <Arduboy2.h>
-#include "entity.h"
-#include "entityTypes.h"
+#include "../entity.h"
+#include "../entityTypes.h"
 
 struct SecretWall {
     static EntityType onCollide(Entity* me, Entity& other, Entity& player);

@@ -4,7 +4,7 @@
 #include <Arduboy2.h>
 #include "renderer.h"
 #include "entityTypes.h"
-#include "player.h"
+#include "entities/player.h"
 
 typedef uint8_t Decision;
 

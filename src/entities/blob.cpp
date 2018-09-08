@@ -1,8 +1,6 @@
 #include "blob.h"
-#include "util.h"
-#include "drawBitmap.h"
-#include "player.h"
-#include "state.h"
+#include "../util.h"
+#include "../state.h"
 
 EntityType Blob::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.damage > 0 && me->tookDamageCount == 0) {

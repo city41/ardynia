@@ -6,15 +6,15 @@
 #include "entity.h"
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
-#include "blob.h"
-#include "sword.h"
-#include "boomerang.h"
-#include "bomb.h"
-#include "explosion.h"
-#include "death.h"
-#include "secretWall.h"
-#include "blobMother.h"
-#include "lock.h"
+
+#include "entities/blob.h"
+#include "entities/sword.h"
+#include "entities/boomerang.h"
+#include "entities/bomb.h"
+#include "entities/explosion.h"
+#include "entities/secretWall.h"
+#include "entities/blobMother.h"
+#include "entities/lock.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;

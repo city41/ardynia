@@ -1,7 +1,7 @@
 #include "lock.h"
-#include "state.h"
-#include "tileRoom.h"
-#include "sfx.h"
+#include "../state.h"
+#include "../tileRoom.h"
+#include "../sfx.h"
 
 EntityType Lock::onCollide(Entity* me, Entity* other, Entity* player) {
     if (other == player && State::gameState.numKeys > 0) {

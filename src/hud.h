@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include "renderer.h"
-#include "player.h"
+#include "entities/player.h"
 
 class Hud {
     public:

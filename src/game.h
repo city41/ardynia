@@ -8,7 +8,7 @@
 #include "tileRoom.h"
 #include "inGameMenu.h"
 #include "hud.h"
-#include "player.h"
+#include "entities/player.h"
 #include "entity.h"
 
 const uint8_t MAX_ENTITIES = 8;

@@ -2,8 +2,8 @@
 #define player_h
 
 #include <Arduino.h>
-#include "entity.h"
-#include "spriteBitmaps.h"
+#include "../entity.h"
+#include "../spriteBitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
 const uint8_t MAX_BOMB_COUNT = 9;
