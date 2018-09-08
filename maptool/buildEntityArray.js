@@ -136,6 +136,13 @@ function getRoomArrayData(
     for (let rx = 0; rx < mapWidthInRooms; ++rx) {
         for (let ry = 0; ry < mapHeightInRooms; ++ry) {
             const entities = (rooms[rx] || [])[ry] || [];
+
+            // skip empty rooms, instead they will all use
+            // the same empty_room array
+            if (entities.length === 0) {
+                continue;
+            }
+
             const entityData = entities.reduce((dataStr, e, ind) => {
                 let result = "";
                 if (dataStr) {
@@ -163,19 +170,25 @@ function getRoomArrayData(
 
     const teleporterArrayString = getTeleporterArrayData(name, teleporters);
 
-    return (
-        roomArrayStrings.join("\n\n") + teleporterArrayString + "\n\n" + "\n\n"
-    );
+    const roomArrayData =
+        roomArrayStrings.join("\n\n") + teleporterArrayString + "\n\n" + "\n\n";
+
+    return { roomArrayData, rooms };
 }
 
-function getRowArrayData(name, mapWidthInRooms, mapHeightInRooms) {
+function getRowArrayData(name, mapWidthInRooms, mapHeightInRooms, rooms) {
     const rowArrays = new Array(mapHeightInRooms)
         .fill(0, 0, mapHeightInRooms)
         .map((_, ry) => {
             const roomPointers = new Array(mapWidthInRooms)
                 .fill(0, 0, mapWidthInRooms)
                 .map((_, rx) => {
-                    return `${name}_room${rx}_${ry}`;
+                    const entities = (rooms[rx] || [])[ry] || [];
+                    if (entities.length === 0) {
+                        return "empty_room";
+                    } else {
+                        return `${name}_room${rx}_${ry}`;
+                    }
                 });
 
             let arrayStr = `const uint8_t * const PROGMEM ${name}_row${ry}[${
@@ -219,7 +232,7 @@ module.exports = function buildEntityArrays(
     const mapWidthInRooms = mapWidthInTiles / tilesPerRow;
     const mapHeightInRooms = mapHeightInTiles / tilesPerColumn;
 
-    const roomArrayData = getRoomArrayData(
+    const { roomArrayData, rooms } = getRoomArrayData(
         name,
         objectLayer,
         mapWidthInTiles,
@@ -231,7 +244,8 @@ module.exports = function buildEntityArrays(
     const rowArrayData = getRowArrayData(
         name,
         mapWidthInRooms,
-        mapHeightInRooms
+        mapHeightInRooms,
+        rooms
     );
 
     const mapArrayData = getMapArrayData(name, mapHeightInRooms);

@@ -1,6 +1,8 @@
 #ifndef overworld_h
 #define overworld_h
 
+#include "emptyRoom.h"
+
 
 const uint8_t PROGMEM overworld_map[538] = {
     // array length (16 bit, little endian), map width, map height (in rooms)
@@ -21,42 +23,12 @@ const uint8_t PROGMEM overworld_room0_0[] = {
 
 
 
-const uint8_t PROGMEM overworld_room0_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room0_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room0_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room0_4[] = {
-    0 // number of entities
-};
-
-
-
 const uint8_t PROGMEM overworld_room0_5[] = {
     1, // number of entities
 
     // entity 0, BLOB
     0x7,
     3 << 4 | 9, // x/8 | y/4
-};
-
-
-
-const uint8_t PROGMEM overworld_room0_6[] = {
-    0 // number of entities
 };
 
 
@@ -75,42 +47,12 @@ const uint8_t PROGMEM overworld_room0_7[] = {
 
 
 
-const uint8_t PROGMEM overworld_room1_0[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room1_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room1_2[] = {
-    0 // number of entities
-};
-
-
-
 const uint8_t PROGMEM overworld_room1_3[] = {
     1, // number of entities
 
     // entity 0, LOCK
     0xd,
     8 << 4 | 11, // x/8 | y/4
-};
-
-
-
-const uint8_t PROGMEM overworld_room1_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room1_5[] = {
-    0 // number of entities
 };
 
 
@@ -139,138 +81,12 @@ const uint8_t PROGMEM overworld_room1_7[] = {
 
 
 
-const uint8_t PROGMEM overworld_room2_0[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_1[] = {
-    0 // number of entities
-};
-
-
-
 const uint8_t PROGMEM overworld_room2_2[] = {
     1, // number of entities
 
     // entity 0, CHEST
     0x46,
     3 << 4 | 4, // x/8 | y/4
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_5[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_6[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room2_7[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_0[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_5[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_6[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room3_7[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_0[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room4_5[] = {
-    0 // number of entities
 };
 
 
@@ -295,102 +111,12 @@ const uint8_t PROGMEM overworld_room4_7[] = {
 
 
 
-const uint8_t PROGMEM overworld_room5_0[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_5[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_6[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room5_7[] = {
-    0 // number of entities
-};
-
-
-
 const uint8_t PROGMEM overworld_room6_0[] = {
     1, // number of entities
 
     // entity 0, TELEPORTER
     0xc,
     10 << 4 | 6, // x/8 | y/4
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_1[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_2[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_3[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_4[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_5[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_6[] = {
-    0 // number of entities
-};
-
-
-
-const uint8_t PROGMEM overworld_room6_7[] = {
-    0 // number of entities
 };
 
 const uint8_t PROGMEM overworld_teleporters[] = {
@@ -407,89 +133,89 @@ const uint8_t PROGMEM overworld_teleporters[] = {
 
 const uint8_t * const PROGMEM overworld_row0[7] = {
     overworld_room0_0,
-    overworld_room1_0,
-    overworld_room2_0,
-    overworld_room3_0,
-    overworld_room4_0,
-    overworld_room5_0,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
     overworld_room6_0
 };
 
 
 const uint8_t * const PROGMEM overworld_row1[7] = {
-    overworld_room0_1,
-    overworld_room1_1,
-    overworld_room2_1,
-    overworld_room3_1,
-    overworld_room4_1,
-    overworld_room5_1,
-    overworld_room6_1
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row2[7] = {
-    overworld_room0_2,
-    overworld_room1_2,
+    empty_room,
+    empty_room,
     overworld_room2_2,
-    overworld_room3_2,
-    overworld_room4_2,
-    overworld_room5_2,
-    overworld_room6_2
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row3[7] = {
-    overworld_room0_3,
+    empty_room,
     overworld_room1_3,
-    overworld_room2_3,
-    overworld_room3_3,
-    overworld_room4_3,
-    overworld_room5_3,
-    overworld_room6_3
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row4[7] = {
-    overworld_room0_4,
-    overworld_room1_4,
-    overworld_room2_4,
-    overworld_room3_4,
-    overworld_room4_4,
-    overworld_room5_4,
-    overworld_room6_4
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row5[7] = {
     overworld_room0_5,
-    overworld_room1_5,
-    overworld_room2_5,
-    overworld_room3_5,
-    overworld_room4_5,
-    overworld_room5_5,
-    overworld_room6_5
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row6[7] = {
-    overworld_room0_6,
+    empty_room,
     overworld_room1_6,
-    overworld_room2_6,
-    overworld_room3_6,
+    empty_room,
+    empty_room,
     overworld_room4_6,
-    overworld_room5_6,
-    overworld_room6_6
+    empty_room,
+    empty_room
 };
 
 
 const uint8_t * const PROGMEM overworld_row7[7] = {
     overworld_room0_7,
     overworld_room1_7,
-    overworld_room2_7,
-    overworld_room3_7,
+    empty_room,
+    empty_room,
     overworld_room4_7,
-    overworld_room5_7,
-    overworld_room6_7
+    empty_room,
+    empty_room
 };
 
 
