@@ -9,6 +9,9 @@ void loadEntity(Entity& entity, EntityType entityType) {
 
     entity.type = entityType;
     entity.currentFrame = 0;
+    entity.mirror = 0;
+    entity.tookDamageCount = 0;
+    entity.stunCount = 0;
 
     const uint8_t* start = entityProperties + (entityType * NUM_ENTITY_PROPS);
 

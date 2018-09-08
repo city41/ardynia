@@ -89,7 +89,7 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
     }
 
     if (otherType == SWITCH) {
-        other.currentFrame = 1;
+        other.mirror = MIRROR_HORIZONTAL;
         game.removeAllTriggerDoors();
     }
 
