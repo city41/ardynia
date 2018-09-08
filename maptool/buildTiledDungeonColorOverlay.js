@@ -14,7 +14,7 @@ const IMAGE_WIDTH_PX = WIDTH_IN_ROOMS * ROOM_WIDTH_PX;
 const IMAGE_HEIGHT_PX = HEIGHT_IN_ROOMS * ROOM_HEIGHT_PX;
 
 const DATA = [
-    [2, 2, 3, 3, 3, 3, 3, 3, 3, 0],
+    [0, 2, 3, 3, 3, 3, 3, 3, 3, 0],
     [1, 2, 2, 2, 2, 2, 3, 3, 3, 3],
     [1, 2, 1, 1, 1, 2, 3, 2, 3, 3],
     [1, 1, 1, 2, 1, 2, 2, 2, 3, 0],
