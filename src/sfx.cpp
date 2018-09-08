@@ -13,9 +13,9 @@ void Sfx::boomerang(void) {
     b2.tone(b2.freq(10), 18);
 }
 
-void Sfx::playerDamage(void) {
-    b1.tone(b1.freq(200), 8);
-    b2.tone(b2.freq(80), 10);
+void Sfx::playerDamage(uint8_t mult) {
+    b1.tone(b1.freq(200), 8 * mult);
+    b2.tone(b2.freq(80), 10 * mult);
 }
 
 void Sfx::successJingle(void) {

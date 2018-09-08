@@ -89,11 +89,7 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
 
     if (otherType == SWITCH) {
         other.currentFrame = 1;
-        for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
-            if (game.entities[ge].type == TRIGGER_DOOR) {
-                game.entities[ge].type = UNSET;
-            }
-        }
+        game.removeAllTriggerDoors();
     }
 
     // hit anything else? don't care, keep flying

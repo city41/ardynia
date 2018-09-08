@@ -11,12 +11,7 @@ EntityType Blob::onCollide(Entity* me, Entity& other, Entity& player, Game& game
             if (me->type == BLOB_MOTHER) {
                 State::gameState.beatenBossesBitMask |= 1;
                 State::saveToEEPROM();
-
-                for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
-                    if (game.entities[ge].type == TRIGGER_DOOR) {
-                        game.entities[ge].type = UNSET;
-                    }
-                }
+                game.removeAllTriggerDoors();
             } 
 
             me->type = UNSET;

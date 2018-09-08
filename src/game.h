@@ -89,6 +89,8 @@ class Game {
     public:
         Entity entities[MAX_ENTITIES];
 
+        void removeAllTriggerDoors(void);
+
         Game(Arduboy2& arduboy, Renderer& renderer):
             arduboy(arduboy),
             renderer(renderer),

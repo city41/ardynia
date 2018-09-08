@@ -5,6 +5,7 @@
 #include "map.h"
 #include "tileBitmaps.h"
 #include "strings.h"
+#include "sfx.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -297,13 +298,13 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     int8_t i = 0;
     bool roomIsTriggered = State::isTriggered(roomIndex);
     isBossRoom = false;
+    bool isDefeatedBossRoom = false;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
         uint8_t entityId = (rawEntityType >> 5) & ENTITY_ID_MASK;
 
-        isBossRoom = isBossRoom || type == BLOB_MOTHER;
 
         Entity& currentEntity = entities[i];
 
@@ -338,10 +339,15 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if (
-                (type == BLOB_MOTHER && State::gameState.beatenBossesBitMask & 1) ||
-                (type == LOCK && roomIsTriggered)
-            ) {
+        } else if (type == BLOB_MOTHER) {
+            isBossRoom = isBossRoom || type == BLOB_MOTHER;
+
+            if (State::gameState.beatenBossesBitMask & 1) {
+                currentEntity.type = UNSET;
+                isBossRoom = false;
+                isDefeatedBossRoom = true;
+            }
+        } else if (type == LOCK && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else {
             currentEntity.prevX = x;
@@ -351,6 +357,18 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
     for (; i < MAX_ENTITIES; ++i) {
         entities[i].type = UNSET;
+    }
+
+    if (isDefeatedBossRoom) {
+        removeAllTriggerDoors();
+    }
+}
+
+void Game::removeAllTriggerDoors() {
+    for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
+        if (entities[ge].type == TRIGGER_DOOR) {
+            entities[ge].type = UNSET;
+        }
     }
 }
 
@@ -525,9 +543,15 @@ void Game::updateRoomTransition(uint8_t frame) {
             player.moveTo(player.x, 0, true);
         }
 
-        uint8_t offset = isBossRoom ? 17 : 4;
+        uint8_t offset = 4;
+
+        if (isBossRoom) {
+            offset = 17;
+            bossDelayCount = 120;
+            Sfx::playerDamage(10);
+        }
+
         player.stayInside(offset, ROOM_WIDTH_PX - offset, offset, ROOM_HEIGHT_PX - offset);
-        bossDelayCount = isBossRoom ? 120 : 0;
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;

@@ -155,24 +155,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":174,
-                 "name":"lock",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"KEY"
-                        }],
-                 "rotation":0,
-                 "type":"LOCK",
-                 "visible":true,
-                 "width":0,
-                 "x":48.6667,
-                 "y":128
-                }, 
-                {
-                 "height":0,
                  "id":175,
                  "name":"boomerang",
                  "point":true,
