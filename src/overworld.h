@@ -48,11 +48,15 @@ const uint8_t PROGMEM overworld_room0_7[] = {
 
 
 const uint8_t PROGMEM overworld_room1_3[] = {
-    1, // number of entities
+    2, // number of entities
 
-    // entity 0, LOCK
-    0xd,
+    // entity 0, TRIGGER_DOOR
+    0x11,
     8 << 4 | 11, // x/8 | y/4
+
+    // entity 1, SWITCH
+    0x12,
+    3 << 4 | 4, // x/8 | y/4
 };
 
 

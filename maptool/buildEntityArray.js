@@ -19,7 +19,9 @@ const EntityTypes = {
     LOCK: 13,
     PROJECTILE: 14,
     EXPLOSION: 15,
-    SECRET_WALL: 16
+    SECRET_WALL: 16,
+    TRIGGER_DOOR: 17,
+    SWITCH: 18
 };
 
 function getRoomAt(mapX, mapY) {

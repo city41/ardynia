@@ -32,7 +32,6 @@ class Game {
 
         Player player;
 
-        Entity entities[MAX_ENTITIES];
 
         const uint8_t* const* const* entityDefs;
         const uint8_t* doorDefs;
@@ -86,6 +85,8 @@ class Game {
         void loadSave(bool straightToPlay = false);
 
     public:
+        Entity entities[MAX_ENTITIES];
+
         Game(Arduboy2& arduboy, Renderer& renderer):
             arduboy(arduboy),
             renderer(renderer),

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="176">
- <tileset firstgid="1" source="overworld.tsx"/>
+ <tileset firstgid="1" source="../../tiled/overworld.tsx"/>
  <layer id="9" name="Tile Layer 1" width="70" height="24">
   <data encoding="csv">
 2,14,14,14,14,14,14,14,14,14,14,14,14,12,2,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,12,2,14,14,14,14,14,12,
@@ -86,7 +86,7 @@
   </object>
  </objectgroup>
  <imagelayer id="8" name="Image Layer 1">
-  <image source="dungeonOverlay.png" width="1344" height="448"/>
+  <image source="../../tiled/dungeonOverlay.png" width="1344" height="448"/>
  </imagelayer>
  <objectgroup id="6" name="guidelines" locked="1">
   <object id="21" x="0" y="0" width="112" height="64"/>

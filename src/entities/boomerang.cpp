@@ -1,6 +1,7 @@
 #include "boomerang.h"
 #include "player.h"
 #include "../sfx.h"
+#include "../game.h"
 
 EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
     int16_t px = player.x;
@@ -77,13 +78,22 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
     EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
-    if ((otherType >= 4 && otherType <= 5) || otherType == BOMB) {
+    if ((otherType >= KEY && otherType <= HEART) || otherType == BOMB) {
         return player.onCollide(other, player, game);
     }
 
     // hit an enemy? then begin returning to the player
-    if (otherType >= 7 && otherType < 16) {
+    if (otherType >= BLOB && otherType <= NEMESIS) {
         me->duration = 0;
+    }
+
+    if (otherType == SWITCH) {
+        other.currentFrame = 1;
+        for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
+            if (game.entities[ge].type == TRIGGER_DOOR) {
+                game.entities[ge].type = UNSET;
+            }
+        }
     }
 
     // hit anything else? don't care, keep flying

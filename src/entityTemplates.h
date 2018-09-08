@@ -121,6 +121,18 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     1 << 4 | 0,
     0,
     false,
+
+    // 17, TRIGGER_DOOR
+    15 << 4 | 7,
+    1 << 4 | 0,
+    0,
+    false,
+
+    // 18, SWITCH
+    7 << 4 | 7,
+    0,
+    0,
+    false
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -209,6 +221,16 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
+
+    // 17, TRIGGER_DOOR
+    triggerDoor_tiles,
+    NULL,
+    NULL,
+
+    // 18, SWITCH
+    switch_tiles,
+    NULL,
+    NULL
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

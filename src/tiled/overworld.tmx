@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="143">
- <tileset firstgid="1" source="overworld.tsx"/>
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="144">
+ <tileset firstgid="1" source="../../tiled/overworld.tsx"/>
  <layer id="7" name="Tile Layer 1" width="49" height="32">
   <data encoding="csv">
 2,14,14,14,14,14,14,14,7,14,14,14,14,14,14,14,14,14,14,14,14,14,14,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
@@ -101,7 +101,7 @@
    </properties>
    <point/>
   </object>
-  <object id="140" name="Lock" type="LOCK" x="179" y="236">
+  <object id="140" name="trigger door" type="TRIGGER_DOOR" x="179" y="236">
    <point/>
   </object>
   <object id="141" name="secret wall" type="SECRET_WALL" x="48" y="32">
@@ -109,6 +109,9 @@
     <property name="DEST_ROOM_X" type="int" value="0"/>
     <property name="DEST_ROOM_Y" type="int" value="0"/>
    </properties>
+   <point/>
+  </object>
+  <object id="143" name="switch" type="SWITCH" x="135.667" y="209">
    <point/>
   </object>
  </objectgroup>

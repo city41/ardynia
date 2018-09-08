@@ -170,7 +170,7 @@ void Game::detectEntityCollisions(void) {
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
                 push(&Game::updateTeleportTransition, &Game::renderTeleportTransition);
-            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK) {
+            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK || entities[ge].type == TRIGGER_DOOR) {
                 if (entities[ge].health == 1) {
                     player.undoMove();
                 }

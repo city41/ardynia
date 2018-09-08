@@ -40,8 +40,10 @@ const EntityType EXPLOSION = 15;
 
 // misc
 const EntityType SECRET_WALL = 16;
+const EntityType TRIGGER_DOOR = 17;
+const EntityType SWITCH = 18;
 
-const uint8_t NUM_ENTITIES = SECRET_WALL + 1;
+const uint8_t NUM_ENTITIES = SWITCH + 1;
 
 // these are entities in a sense, but they don't fully participate
 // in the entity system
