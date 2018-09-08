@@ -306,8 +306,14 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
         loadEntity(currentEntity, type);
 
-        currentEntity.x = pgm_read_byte(roomPtr++);
-        currentEntity.y = pgm_read_byte(roomPtr++);
+        const uint8_t xy = pgm_read_byte(roomPtr++);
+
+        // to get x, multiply the x component by 8.
+        // turns out can do that by shifting it down once
+        currentEntity.x = (xy & 0xF0) >> 1;
+
+        // for y, multiply the y nibble by 4
+        currentEntity.y = (xy & 0x0F) << 2;
 
         if (type == TELEPORTER || type == SECRET_WALL) {
             // reuse prevX/Y for destX/Y for doors

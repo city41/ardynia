@@ -59,6 +59,22 @@ function getTeleporterArrayData(name, teleporters) {
     return dataStringForTeleporters + teleporterData + "\n};";
 }
 
+/**
+ * store an entity's location (x and y) in one byte. This only
+ * allows 16 values for x and 16 for y, so the stored values get unpacked as:
+ *
+ * actual x = packed x * 8; // [0, 120]
+ * actual y = packed y * 4; // [0, 60]
+ */
+function getXYInOneByte(rawX, rawY) {
+    packedX = Math.min(15, Math.round(rawX / 8));
+    packedY = Math.min(15, Math.round(rawY / 4));
+
+    // let C++ pack the bytes together, that way can look
+    // at the entity in the game's code and easily see its location
+    return `${packedX} << 4 | ${packedY}`;
+}
+
 function getRoomArrayData(
     name,
     objectLayer,
@@ -128,9 +144,7 @@ function getRoomArrayData(
                 result += `    // entity ${ind}, ${e.typeName}\n`;
                 result += `    ${getTypeInt(e)},\n`;
 
-                result += `    ${Math.floor(e.x)}, //x\n    ${Math.floor(e.y)}${
-                    ind < entities.length - 1 ? "," : " "
-                } //y\n`;
+                result += `    ${getXYInOneByte(e.x, e.y)}, // x/8 | y/4\n`;
 
                 return dataStr + result;
             }, "");

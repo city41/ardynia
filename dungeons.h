@@ -22,8 +22,7 @@ const uint8_t PROGMEM dungeons_room0_1[] = {
 
     // entity 0, CHEST
     0xa6,
-    39, //x
-    22  //y
+    5 << 4 | 6, // x/8 | y/4
 };
 
 
@@ -33,13 +32,11 @@ const uint8_t PROGMEM dungeons_room0_2[] = {
 
     // entity 0, BLOB_MOTHER
     0xa,
-    38, //x
-    17, //y
+    5 << 4 | 4, // x/8 | y/4
 
     // entity 1, LOCK
     0xd,
-    48, //x
-    0  //y
+    6 << 4 | 0, // x/8 | y/4
 };
 
 
@@ -49,8 +46,7 @@ const uint8_t PROGMEM dungeons_room0_3[] = {
 
     // entity 0, LOCK
     0xd,
-    49, //x
-    4  //y
+    6 << 4 | 1, // x/8 | y/4
 };
 
 
@@ -66,8 +62,7 @@ const uint8_t PROGMEM dungeons_room0_5[] = {
 
     // entity 0, TELEPORTER
     0xc,
-    50, //x
-    53  //y
+    6 << 4 | 13, // x/8 | y/4
 };
 
 
@@ -89,8 +84,7 @@ const uint8_t PROGMEM dungeons_room1_2[] = {
 
     // entity 0, TELEPORTER
     0x2c,
-    48, //x
-    54  //y
+    6 << 4 | 14, // x/8 | y/4
 };
 
 
@@ -184,8 +178,7 @@ const uint8_t PROGMEM dungeons_room3_5[] = {
 
     // entity 0, CHEST
     0x86,
-    51, //x
-    20  //y
+    6 << 4 | 5, // x/8 | y/4
 };
 
 
@@ -213,8 +206,7 @@ const uint8_t PROGMEM dungeons_room4_3[] = {
 
     // entity 0, CHEST
     0x26,
-    78, //x
-    8  //y
+    10 << 4 | 2, // x/8 | y/4
 };
 
 
@@ -374,8 +366,7 @@ const uint8_t PROGMEM dungeons_room8_5[] = {
 
     // entity 0, TELEPORTER
     0x4c,
-    48, //x
-    53  //y
+    6 << 4 | 13, // x/8 | y/4
 };
 
 

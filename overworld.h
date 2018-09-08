@@ -16,8 +16,7 @@ const uint8_t PROGMEM overworld_room0_0[] = {
 
     // entity 0, SECRET_WALL
     0x70,
-    48, //x
-    32  //y
+    6 << 4 | 8, // x/8 | y/4
 };
 
 
@@ -51,8 +50,7 @@ const uint8_t PROGMEM overworld_room0_5[] = {
 
     // entity 0, BLOB
     0x7,
-    20, //x
-    36  //y
+    3 << 4 | 9, // x/8 | y/4
 };
 
 
@@ -68,13 +66,11 @@ const uint8_t PROGMEM overworld_room0_7[] = {
 
     // entity 0, BLOB
     0x7,
-    22, //x
-    7, //y
+    3 << 4 | 2, // x/8 | y/4
 
     // entity 1, CHEST
     0x26,
-    22, //x
-    34  //y
+    3 << 4 | 9, // x/8 | y/4
 };
 
 
@@ -102,8 +98,7 @@ const uint8_t PROGMEM overworld_room1_3[] = {
 
     // entity 0, LOCK
     0xd,
-    67, //x
-    44  //y
+    8 << 4 | 11, // x/8 | y/4
 };
 
 
@@ -125,13 +120,11 @@ const uint8_t PROGMEM overworld_room1_6[] = {
 
     // entity 0, BLOB
     0x7,
-    23, //x
-    35, //y
+    3 << 4 | 9, // x/8 | y/4
 
     // entity 1, BLOB
     0x7,
-    40, //x
-    46  //y
+    5 << 4 | 12, // x/8 | y/4
 };
 
 
@@ -141,8 +134,7 @@ const uint8_t PROGMEM overworld_room1_7[] = {
 
     // entity 0, CHEST
     0x86,
-    74, //x
-    20  //y
+    9 << 4 | 5, // x/8 | y/4
 };
 
 
@@ -164,8 +156,7 @@ const uint8_t PROGMEM overworld_room2_2[] = {
 
     // entity 0, CHEST
     0x46,
-    24, //x
-    17  //y
+    3 << 4 | 4, // x/8 | y/4
 };
 
 
@@ -289,8 +280,7 @@ const uint8_t PROGMEM overworld_room4_6[] = {
 
     // entity 0, TELEPORTER
     0x2c,
-    31, //x
-    5  //y
+    4 << 4 | 1, // x/8 | y/4
 };
 
 
@@ -300,8 +290,7 @@ const uint8_t PROGMEM overworld_room4_7[] = {
 
     // entity 0, TELEPORTER
     0x4c,
-    63, //x
-    7  //y
+    8 << 4 | 2, // x/8 | y/4
 };
 
 
@@ -359,8 +348,7 @@ const uint8_t PROGMEM overworld_room6_0[] = {
 
     // entity 0, TELEPORTER
     0xc,
-    77, //x
-    23  //y
+    10 << 4 | 6, // x/8 | y/4
 };
 
 
