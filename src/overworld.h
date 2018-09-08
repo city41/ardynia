@@ -14,10 +14,14 @@ const uint8_t PROGMEM overworld_map[538] = {
 };
 
 const uint8_t PROGMEM overworld_room0_0[] = {
-    1, // number of entities
+    2, // number of entities
 
     // entity 0, SECRET_WALL
-    0x70,
+    0x10,
+    6 << 4 | 8, // x/8 | y/4
+
+    // entity 1, TELEPORTER
+    0x6c,
     6 << 4 | 8, // x/8 | y/4
 };
 

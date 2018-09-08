@@ -36,7 +36,7 @@ function getRoomAt(mapX, mapY) {
     };
 }
 
-// for TELEPORTER and SECRET_WALL, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
+// for TELEPORTER, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
 // for CHEST, dig in and find out what the chest contains
 function getPropertyValue(props, propName) {
     return props && props.find(p => p.name === propName).value;
@@ -93,7 +93,7 @@ function getRoomArrayData(
     // teleporters: an index into the teleporters array to find out where to teleport to
     // chest: an entity type id that indicates what is in the chest (must be [0,8))
     function getEncodedId(obj) {
-        if (obj.type === "TELEPORTER" || obj.type === "SECRET_WALL") {
+        if (obj.type === "TELEPORTER") {
             return teleporters.length;
         }
 
@@ -124,7 +124,7 @@ function getRoomArrayData(
             encodedId: getEncodedId(obj)
         });
 
-        if (obj.type === "TELEPORTER" || obj.type === "SECRET_WALL") {
+        if (obj.type === "TELEPORTER") {
             teleporters.push({
                 id: teleporters.length,
                 destX: getPropertyValue(obj.properties, "DEST_ROOM_X"),
