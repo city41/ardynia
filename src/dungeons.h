@@ -71,6 +71,24 @@ const uint8_t PROGMEM dungeons_room1_2[] = {
 
 
 
+const uint8_t PROGMEM dungeons_room1_5[] = {
+    3, // number of entities
+
+    // entity 0, BAT
+    0x9,
+    7 << 4 | 14, // x/8 | y/4
+
+    // entity 1, BAT
+    0x9,
+    9 << 4 | 14, // x/8 | y/4
+
+    // entity 2, BAT
+    0x9,
+    7 << 4 | 9, // x/8 | y/4
+};
+
+
+
 const uint8_t PROGMEM dungeons_room3_5[] = {
     1, // number of entities
 
@@ -182,7 +200,7 @@ const uint8_t * const PROGMEM dungeons_row4[10] = {
 
 const uint8_t * const PROGMEM dungeons_row5[10] = {
     dungeons_room0_5,
-    empty_room,
+    dungeons_room1_5,
     empty_room,
     dungeons_room3_5,
     empty_room,

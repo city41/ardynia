@@ -206,6 +206,42 @@
                  "width":0,
                  "x":48.6666666666667,
                  "y":129.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":178,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":166.333333333333,
+                 "y":377.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":179,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":181.666666666667,
+                 "y":374
+                }, 
+                {
+                 "height":0,
+                 "id":180,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":164.333333333333,
+                 "y":355.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -895,7 +931,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":178,
+ "nextobjectid":181,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

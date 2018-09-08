@@ -12,7 +12,7 @@ const EntityTypes = {
     CHEST: 6,
     BLOB: 7,
     SPIKE: 8,
-    ENEMY3: 9,
+    BAT: 9,
     BLOB_MOTHER: 10,
     NEMESIS: 11,
     TELEPORTER: 12,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="178">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="181">
  <tileset firstgid="1" source="../../tiled/overworld.tsx"/>
  <layer id="9" name="Tile Layer 1" width="70" height="24">
   <data encoding="csv">
@@ -88,6 +88,15 @@
    <properties>
     <property name="CONTAINED_TYPE" value="KEY"/>
    </properties>
+   <point/>
+  </object>
+  <object id="178" name="bat" type="BAT" x="166.333" y="377.333">
+   <point/>
+  </object>
+  <object id="179" name="bat" type="BAT" x="181.667" y="374">
+   <point/>
+  </object>
+  <object id="180" name="bat" type="BAT" x="164.333" y="355.667">
    <point/>
   </object>
  </objectgroup>

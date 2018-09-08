@@ -2,6 +2,7 @@
 #include "player.h"
 #include "../sfx.h"
 #include "../game.h"
+#include "../util.h"
 
 EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
     int16_t px = player.x;

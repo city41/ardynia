@@ -23,7 +23,7 @@ const EntityType CHEST = 6;
 // enemies, to be named
 const EntityType BLOB = 7;
 const EntityType SPIKE = 8;
-const EntityType ENEMY3 = 9;
+const EntityType BAT = 9;
 
 // bosses
 const EntityType BLOB_MOTHER = 10;

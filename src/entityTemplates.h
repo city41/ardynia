@@ -8,6 +8,7 @@
 #include "tileBitmaps.h"
 
 #include "entities/blob.h"
+#include "entities/bat.h"
 #include "entities/sword.h"
 #include "entities/boomerang.h"
 #include "entities/bomb.h"
@@ -74,9 +75,9 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 9, ENEMY3
-    0,
-    0,
+    // 9, BAT
+    7 << 4 | 7,
+    1 << 4 | 1, // health | damage
     0,
     true,
 
@@ -182,10 +183,10 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 9, ENEMY3
-    NULL,
-    NULL,
-    NULL,
+    // 9, BAT
+    bat_plus_mask,
+    (void*)Bat::update,
+    (void*)Bat::onCollide,
 
     // 10, BLOB_MOTHER
     blobMother_plus_mask,
