@@ -18,8 +18,7 @@ Sprites sprites;
 
 void setup() {
     arduboy.boot();
-    //TODO: honor EEPROM settings
-    Arduboy2Audio::on();
+    Arduboy2Audio::begin();
     arduboy.setFrameRate(60);
     Sfx::init();
 

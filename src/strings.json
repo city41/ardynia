@@ -3,6 +3,8 @@
         { "key": "newGame", "value": "NEW GAME" },
         { "key": "continue", "value": "CONTINUE" },
         { "key": "deleteSave", "value": "DELETE SAVE" },
+        { "key": "sfxOn", "value": "SFX ARE ON" },
+        { "key": "sfxOff", "value": "SFX ARE OFF" },
         { "key": "gameOver", "value": "GAME OVER" },
         { "key": "continueFromGameOver", "value": "A: CONTINUE" },
         { "key": "quitFromGameOver", "value": "B: QUIT" },

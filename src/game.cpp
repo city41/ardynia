@@ -11,13 +11,13 @@ const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 
-const uint8_t MAX_TITLE_LABELS = 2;
 const int8_t newGameLabel[] PROGMEM = "NEW GAME";
 const int8_t continueLabel[] PROGMEM = "CONTINUE";
 const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
 
 const uint8_t PLAY_GAME = 0;
-const uint8_t DELETE_SAVE = 1;
+const uint8_t SFX_ON_OFF = 1;
+const uint8_t DELETE_SAVE = 2;
 
 void Game::loadSave(bool straightToPlay) {
     State::load();
@@ -379,17 +379,20 @@ void Game::updateTitle(uint8_t frame) {
         } else if (titleRow == DELETE_SAVE) {
             titleRow = 0;
             State::clearEEPROM();
+        } else if (titleRow == SFX_ON_OFF) {
+            Arduboy2Audio::toggle();
+            Arduboy2Audio::saveOnOff();
         }
     }
 
-    if (State::hasUserSaved()) {
-        if (arduboy.justPressed(UP_BUTTON)) {
-            titleRow = Util::clamp(titleRow - 1, 0, MAX_TITLE_LABELS - 1);
-        }
+    uint8_t rows = State::hasUserSaved() ? 3 : 2;
 
-        if (arduboy.justPressed(DOWN_BUTTON)) {
-            titleRow = Util::clamp(titleRow + 1, 0, MAX_TITLE_LABELS - 1);
-        }
+    if (arduboy.justPressed(UP_BUTTON)) {
+        titleRow = Util::clamp(titleRow - 1, 0, rows);
+    }
+
+    if (arduboy.justPressed(DOWN_BUTTON)) {
+        titleRow = Util::clamp(titleRow + 1, 0, rows);
     }
 }
 
@@ -398,13 +401,14 @@ void Game::renderTitle(uint8_t frame) {
 
     const uint8_t* startGameLabel = State::hasUserSaved() ? continue_string : newGame_string;
 
-    renderer.drawString(42, 46, startGameLabel);
+    renderer.drawString(42, 42, startGameLabel);
+    renderer.drawString(42, 50, Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string);
 
     if (State::hasUserSaved()) {
-        renderer.drawString(42, 54, deleteSave_string);
+        renderer.drawString(42, 58, deleteSave_string);
     }
 
-    renderer.drawRect(34, 46 + titleRow * 8, 4, 4, WHITE);
+    renderer.drawRect(34, 42 + titleRow * 8, 4, 4, WHITE);
 }
 
 void Game::updatePlay(uint8_t frame) {
