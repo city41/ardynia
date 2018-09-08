@@ -42,14 +42,14 @@ void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tile
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
     if (tileId == 0 && ((roomIndex + 1) % seed == 0 || (roomIndex + 1) % seed == 2) && mapType == OVERWORLD) {
-        renderer.drawOverwrite(x, y, dungeon_tiles, 10, uniqueSeed % 2);
+        renderer.drawOverwrite(x, y, map_tiles, 10, uniqueSeed % 2);
         return;
     }
 
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = mapType == OVERWORLD || (tileId >= 7 && tileId <= 9);
-    renderer.drawOverwrite(x, y, dungeon_tiles, tile, mirror, !dontInvert);
+    renderer.drawOverwrite(x, y, map_tiles, tile, mirror, !dontInvert);
 }
 
 uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
