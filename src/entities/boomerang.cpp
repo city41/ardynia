@@ -73,12 +73,12 @@ EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2& arduboy, uint
     return UNSET;
 }
 
-EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player) {
+EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
     EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
     if ((otherType >= 4 && otherType <= 5) || otherType == BOMB) {
-        return player.onCollide(other, player);
+        return player.onCollide(other, player, game);
     }
 
     // hit an enemy? then begin returning to the player

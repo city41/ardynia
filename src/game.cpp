@@ -175,11 +175,11 @@ void Game::detectEntityCollisions(void) {
                     player.undoMove();
                 }
             } else {
-                EntityType newEntity = player.onCollide(entities[ge], player);
+                EntityType newEntity = player.onCollide(entities[ge], player, *this);
                 spawnNewEntity(newEntity, player);
             }
 
-            entities[ge].onCollide(player, player);
+            entities[ge].onCollide(player, player, *this);
         }
 
         for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
@@ -188,11 +188,11 @@ void Game::detectEntityCollisions(void) {
             }
 
             if (entities[ge].overlaps(player.entities[pe])) {
-                EntityType newEntity = entities[ge].onCollide(player.entities[pe], player);
+                EntityType newEntity = entities[ge].onCollide(player.entities[pe], player, *this);
 
                 spawnNewEntity(newEntity, entities[ge]);
 
-                newEntity = player.entities[pe].onCollide(entities[ge], player);
+                newEntity = player.entities[pe].onCollide(entities[ge], player, *this);
                 spawnNewEntity(newEntity, player.entities[pe]);
             }
         }

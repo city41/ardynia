@@ -161,7 +161,7 @@ EntityType Player::update(Entity& player, Arduboy2& arduboy, byte frame) {
     return UNSET;
 }
 
-EntityType Player::onCollide(Entity& other, Entity& player) {
+EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     if (other.type == CHEST) {
         undoMove();
         receiveItemFromChest(other);

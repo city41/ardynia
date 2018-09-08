@@ -102,13 +102,13 @@ EntityType Entity::update(Entity& player, Arduboy2& arduboy, uint8_t frame) {
     return UNSET;
 }
 
-EntityType Entity::onCollide(Entity& other, Entity& player) {
+EntityType Entity::onCollide(Entity& other, Entity& player, Game& game) {
     if (type == UNSET) {
         return UNSET;
     }
 
     if (collideOtherEntityPtr != NULL) {
-        EntityType result = collideOtherEntityPtr(this, other, player);
+        EntityType result = collideOtherEntityPtr(this, other, player, game);
 
         if (result == ITEM_DROP) {
             uint8_t diceRoll = random(0, 3);

@@ -8,6 +8,8 @@
 const uint8_t MAX_PLAYER_ENTITIES = 2;
 const uint8_t MAX_BOMB_COUNT = 9;
 
+class Game;
+
 class Player: public Entity {
     private:
 
@@ -42,7 +44,7 @@ class Player: public Entity {
 
         virtual void render(Renderer& renderer, uint8_t frame) override;
         virtual EntityType update(Entity& player, Arduboy2& arduboy, uint8_t frame) override;
-        virtual EntityType onCollide(Entity& other, Entity& player) override;
+        virtual EntityType onCollide(Entity& other, Entity& player, Game& game) override;
 };
 
 #endif
