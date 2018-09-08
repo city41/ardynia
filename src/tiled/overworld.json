@@ -156,8 +156,8 @@
                  "type":"BLOB",
                  "visible":true,
                  "width":0,
-                 "x":20,
-                 "y":356
+                 "x":27,
+                 "y":283
                 }, 
                 {
                  "height":0,
@@ -246,7 +246,7 @@
                  "type":"SWITCH",
                  "visible":true,
                  "width":0,
-                 "x":135.666666666667,
+                 "x":135.667,
                  "y":209
                 }, 
                 {
@@ -906,7 +906,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":145,
+ "nextobjectid":146,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
@@ -914,7 +914,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/tiled\/overworld.tsx"
+         "source":"overworld.tsx"
         }],
  "tilewidth":16,
  "type":"map",

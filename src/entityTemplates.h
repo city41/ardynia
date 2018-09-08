@@ -16,6 +16,7 @@
 #include "entities/secretWall.h"
 #include "entities/blobMother.h"
 #include "entities/lock.h"
+#include "entities/nemesis.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
@@ -88,9 +89,9 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 11, NEMESIS
-    0,
-    0,
-    0,
+    7 << 4 | 7,
+    15 << 4 | 0,
+    30,
     true,
 
     // 12, TELEPORTER
@@ -194,9 +195,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Blob::onCollide,
 
     // 11, NEMESIS
-    NULL,
-    NULL,
-    NULL,
+    player_plus_mask,
+    (void*)Nemesis::update,
+    (void*)Nemesis::onCollide,
 
     // 12, TELEPORTER
     NULL,

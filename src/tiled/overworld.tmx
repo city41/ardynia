@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="145">
- <tileset firstgid="1" source="../../tiled/overworld.tsx"/>
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="146">
+ <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="7" name="Tile Layer 1" width="49" height="32">
   <data encoding="csv">
 2,14,14,14,14,14,14,14,7,14,14,14,14,14,14,14,14,14,14,14,14,14,14,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
@@ -77,7 +77,7 @@
    </properties>
    <point/>
   </object>
-  <object id="133" name="blob" type="BLOB" x="20" y="356">
+  <object id="133" name="blob" type="BLOB" x="27" y="283">
    <properties>
     <property name="CONTAINED_TYPE" value="  "/>
    </properties>

@@ -73,8 +73,6 @@ void Player::render(Renderer& renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        /* renderer.fillRect(x - 4, y - 26, 16, 16, WHITE); */
-        /* renderer.drawRect(x - 5, y - 27, 18, 18, BLACK); */
         renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move

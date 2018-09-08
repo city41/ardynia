@@ -186,8 +186,8 @@
                  "type":"TRIGGER_DOOR",
                  "visible":true,
                  "width":0,
-                 "x":48.6666666666667,
-                 "y":185.666666666667
+                 "x":48.6667,
+                 "y":185.667
                 }, 
                 {
                  "height":0,
@@ -204,8 +204,8 @@
                  "type":"TRIGGER_DOOR",
                  "visible":true,
                  "width":0,
-                 "x":48.6666666666667,
-                 "y":129.333333333333
+                 "x":48.6667,
+                 "y":129.333
                 }, 
                 {
                  "height":0,
@@ -216,8 +216,8 @@
                  "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":166.333333333333,
-                 "y":377.333333333333
+                 "x":166.333,
+                 "y":377.333
                 }, 
                 {
                  "height":0,
@@ -228,7 +228,7 @@
                  "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":181.666666666667,
+                 "x":181.667,
                  "y":374
                 }, 
                 {
@@ -240,8 +240,20 @@
                  "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":164.333333333333,
-                 "y":355.666666666667
+                 "x":164.333,
+                 "y":355.667
+                }, 
+                {
+                 "height":0,
+                 "id":181,
+                 "name":"nemesis",
+                 "point":true,
+                 "rotation":0,
+                 "type":"NEMESIS",
+                 "visible":true,
+                 "width":0,
+                 "x":273,
+                 "y":282
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -931,7 +943,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":181,
+ "nextobjectid":182,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
@@ -939,7 +951,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/tiled\/overworld.tsx"
+         "source":"overworld.tsx"
         }],
  "tilewidth":16,
  "type":"map",

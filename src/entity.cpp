@@ -79,7 +79,10 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
     bool invert = TileRoom::isInDungeon();
 
     if (needsMask) {
-        renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
+        bool isNemesis = type == NEMESIS;
+        int16_t offsetX = isNemesis ? -4 : 0;
+        int16_t offsetY = isNemesis ? -8 : 0;
+        renderer.drawPlusMask(x + offsetX, y + offsetY, tiles, currentFrame, mirror, invert);
     } else {
         renderer.drawOverwrite(x, y, tiles, currentFrame, mirror, invert);
     }
@@ -90,6 +93,10 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
 }
 
 EntityType Entity::update(Entity& player, Arduboy2& arduboy, uint8_t frame) {
+    if (type == UNSET) {
+        return;
+    }
+
     if (stunCount > 0) {
         stunCount -= 1;
         return UNSET;

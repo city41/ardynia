@@ -48,8 +48,6 @@ void loop() {
     Sfx::update();
     game.update(loopCounter);
     game.render(loopCounter);
-    /* sprites.drawOverwrite(20, 20, secretWall_tiles, 0); */
-    /* renderer.drawOverwrite(20, 20, secretWall_tiles, 0); */
     arduboy.display();
 }
 

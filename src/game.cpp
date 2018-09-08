@@ -6,6 +6,7 @@
 #include "tileBitmaps.h"
 #include "strings.h"
 #include "sfx.h"
+#include "entities/nemesis.h"
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -199,6 +200,10 @@ void Game::detectEntityCollisions(void) {
         }
     }
 
+    if (Nemesis::sword.type == SWORD && Nemesis::sword.overlaps(player)) {
+        player.onCollide(Nemesis::sword, player, *this);
+    }
+
     // now let's confirm the player has stayed on the screen
 
     if (Util::isOffScreen(player.x, player.y)) {
@@ -359,6 +364,8 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
         entities[i].type = UNSET;
     }
 
+    Nemesis::sword.type = UNSET;
+
     if (isDefeatedBossRoom) {
         removeAllTriggerDoors();
     }
@@ -496,6 +503,8 @@ void Game::renderPlay(uint8_t frame) {
     }
 
     player.render(renderer, frame);
+
+    Nemesis::sword.render(renderer, frame);
 
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
