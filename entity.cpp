@@ -2,6 +2,7 @@
 #include "util.h"
 #include "tileRoom.h"
 #include "spriteBitmaps.h"
+#include "tileBitmaps.h"
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
@@ -76,7 +77,12 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
     }
 
     bool invert = TileRoom::isInDungeon();
-    renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
+
+    if (needsMask) {
+        renderer.drawPlusMask(x, y, tiles, currentFrame, mirror, invert);
+    } else {
+        renderer.drawOverwrite(x, y, tiles, currentFrame, mirror, invert);
+    }
 
 #ifdef DRAW_HITBOXES
     renderer.drawRect(x, y, width, height, BLACK);

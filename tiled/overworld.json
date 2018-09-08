@@ -215,8 +215,20 @@
                 }, 
                 {
                  "height":0,
-                 "id":138,
-                 "name":"Secret Wall",
+                 "id":140,
+                 "name":"Lock",
+                 "point":true,
+                 "rotation":0,
+                 "type":"LOCK",
+                 "visible":true,
+                 "width":0,
+                 "x":179,
+                 "y":236
+                }, 
+                {
+                 "height":0,
+                 "id":141,
+                 "name":"secret wall",
                  "point":true,
                  "properties":[
                         {
@@ -227,7 +239,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":4
+                         "value":0
                         }],
                  "rotation":0,
                  "type":"SECRET_WALL",
@@ -235,18 +247,6 @@
                  "width":0,
                  "x":48,
                  "y":32
-                }, 
-                {
-                 "height":0,
-                 "id":140,
-                 "name":"Lock",
-                 "point":true,
-                 "rotation":0,
-                 "type":"LOCK",
-                 "visible":true,
-                 "width":0,
-                 "x":179,
-                 "y":236
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -882,7 +882,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":141,
+ "nextobjectid":143,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

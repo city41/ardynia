@@ -36,7 +36,6 @@ class Game {
 
         const uint8_t*** entityDefs;
         const uint8_t* doorDefs;
-        const uint8_t* bumperDefs;
 
         uint8_t nextRoomX;
         uint8_t nextRoomY;

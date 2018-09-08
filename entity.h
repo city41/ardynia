@@ -50,6 +50,7 @@ class Entity {
         MirrorMode mirror;
         uint8_t tookDamageCount;
         uint8_t stunCount;
+        bool needsMask;
 
         void moveTowardsOtherEntity(Entity& otherEntity, uint8_t amount);
 
@@ -71,7 +72,8 @@ class Entity {
             currentFrame(0),
             mirror(0),
             tookDamageCount(0),
-            stunCount(0)
+            stunCount(0),
+            needsMask(true)
         {}
 
         /**

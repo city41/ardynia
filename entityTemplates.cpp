@@ -1,5 +1,6 @@
 #include "entityTemplates.h"
 #include "util.h"
+#include "tileBitmaps.h"
 
 void loadEntity(Entity& entity, EntityType entityType) {
     if (entityType == UNSET) {
@@ -14,6 +15,7 @@ void loadEntity(Entity& entity, EntityType entityType) {
     const uint8_t widthAndHeight = (uint8_t)pgm_read_byte(start++);
     const uint8_t healthAndDamage = (uint8_t)pgm_read_byte(start++);
     entity.duration = pgm_read_byte(start++);
+    entity.needsMask = pgm_read_byte(start++);
 
     entity.width = (widthAndHeight >> 4) + 1;
     entity.height = (widthAndHeight & 0xF) + 1;

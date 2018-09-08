@@ -5,9 +5,6 @@
 #include "util.h"
 
 EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
-    uint8_t w = me->width;
-    uint8_t h = me->height;
-
     if (other.type == EXPLOSION) {
         me->health = 0;
         me->currentFrame = 1;

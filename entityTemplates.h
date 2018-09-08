@@ -16,7 +16,7 @@
 #include "blobMother.h"
 #include "lock.h"
 
-const uint8_t NUM_ENTITY_PROPS = 3;
+const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
@@ -24,86 +24,103 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     15 << 4 | 15,   // width - 1 | height - 1
     0 << 4 | 1,     // health | damage
     20,             // duration
+    true,           // needsMask
 
     // 1, BOOMERANG
     15 << 4 | 15,
     0 << 4 | 0,
     20,
+    true,
 
     // 2, BOMB
     10 << 4 | 15,
     0 << 4 | 0,
     150,
+    true,
 
     // 3, CANDLE
     0,
     0 << 4 | 0,
     0,
+    true,
 
     // 4, KEY
     7 << 4 | 7,
     0 << 4 | 0,
     0,
+    true,
 
     // 5, HEART
     7 << 4 | 7,
     0 << 4 | 0,
     180,
+    true,
 
     // 6, CHEST
     15 << 4 | 15,
     0 << 4 | 0,
     0,
+    false,
 
     // 7, BLOB
     7 << 4 | 7, // width - 1 | height - 1
     2 << 4 | 1, // health | damage
     0,          // duration
+    true,       // needsMask
 
     // 8, SPIKE
     7 << 4 | 7,
     0 << 4 | 0,
     0,
+    false,
 
     // 9, ENEMY3
     0,
     0,
     0,
+    true,
 
     // 10, BLOB_MOTHER
     15 << 4 | 15,
     6 << 4 | 1,
     10,
+    true,
 
     // 11, NEMESIS
     0,
     0,
     0,
+    true,
 
     // 12, TELEPORTER
     15 << 4 | 7,
     0,
     0,
+    false,
 
     // 13, LOCK
     15 << 4 | 7,
     1 << 4 | 0,
     0,
+    false,
 
     // 14, PROJECTILE
     0,
     0,
     0,
+    true,
 
     // 15, EXPLOSION
     15 << 4 | 15,
     0 << 4 | 1,
     20,
+    false,
 
     // 16, SECRET_WALL
     15 << 4 | 15,
     1 << 4 | 0,
     0,
+    false,
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -139,7 +156,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
 
     // 6, CHEST
-    chest_plus_mask,
+    chest_tiles,
     NULL,
     NULL,
 
@@ -149,7 +166,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     Blob::onCollide,
 
     // 8, SPIKE
-    spike_plus_mask,
+    spike_tiles,
     NULL,
     NULL,
 
@@ -174,7 +191,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
 
     // 13, LOCK
-    lock_plus_mask,
+    lock_tiles,
     NULL,
     Lock::onCollide,
 
@@ -184,12 +201,12 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
 
     // 15, EXPLOSION
-    explosion_plus_mask,
+    explosion_tiles,
     Explosion::update,
     NULL,
 
     // 16, SECRET_WALL
-    secretWall_plus_mask,
+    secretWall_tiles,
     NULL,
     SecretWall::onCollide,
 };

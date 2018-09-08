@@ -29,7 +29,6 @@ void Game::loadSave(bool straightToPlay = false) {
 
     entityDefs = overworld_entities;
     doorDefs = overworld_teleporters;
-    bumperDefs = overworld_bumpers;
 
     loadEntitiesinRoom(START_ROOM_X, START_ROOM_Y);
 
@@ -96,7 +95,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
     if (teleportTransitionCount == WIDTH / 4) {
         entityDefs = entityDefs == dungeons_entities ? overworld_entities : dungeons_entities;
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
-        bumperDefs = bumperDefs == dungeons_bumpers ? overworld_bumpers : dungeons_bumpers;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
         TileRoom::tiles = TileRoom::tiles == dungeon_tiles ? overworld_tiles : dungeon_tiles;
 
@@ -302,7 +300,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
-        uint8_t entityId = (rawEntityType & ENTITY_ID_MASK) >> 5;
+        uint8_t entityId = (rawEntityType >> 5) & ENTITY_ID_MASK;
 
         Entity& currentEntity = entities[i];
 

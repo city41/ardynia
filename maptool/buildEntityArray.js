@@ -59,16 +59,6 @@ function getTeleporterArrayData(name, teleporters) {
     return dataStringForTeleporters + teleporterData + "\n};";
 }
 
-function getBumperArrayData(name, bumpers) {
-    const dataStringForBumpers = `const uint8_t PROGMEM ${name}_bumpers[] = {\n    // width, height`;
-
-    const bumperData = bumpers.reduce((building, bumper) => {
-        return building + `\n    ${bumper.width}, ${bumper.height},`;
-    }, "");
-
-    return dataStringForBumpers + bumperData + "\n};";
-}
-
 function getRoomArrayData(
     name,
     objectLayer,
@@ -80,37 +70,13 @@ function getRoomArrayData(
     const { objects } = objectLayer;
     let rooms = [[]];
     const teleporters = [];
-    const bumpers = [];
-
-    function getBumperIdWithSize(width, height) {
-        const bumper = bumpers.find(
-            b =>
-                b.width === Math.floor(width) && b.height === Math.floor(height)
-        );
-
-        if (bumper) {
-            return bumper.id;
-        }
-
-        return null;
-    }
 
     // the entity type can also encode other data
     // teleporters: an index into the teleporters array to find out where to teleport to
-    // bumpers: an index into the bumpers array to find out how big the bumper is
     // chest: an entity type id that indicates what is in the chest (must be [0,8))
-    //
-    // TODO: bumpers can share indices if they are the same size, this is a decent size win
     function getEncodedId(obj) {
         if (obj.type === "TELEPORTER" || obj.type === "SECRET_WALL") {
             return teleporters.length;
-        }
-        if (obj.type === "BUMPER") {
-            const encodedId = getBumperIdWithSize(obj.width, obj.height);
-            if (encodedId === null) {
-                throw new Error("failed to get an encoded id for a bumper");
-            }
-            return encodedId;
         }
 
         if (obj.type === "CHEST") {
@@ -129,16 +95,6 @@ function getRoomArrayData(
         const entityX = obj.x - roomPxX;
         const entityY = obj.y - roomPxY;
         const type = EntityTypes[obj.type];
-
-        if (obj.type === "BUMPER") {
-            if (getBumperIdWithSize(obj.width, obj.height) === null) {
-                bumpers.push({
-                    id: bumpers.length,
-                    width: Math.floor(obj.width),
-                    height: Math.floor(obj.height)
-                });
-            }
-        }
 
         rooms[roomX] = rooms[roomX] || [];
         rooms[roomX][roomY] = rooms[roomX][roomY] || [];
@@ -191,23 +147,10 @@ function getRoomArrayData(
         }
     }
 
-    if (bumpers.length > 7) {
-        throw new Error(
-            "over bumper limit of 7, have " + bumpers.length + " bumpers"
-        );
-    } else {
-        console.log("number of bumpers for", name, bumpers.length);
-    }
-
     const teleporterArrayString = getTeleporterArrayData(name, teleporters);
-    const bumperArrayString = getBumperArrayData(name, bumpers);
 
     return (
-        roomArrayStrings.join("\n\n") +
-        teleporterArrayString +
-        "\n\n" +
-        "\n\n" +
-        bumperArrayString
+        roomArrayStrings.join("\n\n") + teleporterArrayString + "\n\n" + "\n\n"
     );
 }
 

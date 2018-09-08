@@ -423,9 +423,7 @@ const uint8_t PROGMEM dungeons_teleporters[] = {
 
 
 
-const uint8_t PROGMEM dungeons_bumpers[] = {
-    // width, height
-};
+
 
 const uint8_t * const PROGMEM dungeons_row0[10] = {
     dungeons_room0_0,

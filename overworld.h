@@ -15,7 +15,7 @@ const uint8_t PROGMEM overworld_room0_0[] = {
     1, // number of entities
 
     // entity 0, SECRET_WALL
-    0x71,
+    0x70,
     48, //x
     32  //y
 };
@@ -410,14 +410,12 @@ const uint8_t PROGMEM overworld_teleporters[] = {
     1, 2,
     8, 5,
     0, 5,
-    0, 4,
+    0, 0,
 };
 
 
 
-const uint8_t PROGMEM overworld_bumpers[] = {
-    // width, height
-};
+
 
 const uint8_t * const PROGMEM overworld_row0[7] = {
     overworld_room0_0,

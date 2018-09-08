@@ -9,10 +9,12 @@
 #include "renderer.h"
 #include "util.h"
 #include "sfx.h"
+#include "tileBitmaps.h"
 
 Arduboy2 arduboy;
 Renderer renderer(arduboy);
 Game game(arduboy, renderer);
+Sprites sprites;
 
 void setup() {
     arduboy.boot();
@@ -47,6 +49,8 @@ void loop() {
     Sfx::update();
     game.update(loopCounter);
     game.render(loopCounter);
+    /* sprites.drawOverwrite(20, 20, secretWall_tiles, 0); */
+    /* renderer.drawOverwrite(20, 20, secretWall_tiles, 0); */
     arduboy.display();
 }
 
