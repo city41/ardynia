@@ -181,6 +181,24 @@
                  "width":0,
                  "x":48,
                  "y":32
+                }, 
+                {
+                 "height":0,
+                 "id":146,
+                 "name":"Chest with boomerang",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"BOOMERANG"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":205.333333333333,
+                 "y":284
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -739,7 +757,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":146,
+ "nextobjectid":147,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

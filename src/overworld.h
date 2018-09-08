@@ -51,6 +51,16 @@ const uint8_t PROGMEM overworld_room1_2[] = {
 
 
 
+const uint8_t PROGMEM overworld_room1_4[] = {
+    1, // number of entities
+
+    // entity 0, CHEST
+    0x26,
+    12 << 4 | 7, // x/8 | y/4
+};
+
+
+
 const uint8_t PROGMEM overworld_room2_2[] = {
     1, // number of entities
 
@@ -141,7 +151,7 @@ const uint8_t * const PROGMEM overworld_row3[7] = {
 
 const uint8_t * const PROGMEM overworld_row4[7] = {
     overworld_room0_4,
-    empty_room,
+    overworld_room1_4,
     empty_room,
     empty_room,
     empty_room,
