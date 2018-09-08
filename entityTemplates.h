@@ -126,18 +126,18 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 0, SWORD
     sword_plus_mask,    // tiles
-    Sword::update,      // update
+    (void*)Sword::update,      // update
     NULL,               // onCollide
 
 
     // 1, BOOMERANG
     itemIcons_plus_mask,
-    Boomerang::update,
-    Boomerang::onCollide,
+    (void*)Boomerang::update,
+    (void*)Boomerang::onCollide,
 
     // 2, BOMB
     itemIcons_plus_mask,
-    Bomb::update,
+    (void*)Bomb::update,
     NULL,
 
     // 3, CANDLE
@@ -162,8 +162,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 7, BLOB
     blob_plus_mask,
-    Blob::update,
-    Blob::onCollide,
+    (void*)Blob::update,
+    (void*)Blob::onCollide,
 
     // 8, SPIKE
     spike_tiles,
@@ -177,8 +177,8 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 10, BLOB_MOTHER
     blobMother_plus_mask,
-    BlobMother::update,
-    Blob::onCollide,
+    (void*)BlobMother::update,
+    (void*)Blob::onCollide,
 
     // 11, NEMESIS
     NULL,
@@ -193,7 +193,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 13, LOCK
     lock_tiles,
     NULL,
-    Lock::onCollide,
+    (void*)Lock::onCollide,
 
     // 14, PROJECTILE
     NULL,
@@ -202,13 +202,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 15, EXPLOSION
     explosion_tiles,
-    Explosion::update,
+    (void*)Explosion::update,
     NULL,
 
     // 16, SECRET_WALL
     secretWall_tiles,
     NULL,
-    SecretWall::onCollide,
+    (void*)SecretWall::onCollide,
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

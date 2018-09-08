@@ -1,19 +1,19 @@
 #include "renderer.h"
 #include "strings.h"
 
-void Renderer::fillRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE) {
+void Renderer::fillRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color) {
     arduboy.fillRect(x + translateX, y + translateY, w, h, color);
 }
 
-void Renderer::drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE) {
+void Renderer::drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color) {
     arduboy.drawRect(x + translateX, y + translateY, w, h, color);
 }
 
-void Renderer::drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false) {
+void Renderer::drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror, bool invert) {
     drawBitmap(x + translateX, y + translateY, bitmap, NULL, false, frame, mirror, invert);
 }
 
-void Renderer::drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, bool invert = false) {
+void Renderer::drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror, bool invert) {
     drawBitmap(x + translateX, y + translateY, bitmap, NULL, true, frame, mirror, invert);
 }
 

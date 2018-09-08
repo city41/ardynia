@@ -505,7 +505,7 @@ const uint8_t * const PROGMEM overworld_row7[7] = {
 };
 
 
-const uint8_t ** const PROGMEM overworld_entities[8] = {
+const uint8_t * const* const PROGMEM overworld_entities[8] = {
     overworld_row0,
     overworld_row1,
     overworld_row2,

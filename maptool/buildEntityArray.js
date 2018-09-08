@@ -183,7 +183,7 @@ function getMapArrayData(name, mapHeightInRooms) {
             return `${name}_row${ry}`;
         });
 
-    let mapArrayStr = `const uint8_t ** const PROGMEM ${name}_entities[${
+    let mapArrayStr = `const uint8_t * const* const PROGMEM ${name}_entities[${
         rowPointers.length
     }] = {\n`;
     mapArrayStr += "    " + rowPointers.join(",\n    ") + "\n";

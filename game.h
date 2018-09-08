@@ -34,7 +34,7 @@ class Game {
 
         Entity entities[MAX_ENTITIES];
 
-        const uint8_t*** entityDefs;
+        const uint8_t* const* const* entityDefs;
         const uint8_t* doorDefs;
 
         uint8_t nextRoomX;

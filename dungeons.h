@@ -509,7 +509,7 @@ const uint8_t * const PROGMEM dungeons_row5[10] = {
 };
 
 
-const uint8_t ** const PROGMEM dungeons_entities[6] = {
+const uint8_t * const* const PROGMEM dungeons_entities[6] = {
     dungeons_row0,
     dungeons_row1,
     dungeons_row2,

@@ -15,8 +15,8 @@ const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
 // for a total of 4 bytes
 const uint8_t MAP_HEADER_SIZE = 4;
 
-uint8_t* TileRoom::map = NULL;
-uint8_t* TileRoom::tiles = NULL;
+const uint8_t* TileRoom::map = NULL;
+const uint8_t* TileRoom::tiles = NULL;
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
 uint8_t TileRoom::mapType = OVERWORLD;

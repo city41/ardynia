@@ -42,7 +42,7 @@ class Entity {
         uint8_t width;
         uint8_t height;
         Direction dir;
-        uint8_t* tiles;
+        const uint8_t* tiles;
         int8_t health;
         int8_t damage;
         uint8_t duration;

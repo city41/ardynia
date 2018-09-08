@@ -38,8 +38,8 @@ class TileRoom {
 
     public:
         static MapType mapType;
-        static uint8_t* map;
-        static uint8_t* tiles;
+        static const uint8_t* map;
+        static const uint8_t* tiles;
 
         static uint8_t x;
         static uint8_t y;

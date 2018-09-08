@@ -6,7 +6,7 @@
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
-const uint8_t PROGMEM itemDropItems[] = {
+const EntityType PROGMEM itemDropItems[] = {
     UNSET,
     HEART,
     BOMB

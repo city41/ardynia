@@ -18,7 +18,7 @@ const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
 const uint8_t PLAY_GAME = 0;
 const uint8_t DELETE_SAVE = 1;
 
-void Game::loadSave(bool straightToPlay = false) {
+void Game::loadSave(bool straightToPlay) {
     State::load();
 
     TileRoom::map = overworld_map;
