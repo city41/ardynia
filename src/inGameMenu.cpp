@@ -6,7 +6,7 @@
 #include "strings.h"
 #include "hud.h"
 
-void InGameMenu::update(Arduboy2& arduboy, byte frame) {
+void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
     const int8_t maxRows = State::gameState.numAcquiredItems;
 
     if (maxRows == 0) {

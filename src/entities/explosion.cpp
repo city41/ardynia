@@ -1,6 +1,6 @@
 #include "explosion.h"
 
-EntityType Explosion::update(Entity* me, Entity* player, Arduboy2* arduboy, uint8_t frame) {
+EntityType Explosion::update(Entity* me, Entity* player, Arduboy2Base& arduboy, uint8_t frame) {
     // cheap way to get flicker
     me->tookDamageCount = frame;
     me->currentFrame = 0;

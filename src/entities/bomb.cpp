@@ -1,6 +1,6 @@
 #include "bomb.h"
 
-EntityType Bomb::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
+EntityType Bomb::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     // initial duration? then "spawn"
     if (me->duration == 150) {
         me->currentFrame = 2;

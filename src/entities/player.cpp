@@ -112,7 +112,7 @@ void Player::render(Renderer& renderer, byte frame) {
 #endif
 }
 
-EntityType Player::update(Entity& player, Arduboy2& arduboy, byte frame) {
+EntityType Player::update(Entity& player, Arduboy2Base& arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }

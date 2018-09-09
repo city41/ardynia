@@ -4,7 +4,7 @@
 #include "../game.h"
 #include "../util.h"
 
-EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame) {
+EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     int16_t px = player.x;
     int16_t py = player.y;
     

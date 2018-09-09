@@ -1,8 +1,5 @@
-#include <SPI.h>
 #include <EEPROM.h>
 #include <Arduboy2.h>
-#include <Arduboy2Beep.h>
-#include <Arduboy2Audio.h>
 #include <math.h>
 
 #include "game.h"
@@ -11,14 +8,18 @@
 #include "sfx.h"
 #include "tileBitmaps.h"
 
-Arduboy2 arduboy;
+Arduboy2Base arduboy;
 Renderer renderer(arduboy);
 Game game(arduboy, renderer);
-Sprites sprites;
+
+/* int main() { */
+/*     arduboy.mainNoUSB(); */
+/*     return 0; */
+/* } */
 
 void setup() {
     arduboy.boot();
-    Arduboy2Audio::begin();
+    arduboy.audio.begin();
     arduboy.setFrameRate(60);
     Sfx::init();
 
@@ -26,7 +27,7 @@ void setup() {
     Serial.begin(9600);
     delay(1500);
 #endif
-    LOG("setup done");
+//    LOG("setup done");
 }
 
 uint8_t loopCounter = 1;

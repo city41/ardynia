@@ -43,7 +43,7 @@ class Player: public Entity {
         }
 
         virtual void render(Renderer& renderer, uint8_t frame) override;
-        virtual EntityType update(Entity& player, Arduboy2& arduboy, uint8_t frame) override;
+        virtual EntityType update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) override;
         virtual EntityType onCollide(Entity& other, Entity& player, Game& game) override;
 };
 

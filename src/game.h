@@ -25,7 +25,7 @@ class Game {
     typedef void (Game::*RenderPtr)(uint8_t);
 
     private:
-        Arduboy2& arduboy;
+        Arduboy2Base& arduboy;
         Renderer& renderer;
 
         uint8_t titleRow;
@@ -91,7 +91,7 @@ class Game {
 
         void removeAllTriggerDoors(void);
 
-        Game(Arduboy2& arduboy, Renderer& renderer):
+        Game(Arduboy2Base& arduboy, Renderer& renderer):
             arduboy(arduboy),
             renderer(renderer),
             titleRow(0),

@@ -8,7 +8,7 @@
 class Game;
 
 struct Bat {
-    static EntityType update(Entity* me, Entity& player, Arduboy2& arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
     static EntityType onCollide(Entity* me, Entity& other, Entity& player, Game& game);
 };
 

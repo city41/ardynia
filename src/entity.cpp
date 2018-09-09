@@ -92,9 +92,9 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
 #endif
 }
 
-EntityType Entity::update(Entity& player, Arduboy2& arduboy, uint8_t frame) {
+EntityType Entity::update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     if (type == UNSET) {
-        return;
+        return UNSET;
     }
 
     if (stunCount > 0) {
