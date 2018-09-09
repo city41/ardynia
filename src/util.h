@@ -9,10 +9,10 @@ struct Util {
     static bool isOffScreen(int16_t x, int16_t y);
 };
 
-//#define LOG(msg) \
-//    do { if (SERIAL_LOG) Serial.println(msg); } while (0)
-//
-//#define LOGV(var) \
-//    do { if (SERIAL_LOG) Serial.print(#var); Serial.print(": "); Serial.println(var); } while (0)
+#define LOG(msg) \
+    do { if (SERIAL_LOG) Serial.println(msg); } while (0)
+
+#define LOGV(var) \
+    do { if (SERIAL_LOG) Serial.print(#var); Serial.print(": "); Serial.println(var); } while (0)
 #endif
 

@@ -211,6 +211,24 @@
                  "width":0,
                  "x":736,
                  "y":241.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":148,
+                 "name":"skeleton",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"SKELETON",
+                 "visible":true,
+                 "width":0,
+                 "x":159.333333333333,
+                 "y":353.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -769,7 +787,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":148,
+ "nextobjectid":149,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

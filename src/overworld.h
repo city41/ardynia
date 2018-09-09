@@ -17,11 +17,11 @@ const uint8_t PROGMEM overworld_room0_0[] = {
     2, // number of entities
 
     // entity 0, SECRET_WALL
-    0x10,
+    0x11,
     6 << 4 | 8, // x/8 | y/4
 
     // entity 1, TELEPORTER
-    0x6c,
+    0x6d,
     6 << 4 | 8, // x/8 | y/4
 };
 
@@ -41,11 +41,11 @@ const uint8_t PROGMEM overworld_room1_2[] = {
     2, // number of entities
 
     // entity 0, TRIGGER_DOOR
-    0x11,
+    0x12,
     8 << 4 | 11, // x/8 | y/4
 
     // entity 1, SWITCH
-    0x12,
+    0x13,
     4 << 4 | 5, // x/8 | y/4
 };
 
@@ -57,6 +57,16 @@ const uint8_t PROGMEM overworld_room1_4[] = {
     // entity 0, CHEST
     0x26,
     12 << 4 | 7, // x/8 | y/4
+};
+
+
+
+const uint8_t PROGMEM overworld_room1_5[] = {
+    1, // number of entities
+
+    // entity 0, SKELETON
+    0xa,
+    6 << 4 | 8, // x/8 | y/4
 };
 
 
@@ -75,11 +85,11 @@ const uint8_t PROGMEM overworld_room4_6[] = {
     2, // number of entities
 
     // entity 0, TELEPORTER
-    0x2c,
+    0x2d,
     4 << 4 | 1, // x/8 | y/4
 
     // entity 1, TELEPORTER
-    0x4c,
+    0x4d,
     8 << 4 | 1, // x/8 | y/4
 };
 
@@ -89,7 +99,7 @@ const uint8_t PROGMEM overworld_room6_0[] = {
     1, // number of entities
 
     // entity 0, TELEPORTER
-    0xc,
+    0xd,
     10 << 4 | 6, // x/8 | y/4
 };
 
@@ -99,7 +109,7 @@ const uint8_t PROGMEM overworld_room6_3[] = {
     1, // number of entities
 
     // entity 0, SECRET_WALL
-    0x10,
+    0x11,
     8 << 4 | 12, // x/8 | y/4
 };
 
@@ -172,7 +182,7 @@ const uint8_t * const PROGMEM overworld_row4[7] = {
 
 const uint8_t * const PROGMEM overworld_row5[7] = {
     empty_room,
-    empty_room,
+    overworld_room1_5,
     empty_room,
     empty_room,
     empty_room,

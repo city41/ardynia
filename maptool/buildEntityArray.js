@@ -13,15 +13,16 @@ const EntityTypes = {
     BLOB: 7,
     SPIKE: 8,
     BAT: 9,
-    BLOB_MOTHER: 10,
-    NEMESIS: 11,
-    TELEPORTER: 12,
-    LOCK: 13,
-    PROJECTILE: 14,
-    EXPLOSION: 15,
-    SECRET_WALL: 16,
-    TRIGGER_DOOR: 17,
-    SWITCH: 18
+    SKELETON: 10,
+    BLOB_MOTHER: 11,
+    NEMESIS: 12,
+    TELEPORTER: 13,
+    LOCK: 14,
+    PROJECTILE: 15,
+    EXPLOSION: 16,
+    SECRET_WALL: 17,
+    TRIGGER_DOOR: 18,
+    SWITCH: 19
 };
 
 function getRoomAt(mapX, mapY) {

@@ -9,6 +9,7 @@
 
 #include "entities/blob.h"
 #include "entities/bat.h"
+#include "entities/skeleton.h"
 #include "entities/sword.h"
 #include "entities/boomerang.h"
 #include "entities/bomb.h"
@@ -82,55 +83,61 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     true,
 
-    // 10, BLOB_MOTHER
+    // 10, SKELETON
+    14 << 4 | 15,
+    2 << 4 | 1, // health | damage
+    0,
+    true,
+
+    // 11, BLOB_MOTHER
     15 << 4 | 15,
     6 << 4 | 1,
     10,
     true,
 
-    // 11, NEMESIS
+    // 12, NEMESIS
     7 << 4 | 7,
     15 << 4 | 0,
     30,
     true,
 
-    // 12, TELEPORTER
+    // 13, TELEPORTER
     15 << 4 | 7,
     0,
     0,
     false,
 
-    // 13, LOCK
+    // 14, LOCK
     15 << 4 | 7,
     1 << 4 | 0,
     0,
     false,
 
-    // 14, PROJECTILE
+    // 15, PROJECTILE
     0,
     0,
     0,
     true,
 
-    // 15, EXPLOSION
+    // 16, EXPLOSION
     15 << 4 | 15,
     0 << 4 | 1,
     20,
     false,
 
-    // 16, SECRET_WALL
+    // 17, SECRET_WALL
     15 << 4 | 15,
     1 << 4 | 0,
     0,
     false,
 
-    // 17, TRIGGER_DOOR
+    // 18, TRIGGER_DOOR
     15 << 4 | 7,
     1 << 4 | 0,
     0,
     false,
 
-    // 18, SWITCH
+    // 19, SWITCH
     7 << 4 | 7,
     0,
     0,
@@ -189,47 +196,52 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Bat::update,
     (void*)Bat::onCollide,
 
-    // 10, BLOB_MOTHER
+    // 10, SKELETON
+    skeleton_plus_mask,
+    (void*)Skeleton::update,
+    (void*)Skeleton::onCollide,
+
+    // 11, BLOB_MOTHER
     blobMother_plus_mask,
     (void*)BlobMother::update,
     (void*)Blob::onCollide,
 
-    // 11, NEMESIS
+    // 12, NEMESIS
     player_plus_mask,
     (void*)Nemesis::update,
     (void*)Nemesis::onCollide,
 
-    // 12, TELEPORTER
+    // 13, TELEPORTER
     NULL,
     NULL,
     NULL,
 
-    // 13, LOCK
+    // 14, LOCK
     lock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 14, PROJECTILE
+    // 15, PROJECTILE
     NULL,
     NULL,
     NULL,
 
-    // 15, EXPLOSION
+    // 16, EXPLOSION
     explosion_tiles,
     (void*)Explosion::update,
     NULL,
 
-    // 16, SECRET_WALL
+    // 17, SECRET_WALL
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
 
-    // 17, TRIGGER_DOOR
+    // 18, TRIGGER_DOOR
     triggerDoor_tiles,
     NULL,
     NULL,
 
-    // 18, SWITCH
+    // 19, SWITCH
     switch_tiles,
     NULL,
     NULL

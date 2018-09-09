@@ -352,9 +352,6 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
             }
         } else if (type == LOCK && roomIsTriggered) {
             currentEntity.type = UNSET;
-        } else {
-            currentEntity.prevX = x;
-            currentEntity.prevY = y;
         }
     }
 
