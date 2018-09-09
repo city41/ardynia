@@ -4,6 +4,7 @@
 #include "../tileRoom.h"
 #include "../state.h"
 #include "../sfx.h"
+#include "../itemSprites.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -73,7 +74,8 @@ void Player::render(Renderer& renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0, TileRoom::isInDungeon());
+        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem - 1);
+        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemBmp, 0, 0, TileRoom::isInDungeon());
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
@@ -194,7 +196,7 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
 
     if (other.type == BOMB) {
         other.type = UNSET;
-        numBombs = Util::clamp(numBombs + 2, 0, MAX_BOMB_COUNT);
+        numBombs = Util::clamp(numBombs + 3, 0, MAX_BOMB_COUNT);
         Sfx::pickUpItem();
     }
 

@@ -3,6 +3,7 @@
 #include "tileBitmaps.h"
 #include "state.h"
 #include "util.h"
+#include "itemSprites.h"
 
 void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, uint8_t frame, bool useFillRect) {
     uint8_t origX = x;
@@ -23,16 +24,14 @@ void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint
     }
 }
 
-void drawKeys(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count) {
-    uint8_t origX = x;
-
+void drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8_t y, uint8_t count) {
     for (uint8_t i = 0; i < count; ++i) {
-        renderer.drawPlusMask(x, y, key_plus_mask, 0, 0, true);
+        renderer.drawPlusMask(x, y, bmp, 0, 0, true);
         x += 5;
 
         if (i == 2) {
-            y += 9;
-            x = origX;
+            y += 8;
+            x -= 15;
         }
     }
 }
@@ -44,18 +43,13 @@ void Hud::render(Renderer& renderer, uint8_t frame, Player& player, uint8_t room
     drawDots(renderer, 1, 1, player.health, State::gameState.totalHealth, frame, false);
 
     // secondary item
-    renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
     if (player.bButtonEntityType != UNSET) {
-        renderer.drawPlusMask(4, 13, itemIcons_plus_mask, player.bButtonEntityType, 0, true);
+        renderer.drawPlusMask(7, 15, (const uint8_t*)pgm_read_word(secondaryItem_sprites + player.bButtonEntityType - 1), 0, 0, true);
     }
+    renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
 
-    // draw bomb count
-    if (State::gameState.numAcquiredItems > 1) {
-        renderer.drawPlusMask(0, 31, itemIcons_plus_mask, BOMB, 0, true);
-        drawDots(renderer, 11, 38, player.numBombs, player.numBombs, 0, true);
-    }
-
-    // draw keys count
-    renderer.drawPlusMask(0, 49, itemIcons_plus_mask, KEY, 0, true);
-    drawDots(renderer, 11, 56, State::gameState.numKeys, State::gameState.numKeys, 0, true);
+    // draw keys and bombs count
+    drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys);
+    drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
 }
+

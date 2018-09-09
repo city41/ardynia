@@ -17,7 +17,7 @@ const uint8_t PROGMEM dungeons_room0_1[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0xa6,
+    0x85,
     5 << 4 | 6, // x/8 | y/4
 };
 
@@ -103,7 +103,7 @@ const uint8_t PROGMEM dungeons_room3_5[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0x86,
+    0x65,
     6 << 4 | 5, // x/8 | y/4
 };
 
@@ -113,7 +113,7 @@ const uint8_t PROGMEM dungeons_room4_3[] = {
     1, // number of entities
 
     // entity 0, CHEST
-    0x26,
+    0x25,
     10 << 4 | 2, // x/8 | y/4
 };
 

@@ -3,7 +3,6 @@
 EntityType Bomb::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     // initial duration? then "spawn"
     if (me->duration == 150) {
-        me->currentFrame = 2;
         me->tookDamageCount = 0;
         me->mirror = 0;
     }

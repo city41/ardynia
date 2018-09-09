@@ -30,40 +30,40 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,           // needsMask
 
     // 1, BOOMERANG
-    15 << 4 | 15,
+    7 << 4 | 7,
     0 << 4 | 0,
     20,
     true,
 
     // 2, BOMB
-    10 << 4 | 15,
+    7 << 4 | 7,
     0 << 4 | 0,
     150,
     true,
 
-    // 3, CANDLE
-    0,
-    0 << 4 | 0,
-    0,
-    true,
-
-    // 4, KEY
+    // 3, KEY
     7 << 4 | 7,
     0 << 4 | 0,
     0,
     true,
 
-    // 5, HEART
+    // 4, HEART
     7 << 4 | 7,
     0 << 4 | 0,
     180,
     true,
 
-    // 6, CHEST
+    // 5, CHEST
     15 << 4 | 15,
     0 << 4 | 0,
     0,
     false,
+
+    // 6, CANDLE
+    0,
+    0 << 4 | 0,
+    0,
+    true,
 
     // 7, BLOB
     7 << 4 | 7, // width - 1 | height - 1
@@ -152,32 +152,32 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
 
     // 1, BOOMERANG
-    itemIcons_plus_mask,
+    boomerang_plus_mask,
     (void*)Boomerang::update,
     (void*)Boomerang::onCollide,
 
     // 2, BOMB
-    itemIcons_plus_mask,
+    bomb_plus_mask,
     (void*)Bomb::update,
     NULL,
 
-    // 3, CANDLE
-    NULL,
-    NULL,
-    NULL,
-
-    // 4, KEY
+    // 3, KEY
     key_plus_mask,
     NULL,
     NULL,
 
-    // 5, HEART
+    // 4, HEART
     heart_plus_mask,
     NULL,
     NULL,
 
-    // 6, CHEST
+    // 5, CHEST
     chest_tiles,
+    NULL,
+    NULL,
+
+    // 6, CANDLE
+    NULL,
     NULL,
     NULL,
 

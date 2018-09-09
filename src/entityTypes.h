@@ -15,10 +15,10 @@ const EntityType UNSET = -1;
 const EntityType SWORD = 0;
 const EntityType BOOMERANG = 1;
 const EntityType BOMB = 2;
-const EntityType CANDLE = 3;
-const EntityType KEY = 4;
-const EntityType HEART = 5;
-const EntityType CHEST = 6;
+const EntityType KEY = 3;
+const EntityType HEART = 4;
+const EntityType CHEST = 5;
+const EntityType CANDLE = 6;
 
 // enemies, to be named
 const EntityType BLOB = 7;

@@ -210,7 +210,7 @@
                  "visible":true,
                  "width":0,
                  "x":736,
-                 "y":241.333333333333
+                 "y":241.333
                 }, 
                 {
                  "height":0,
@@ -227,8 +227,26 @@
                  "type":"SKELETON",
                  "visible":true,
                  "width":0,
-                 "x":159.333333333333,
-                 "y":353.333333333333
+                 "x":159.333,
+                 "y":353.333
+                }, 
+                {
+                 "height":0,
+                 "id":149,
+                 "name":"Chest with boomerang",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":169.333333333333,
+                 "y":405.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -787,7 +805,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":149,
+ "nextobjectid":150,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

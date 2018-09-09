@@ -13,7 +13,6 @@ EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, 
         me->dir = player.dir;
         me->x = player.x;
         me->y = player.y - 6;
-        me->currentFrame = 1;
         Sfx::boomerang();
     }
 

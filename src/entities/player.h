@@ -6,7 +6,7 @@
 #include "../spriteBitmaps.h"
 
 const uint8_t MAX_PLAYER_ENTITIES = 2;
-const uint8_t MAX_BOMB_COUNT = 9;
+const uint8_t MAX_BOMB_COUNT = 6;
 
 class Game;
 
