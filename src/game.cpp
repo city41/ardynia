@@ -160,9 +160,7 @@ void Game::detectEntityCollisions(void) {
         }
 
         if (entities[ge].overlaps(player)) {
-            if (entities[ge].type == TELEPORTER || 
-                // or a secret wall the player has discovered?
-                (entities[ge].type == SECRET_WALL && entities[ge].health == 0)) {
+            if (entities[ge].type == TELEPORTER) {
                 // to save memory, teleporters store the next room coordinates
                 // in prevX/prevY, two variables they otherwise wouldn't need
                 // TODO: is it possible to save the memory without being confusing?
