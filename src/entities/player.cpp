@@ -73,7 +73,7 @@ void Player::render(Renderer& renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0);
+        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemIcons_plus_mask, receivedItem, 0, TileRoom::isInDungeon());
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
