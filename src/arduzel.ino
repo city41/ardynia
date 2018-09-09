@@ -18,6 +18,8 @@ Game game(arduboy, renderer);
 /* } */
 
 void setup() {
+    randomSeed(analogRead(0));
+
     arduboy.boot();
     arduboy.audio.begin();
     arduboy.setFrameRate(60);

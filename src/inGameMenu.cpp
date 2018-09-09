@@ -27,14 +27,8 @@ void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
 
 void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
     // draw bomb count
-    if (State::gameState.numAcquiredItems > 1) {
-        renderer.drawPlusMask(0, 27, bomb_plus_mask, 0, 0, true);
-        Hud::drawDots(renderer, 0, 27, player.numBombs, player.numBombs, 0, true);
-    }
-
-    // draw key count
-    renderer.drawPlusMask(0, 49, key_plus_mask, 0, 0, true);
-    Hud::drawDots(renderer, 11, 56, State::gameState.numKeys, State::gameState.numKeys, 0, true);
+    Hud::drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys);
+    Hud::drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
 
     const uint8_t x = 20;
 

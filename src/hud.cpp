@@ -24,7 +24,7 @@ void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint
     }
 }
 
-void drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8_t y, uint8_t count) {
+void Hud::drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8_t y, uint8_t count) {
     for (uint8_t i = 0; i < count; ++i) {
         renderer.drawPlusMask(x, y, bmp, 0, 0, true);
         x += 5;
