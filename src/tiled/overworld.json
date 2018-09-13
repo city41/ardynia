@@ -245,8 +245,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":169.333333333333,
-                 "y":405.333333333333
+                 "x":169.333,
+                 "y":405.333
                 }],
          "opacity":1,
          "type":"objectgroup",

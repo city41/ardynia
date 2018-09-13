@@ -3,6 +3,7 @@
 #include "tileRoom.h"
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
+#include "state.h"
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
@@ -64,6 +65,14 @@ void Entity::bounceBack(Entity& bounceAwayFrom) {
 }
 
 void Entity::render(Renderer& renderer, uint8_t renderFrame) {
+    bool invert = TileRoom::isInDungeon();
+
+    if (deathCount) {
+        deathCount -= 1;
+        renderer.drawPlusMask(x, y, deathPoof_plus_mask, 0, renderFrame & 1, invert);
+
+    }
+
     if (type == UNSET) {
         return;
     }
@@ -76,7 +85,6 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
         }
     }
 
-    bool invert = TileRoom::isInDungeon();
 
     if (needsMask) {
         bool isNemesis = type == NEMESIS;
@@ -117,8 +125,13 @@ EntityType Entity::onCollide(Entity& other, Entity& player, Game& game) {
     if (collideOtherEntityPtr != NULL) {
         EntityType result = collideOtherEntityPtr(this, other, player, game);
 
+        if (type == UNSET) {
+            deathCount = 10;
+        }
+
         if (result == ITEM_DROP) {
-            uint8_t diceRoll = random(0, 3);
+            const uint8_t maxRoll = State::gameState.numAcquiredItems > 1 ? 3 : 2;
+            uint8_t diceRoll = random(0, maxRoll);
             return pgm_read_byte(itemDropItems + diceRoll);
         } else {
             return result;

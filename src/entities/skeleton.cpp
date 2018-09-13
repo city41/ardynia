@@ -32,11 +32,11 @@ EntityType Skeleton::onCollide(Entity* me, Entity& other, Entity& player, Game& 
 }
 
 EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
-    if (frame % 10 == 0) {
+    if (frame % 20 == 0) {
         me->mirror = 1 - me->mirror;
     }
 
-    if (frame % 3 == 0) {
+    if (frame % 3 != 0) {
         return UNSET;
     }
 
@@ -49,8 +49,8 @@ EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, u
 
     me->duration -= 1;
 
-    me->x = Util::clamp(me->x + me->prevX, 2, WIDTH - 16 - 2);
-    me->y = Util::clamp(me->y + me->prevY, 2, HEIGHT - 2);
+    me->x = Util::clamp(me->x + me->prevX, 2, WIDTH - 16 - 2 - me->width);
+    me->y = Util::clamp(me->y + me->prevY, 2, HEIGHT - 2 - me->height);
 
     return UNSET;
 }

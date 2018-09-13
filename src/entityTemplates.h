@@ -108,7 +108,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     false,
 
     // 14, LOCK
-    15 << 4 | 7,
+    15 << 4 | 15,
     1 << 4 | 0,
     0,
     false,

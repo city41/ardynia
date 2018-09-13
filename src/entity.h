@@ -52,6 +52,7 @@ class Entity {
         MirrorMode mirror;
         uint8_t tookDamageCount;
         uint8_t stunCount;
+        uint8_t deathCount;
         bool needsMask;
 
         void moveTowardsOtherEntity(Entity& otherEntity, uint8_t amount);
@@ -75,6 +76,7 @@ class Entity {
             mirror(0),
             tookDamageCount(0),
             stunCount(0),
+            deathCount(0),
             needsMask(true)
         {}
 
@@ -101,8 +103,8 @@ class Entity {
         }
 
         inline void stayInside(uint8_t minX, uint8_t maxX, uint8_t minY, uint8_t maxY) {
-            x = Util::clamp(x, minX, maxX);
-            y = Util::clamp(y, minY, maxY);
+            x = Util::clamp(x, minX, maxX - width);
+            y = Util::clamp(y, minY, maxY - height);
         }
 
         inline bool isOffScreen() {
