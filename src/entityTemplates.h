@@ -22,39 +22,41 @@
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
 
+#define size(width, height) (width - 1) << 4 | (height - 1)
+
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
-    15 << 4 | 15,   // width - 1 | height - 1
+    size(16, 16),
     0 << 4 | 1,     // health | damage
     20,             // duration
     true,           // needsMask
 
     // 1, BOOMERANG
-    7 << 4 | 7,
+    size(8, 8),
     0 << 4 | 0,
     20,
     true,
 
     // 2, BOMB
-    7 << 4 | 7,
+    size(8, 8),
     0 << 4 | 0,
     150,
     true,
 
     // 3, KEY
-    7 << 4 | 7,
+    size(8, 8),
     0 << 4 | 0,
     0,
     true,
 
     // 4, HEART
-    7 << 4 | 7,
+    size(8, 8),
     0 << 4 | 0,
     180,
     true,
 
     // 5, CHEST
-    15 << 4 | 15,
+    size(14, 8),
     0 << 4 | 0,
     0,
     false,
@@ -66,49 +68,49 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 7, BLOB
-    7 << 4 | 7, // width - 1 | height - 1
+    size(8, 8),
     2 << 4 | 1, // health | damage
     0,          // duration
     true,       // needsMask
 
     // 8, SPIKE
-    7 << 4 | 7,
+    size(8, 8),
     0 << 4 | 0,
     0,
     false,
 
     // 9, BAT
-    7 << 4 | 7,
+    size(8, 8),
     1 << 4 | 1, // health | damage
     0,
     true,
 
     // 10, SKELETON
-    14 << 4 | 15,
+    size(16, 16),
     2 << 4 | 1, // health | damage
     0,
     true,
 
     // 11, BLOB_MOTHER
-    15 << 4 | 15,
+    size(16, 16),
     6 << 4 | 1,
     10,
     true,
 
     // 12, NEMESIS
-    7 << 4 | 7,
+    size(8, 8),
     15 << 4 | 0,
     30,
     true,
 
     // 13, TELEPORTER
-    15 << 4 | 7,
+    size(16, 8),
     0,
     0,
     false,
 
     // 14, LOCK
-    15 << 4 | 15,
+    size(16, 8),
     1 << 4 | 0,
     0,
     false,
@@ -120,25 +122,25 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 16, EXPLOSION
-    15 << 4 | 15,
+    size(16, 16),
     0 << 4 | 1,
     20,
     false,
 
     // 17, SECRET_WALL
-    15 << 4 | 15,
+    size(16, 16),
     1 << 4 | 0,
     0,
     false,
 
     // 18, TRIGGER_DOOR
-    15 << 4 | 7,
+    size(16, 8),
     1 << 4 | 0,
     0,
     false,
 
     // 19, SWITCH
-    7 << 4 | 7,
+    size(8, 8),
     0,
     0,
     false
