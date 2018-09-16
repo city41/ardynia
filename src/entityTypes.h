@@ -5,7 +5,7 @@ typedef int8_t EntityType;
 
 // max of 32 entities, and max of 8 ids per room
 const EntityType ENTITY_MASK = 0b00011111;
-const EntityType ENTITY_ID_MASK = 0b00000111;
+const EntityType ENTITY_MISC_MASK = 0b00000111;
 
 const EntityType UNSET = -1;
 

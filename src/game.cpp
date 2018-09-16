@@ -317,7 +317,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
         EntityType type = rawEntityType & ENTITY_MASK;
-        uint8_t entityId = (rawEntityType >> 5) & ENTITY_ID_MASK;
+        uint8_t entityMisc = (rawEntityType >> 5) & ENTITY_MISC_MASK;
 
 
         Entity& currentEntity = entities[i];
@@ -335,8 +335,8 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
         if (type == TELEPORTER || type == SECRET_WALL) {
             // reuse prevX/Y for destX/Y for doors
-            currentEntity.prevX = pgm_read_byte(doorDefs + entityId * 2);
-            currentEntity.prevY = pgm_read_byte(doorDefs + entityId * 2 + 1);
+            currentEntity.prevX = pgm_read_byte(doorDefs + entityMisc * 2);
+            currentEntity.prevY = pgm_read_byte(doorDefs + entityMisc * 2 + 1);
 
             if (type == SECRET_WALL) {
                 // wall has already been blown up
@@ -346,9 +346,9 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 }
             }
         } else if (type == CHEST) {
-            // take what is in the chest (which here is entityId), and stick
+            // take what is in the chest (which here is entityMisc), and stick
             // it in the chest's health
-            currentEntity.health = entityId;
+            currentEntity.health = entityMisc;
             if (roomIsTriggered) {
                 // frame 1 is the open chest frame, indicates this chest
                 // has already been looted
