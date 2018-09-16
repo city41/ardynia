@@ -20,6 +20,12 @@ const uint8_t PLAY_GAME = 0;
 const uint8_t SFX_ON_OFF = 1;
 const uint8_t DELETE_SAVE = 2;
 
+/**
+ * Resets the game back to the last save. If there is no save,
+ * resets back to the beginning of the game
+ *
+ * @param {bool} straightToPlay whether to skip the title screen
+ */
 void Game::loadSave(bool straightToPlay) {
     State::load();
 
@@ -32,6 +38,8 @@ void Game::loadSave(bool straightToPlay) {
     doorDefs = overworld_teleporters;
 
     loadEntitiesinRoom(START_ROOM_X, START_ROOM_Y);
+    mapWidthInRooms = OVERWORLD_WIDTH_IN_ROOMS;
+    mapHeightInRooms = OVERWORLD_HEIGHT_IN_ROOMS;
 
     player.reset();
 
@@ -47,11 +55,18 @@ void Game::loadSave(bool straightToPlay) {
     Map::visitRoom(START_ROOM_X, START_ROOM_Y, OVERWORLD_WIDTH_IN_ROOMS);
 }
 
+/**
+ * push a game state onto the "stack". The stack can only go two deep.
+ * This is used to go from play -> inGameMenu, for example.
+ */
 void Game::push(UpdatePtr newUpdate, RenderPtr newRender) {
     nextUpdate = newUpdate;
     nextRender = newRender;
 }
 
+/**
+ * Go back one level in the "stack", ie from inGameMenu back to play
+ */
 void Game::pop() {
     nextUpdate = prevUpdate;
     nextRender = prevRender;
@@ -73,8 +88,9 @@ void Game::renderGameOver(uint8_t frame) {
     renderer.translateX = 0;
     renderer.translateY = 0;
 
-        // draw a black rectangle in the middle of the screen that grows
-        // as the transition progresses
+    // draw a black rectangle in the middle of the screen that grows
+    // as the transition progresses
+    // TODO: this is similar to renderTeleportTransition, can this be DRY'd?
     uint8_t rectW = 128 - (teleportTransitionCount * 4);
     uint8_t rectH = rectW / 2;
     uint8_t rectX = 64 - rectW / 2;
@@ -98,18 +114,17 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        // TODO: get rid of this! this is here because for some crazy reason, sometimes
-        // TileRoom::map == dungeons_map while in the dungeon is false. No idea why
-        // mapType is either 0 or 1 for dungeon and overworld
+        // from overworld -> dungeon or vice versa
         TileRoom::mapType = 1 - TileRoom::mapType;
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        loadEntitiesinRoom(TileRoom::x, TileRoom::y);
+        loadEntitiesinRoom(nextRoomX, nextRoomY);
 
         Map::reset();
-        const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+        mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+        mapHeightInRooms = TileRoom::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         // plop player in the center of the rooms
@@ -289,9 +304,6 @@ void Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
 void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(entityDefs + y);
     uint8_t* roomPtr = pgm_read_word(rowPtr + x);
-
-    mapWidthInRooms = pgm_read_byte(TileRoom::map + 2);
-    mapHeightInRooms = pgm_read_byte(TileRoom::map + 3);
 
     uint8_t roomIndex = mapWidthInRooms * y + x;
 
@@ -486,15 +498,11 @@ void Game::renderPlay(uint8_t frame) {
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
-        Entity& entity = entities[e];
-
-        entity.render(renderer, frame);
+        entities[e].render(renderer, frame);
     }
 
     for (e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
-        Entity& entity = player.entities[e];
-
-        entity.render(renderer, frame);
+        player.entities[e].render(renderer, frame);
     }
 
     player.render(renderer, frame);
@@ -526,8 +534,6 @@ void Game::renderMenu(uint8_t frame) {
     renderer.translateX = 54;
     renderer.translateY = 0;
 
-    const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
-    const uint8_t mapHeightInRooms = TileRoom::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
     Map::render(renderer, mapWidthInRooms, mapHeightInRooms, TileRoom::x, TileRoom::y);
 }
 
@@ -564,7 +570,6 @@ void Game::updateRoomTransition(uint8_t frame) {
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        const uint8_t mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         // for example, if the player had a flying boomerang,

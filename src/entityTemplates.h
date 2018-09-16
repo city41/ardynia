@@ -117,7 +117,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 13, TELEPORTER
-    widthAndHeight(16, 8),
+    widthAndHeight(16, 16),
     healthAndDamage(0, 0),
     0,
     false,
