@@ -61,7 +61,9 @@ function createHeaderFile(tiledJson, baseName, outDir) {
     const finalFile =
         ifndef +
         "\n\n" +
-        '#include "emptyRoom.h"\n\n' +
+        '#include "emptyRoom.h"\n' +
+        '#include "entityTypes.h"\n' +
+        '#include "entityExpressions.h"\n\n' +
         mapArrayString +
         "\n\n" +
         entityArrayString +

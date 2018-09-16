@@ -2,7 +2,6 @@ const ROOM_WIDTH_PX = 128 - 16;
 const ROOM_HEIGHT_PX = 64;
 
 const EntityTypes = {
-    UNSET: -1,
     SWORD: 0,
     BOOMERANG: 1,
     BOMB: 2,
@@ -22,7 +21,10 @@ const EntityTypes = {
     EXPLOSION: 16,
     SECRET_WALL: 17,
     TRIGGER_DOOR: 18,
-    SWITCH: 19
+    SWITCH: 19,
+    ITEM_DROP: 253,
+    PLAYER: 254,
+    UNSET: 255
 };
 
 function getRoomAt(mapX, mapY) {
@@ -49,7 +51,7 @@ function getPropertyValue(props, propName) {
 function getTypeInt(entity) {
     const typeInt = entity.type | (entity.encodedId << 5);
 
-    return "0x" + typeInt.toString(16);
+    return `miscAndEntityType(${entity.encodedId}, ${entity.typeName})`;
 }
 
 function getTeleporterArrayData(name, teleporters) {
@@ -75,7 +77,7 @@ function getXYInOneByte(rawX, rawY) {
 
     // let C++ pack the bytes together, that way can look
     // at the entity in the game's code and easily see its location
-    return `${packedX} << 4 | ${packedY}`;
+    return `xy(${packedX * 8}, ${packedY * 4})`;
 }
 
 function getRoomArrayData(
@@ -151,10 +153,9 @@ function getRoomArrayData(
                 if (dataStr) {
                     result += "\n";
                 }
-                result += `    // entity ${ind}, ${e.typeName}\n`;
+                result += `    // entity ${ind}\n`;
                 result += `    ${getTypeInt(e)},\n`;
-
-                result += `    ${getXYInOneByte(e.x, e.y)}, // x/8 | y/4\n`;
+                result += `    ${getXYInOneByte(e.x, e.y)},\n`;
 
                 return dataStr + result;
             }, "");

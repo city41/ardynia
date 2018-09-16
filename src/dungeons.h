@@ -2,6 +2,8 @@
 #define dungeons_h
 
 #include "emptyRoom.h"
+#include "entityTypes.h"
+#include "entityExpressions.h"
 
 
 const uint8_t PROGMEM dungeons_map[602] = {
@@ -16,9 +18,9 @@ const uint8_t PROGMEM dungeons_map[602] = {
 const uint8_t PROGMEM dungeons_room0_1[] = {
     1, // number of entities
 
-    // entity 0, CHEST
-    0x85,
-    5 << 4 | 6, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(4, CHEST),
+    xy(40, 24),
 };
 
 
@@ -26,17 +28,17 @@ const uint8_t PROGMEM dungeons_room0_1[] = {
 const uint8_t PROGMEM dungeons_room0_2[] = {
     3, // number of entities
 
-    // entity 0, BLOB_MOTHER
-    0xb,
-    5 << 4 | 4, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(0, BLOB_MOTHER),
+    xy(40, 16),
 
-    // entity 1, TRIGGER_DOOR
-    0x12,
-    6 << 4 | 14, // x/8 | y/4
+    // entity 1
+    miscAndEntityType(0, TRIGGER_DOOR),
+    xy(48, 56),
 
-    // entity 2, TRIGGER_DOOR
-    0x12,
-    6 << 4 | 0, // x/8 | y/4
+    // entity 2
+    miscAndEntityType(0, TRIGGER_DOOR),
+    xy(48, 0),
 };
 
 
@@ -44,9 +46,9 @@ const uint8_t PROGMEM dungeons_room0_2[] = {
 const uint8_t PROGMEM dungeons_room0_3[] = {
     1, // number of entities
 
-    // entity 0, LOCK
-    0xe,
-    6 << 4 | 1, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(0, LOCK),
+    xy(48, 4),
 };
 
 
@@ -54,9 +56,9 @@ const uint8_t PROGMEM dungeons_room0_3[] = {
 const uint8_t PROGMEM dungeons_room0_5[] = {
     1, // number of entities
 
-    // entity 0, TELEPORTER
-    0xd,
-    6 << 4 | 13, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(0, TELEPORTER),
+    xy(48, 52),
 };
 
 
@@ -64,9 +66,9 @@ const uint8_t PROGMEM dungeons_room0_5[] = {
 const uint8_t PROGMEM dungeons_room1_2[] = {
     1, // number of entities
 
-    // entity 0, TELEPORTER
-    0x2d,
-    6 << 4 | 14, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(1, TELEPORTER),
+    xy(48, 56),
 };
 
 
@@ -74,9 +76,9 @@ const uint8_t PROGMEM dungeons_room1_2[] = {
 const uint8_t PROGMEM dungeons_room2_4[] = {
     1, // number of entities
 
-    // entity 0, CHEST
-    0x65,
-    8 << 4 | 5, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(3, CHEST),
+    xy(64, 20),
 };
 
 
@@ -84,9 +86,9 @@ const uint8_t PROGMEM dungeons_room2_4[] = {
 const uint8_t PROGMEM dungeons_room2_5[] = {
     1, // number of entities
 
-    // entity 0, LOCK
-    0xe,
-    12 << 4 | 5, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(0, LOCK),
+    xy(96, 20),
 };
 
 
@@ -94,9 +96,9 @@ const uint8_t PROGMEM dungeons_room2_5[] = {
 const uint8_t PROGMEM dungeons_room3_5[] = {
     1, // number of entities
 
-    // entity 0, CHEST
-    0x25,
-    10 << 4 | 11, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(1, CHEST),
+    xy(80, 44),
 };
 
 
@@ -104,25 +106,25 @@ const uint8_t PROGMEM dungeons_room3_5[] = {
 const uint8_t PROGMEM dungeons_room4_2[] = {
     5, // number of entities
 
-    // entity 0, TRIGGER_DOOR
-    0x12,
-    2 << 4 | 14, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(0, TRIGGER_DOOR),
+    xy(16, 56),
 
-    // entity 1, SKELETON
-    0xa,
-    10 << 4 | 6, // x/8 | y/4
+    // entity 1
+    miscAndEntityType(0, SKELETON),
+    xy(80, 24),
 
-    // entity 2, SKELETON
-    0xa,
-    5 << 4 | 9, // x/8 | y/4
+    // entity 2
+    miscAndEntityType(0, SKELETON),
+    xy(40, 36),
 
-    // entity 3, BAT
-    0x9,
-    9 << 4 | 11, // x/8 | y/4
+    // entity 3
+    miscAndEntityType(0, BAT),
+    xy(72, 44),
 
-    // entity 4, BAT
-    0x9,
-    11 << 4 | 10, // x/8 | y/4
+    // entity 4
+    miscAndEntityType(0, BAT),
+    xy(88, 40),
 };
 
 
@@ -130,9 +132,9 @@ const uint8_t PROGMEM dungeons_room4_2[] = {
 const uint8_t PROGMEM dungeons_room4_3[] = {
     1, // number of entities
 
-    // entity 0, CHEST
-    0x65,
-    10 << 4 | 8, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(3, CHEST),
+    xy(80, 32),
 };
 
 
@@ -140,9 +142,9 @@ const uint8_t PROGMEM dungeons_room4_3[] = {
 const uint8_t PROGMEM dungeons_room8_5[] = {
     1, // number of entities
 
-    // entity 0, TELEPORTER
-    0x4d,
-    6 << 4 | 13, // x/8 | y/4
+    // entity 0
+    miscAndEntityType(2, TELEPORTER),
+    xy(48, 52),
 };
 
 const uint8_t PROGMEM dungeons_teleporters[] = {
