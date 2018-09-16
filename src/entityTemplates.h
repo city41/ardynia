@@ -22,126 +22,139 @@
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
 
-#define size(width, height) (width - 1) << 4 | (height - 1)
+/**
+ * Packs width and height into one byte. Since nibbles have a range of 0-15,
+ * it first subtracts one from the value. When unpacking, need to add 1 back on
+ */
+constexpr uint8_t widthAndHeight(uint8_t width, uint8_t height) {
+    return (width - 1) << 4 | (height - 1);
+}
+
+/**
+ * Packs health and damage into one byte
+ */
+constexpr uint8_t healthAndDamage(uint8_t health, uint8_t damage) {
+    return (health << 4) | damage;
+}
 
 const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
-    size(16, 16),
-    0 << 4 | 1,     // health | damage
+    widthAndHeight(16, 16),
+    healthAndDamage(0, 1),
     20,             // duration
     true,           // needsMask
 
     // 1, BOOMERANG
-    size(8, 8),
-    0 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     20,
     true,
 
     // 2, BOMB
-    size(8, 8),
-    0 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     150,
     true,
 
     // 3, KEY
-    size(8, 8),
-    0 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     0,
     true,
 
     // 4, HEART
-    size(8, 8),
-    0 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     180,
     true,
 
     // 5, CHEST
-    size(14, 8),
-    0 << 4 | 0,
+    widthAndHeight(14, 8),
+    healthAndDamage(0, 0),
     0,
     false,
 
     // 6, CANDLE
-    0,
-    0 << 4 | 0,
+    widthAndHeight(0, 0),
+    healthAndDamage(0, 0),
     0,
     true,
 
     // 7, BLOB
-    size(8, 8),
-    2 << 4 | 1, // health | damage
+    widthAndHeight(8, 8),
+    healthAndDamage(2, 1),
     0,          // duration
     true,       // needsMask
 
     // 8, SPIKE
-    size(8, 8),
-    0 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     0,
     false,
 
     // 9, BAT
-    size(8, 8),
-    1 << 4 | 1, // health | damage
+    widthAndHeight(8, 8),
+    healthAndDamage(1, 1),
     0,
     true,
 
     // 10, SKELETON
-    size(16, 16),
-    2 << 4 | 1, // health | damage
+    widthAndHeight(16, 16),
+    healthAndDamage(2, 1),
     0,
     true,
 
     // 11, BLOB_MOTHER
-    size(16, 16),
-    6 << 4 | 1,
+    widthAndHeight(16, 16),
+    healthAndDamage(6, 1),
     10,
     true,
 
     // 12, NEMESIS
-    size(8, 8),
-    15 << 4 | 0,
+    widthAndHeight(8, 8),
+    healthAndDamage(15, 0),
     30,
     true,
 
     // 13, TELEPORTER
-    size(16, 8),
-    0,
+    widthAndHeight(16, 8),
+    healthAndDamage(0, 0),
     0,
     false,
 
     // 14, LOCK
-    size(16, 8),
-    1 << 4 | 0,
+    widthAndHeight(16, 8),
+    healthAndDamage(1, 0),
     0,
     false,
 
     // 15, PROJECTILE
-    0,
-    0,
+    widthAndHeight(0, 0),
+    healthAndDamage(0 , 0),
     0,
     true,
 
     // 16, EXPLOSION
-    size(16, 16),
-    0 << 4 | 1,
+    widthAndHeight(16, 16),
+    healthAndDamage(0 , 1),
     20,
     false,
 
     // 17, SECRET_WALL
-    size(16, 16),
-    1 << 4 | 0,
+    widthAndHeight(16, 16),
+    healthAndDamage(1, 0),
     0,
     false,
 
     // 18, TRIGGER_DOOR
-    size(16, 8),
-    1 << 4 | 0,
+    widthAndHeight(16, 8),
+    healthAndDamage(1, 0),
     0,
     false,
 
     // 19, SWITCH
-    size(8, 8),
-    0,
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
     0,
     false
 };
