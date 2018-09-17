@@ -29,7 +29,7 @@ const uint8_t PROGMEM dungeons_room0_2[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(0, BLOB_MOTHER),
+    miscAndEntityType(1, BLOB_MOTHER),
     xy(40, 16),
 
     // entity 1
@@ -74,11 +74,15 @@ const uint8_t PROGMEM dungeons_room1_2[] = {
 
 
 const uint8_t PROGMEM dungeons_room2_4[] = {
-    1, // number of entities
+    2, // number of entities
 
     // entity 0
-    miscAndEntityType(3, CHEST),
-    xy(64, 20),
+    miscAndEntityType(0, BAT),
+    xy(32, 32),
+
+    // entity 1
+    miscAndEntityType(2, BAT),
+    xy(64, 44),
 };
 
 
@@ -115,7 +119,7 @@ const uint8_t PROGMEM dungeons_room4_2[] = {
     xy(80, 24),
 
     // entity 2
-    miscAndEntityType(0, SKELETON),
+    miscAndEntityType(1, SKELETON),
     xy(40, 36),
 
     // entity 3

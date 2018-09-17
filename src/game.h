@@ -38,7 +38,7 @@ class Game {
 
         uint8_t nextRoomX;
         uint8_t nextRoomY;
-        bool isBossRoom;
+        RoomType roomType;
         uint8_t bossDelayCount;
         InGameMenu menu;
 
@@ -61,7 +61,7 @@ class Game {
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
         void loadEntitiesinRoom(uint8_t roomX, uint8_t roomy);
-        void spawnNewEntity(EntityType, Entity& spawner);
+        int8_t spawnNewEntity(EntityType, Entity& spawner);
 
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);
@@ -98,7 +98,7 @@ class Game {
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             nextRoomX(START_ROOM_X),
             nextRoomY(START_ROOM_Y),
-            isBossRoom(false),
+            roomType(NORMAL),
             bossDelayCount(0),
             menu(),
             roomTransitionCount(0),

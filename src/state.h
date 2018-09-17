@@ -15,7 +15,6 @@ const uint8_t EEPROM_START = 64;
 struct GameState {
     int8_t totalHealth;
     int8_t numAcquiredItems;
-    uint8_t beatenBossesBitMask;
     int8_t numKeys;
 
     // the room states. Each room gets one bit. This means each room
@@ -30,6 +29,7 @@ class State {
         static GameState gameState;
         static bool isTriggered(uint8_t roomIndex);
         static void setTriggered(uint8_t roomIndex);
+        static void setCurrentRoomTriggered();
 
         static bool hasUserSaved();
         static void saveToEEPROM();

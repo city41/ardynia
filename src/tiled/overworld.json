@@ -43,29 +43,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":128,
-                 "name":"Door to dungeon 3",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"DEST_ROOM_X",
-                         "type":"int",
-                         "value":8
-                        }, 
-                        {
-                         "name":"DEST_ROOM_Y",
-                         "type":"int",
-                         "value":5
-                        }],
-                 "rotation":0,
-                 "type":"TELEPORTER",
-                 "visible":true,
-                 "width":0,
-                 "x":479.5,
-                 "y":389.417
-                }, 
-                {
-                 "height":0,
                  "id":129,
                  "name":"Door to dungeon 1",
                  "point":true,

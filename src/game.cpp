@@ -277,12 +277,12 @@ void Game::goToNextRoom(int16_t x, int16_t y) {
     push(&Game::updateRoomTransition, &Game::renderRoomTransition);
 }
 
-void Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
+int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     if (entityType == UNSET) {
-        return;
+        return -1;
     }
 
-    uint8_t e = 0;
+    int8_t e = 0;
     for (; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == UNSET) {
             break;
@@ -291,7 +291,7 @@ void Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
 
     // no room! can't spawn anything right now
     if (e == MAX_ENTITIES) {
-        return;
+        return -1;
     }
 
     loadEntity(entities[e], entityType);
@@ -299,6 +299,8 @@ void Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     int16_t offsetY = (entities[e].height - spawner.height) / 2;
     entities[e].x = spawner.x - offsetX;
     entities[e].y = spawner.y - offsetY;
+
+    return e;
 }
 
 void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
@@ -311,8 +313,8 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
     int8_t i = 0;
     bool roomIsTriggered = State::isTriggered(roomIndex);
-    isBossRoom = false;
-    bool isDefeatedBossRoom = false;
+    roomType = NORMAL;
+    bool isDefeatedSlamShutRoom = false;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
@@ -354,16 +356,22 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if (type == BLOB_MOTHER) {
-            isBossRoom = isBossRoom || type == BLOB_MOTHER;
-
-            if (State::gameState.beatenBossesBitMask & 1) {
-                currentEntity.type = UNSET;
-                isBossRoom = false;
-                isDefeatedBossRoom = true;
-            }
         } else if (type == LOCK && roomIsTriggered) {
             currentEntity.type = UNSET;
+        } else if (entityMisc > 0) {
+            roomType = entityMisc;
+
+            if (roomType == SLAM_SHUT && roomIsTriggered) {
+                currentEntity.type = UNSET;
+                roomType = NORMAL;
+                isDefeatedSlamShutRoom = true;
+            } else if (roomType == LAST_ENEMY_HAS_KEY && roomIsTriggered) {
+                roomType = NORMAL;
+                loadEntity(currentEntity, CHEST);
+                currentEntity.currentFrame = 1;
+                currentEntity.x = (ROOM_WIDTH_PX / 2) - 8;
+                currentEntity.y = (ROOM_HEIGHT_PX / 2) - 4;
+            }
         }
     }
 
@@ -373,7 +381,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
 
     Nemesis::sword.type = UNSET;
 
-    if (isDefeatedBossRoom) {
+    if (isDefeatedSlamShutRoom) {
         removeAllTriggerDoors();
     }
 }
@@ -491,6 +499,31 @@ void Game::updatePlay(uint8_t frame) {
         player.movedThisFrame = false;
         push(&Game::updateGameOver, &Game::renderGameOver);
     }
+
+    if (roomType == SLAM_SHUT || roomType == LAST_ENEMY_HAS_KEY) {
+        bool stillHasEnemies = false;
+
+        for (e = 0; e < MAX_ENTITIES; ++e) {
+            if (entities[e].type >= BLOB && entities[e].type <= NEMESIS) {
+                stillHasEnemies = true;
+                break;
+            }
+        }
+
+        if (!stillHasEnemies) {
+            if (roomType == SLAM_SHUT) {
+                removeAllTriggerDoors();
+                State::setCurrentRoomTriggered();
+            } else {
+                e = spawnNewEntity(CHEST, player);
+                entities[e].x = (ROOM_WIDTH_PX / 2) - 8;
+                entities[e].y = (ROOM_HEIGHT_PX / 2) - 4;
+                entities[e].health = KEY;
+            }
+
+            roomType = NORMAL;
+        }
+    }
 }
 
 void Game::renderPlay(uint8_t frame) {
@@ -559,7 +592,7 @@ void Game::updateRoomTransition(uint8_t frame) {
 
         uint8_t offset = 4;
 
-        if (isBossRoom) {
+        if (roomType == SLAM_SHUT) {
             offset = 17;
             bossDelayCount = 120;
             Sfx::playerDamage(10);

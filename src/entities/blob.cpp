@@ -9,7 +9,8 @@ EntityType Blob::onCollide(Entity* me, Entity& other, Entity& player, Game& game
 
         if (me->health <= 0) {
             if (me->type == BLOB_MOTHER) {
-                State::gameState.beatenBossesBitMask |= 1;
+                const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
+                State::setTriggered(roomIndex);
                 State::saveToEEPROM();
                 game.removeAllTriggerDoors();
             } 

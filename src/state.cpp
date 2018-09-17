@@ -39,6 +39,12 @@ void State::setTriggered(uint8_t roomIndex) {
     gameState.roomStates[byteToSet] |= bitMask;
 }
 
+void State::setCurrentRoomTriggered() {
+    const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
+    setTriggered(roomIndex);
+    saveToEEPROM();
+}
+
 bool State::hasUserSaved() {
     uint8_t id;
     EEPROM.get(EEPROM_START, id);
@@ -57,7 +63,6 @@ void State::load() {
     } else {
         gameState.totalHealth = 2;
         gameState.numAcquiredItems = 0;
-        gameState.beatenBossesBitMask = 0;
         gameState.numKeys = 0;
         
         // this may not be necessary, but rather play it safe

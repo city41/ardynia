@@ -41,13 +41,6 @@
    </properties>
    <point/>
   </object>
-  <object id="128" name="Door to dungeon 3" type="TELEPORTER" x="479.5" y="389.417">
-   <properties>
-    <property name="DEST_ROOM_X" type="int" value="8"/>
-    <property name="DEST_ROOM_Y" type="int" value="5"/>
-   </properties>
-   <point/>
-  </object>
   <object id="129" name="Door to dungeon 1" type="TELEPORTER" x="514.416" y="388">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>

@@ -27,6 +27,12 @@ const EntityTypes = {
     UNSET: 255
 };
 
+const MiscValues = {
+    NORMAL: 0,
+    SLAM_SHUT: 1,
+    LAST_ENEMY_HAS_KEY: 2
+};
+
 function getRoomAt(mapX, mapY) {
     const roomX = Math.floor(mapX / ROOM_WIDTH_PX);
     const roomY = Math.floor(mapY / ROOM_HEIGHT_PX);
@@ -42,16 +48,17 @@ function getRoomAt(mapX, mapY) {
 // for TELEPORTER, dig in and find the DEST_ROOM_X or DEST_ROOM_Y
 // for CHEST, dig in and find out what the chest contains
 function getPropertyValue(props, propName) {
-    return props && props.find(p => p.name === propName).value;
+    const prop = props && props.find(p => p.name === propName);
+    return prop && prop.value;
 }
 
 // combine the entity type plus its encoded id into one value
 // for most entities, the encoded id is zero, it's only used by a few
 // entity types to sneak in a bit more info (what's inside a chest for example)
 function getTypeInt(entity) {
-    const typeInt = entity.type | (entity.encodedId << 5);
+    const typeInt = entity.type | (entity.miscValue << 5);
 
-    return `miscAndEntityType(${entity.encodedId}, ${entity.typeName})`;
+    return `miscAndEntityType(${entity.miscValue}, ${entity.typeName})`;
 }
 
 function getTeleporterArrayData(name, teleporters) {
@@ -95,7 +102,7 @@ function getRoomArrayData(
     // the entity type can also encode other data
     // teleporters: an index into the teleporters array to find out where to teleport to
     // chest: an entity type id that indicates what is in the chest (must be [0,8))
-    function getEncodedId(obj) {
+    function getMiscValue(obj) {
         if (obj.type === "TELEPORTER") {
             return teleporters.length;
         }
@@ -108,7 +115,8 @@ function getRoomArrayData(
             return EntityTypes[containedTypeName];
         }
 
-        return 0;
+        const miscString = getPropertyValue(obj.properties, "MISC");
+        return MiscValues[miscString] || 0;
     }
 
     objects.forEach((obj, i) => {
@@ -124,7 +132,7 @@ function getRoomArrayData(
             y: entityY,
             type,
             typeName: obj.type,
-            encodedId: getEncodedId(obj)
+            miscValue: getMiscValue(obj)
         });
 
         if (obj.type === "TELEPORTER") {

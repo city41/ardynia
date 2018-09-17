@@ -23,7 +23,7 @@ const uint8_t PROGMEM overworld_room0_0[] = {
     xy(48, 32),
 
     // entity 1
-    miscAndEntityType(3, TELEPORTER),
+    miscAndEntityType(2, TELEPORTER),
     xy(48, 32),
 };
 
@@ -94,14 +94,10 @@ const uint8_t PROGMEM overworld_room2_2[] = {
 
 
 const uint8_t PROGMEM overworld_room4_6[] = {
-    2, // number of entities
+    1, // number of entities
 
     // entity 0
     miscAndEntityType(1, TELEPORTER),
-    xy(32, 4),
-
-    // entity 1
-    miscAndEntityType(2, TELEPORTER),
     xy(64, 4),
 };
 
@@ -128,7 +124,6 @@ const uint8_t PROGMEM overworld_room6_3[] = {
 const uint8_t PROGMEM overworld_teleporters[] = {
     // dest x, dest y (in rooms)
     1, 2,
-    8, 5,
     0, 5,
     0, 0,
 };

@@ -92,6 +92,12 @@
                  "id":170,
                  "name":"dungeon 1 boss",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"SLAM_SHUT"
+                        }],
                  "rotation":0,
                  "type":"BLOB_MOTHER",
                  "visible":true,
@@ -133,7 +139,7 @@
                  "visible":true,
                  "width":0,
                  "x":527.333,
-                 "y":225.333666666667
+                 "y":225.334
                 }, 
                 {
                  "height":0,
@@ -168,8 +174,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":416.666666666667,
-                 "y":364.666666666667
+                 "x":416.667,
+                 "y":364.667
                 }, 
                 {
                  "height":0,
@@ -209,24 +215,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":182,
-                 "name":"key in chest",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"KEY"
-                        }],
-                 "rotation":0,
-                 "type":"CHEST",
-                 "visible":true,
-                 "width":0,
-                 "x":291.333333333333,
-                 "y":276
-                }, 
-                {
-                 "height":0,
                  "id":183,
                  "name":"lock",
                  "point":true,
@@ -240,8 +228,8 @@
                  "type":"LOCK",
                  "visible":true,
                  "width":0,
-                 "x":322.666666666667,
-                 "y":338.666666666667
+                 "x":322.667,
+                 "y":338.667
                 }, 
                 {
                  "height":0,
@@ -252,8 +240,8 @@
                  "type":"TRIGGER_DOOR",
                  "visible":true,
                  "width":0,
-                 "x":465.333333333333,
-                 "y":185.333333333333
+                 "x":465.333,
+                 "y":185.333
                 }, 
                 {
                  "height":0,
@@ -265,18 +253,24 @@
                  "visible":true,
                  "width":0,
                  "x":528,
-                 "y":150.666666666667
+                 "y":150.667
                 }, 
                 {
                  "height":0,
                  "id":186,
                  "name":"skeleton",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"SLAM_SHUT"
+                        }],
                  "rotation":0,
                  "type":"SKELETON",
                  "visible":true,
                  "width":0,
-                 "x":486.666666666667,
+                 "x":486.667,
                  "y":164
                 }, 
                 {
@@ -288,8 +282,8 @@
                  "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":521.333333333333,
-                 "y":171.333333333333
+                 "x":521.333,
+                 "y":171.333
                 }, 
                 {
                  "height":0,
@@ -301,7 +295,37 @@
                  "visible":true,
                  "width":0,
                  "x":536,
-                 "y":168.666666666667
+                 "y":168.667
+                }, 
+                {
+                 "height":0,
+                 "id":189,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":258,
+                 "y":289.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":190,
+                 "name":"bat",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"LAST_ENEMY_HAS_KEY"
+                        }],
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":290.666666666667,
+                 "y":298
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -991,7 +1015,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":189,
+ "nextobjectid":191,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
