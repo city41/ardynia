@@ -26,9 +26,10 @@ void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
 }
 
 void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
-    // draw bomb count
-    Hud::drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys);
-    Hud::drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
+    renderer.translateX = WIDTH - 16;
+    renderer.translateY = 0;
+    Hud::render(renderer, player);
+    renderer.translateX = 0;
 
     const uint8_t x = 20;
 

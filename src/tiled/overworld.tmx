@@ -36,8 +36,8 @@
  <objectgroup id="2" name="entities">
   <object id="127" name="Door to dungeon 2" type="TELEPORTER" x="753.333" y="23">
    <properties>
-    <property name="DEST_ROOM_X" type="int" value="1"/>
-    <property name="DEST_ROOM_Y" type="int" value="2"/>
+    <property name="DEST_ROOM_X" type="int" value="4"/>
+    <property name="DEST_ROOM_Y" type="int" value="5"/>
    </properties>
    <point/>
   </object>

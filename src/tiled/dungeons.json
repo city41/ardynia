@@ -61,8 +61,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":160,
-                 "y":182
+                 "x":497.333,
+                 "y":370.667
                 }, 
                 {
                  "height":0,
@@ -307,7 +307,7 @@
                  "visible":true,
                  "width":0,
                  "x":258,
-                 "y":289.333333333333
+                 "y":289.333
                 }, 
                 {
                  "height":0,
@@ -324,8 +324,44 @@
                  "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":290.666666666667,
+                 "x":290.667,
                  "y":298
+                }, 
+                {
+                 "height":0,
+                 "id":191,
+                 "name":"key in chest",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":501.333333333333,
+                 "y":290.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":192,
+                 "name":"key in chest",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"KEY"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":385.333333333333,
+                 "y":274
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1015,7 +1051,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":191,
+ "nextobjectid":193,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 
+const uint8_t MAX_DUNGEON_COUNT = 3;
 const uint8_t MAX_ROOM_COUNT = 152;
 const uint8_t DUNGEON_ROOM_OFFSET = 4; // this will be 64 for the full map
 const uint8_t MAX_KEYS = 6;
@@ -15,12 +16,13 @@ const uint8_t EEPROM_START = 64;
 struct GameState {
     int8_t totalHealth;
     int8_t numAcquiredItems;
-    int8_t numKeys;
+    int8_t numKeys[MAX_DUNGEON_COUNT];
+    int8_t currentDungeon;
 
     // the room states. Each room gets one bit. This means each room
     // can only have ONE thing about it that is stateful. That means each
     // room can only have one chest OR one locked door, etc. It is not allowed
-    // for a single room to have both a chest and a key for example, one or the other
+    // for a single room to have both a chest and a locked door for example, one or the other
     uint8_t roomStates[MAX_ROOM_COUNT / 8];
 };
 

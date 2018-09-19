@@ -182,12 +182,6 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
         tookDamageCount = 30;
     }
 
-    if (other.type == KEY) {
-        other.type = UNSET;
-        State::gameState.numKeys = Util::clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
-        Sfx::pickUpItem();
-    }
-
     if (other.type == HEART) {
         other.type = UNSET;
         health = Util::clamp(health + 1, 0, State::gameState.totalHealth);
@@ -213,7 +207,8 @@ void Player::receiveItemFromChest(Entity& chest) {
         chest.currentFrame = 1;
 
         if (item == KEY) {
-            State::gameState.numKeys = Util::clamp(State::gameState.numKeys + 1, 0, MAX_KEYS);
+            State::gameState.numKeys[State::gameState.currentDungeon] =
+                Util::clamp(State::gameState.numKeys[State::gameState.currentDungeon] + 1, 0, MAX_KEYS);
         }
 
         if (item >= SWORD && item <= HEART) {

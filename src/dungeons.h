@@ -63,16 +63,6 @@ const uint8_t PROGMEM dungeons_room0_5[] = {
 
 
 
-const uint8_t PROGMEM dungeons_room1_2[] = {
-    1, // number of entities
-
-    // entity 0
-    miscAndEntityType(1, TELEPORTER),
-    xy(48, 56),
-};
-
-
-
 const uint8_t PROGMEM dungeons_room2_4[] = {
     2, // number of entities
 
@@ -93,6 +83,16 @@ const uint8_t PROGMEM dungeons_room2_5[] = {
     // entity 0
     miscAndEntityType(0, LOCK),
     xy(96, 20),
+};
+
+
+
+const uint8_t PROGMEM dungeons_room3_4[] = {
+    1, // number of entities
+
+    // entity 0
+    miscAndEntityType(3, CHEST),
+    xy(48, 20),
 };
 
 
@@ -139,6 +139,26 @@ const uint8_t PROGMEM dungeons_room4_3[] = {
     // entity 0
     miscAndEntityType(3, CHEST),
     xy(80, 32),
+};
+
+
+
+const uint8_t PROGMEM dungeons_room4_4[] = {
+    1, // number of entities
+
+    // entity 0
+    miscAndEntityType(3, CHEST),
+    xy(56, 36),
+};
+
+
+
+const uint8_t PROGMEM dungeons_room4_5[] = {
+    1, // number of entities
+
+    // entity 0
+    miscAndEntityType(1, TELEPORTER),
+    xy(48, 52),
 };
 
 
@@ -192,7 +212,7 @@ const uint8_t * const PROGMEM dungeons_row1[10] = {
 
 const uint8_t * const PROGMEM dungeons_row2[10] = {
     dungeons_room0_2,
-    dungeons_room1_2,
+    empty_room,
     empty_room,
     empty_room,
     dungeons_room4_2,
@@ -222,8 +242,8 @@ const uint8_t * const PROGMEM dungeons_row4[10] = {
     empty_room,
     empty_room,
     dungeons_room2_4,
-    empty_room,
-    empty_room,
+    dungeons_room3_4,
+    dungeons_room4_4,
     empty_room,
     empty_room,
     empty_room,
@@ -237,7 +257,7 @@ const uint8_t * const PROGMEM dungeons_row5[10] = {
     empty_room,
     dungeons_room2_5,
     dungeons_room3_5,
-    empty_room,
+    dungeons_room4_5,
     empty_room,
     empty_room,
     empty_room,

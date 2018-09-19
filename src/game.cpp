@@ -116,6 +116,9 @@ void Game::updateTeleportTransition(uint8_t frame) {
 
         // from overworld -> dungeon or vice versa
         TileRoom::mapType = 1 - TileRoom::mapType;
+        State::gameState.currentDungeon = TileRoom::mapType == OVERWORLD ? -1 : nextRoomX / 4;
+        State::saveToEEPROM();
+        
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
@@ -544,7 +547,7 @@ void Game::renderPlay(uint8_t frame) {
 
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
-    Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
+    Hud::render(renderer, player);
 }
 
 void Game::updateMenu(uint8_t frame) {
@@ -651,7 +654,7 @@ void Game::renderRoomTransition(uint8_t frame) {
 
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
-    Hud::render(renderer, frame, player, TileRoom::x, TileRoom::y);
+    Hud::render(renderer, player);
 }
 
 void Game::update(uint8_t frame) {

@@ -4,8 +4,9 @@
 #include "state.h"
 #include "util.h"
 #include "itemSprites.h"
+#include "tileRoom.h"
 
-void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, uint8_t frame, bool useFillRect) {
+void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint8_t maxCount, bool useFillRect) {
     uint8_t origX = x;
 
     for (uint8_t i = 0; i < maxCount; ++i) {
@@ -36,11 +37,11 @@ void Hud::drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8
     }
 }
 
-void Hud::render(Renderer& renderer, uint8_t frame, Player& player, uint8_t roomX, uint8_t roomY) {
+void Hud::render(Renderer& renderer, Player& player) {
     renderer.fillRect(0, 0, 16, 64, BLACK);
 
     // health dots
-    drawDots(renderer, 1, 1, player.health, State::gameState.totalHealth, frame, false);
+    drawDots(renderer, 1, 1, player.health, State::gameState.totalHealth, false);
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
@@ -49,7 +50,10 @@ void Hud::render(Renderer& renderer, uint8_t frame, Player& player, uint8_t room
     renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
 
     // draw keys and bombs count
-    drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys);
+    if (State::gameState.currentDungeon > -1) {
+        drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys[State::gameState.currentDungeon]);
+    }
+
     drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
 }
 
