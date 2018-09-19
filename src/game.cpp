@@ -371,7 +371,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if ((type == LOCK || type == BOSS_LOCK) && roomIsTriggered) {
+        } else if (type == LOCK && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
             roomType = entityMisc;

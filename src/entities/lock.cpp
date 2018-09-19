@@ -15,7 +15,6 @@ EntityType Lock::onCollide(Entity* me, Entity& other, Player& player) {
             State::gameState.numKeys[State::gameState.currentDungeon] -= 1;
             triggerLock(me);
         } else if (me->type == BOSS_LOCK && State::gameState.bossKeys[State::gameState.currentDungeon] > 0) {
-            State::gameState.bossKeys[State::gameState.currentDungeon] -= 1;
             triggerLock(me);
         }
     }
