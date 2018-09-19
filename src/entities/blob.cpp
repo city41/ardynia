@@ -9,9 +9,7 @@ EntityType Blob::onCollide(Entity* me, Entity& other, Entity& player, Game& game
 
         if (me->health <= 0) {
             if (me->type == BLOB_MOTHER) {
-                const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
-                State::setTriggered(roomIndex);
-                State::saveToEEPROM();
+                State::setCurrentRoomTriggered();
                 game.removeAllTriggerDoors();
             } 
 

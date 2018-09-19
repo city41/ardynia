@@ -8,9 +8,7 @@ EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
         me->health = 0;
         me->currentFrame = 1;
 
-        const uint8_t roomIndex = TileRoom::getRoomIndex(TileRoom::x, TileRoom::y);
-        State::setTriggered(roomIndex);
-        State::saveToEEPROM();
+        State::setCurrentRoomTriggered();
     }
 
     return UNSET;
