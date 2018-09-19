@@ -1,16 +1,23 @@
 #include "lock.h"
 #include "../state.h"
-#include "../tileRoom.h"
 #include "../sfx.h"
+#include "player.h"
 
-EntityType Lock::onCollide(Entity* me, Entity* other, Entity* player) {
-    if (other == player && State::gameState.numKeys[State::gameState.currentDungeon] > 0) {
-        State::gameState.numKeys[State::gameState.currentDungeon] -= 1;
+void triggerLock(Entity* me) {
+    State::setCurrentRoomTriggered();
+    me->type = UNSET;
+    Sfx::successJingle();
+}
 
-        State::setCurrentRoomTriggered();
-
-        me->type = UNSET;
-        Sfx::successJingle();
+EntityType Lock::onCollide(Entity* me, Entity& other, Player& player) {
+    if (other.type == PLAYER) {
+        if (me->type == LOCK && State::gameState.numKeys[State::gameState.currentDungeon] > 0) {
+            State::gameState.numKeys[State::gameState.currentDungeon] -= 1;
+            triggerLock(me);
+        } else if (me->type == BOSS_LOCK && State::gameState.bossKeys[State::gameState.currentDungeon] > 0) {
+            State::gameState.bossKeys[State::gameState.currentDungeon] -= 1;
+            triggerLock(me);
+        }
     }
 
     return UNSET;

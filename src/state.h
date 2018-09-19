@@ -17,6 +17,7 @@ struct GameState {
     int8_t totalHealth;
     int8_t numAcquiredItems;
     int8_t numKeys[MAX_DUNGEON_COUNT];
+    int8_t bossKeys[MAX_DUNGEON_COUNT];
     int8_t currentDungeon;
 
     // the room states. Each room gets one bit. This means each room

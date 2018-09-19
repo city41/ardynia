@@ -5,8 +5,10 @@
 #include "../entity.h"
 #include "../entityTypes.h"
 
+class Player;
+
 struct Lock {
-    static EntityType onCollide(Entity* me, Entity* other, Entity* player);
+    static EntityType onCollide(Entity* me, Entity& other, Player& player);
 };
 
 #endif

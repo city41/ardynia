@@ -186,7 +186,7 @@ void Game::detectEntityCollisions(void) {
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
                 push(&Game::updateTeleportTransition, &Game::renderTeleportTransition);
-            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK || entities[ge].type == TRIGGER_DOOR) {
+            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK || entities[ge].type == BOSS_LOCK || entities[ge].type == TRIGGER_DOOR) {
                 if (entities[ge].health == 1) {
                     player.undoMove();
                 }
@@ -359,7 +359,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if (type == LOCK && roomIsTriggered) {
+        } else if ((type == LOCK || type == BOSS_LOCK) && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
             roomType = entityMisc;

@@ -203,38 +203,33 @@ void Player::receiveItemFromChest(Entity& chest) {
         y >= (chest.y + 8) &&
         chest.currentFrame == 0
     ) {
-        EntityType item = chest.health;
+        receivedItem = chest.health;
         chest.currentFrame = 1;
+        receiveItemCount = 60;
 
-        if (item == KEY) {
-            State::gameState.numKeys[State::gameState.currentDungeon] =
-                Util::clamp(State::gameState.numKeys[State::gameState.currentDungeon] + 1, 0, MAX_KEYS);
+        if (receivedItem == BOMB) {
+            numBombs = 3;
         }
 
-        if (item >= SWORD && item <= HEART) {
-            receiveItemCount = 60;
-            receivedItem = item;
-
-            if (receivedItem > SWORD && receivedItem < KEY) {
-                bButtonEntityType = receivedItem;
-            }
-
-            if (receivedItem == BOMB) {
-                numBombs = 3;
-            }
-
-            if (receivedItem < KEY) {
-                State::gameState.numAcquiredItems += 1;
-            }
-
-            if (receivedItem == HEART) {
-                State::gameState.totalHealth += 1;
-                health = State::gameState.totalHealth;
-            }
-
-            Sfx::successJingle();
+        if (receivedItem < KEY) {
+            State::gameState.numAcquiredItems += 1;
+            bButtonEntityType = receivedItem;
         }
 
+        if (receivedItem == HEART) {
+            State::gameState.totalHealth += 1;
+            health = State::gameState.totalHealth;
+        }
+
+        if (receivedItem == KEY) { 
+            State::gameState.numKeys[State::gameState.currentDungeon] += 1;
+        }
+
+        if (receivedItem == BOSS_KEY) {
+            State::gameState.bossKeys[State::gameState.currentDungeon] += 1;
+        }
+
+        Sfx::successJingle();
         State::setCurrentRoomTriggered();
     }
 }

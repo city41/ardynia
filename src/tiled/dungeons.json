@@ -126,13 +126,13 @@
                 {
                  "height":0,
                  "id":172,
-                 "name":"key in chest",
+                 "name":"boss key in chest",
                  "point":true,
                  "properties":[
                         {
                          "name":"CONTAINED_TYPE",
                          "type":"string",
-                         "value":"KEY"
+                         "value":"BOSS_KEY"
                         }],
                  "rotation":0,
                  "type":"CHEST",
@@ -144,20 +144,14 @@
                 {
                  "height":0,
                  "id":173,
-                 "name":"lock",
+                 "name":"boss lock",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"KEY"
-                        }],
                  "rotation":0,
-                 "type":"LOCK",
+                 "type":"BOSS_LOCK",
                  "visible":true,
                  "width":0,
                  "x":49.3333,
-                 "y":196.667
+                 "y":192
                 }, 
                 {
                  "height":0,

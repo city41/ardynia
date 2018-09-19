@@ -63,16 +63,13 @@
    </properties>
    <point/>
   </object>
-  <object id="172" name="key in chest" type="CHEST" x="527.333" y="225.334">
+  <object id="172" name="boss key in chest" type="CHEST" x="527.333" y="225.334">
    <properties>
-    <property name="CONTAINED_TYPE" value="KEY"/>
+    <property name="CONTAINED_TYPE" value="BOSS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="173" name="lock" type="LOCK" x="49.3333" y="196.667">
-   <properties>
-    <property name="CONTAINED_TYPE" value="KEY"/>
-   </properties>
+  <object id="173" name="boss lock" type="BOSS_LOCK" x="49.3333" y="192">
    <point/>
   </object>
   <object id="175" name="boomerang" type="CHEST" x="416.667" y="364.667">

@@ -7,7 +7,8 @@ const uint8_t* const PROGMEM secondaryItem_sprites[] = {
     boomerang_plus_mask,
     bomb_plus_mask,
     key_plus_mask,
-    heart_plus_mask
+    heart_plus_mask,
+    bossKey_plus_mask
 };
 
 #endif

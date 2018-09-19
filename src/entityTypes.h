@@ -15,8 +15,8 @@ const EntityType BOOMERANG = 1;
 const EntityType BOMB = 2;
 const EntityType KEY = 3;
 const EntityType HEART = 4;
-const EntityType CHEST = 5;
-const EntityType CANDLE = 6;
+const EntityType BOSS_KEY = 5;
+const EntityType CHEST = 6;
 
 // enemies, to be named
 const EntityType BLOB = 7;
@@ -32,15 +32,16 @@ const EntityType NEMESIS = 12;
 // and interacting with the world
 const EntityType TELEPORTER = 13; // aka a door
 const EntityType LOCK = 14;
+const EntityType BOSS_LOCK = 15;
 
 // projectiles
-const EntityType PROJECTILE = 15;
-const EntityType EXPLOSION = 16;
+const EntityType PROJECTILE = 16;
+const EntityType EXPLOSION = 17;
 
 // misc
-const EntityType SECRET_WALL = 17;
-const EntityType TRIGGER_DOOR = 18;
-const EntityType SWITCH = 19;
+const EntityType SECRET_WALL = 18;
+const EntityType TRIGGER_DOOR = 19;
+const EntityType SWITCH = 20;
 
 const uint8_t NUM_ENTITIES = SWITCH + 1;
 

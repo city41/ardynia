@@ -47,8 +47,8 @@ const uint8_t PROGMEM dungeons_room0_3[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(0, LOCK),
-    xy(48, 4),
+    miscAndEntityType(0, BOSS_LOCK),
+    xy(48, 0),
 };
 
 
@@ -137,7 +137,7 @@ const uint8_t PROGMEM dungeons_room4_3[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(3, CHEST),
+    miscAndEntityType(5, CHEST),
     xy(80, 32),
 };
 

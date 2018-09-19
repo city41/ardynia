@@ -68,17 +68,17 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     180,
     true,
 
-    // 5, CHEST
+    // 5, BOSS_KEY
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
+    0,
+    true,
+
+    // 6, CHEST
     widthAndHeight(14, 8),
     healthAndDamage(0, 0),
     0,
     false,
-
-    // 6, CANDLE
-    widthAndHeight(0, 0),
-    healthAndDamage(0, 0),
-    0,
-    true,
 
     // 7, BLOB
     widthAndHeight(8, 8),
@@ -128,31 +128,37 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     false,
 
-    // 15, PROJECTILE
+    // 15, BOSS_LOCK
+    widthAndHeight(16, 16),
+    healthAndDamage(1, 0),
+    0,
+    false,
+
+    // 16, PROJECTILE
     widthAndHeight(0, 0),
     healthAndDamage(0 , 0),
     0,
     true,
 
-    // 16, EXPLOSION
+    // 17, EXPLOSION
     widthAndHeight(16, 16),
     healthAndDamage(0 , 1),
     20,
     false,
 
-    // 17, SECRET_WALL
+    // 18, SECRET_WALL
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 18, TRIGGER_DOOR
+    // 19, TRIGGER_DOOR
     widthAndHeight(16, 8),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 19, SWITCH
+    // 20, SWITCH
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
@@ -186,13 +192,13 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 5, CHEST
-    chest_tiles,
+    // 5, BOSS_KEY
+    bossKey_plus_mask,
     NULL,
     NULL,
 
-    // 6, CANDLE
-    NULL,
+    // 6, CHEST
+    chest_tiles,
     NULL,
     NULL,
 
@@ -236,27 +242,32 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     (void*)Lock::onCollide,
 
-    // 15, PROJECTILE
+    // 15, BOSS_LOCK
+    bossLock_tiles,
+    NULL,
+    (void*)Lock::onCollide,
+
+    // 16, PROJECTILE
     NULL,
     NULL,
     NULL,
 
-    // 16, EXPLOSION
+    // 17, EXPLOSION
     explosion_tiles,
     (void*)Explosion::update,
     NULL,
 
-    // 17, SECRET_WALL
+    // 18, SECRET_WALL
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
 
-    // 18, TRIGGER_DOOR
+    // 19, TRIGGER_DOOR
     triggerDoor_tiles,
     NULL,
     NULL,
 
-    // 19, SWITCH
+    // 20, SWITCH
     switch_tiles,
     NULL,
     NULL

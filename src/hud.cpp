@@ -28,11 +28,11 @@ void Hud::drawDots(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, uint
 void Hud::drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8_t y, uint8_t count) {
     for (uint8_t i = 0; i < count; ++i) {
         renderer.drawPlusMask(x, y, bmp, 0, 0, true);
-        x += 5;
+        x += 4;
 
         if (i == 2) {
             y += 8;
-            x -= 15;
+            x -= 12;
         }
     }
 }
@@ -49,11 +49,14 @@ void Hud::render(Renderer& renderer, Player& player) {
     }
     renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
 
-    // draw keys and bombs count
     if (State::gameState.currentDungeon > -1) {
         drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys[State::gameState.currentDungeon]);
     }
 
     drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
+
+    if (State::gameState.bossKeys[State::gameState.currentDungeon]) {
+        renderer.drawPlusMask(0, 23, bossKey_plus_mask, 0, 0, true);
+    }
 }
 
