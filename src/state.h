@@ -34,6 +34,8 @@ class State {
         static void setTriggered(uint8_t roomIndex);
         static void setCurrentRoomTriggered();
 
+        static bool isInDungeon() { return gameState.currentDungeon > -1; }
+
         static bool hasUserSaved();
         static void saveToEEPROM();
         static void clearEEPROM();

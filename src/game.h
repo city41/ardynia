@@ -13,9 +13,6 @@
 
 const uint8_t MAX_ENTITIES = 8;
 
-const uint8_t START_ROOM_X = 1;
-const uint8_t START_ROOM_Y = 4;
-
 const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 7;
 const uint8_t OVERWORLD_HEIGHT_IN_ROOMS = 7;
 const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 10;
@@ -96,8 +93,8 @@ class Game {
             renderer(renderer),
             titleRow(0),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
-            nextRoomX(START_ROOM_X),
-            nextRoomY(START_ROOM_Y),
+            nextRoomX(0),
+            nextRoomY(0),
             roomType(NORMAL),
             bossDelayCount(0),
             menu(),

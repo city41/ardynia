@@ -12,7 +12,7 @@ GameState State::gameState = {};
 bool State::isTriggered(uint8_t roomIndex) {
     // setting state will only ever happen in "real time", so
     // let's hide the overworld/dungeon distinction from the rest of the game
-    if (TileRoom::isInDungeon()) {
+    if (isInDungeon()) {
         roomIndex += DUNGEON_ROOM_OFFSET;
     }
 
@@ -28,7 +28,7 @@ bool State::isTriggered(uint8_t roomIndex) {
  * So the key never respawns again
  */
 void State::setTriggered(uint8_t roomIndex) {
-    if (TileRoom::isInDungeon()) {
+    if (isInDungeon()) {
         roomIndex += DUNGEON_ROOM_OFFSET;
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="193">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="70" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="194">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="9" name="Tile Layer 1" width="70" height="24">
   <data encoding="csv">
@@ -132,6 +132,12 @@
   <object id="192" name="key in chest" type="CHEST" x="385.333" y="274">
    <properties>
     <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="193" name="skeleton" type="SKELETON" x="610.667" y="280.667">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
    </properties>
    <point/>
   </object>

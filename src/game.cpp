@@ -20,6 +20,14 @@ const uint8_t PLAY_GAME = 0;
 const uint8_t SFX_ON_OFF = 1;
 const uint8_t DELETE_SAVE = 2;
 
+const uint8_t PROGMEM startingRooms[8] = {
+    1, 4, // overworld (x, y)
+    0, 5, // first dungeon
+    4, 5, // second dungeon
+    8, 5  // third dungeon
+};
+
+
 /**
  * Resets the game back to the last save. If there is no save,
  * resets back to the beginning of the game
@@ -29,17 +37,23 @@ const uint8_t DELETE_SAVE = 2;
 void Game::loadSave(bool straightToPlay) {
     State::load();
 
-    TileRoom::map = overworld_map;
-    TileRoom::x = START_ROOM_X;
-    TileRoom::y = START_ROOM_Y;
-    TileRoom::mapType = OVERWORLD;
+    if (State::gameState.currentDungeon == -1) {
+        TileRoom::map = overworld_map;
+        entityDefs = overworld_entities;
+        doorDefs = overworld_teleporters;
+        mapWidthInRooms = OVERWORLD_WIDTH_IN_ROOMS;
+        mapHeightInRooms = OVERWORLD_HEIGHT_IN_ROOMS;
+    } else {
+        TileRoom::map = dungeons_map;
+        entityDefs = dungeons_entities;
+        doorDefs = dungeons_teleporters;
+        mapWidthInRooms = DUNGEONS_WIDTH_IN_ROOMS;
+    }
 
-    entityDefs = overworld_entities;
-    doorDefs = overworld_teleporters;
+    TileRoom::x = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2);
+    TileRoom::y = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2 + 1);
 
-    loadEntitiesinRoom(START_ROOM_X, START_ROOM_Y);
-    mapWidthInRooms = OVERWORLD_WIDTH_IN_ROOMS;
-    mapHeightInRooms = OVERWORLD_HEIGHT_IN_ROOMS;
+    loadEntitiesinRoom(TileRoom::x, TileRoom::y);
 
     player.reset();
 
@@ -52,7 +66,7 @@ void Game::loadSave(bool straightToPlay) {
     }
 
     Map::reset();
-    Map::visitRoom(START_ROOM_X, START_ROOM_Y, OVERWORLD_WIDTH_IN_ROOMS);
+    Map::visitRoom(TileRoom::x, TileRoom::y, mapWidthInRooms);
 }
 
 /**
@@ -114,9 +128,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        // from overworld -> dungeon or vice versa
-        TileRoom::mapType = 1 - TileRoom::mapType;
-        State::gameState.currentDungeon = TileRoom::mapType == OVERWORLD ? -1 : nextRoomX / 4;
+        State::gameState.currentDungeon = State::gameState.currentDungeon == -1 ? nextRoomX / 4 : -1;
         State::saveToEEPROM();
         
 
@@ -126,8 +138,8 @@ void Game::updateTeleportTransition(uint8_t frame) {
         loadEntitiesinRoom(nextRoomX, nextRoomY);
 
         Map::reset();
-        mapWidthInRooms = TileRoom::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
-        mapHeightInRooms = TileRoom::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
+        mapWidthInRooms = State::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
+        mapHeightInRooms = State::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         // plop player in the center of the rooms
@@ -231,7 +243,7 @@ void Game::detectEntityCollisions(void) {
             (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
             (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
         ) {
-            if (!TileRoom::isInDungeon() || prevTileId != LeftFlavor || prevTileId != RightFlavor) {
+            if (!State::isInDungeon() || prevTileId != LeftFlavor || prevTileId != RightFlavor) {
                 player.undoMove();
             }
         }

@@ -65,7 +65,7 @@ void Entity::bounceBack(Entity& bounceAwayFrom) {
 }
 
 void Entity::render(Renderer& renderer, uint8_t renderFrame) {
-    bool invert = TileRoom::isInDungeon();
+    bool invert = State::isInDungeon();
 
     if (deathCount) {
         deathCount -= 1;

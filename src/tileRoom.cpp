@@ -2,6 +2,7 @@
 #include "tileBitmaps.h"
 #include "util.h"
 #include "drawBitmap.h"
+#include "state.h"
 
 const uint8_t TILE_SIZE = 16;
 const uint8_t TILES_PER_ROW = (WIDTH - 16) / TILE_SIZE;
@@ -18,7 +19,6 @@ const uint8_t MAP_HEADER_SIZE = 4;
 const uint8_t* TileRoom::map = NULL;
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
-uint8_t TileRoom::mapType = OVERWORLD;
 
 void TileRoom::render(Renderer& renderer, byte frame) {
     render(renderer, frame, x, y);
@@ -41,14 +41,14 @@ void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tile
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
-    if (tileId == 0 && ((roomIndex + 1) % seed == 1 || (roomIndex) % seed == 2) && mapType == OVERWORLD) {
+    if (tileId == 0 && ((roomIndex + 1) % seed == 1 || (roomIndex) % seed == 2) && !State::isInDungeon()) {
         renderer.drawOverwrite(x, y, map_tiles, 10, uniqueSeed % 2);
         return;
     }
 
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    bool dontInvert = mapType == OVERWORLD || (tileId >= 7 && tileId <= 9);
+    bool dontInvert = !State::isInDungeon() || (tileId >= 7 && tileId <= 9);
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, !dontInvert);
 }
 

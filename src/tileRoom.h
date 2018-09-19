@@ -28,22 +28,16 @@ const TileDef UpperWall = 13;
 const TileDef RightWall = 14;
 const TileDef Compression = 0xF;
 
-typedef uint8_t MapType;
-const MapType OVERWORLD = 0;
-const MapType DUNGEON = 1;
-
 class TileRoom {
     private:
         static void renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed);
 
     public:
-        static MapType mapType;
         static const uint8_t* map;
 
         static uint8_t x;
         static uint8_t y;
 
-        static boolean isInDungeon() { return mapType == DUNGEON; }
         static uint8_t getRoomIndex(uint8_t x, uint8_t y);
         static uint8_t getTileAt(uint8_t rx, uint8_t ry, uint8_t px, uint8_t py);
         static void render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roomY);
