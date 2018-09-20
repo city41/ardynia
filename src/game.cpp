@@ -371,7 +371,7 @@ void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
                 // has already been looted
                 currentEntity.currentFrame = 1;
             }
-        } else if (type == LOCK && roomIsTriggered) {
+        } else if ((type == LOCK || type == KEY) && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
             roomType = entityMisc;
@@ -423,7 +423,7 @@ void Game::updateTitle(uint8_t frame) {
         }
     }
 
-    uint8_t rows = State::hasUserSaved() ? 3 : 2;
+    uint8_t rows = State::hasUserSaved() ? 2 : 1;
 
     if (arduboy.justPressed(UP_BUTTON)) {
         titleRow = Util::clamp(titleRow - 1, 0, rows);

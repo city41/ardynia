@@ -194,6 +194,12 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
         Sfx::pickUpItem();
     }
 
+    if (other.type == KEY) { 
+        other.type = UNSET;
+        State::gameState.numKeys[State::gameState.currentDungeon] += 1;
+        State::setCurrentRoomTriggered();
+    }
+
     return UNSET;
 }
 
