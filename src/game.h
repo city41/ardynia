@@ -102,13 +102,13 @@ class Game {
             firstRoomTransitionFrame(false),
             teleportTransitionCount(0),
             prevUpdate(NULL),
+            currentUpdate(&Game::updateTitle),
             nextUpdate(NULL),
             prevRender(NULL),
+            currentRender(&Game::renderTitle),
             nextRender(NULL),
             paused(false)
         {
-            loadSave();
-
         }
 
         void update(uint8_t frame);

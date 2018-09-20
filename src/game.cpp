@@ -412,6 +412,7 @@ void Game::removeAllTriggerDoors() {
 void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
+            loadSave();
             push(&Game::updatePlay, &Game::renderPlay);
         } else if (titleRow == DELETE_SAVE) {
             titleRow = 0;
