@@ -3,24 +3,35 @@
 const Canvas = require("canvas");
 const fs = require("fs");
 
+// const DATA = [
+//     [0, 2, 3, 3, 3, 3, 3, 3, 3, 0],
+//     [1, 2, 2, 2, 2, 2, 3, 3, 3, 3],
+//     [1, 1, 1, 1, 1, 2, 3, 2, 3, 3],
+//     [1, 1, 2, 2, 1, 2, 2, 2, 3, 0],
+//     [0, 1, 1, 2, 2, 2, 3, 3, 3, 0],
+//     [1, 1, 1, 1, 2, 2, 2, 3, 3, 3]
+// ];
+
+const DATA = [
+    [3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 1, 1, 3, 3, 3, 0, 2],
+    [3, 3, 1, 3, 0, 3, 3, 2],
+    [1, 1, 1, 1, 3, 3, 2, 2],
+    [1, 0, 1, 1, 3, 2, 2, 2],
+    [1, 1, 3, 3, 3, 3, 2, 2],
+    [0, 1, 1, 1, 3, 2, 2, 0],
+    [1, 1, 2, 2, 2, 2, 2, 2]
+];
+
 const TILE_SIZE = 16;
-const WIDTH_IN_ROOMS = 12;
-const HEIGHT_IN_ROOMS = 7;
+const WIDTH_IN_ROOMS = DATA[0].length;
+const HEIGHT_IN_ROOMS = DATA.length;
 const TILES_PER_ROW = 7;
 const TILES_PER_COLUMN = 4;
 const ROOM_WIDTH_PX = TILES_PER_ROW * TILE_SIZE;
 const ROOM_HEIGHT_PX = TILES_PER_COLUMN * TILE_SIZE;
 const IMAGE_WIDTH_PX = WIDTH_IN_ROOMS * ROOM_WIDTH_PX;
 const IMAGE_HEIGHT_PX = HEIGHT_IN_ROOMS * ROOM_HEIGHT_PX;
-
-const DATA = [
-    [0, 2, 3, 3, 3, 3, 3, 3, 3, 0],
-    [1, 2, 2, 2, 2, 2, 3, 3, 3, 3],
-    [1, 1, 1, 1, 1, 2, 3, 2, 3, 3],
-    [1, 1, 2, 2, 1, 2, 2, 2, 3, 0],
-    [0, 1, 1, 2, 2, 2, 3, 3, 3, 0],
-    [1, 1, 1, 1, 2, 2, 2, 3, 3, 3]
-];
 
 const COLORS = [
     "rgba(0,0,0,0.3)",

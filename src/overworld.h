@@ -123,8 +123,8 @@ const uint8_t PROGMEM overworld_room6_3[] = {
 
 const uint8_t PROGMEM overworld_teleporters[] = {
     // dest x, dest y (in rooms)
-    4, 5,
-    0, 5,
+    3, 7,
+    0, 7,
     0, 0,
 };
 

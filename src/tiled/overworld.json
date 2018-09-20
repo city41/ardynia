@@ -27,12 +27,12 @@
                         {
                          "name":"DEST_ROOM_X",
                          "type":"int",
-                         "value":4
+                         "value":3
                         }, 
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":5
+                         "value":7
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -55,7 +55,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":5
+                         "value":7
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",

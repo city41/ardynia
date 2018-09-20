@@ -15,7 +15,7 @@ const uint8_t MAX_ENTITIES = 8;
 
 const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 7;
 const uint8_t OVERWORLD_HEIGHT_IN_ROOMS = 7;
-const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 10;
+const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 8;
 
 class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);

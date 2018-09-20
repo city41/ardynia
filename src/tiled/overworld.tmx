@@ -36,15 +36,15 @@
  <objectgroup id="2" name="entities">
   <object id="127" name="Door to dungeon 2" type="TELEPORTER" x="753.333" y="23">
    <properties>
-    <property name="DEST_ROOM_X" type="int" value="4"/>
-    <property name="DEST_ROOM_Y" type="int" value="5"/>
+    <property name="DEST_ROOM_X" type="int" value="3"/>
+    <property name="DEST_ROOM_Y" type="int" value="7"/>
    </properties>
    <point/>
   </object>
   <object id="129" name="Door to dungeon 1" type="TELEPORTER" x="514.416" y="388">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
-    <property name="DEST_ROOM_Y" type="int" value="5"/>
+    <property name="DEST_ROOM_Y" type="int" value="7"/>
    </properties>
    <point/>
   </object>

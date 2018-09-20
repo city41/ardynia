@@ -22,9 +22,9 @@ const uint8_t DELETE_SAVE = 2;
 
 const uint8_t PROGMEM startingRooms[8] = {
     1, 4, // overworld (x, y)
-    0, 5, // first dungeon
-    4, 5, // second dungeon
-    8, 5  // third dungeon
+    0, 7, // first dungeon
+    3, 7, // second dungeon
+    6, 0  // third dungeon
 };
 
 
@@ -128,7 +128,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        State::gameState.currentDungeon = State::gameState.currentDungeon == -1 ? nextRoomX / 4 : -1;
+        State::gameState.currentDungeon = State::gameState.currentDungeon == -1 ? nextRoomX / 3 : -1;
         State::saveToEEPROM();
         
 
