@@ -57,9 +57,9 @@ TileDef TileRoom::getTileAt(uint8_t px, uint8_t py) {
     return rooms[currentRoomOffset + targetTileIndex];
 }
 
-uint8_t TileRoom::setTileAt(uint8_t px, uint8_t py, TileDef tile) {
+uint8_t TileRoom::setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile) {
     const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
-    rooms[currentRoomOffset + targetTileIndex] = tile;
+    rooms[offset + targetTileIndex] = tile;
 }
 
 void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {

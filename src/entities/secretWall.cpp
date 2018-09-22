@@ -9,6 +9,7 @@ EntityType SecretWall::onCollide(Entity* me, Entity& other, Entity& player) {
         me->currentFrame = 1;
 
         State::setCurrentRoomTriggered();
+        TileRoom::setTileAt(me->x, me->y, TileRoom::currentRoomOffset, Blank);
     }
 
     return UNSET;

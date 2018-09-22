@@ -363,6 +363,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
                 if (roomIsTriggered) {
                     currentEntity.currentFrame = 1;
                     currentEntity.health = 0;
+                    TileRoom::setTileAt(currentEntity.x, currentEntity.y, Blank, TileRoom::nextRoomOffset);
                 }
             }
         } else if (type == CHEST || type == POT) {
@@ -415,7 +416,7 @@ void Game::removeAllTriggerDoors() {
 void Game::emergeAllBridges() {
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == SUNKEN_BRIDGE) {
-            TileRoom::setTileAt(entities[ge].x, entities[ge].y, Ladder);
+            TileRoom::setTileAt(entities[ge].x, entities[ge].y, TileRoom::currentRoomOffset, Ladder);
         }
     }
 }
