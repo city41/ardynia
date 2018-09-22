@@ -88,6 +88,7 @@ class Game {
         Entity entities[MAX_ENTITIES];
 
         void removeAllTriggerDoors(void);
+        void emergeAllBridges(void);
 
         Game(Arduboy2Base& arduboy, Renderer& renderer):
             arduboy(arduboy),

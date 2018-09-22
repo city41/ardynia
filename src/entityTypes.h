@@ -43,8 +43,9 @@ const EntityType SECRET_WALL = 18;
 const EntityType TRIGGER_DOOR = 19;
 const EntityType SWITCH = 20;
 const EntityType POT = 21;
+const EntityType SUNKEN_BRIDGE = 22;
 
-const uint8_t NUM_ENTITIES = POT + 1;
+const uint8_t NUM_ENTITIES = SUNKEN_BRIDGE + 1;
 
 // these are entities in a sense, but they don't fully participate
 // in the entity system

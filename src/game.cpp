@@ -412,6 +412,14 @@ void Game::removeAllTriggerDoors() {
     }
 }
 
+void Game::emergeAllBridges() {
+    for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
+        if (entities[ge].type == SUNKEN_BRIDGE) {
+            TileRoom::setTileAt(entities[ge].x, entities[ge].y, Ladder);
+        }
+    }
+}
+
 void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {

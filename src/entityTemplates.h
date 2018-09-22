@@ -170,6 +170,12 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     healthAndDamage(0, 0),
     0,
     false,
+
+    // 22, SUNKEN_BRIDGE
+    widthAndHeight(0, 0),
+    healthAndDamage(0, 0),
+    0,
+    false,
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -283,6 +289,11 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     pot_tiles,
     NULL,
     (void*)Pot::onCollide,
+
+    // 22, SUNKEN_BRIDGE
+    NULL,
+    NULL,
+    NULL,
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

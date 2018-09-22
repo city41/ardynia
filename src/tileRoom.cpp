@@ -52,9 +52,14 @@ uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
     return mapWidth * ry + rx;
 }
 
-uint8_t TileRoom::getTileAt(uint8_t px, uint8_t py) {
+TileDef TileRoom::getTileAt(uint8_t px, uint8_t py) {
     const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
     return rooms[currentRoomOffset + targetTileIndex];
+}
+
+uint8_t TileRoom::setTileAt(uint8_t px, uint8_t py, TileDef tile) {
+    const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
+    rooms[currentRoomOffset + targetTileIndex] = tile;
 }
 
 void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {

@@ -24,6 +24,7 @@ const EntityTypes = {
     TRIGGER_DOOR: 19,
     SWITCH: 20,
     POT: 21,
+    SUNKEN_BRIDGE: 22,
     ITEM_DROP: 253,
     PLAYER: 254,
     UNSET: 255

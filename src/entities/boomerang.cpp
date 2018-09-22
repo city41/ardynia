@@ -90,6 +90,7 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
     if (otherType == SWITCH) {
         other.mirror = MIRROR_HORIZONTAL;
         game.removeAllTriggerDoors();
+        game.emergeAllBridges();
     }
 
     // hit anything else? don't care, keep flying
