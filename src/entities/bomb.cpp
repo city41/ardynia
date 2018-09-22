@@ -23,7 +23,6 @@ EntityType Bomb::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8
 
         return UNSET;
     } else {
-        me->type = UNSET;
         return EXPLOSION;
     }
 }

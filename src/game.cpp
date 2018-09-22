@@ -225,9 +225,18 @@ void Game::detectEntityCollisions(void) {
                 newEntity = player.entities[pe].onCollide(entities[ge], player, *this);
                 spawnNewEntity(newEntity, player.entities[pe]);
             }
+
         }
     }
 
+    // HACK: enable player to get damaged by bombs
+    // TODO: clean this up
+    if (player.entities[1].type == EXPLOSION && player.overlaps(player.entities[1])) {
+        player.onCollide(player.entities[1], player, *this);
+    }
+
+    // HACK: enable player to take damage from Nemesis's sword
+    // TODO: clean this up
     if (Nemesis::sword.type == SWORD && Nemesis::sword.overlaps(player)) {
         player.onCollide(Nemesis::sword, player, *this);
     }
@@ -472,7 +481,7 @@ void Game::updatePlay(uint8_t frame) {
         return;
     }
 
-    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON | UP_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
             menu.chosenItem = player.bButtonEntityType;
             menu.row = player.bButtonEntityType - 1;
