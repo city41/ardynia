@@ -13,7 +13,7 @@ void Player::reset() {
     dir = DOWN;
     tookDamageCount = 0;
     numBombs = 0;
-    health = 2;
+    health = 1;
 
     bButtonEntityType = UNSET;
     entities[0].type = UNSET;

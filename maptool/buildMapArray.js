@@ -190,8 +190,20 @@ const uint8_t PROGMEM ${name}_map[${arrayLength}] = {
     // room indices (16 bit, little endian), ${
         roomIndicesEncodedto16Bit.length
     } bytes
-    ${roomIndicesEncodedto16Bit.join(", ")},
+${renderRoomIndices(roomIndicesEncodedto16Bit)}
     // compressed room data, ${nibbles.length} bytes
-    ${nibbles.join(", ")}
+    ${nibbles.map(n => "0x" + n.toString(16)).join(", ")}
 };`;
 };
+
+function renderRoomIndices(indices) {
+    let code = "";
+
+    for (let i = 0; i < indices.length; i += 2) {
+        code += `    // room ${i / 2}, index ${(indices[i + 1] << 8) |
+            indices[i]}\n`;
+        code += `    ${indices[i]}, ${indices[i + 1]},\n`;
+    }
+
+    return code;
+}

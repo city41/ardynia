@@ -118,6 +118,7 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
 
     uint8_t numNibbles = (nextRoomIndex - roomIndex) * 2;
     uint8_t curNibbleIndex = 0;
+    uint8_t maxOffset = offset + TILES_PER_ROOM;
 
     while (curNibbleIndex < numNibbles) {
         uint8_t rawTileByte = pgm_read_byte(map + roomIndex + (curNibbleIndex >> 1));
@@ -135,7 +136,9 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
 
             curNibbleIndex += 3;
         } else {
-            rooms[offset++] = nibble;
+            if (offset < maxOffset) {
+                rooms[offset++] = nibble;
+            }
 
             curNibbleIndex += 1;
         }

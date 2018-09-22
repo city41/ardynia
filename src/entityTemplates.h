@@ -18,6 +18,7 @@
 #include "entities/blobMother.h"
 #include "entities/lock.h"
 #include "entities/nemesis.h"
+#include "entities/pot.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
@@ -162,7 +163,13 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
-    false
+    false,
+
+    // 21, POT
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 0),
+    0,
+    false,
 };
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
@@ -270,7 +277,12 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 20, SWITCH
     switch_tiles,
     NULL,
-    NULL
+    NULL,
+
+    // 21, POT
+    pot_tiles,
+    NULL,
+    (void*)Pot::onCollide,
 };
 
 void loadEntity(Entity& entity, EntityType entityType);

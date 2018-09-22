@@ -365,11 +365,11 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
                     currentEntity.health = 0;
                 }
             }
-        } else if (type == CHEST) {
+        } else if (type == CHEST || type == POT) {
             // take what is in the chest (which here is entityMisc), and stick
             // it in the chest's health
             currentEntity.health = entityMisc;
-            if (roomIsTriggered) {
+            if (type == CHEST && roomIsTriggered) {
                 // frame 1 is the open chest frame, indicates this chest
                 // has already been looted
                 currentEntity.currentFrame = 1;

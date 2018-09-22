@@ -23,6 +23,7 @@ const EntityTypes = {
     SECRET_WALL: 18,
     TRIGGER_DOOR: 19,
     SWITCH: 20,
+    POT: 21,
     ITEM_DROP: 253,
     PLAYER: 254,
     UNSET: 255
@@ -108,12 +109,12 @@ function getRoomArrayData(
             return teleporters.length;
         }
 
-        if (obj.type === "CHEST") {
+        if (obj.type === "CHEST" || obj.type === "POT") {
             const containedTypeName = getPropertyValue(
                 obj.properties,
                 "CONTAINED_TYPE"
             );
-            return EntityTypes[containedTypeName];
+            return EntityTypes[containedTypeName] || 0;
         }
 
         const miscString = getPropertyValue(obj.properties, "MISC");
