@@ -1,9 +1,16 @@
 #include "pot.h"
 
 EntityType Pot::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
-    if (other.type == SWORD || other.type == BOOMERANG || other.type == EXPLOSION) {
+    if (other.type == PLAYER) {
+        other.undoMove();
+    }
+
+    if (other.type == SWORD || other.type == EXPLOSION) {
         me->type = UNSET;
-        return me->health;
+
+        if (me->health > 0) {
+            return me->health;
+        }
     }
 
     return UNSET;
