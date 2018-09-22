@@ -53,7 +53,8 @@ void Game::loadSave(bool straightToPlay) {
     TileRoom::x = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2);
     TileRoom::y = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2 + 1);
 
-    loadEntitiesinRoom(TileRoom::x, TileRoom::y);
+    TileRoom::loadRoom(TileRoom::x, TileRoom::y, TileRoom::currentRoomOffset);
+    loadEntitiesInRoom(TileRoom::x, TileRoom::y);
 
     player.reset();
 
@@ -135,7 +136,8 @@ void Game::updateTeleportTransition(uint8_t frame) {
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        loadEntitiesinRoom(nextRoomX, nextRoomY);
+        loadEntitiesInRoom(nextRoomX, nextRoomY);
+        TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
 
         Map::reset();
         mapWidthInRooms = State::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
@@ -235,7 +237,7 @@ void Game::detectEntityCollisions(void) {
     if (Util::isOffScreen(player.x, player.y)) {
         // if the player just went off the screen, did they legit go through a "passageway"?
         // if not, prevent them leaving the screen
-        const uint8_t prevTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.prevX, player.prevY);
+        const uint8_t prevTileId = TileRoom::getTileAt(player.prevX, player.prevY);
 
         if (
             (player.x < 0 && prevTileId != Blank && prevTileId != UpperWall && prevTileId != LowerWall && prevTileId != RightWall) ||
@@ -250,7 +252,7 @@ void Game::detectEntityCollisions(void) {
     } else {
         // otherwise the player is on screen, did they just walk onto something that is solid?
         // then prevent them walking on it
-        const uint8_t currentTileId = TileRoom::getTileAt(TileRoom::x, TileRoom::y, player.x, player.y);
+        const uint8_t currentTileId = TileRoom::getTileAt(player.x, player.y);
 
         // TODO: can we group these together so this can become a >=|<= check?
         // or add a solid mask to the tile id
@@ -287,6 +289,7 @@ void Game::goToNextRoom(int16_t x, int16_t y) {
         nextRoomY = TileRoom::y + 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
     }
+    TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::nextRoomOffset);
 
     firstRoomTransitionFrame = true;
     push(&Game::updateRoomTransition, &Game::renderRoomTransition);
@@ -318,7 +321,7 @@ int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     return e;
 }
 
-void Game::loadEntitiesinRoom(uint8_t x, uint8_t y) {
+void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
     uint8_t** rowPtr = pgm_read_word(entityDefs + y);
     uint8_t* roomPtr = pgm_read_word(rowPtr + x);
 
@@ -450,6 +453,11 @@ void Game::renderTitle(uint8_t frame) {
 }
 
 void Game::updatePlay(uint8_t frame) {
+    if (swapRooms) {
+        TileRoom::swapRooms();
+        swapRooms = false;
+    }
+
     if (paused) {
         if (arduboy.justPressed(B_BUTTON)) {
             paused = false;
@@ -543,7 +551,7 @@ void Game::updatePlay(uint8_t frame) {
 }
 
 void Game::renderPlay(uint8_t frame) {
-    TileRoom::render(renderer, frame);
+    TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
@@ -591,10 +599,11 @@ void Game::updateRoomTransition(uint8_t frame) {
 
     if (firstRoomTransitionFrame) {
         firstRoomTransitionFrame = false;
-        loadEntitiesinRoom(nextRoomX, nextRoomY);
+        loadEntitiesInRoom(nextRoomX, nextRoomY);
     }
 
     if (roomTransitionCount == 0) {
+        swapRooms = true;
 
         if (nextRoomX < TileRoom::x) {
             player.moveTo(ROOM_WIDTH_PX, player.y, true);
@@ -647,14 +656,14 @@ void Game::renderRoomTransition(uint8_t frame) {
 
     renderer.translateX = translateX;
     renderer.translateY = translateY;
-    TileRoom::render(renderer, frame);
+    TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
 
     // draw next room translated
     int8_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
     renderer.translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
     renderer.translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
-    TileRoom::render(renderer, frame, nextRoomX, nextRoomY);
+    TileRoom::renderRoom(renderer, TileRoom::nextRoomOffset);
 
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         entities[ge].render(renderer, frame);

@@ -4,11 +4,6 @@
 #include "drawBitmap.h"
 #include "state.h"
 
-const uint8_t TILE_SIZE = 16;
-const uint8_t TILES_PER_ROW = (WIDTH - 16) / TILE_SIZE;
-const uint8_t TILES_PER_COLUMN = HEIGHT / TILE_SIZE;
-const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
-
 // header consists of
 // length of the data (two bytes)
 // map width (one byte)
@@ -17,12 +12,11 @@ const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
 const uint8_t MAP_HEADER_SIZE = 4;
 
 const uint8_t* TileRoom::map = NULL;
+uint8_t TileRoom::rooms[TILES_PER_ROOM * 2];
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
-
-void TileRoom::render(Renderer& renderer, byte frame) {
-    render(renderer, frame, x, y);
-}
+uint8_t TileRoom::currentRoomOffset = 0;
+uint8_t TileRoom::nextRoomOffset = TILES_PER_ROOM;
 
 const uint8_t PROGMEM mirroredTiles[] = {
     UpperLeftCorner,
@@ -37,12 +31,12 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t roomIndex, uint8_t seed, uint8_t uniqueSeed) {   
+void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
-    if (tileId == 0 && ((roomIndex + 1) % seed == 1 || (roomIndex) % seed == 2) && !State::isInDungeon()) {
-        renderer.drawOverwrite(x, y, map_tiles, 10, uniqueSeed % 2);
+    if (tileId == 0 && !State::isInDungeon() && (seed % 7 == 1)) {
+        renderer.drawOverwrite(x, y, map_tiles, 10, seed);
         return;
     }
 
@@ -58,56 +52,22 @@ uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
     return mapWidth * ry + rx;
 }
 
-uint8_t TileRoom::getTileAt(uint8_t roomX, uint8_t roomY, uint8_t px, uint8_t py) {
+uint8_t TileRoom::getTileAt(uint8_t px, uint8_t py) {
     const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
+    return rooms[currentRoomOffset + targetTileIndex];
+}
 
-    uint16_t lengthOfMap = pgm_read_word(map);
-    uint8_t mapWidth = pgm_read_byte(map + 2);
-    uint8_t mapHeight = pgm_read_byte(map + 3);
-    uint8_t numRooms = mapWidth * mapHeight;
+void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {
+    uint8_t* tiles = rooms + offset;
+    uint8_t seed = 0;
 
-    // how far into the dungeon is this room?
-    uint8_t roomNumber = getRoomIndex(roomX, roomY);
+    for (uint8_t ti = 0; ti < TILES_PER_ROOM; ++ti) {
+        uint8_t tx = ti % TILES_PER_ROW;
+        uint8_t ty = ti / TILES_PER_ROW;
+        uint8_t tileId = tiles[ti];
+        seed += tileId + 1;
 
-    // grab its starting data index out of the room indices header
-    // the stored index does not account for the headers, so tack them on
-    // numRooms * 2 . get past the room indice words
-    // + MAP_HEADER_SIZE . get past the map width, map height and tile size
-    uint16_t roomIndex = pgm_read_word(map + MAP_HEADER_SIZE + roomNumber * 2) + (numRooms * 2) + MAP_HEADER_SIZE;
-    uint16_t nextRoomIndex;
-
-    if (roomNumber < numRooms - 1) {
-        nextRoomIndex = pgm_read_word(map + MAP_HEADER_SIZE + (roomNumber * 2) + 2) + (numRooms * 2) + MAP_HEADER_SIZE;
-    } else {
-        nextRoomIndex = lengthOfMap;
-    }
-
-    uint8_t numNibbles = (nextRoomIndex - roomIndex) * 2;
-    uint8_t curNibbleIndex = 0;
-    uint8_t curTileIndex = 0;
-
-    while (curNibbleIndex < numNibbles) {
-        uint8_t rawTileByte = pgm_read_byte(map + roomIndex + (curNibbleIndex >> 1));
-        uint8_t nibble = (curNibbleIndex & 1) ? rawTileByte & 0xF : rawTileByte >> 4;
-
-        if (nibble == Compression) {
-            uint8_t nextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 1) >> 1));
-            uint8_t count = ((curNibbleIndex + 1) & 1) ? nextRawTileByte & 0xF : nextRawTileByte >> 4;
-            uint8_t nextNextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 2) >> 1));
-            uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
-
-            if (targetTileIndex >= curTileIndex && targetTileIndex < (curTileIndex + count)) {
-                return tileId;
-            } else {
-                curTileIndex += count;
-                curNibbleIndex += 3;
-            }
-        } else if (curTileIndex == targetTileIndex) {
-            return nibble;
-        } else {
-            curNibbleIndex += 1;
-            curTileIndex += 1;
-        }
+        renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
     }
 }
 
@@ -134,13 +94,13 @@ uint8_t TileRoom::getTileAt(uint8_t roomX, uint8_t roomY, uint8_t px, uint8_t py
  *      to learn what the tile to render is
  *      render that tile count times
  */
-void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roomY) {
+void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
     uint16_t lengthOfMap = pgm_read_word(map);
     uint8_t mapWidth = pgm_read_byte(map + 2);
     uint8_t mapHeight = pgm_read_byte(map + 3);
     uint8_t numRooms = mapWidth * mapHeight;
 
-    // how far into the dungeon is this room?
+    // how far into the map is this room?
     uint8_t roomNumber = getRoomIndex(roomX, roomY);
 
     // grab its starting data index out of the room indices header
@@ -158,7 +118,6 @@ void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roo
 
     uint8_t numNibbles = (nextRoomIndex - roomIndex) * 2;
     uint8_t curNibbleIndex = 0;
-    uint8_t curTileIndex = 0;
 
     while (curNibbleIndex < numNibbles) {
         uint8_t rawTileByte = pgm_read_byte(map + roomIndex + (curNibbleIndex >> 1));
@@ -171,24 +130,20 @@ void TileRoom::render(Renderer& renderer, byte frame, uint8_t roomX, uint8_t roo
             uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
 
             for (uint8_t c = 0; c < count; ++c) {
-                // render tileId at appropriate tx/ty
-                uint8_t tx = (curTileIndex + c) % TILES_PER_ROW;
-                uint8_t ty = (curTileIndex + c) / TILES_PER_ROW;
-
-                renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tileId, roomIndex, tx + ty + count, c);
+                rooms[offset++] = tileId;
             }
 
-            curTileIndex += count;
             curNibbleIndex += 3;
         } else {
-            // render curTile at appropriate tx/ty
-            uint8_t tx = curTileIndex % TILES_PER_ROW;
-            uint8_t ty = curTileIndex / TILES_PER_ROW;
-            renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, nibble, roomIndex, tx + ty, tx);
+            rooms[offset++] = nibble;
 
             curNibbleIndex += 1;
-            curTileIndex += 1;
         }
     }
 }
 
+void TileRoom::swapRooms() {
+    uint8_t temp = currentRoomOffset;
+    currentRoomOffset = nextRoomOffset;
+    nextRoomOffset = temp;
+}

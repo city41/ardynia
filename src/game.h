@@ -54,10 +54,11 @@ class Game {
         RenderPtr nextRender;
 
         bool paused;
+        bool swapRooms;
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
-        void loadEntitiesinRoom(uint8_t roomX, uint8_t roomy);
+        void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy);
         int8_t spawnNewEntity(EntityType, Entity& spawner);
 
         void updateTitle(uint8_t frame);
@@ -107,7 +108,8 @@ class Game {
             prevRender(NULL),
             currentRender(&Game::renderTitle),
             nextRender(NULL),
-            paused(false)
+            paused(false),
+            swapRooms(false)
         {
         }
 
