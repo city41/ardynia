@@ -194,7 +194,7 @@ const uint8_t PROGMEM dungeons_room1_6[] = {
 
     // entity 0
     miscAndEntityType(0, LOCK),
-    xy(96, 36),
+    xy(96, 32),
 
     // entity 1
     miscAndEntityType(4, POT),

@@ -124,7 +124,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     false,
 
     // 14, LOCK
-    widthAndHeight(16, 8),
+    widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,

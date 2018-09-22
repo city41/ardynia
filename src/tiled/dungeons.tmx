@@ -82,7 +82,7 @@
    </properties>
    <point/>
   </object>
-  <object id="253" name="lock" type="LOCK" x="211" y="419">
+  <object id="253" name="lock" type="LOCK" x="209.364" y="417.182">
    <point/>
   </object>
   <object id="254" name="key in chest" type="CHEST" x="51" y="212.5">
