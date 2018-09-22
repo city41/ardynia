@@ -51,7 +51,12 @@ void Player::bButtonAction(void) {
         }
     }
 
-    loadEntity(entities[1], bButtonEntityType);
+    EntityType entityToLoad = bButtonEntityType;
+    if (entityToLoad == RING) {
+        entityToLoad = PROJECTILE;
+    }
+
+    loadEntity(entities[1], entityToLoad);
 
     if (bButtonEntityType == BOMB) {
         // send a hint this is an active bomb
@@ -79,7 +84,8 @@ void Player::render(Renderer& renderer, byte frame) {
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
-        bool attacking = entities[0].type == SWORD || (entities[1].type == BOOMERANG && !movedThisFrame);
+        bool attacking = entities[0].type == SWORD ||
+            ((entities[1].type == BOOMERANG || entities[1].type == PROJECTILE) && !movedThisFrame);
 
         // TODO: convert this to a PROGMEM array
         switch (dir) {

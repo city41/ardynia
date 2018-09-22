@@ -35,7 +35,7 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
 
     renderer.drawString(x, 0, equip_string);
     // boundary rectangle
-    renderer.drawRect(x, 6, 21, 27, WHITE);
+    renderer.drawRect(x, 6, 21, 40, WHITE);
 
     // items
     for (uint8_t i = 0; i < State::gameState.numAcquiredItems; ++i) {

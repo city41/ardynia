@@ -54,6 +54,7 @@ class Game {
         RenderPtr nextRender;
 
         bool swapRooms;
+        bool lastRoomWasLit;
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
@@ -82,6 +83,7 @@ class Game {
         void pop();
 
         void loadSave(bool straightToPlay = false);
+        bool roomIsLit(void);
 
     public:
         Entity entities[MAX_ENTITIES];
@@ -108,7 +110,8 @@ class Game {
             prevRender(NULL),
             currentRender(&Game::renderTitle),
             nextRender(NULL),
-            swapRooms(false)
+            swapRooms(false),
+            lastRoomWasLit(true)
         {
         }
 

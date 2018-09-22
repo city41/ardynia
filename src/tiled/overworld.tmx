@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="150">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="152">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="8" name="Tile Layer 1" width="49" height="28">
   <data encoding="csv">
@@ -54,7 +54,7 @@
    </properties>
    <point/>
   </object>
-  <object id="136" name="Chest with bombs" type="CHEST" x="248.833" y="145.167">
+  <object id="136" name="Chest with bombs" type="CHEST" x="176.833" y="210.5">
    <properties>
     <property name="CONTAINED_TYPE" value="BOMB"/>
    </properties>
@@ -95,6 +95,15 @@
    <properties>
     <property name="CONTAINED_TYPE" value="KEY"/>
    </properties>
+   <point/>
+  </object>
+  <object id="150" name="Chest with ring" type="CHEST" x="248.667" y="212.667">
+   <properties>
+    <property name="CONTAINED_TYPE" value="RING"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="151" name="torch" type="TORCH" x="312" y="218.667">
    <point/>
   </object>
  </objectgroup>

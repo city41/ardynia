@@ -13,39 +13,41 @@ const EntityType ENTITY_MISC_MASK = 0b00000111;
 const EntityType SWORD = 0;
 const EntityType BOOMERANG = 1;
 const EntityType BOMB = 2;
-const EntityType KEY = 3;
-const EntityType HEART = 4;
-const EntityType BOSS_KEY = 5;
-const EntityType CHEST = 6;
+const EntityType RING = 3;
+const EntityType KEY = 4;
+const EntityType HEART = 5;
+const EntityType BOSS_KEY = 6;
+const EntityType CHEST = 7;
 
 // enemies, to be named
-const EntityType BLOB = 7;
-const EntityType SPIKE = 8;
-const EntityType BAT = 9;
-const EntityType SKELETON = 10;
+const EntityType BLOB = 8;
+const EntityType SPIKE = 9;
+const EntityType BAT = 10;
+const EntityType SKELETON = 11;
 
 // bosses
-const EntityType BLOB_MOTHER = 11;
-const EntityType NEMESIS = 12;
+const EntityType BLOB_MOTHER = 12;
+const EntityType NEMESIS = 13;
 
 // things related to navigating maps
 // and interacting with the world
-const EntityType TELEPORTER = 13; // aka a door
-const EntityType LOCK = 14;
-const EntityType BOSS_LOCK = 15;
+const EntityType TELEPORTER = 14; // aka a door
+const EntityType LOCK = 15;
+const EntityType BOSS_LOCK = 16;
 
 // projectiles
-const EntityType PROJECTILE = 16;
-const EntityType EXPLOSION = 17;
+const EntityType PROJECTILE = 17;
+const EntityType EXPLOSION = 18;
 
 // misc
-const EntityType SECRET_WALL = 18;
-const EntityType TRIGGER_DOOR = 19;
-const EntityType SWITCH = 20;
-const EntityType POT = 21;
-const EntityType SUNKEN_BRIDGE = 22;
+const EntityType SECRET_WALL = 19;
+const EntityType TRIGGER_DOOR = 20;
+const EntityType SWITCH = 21;
+const EntityType POT = 22;
+const EntityType SUNKEN_BRIDGE = 23;
+const EntityType TORCH = 24;
 
-const uint8_t NUM_ENTITIES = SUNKEN_BRIDGE + 1;
+const uint8_t NUM_ENTITIES = TORCH + 1;
 
 // these are entities in a sense, but they don't fully participate
 // in the entity system

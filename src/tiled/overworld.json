@@ -97,8 +97,8 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":248.833,
-                 "y":145.167
+                 "x":176.833,
+                 "y":210.500333333333
                 }, 
                 {
                  "height":0,
@@ -224,6 +224,36 @@
                  "width":0,
                  "x":169.333,
                  "y":405.333
+                }, 
+                {
+                 "height":0,
+                 "id":150,
+                 "name":"Chest with ring",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"RING"
+                        }],
+                 "rotation":0,
+                 "type":"CHEST",
+                 "visible":true,
+                 "width":0,
+                 "x":248.666666666667,
+                 "y":212.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":151,
+                 "name":"torch",
+                 "point":true,
+                 "rotation":0,
+                 "type":"TORCH",
+                 "visible":true,
+                 "width":0,
+                 "x":312,
+                 "y":218.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -782,7 +812,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":150,
+ "nextobjectid":152,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

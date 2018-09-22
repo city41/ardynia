@@ -298,6 +298,9 @@ void Game::goToNextRoom(int16_t x, int16_t y) {
         nextRoomY = TileRoom::y + 1;
         roomTransitionCount = ROOM_HEIGHT_PX;
     }
+
+    lastRoomWasLit = roomIsLit();
+
     TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::nextRoomOffset);
 
     firstRoomTransitionFrame = true;
@@ -555,11 +558,34 @@ void Game::updatePlay(uint8_t frame) {
     }
 }
 
+bool Game::roomIsLit() {
+    // only the last dungeon can be dark
+    if (State::gameState.currentDungeon != 2) {
+        return true;
+    }
+
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == TORCH) {
+            return entities[e].currentFrame == 1;
+        }
+    }
+
+    return true;
+}
+
 void Game::renderPlay(uint8_t frame) {
-    TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+    bool lit = roomIsLit();
+
+    if (lit) {
+        TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+    }
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
+        // room is dark? only render torches
+        if (!lit && entities[e].type != TORCH) {
+            continue;
+        }
         entities[e].render(renderer, frame);
     }
 
@@ -661,16 +687,26 @@ void Game::renderRoomTransition(uint8_t frame) {
 
     renderer.translateX = translateX;
     renderer.translateY = translateY;
-    TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+
+    if (lastRoomWasLit) {
+        TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+    }
 
     // draw next room translated
     int8_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
 
     renderer.translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
     renderer.translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
-    TileRoom::renderRoom(renderer, TileRoom::nextRoomOffset);
+
+    bool lit = roomIsLit();
+    if (lit) {
+        TileRoom::renderRoom(renderer, TileRoom::nextRoomOffset);
+    }
 
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
+        if (!lit && entities[ge].type != TORCH) {
+            continue;
+        }
         entities[ge].render(renderer, frame);
     }
     
