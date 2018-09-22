@@ -53,7 +53,6 @@ class Game {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
-        bool paused;
         bool swapRooms;
 
         void detectEntityCollisions(void);
@@ -109,7 +108,6 @@ class Game {
             prevRender(NULL),
             currentRender(&Game::renderTitle),
             nextRender(NULL),
-            paused(false),
             swapRooms(false)
         {
         }

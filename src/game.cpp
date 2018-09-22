@@ -467,25 +467,12 @@ void Game::updatePlay(uint8_t frame) {
         swapRooms = false;
     }
 
-    if (paused) {
-        if (arduboy.justPressed(B_BUTTON)) {
-            paused = false;
-        } else {
-            return;
-        }
-    }
-
-    if (arduboy.pressed(LEFT_BUTTON | RIGHT_BUTTON | DOWN_BUTTON)) {
-        paused = true;
-        return;
-    }
-
     if (bossDelayCount > 0) {
         bossDelayCount -= 1;
         return;
     }
 
-    if (arduboy.pressed(A_BUTTON) && arduboy.pressed(B_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
             menu.chosenItem = player.bButtonEntityType;
             menu.row = player.bButtonEntityType - 1;
@@ -583,7 +570,7 @@ void Game::renderPlay(uint8_t frame) {
 void Game::updateMenu(uint8_t frame) {
     menu.update(arduboy, frame);
 
-    if (!arduboy.pressed(A_BUTTON) || !arduboy.pressed(B_BUTTON)) {
+    if (arduboy.justPressed(A_BUTTON)) {
         // respond to the decision
         if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
             player.bButtonEntityType = menu.chosenItem;
@@ -706,11 +693,6 @@ void Game::render(uint8_t frame) {
 
     renderer.translateX = 0;
     renderer.translateY = 0;
-
-    if (paused) {
-        renderer.fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer.drawString(0, HEIGHT - 4, paused_string);
-    }
 
     if (nextRender != NULL) {
         prevRender = currentRender;
