@@ -6,7 +6,7 @@
 // counting the overworld as a "dungeon" and all 5 secret areas
 // as a single "dungeon"
 const uint8_t MAX_DUNGEON_COUNT = 5;
-const uint8_t MAX_ROOM_COUNT = 152;
+const uint8_t MAX_ROOM_COUNT = 8 * 8 + 7 * 7;
 const uint8_t DUNGEON_ROOM_OFFSET = 49;
 const uint8_t MAX_KEYS = 6;
 

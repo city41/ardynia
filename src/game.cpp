@@ -136,7 +136,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         // if the next room X is a multiple of three, the user 
         // is going into a dungeon, otherwise they are going into a secret room
         // only save current dungeon if actually going into a dungeon
-        if (nextRoomX % 3 == 0) {
+        if ((TileRoom::map == dungeons_map && nextRoomX % 3 == 0) || TileRoom::map == overworld_map) {
             State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 3 + 1 : 0;
             State::saveToEEPROM();
         } else {
@@ -147,6 +147,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         }
         
 
+        mapWidthInRooms = State::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
@@ -154,7 +155,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
         TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
 
         Map::reset();
-        mapWidthInRooms = State::isInDungeon() ? DUNGEONS_WIDTH_IN_ROOMS : OVERWORLD_WIDTH_IN_ROOMS;
         mapHeightInRooms = State::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
@@ -357,6 +357,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
 
     int8_t i = 0;
     bool roomIsTriggered = State::isTriggered(roomIndex);
+
     roomType = NORMAL;
     bool isDefeatedSlamShutRoom = false;
 

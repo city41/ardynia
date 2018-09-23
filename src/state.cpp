@@ -16,7 +16,7 @@ bool State::isTriggered(uint8_t roomIndex) {
         roomIndex += DUNGEON_ROOM_OFFSET;
     }
 
-    const uint8_t byteToGrab = roomIndex >> 3;
+    const uint8_t byteToGrab = roomIndex / 8;
     const uint8_t bitToGrab = roomIndex % 8;
     const uint8_t bitMask = 1 << bitToGrab;
 
@@ -32,7 +32,7 @@ void State::setTriggered(uint8_t roomIndex) {
         roomIndex += DUNGEON_ROOM_OFFSET;
     }
 
-    const uint8_t byteToSet = roomIndex >> 3;
+    const uint8_t byteToSet = roomIndex / 8;
     const uint8_t bitToSet = roomIndex % 8;
     const uint8_t bitMask = 1 << bitToSet;
 
