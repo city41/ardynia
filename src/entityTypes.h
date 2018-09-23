@@ -61,5 +61,6 @@ typedef uint8_t RoomType;
 const RoomType NORMAL = 0;
 const RoomType SLAM_SHUT = 1;
 const RoomType LAST_ENEMY_HAS_KEY = 2;
+const RoomType LAST_ENEMY_HAS_BOSS_KEY = 3;
 #endif
 

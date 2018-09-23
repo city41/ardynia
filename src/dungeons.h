@@ -175,6 +175,16 @@ const uint8_t PROGMEM dungeons_room0_4[] = {
 
 
 
+const uint8_t PROGMEM dungeons_room0_5[] = {
+    1, // number of entities
+
+    // entity 0
+    miscAndEntityType(3, BLOB),
+    xy(24, 36),
+};
+
+
+
 const uint8_t PROGMEM dungeons_room0_7[] = {
     3, // number of entities
 
@@ -461,7 +471,7 @@ const uint8_t * const PROGMEM dungeons_row4[8] = {
 
 
 const uint8_t * const PROGMEM dungeons_row5[8] = {
-    empty_room,
+    dungeons_room0_5,
     empty_room,
     empty_room,
     empty_room,

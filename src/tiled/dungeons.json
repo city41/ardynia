@@ -360,7 +360,7 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":162.666666666667,
+                 "x":162.667,
                  "y":308
                 }, 
                 {
@@ -379,7 +379,7 @@
                  "visible":true,
                  "width":0,
                  "x":146,
-                 "y":279.333333333333
+                 "y":279.333
                 }, 
                 {
                  "height":0,
@@ -401,8 +401,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":497.166666666667,
-                 "y":130.416666666667
+                 "x":497.167,
+                 "y":130.417
                 }, 
                 {
                  "height":0,
@@ -502,8 +502,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":786.333666666667,
-                 "y":274.250333333333
+                 "x":786.334,
+                 "y":274.25
                 }, 
                 {
                  "height":0,
@@ -520,7 +520,7 @@
                  "type":"CHEST",
                  "visible":true,
                  "width":0,
-                 "x":849.666666666667,
+                 "x":849.667,
                  "y":275
                 }, 
                 {
@@ -561,8 +561,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":833.666666666667,
-                 "y":369.666666666667
+                 "x":833.667,
+                 "y":369.667
                 }, 
                 {
                  "height":0,
@@ -658,6 +658,24 @@
                  "width":0,
                  "x":875.125,
                  "y":408.25
+                }, 
+                {
+                 "height":0,
+                 "id":290,
+                 "name":"blob (boss key)",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"LAST_ENEMY_HAS_BOSS_KEY"
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":21.5,
+                 "y":355
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1391,7 +1409,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":290,
+ "nextobjectid":291,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

@@ -548,7 +548,7 @@ void Game::updatePlay(uint8_t frame) {
         push(&Game::updateGameOver, &Game::renderGameOver);
     }
 
-    if (roomType == SLAM_SHUT || roomType == LAST_ENEMY_HAS_KEY) {
+    if (roomType != NORMAL) {
         bool stillHasEnemies = false;
 
         for (e = 0; e < MAX_ENTITIES; ++e) {
@@ -566,7 +566,7 @@ void Game::updatePlay(uint8_t frame) {
                 e = spawnNewEntity(CHEST, player);
                 entities[e].x = (ROOM_WIDTH_PX / 2) - 8;
                 entities[e].y = (ROOM_HEIGHT_PX / 2) - 4;
-                entities[e].health = KEY;
+                entities[e].health = roomType == LAST_ENEMY_HAS_KEY ? KEY : BOSS_KEY;
             }
 
             roomType = NORMAL;

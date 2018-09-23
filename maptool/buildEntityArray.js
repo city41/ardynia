@@ -34,7 +34,8 @@ const EntityTypes = {
 const MiscValues = {
     NORMAL: 0,
     SLAM_SHUT: 1,
-    LAST_ENEMY_HAS_KEY: 2
+    LAST_ENEMY_HAS_KEY: 2,
+    LAST_ENEMY_HAS_BOSS_KEY: 3
 };
 
 function getRoomAt(mapX, mapY) {
