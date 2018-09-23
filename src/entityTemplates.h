@@ -22,6 +22,7 @@
 #include "entities/projectile.h"
 #include "entities/torch.h"
 #include "entities/chest.h"
+#include "entities/triggerDoor.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
@@ -164,8 +165,8 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
 
     // 20, TRIGGER_DOOR
     widthAndHeight(16, 8),
-    healthAndDamage(1, 0),
-    0,
+    healthAndDamage(0, 0),
+    20,
     false,
 
     // 21, SWITCH
@@ -296,9 +297,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)SecretWall::onCollide,
 
     // 20, TRIGGER_DOOR
-    triggerDoor_tiles,
     NULL,
-    NULL,
+    (void*)TriggerDoor::update,
+    (void*)TriggerDoor::onCollide,
 
     // 21, SWITCH
     switch_tiles,

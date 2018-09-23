@@ -204,7 +204,7 @@ void Game::detectEntityCollisions(void) {
                 nextRoomY = entities[ge].prevY;
                 teleportTransitionCount = WIDTH / 2;
                 push(&Game::updateTeleportTransition, &Game::renderTeleportTransition);
-            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK || entities[ge].type == BOSS_LOCK || entities[ge].type == TRIGGER_DOOR) {
+            } else if (entities[ge].type == SECRET_WALL || entities[ge].type == LOCK || entities[ge].type == BOSS_LOCK) {
                 if (entities[ge].health == 1) {
                     player.undoMove();
                 }
@@ -653,13 +653,7 @@ void Game::updateRoomTransition(uint8_t frame) {
 
         uint8_t offset = 4;
 
-        if (roomType == SLAM_SHUT) {
-            offset = 17;
-            bossDelayCount = 120;
-            Sfx::playerDamage(10);
-        }
-
-        player.stayInside(offset, ROOM_WIDTH_PX - offset, offset, ROOM_HEIGHT_PX - offset);
+        player.stayInside(4, ROOM_WIDTH_PX - 4, 4, ROOM_HEIGHT_PX - 4);
 
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
