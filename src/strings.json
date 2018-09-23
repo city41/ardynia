@@ -3,12 +3,11 @@
         { "key": "newGame", "value": "NEW GAME" },
         { "key": "continue", "value": "CONTINUE" },
         { "key": "deleteSave", "value": "DELETE SAVE" },
-        { "key": "sfxOn", "value": "SFX ARE ON" },
-        { "key": "sfxOff", "value": "SFX ARE OFF" },
+        { "key": "sfxOn", "value": "SOUND IS ON" },
+        { "key": "sfxOff", "value": "SOUND IS OFF" },
         { "key": "gameOver", "value": "GAME OVER" },
-        { "key": "continueFromGameOver", "value": "A: CONTINUE" },
-        { "key": "quitFromGameOver", "value": "B: QUIT" },
-        { "key": "paused", "value": "PAUSED: PRESS B TO PLAY" },
+        { "key": "continueFromGameOver", "value": "CONTINUE" },
+        { "key": "quitFromGameOver", "value": "QUIT" },
         { "key": "equip", "value": "EQUIP" },
         { "key": "map", "value": "MAP" }
     ]

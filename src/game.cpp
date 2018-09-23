@@ -62,6 +62,7 @@ void Game::loadSave(bool straightToPlay) {
         currentUpdate = &Game::updatePlay;
         currentRender = &Game::renderPlay;
     } else {
+        titleRow = 0;
         currentUpdate = &Game::updateTitle;
         currentRender = &Game::renderTitle;
     }
@@ -90,10 +91,12 @@ void Game::pop() {
 void Game::updateGameOver(uint8_t frame) {
     if (teleportTransitionCount > 0) {
         teleportTransitionCount -= 1;
+    } else if (arduboy.justPressed(UP_BUTTON)) {
+        titleRow = 0;
+    } else if (arduboy.justPressed(DOWN_BUTTON)) {
+        titleRow = 1;
     } else if (arduboy.justPressed(A_BUTTON)) {
-        loadSave(true);
-    } else if (arduboy.justPressed(B_BUTTON)) {
-        loadSave();
+        loadSave(1 - titleRow);
     }
 }
 
@@ -116,8 +119,9 @@ void Game::renderGameOver(uint8_t frame) {
     renderer.drawString(40, 20, gameOver_string);
 
     if (teleportTransitionCount == 0) {
-        renderer.drawString(32, HEIGHT - 10, continueFromGameOver_string);
-        renderer.drawString(32, HEIGHT - 5, quitFromGameOver_string);
+        renderer.drawRect(38, HEIGHT - 10 + titleRow * 5, 4, 4, WHITE);
+        renderer.drawString(44, HEIGHT - 10, continueFromGameOver_string);
+        renderer.drawString(44, HEIGHT - 5, quitFromGameOver_string);
     }
 }
 
@@ -529,6 +533,7 @@ void Game::updatePlay(uint8_t frame) {
     if (player.health <= 0) {
         teleportTransitionCount = WIDTH / 4;
         player.movedThisFrame = false;
+        titleRow = 0;
         push(&Game::updateGameOver, &Game::renderGameOver);
     }
 
