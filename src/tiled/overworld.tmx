@@ -3,9 +3,9 @@
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="8" name="Tile Layer 1" width="49" height="28">
   <data encoding="csv">
-2,14,14,14,14,14,14,14,7,14,14,14,14,14,14,14,14,14,14,14,14,14,14,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
-3,1,5,5,5,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,9,8,10,
-3,1,5,5,5,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,13,
+5,5,5,14,14,14,14,14,7,14,14,14,14,14,14,14,14,14,14,14,14,14,14,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+5,5,5,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,9,8,10,
+3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,13,
 3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,5,5,7,7,7,7,7,7,7,7,7,7,5,5,5,
 3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,5,5,7,7,7,7,7,7,7,7,7,7,7,7,7,
 7,7,6,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,1,1,1,1,1,1,1,1,1,7,7,7,7,7,5,5,5,
@@ -57,16 +57,16 @@
   <object id="140" name="sunken bridge" type="SUNKEN_BRIDGE" x="179.364" y="164.818">
    <point/>
   </object>
-  <object id="141" name="secret wall" type="SECRET_WALL" x="48" y="32">
+  <object id="141" name="secret wall" type="SECRET_WALL" x="16" y="16">
    <point/>
   </object>
   <object id="143" name="switch" type="SWITCH" x="146.334" y="147">
    <point/>
   </object>
-  <object id="144" name="teleporter" type="TELEPORTER" x="48" y="32">
+  <object id="144" name="teleporter" type="TELEPORTER" x="16" y="16">
    <properties>
-    <property name="DEST_ROOM_X" type="int" value="0"/>
-    <property name="DEST_ROOM_Y" type="int" value="0"/>
+    <property name="DEST_ROOM_X" type="int" value="4"/>
+    <property name="DEST_ROOM_Y" type="int" value="2"/>
    </properties>
    <point/>
   </object>
@@ -82,10 +82,10 @@
   <object id="152" name="trigger door" type="TRIGGER_DOOR" x="48" y="209.25">
    <point/>
   </object>
-  <object id="153" name="teleporter to secret" type="TELEPORTER" x="17" y="193">
+  <object id="153" name="teleporter to secret" type="TELEPORTER" x="48" y="193">
    <properties>
-    <property name="DEST_ROOM_X" type="int" value="0"/>
-    <property name="DEST_ROOM_Y" type="int" value="0"/>
+    <property name="DEST_ROOM_X" type="int" value="1"/>
+    <property name="DEST_ROOM_Y" type="int" value="4"/>
    </properties>
    <point/>
   </object>

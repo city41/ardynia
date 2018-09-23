@@ -133,8 +133,18 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 3 + 1 : 0;
-        State::saveToEEPROM();
+        // if the next room X is a multiple of three, the user 
+        // is going into a dungeon, otherwise they are going into a secret room
+        // only save current dungeon if actually going into a dungeon
+        if (nextRoomX % 3 == 0) {
+            State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 3 + 1 : 0;
+            State::saveToEEPROM();
+        } else {
+            // 4 to indicate "secret room"
+            // this is a little dangerous, but since secret rooms wont
+            // have keys, it should be fine
+            State::gameState.currentDungeon = 4;
+        }
         
 
         TileRoom::x = nextRoomX;
