@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="279">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="290">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -30,7 +30,7 @@
 2,14,14,14,14,14,14,1,1,1,1,1,1,15,2,14,14,14,14,14,12,2,14,14,14,14,14,12,3,1,1,1,1,1,15,2,14,14,14,14,14,14,1,1,1,1,1,1,15,2,14,14,14,14,14,12,
 3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,
-11,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,4,4,4,13,11,4,4,4,4,4,13,3,1,1,1,1,1,1,1,1,1,1,1,1,15,11,4,4,4,4,4,13,
+11,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,4,4,4,13,11,4,4,4,4,4,13,3,1,1,1,1,1,1,1,1,1,1,1,1,15,11,4,4,1,4,4,13,
 2,14,7,14,14,14,14,1,1,1,1,1,1,15,2,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,1,1,1,1,1,1,1,14,14,14,14,14,14,12,
 7,7,7,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,
 3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,
@@ -201,6 +201,31 @@
     <property name="DEST_ROOM_X" type="int" value="5"/>
     <property name="DEST_ROOM_Y" type="int" value="5"/>
    </properties>
+   <point/>
+  </object>
+  <object id="279" name="heart" type="HEART" x="801.25" y="400.875">
+   <point/>
+  </object>
+  <object id="281" name="bomb" type="BOMB" x="817.375" y="401">
+   <point/>
+  </object>
+  <object id="284" name="bomb" type="BOMB" x="858" y="401.25">
+   <point/>
+  </object>
+  <object id="286" name="heart" type="HEART" x="873.625" y="400.875">
+   <point/>
+  </object>
+  <object id="287" name="To overworld from secret 4" type="TELEPORTER" x="832.75" y="433">
+   <properties>
+    <property name="DEST_ROOM_X" type="int" value="6"/>
+    <property name="DEST_ROOM_Y" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="288" name="heart" type="HEART" x="801.875" y="409.375">
+   <point/>
+  </object>
+  <object id="289" name="heart" type="HEART" x="875.125" y="408.25">
    <point/>
   </object>
  </objectgroup>
