@@ -121,7 +121,7 @@ class Entity {
         virtual EntityType onCollide(Entity& other, Entity& player, Game& game);
 
         bool overlaps(Entity& other);
-        void bounceBack(Entity& bounceAwayFrom);
+        void bounceBack(Entity& bounceAwayFromA, Entity& bounceAwayFromB);
 };
 
 #endif

@@ -6,7 +6,7 @@ EntityType Sword::update(Entity* me, Entity& player, Arduboy2Base& arduoboy, uin
     int16_t py = player.y;
 
     // initial duration? then "spawn"
-    if (me->duration == 20) {
+    /* if (me->duration == 20) { */
         switch (player.dir) {
             case LEFT:
                 me->x = px - 18;
@@ -32,7 +32,7 @@ EntityType Sword::update(Entity* me, Entity& player, Arduboy2Base& arduoboy, uin
                 me->currentFrame = 1;
                 me->mirror = 0;
                 break;
-        }
+        /* } */
     }
 
     me->duration -= 1;

@@ -46,12 +46,17 @@ bool Entity::overlaps(Entity& other) {
     );
 }
 
-void Entity::bounceBack(Entity& bounceAwayFrom) {
-    int8_t diffX = x - bounceAwayFrom.x;
-    int8_t diffY = y - bounceAwayFrom.y;
+void Entity::bounceBack(Entity& bounceAwayFromA, Entity& bounceAwayFromB) {
+    int16_t acx = bounceAwayFromA.x + bounceAwayFromA.width / 2;
+    int16_t acy = bounceAwayFromA.y + bounceAwayFromA.height / 2;
+    int16_t bcx = bounceAwayFromB.x + bounceAwayFromB.width / 2;
+    int16_t bcy = bounceAwayFromB.y + bounceAwayFromB.height / 2;
 
-    int8_t bounceXAmount = 0;
-    int8_t bounceYAmount = 0;
+    int8_t diffX = acx - bcx;
+    int8_t diffY = acy - bcy;
+
+    int16_t bounceXAmount = 0;
+    int16_t bounceYAmount = 0;
 
     if (abs(diffX) > abs(diffY)) {
         bounceXAmount = diffX > 0 ? BOUNCE_AMOUNT : -BOUNCE_AMOUNT;

@@ -78,7 +78,7 @@ EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player, Game& g
     if ((other.type == SWORD || other.type == BOMB) && mode == HOLD) {
         me->health -= 1;
         me->tookDamageCount = 100;
-        me->bounceBack(other);
+        me->bounceBack(other, player);
 
         if (me->health == 0) {
             me->type = UNSET;
