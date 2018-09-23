@@ -6,6 +6,10 @@ EntityType Torch::update(Entity* me, Entity* player, Arduboy2Base& arduboy, uint
 }
 
 EntityType Torch::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+    if (other.type == PLAYER) {
+        other.undoMove();
+    }
+
     if (other.type == PROJECTILE) {
         me->currentFrame = 1;
     }

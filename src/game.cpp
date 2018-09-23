@@ -21,7 +21,7 @@ const uint8_t SFX_ON_OFF = 1;
 const uint8_t DELETE_SAVE = 2;
 
 const uint8_t PROGMEM startingRooms[8] = {
-    1, 4, // overworld (x, y)
+    1, 3, // overworld (x, y)
     0, 7, // first dungeon
     3, 7, // second dungeon
     6, 0  // third dungeon

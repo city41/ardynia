@@ -5,16 +5,15 @@
 
 const uint8_t MAX_DUNGEON_COUNT = 3;
 const uint8_t MAX_ROOM_COUNT = 152;
-const uint8_t DUNGEON_ROOM_OFFSET = 4; // this will be 64 for the full map
+const uint8_t DUNGEON_ROOM_OFFSET = 49;
 const uint8_t MAX_KEYS = 6;
 
-// hoo boy, just randomly grabbed this
 const uint8_t GAME_ID = 81;
-// hoo boy, just randomly grabbed this too O_o
 const uint8_t EEPROM_START = 64;
 
 struct GameState {
     int8_t totalHealth;
+    int8_t hasSword;
     int8_t numAcquiredItems;
     int8_t numKeys[MAX_DUNGEON_COUNT];
     int8_t bossKeys[MAX_DUNGEON_COUNT];

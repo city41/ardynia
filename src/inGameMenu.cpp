@@ -37,6 +37,11 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
     // boundary rectangle
     renderer.drawRect(x, 6, 21, 40, WHITE);
 
+    // sword
+    if (State::gameState.hasSword) {
+        renderer.drawPlusMask(3, 10, swordIcon_plus_mask, 0, 0, true);
+    }
+
     // items
     for (uint8_t i = 0; i < State::gameState.numAcquiredItems; ++i) {
 

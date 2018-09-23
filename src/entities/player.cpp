@@ -29,6 +29,10 @@ void Player::reset() {
 }
 
 void Player::useSword(void) {
+    if (State::gameState.hasSword == 0) {
+        return;
+    }
+
     // currently swinging the sword or dont even have it yet? do nothing
     if (entities[0].type != UNSET) {
         return;
@@ -79,7 +83,7 @@ void Player::render(Renderer& renderer, byte frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem - 1);
+        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem);
         renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemBmp, 0, 0, State::isInDungeon());
     } else {
         // for the boomerang, only want to hold the attack pose as long as they don't move
@@ -223,7 +227,11 @@ void Player::receiveItemFromChest(Entity& chest) {
             numBombs = 3;
         }
 
-        if (receivedItem < KEY) {
+        if (receivedItem == SWORD) {
+            State::gameState.hasSword = 1;
+        }
+
+        if (receivedItem > SWORD && receivedItem < KEY) {
             State::gameState.numAcquiredItems += 1;
             bButtonEntityType = receivedItem;
         }
