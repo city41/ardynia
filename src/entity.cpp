@@ -69,6 +69,24 @@ void Entity::bounceBack(Entity& bounceAwayFromA, Entity& bounceAwayFromB) {
     dir = curDir;
 }
 
+void Entity::rotateViaMirror(uint8_t frame) {
+    MirrorMode newMirror = 0;
+
+    if (frame > 49) {
+        newMirror = MIRROR_HORIZONTAL | MIRROR_VERTICAL;
+    } else if (frame > 39) {
+        newMirror = MIRROR_HORIZONTAL;
+    } else if (frame > 29) {
+        newMirror = 0;
+    } else if (frame > 19) {
+        newMirror = MIRROR_HORIZONTAL | MIRROR_VERTICAL;
+    } else if (frame > 9) {
+        newMirror = MIRROR_HORIZONTAL;
+    }
+
+    mirror = newMirror;
+}
+
 void Entity::render(Renderer& renderer, uint8_t renderFrame) {
     bool invert = State::isInDungeon();
 

@@ -39,6 +39,7 @@ EntityType Projectile::update(Entity* me, Entity& player, Arduboy2Base& arduboy,
     me->duration -= 1;
     me->x += me->prevX;
     me->y += me->prevY;
+    me->rotateViaMirror(frame);
 
     // fizzle out
     if (me->duration == 0) {

@@ -55,21 +55,7 @@ EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, 
         }
     }
 
-    MirrorMode mirror = 0;
-
-    if (frame > 49) {
-        mirror = MIRROR_HORIZONTAL | MIRROR_VERTICAL;
-    } else if (frame > 39) {
-        mirror = MIRROR_HORIZONTAL;
-    } else if (frame > 29) {
-        mirror = 0;
-    } else if (frame > 19) {
-        mirror = MIRROR_HORIZONTAL | MIRROR_VERTICAL;
-    } else if (frame > 9) {
-        mirror = MIRROR_HORIZONTAL;
-    }
-
-    me->mirror = mirror;
+    me->rotateViaMirror(frame);
 
     return UNSET;
 }

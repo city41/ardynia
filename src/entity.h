@@ -29,6 +29,7 @@ class Entity {
             }
         }
 
+
     public:
         typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
         typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity& other, Entity& player, Game& game);
@@ -58,6 +59,7 @@ class Entity {
         bool needsMask;
 
         void moveTowardsOtherEntity(Entity& otherEntity, uint8_t amount);
+        void rotateViaMirror(uint8_t frame);
 
         Entity():
             updatePtr(NULL),
