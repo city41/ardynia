@@ -133,7 +133,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 2 + 1 : 0;
+        State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 3 + 1 : 0;
         State::saveToEEPROM();
         
 
