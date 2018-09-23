@@ -41,6 +41,8 @@ class Entity {
         int16_t y;
         int16_t prevX;
         int16_t prevY;
+        int16_t vx;
+        int16_t vy;
         uint8_t width;
         uint8_t height;
         Direction dir;

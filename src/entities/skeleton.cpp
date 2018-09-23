@@ -43,14 +43,15 @@ EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, u
     if (me->duration == 0) {
         me->duration = 14;
         uint8_t roll = random(0, SKELETON_VEL_COUNT);
-        me->prevX = (int16_t)pgm_read_word(skeleton_vels + roll * 2);
-        me->prevY = (int16_t)pgm_read_word(skeleton_vels + roll * 2 + 1);
+        me->vx = (int16_t)pgm_read_word(skeleton_vels + roll * 2);
+        me->vy = (int16_t)pgm_read_word(skeleton_vels + roll * 2 + 1);
     }
 
     me->duration -= 1;
 
-    me->x = Util::clamp(me->x + me->prevX, 2, WIDTH - 16 - 2 - me->width);
-    me->y = Util::clamp(me->y + me->prevY, 2, HEIGHT - 2 - me->height);
+    int16_t nx = Util::clamp(me->x + me->vx, 2, WIDTH - 16 - 2 - me->width);
+    int16_t ny = Util::clamp(me->y + me->vy, 2, HEIGHT - 2 - me->height);
+    me->moveTo(nx, ny);
 
     return UNSET;
 }
