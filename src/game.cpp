@@ -37,7 +37,7 @@ const uint8_t PROGMEM startingRooms[8] = {
 void Game::loadSave(bool straightToPlay) {
     State::load();
 
-    if (State::gameState.currentDungeon == -1) {
+    if (State::gameState.currentDungeon == 0) {
         TileRoom::map = overworld_map;
         entityDefs = overworld_entities;
         doorDefs = overworld_teleporters;
@@ -50,8 +50,8 @@ void Game::loadSave(bool straightToPlay) {
         mapWidthInRooms = DUNGEONS_WIDTH_IN_ROOMS;
     }
 
-    TileRoom::x = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2);
-    TileRoom::y = pgm_read_byte(startingRooms + (State::gameState.currentDungeon + 1) * 2 + 1);
+    TileRoom::x = pgm_read_byte(startingRooms + State::gameState.currentDungeon * 2);
+    TileRoom::y = pgm_read_byte(startingRooms + State::gameState.currentDungeon * 2 + 1);
 
     TileRoom::loadRoom(TileRoom::x, TileRoom::y, TileRoom::currentRoomOffset);
     loadEntitiesInRoom(TileRoom::x, TileRoom::y);
@@ -129,7 +129,7 @@ void Game::updateTeleportTransition(uint8_t frame) {
         doorDefs = doorDefs == dungeons_teleporters ? overworld_teleporters : dungeons_teleporters;
         TileRoom::map = TileRoom::map == dungeons_map ? overworld_map : dungeons_map;
 
-        State::gameState.currentDungeon = State::gameState.currentDungeon == -1 ? nextRoomX / 3 : -1;
+        State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 2 + 1 : 0;
         State::saveToEEPROM();
         
 
@@ -560,7 +560,7 @@ void Game::updatePlay(uint8_t frame) {
 
 bool Game::roomIsLit() {
     // only the last dungeon can be dark
-    if (State::gameState.currentDungeon != 2) {
+    if (State::gameState.currentDungeon != 3) {
         return true;
     }
 

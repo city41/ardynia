@@ -45,11 +45,12 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
     // items
     for (uint8_t i = 0; i < State::gameState.numAcquiredItems; ++i) {
 
+
         if (i == row) {
             renderer.drawOverwrite(x + 3, 9 + 12 * i, hudBFrame_tiles, 0);
         }
 
-        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + i);
+        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + i + 1);
         renderer.drawPlusMask(x + 10, 9 + 12 * i, itemBmp, 0, 0, true);
     }
 

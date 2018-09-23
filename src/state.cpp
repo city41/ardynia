@@ -63,8 +63,8 @@ void State::load() {
     } else {
         gameState.totalHealth = 2;
         gameState.hasSword = 0;
-        gameState.numAcquiredItems = 0;
-        gameState.currentDungeon = -1;
+        gameState.numAcquiredItems = 3;
+        gameState.currentDungeon = 0;
         memset(gameState.numKeys, 0, MAX_DUNGEON_COUNT);
         memset(gameState.bossKeys, 0, MAX_DUNGEON_COUNT);
         

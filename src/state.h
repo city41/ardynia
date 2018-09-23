@@ -3,7 +3,8 @@
 
 #include <Arduino.h>
 
-const uint8_t MAX_DUNGEON_COUNT = 3;
+// counting the entire overworld a "dungeon"
+const uint8_t MAX_DUNGEON_COUNT = 4;
 const uint8_t MAX_ROOM_COUNT = 152;
 const uint8_t DUNGEON_ROOM_OFFSET = 49;
 const uint8_t MAX_KEYS = 6;
@@ -17,7 +18,7 @@ struct GameState {
     int8_t numAcquiredItems;
     int8_t numKeys[MAX_DUNGEON_COUNT];
     int8_t bossKeys[MAX_DUNGEON_COUNT];
-    int8_t currentDungeon;
+    uint8_t currentDungeon;
 
     // the room states. Each room gets one bit. This means each room
     // can only have ONE thing about it that is stateful. That means each
@@ -33,7 +34,7 @@ class State {
         static void setTriggered(uint8_t roomIndex);
         static void setCurrentRoomTriggered();
 
-        static bool isInDungeon() { return gameState.currentDungeon > -1; }
+        static bool isInDungeon() { return gameState.currentDungeon > 0; }
 
         static bool hasUserSaved();
         static void saveToEEPROM();
