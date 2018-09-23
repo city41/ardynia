@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="351">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="433">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
-2,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,12,
-3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,
-3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,
-3,1,1,1,1,1,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,1,4,4,4,4,4,4,4,4,4,13,
-3,1,1,1,1,1,15,2,14,14,12,5,5,5,2,14,14,14,14,14,12,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,2,14,14,14,14,14,12,2,14,14,14,14,14,12,
-3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,
-3,1,1,1,1,1,15,3,1,1,1,1,1,15,7,7,7,7,7,7,7,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,15,
-3,1,1,1,1,1,15,5,5,5,5,5,5,5,11,4,4,1,4,4,13,3,1,1,1,1,1,1,4,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,1,4,4,13,
-3,1,1,1,1,1,1,14,14,14,14,14,14,12,2,14,14,1,14,14,12,3,1,1,1,1,1,15,2,14,14,1,14,14,12,3,1,1,1,1,1,1,14,14,14,14,14,14,12,5,5,5,1,5,5,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,5,1,1,1,1,1,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,15,7,7,7,7,7,7,7,3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,
-11,4,4,4,4,4,4,4,4,4,4,4,4,13,3,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,4,4,4,13,3,1,1,1,1,1,1,4,4,4,4,4,4,13,5,5,5,1,5,5,5,
-2,14,14,14,14,14,14,14,14,14,14,14,14,12,1,1,1,1,1,1,15,7,7,7,7,7,7,7,2,14,14,14,14,14,14,1,1,1,1,1,1,15,5,5,5,5,5,5,5,5,5,5,1,5,5,5,
+2,14,14,14,14,14,12,2,14,14,14,14,14,5,5,5,5,5,5,5,14,14,14,14,14,14,14,5,5,5,5,7,7,5,5,5,14,14,7,14,14,14,14,14,14,14,14,14,14,14,14,14,14,5,5,5,
+3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,7,7,5,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,5,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,
+5,5,5,1,5,5,5,11,4,4,4,4,4,5,5,5,5,5,5,4,4,4,4,4,4,5,1,1,1,1,5,1,1,5,1,1,1,1,7,1,1,1,4,4,4,1,4,4,5,5,4,4,4,4,5,5,
+5,5,2,1,12,5,5,2,14,14,12,5,5,5,2,14,14,14,14,14,12,2,14,14,14,5,1,1,1,1,5,1,1,5,1,1,1,1,7,1,1,15,2,14,14,14,14,14,12,2,14,14,14,14,14,12,
+5,1,1,1,1,1,5,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,5,5,5,5,1,1,1,1,7,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,
+5,5,1,1,1,1,5,3,1,1,1,1,1,15,7,7,7,7,7,7,7,3,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,7,6,7,7,3,1,1,1,1,1,15,3,1,1,1,1,1,15,
+5,5,5,1,13,5,5,5,5,5,5,5,5,5,11,4,4,1,4,4,13,11,4,4,4,5,1,4,4,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,1,4,4,13,
+5,5,5,1,5,5,5,2,14,14,14,14,14,12,2,14,14,1,14,14,12,5,5,5,5,5,1,5,2,14,14,1,14,14,12,3,1,1,1,1,1,5,5,5,5,5,7,14,5,5,5,5,1,5,5,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,5,1,1,1,1,1,5,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,5,5,1,7,1,5,5,1,1,1,1,1,5,
+3,1,1,1,1,1,15,3,1,1,1,1,1,15,7,7,7,7,7,7,7,5,1,1,1,1,1,5,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,7,1,5,3,1,1,1,1,1,15,
+11,4,4,4,4,4,13,11,4,4,4,4,4,13,3,1,1,1,1,1,15,5,4,4,4,4,4,5,11,4,4,4,4,4,13,5,1,1,1,1,1,5,5,5,5,5,7,4,5,5,5,5,1,5,5,5,
+2,14,14,14,14,14,14,14,14,14,14,14,14,12,1,1,1,1,1,1,15,7,7,7,7,7,7,7,2,14,14,14,14,14,5,5,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,1,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,5,5,5,5,5,1,5,1,1,1,1,1,1,15,
-3,1,1,1,1,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,5,5,1,1,1,1,5,5,1,1,1,1,1,15,
-11,4,4,1,4,4,4,4,4,4,4,7,4,4,4,4,4,4,4,1,5,11,4,4,1,4,4,13,3,1,1,1,1,1,1,4,4,4,4,4,4,13,5,1,1,1,1,1,5,5,4,4,4,4,4,13,
-2,14,14,1,14,14,12,2,14,14,14,14,14,12,2,14,14,14,14,1,5,5,5,5,5,5,5,5,3,1,1,1,1,1,15,5,14,14,14,7,14,5,5,1,1,1,1,1,5,2,14,14,14,14,7,5,
-3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,5,5,1,5,5,5,3,1,1,1,1,1,15,3,1,1,1,7,1,1,1,1,1,1,1,1,15,3,1,1,1,1,7,5,
-3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,7,1,1,1,1,1,1,1,1,15,3,1,1,1,1,7,5,
-11,4,4,1,4,4,13,11,4,4,1,4,4,13,11,4,4,4,4,4,13,11,4,4,4,4,4,13,3,1,1,1,1,1,15,5,4,4,4,7,4,4,1,1,1,1,1,1,15,11,1,4,4,4,7,5,
-2,14,14,1,14,14,14,14,14,14,14,14,14,12,2,14,14,14,14,14,14,14,14,14,14,14,14,14,1,1,1,1,1,1,1,14,14,14,14,14,14,12,3,1,1,1,1,1,15,5,5,5,14,5,5,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,5,5,5,1,15,5,5,5,1,5,5,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,5,5,5,1,15,5,5,5,1,5,5,5,
-11,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,4,4,4,4,4,4,13,3,1,1,1,1,1,15,5,5,5,1,5,5,5,
-2,14,14,14,14,14,14,1,1,1,1,1,1,15,2,14,14,14,14,14,12,5,14,14,14,14,14,5,3,1,1,1,1,1,15,2,14,14,14,14,12,5,5,1,1,1,1,1,15,2,14,14,14,14,14,12,
+3,1,1,1,1,1,1,1,1,1,1,7,7,7,7,7,7,7,7,7,7,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,1,1,1,1,1,15,5,5,1,1,1,1,5,5,1,1,1,1,1,15,
+11,4,4,1,4,4,4,4,4,4,4,7,4,4,4,4,4,4,4,1,5,11,4,4,1,4,4,13,11,4,4,1,4,4,5,5,4,4,4,4,4,13,5,1,1,1,1,1,5,5,4,4,4,4,4,13,
+2,14,14,1,14,14,12,2,14,14,14,14,14,12,2,14,14,14,14,1,5,5,5,5,5,5,5,5,3,1,7,1,1,1,15,5,14,14,14,7,14,5,5,1,1,1,1,1,5,2,14,14,14,14,7,5,
+3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,5,5,1,5,5,5,3,1,7,1,1,1,15,3,1,1,1,7,1,1,1,1,1,1,1,1,15,3,1,1,1,1,7,5,
+3,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,15,7,7,7,1,1,1,15,3,1,1,1,7,1,1,1,1,1,1,1,1,15,3,1,1,1,1,7,5,
+11,4,4,1,4,4,13,11,4,4,1,4,4,13,11,4,4,4,4,4,13,11,4,4,4,4,4,13,5,1,1,1,1,1,5,5,4,4,4,7,4,4,1,1,1,1,1,1,15,11,1,4,4,4,7,5,
+2,14,14,1,14,14,14,14,14,14,14,14,14,12,9,14,14,14,14,14,10,2,14,14,14,14,14,5,5,1,1,1,1,1,5,5,5,5,5,5,5,5,3,1,1,1,1,1,15,5,5,5,14,5,5,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,15,3,1,5,5,5,1,15,5,5,5,1,5,5,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,1,1,1,1,1,1,1,13,5,1,1,1,1,1,5,11,1,1,5,1,1,15,3,1,5,5,5,1,15,5,5,5,1,5,5,5,
+11,4,4,4,4,4,4,1,1,1,1,1,1,15,11,4,4,4,4,4,13,11,4,4,4,4,4,5,5,5,5,1,5,5,5,5,5,5,5,5,5,5,3,1,1,1,1,1,15,5,5,5,1,5,5,5,
+2,14,14,14,14,14,14,1,1,1,1,1,1,15,2,14,14,14,14,14,12,5,14,14,14,14,14,5,5,5,5,1,5,5,5,2,14,14,14,14,12,5,5,1,1,1,1,1,15,2,14,14,14,14,14,12,
 3,1,1,1,1,1,1,1,1,1,1,1,1,15,3,1,1,1,1,1,15,3,1,6,1,6,1,5,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,1,1,1,1,1,15,3,1,1,1,1,1,15,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,3,1,1,1,1,1,15,3,1,1,1,1,1,5,5,1,1,1,1,1,15,3,1,1,1,1,1,15,
-11,4,4,4,4,4,4,1,1,1,1,1,1,15,5,5,5,5,5,5,5,5,5,5,5,5,5,5,11,4,4,4,4,4,13,5,5,4,4,4,4,1,5,1,1,1,1,1,5,11,4,4,1,4,4,13,
+11,4,4,4,4,4,4,1,1,1,1,1,1,15,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,1,5,1,1,1,1,1,5,11,4,4,1,4,4,13,
 2,14,7,14,14,14,14,1,1,1,1,1,1,15,5,5,14,14,14,14,5,5,5,5,5,5,5,5,5,5,5,5,14,5,5,5,5,14,14,14,14,5,5,1,1,1,1,1,5,5,14,14,14,14,14,5,
 7,7,7,1,1,1,1,1,1,1,1,1,1,15,5,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,15,5,1,1,1,1,1,5,5,1,1,1,1,1,5,5,1,1,5,5,5,1,1,5,1,1,1,5,1,1,1,1,1,1,1,5,5,1,1,1,1,5,5,
@@ -421,6 +421,340 @@
    <point/>
   </object>
   <object id="350" name="secret wall" type="SECRET_WALL" x="801.25" y="97.75">
+   <point/>
+  </object>
+  <object id="351" name="lock" type="LOCK" x="450.091" y="337.5">
+   <point/>
+  </object>
+  <object id="352" name="lock" type="LOCK" x="497.455" y="369.636">
+   <point/>
+  </object>
+  <object id="353" name="lock" type="LOCK" x="545.818" y="337.818">
+   <point/>
+  </object>
+  <object id="354" name="To overworld from dung 3" type="TELEPORTER" x="721.727" y="58.9091">
+   <properties>
+    <property name="DEST_ROOM_X" type="int" value="4"/>
+    <property name="DEST_ROOM_Y" type="int" value="4"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="355" name="boss lock" type="BOSS_LOCK" x="98.5" y="147">
+   <point/>
+  </object>
+  <object id="356" name="torch" type="TORCH" x="721.25" y="12.5">
+   <point/>
+  </object>
+  <object id="357" name="boss" type="NEMESIS" x="194.545" y="146.545">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="358" name="trigger door" type="TRIGGER_DOOR" x="113.818" y="145.273">
+   <point/>
+  </object>
+  <object id="359" name="pot with bombs" type="POT" x="804" y="154.75">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="360" name="pot with bombs" type="POT" x="868" y="153.75">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="361" name="trigger door" type="TRIGGER_DOOR" x="338.5" y="354">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="362" name="trigger door" type="TRIGGER_DOOR" x="444.25" y="337.5">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="363" name="skeleton" type="SKELETON" x="386" y="328.25">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="369" name="skeleton" type="SKELETON" x="372" y="328">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="370" name="skeleton" type="SKELETON" x="392" y="328.25">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="371" name="skeleton" type="SKELETON" x="371.75" y="375.25">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="372" name="skeleton" type="SKELETON" x="386.5" y="375.75">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="373" name="skeleton" type="SKELETON" x="393.5" y="375.25">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="374" name="blob" type="BLOB" x="242.25" y="329.75">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="375" name="blob" type="BLOB" x="242" y="373.25">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="376" name="blob" type="BLOB" x="242.75" y="344">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="377" name="bat" type="BAT" x="275.75" y="331">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="378" name="bat" type="BAT" x="276.75" y="372">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="379" name="bat" type="BAT" x="275" y="342.25">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="380" name="bat" type="BAT" x="259.5" y="359.25">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="381" name="torch" type=" " x="529.75" y="355.75">
+   <point/>
+  </object>
+  <object id="382" name="pot" type="POT" x="466.727" y="418.364">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="383" name="pot" type="POT" x="482.909" y="419.091">
+   <point/>
+  </object>
+  <object id="384" name="pot" type="POT" x="498.727" y="419.091">
+   <point/>
+  </object>
+  <object id="385" name="pot" type="POT" x="514.909" y="418.909">
+   <point/>
+  </object>
+  <object id="386" name="pot" type="POT" x="530.727" y="418.545">
+   <point/>
+  </object>
+  <object id="387" name="secret wall" type="SECRET_WALL" x="608.875" y="353">
+   <point/>
+  </object>
+  <object id="388" name="chest with key" type="CHEST" x="641.375" y="346.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value=" "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="389" name="lock" type="LOCK" x="498.333" y="243.333">
+   <point/>
+  </object>
+  <object id="390" name="pot" type="POT" x="466" y="212.333">
+   <point/>
+  </object>
+  <object id="391" name="pot" type="POT" x="465.667" y="229.333">
+   <point/>
+  </object>
+  <object id="392" name="bat" type="BAT" x="466.667" y="245.333">
+   <point/>
+  </object>
+  <object id="393" name="bat" type="BAT" x="478.667" y="215.333">
+   <point/>
+  </object>
+  <object id="394" name="bat" type="BAT" x="354.667" y="164.333">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="395" name="skeleton" type="SKELETON" x="386" y="146.667">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="396" name="skeleton" type="SKELETON" x="369.667" y="179">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="397" name="blob" type="BLOB" x="376" y="154.667">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="398" name="secret wall" type="SECRET_WALL" x="225" y="33.5">
+   <point/>
+  </object>
+  <object id="399" name="lock" type="LOCK" x="114" y="33.6667">
+   <point/>
+  </object>
+  <object id="400" name="switch" type="SWITCH" x="706.084" y="155.917">
+   <point/>
+  </object>
+  <object id="401" name="secret wall" type="SECRET_WALL" x="704.75" y="145.25">
+   <point/>
+  </object>
+  <object id="402" name="sunken bridge" type="SUNKEN_BRIDGE" x="737.25" y="161.5">
+   <point/>
+  </object>
+  <object id="403" name="chest with key" type="CHEST" x="754.75" y="146.25">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="404" name="torch" type="TORCH" x="867.333" y="25.6667">
+   <point/>
+  </object>
+  <object id="405" name="secret wall" type="SECRET_WALL" x="482" y="33.6667">
+   <point/>
+  </object>
+  <object id="406" name="chest with key" type="CHEST" x="500" y="72">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="407" name="lock" type="LOCK" x="658" y="162.333">
+   <point/>
+  </object>
+  <object id="408" name="torch" type="TORCH" x="467" y="34.3333">
+   <point/>
+  </object>
+  <object id="409" name="torch" type="TORCH" x="18.6667" y="163.667">
+   <point/>
+  </object>
+  <object id="410" name="trigger door" type="TRIGGER_DOOR" x="50.3333" y="67">
+   <point/>
+  </object>
+  <object id="411" name="trigger door" type="TRIGGER_DOOR" x="50" y="124.333">
+   <point/>
+  </object>
+  <object id="412" name="skeleton" type="SKELETON" x="83.3333" y="99">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="413" name="skeleton" type="SKELETON" x="18.3333" y="82.3333">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="414" name="pot" type="POT" x="178.333" y="52.6667">
+   <point/>
+  </object>
+  <object id="415" name="pot" type="POT" x="18.3333" y="38.3333">
+   <point/>
+  </object>
+  <object id="416" name="pot" type="POT" x="22.3333" y="17">
+   <point/>
+  </object>
+  <object id="417" name="bat" type="BAT" x="132" y="10">
+   <point/>
+  </object>
+  <object id="418" name="bat" type="BAT" x="163" y="52.6667">
+   <point/>
+  </object>
+  <object id="419" name="trigger door" type="TRIGGER_DOOR" x="403.667" y="82.6667">
+   <point/>
+  </object>
+  <object id="420" name="bat" type="BAT" x="387" y="73">
+   <properties>
+    <property name="MISC" value="SLAM_SHUT"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="421" name="chest with key" type="CHEST" x="353.667" y="83">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="422" name="lock" type="LOCK" x="563.333" y="211">
+   <point/>
+  </object>
+  <object id="423" name="skeleton" type="SKELETON" x="610.182" y="162.364">
+   <point/>
+  </object>
+  <object id="424" name="torch" type="TORCH" x="610.227" y="227.182">
+   <point/>
+  </object>
+  <object id="425" name="blob" type="BLOB" x="147.667" y="500.667">
+   <point/>
+  </object>
+  <object id="426" name="blob" type="BLOB" x="147.667" y="420">
+   <point/>
+  </object>
+  <object id="427" name="bomb" type="BOMB" x="548" y="24.3333">
+   <point/>
+  </object>
+  <object id="428" name="pot with bombs" type="POT" x="817.5" y="17.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="429" name="pot with bombs" type="POT" x="834.667" y="19">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="430" name="pot with bombs" type="POT" x="467.333" y="276.667">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="431" name="sunken bridge" type="SUNKEN_BRIDGE" x="465.667" y="291.667">
+   <point/>
+  </object>
+  <object id="432" name="switch" type="SWITCH" x="531" y="276.667">
    <point/>
   </object>
  </objectgroup>
