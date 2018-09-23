@@ -21,7 +21,7 @@
                 {
                  "height":0,
                  "id":127,
-                 "name":"Door to dungeon 2",
+                 "name":"teleporter to dungeon 2",
                  "point":true,
                  "properties":[
                         {
@@ -38,8 +38,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":753.333,
-                 "y":23
+                 "x":752.605727272727,
+                 "y":17.1818181818182
                 }, 
                 {
                  "height":0,
@@ -61,8 +61,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":514.416,
-                 "y":388
+                 "x":512.597818181818,
+                 "y":385.090909090909
                 }, 
                 {
                  "height":0,
@@ -310,8 +310,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":513,
-                 "y":289.667
+                 "x":512.636363636364,
+                 "y":288.757909090909
                 }, 
                 {
                  "height":0,
@@ -322,7 +322,7 @@
                  "type":"SECRET_WALL",
                  "visible":true,
                  "width":0,
-                 "x":641.514818181818,
+                 "x":641.515,
                  "y":320
                 }, 
                 {
@@ -459,8 +459,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":353,
-                 "y":258.25
+                 "x":352.636363636364,
+                 "y":256.795454545455
                 }, 
                 {
                  "height":0,
@@ -482,7 +482,7 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":640.666666666667,
+                 "x":640.667,
                  "y":320
                 }, 
                 {

@@ -34,14 +34,14 @@
 </data>
  </layer>
  <objectgroup id="2" name="entities">
-  <object id="127" name="Door to dungeon 2" type="TELEPORTER" x="753.333" y="23">
+  <object id="127" name="teleporter to dungeon 2" type="TELEPORTER" x="752.606" y="17.1818">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="3"/>
     <property name="DEST_ROOM_Y" type="int" value="7"/>
    </properties>
    <point/>
   </object>
-  <object id="129" name="Door to dungeon 1" type="TELEPORTER" x="514.416" y="388">
+  <object id="129" name="Door to dungeon 1" type="TELEPORTER" x="512.598" y="385.091">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
     <property name="DEST_ROOM_Y" type="int" value="7"/>
@@ -110,7 +110,7 @@
   <object id="159" name="secret wall" type="SECRET_WALL" x="512.667" y="289.667">
    <point/>
   </object>
-  <object id="160" name="teleporter to dungeon 3" type="TELEPORTER" x="513" y="289.667">
+  <object id="160" name="teleporter to dungeon 3" type="TELEPORTER" x="512.636" y="288.758">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
     <property name="DEST_ROOM_Y" type="int" value="0"/>
@@ -156,7 +156,7 @@
   <object id="170" name="skeleton" type="SKELETON" x="161.667" y="291.333">
    <point/>
   </object>
-  <object id="171" name="teleporter to secret 3" type="TELEPORTER" x="353" y="258.25">
+  <object id="171" name="teleporter to secret 3" type="TELEPORTER" x="352.636" y="256.795">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="7"/>
     <property name="DEST_ROOM_Y" type="int" value="4"/>
