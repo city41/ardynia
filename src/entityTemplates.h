@@ -21,6 +21,7 @@
 #include "entities/pot.h"
 #include "entities/projectile.h"
 #include "entities/torch.h"
+#include "entities/chest.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
@@ -86,7 +87,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 7, CHEST
     widthAndHeight(14, 8),
     healthAndDamage(0, 0),
-    0,
+    20,
     false,
 
     // 8, BLOB
@@ -231,7 +232,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
 
     // 7, CHEST
     chest_tiles,
-    NULL,
+    (void*)Chest::update,
     NULL,
 
     // 8, BLOB
