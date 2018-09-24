@@ -77,6 +77,8 @@ void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {
 }
 
 /**
+ * Load a compressed room from progmem into RAM
+ *
  * maps are compressed in two ways:
  *
  * * two tiles per byte, as there are less than 16 tiles
@@ -86,18 +88,18 @@ void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {
  * index of each room. This is because with RLE compression, each room will have a different
  * number of bytes
  *
- * The general render algorithm:
+ * The general decompression approach:
  * 1) convert the roomX and roomY coordinate into a linear coordinate
  * 2) with linear coordinate in hand, dive into the room indices part of the header
  * and grab the starting index of the room. This starting index does NOT account for the header!
  * 3) grab the starting index of the next room, that way we can figure out how many bytes 
  * are for the current room
  * 4) iterate over the room's bytes, one nibble at a time.
- *   -- if the nibble is just a regular tile, then render it
+ *   -- if the nibble is just a regular tile, then dump it
  *   -- if the nibble is the compression indicator (0xF, ie 16), then read the next nibble
  *      to get the count (how many times the tile will be repeated). Then read the next nibble
  *      to learn what the tile to render is
- *      render that tile count times
+ *      dump that tile count times
  */
 void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
     uint16_t lengthOfMap = pgm_read_word(map);
@@ -110,8 +112,8 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
 
     // grab its starting data index out of the room indices header
     // the stored index does not account for the headers, so tack them on
-    // numRooms * 2 . get past the room indice words
-    // + MAP_HEADER_SIZE . get past the map width, map height and tile size
+    // numRooms * 2 -> get past the room indice words
+    // + MAP_HEADER_SIZE -> get past the map width, map height and tile size
     uint16_t roomIndex = pgm_read_word(map + MAP_HEADER_SIZE + roomNumber * 2) + (numRooms * 2) + MAP_HEADER_SIZE;
     uint16_t nextRoomIndex;
 
@@ -131,16 +133,23 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
 
         if (nibble == Compression) {
             uint8_t nextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 1) >> 1));
+
+            // a count nibble can be either at the top or bottom of a byte, basically compression treats
+            // nibbles as first class
             uint8_t count = ((curNibbleIndex + 1) & 1) ? nextRawTileByte & 0xF : nextRawTileByte >> 4;
             uint8_t nextNextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 2) >> 1));
             uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
 
+            // memset here?
             for (uint8_t c = 0; c < count; ++c) {
                 rooms[offset++] = tileId;
             }
 
+            // jump past the compression block of <compression nibble><count nibble><template nibble>
             curNibbleIndex += 3;
         } else {
+            // need to make sure don't go beyond the room offset in the case of when a compression
+            // run leaves a dead nibble at the end of the room, otherwise will clobber other memory
             if (offset < maxOffset) {
                 rooms[offset++] = nibble;
             }

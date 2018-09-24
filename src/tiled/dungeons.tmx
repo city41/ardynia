@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="433">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="434">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -556,7 +556,7 @@
    </properties>
    <point/>
   </object>
-  <object id="381" name="torch" type=" " x="529.75" y="355.75">
+  <object id="381" name="torch" type="TORCH" x="529.75" y="355.75">
    <point/>
   </object>
   <object id="382" name="pot" type="POT" x="466.727" y="418.364">
@@ -755,6 +755,9 @@
    <point/>
   </object>
   <object id="432" name="switch" type="SWITCH" x="531" y="276.667">
+   <point/>
+  </object>
+  <object id="433" name="torch" type="TORCH" x="580.667" y="21.6667">
    <point/>
   </object>
  </objectgroup>

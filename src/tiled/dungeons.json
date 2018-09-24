@@ -1804,7 +1804,7 @@
                  "name":"torch",
                  "point":true,
                  "rotation":0,
-                 "type":" ",
+                 "type":"TORCH",
                  "visible":true,
                  "width":0,
                  "x":529.75,
@@ -2511,6 +2511,18 @@
                  "width":0,
                  "x":531,
                  "y":276.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":433,
+                 "name":"torch",
+                 "point":true,
+                 "rotation":0,
+                 "type":"TORCH",
+                 "visible":true,
+                 "width":0,
+                 "x":580.666666666667,
+                 "y":21.6666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3244,7 +3256,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":433,
+ "nextobjectid":434,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

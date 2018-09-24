@@ -797,7 +797,7 @@ const uint8_t PROGMEM dungeons_room4_5[] = {
     xy(96, 16),
 
     // entity 3
-    miscAndEntityType(0,  ),
+    miscAndEntityType(0, TORCH),
     xy(80, 36),
 };
 
@@ -835,6 +835,16 @@ const uint8_t PROGMEM dungeons_room4_7[] = {
     // entity 0
     miscAndEntityType(0, POT),
     xy(72, 20),
+};
+
+
+
+const uint8_t PROGMEM dungeons_room5_0[] = {
+    1, // number of entities
+
+    // entity 0
+    miscAndEntityType(0, TORCH),
+    xy(24, 20),
 };
 
 
@@ -1205,7 +1215,7 @@ const uint8_t * const PROGMEM dungeons_row0[8] = {
     dungeons_room2_0,
     empty_room,
     dungeons_room4_0,
-    empty_room,
+    dungeons_room5_0,
     dungeons_room6_0,
     dungeons_room7_0
 };
