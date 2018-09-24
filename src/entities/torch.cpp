@@ -3,7 +3,10 @@
 #include "../game.h"
 
 EntityType Torch::update(Entity* me, Entity* player, Arduboy2Base& arduboy, uint8_t frame) {
-    me->mirror = frame < 31 ? MIRROR_HORIZONTAL : 0;
+    if (me->health == 0) {
+        me->currentFrame = frame & 1;
+    } 
+
     return UNSET;
 }
 
@@ -13,7 +16,7 @@ EntityType Torch::onCollide(Entity* me, Entity& other, Entity& player, Game& gam
     }
 
     if (other.type == PROJECTILE) {
-        me->currentFrame = 1;
+        me->health = 0;
 
         // HACK! in the overworld, lit torches unlock doors
         if (State::gameState.currentDungeon == 0) {

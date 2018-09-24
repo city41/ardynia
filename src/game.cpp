@@ -582,7 +582,7 @@ bool Game::roomIsLit() {
 
     for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == TORCH) {
-            return entities[e].currentFrame == 1;
+            return entities[e].health == 0;
         }
     }
 
@@ -605,11 +605,12 @@ void Game::renderPlay(uint8_t frame) {
         entities[e].render(renderer, frame);
     }
 
+    player.render(renderer, frame);
+
     for (e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
         player.entities[e].render(renderer, frame);
     }
 
-    player.render(renderer, frame);
 
     Nemesis::sword.render(renderer, frame);
 
