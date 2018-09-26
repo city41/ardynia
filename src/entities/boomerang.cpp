@@ -3,8 +3,9 @@
 #include "../sfx.h"
 #include "../game.h"
 #include "../util.h"
+#include "../state.h"
 
-EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     int16_t px = player.x;
     int16_t py = player.y;
     
@@ -14,6 +15,10 @@ EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, 
         me->x = player.x;
         me->y = player.y - 6;
         Sfx::boomerang();
+
+        if (game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
+            game.setAllSwitches(0);
+        }
     }
 
     if (me->duration > 0) {
@@ -64,7 +69,7 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
     EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
-    if ((otherType >= KEY && otherType <= HEART) || otherType == BOMB) {
+    if ((otherType >= KEY && otherType <= BOSS_KEY) || otherType == BOMB) {
         return player.onCollide(other, player, game);
     }
 
@@ -75,11 +80,17 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
 
     if (otherType == SWITCH) {
         other.mirror = MIRROR_HORIZONTAL;
-        game.removeAllTriggerDoors();
-        game.emergeAllBridges();
+        if (game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
+            if (game.areAllSwitchesTriggered()) {
+                game.spawnChest(KEY);
+                State::setCurrentRoomTriggered();
+                game.roomType = NORMAL;
+            }
+        } else {
+            game.removeAllTriggerDoors();
+            game.emergeAllBridges();
+        }
     }
-
-    // hit anything else? don't care, keep flying
 
     return UNSET;
 }

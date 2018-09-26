@@ -405,13 +405,13 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
         } else if ((type == LOCK || type == KEY) && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
-            roomType = entityMisc;
+            roomType = (RoomType)entityMisc;
 
             if (roomType == SLAM_SHUT && roomIsTriggered) {
                 currentEntity.type = UNSET;
                 roomType = NORMAL;
                 isDefeatedSlamShutRoom = true;
-            } else if (roomType == LAST_ENEMY_HAS_KEY && roomIsTriggered) {
+            } else if ((roomType == LAST_ENEMY_HAS_KEY || roomType == LAST_ENEMY_HAS_BOSS_KEY) && roomIsTriggered) {
                 roomType = NORMAL;
                 loadEntity(currentEntity, CHEST);
                 currentEntity.currentFrame = 1;
@@ -429,6 +429,11 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
 
     if (isDefeatedSlamShutRoom) {
         removeAllTriggerDoors();
+    }
+
+    if (roomType == THREE_SWITCHES_ONE_BOOMERANG && roomIsTriggered) {
+        roomType = NORMAL;
+        setAllSwitches(1);
     }
 }
 
@@ -512,7 +517,7 @@ void Game::updatePlay(uint8_t frame) {
         return;
     }
 
-    player.update(player, arduboy, frame);
+    player.update(player, *this, arduboy, frame);
 
     // player is in the middle of showing off a new item,
     // freeze the game while this is happening
@@ -524,14 +529,14 @@ void Game::updatePlay(uint8_t frame) {
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        EntityType newEntity = entity.update(player, arduboy, frame);
+        EntityType newEntity = entity.update(player, *this, arduboy, frame);
         loadEntity(player.entities[e], newEntity);
     }
 
     for (e = 0; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        EntityType newEntity = entity.update(player, arduboy, frame);
+        EntityType newEntity = entity.update(player, *this, arduboy, frame);
         spawnNewEntity(newEntity, entity);
     }
 
@@ -562,14 +567,11 @@ void Game::updatePlay(uint8_t frame) {
             if (roomType == SLAM_SHUT) {
                 removeAllTriggerDoors();
                 State::setCurrentRoomTriggered();
-            } else {
-                e = spawnNewEntity(CHEST, player);
-                entities[e].x = (ROOM_WIDTH_PX / 2) - 8;
-                entities[e].y = (ROOM_HEIGHT_PX / 2) - 4;
-                entities[e].health = roomType == LAST_ENEMY_HAS_KEY ? KEY : BOSS_KEY;
+                roomType = NORMAL;
+            } else if (roomType <= LAST_ENEMY_HAS_BOSS_KEY) {
+                spawnChest(roomType == LAST_ENEMY_HAS_KEY ? KEY : BOSS_KEY);
+                roomType = NORMAL;
             }
-
-            roomType = NORMAL;
         }
     }
 }
@@ -663,8 +665,6 @@ void Game::updateRoomTransition(uint8_t frame) {
             player.moveTo(player.x, 0, true);
         }
 
-        uint8_t offset = 4;
-
         player.stayInside(4, ROOM_WIDTH_PX - 4, 4, ROOM_HEIGHT_PX - 4);
 
         TileRoom::x = nextRoomX;
@@ -755,4 +755,72 @@ void Game::render(uint8_t frame) {
         currentRender = nextRender;
         nextRender = NULL;
     }
+}
+
+uint8_t Game::getChestState() {
+    uint8_t chestCounter = 0;
+    uint8_t chestState = 0;
+
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == CHEST) {
+            chestState |= entities[e].currentFrame << chestCounter++;
+        }
+    }
+
+    return chestState;
+}
+
+void Game::closeAllChests() {
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == CHEST) {
+            entities[e].currentFrame = 0;
+        }
+    }
+}
+
+void Game::setAllSwitches(uint8_t triggered) {
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == SWITCH) {
+            entities[e].mirror = triggered;
+        }
+    }
+}
+
+bool Game::areAllSwitchesTriggered() {
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == SWITCH && entities[e].mirror == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool Game::areAllTorchesLit() {
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == TORCH && entities[e].health == 1) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void Game::spawnChest(EntityType containedItem) {
+    uint8_t e = spawnNewEntity(CHEST, player);
+    entities[e].x = (ROOM_WIDTH_PX / 2) - 8;
+    entities[e].y = (ROOM_HEIGHT_PX / 2) - 4;
+    entities[e].health = containedItem;
+}
+
+uint8_t Game::countEntities(EntityType entityType) {
+    uint8_t count = 0;
+
+    for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+        if (entities[e].type == entityType) {
+            count += 1;
+        }
+    }
+
+    return count;
 }

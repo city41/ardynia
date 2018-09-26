@@ -8,7 +8,6 @@
 #include "renderer.h"
 
 class Game;
-
 class Entity {
     protected:
         Direction determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction prevDir) {
@@ -31,7 +30,7 @@ class Entity {
 
 
     public:
-        typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
+        typedef EntityType (*EntityUpdatePtr)(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
         typedef EntityType (*EntityCollideOtherEntityPtr)(Entity* me, Entity& other, Entity& player, Game& game);
 
         EntityUpdatePtr updatePtr;
@@ -121,7 +120,7 @@ class Entity {
         }
 
         virtual void render(Renderer& renderer, uint8_t frame);
-        virtual EntityType update(Entity& player, Arduboy2Base& arduboy, uint8_t frame);
+        virtual EntityType update(Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
         virtual EntityType onCollide(Entity& other, Entity& player, Game& game);
 
         bool overlaps(Entity& other);

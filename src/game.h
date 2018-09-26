@@ -35,7 +35,6 @@ class Game {
 
         uint8_t nextRoomX;
         uint8_t nextRoomY;
-        RoomType roomType;
         uint8_t bossDelayCount;
         InGameMenu menu;
 
@@ -86,10 +85,18 @@ class Game {
         bool roomIsLit(void);
 
     public:
+        RoomType roomType;
         Entity entities[MAX_ENTITIES];
 
         void removeAllTriggerDoors(void);
         void emergeAllBridges(void);
+        void spawnChest(EntityType containedItem);
+        uint8_t countEntities(EntityType entityType);
+        uint8_t getChestState(void);
+        void closeAllChests(void);
+        void setAllSwitches(uint8_t triggered);
+        bool areAllSwitchesTriggered(void);
+        bool areAllTorchesLit(void);
 
         Game(Arduboy2Base& arduboy, Renderer& renderer):
             arduboy(arduboy),
@@ -98,7 +105,6 @@ class Game {
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             nextRoomX(0),
             nextRoomY(0),
-            roomType(NORMAL),
             bossDelayCount(0),
             menu(),
             roomTransitionCount(0),
@@ -111,7 +117,8 @@ class Game {
             currentRender(&Game::renderTitle),
             nextRender(NULL),
             swapRooms(false),
-            lastRoomWasLit(true)
+            lastRoomWasLit(true),
+            roomType(NORMAL)
         {
         }
 

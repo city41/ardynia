@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="176">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="183">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="8" name="Tile Layer 1" width="49" height="28">
   <data encoding="csv">
@@ -76,7 +76,10 @@
   <object id="148" name="skeleton" type="SKELETON" x="612.666" y="421.333">
    <point/>
   </object>
-  <object id="151" name="torch" type="TORCH" x="32" y="224">
+  <object id="151" name="torch" type="TORCH" x="39.6667" y="207">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
    <point/>
   </object>
   <object id="152" name="trigger door" type="TRIGGER_DOOR" x="48" y="209.25">
@@ -181,6 +184,27 @@
    <point/>
   </object>
   <object id="175" name="switch" type="SWITCH" x="145.333" y="179.667">
+   <point/>
+  </object>
+  <object id="177" name="switch" type="SWITCH" x="245.667" y="216">
+   <point/>
+  </object>
+  <object id="179" name="blob" type="BLOB" x="323" y="215">
+   <properties>
+    <property name="MISC" value="THREE_SWITCHES_ONE_BOOMERANG"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="180" name="switch" type="SWITCH" x="267.667" y="216.667">
+   <point/>
+  </object>
+  <object id="181" name="switch" type="SWITCH" x="286" y="215.667">
+   <point/>
+  </object>
+  <object id="182" name="torch" type="TORCH" x="67" y="207">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

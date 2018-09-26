@@ -10,7 +10,9 @@ const uint8_t* const PROGMEM secondaryItem_sprites[] = {
     ring_plus_mask,
     key_plus_mask,
     heart_plus_mask,
-    bossKey_plus_mask
+    bossKey_plus_mask,
+    sadFace_plus_mask,
+    happyFace_plus_mask
 };
 
 #endif

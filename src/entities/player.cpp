@@ -5,6 +5,7 @@
 #include "../state.h"
 #include "../sfx.h"
 #include "../itemSprites.h"
+#include "../game.h"
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -124,7 +125,7 @@ void Player::render(Renderer& renderer, byte frame) {
 #endif
 }
 
-EntityType Player::update(Entity& player, Arduboy2Base& arduboy, byte frame) {
+EntityType Player::update(Entity& player, Game& game, Arduboy2Base& arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }
@@ -174,7 +175,7 @@ EntityType Player::update(Entity& player, Arduboy2Base& arduboy, byte frame) {
 EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     if (other.type == CHEST) {
         undoMove();
-        receiveItemFromChest(other);
+        receiveItemFromChest(other, game);
         return UNSET;
     }
 
@@ -213,15 +214,45 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     return UNSET;
 }
 
-void Player::receiveItemFromChest(Entity& chest) {
+void Player::receiveItemFromChest(Entity& chest, Game& game) {
     if (
         // hardcoding chest height saves 4 bytes, win!
         y >= (chest.y + 8) &&
         chest.currentFrame == 0
     ) {
-        receivedItem = chest.health;
         chest.currentFrame = 1;
         receiveItemCount = 60;
+
+        if (game.roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
+            // THIS RECIPE RELIES ON buildEntityArrays placing the chests
+            // in the proper order.
+            // OR!!! it can just rely on the random ordering that buildEntityArrays gets
+            // it will be consistent for a given build of the game, so this might work, but
+            // would need to make sure it's not always just the left most chest, center chest, right chest
+            // but that should be easy to ensure
+
+            const uint8_t chestState = game.getChestState();
+
+            if (chestState == 7) {
+                // 111 -- ie all chests opened in right order
+                receivedItem = KEY;
+
+            } else if (chestState == 0 || chestState == 1 || chestState == 3) {
+                // 000 or 001 or 011 -- so far, all chest openings have been correct
+                Sfx::successJingle();
+                receivedItem = HAPPY_FACE;
+                return;
+            } else {
+                // 010 100 -- wrong order! start over!
+                receivedItem = SAD_FACE;
+                Sfx::playerDamage();
+                game.closeAllChests();
+                return;
+            }
+        } else {
+            receivedItem = chest.health;
+        }
+
 
         if (receivedItem == BOMB) {
             numBombs = 3;

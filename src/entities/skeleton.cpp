@@ -31,7 +31,7 @@ EntityType Skeleton::onCollide(Entity* me, Entity& other, Entity& player, Game& 
     return UNSET;
 }
 
-EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Skeleton::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     if (frame % 20 == 0) {
         me->mirror = 1 - me->mirror;
     }
