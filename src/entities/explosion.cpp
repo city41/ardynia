@@ -1,6 +1,10 @@
 #include "explosion.h"
 
 EntityType Explosion::update(Entity* me, Entity* player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+    if (me->duration == 20) {
+        me->height += 5;
+    }
+
     // cheap way to get flicker
     me->tookDamageCount = frame;
     me->currentFrame = 0;
