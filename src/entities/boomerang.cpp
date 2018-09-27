@@ -78,19 +78,5 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game&
         me->duration = 0;
     }
 
-    if (otherType == SWITCH) {
-        other.mirror = MIRROR_HORIZONTAL;
-        if (game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
-            if (game.areAllSwitchesTriggered()) {
-                game.spawnChest(KEY);
-                State::setCurrentRoomTriggered();
-                game.roomType = NORMAL;
-            }
-        } else {
-            game.removeAllTriggerDoors();
-            game.emergeAllBridges();
-        }
-    }
-
     return UNSET;
 }

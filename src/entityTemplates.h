@@ -23,6 +23,7 @@
 #include "entities/torch.h"
 #include "entities/chest.h"
 #include "entities/triggerDoor.h"
+#include "entities/switch.h"
 
 const uint8_t NUM_ENTITY_PROPS = 4;
 const uint8_t NUM_ENTITY_POINTERS = 3;
@@ -293,7 +294,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 20, SWITCH
     switch_tiles,
     NULL,
-    NULL,
+    (void*)Switch::onCollide,
 
     // 21, POT
     pot_tiles,
