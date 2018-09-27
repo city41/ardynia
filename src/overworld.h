@@ -290,7 +290,7 @@ const uint8_t PROGMEM overworld_room4_4[] = {
 
 
 const uint8_t PROGMEM overworld_room4_6[] = {
-    2, // number of entities
+    5, // number of entities
 
     // entity 0
     miscAndEntityType(1, TELEPORTER),
@@ -299,6 +299,18 @@ const uint8_t PROGMEM overworld_room4_6[] = {
     // entity 1
     miscAndEntityType(0, BAT),
     xy(96, 44),
+
+    // entity 2
+    miscAndEntityType(0, BAT),
+    xy(56, 20),
+
+    // entity 3
+    miscAndEntityType(0, BAT),
+    xy(72, 48),
+
+    // entity 4
+    miscAndEntityType(0, BAT),
+    xy(80, 20),
 };
 
 

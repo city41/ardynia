@@ -15,7 +15,7 @@ EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player, Game& game)
 }
 
 EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
-    if (me->duration == 0 || Util::isOffScreen(me->x, me->y)) {
+    if (me->duration == 0 || Util::isOffScreen(me->x, me->y, 8)) {
         if (frame < 24) {
             me->prevX = me->prevY = 0;
         } else {

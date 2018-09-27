@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="183">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="28" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="186">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="8" name="Tile Layer 1" width="49" height="28">
   <data encoding="csv">
@@ -204,6 +204,24 @@
   <object id="182" name="torch" type="TORCH" x="67" y="207">
    <properties>
     <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="183" name="bat" type="BAT" x="506.5" y="404.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="184" name="bat" type="BAT" x="519" y="431">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="185" name="bat" type="BAT" x="528.5" y="403.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
    </properties>
    <point/>
   </object>

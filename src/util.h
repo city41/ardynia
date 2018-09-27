@@ -6,7 +6,7 @@
 
 struct Util {
     static uint8_t clamp(int8_t val, int8_t minVal, int8_t maxVal);
-    static bool isOffScreen(int16_t x, int16_t y);
+    static bool isOffScreen(int16_t x, int16_t y, uint8_t margin = 0);
 };
 
 #define LOG(msg) \

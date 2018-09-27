@@ -180,7 +180,7 @@
                  "type":"TORCH",
                  "visible":true,
                  "width":0,
-                 "x":39.6666666666667,
+                 "x":39.6667,
                  "y":207
                 }, 
                 {
@@ -547,7 +547,7 @@
                  "type":"SWITCH",
                  "visible":true,
                  "width":0,
-                 "x":245.666666666667,
+                 "x":245.667,
                  "y":216
                 }, 
                 {
@@ -577,8 +577,8 @@
                  "type":"SWITCH",
                  "visible":true,
                  "width":0,
-                 "x":267.666666666667,
-                 "y":216.666666666667
+                 "x":267.667,
+                 "y":216.667
                 }, 
                 {
                  "height":0,
@@ -590,7 +590,7 @@
                  "visible":true,
                  "width":0,
                  "x":286,
-                 "y":215.666666666667
+                 "y":215.667
                 }, 
                 {
                  "height":0,
@@ -609,6 +609,60 @@
                  "width":0,
                  "x":67,
                  "y":207
+                }, 
+                {
+                 "height":0,
+                 "id":183,
+                 "name":"bat",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":506.5,
+                 "y":404.5
+                }, 
+                {
+                 "height":0,
+                 "id":184,
+                 "name":"bat",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":519,
+                 "y":431
+                }, 
+                {
+                 "height":0,
+                 "id":185,
+                 "name":"bat",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":528.5,
+                 "y":403.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1167,7 +1221,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":183,
+ "nextobjectid":186,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
