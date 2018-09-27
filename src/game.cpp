@@ -531,6 +531,11 @@ void Game::updatePlay(uint8_t frame) {
 
         EntityType newEntity = entity.update(player, *this, arduboy, frame);
         loadEntity(player.entities[e], newEntity);
+
+        if (newEntity != UNSET) {
+            player.entities[e].x -= 4;
+            player.entities[e].y -= 4;
+        }
     }
 
     for (e = 0; e < MAX_ENTITIES; ++e) {
