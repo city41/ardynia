@@ -2,7 +2,7 @@
 #include "../util.h"
 
 EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
-    if (frame % 4 == 1) {
+    if (frame % 2 == 1 || frame % 3 == 2) {
         return UNSET;
     }
 
@@ -55,7 +55,7 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
         me->undoMove();
     }
 
-    if (random(0, 90) == 0) {
+    if (random(0, 50) == 0) {
         return BLOB;
     }
 

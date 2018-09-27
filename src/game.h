@@ -87,6 +87,7 @@ class Game {
     public:
         RoomType roomType;
         Entity entities[MAX_ENTITIES];
+        bool isBossRoom;
 
         void removeAllTriggerDoors(void);
         void emergeAllBridges(uint8_t tileRoomOffset = 255);

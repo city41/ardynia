@@ -4,6 +4,7 @@
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
 #include "state.h"
+#include "game.h"
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
@@ -153,8 +154,11 @@ EntityType Entity::onCollide(Entity& other, Entity& player, Game& game) {
         }
 
         if (result == ITEM_DROP) {
+            // in boss room, always drop something
+            const uint8_t minRoll = game.isBossRoom ? 1 : 0;
             const uint8_t maxRoll = State::gameState.numAcquiredItems > 1 ? 3 : 2;
-            uint8_t diceRoll = random(0, maxRoll);
+
+            uint8_t diceRoll = random(minRoll, maxRoll);
             return pgm_read_byte(itemDropItems + diceRoll);
         } else {
             return result;

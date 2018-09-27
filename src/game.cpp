@@ -360,7 +360,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
 
     roomType = NORMAL;
     bool isDefeatedSlamShutRoom = false;
-    bool isBossRoom = false;
+    isBossRoom = false;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);

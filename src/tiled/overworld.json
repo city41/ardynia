@@ -436,10 +436,10 @@
                 {
                  "height":0,
                  "id":170,
-                 "name":"giant bat",
+                 "name":"blob mother",
                  "point":true,
                  "rotation":0,
-                 "type":"GIANT_BAT",
+                 "type":"BLOB_MOTHER",
                  "visible":true,
                  "width":0,
                  "x":161.667,
