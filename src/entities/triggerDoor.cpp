@@ -5,7 +5,7 @@ EntityType TriggerDoor::update(Entity* me, Entity& player, Game& game, Arduboy2B
     // if the door just spawned on top of the player, wait
     // for the player to move out of the way before coming on line
     if (me->health == 0 && !player.overlaps(*me)) {
-        me->tiles = triggerDoor_tiles;
+        me->tiles = me->width == 8 ? verticalTriggerDoor_tiles : horizontalTriggerDoor_tiles;
         me->health = 1;
     }
 

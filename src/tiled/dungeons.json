@@ -105,6 +105,12 @@
                  "id":249,
                  "name":"skeleton",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"SLAM_SHUT"
+                        }],
                  "rotation":0,
                  "type":"SKELETON",
                  "visible":true,
@@ -121,7 +127,7 @@
                         {
                          "name":"MISC",
                          "type":"string",
-                         "value":"SLAM_SHUT"
+                         "value":"VERTICAL"
                         }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
@@ -139,7 +145,7 @@
                         {
                          "name":"MISC",
                          "type":"string",
-                         "value":"SLAM_SHUT"
+                         "value":"VERTICAL"
                         }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",

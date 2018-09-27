@@ -40,7 +40,9 @@ const MiscValues = {
     LAST_ENEMY_HAS_BOSS_KEY: 3,
     THREE_SWITCHES_ONE_BOOMERANG: 4,
     OPEN_CHESTS_IN_RIGHT_ORDER: 5,
-    LAST_TORCH_OPENS_DOORS: 6
+    LAST_TORCH_OPENS_DOORS: 6,
+    // trigger door should be vertically oriented
+    VERTICAL: 1
 };
 
 function getRoomAt(mapX, mapY) {

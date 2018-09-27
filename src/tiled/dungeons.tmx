@@ -65,17 +65,20 @@
    <point/>
   </object>
   <object id="249" name="skeleton" type="SKELETON" x="274.833" y="419.333">
-   <point/>
-  </object>
-  <object id="251" name="trigger door" type="TRIGGER_DOOR" x="331" y="417.5">
    <properties>
     <property name="MISC" value="SLAM_SHUT"/>
    </properties>
    <point/>
   </object>
+  <object id="251" name="trigger door" type="TRIGGER_DOOR" x="331" y="417.5">
+   <properties>
+    <property name="MISC" value="VERTICAL"/>
+   </properties>
+   <point/>
+  </object>
   <object id="252" name="trigger door" type="TRIGGER_DOOR" x="225.409" y="417.182">
    <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
+    <property name="MISC" value="VERTICAL"/>
    </properties>
    <point/>
   </object>

@@ -380,7 +380,11 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
 
-        if (type == TELEPORTER) {
+        if (type == TRIGGER_DOOR && entityMisc) {
+            // if a trigger door's misc is set, it wants to be vertical
+            currentEntity.width = 8;
+            currentEntity.height = 16;
+        } else if (type == TELEPORTER) {
             // reuse prevX/Y for destX/Y for doors
             currentEntity.prevX = pgm_read_byte(doorDefs + entityMisc * 2);
             currentEntity.prevY = pgm_read_byte(doorDefs + entityMisc * 2 + 1);
