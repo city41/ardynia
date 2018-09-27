@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="434">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="436">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -95,15 +95,9 @@
    <point/>
   </object>
   <object id="256" name="trigger door" type="TRIGGER_DOOR" x="48.7727" y="313.182">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
    <point/>
   </object>
   <object id="257" name="trigger door" type="TRIGGER_DOOR" x="48.5909" y="257.273">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
    <point/>
   </object>
   <object id="258" name="bat" type="BAT" x="90" y="280">
@@ -255,10 +249,7 @@
   <object id="302" name="trigger door" type="TRIGGER_DOOR" x="273.091" y="123.273">
    <point/>
   </object>
-  <object id="303" name="trigger door" type="TRIGGER_DOOR" x="225.455" y="81.2727">
-   <point/>
-  </object>
-  <object id="304" name="boss" type="BLOB_MOTHER" x="273.273" y="80.7273">
+  <object id="304" name="boss" type="GIANT_BAT" x="273.273" y="80.7273">
    <properties>
     <property name="MISC" value="SLAM_SHUT"/>
    </properties>
@@ -761,6 +752,12 @@
    <point/>
   </object>
   <object id="433" name="torch" type="TORCH" x="580.667" y="21.6667">
+   <point/>
+  </object>
+  <object id="434" name="sunken bridge" type="SUNKEN_BRIDGE" x="304.75" y="97.25">
+   <point/>
+  </object>
+  <object id="435" name="sunken bridge" type="SUNKEN_BRIDGE" x="241.25" y="97.25">
    <point/>
   </object>
  </objectgroup>

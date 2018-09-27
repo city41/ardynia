@@ -207,11 +207,11 @@ const uint8_t PROGMEM dungeons_room0_4[] = {
     6, // number of entities
 
     // entity 0
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(0, TRIGGER_DOOR),
     xy(48, 56),
 
     // entity 1
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(0, TRIGGER_DOOR),
     xy(48, 0),
 
     // entity 2
@@ -400,19 +400,23 @@ const uint8_t PROGMEM dungeons_room2_0[] = {
 
 
 const uint8_t PROGMEM dungeons_room2_1[] = {
-    3, // number of entities
+    4, // number of entities
 
     // entity 0
     miscAndEntityType(0, TRIGGER_DOOR),
     xy(48, 60),
 
     // entity 1
-    miscAndEntityType(0, TRIGGER_DOOR),
-    xy(0, 16),
+    miscAndEntityType(1, GIANT_BAT),
+    xy(48, 16),
 
     // entity 2
-    miscAndEntityType(1, BLOB_MOTHER),
-    xy(48, 16),
+    miscAndEntityType(0, SUNKEN_BRIDGE),
+    xy(80, 32),
+
+    // entity 3
+    miscAndEntityType(0, SUNKEN_BRIDGE),
+    xy(16, 32),
 };
 
 
@@ -517,7 +521,7 @@ const uint8_t PROGMEM dungeons_room2_6[] = {
     xy(48, 20),
 
     // entity 1
-    miscAndEntityType(0, SKELETON),
+    miscAndEntityType(1, SKELETON),
     xy(48, 36),
 
     // entity 2

@@ -201,12 +201,6 @@
                  "id":256,
                  "name":"trigger door",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
                  "visible":true,
@@ -219,12 +213,6 @@
                  "id":257,
                  "name":"trigger door",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
                  "visible":true,
@@ -763,18 +751,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":303,
-                 "name":"trigger door",
-                 "point":true,
-                 "rotation":0,
-                 "type":"TRIGGER_DOOR",
-                 "visible":true,
-                 "width":0,
-                 "x":225.455,
-                 "y":81.2727
-                }, 
-                {
-                 "height":0,
                  "id":304,
                  "name":"boss",
                  "point":true,
@@ -785,7 +761,7 @@
                          "value":"SLAM_SHUT"
                         }],
                  "rotation":0,
-                 "type":"BLOB_MOTHER",
+                 "type":"GIANT_BAT",
                  "visible":true,
                  "width":0,
                  "x":273.273,
@@ -2529,6 +2505,30 @@
                  "width":0,
                  "x":580.667,
                  "y":21.6667
+                }, 
+                {
+                 "height":0,
+                 "id":434,
+                 "name":"sunken bridge",
+                 "point":true,
+                 "rotation":0,
+                 "type":"SUNKEN_BRIDGE",
+                 "visible":true,
+                 "width":0,
+                 "x":304.75,
+                 "y":97.25
+                }, 
+                {
+                 "height":0,
+                 "id":435,
+                 "name":"sunken bridge",
+                 "point":true,
+                 "rotation":0,
+                 "type":"SUNKEN_BRIDGE",
+                 "visible":true,
+                 "width":0,
+                 "x":241.25,
+                 "y":97.25
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3262,7 +3262,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":434,
+ "nextobjectid":436,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

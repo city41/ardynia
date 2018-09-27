@@ -3,12 +3,12 @@
 BeepPin1 Sfx::b1;
 BeepPin2 Sfx::b2;
 
-void Sfx::sword(void) {
+void Sfx::sword() {
     b1.tone(b1.freq(300), 8);
     b2.tone(b2.freq(100), 9);
 }
 
-void Sfx::boomerang(void) {
+void Sfx::boomerang() {
     b1.tone(b1.freq(30), 20);
     b2.tone(b2.freq(10), 18);
 }

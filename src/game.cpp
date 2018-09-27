@@ -360,6 +360,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
 
     roomType = NORMAL;
     bool isDefeatedSlamShutRoom = false;
+    bool isBossRoom = false;
 
     for (; i < numEntitiesInCurrentRoom; ++i) {
         uint8_t rawEntityType = (uint8_t)pgm_read_byte(roomPtr++);
@@ -379,6 +380,8 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
 
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
+
+        isBossRoom = isBossRoom || type == BLOB_MOTHER || type == GIANT_BAT || type == NEMESIS;
 
         if (type == TRIGGER_DOOR && entityMisc) {
             // if a trigger door's misc is set, it wants to be vertical
@@ -436,6 +439,15 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         roomType = NORMAL;
         setAllSwitches(1);
     }
+
+    if (isBossRoom) {
+        if (roomIsTriggered) {
+            emergeAllBridges(tileRoomOffset);
+        } else {
+            Sfx::playerDamage(10);
+            bossDelayCount = 100;
+        }
+    }
 }
 
 void Game::removeAllTriggerDoors() {
@@ -446,10 +458,14 @@ void Game::removeAllTriggerDoors() {
     }
 }
 
-void Game::emergeAllBridges() {
+void Game::emergeAllBridges(uint8_t tileRoomOffset) {
+    if (tileRoomOffset == 255) {
+        tileRoomOffset = TileRoom::currentRoomOffset;
+    }
+
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (entities[ge].type == SUNKEN_BRIDGE) {
-            TileRoom::setTileAt(entities[ge].x, entities[ge].y, TileRoom::currentRoomOffset, Ladder);
+            TileRoom::setTileAt(entities[ge].x, entities[ge].y, tileRoomOffset, Ladder);
         }
     }
 }

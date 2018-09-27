@@ -13,7 +13,6 @@ struct Sfx {
     static void playerDamage(uint8_t mult = 1);
     static void successJingle(void);
     static void pickUpItem(void);
-    static void bossRoar(void);
 
     static void init(void);
     static void update(void);

@@ -89,7 +89,7 @@ class Game {
         Entity entities[MAX_ENTITIES];
 
         void removeAllTriggerDoors(void);
-        void emergeAllBridges(void);
+        void emergeAllBridges(uint8_t tileRoomOffset = 255);
         void spawnChest(EntityType containedItem);
         uint8_t countEntities(EntityType entityType);
         uint8_t getChestState(void);

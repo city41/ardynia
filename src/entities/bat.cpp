@@ -3,12 +3,15 @@
 #include "../game.h"
 
 EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
-    if (me->duration == 0 || Util::isOffScreen(me->x, me->y, 8)) {
-        if (frame < 24 && (me->prevX || me->prevY)) {
-            me->prevX = me->prevY = 0;
+    if (me->duration == 0
+            || Util::isOffScreen(me->x, me->y, 8)
+            || (me->type == GIANT_BAT && me->y >= 18)
+        ) {
+        if (frame < 24 && (me->vx || me->vy) && me->type != GIANT_BAT) {
+            me->vx = me->vy = 0;
         } else {
-            me->prevX = random(-1, 2);
-            me->prevY = random(-1, 2);
+            me->vx = random(-1, 2);
+            me->vy = random(-1, 2);
         }
 
         me->duration = random(30, 180);
@@ -16,15 +19,19 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
 
     if (me->duration > 0 && (frame % 5) == 0) {
         me->duration -= 1;
-        me->x += me->prevX;
-        me->y += me->prevY;
+        me->x += me->vx;
+        me->y += me->vy;
 
-        if (me->prevX || me->prevY) {
+        if (me->vx || me->vy) {
             me->currentFrame = 1 - me->currentFrame;
         }
     }
 
-    return UNSET;
+    if (me->type == GIANT_BAT && (frame == 1)) {
+        return BAT;
+    } else {
+        return UNSET;
+    }
 }
 
 EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
@@ -32,8 +39,19 @@ EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player, Game& game)
         if (other.type == BOOMERANG) {
             other.duration = 0;
         }
-        me->type = UNSET;
-        return ITEM_DROP;
+        me->health -= other.damage || 1;
+
+        if (me->health == 0) {
+            if (me->type == GIANT_BAT) {
+                game.emergeAllBridges();
+            }
+
+            me->type = UNSET;
+            return ITEM_DROP;
+        } else {
+            me->bounceBack(other, player);
+            me->tookDamageCount = 20;
+        }
     }
 
     return UNSET;
