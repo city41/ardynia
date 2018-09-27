@@ -393,15 +393,15 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
                     TileRoom::setTileAt(currentEntity.x, currentEntity.y, Blank, TileRoom::nextRoomOffset);
                 }
             }
-        } else if (type == CHEST || type == POT) {
+        } else if (type == CHEST) {
             // take what is in the chest (which here is entityMisc), and stick
             // it in the chest's health
             currentEntity.health = entityMisc;
-            if (type == CHEST && roomIsTriggered) {
-                // frame 1 is the open chest frame, indicates this chest
-                // has already been looted
+            if (roomIsTriggered) {
                 currentEntity.currentFrame = 1;
             }
+        } else if (type == POT && !roomIsTriggered) {
+            currentEntity.health = entityMisc;
         } else if ((type == LOCK || type == KEY) && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
