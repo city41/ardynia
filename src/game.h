@@ -57,7 +57,7 @@ class Game {
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
-        void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy);
+        void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy, uint8_t tileRoomOffset);
         int8_t spawnNewEntity(EntityType, Entity& spawner);
 
         void updateTitle(uint8_t frame);

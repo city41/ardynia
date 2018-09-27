@@ -54,7 +54,7 @@ void Game::loadSave(bool straightToPlay) {
     TileRoom::y = pgm_read_byte(startingRooms + State::gameState.currentDungeon * 2 + 1);
 
     TileRoom::loadRoom(TileRoom::x, TileRoom::y, TileRoom::currentRoomOffset);
-    loadEntitiesInRoom(TileRoom::x, TileRoom::y);
+    loadEntitiesInRoom(TileRoom::x, TileRoom::y, TileRoom::currentRoomOffset);
 
     player.reset();
 
@@ -151,8 +151,8 @@ void Game::updateTeleportTransition(uint8_t frame) {
         TileRoom::x = nextRoomX;
         TileRoom::y = nextRoomY;
 
-        loadEntitiesInRoom(nextRoomX, nextRoomY);
         TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
+        loadEntitiesInRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
 
         Map::reset();
         mapHeightInRooms = State::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
@@ -347,7 +347,7 @@ int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     return e;
 }
 
-void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
+void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
     uint8_t** rowPtr = pgm_read_word(entityDefs + y);
     uint8_t* roomPtr = pgm_read_word(rowPtr + x);
 
@@ -380,19 +380,16 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y) {
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
 
-        if (type == TELEPORTER || type == SECRET_WALL) {
+        if (type == TELEPORTER) {
             // reuse prevX/Y for destX/Y for doors
             currentEntity.prevX = pgm_read_byte(doorDefs + entityMisc * 2);
             currentEntity.prevY = pgm_read_byte(doorDefs + entityMisc * 2 + 1);
 
-            if (type == SECRET_WALL) {
-                // wall has already been blown up
-                if (roomIsTriggered) {
-                    currentEntity.currentFrame = 1;
-                    currentEntity.health = 0;
-                    TileRoom::setTileAt(currentEntity.x, currentEntity.y, Blank, TileRoom::nextRoomOffset);
-                }
-            }
+        } else if (type == SECRET_WALL && roomIsTriggered) {
+            // wall has already been blown up
+            currentEntity.currentFrame = 1;
+            currentEntity.health = 0;
+            TileRoom::setTileAt(currentEntity.x, currentEntity.y, tileRoomOffset, Blank);
         } else if (type == CHEST) {
             // take what is in the chest (which here is entityMisc), and stick
             // it in the chest's health
@@ -654,7 +651,7 @@ void Game::updateRoomTransition(uint8_t frame) {
 
     if (firstRoomTransitionFrame) {
         firstRoomTransitionFrame = false;
-        loadEntitiesInRoom(nextRoomX, nextRoomY);
+        loadEntitiesInRoom(nextRoomX, nextRoomY, TileRoom::nextRoomOffset);
     }
 
     if (roomTransitionCount == 0) {
