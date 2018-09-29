@@ -68,8 +68,8 @@ void State::load() {
         memset(gameState.numKeys, 0, MAX_DUNGEON_COUNT);
         memset(gameState.bossKeys, 0, MAX_DUNGEON_COUNT);
         
-        // this may not be necessary, but rather play it safe
-        memset(gameState.roomStates, 0, MAX_ROOM_COUNT);
+        /* // this may not be necessary, but rather play it safe */
+        memset(gameState.roomStates, 0, ROOM_STATE_BYTE_COUNT);
     }
 }
 

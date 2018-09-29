@@ -7,6 +7,7 @@
 // as a single "dungeon"
 const uint8_t MAX_DUNGEON_COUNT = 5;
 const uint8_t MAX_ROOM_COUNT = 8 * 8 + 7 * 7;
+const uint8_t ROOM_STATE_BYTE_COUNT = MAX_ROOM_COUNT / 8 + 1;
 const uint8_t DUNGEON_ROOM_OFFSET = 7 * 7;
 const uint8_t MAX_KEYS = 6;
 
@@ -28,7 +29,7 @@ struct GameState {
     // 
     // The +1 is because the number of rooms is not necessarily divisible by 8, there
     // are some leftover bits we need to store
-    uint8_t roomStates[MAX_ROOM_COUNT / 8 + 1];
+    uint8_t roomStates[ROOM_STATE_BYTE_COUNT];
 };
 
 class State {
