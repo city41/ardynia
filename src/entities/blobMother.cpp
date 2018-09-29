@@ -7,7 +7,7 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     }
 
     if (me->duration == 10) {
-        me->dir = random(0, 2);
+        me->dir = frame & 1;
         me->duration = UP;
     }
 
