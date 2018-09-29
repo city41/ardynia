@@ -436,14 +436,14 @@
                 {
                  "height":0,
                  "id":170,
-                 "name":"giant bat",
+                 "name":"skeleton",
                  "point":true,
                  "rotation":0,
-                 "type":"GIANT_BAT",
+                 "type":"SKELETON",
                  "visible":true,
                  "width":0,
-                 "x":204.000333333333,
-                 "y":260.333
+                 "x":198.333666666667,
+                 "y":311.333
                 }, 
                 {
                  "height":0,

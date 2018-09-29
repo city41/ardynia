@@ -13,5 +13,5 @@ EntityType Pot::onCollide(Entity* me, Entity& other, Entity& player, Game& game)
         }
     }
 
-    return UNSET;
+    return ITEM_DROP;
 }
