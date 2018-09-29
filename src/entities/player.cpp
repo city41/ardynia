@@ -180,7 +180,7 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     }
 
     if (other.damage && tookDamageCount == 0) {
-        health = Util::clamp(health - other.damage, 0, State::gameState.totalHealth);
+        health = max(health - other.damage, 0);
         bounceBack(*this, other);
         Sfx::playerDamage();
 
@@ -195,13 +195,13 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
 
     if (other.type == HEART) {
         other.type = UNSET;
-        health = Util::clamp(health + 1, 0, State::gameState.totalHealth);
+        health = min(health + 1, State::gameState.totalHealth);
         Sfx::pickUpItem();
     }
 
     if (other.type == BOMB) {
         other.type = UNSET;
-        numBombs = Util::clamp(numBombs + 3, 0, MAX_BOMB_COUNT);
+        numBombs = min(numBombs + 3, MAX_BOMB_COUNT);
         Sfx::pickUpItem();
     }
 

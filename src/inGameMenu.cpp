@@ -15,11 +15,11 @@ void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
     }
 
     if (arduboy.justPressed(UP_BUTTON)) {
-        row = Util::clamp(row - 1, 0, maxRows - 1);
+        row = max(row - 1, 0);
     }
 
     if (arduboy.justPressed(DOWN_BUTTON)) {
-        row = Util::clamp(row + 1, 0, maxRows - 1);
+        row = min(row + 1, maxRows - 1);
     }
 
     chosenItem = row + 1;

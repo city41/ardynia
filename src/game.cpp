@@ -487,11 +487,11 @@ void Game::updateTitle(uint8_t frame) {
     uint8_t rows = State::hasUserSaved() ? 2 : 1;
 
     if (arduboy.justPressed(UP_BUTTON)) {
-        titleRow = Util::clamp(titleRow - 1, 0, rows);
+        titleRow = max(titleRow - 1, 0);
     }
 
     if (arduboy.justPressed(DOWN_BUTTON)) {
-        titleRow = Util::clamp(titleRow + 1, 0, rows);
+        titleRow = min(titleRow + 1, rows);
     }
 }
 
