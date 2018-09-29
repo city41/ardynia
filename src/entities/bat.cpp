@@ -30,6 +30,8 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
         }
     }
 
+    me->mirror = (MirrorMode)(player.x < me->x);
+
     if (me->type == GIANT_BAT && (frame == 1)) {
         return BAT;
     } else {
