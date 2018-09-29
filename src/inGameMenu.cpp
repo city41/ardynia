@@ -39,7 +39,7 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
 
     // sword
     if (State::gameState.hasSword) {
-        renderer.drawPlusMask(3, 10, swordIcon_plus_mask, 0, 0, Invert);
+        renderer.drawPlusMask(6, 10, swordIcon_plus_mask, 0, 0, Invert);
     }
 
     // items
