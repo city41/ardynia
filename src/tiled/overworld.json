@@ -435,18 +435,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":170,
-                 "name":"giant bat",
-                 "point":true,
-                 "rotation":0,
-                 "type":"GIANT_BAT",
-                 "visible":true,
-                 "width":0,
-                 "x":212.667,
-                 "y":262.333
-                }, 
-                {
-                 "height":0,
                  "id":171,
                  "name":"teleporter to secret 3",
                  "point":true,

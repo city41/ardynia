@@ -10,8 +10,10 @@ EntityType Pot::onCollide(Entity* me, Entity& other, Entity& player, Game& game)
 
         if (me->health > 0) {
             return me->health;
+        } else {
+            return ITEM_DROP;
         }
     }
 
-    return ITEM_DROP;
+    return UNSET;
 }

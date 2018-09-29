@@ -156,9 +156,6 @@
   <object id="167" name="skeleton" type="SKELETON" x="692" y="292.667">
    <point/>
   </object>
-  <object id="170" name="giant bat" type="GIANT_BAT" x="212.667" y="262.333">
-   <point/>
-  </object>
   <object id="171" name="teleporter to secret 3" type="TELEPORTER" x="352.636" y="256.795">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="7"/>
