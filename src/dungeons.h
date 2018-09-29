@@ -1074,27 +1074,19 @@ const uint8_t PROGMEM dungeons_room7_0[] = {
 
 
 const uint8_t PROGMEM dungeons_room7_1[] = {
-    5, // number of entities
+    3, // number of entities
 
     // entity 0
     miscAndEntityType(1, BLOB_MOTHER),
     xy(48, 20),
 
     // entity 1
-    miscAndEntityType(0, TRIGGER_DOOR),
+    miscAndEntityType(1, TRIGGER_DOOR),
     xy(0, 16),
 
     // entity 2
     miscAndEntityType(0, TRIGGER_DOOR),
     xy(48, 60),
-
-    // entity 3
-    miscAndEntityType(0, SECRET_WALL),
-    xy(80, 20),
-
-    // entity 4
-    miscAndEntityType(0, SECRET_WALL),
-    xy(16, 32),
 };
 
 

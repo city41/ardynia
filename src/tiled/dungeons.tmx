@@ -414,12 +414,6 @@
   <object id="348" name="trigger door" type="TRIGGER_DOOR" x="832.75" y="124">
    <point/>
   </object>
-  <object id="349" name="secret wall" type="SECRET_WALL" x="865.5" y="82.5">
-   <point/>
-  </object>
-  <object id="350" name="secret wall" type="SECRET_WALL" x="801.25" y="97.75">
-   <point/>
-  </object>
   <object id="351" name="lock" type="LOCK" x="450.091" y="337.5">
    <point/>
   </object>

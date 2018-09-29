@@ -1318,6 +1318,12 @@
                  "id":347,
                  "name":"trigger door",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"VERTICAL"
+                        }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
                  "visible":true,
@@ -1336,30 +1342,6 @@
                  "width":0,
                  "x":832.75,
                  "y":124
-                }, 
-                {
-                 "height":0,
-                 "id":349,
-                 "name":"secret wall",
-                 "point":true,
-                 "rotation":0,
-                 "type":"SECRET_WALL",
-                 "visible":true,
-                 "width":0,
-                 "x":865.5,
-                 "y":82.5
-                }, 
-                {
-                 "height":0,
-                 "id":350,
-                 "name":"secret wall",
-                 "point":true,
-                 "rotation":0,
-                 "type":"SECRET_WALL",
-                 "visible":true,
-                 "width":0,
-                 "x":801.25,
-                 "y":97.75
                 }, 
                 {
                  "height":0,
