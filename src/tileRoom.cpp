@@ -43,7 +43,8 @@ void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tile
     TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = !State::isInDungeon() || (tileId >= 7 && tileId <= 9);
-    renderer.drawOverwrite(x, y, map_tiles, tile, mirror, !dontInvert);
+    DrawMode drawMode = dontInvert ? Normal : Invert;
+    renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 
 uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {

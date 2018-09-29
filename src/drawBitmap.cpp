@@ -13,7 +13,7 @@
  * To mirror the sprite, pass in MIRROR_HORIZONTAL or MIRROR_VERTICAL as the mirror parameter.
  * To mirrow both ways at once, pass in MIRROR_HORIZONTAL | MIRROR_VERTICAL as the parameter
  */
-void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, bool plusMask, uint8_t frame, uint8_t mirror, bool invert, uint8_t maskFrame) {
+void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask, bool plusMask, uint8_t frame, uint8_t mirror, DrawMode drawMode, uint8_t maskFrame) {
     if (bitmap == NULL)
         return;
 
@@ -136,7 +136,7 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
             data = pgm_read_byte(bofs);
             mask_data = hasMask ? pgm_read_byte(mask_ofs) : 0xFF;
 
-            if (invert) {
+            if (drawMode != Normal) {
                 data = ~data & mask_data;
             }
 
@@ -154,18 +154,30 @@ void drawBitmap(int16_t x, int16_t y, const uint8_t* bitmap, const uint8_t* mask
             bitmap_data = data * mul_amt;
             mask_data = ~(mask_data * mul_amt);
 
-            if (sRow >= 0) {
-                data = Arduboy2Base::sBuffer[ofs];
-                data &= (uint8_t)(mask_data);
-                data |= (uint8_t)(bitmap_data);
-                Arduboy2Base::sBuffer[ofs] = data;
-            }
+            if (drawMode == Xor) {
+                if (sRow >= 0) {
+                    data = Arduboy2Base::sBuffer[ofs];
+                    Arduboy2Base::sBuffer[ofs] = data ^ bitmap_data;
+                }
 
-            if (yOffset != 0 && sRow < 7) {
-                data = Arduboy2Base::sBuffer[ofs + WIDTH];
-                data &= (*((unsigned char *) (&mask_data) + 1));
-                data |= (*((unsigned char *) (&bitmap_data) + 1));
-                Arduboy2Base::sBuffer[ofs + WIDTH] = data;
+                if (yOffset != 0 && sRow < 7) {
+                    data = Arduboy2Base::sBuffer[ofs + WIDTH];
+                    Arduboy2Base::sBuffer[ofs + WIDTH] = data ^ (*((unsigned char *) (&bitmap_data) + 1));
+                }
+            } else {
+                if (sRow >= 0) {
+                    data = Arduboy2Base::sBuffer[ofs];
+                    data &= (uint8_t)(mask_data);
+                    data |= (uint8_t)(bitmap_data);
+                    Arduboy2Base::sBuffer[ofs] = data;
+                }
+
+                if (yOffset != 0 && sRow < 7) {
+                    data = Arduboy2Base::sBuffer[ofs + WIDTH];
+                    data &= (*((unsigned char *) (&mask_data) + 1));
+                    data |= (*((unsigned char *) (&bitmap_data) + 1));
+                    Arduboy2Base::sBuffer[ofs + WIDTH] = data;
+                }
             }
 
             ofs++;

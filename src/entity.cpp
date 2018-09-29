@@ -89,11 +89,12 @@ void Entity::rotateViaMirror(uint8_t frame) {
 }
 
 void Entity::render(Renderer& renderer, uint8_t renderFrame) {
-    bool invert = State::isInDungeon();
+
+    DrawMode drawMode = State::isInDungeon() ? (type == BAT ? Xor : Invert) : Normal;
 
     if (deathCount) {
         deathCount -= 1;
-        renderer.drawPlusMask(x, y, deathPoof_plus_mask, 0, renderFrame & 1, invert);
+        renderer.drawPlusMask(x, y, deathPoof_plus_mask, 0, renderFrame & 1, drawMode);
 
     }
 
@@ -114,9 +115,9 @@ void Entity::render(Renderer& renderer, uint8_t renderFrame) {
         bool isNemesis = type == NEMESIS;
         int16_t offsetX = isNemesis ? -4 : 0;
         int16_t offsetY = isNemesis ? -8 : 0;
-        renderer.drawPlusMask(x + offsetX, y + offsetY, tiles, currentFrame, mirror, invert);
+        renderer.drawPlusMask(x + offsetX, y + offsetY, tiles, currentFrame, mirror, drawMode);
     } else {
-        renderer.drawOverwrite(x, y, tiles, currentFrame, mirror, invert);
+        renderer.drawOverwrite(x, y, tiles, currentFrame, mirror, drawMode);
     }
 
 #ifdef DRAW_HITBOXES

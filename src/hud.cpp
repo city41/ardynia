@@ -21,7 +21,7 @@ void Hud::drawHealth(Renderer& renderer, uint8_t x, uint8_t y, uint8_t count, ui
 
 void Hud::drawItemCount(Renderer& renderer, const uint8_t* bmp, uint8_t x, uint8_t y, uint8_t count) {
     for (uint8_t i = 0; i < count; ++i) {
-        renderer.drawPlusMask(x, y, bmp, 0, 0, true);
+        renderer.drawPlusMask(x, y, bmp, 0, 0, Invert);
         x += 4;
 
         if (i == 2) {
@@ -38,7 +38,7 @@ void Hud::render(Renderer& renderer, Player& player) {
 
     // secondary item
     if (player.bButtonEntityType != UNSET) {
-        renderer.drawPlusMask(7, 15, (const uint8_t*)pgm_read_word(secondaryItem_sprites + player.bButtonEntityType), 0, 0, true);
+        renderer.drawPlusMask(7, 15, (const uint8_t*)pgm_read_word(secondaryItem_sprites + player.bButtonEntityType), 0, 0, Invert);
     }
     renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
 
@@ -46,7 +46,7 @@ void Hud::render(Renderer& renderer, Player& player) {
     drawItemCount(renderer, bomb_plus_mask, 0, 30, player.numBombs);
 
     if (State::gameState.bossKeys[State::gameState.currentDungeon]) {
-        renderer.drawPlusMask(0, 23, bossKey_plus_mask, 0, 0, true);
+        renderer.drawPlusMask(0, 23, bossKey_plus_mask, 0, 0, Invert);
     }
 }
 

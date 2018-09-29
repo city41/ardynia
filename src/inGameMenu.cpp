@@ -39,7 +39,7 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
 
     // sword
     if (State::gameState.hasSword) {
-        renderer.drawPlusMask(3, 10, swordIcon_plus_mask, 0, 0, true);
+        renderer.drawPlusMask(3, 10, swordIcon_plus_mask, 0, 0, Invert);
     }
 
     // items
@@ -51,7 +51,7 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
         }
 
         const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + i + 1);
-        renderer.drawPlusMask(x + 10, 9 + 12 * i, itemBmp, 0, 0, true);
+        renderer.drawPlusMask(x + 10, 9 + 12 * i, itemBmp, 0, 0, Invert);
     }
 
 }
