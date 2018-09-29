@@ -65,11 +65,16 @@ void State::load() {
         gameState.hasSword = 1;
         gameState.numAcquiredItems = 3;
         gameState.currentDungeon = 0;
-        memset(gameState.numKeys, 0, MAX_DUNGEON_COUNT);
-        memset(gameState.bossKeys, 0, MAX_DUNGEON_COUNT);
+
+        uint8_t i = 0;
+        for (; i < MAX_DUNGEON_COUNT; ++i) {
+            gameState.numKeys[i] = 0;
+            gameState.bossKeys[i] = 0;
+        }
         
-        /* // this may not be necessary, but rather play it safe */
-        memset(gameState.roomStates, 0, ROOM_STATE_BYTE_COUNT);
+        for (i = 0; i < ROOM_STATE_BYTE_COUNT; ++i) {
+            gameState.roomStates[i] = 0;
+        }
     }
 }
 
