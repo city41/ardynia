@@ -82,7 +82,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 6, BOSS_KEY
-    widthAndHeight(8, 8),
+    widthAndHeight(6, 8),
     healthAndDamage(0, 0),
     0,
     true,
