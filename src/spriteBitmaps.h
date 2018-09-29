@@ -118,7 +118,7 @@ const uint8_t PROGMEM key_plus_mask[] = {
     // frame 0 
     0x00,0x00,0x00,
     // mask 0 
-    0x0e,0x7a,0x6e,
+    0x6e,0x7a,0x0e,
 };
 
 const uint8_t PROGMEM map_plus_mask[] = {
