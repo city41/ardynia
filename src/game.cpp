@@ -21,7 +21,7 @@ const uint8_t SFX_ON_OFF = 1;
 const uint8_t DELETE_SAVE = 2;
 
 const uint8_t PROGMEM startingRooms[8] = {
-    1, 3, // overworld (x, y)
+    1, 2, // overworld (x, y)
     0, 7, // first dungeon
     3, 7, // second dungeon
     6, 0  // third dungeon
@@ -518,7 +518,7 @@ void Game::updatePlay(uint8_t frame) {
         return;
     }
 
-    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON | UP_BUTTON)) {
+    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON)) {
         if (player.bButtonEntityType != UNSET) {
             menu.chosenItem = player.bButtonEntityType;
             menu.row = player.bButtonEntityType - 1;
