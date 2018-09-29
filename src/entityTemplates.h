@@ -7,6 +7,7 @@
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
 
+#include "entities/commonEnemy.h"
 #include "entities/blob.h"
 #include "entities/bat.h"
 #include "entities/skeleton.h"
@@ -240,7 +241,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 8, BLOB
     blob_plus_mask,
     (void*)Blob::update,
-    (void*)Blob::onCollide,
+    (void*)CommonEnemy::onCollide,
 
     // 9, BAT
     bat_plus_mask,
@@ -250,7 +251,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 10, SKELETON
     skeleton_plus_mask,
     (void*)Skeleton::update,
-    (void*)Skeleton::onCollide,
+    (void*)CommonEnemy::onCollide,
 
     // 11, GIANT_BAT
     giantBat_plus_mask,
@@ -260,7 +261,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 12, BLOB_MOTHER
     blobMother_plus_mask,
     (void*)BlobMother::update,
-    (void*)Blob::onCollide,
+    (void*)CommonEnemy::onCollide,
 
     // 13, NEMESIS
     player_plus_mask,

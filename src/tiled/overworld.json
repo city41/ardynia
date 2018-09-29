@@ -619,7 +619,7 @@
                 {
                  "height":0,
                  "id":186,
-                 "name":"giant bat",
+                 "name":"test enemy",
                  "point":true,
                  "properties":[
                         {
@@ -628,7 +628,7 @@
                          "value":"  "
                         }],
                  "rotation":0,
-                 "type":"BLOB_MOTHER",
+                 "type":"SKELETON",
                  "visible":true,
                  "width":0,
                  "x":212.333666666667,
