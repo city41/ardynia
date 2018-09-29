@@ -1,5 +1,6 @@
 #include <EEPROM.h>
 #include <Arduboy2.h>
+#include <ArduboyPlaytune.h>
 #include <math.h>
 
 #include "game.h"
@@ -9,6 +10,8 @@
 #include "tileBitmaps.h"
 
 Arduboy2Base arduboy;
+ArduboyPlaytune tones(arduboy.audio.enabled);
+
 Renderer renderer(arduboy);
 Game game(arduboy, renderer);
 
@@ -23,7 +26,7 @@ void setup() {
     arduboy.boot();
     arduboy.audio.begin();
     arduboy.setFrameRate(60);
-    Sfx::init();
+    Sfx::init(&tones);
 
 #ifdef SERIAL_LOG
     Serial.begin(9600);
