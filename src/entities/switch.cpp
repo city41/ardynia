@@ -3,7 +3,7 @@
 #include "../state.h"
 
 EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
-    if (other.type == BOOMERANG || other.type == SWORD) {
+    if (other.type == BOOMERANG || other.type == SWORD || other.type == PROJECTILE) {
         me->mirror = MIRROR_HORIZONTAL;
 
         if (other.type == BOOMERANG && game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
