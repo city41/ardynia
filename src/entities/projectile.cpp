@@ -1,5 +1,17 @@
 #include "projectile.h"
 
+const int8_t PROJECTILE_VELOCITY = 2;
+
+const int8_t PROGMEM spawnData[] = {
+    // LEFT
+    -18, -4, -PROJECTILE_VELOCITY, 0,
+    // RIGHT
+    11, -4, PROJECTILE_VELOCITY, 0,
+    // UP
+    -5, -20, 0, -PROJECTILE_VELOCITY,
+    // DOWN
+    -1, 6, 0, PROJECTILE_VELOCITY
+};
 
 EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     int16_t px = player.x;
@@ -7,32 +19,11 @@ EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
 
     // initial duration? then "spawn"
     if (me->duration == 20) {
-        switch (player.dir) {
-            case LEFT:
-                me->x = px - 18;
-                me->y = py - 4;
-                me->vx = -v;
-                me->vy = 0;
-                break;
-            case RIGHT:
-                me->x = px + 11;
-                me->y = py - 4;
-                me->vx = v;
-                me->vy = 0;
-                break;
-            case UP:
-                me->x = px - 5;
-                me->y = py - 20;
-                me->vx = 0;
-                me->vy = -v;
-                break;
-            case DOWN:
-                me->x = px - 1;
-                me->y = py + 6;
-                me->vx = 0;
-                me->vy = v;
-                break;
-        }
+        int8_t* offset = spawnData + (player.dir * 4);
+        me->x = px + (int8_t)pgm_read_byte(offset++);
+        me->y = py + (int8_t)pgm_read_byte(offset++);
+        me->vx = (int8_t)pgm_read_byte(offset++);
+        me->vy = (int8_t)pgm_read_byte(offset++);
     }
 
     // move

@@ -144,7 +144,7 @@ const uint8_t PROGMEM overworld_room0_2[] = {
 
     // entity 3
     miscAndEntityType(6, TORCH),
-    xy(72, 16),
+    xy(64, 16),
 };
 
 

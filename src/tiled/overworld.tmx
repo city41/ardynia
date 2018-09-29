@@ -182,7 +182,7 @@
    </properties>
    <point/>
   </object>
-  <object id="182" name="torch" type="TORCH" x="69" y="143.333">
+  <object id="182" name="torch" type="TORCH" x="65.25" y="143.333">
    <properties>
     <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
    </properties>
