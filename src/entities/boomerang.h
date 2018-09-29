@@ -8,7 +8,7 @@
 class Game;
 
 struct Boomerang {
-    static const uint8_t v = 3;
+    static const uint16_t v = 3;
     static EntityType update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
     static EntityType onCollide(Entity* me, Entity& other, Entity& player, Game& game);
 };

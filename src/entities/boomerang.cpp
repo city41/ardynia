@@ -21,29 +21,30 @@ EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Bas
         }
     }
 
+    int16_t nx = me->x;
+    int16_t ny = me->y;
+
     if (me->duration > 0) {
         me->duration -= 1;
+
         switch (me->dir) {
             case LEFT:
-                me->moveTo(me->x - Boomerang::v, me->y);
+                nx -= Boomerang::v;
                 break;
             case RIGHT:
-                me->moveTo(me->x + Boomerang::v, me->y);
+                nx += Boomerang::v;
                 break;
             case UP:
-                me->moveTo(me->x, me->y - Boomerang::v);
+                ny -= Boomerang::v;
                 break;
             case DOWN:
-                me->moveTo(me->x, me->y + Boomerang::v);
+                ny += Boomerang::v;
                 break;
         }
     } else {
         if (abs(px - me->x) < 3 && abs(py - me->y) < 3) {
             me->type = UNSET;
         } else {
-            int16_t nx = me->x;
-            int16_t ny = me->y;
-
             if (me->x > px) {
                 nx -= Boomerang::v;
             }
@@ -55,10 +56,11 @@ EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Bas
             } else if (me->y < py) {
                 ny += Boomerang::v;
             }
-
-            me->moveTo(nx, ny);
         }
     }
+
+    me->x = nx;
+    me->y = ny;
 
     me->rotateViaMirror(frame);
 
