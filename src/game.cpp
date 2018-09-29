@@ -511,10 +511,6 @@ void Game::renderTitle(uint8_t frame) {
 }
 
 void Game::updatePlay(uint8_t frame) {
-    if (swapRooms) {
-        TileRoom::swapRooms();
-        swapRooms = false;
-    }
 
     if (bossDelayCount > 0) {
         bossDelayCount -= 1;
@@ -721,15 +717,15 @@ void Game::renderRoomTransition(uint8_t frame) {
     renderer.translateX = translateX;
     renderer.translateY = translateY;
 
-    if (lastRoomWasLit) {
+    if (lastRoomWasLit && (translateX || translateY)) {
         TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
     }
 
     // draw next room translated
-    int8_t s = (translateX < 0 || translateY < 0) ? 1 : -1;
+    int8_t sign = (translateX < 0 || translateY < 0) ? 1 : -1;
 
-    renderer.translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * s) : 0;
-    renderer.translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * s) : 0;
+    renderer.translateX = translateX != 0 ? translateX + (ROOM_WIDTH_PX * sign) : 0;
+    renderer.translateY = translateY != 0 ? translateY + (ROOM_HEIGHT_PX * sign) : 0;
 
     bool lit = roomIsLit();
     if (lit) {
@@ -776,6 +772,11 @@ void Game::render(uint8_t frame) {
         prevRender = currentRender;
         currentRender = nextRender;
         nextRender = NULL;
+
+        if (swapRooms) {
+            TileRoom::swapRooms();
+            swapRooms = false;
+        }
     }
 }
 
