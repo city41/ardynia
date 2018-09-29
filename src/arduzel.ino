@@ -19,7 +19,7 @@ void setup() {
     randomSeed(analogRead(0));
 
     arduboy.boot();
-    arduboy.audio.begin();
+    arduboy.audio.off();
     arduboy.setFrameRate(60);
     Sfx::init(&tones);
 

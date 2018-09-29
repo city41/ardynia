@@ -619,7 +619,7 @@
                 {
                  "height":0,
                  "id":186,
-                 "name":"skeleton",
+                 "name":"giant bat",
                  "point":true,
                  "properties":[
                         {
@@ -628,11 +628,11 @@
                          "value":"  "
                         }],
                  "rotation":0,
-                 "type":"SKELETON",
+                 "type":"BLOB_MOTHER",
                  "visible":true,
                  "width":0,
-                 "x":184.666666666667,
-                 "y":302
+                 "x":212.333666666667,
+                 "y":262
                 }],
          "opacity":1,
          "type":"objectgroup",
