@@ -70,13 +70,13 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     true,
 
     // 4, KEY
-    widthAndHeight(8, 8),
+    widthAndHeight(3, 8),
     healthAndDamage(0, 0),
     0,
     true,
 
     // 5, HEART
-    widthAndHeight(8, 8),
+    widthAndHeight(7, 8),
     healthAndDamage(0, 0),
     180,
     true,

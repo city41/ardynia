@@ -114,11 +114,11 @@ const uint8_t PROGMEM heart_plus_mask[] = {
 
 const uint8_t PROGMEM key_plus_mask[] = {
     // width, height,
-    5, 8,
+    3, 8,
     // frame 0 
-    0x0e,0xf1,0x85,0x91,0xee,
+    0x00,0x00,0x00,
     // mask 0 
-    0x0e,0xff,0xff,0xff,0xee,
+    0x0e,0x7a,0x6e,
 };
 
 const uint8_t PROGMEM map_plus_mask[] = {
