@@ -12,6 +12,10 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
         } else {
             me->vx = random(-1, 2);
             me->vy = random(-1, 2);
+            
+            if (!me->vx && !me->vy) {
+                me->vy = 1;
+            }
         }
 
         me->duration = random(30, 180);
@@ -19,8 +23,7 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
 
     if (me->duration > 0 && (frame % 5) == 0) {
         me->duration -= 1;
-        me->x += me->vx;
-        me->y += me->vy;
+        me->moveTo(me->x + me->vx, me->y + me->vy);
 
         if (me->vx || me->vy) {
             me->currentFrame = 1 - me->currentFrame;
