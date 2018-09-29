@@ -33,7 +33,7 @@ function compressRoom(roomData) {
         e = 0;
         while (
             i + e < roomData.length &&
-            e < 15 &&
+            e < 19 &&
             roomData[i] === roomData[i + e]
         ) {
             e += 1;
@@ -41,7 +41,7 @@ function compressRoom(roomData) {
 
         if (e > 3) {
             compressedData.push(COMPRESSION_TILE);
-            compressedData.push(e);
+            compressedData.push(e - 4);
             compressedData.push(roomData[i]);
         } else {
             for (let ii = i; ii < i + e; ++ii) {

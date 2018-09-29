@@ -142,7 +142,7 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
             uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
 
             // memset here?
-            for (uint8_t c = 0; c < count; ++c) {
+            for (uint8_t c = 0; c < count + 4; ++c) {
                 rooms[offset++] = tileId;
             }
 
