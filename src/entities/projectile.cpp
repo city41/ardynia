@@ -11,34 +11,34 @@ EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
             case LEFT:
                 me->x = px - 18;
                 me->y = py - 4;
-                me->prevX = -v;
-                me->prevY = 0;
+                me->vx = -v;
+                me->vy = 0;
                 break;
             case RIGHT:
                 me->x = px + 11;
                 me->y = py - 4;
-                me->prevX = v;
-                me->prevY = 0;
+                me->vx = v;
+                me->vy = 0;
                 break;
             case UP:
                 me->x = px - 5;
                 me->y = py - 20;
-                me->prevX = 0;
-                me->prevY = -v;
+                me->vx = 0;
+                me->vy = -v;
                 break;
             case DOWN:
                 me->x = px - 1;
                 me->y = py + 6;
-                me->prevX = 0;
-                me->prevY = v;
+                me->vx = 0;
+                me->vy = v;
                 break;
         }
     }
 
     // move
     me->duration -= 1;
-    me->x += me->prevX;
-    me->y += me->prevY;
+    me->x += me->vx;
+    me->y += me->vy;
     me->rotateViaMirror(frame);
 
     // fizzle out
