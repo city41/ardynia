@@ -10,7 +10,7 @@ struct Sfx {
     static ArduboyPlaytune* tones;
     /* static BeepPin1 b1; */
     /* static BeepPin2 b2; */
-:
+
     static void sword(void);
     static void boomerang(void);
     static void playerDamage(uint8_t mult = 1);
@@ -19,7 +19,6 @@ struct Sfx {
     static void bossRoar(void);
 
     static void init(ArduboyPlaytune* tones);
-    static void update(void);
 };
 
 #endif

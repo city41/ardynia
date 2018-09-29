@@ -381,7 +381,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
 
-        isBossRoom = isBossRoom || type == BLOB_MOTHER || type == GIANT_BAT || type == NEMESIS;
+        isBossRoom = isBossRoom || (type > 10 && type < 14);
 
         if (type == TRIGGER_DOOR && entityMisc) {
             // if a trigger door's misc is set, it wants to be vertical
@@ -571,7 +571,7 @@ void Game::updatePlay(uint8_t frame) {
         push(&Game::updateGameOver, &Game::renderGameOver);
     }
 
-    if (roomType != NORMAL) {
+    if (roomType > NORMAL && roomType < THREE_SWITCHES_ONE_BOOMERANG) {
         bool stillHasEnemies = false;
 
         for (e = 0; e < MAX_ENTITIES; ++e) {
@@ -585,11 +585,11 @@ void Game::updatePlay(uint8_t frame) {
             if (roomType == SLAM_SHUT) {
                 removeAllTriggerDoors();
                 State::setCurrentRoomTriggered();
-                roomType = NORMAL;
             } else if (roomType <= LAST_ENEMY_HAS_BOSS_KEY) {
                 spawnChest(roomType == LAST_ENEMY_HAS_KEY ? KEY : BOSS_KEY);
-                roomType = NORMAL;
             }
+
+            roomType = NORMAL;
         }
     }
 }
@@ -618,11 +618,9 @@ void Game::renderPlay(uint8_t frame) {
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
-        // room is dark? only render torches
-        if (!lit && entities[e].type != TORCH) {
-            continue;
+        if (lit || entities[e].type == TORCH) {
+            entities[e].render(renderer, frame);
         }
-        entities[e].render(renderer, frame);
     }
 
     player.render(renderer, frame);

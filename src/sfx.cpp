@@ -1,9 +1,5 @@
 #include "sfx.h"
 
-<<<<<<< HEAD
-BeepPin1 Sfx::b1;
-BeepPin2 Sfx::b2;
-
 /* BeepPin1 Sfx::b1; */
 /* BeepPin2 Sfx::b2; */
 ArduboyPlaytune* Sfx::tones;
@@ -47,8 +43,3 @@ void Sfx::init(ArduboyPlaytune* t) {
     /* b2.begin(); */
 }
 
-void Sfx::update(void) {
-    /* b1.timer(); */
-    /* b2.timer(); */
-
-}

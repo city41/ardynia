@@ -15,11 +15,6 @@ ArduboyPlaytune tones(arduboy.audio.enabled);
 Renderer renderer(arduboy);
 Game game(arduboy, renderer);
 
-/* int main() { */
-/*     arduboy.mainNoUSB(); */
-/*     return 0; */
-/* } */
-
 void setup() {
     randomSeed(analogRead(0));
 
@@ -51,7 +46,6 @@ void loop() {
     arduboy.clear();
     arduboy.pollButtons();
     
-    Sfx::update();
     game.update(loopCounter);
     game.render(loopCounter);
     arduboy.display();
