@@ -16,11 +16,11 @@ Renderer renderer(arduboy);
 Game game(arduboy, renderer);
 
 void setup() {
-    randomSeed(analogRead(0));
+    /* randomSeed(analogRead(0)); */
 
     arduboy.boot();
-    arduboy.audio.off();
-    arduboy.setFrameRate(60);
+    arduboy.audio.begin();
+    /* arduboy.setFrameRate(60); */
     Sfx::init(&tones);
 
 #ifdef SERIAL_LOG
