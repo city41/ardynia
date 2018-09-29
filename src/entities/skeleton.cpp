@@ -14,19 +14,22 @@ const int16_t PROGMEM skeleton_vels[] =  {
 };
 
 EntityType Skeleton::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
-    if (frame % 20 == 0) {
+    // have current dungeon influence how difficult they are to deal with
+    const uint8_t factor = State::gameState.currentDungeon + 1;
+
+    if (frame % (30 / factor) == 0) {
         me->mirror = 1 - me->mirror;
     }
 
-    if (frame % 3 != 0) {
+    if (frame % 5 != 0) {
         return UNSET;
     }
 
     if (me->duration == 0) {
-        me->duration = 14;
+        me->duration = 16 / factor;
         uint8_t roll = random(0, SKELETON_VEL_COUNT);
-        me->vx = (int16_t)pgm_read_word(skeleton_vels + roll * 2) * (State::gameState.currentDungeon + 1);
-        me->vy = (int16_t)pgm_read_word(skeleton_vels + roll * 2 + 1) * (State::gameState.currentDungeon + 1);
+        me->vx = (int16_t)pgm_read_word(skeleton_vels + roll * 2) * factor;
+        me->vy = (int16_t)pgm_read_word(skeleton_vels + roll * 2 + 1) * factor;
     }
 
     me->duration -= 1;
