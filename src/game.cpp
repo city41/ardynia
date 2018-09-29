@@ -394,7 +394,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
 
         } else if (type == SECRET_WALL && roomIsTriggered) {
             // wall has already been blown up
-            currentEntity.currentFrame = 1;
+            currentEntity.tiles = NULL;
             currentEntity.health = 0;
             TileRoom::setTileAt(currentEntity.x, currentEntity.y, tileRoomOffset, Blank);
         } else if (type == CHEST) {
