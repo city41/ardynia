@@ -30,12 +30,7 @@ void Player::reset() {
 }
 
 void Player::useSword(void) {
-    if (State::gameState.hasSword == 0) {
-        return;
-    }
-
-    // currently swinging the sword or dont even have it yet? do nothing
-    if (entities[0].type != UNSET) {
+    if (State::gameState.hasSword == 0 || entities[0].type != UNSET) {
         return;
     }
 
@@ -72,6 +67,17 @@ void Player::bButtonAction(void) {
     }
 }
 
+const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
+    // LEFT
+    0, 4, 0,
+    // RIGHT
+    0, 4, MIRROR_HORIZONTAL,
+    // UP
+    2, 5, 0,
+    // DOWN
+    3, 6, 0
+};
+
 void Player::render(Renderer& renderer, byte frame) {
     // recovering from damage? "flash" the player every third frame
     // TODO: this is duplicated in Entity::render, DRY?
@@ -87,27 +93,14 @@ void Player::render(Renderer& renderer, byte frame) {
         const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem);
         renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemBmp, 0, 0, (DrawMode)State::isInDungeon());
     } else {
-        // for the boomerang, only want to hold the attack pose as long as they don't move
+        // for the boomerang and magic ring, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
         bool attacking = entities[0].type == SWORD ||
             ((entities[1].type == BOOMERANG || entities[1].type == PROJECTILE) && !movedThisFrame);
 
-        // TODO: convert this to a PROGMEM array
-        switch (dir) {
-            case LEFT:
-                spriteIndex = attacking ? 4 : 0;
-                break;
-            case RIGHT:
-                spriteIndex = attacking ? 4 : 0;
-                mirror = MIRROR_HORIZONTAL;
-                break;
-            case UP:
-                spriteIndex = attacking ? 5 : 2;
-                break;
-            case DOWN:
-                spriteIndex = attacking ? 6 : 3;
-                break;
-        }
+        uint8_t* offset = playerSpriteIndexAndMirror + (dir * 3) + attacking;
+        spriteIndex = pgm_read_byte(offset);
+        mirror = (MirrorMode)pgm_read_byte(offset + (attacking ? 1 : 2));
 
         if (movedThisFrame && ((frame / 6) % 2) == 0) {
             if (dir == LEFT || dir == RIGHT) {
