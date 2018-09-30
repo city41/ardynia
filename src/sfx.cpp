@@ -35,14 +35,145 @@ constexpr uint8_t delayLow(const uint8_t amount) {
 // notes
 const uint8_t MIDDLE_A = 69;
 
-const PROGMEM uint8_t sword[] = {startNote(PIN_SPEAKER_1), note(MIDDLE_A), delayHigh(1), delayLow(255), endOfScore};
-const uint8_t* Sfx::sword = sword;
+const PROGMEM uint8_t sword_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 60,
+    delayHigh(0),
+    delayLow(20),
+    startNote(1),
+    MIDDLE_A - 30,
+    delayHigh(0),
+    delayLow(40),
+    stopNote(0),
+    startNote(0),
+    MIDDLE_A,
+    delayHigh(0),
+    delayLow(20),
+    stopNote(1),
+    stopNote(0),
+    endOfScore
+};
 
-const uint8_t* Sfx::boomerang = NULL;
-const uint8_t* Sfx::playerDamage = NULL;
-const uint8_t* Sfx::successJingle = NULL;
-const uint8_t* Sfx::pickUpItem = NULL;
-const uint8_t* Sfx::bossRoar = NULL;
+const uint8_t* Sfx::sword = sword_sfx;
+
+const PROGMEM uint8_t boomerang_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 30,
+    delayHigh(0),
+    delayLow(40),
+    startNote(1),
+    MIDDLE_A - 40,
+    delayHigh(0),
+    delayLow(40),
+    stopNote(0),
+    delayHigh(0),
+    delayLow(40),
+    stopNote(1),
+    startNote(0),
+    MIDDLE_A - 30,
+    delayHigh(0),
+    delayLow(40),
+    startNote(1),
+    MIDDLE_A - 40,
+    delayHigh(0),
+    delayLow(40),
+    stopNote(0),
+    delayHigh(0),
+    delayLow(40),
+    stopNote(1),
+    startNote(0),
+    MIDDLE_A - 30,
+    delayHigh(0),
+    delayLow(40),
+    startNote(1),
+    MIDDLE_A - 40,
+    delayHigh(0),
+    delayLow(40),
+    stopNote(0),
+    delayHigh(0),
+    delayLow(40),
+    stopNote(1),
+    startNote(0),
+    MIDDLE_A - 30,
+    delayHigh(0),
+    delayLow(40),
+    startNote(1),
+    MIDDLE_A - 40,
+    delayHigh(0),
+    delayLow(40),
+    stopNote(0),
+    delayHigh(0),
+    delayLow(40),
+    stopNote(1),
+    endOfScore
+};
+
+const uint8_t* Sfx::boomerang = boomerang_sfx;
+
+const PROGMEM uint8_t playerDamage_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 45,
+    delayHigh(0),
+    delayLow(200),
+    stopNote(0),
+    endOfScore
+};
+
+const uint8_t* Sfx::playerDamage = playerDamage_sfx;
+
+const PROGMEM uint8_t successJingle_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 5,
+    delayHigh(0),
+    delayLow(100),
+    startNote(1),
+    MIDDLE_A + 15,
+    delayHigh(0),
+    delayLow(200),
+    startNote(0),
+    MIDDLE_A - 15,
+    delayHigh(0),
+    delayLow(40),
+    startNote(1),
+    MIDDLE_A,
+    delayHigh(1),
+    delayLow(50),
+    startNote(0),
+    MIDDLE_A + 10,
+    delayHigh(0),
+    delayLow(255),
+    stopNote(0),
+    stopNote(1),
+    endOfScore
+};
+
+const uint8_t* Sfx::successJingle = successJingle_sfx;
+
+const PROGMEM uint8_t pickUpItem_sfx[] = {
+    startNote(0),
+    MIDDLE_A,
+    delayHigh(0),
+    delayLow(15),
+    startNote(1),
+    MIDDLE_A + 10,
+    delayHigh(0),
+    delayLow(15),
+    stopNote(0),
+    stopNote(1),
+    endOfScore
+};
+
+const uint8_t* Sfx::pickUpItem = pickUpItem_sfx;
+
+const PROGMEM uint8_t bossRoar_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 15,
+    delayHigh(8),
+    delayLow(200),
+    stopNote(0),
+    endOfScore
+};
+const uint8_t* Sfx::bossRoar = bossRoar_sfx;
 
 void Sfx::init(ArduboyPlaytune* t) {
     tones = t;
@@ -52,4 +183,8 @@ void Sfx::init(ArduboyPlaytune* t) {
 
 void Sfx::play(const uint8_t* sfx) {
     tones->playScore(sfx);
+}
+
+void Sfx::stop() {
+    tones->stopScore();
 }

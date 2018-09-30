@@ -16,6 +16,7 @@ struct Sfx {
     static const uint8_t* bossRoar;
 
     static void play(const uint8_t* sfx);
+    static void stop(void);
     static void init(ArduboyPlaytune* tones);
 };
 

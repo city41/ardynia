@@ -1,4 +1,5 @@
 #include "bomb.h"
+#include "../sfx.h"
 
 EntityType Bomb::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     // health is being used for "is dormant"
@@ -17,6 +18,7 @@ EntityType Bomb::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ar
 
         return UNSET;
     } else {
+        Sfx::play(Sfx::boomerang);
         return EXPLOSION;
     }
 }

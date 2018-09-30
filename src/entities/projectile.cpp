@@ -1,4 +1,5 @@
 #include "projectile.h"
+#include "../sfx.h"
 
 const int8_t PROJECTILE_VELOCITY = 2;
 
@@ -24,6 +25,7 @@ EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
         me->y = py + (int8_t)pgm_read_byte(offset++);
         me->vx = (int8_t)pgm_read_byte(offset++);
         me->vy = (int8_t)pgm_read_byte(offset++);
+        Sfx::play(Sfx::boomerang);
     }
 
     // move
