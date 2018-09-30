@@ -53,6 +53,7 @@ class Game {
 
         bool swapRooms;
         bool lastRoomWasLit;
+        uint8_t holdACount;
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int16_t playerY);
@@ -118,6 +119,7 @@ class Game {
             nextRender(NULL),
             swapRooms(false),
             lastRoomWasLit(true),
+            holdACount(0),
             roomType(NORMAL)
         {
         }

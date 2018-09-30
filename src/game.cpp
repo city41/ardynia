@@ -513,17 +513,22 @@ void Game::updatePlay(uint8_t frame) {
         return;
     }
 
-    if (arduboy.pressed(LEFT_BUTTON | DOWN_BUTTON | RIGHT_BUTTON)) {
-        if (player.bButtonEntityType != UNSET) {
-            menu.chosenItem = player.bButtonEntityType;
-            menu.row = player.bButtonEntityType - 1;
-        } else {
-            menu.row = 0;
+    if (arduboy.pressed(A_BUTTON)) {
+        holdACount += 1;
+        if (holdACount == 50) {
+            if (player.bButtonEntityType != UNSET) {
+                menu.chosenItem = player.bButtonEntityType;
+                menu.row = player.bButtonEntityType - 1;
+            } else {
+                menu.row = 0;
+            }
+
+            push(&Game::updateMenu, &Game::renderMenu);
+
+            return;
         }
-
-        push(&Game::updateMenu, &Game::renderMenu);
-
-        return;
+    } else {
+        holdACount = 0;
     }
 
     player.update(player, *this, arduboy, frame);
