@@ -36,13 +36,13 @@ void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tile
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
     if (tileId == 0 && !State::isInDungeon() && (seed % 7 == 1)) {
-        renderer.drawOverwrite(x, y, map_tiles, 10, seed);
+        renderer.drawOverwrite(x, y, map_tiles, 8, seed);
         return;
     }
 
-    TileDef tile = tileId < 10 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
-    MirrorMode mirror = tileId < 10 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    bool dontInvert = !State::isInDungeon() || (tileId >= 7 && tileId <= 9);
+    TileDef tile = tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
+    MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
+    bool dontInvert = !State::isInDungeon() || (tileId >= 5 && tileId <= 7);
     DrawMode drawMode = dontInvert ? Normal : Invert;
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }

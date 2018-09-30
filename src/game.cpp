@@ -266,9 +266,7 @@ void Game::detectEntityCollisions(void) {
             (player.y < 0 && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != LowerWall) ||
             (player.y >= ROOM_HEIGHT_PX && prevTileId != Blank && prevTileId != LeftWall && prevTileId != RightWall && prevTileId != UpperWall)
         ) {
-            if (!State::isInDungeon() || prevTileId != LeftFlavor || prevTileId != RightFlavor) {
-                player.undoMove();
-            }
+            player.undoMove();
         }
     } else {
         // otherwise the player is on screen, did they just walk onto something that is solid?
@@ -279,9 +277,7 @@ void Game::detectEntityCollisions(void) {
         // or add a solid mask to the tile id
         if (
             currentTileId == Water ||
-            currentTileId == Stone || 
-            currentTileId == LeftFlavor ||
-            currentTileId == RightFlavor
+            currentTileId == Stone
         ) {
             player.undoMove();
         }

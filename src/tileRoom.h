@@ -15,15 +15,13 @@ enum TileDef: uint8_t {
     Ladder = 5,
     Water = 6,
     Door = 7,
-    LeftFlavor = 8,
-    RightFlavor = 9,
 
     // these tiles are mirrors of the above sprites
-    LowerLeftCorner = 10,
-    UpperRightCorner = 11,
-    LowerRightCorner = 12,
-    UpperWall = 13,
-    RightWall = 14,
+    LowerLeftCorner = 8,
+    UpperRightCorner = 9,
+    LowerRightCorner = 10,
+    UpperWall = 11,
+    RightWall = 12,
     Compression = 15
 };
 
