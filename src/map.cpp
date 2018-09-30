@@ -1,6 +1,7 @@
 #include "map.h"
 #include "state.h"
 #include "strings.h"
+#include "tileBitmaps.h"
 
 uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
@@ -18,11 +19,14 @@ void Map::render(Renderer& renderer, uint8_t mapWidthInRooms, uint8_t currentRoo
 
         const bool hasVisited = visitedRooms[byteToGrab] & bitMask;
 
+        int8_t frame = 0;
         if (roomX == currentRoomX && roomY == currentRoomY) {
-            renderer.drawRect(2 + roomX * 4, 8 + roomY * 4, 3, 3, WHITE);
+            frame = 1;
         } else if (hasVisited) {
-            renderer.fillRect(2 + roomX * 4, 8 + roomY * 4, 3, 3, WHITE);
+            frame = 2;
         }
+
+        renderer.drawOverwrite(2 + roomX * 4, 8 + roomY * 4, mapRoom_tiles, frame);
     }
 }
 
