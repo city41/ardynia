@@ -9,6 +9,7 @@
         { "key": "continueFromGameOver", "value": "CONTINUE" },
         { "key": "quitFromGameOver", "value": "QUIT" },
         { "key": "equip", "value": "EQUIP" },
-        { "key": "map", "value": "MAP" }
+        { "key": "map", "value": "MAP" },
+        { "key": "congrats", "value": "CONGRATS" }
     ]
 }

@@ -94,4 +94,10 @@ const uint8_t map_string[4] PROGMEM = {
     9, 1, 12, 0xFF
 };
 
+
+// "CONGRATS"
+const uint8_t congrats_string[9] PROGMEM = {
+    2, 11, 10, 6, 14, 1, 16, 15, 0xFF
+};
+
 #endif

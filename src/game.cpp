@@ -11,6 +11,7 @@
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
+const uint8_t FINAL_BOSS_ROOM = 0;
 
 const int8_t newGameLabel[] PROGMEM = "NEW GAME";
 const int8_t continueLabel[] PROGMEM = "CONTINUE";
@@ -762,6 +763,11 @@ void Game::render(uint8_t frame) {
 
     renderer.translateX = 0;
     renderer.translateY = 0;
+
+    if (State::isTriggered(FINAL_BOSS_ROOM)) {
+        renderer.fillRect(0, HEIGHT - 6, 42, 6, BLACK);
+        renderer.drawString(1, HEIGHT - 5, congrats_string);
+    }
 
     if (nextRender != NULL) {
         prevRender = currentRender;
