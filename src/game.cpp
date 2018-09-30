@@ -756,6 +756,8 @@ void Game::update(uint8_t frame) {
         currentUpdate = nextUpdate;
         nextUpdate = NULL;
     }
+
+    arduboy.idle();
 }
 
 void Game::render(uint8_t frame) {
