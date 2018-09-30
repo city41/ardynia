@@ -14,7 +14,7 @@ EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Bas
         me->dir = player.dir;
         me->x = player.x;
         me->y = player.y - 6;
-        Sfx::boomerang();
+        Sfx::play(Sfx::boomerang);
 
         if (game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
             game.setAllSwitches(0);

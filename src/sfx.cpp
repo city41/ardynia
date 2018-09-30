@@ -1,45 +1,55 @@
 #include "sfx.h"
 
-/* BeepPin1 Sfx::b1; */
-/* BeepPin2 Sfx::b2; */
 ArduboyPlaytune* Sfx::tones;
 
-const byte score[] PROGMEM = {
- 2,154, 0x90,62, 0,166, 0x90,64, 0,166, 0x90,66, 0,166, 0x90,64, 0,166,
- 0xf0
-};
+// ArduboyPlayTunes streaming format
 
-void Sfx::sword(void) {
-    /* b1.tone(b1.freq(300), 8); */
-    /* b2.tone(b2.freq(100), 9); */
-    tones->playScore(score);
+// 0x9T start note on generator T
+// this must always be followed by note
+// example startNote(1), note(69) == play middle A on generator 1
+constexpr uint8_t startNote(uint8_t generator) {
+    return (0x9 << 4) | generator;
+}
+constexpr uint8_t note(uint8_t n) {
+    return n;
 }
 
-void Sfx::boomerang(void) {
-    /* b1.tone(b1.freq(30), 20); */
-    /* b2.tone(b2.freq(10), 18); */
+// 0x8T stop playing the note on generator T
+constexpr uint8_t stopNote(uint8_t generator) {
+    return (0x8 << 4) | generator;
 }
 
-void Sfx::playerDamage(uint8_t mult) {
-    /* b1.tone(b1.freq(200), 8 * mult); */
-    /* b2.tone(b2.freq(80), 10 * mult); */
+const uint8_t endOfScore = 0xF0;
+const uint8_t endOfScoreLoop = 0xE0;
+
+// the high byte for delay, max value of 127
+constexpr uint8_t delayHigh(const uint8_t amount) {
+    return amount & 0x7F;
 }
 
-void Sfx::successJingle(void) {
-    /* b1.tone(b1.freq(800), 8); */
-    /* b2.tone(b2.freq(700), 10); */
+// the low byte of the delay, any value
+constexpr uint8_t delayLow(const uint8_t amount) {
+    return amount;
 }
 
-void Sfx::pickUpItem(void) {
-    /* b1.tone(b1.freq(1000), 4); */
-    /* b2.tone(b2.freq(700), 5); */
-}
+// notes
+const uint8_t MIDDLE_A = 69;
+
+const PROGMEM uint8_t sword[] = {startNote(PIN_SPEAKER_1), note(MIDDLE_A), delayHigh(1), delayLow(255), endOfScore};
+const uint8_t* Sfx::sword = sword;
+
+const uint8_t* Sfx::boomerang = NULL;
+const uint8_t* Sfx::playerDamage = NULL;
+const uint8_t* Sfx::successJingle = NULL;
+const uint8_t* Sfx::pickUpItem = NULL;
+const uint8_t* Sfx::bossRoar = NULL;
 
 void Sfx::init(ArduboyPlaytune* t) {
     tones = t;
     tones->initChannel(PIN_SPEAKER_1);
     tones->initChannel(PIN_SPEAKER_2);
-    /* b1.begin(); */
-    /* b2.begin(); */
 }
 
+void Sfx::play(const uint8_t* sfx) {
+    tones->playScore(sfx);
+}

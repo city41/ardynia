@@ -438,7 +438,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         if (roomIsTriggered) {
             emergeAllBridges(tileRoomOffset);
         } else {
-            Sfx::playerDamage(10);
+            Sfx::play(Sfx::playerDamage);
             bossDelayCount = 100;
         }
     }

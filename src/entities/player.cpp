@@ -35,7 +35,7 @@ void Player::useSword(void) {
     }
 
     loadEntity(entities[0], SWORD);
-    Sfx::sword();
+    Sfx::play(Sfx::sword);
 }
 
 void Player::bButtonAction(void) {
@@ -175,7 +175,7 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     if (other.damage && tookDamageCount == 0) {
         health = max(health - other.damage, 0);
         bounceBack(*this, other);
-        Sfx::playerDamage();
+        Sfx::play(Sfx::playerDamage);
 
         /* // hack: make the sword bounce back too, in case we */
         /* // were hit while attacking. If not attacking and sword */
@@ -189,13 +189,13 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     if (other.type == HEART) {
         other.type = UNSET;
         health = min(health + 1, State::gameState.totalHealth);
-        Sfx::pickUpItem();
+        Sfx::play(Sfx::pickUpItem);
     }
 
     if (other.type == BOMB) {
         other.type = UNSET;
         numBombs = min(numBombs + 3, MAX_BOMB_COUNT);
-        Sfx::pickUpItem();
+        Sfx::play(Sfx::pickUpItem);
     }
 
     if (other.type == KEY) { 
@@ -232,13 +232,13 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
 
             } else if (chestState == 0 || chestState == 1 || chestState == 3) {
                 // 000 or 001 or 011 -- so far, all chest openings have been correct
-                Sfx::successJingle();
+                Sfx::play(Sfx::successJingle);
                 receivedItem = HAPPY_FACE;
                 return;
             } else {
                 // 010 100 -- wrong order! start over!
                 receivedItem = SAD_FACE;
-                Sfx::playerDamage();
+                Sfx::play(Sfx::playerDamage);
                 game.closeAllChests();
                 return;
             }
@@ -273,7 +273,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
             State::gameState.bossKeys[State::gameState.currentDungeon] += 1;
         }
 
-        Sfx::successJingle();
+        Sfx::play(Sfx::successJingle);
         State::setCurrentRoomTriggered();
     }
 }
