@@ -35,7 +35,7 @@ struct GameState {
 class State {
     public:
         static GameState gameState;
-        static bool isTriggered(uint8_t roomIndex);
+        static bool isTriggered(uint8_t roomIndex, bool considerMap = true);
         static void setTriggered(uint8_t roomIndex);
         static void setCurrentRoomTriggered();
 

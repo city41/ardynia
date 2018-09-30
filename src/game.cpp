@@ -764,9 +764,9 @@ void Game::render(uint8_t frame) {
     renderer.translateX = 0;
     renderer.translateY = 0;
 
-    if (State::isTriggered(FINAL_BOSS_ROOM)) {
-        renderer.fillRect(0, HEIGHT - 6, 42, 6, BLACK);
-        renderer.drawString(1, HEIGHT - 5, congrats_string);
+    if (State::isTriggered(FINAL_BOSS_ROOM, false)) {
+        renderer.fillRect(0, 0, 42, 6, BLACK);
+        renderer.drawString(1, 1, congrats_string);
     }
 
     if (nextRender != NULL) {

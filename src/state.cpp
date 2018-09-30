@@ -9,10 +9,10 @@ GameState State::gameState = {};
  * So if this returns true, it means this room's chest is open,
  * key is taken, etc.
  */
-bool State::isTriggered(uint8_t roomIndex) {
+bool State::isTriggered(uint8_t roomIndex, bool considerMap) {
     // setting state will only ever happen in "real time", so
     // let's hide the overworld/dungeon distinction from the rest of the game
-    if (isInDungeon()) {
+    if (considerMap && isInDungeon()) {
         roomIndex += DUNGEON_ROOM_OFFSET;
     }
 
