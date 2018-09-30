@@ -26,7 +26,7 @@ void Map::render(Renderer& renderer, uint8_t mapWidthInRooms, uint8_t currentRoo
             frame = 2;
         }
 
-        renderer.drawOverwrite(2 + roomX * 4, 8 + roomY * 4, mapRoom_tiles, frame);
+        renderer.drawOverwrite(2 + roomX * 4, 8 + roomY * 4, squareIcon_tiles, frame);
     }
 }
 

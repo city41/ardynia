@@ -34,8 +34,14 @@ void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
     const uint8_t x = 20;
 
     renderer.drawString(x, 0, equip_string);
+
     // boundary rectangle
-    renderer.drawRect(x, 6, 21, 40, WHITE);
+    // by using fillRect instead of drawRect, keep
+    // drawRect out of the binary and save a ton of bytes
+    renderer.fillRect(x, 6, 1, 40, WHITE);
+    renderer.fillRect(x, 6, 21, 1, WHITE);
+    renderer.fillRect(x + 20, 6, 1, 40, WHITE);
+    renderer.fillRect(x, 46, 21, 1, WHITE);
 
     // sword
     if (State::gameState.hasSword) {

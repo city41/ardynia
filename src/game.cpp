@@ -119,7 +119,7 @@ void Game::renderGameOver(uint8_t frame) {
     renderer.drawString(40, 20, gameOver_string);
 
     if (teleportTransitionCount == 0) {
-        renderer.drawRect(38, HEIGHT - 10 + titleRow * 5, 4, 4, WHITE);
+        renderer.drawOverwrite(38, HEIGHT - 10 + titleRow * 5, squareIcon_tiles, 2);
         renderer.drawString(44, HEIGHT - 10, continueFromGameOver_string);
         renderer.drawString(44, HEIGHT - 5, quitFromGameOver_string);
     }
@@ -503,7 +503,7 @@ void Game::renderTitle(uint8_t frame) {
         renderer.drawString(42, 58, deleteSave_string);
     }
 
-    renderer.drawRect(34, 42 + titleRow * 8, 4, 4, WHITE);
+    renderer.drawOverwrite(34,42 + titleRow * 8, squareIcon_tiles, 2);
 }
 
 void Game::updatePlay(uint8_t frame) {
