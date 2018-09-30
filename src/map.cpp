@@ -4,13 +4,9 @@
 
 uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
-void Map::render(Renderer& renderer, uint8_t mapWidthInRooms, uint8_t mapHeightInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
-    // boundary rectangle
+void Map::render(Renderer& renderer, uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
+    // "MAP" label
     renderer.drawString(0, 0, map_string);
-
-    if (mapHeightInRooms > 0) {
-        renderer.drawRect(0, 6, mapWidthInRooms * 4 + 3, mapHeightInRooms * 4 + 3, WHITE);
-    }
 
     for (uint8_t roomIndex = 0; roomIndex < MAX_NUM_VISITED_ROOMS; ++roomIndex) {
         const uint8_t roomY = roomIndex / mapWidthInRooms;

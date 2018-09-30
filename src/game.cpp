@@ -42,7 +42,6 @@ void Game::loadSave(bool straightToPlay) {
         entityDefs = overworld_entities;
         doorDefs = overworld_teleporters;
         mapWidthInRooms = OVERWORLD_WIDTH_IN_ROOMS;
-        mapHeightInRooms = OVERWORLD_HEIGHT_IN_ROOMS;
     } else {
         TileRoom::map = dungeons_map;
         entityDefs = dungeons_entities;
@@ -155,7 +154,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
         loadEntitiesInRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
 
         Map::reset();
-        mapHeightInRooms = State::isInDungeon() ? 0 : OVERWORLD_HEIGHT_IN_ROOMS;
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         // plop player in the center of the rooms
@@ -658,7 +656,7 @@ void Game::renderMenu(uint8_t frame) {
     renderer.translateX = 54;
     renderer.translateY = 0;
 
-    Map::render(renderer, mapWidthInRooms, mapHeightInRooms, TileRoom::x, TileRoom::y);
+    Map::render(renderer, mapWidthInRooms, TileRoom::x, TileRoom::y);
 }
 
 void Game::updateRoomTransition(uint8_t frame) {

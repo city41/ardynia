@@ -42,7 +42,6 @@ class Game {
         bool firstRoomTransitionFrame;
         uint8_t teleportTransitionCount;
         uint8_t mapWidthInRooms;
-        uint8_t mapHeightInRooms;
 
         UpdatePtr prevUpdate;
         UpdatePtr currentUpdate;
