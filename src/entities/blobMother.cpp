@@ -14,22 +14,16 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     int16_t nx = me->x;
     int16_t ny = me->y;
 
-    switch (me->dir) {
-        case LEFT:
-            nx = nx - 1;
-            break;
-        case RIGHT:
-            nx = nx + 1;
-            break;
+    if (me->dir == LEFT) {
+        nx -= 1;
+    } else {
+        nx += 1;
     }
 
-    switch (me->duration) {
-        case UP:
-            ny = ny - 1;
-            break;
-        case DOWN:
-            ny = ny + 1;
-            break;
+    if (me->duration == UP ) {
+        ny -= 1;
+    } else {
+        ny += 1;
     }
 
     me->moveTo(nx, ny);
