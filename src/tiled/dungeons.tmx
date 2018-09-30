@@ -37,11 +37,11 @@
 9,4,4,1,4,4,4,4,4,4,4,4,4,11,5,5,5,5,5,5,5,5,5,5,1,5,5,5,5,4,4,4,4,4,4,4,5,5,5,5,5,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5
 </data>
  </layer>
- <objectgroup id="2" name="entities" visible="0">
+ <objectgroup id="2" name="entities">
   <object id="166" name="To overworld from dung 1" type="TELEPORTER" x="48.25" y="508.625">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="4"/>
-    <property name="DEST_ROOM_Y" type="int" value="6"/>
+    <property name="DEST_ROOM_Y" type="int" value="5"/>
    </properties>
    <point/>
   </object>
@@ -118,7 +118,7 @@
   <object id="265" name="To overworld from secret 1" type="TELEPORTER" x="160.417" y="315">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
-    <property name="DEST_ROOM_Y" type="int" value="3"/>
+    <property name="DEST_ROOM_Y" type="int" value="2"/>
    </properties>
    <point/>
   </object>
@@ -159,7 +159,7 @@
   <object id="275" name="To overworld from secret 3" type="TELEPORTER" x="800.698" y="315.705">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="3"/>
-    <property name="DEST_ROOM_Y" type="int" value="4"/>
+    <property name="DEST_ROOM_Y" type="int" value="3"/>
    </properties>
    <point/>
   </object>
@@ -178,7 +178,7 @@
   <object id="278" name="To overworld from secret 4" type="TELEPORTER" x="832.667" y="380.292">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="5"/>
-    <property name="DEST_ROOM_Y" type="int" value="5"/>
+    <property name="DEST_ROOM_Y" type="int" value="4"/>
    </properties>
    <point/>
   </object>
@@ -426,7 +426,7 @@
   <object id="354" name="To overworld from dung 3" type="TELEPORTER" x="721.727" y="58.9091">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="4"/>
-    <property name="DEST_ROOM_Y" type="int" value="4"/>
+    <property name="DEST_ROOM_Y" type="int" value="3"/>
    </properties>
    <point/>
   </object>

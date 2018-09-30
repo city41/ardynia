@@ -32,7 +32,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":6
+                         "value":5
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -288,7 +288,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":3
+                         "value":2
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -430,7 +430,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":4
+                         "value":3
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -489,7 +489,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":5
+                         "value":4
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -1393,7 +1393,7 @@
                         {
                          "name":"DEST_ROOM_Y",
                          "type":"int",
-                         "value":4
+                         "value":3
                         }],
                  "rotation":0,
                  "type":"TELEPORTER",
@@ -2514,7 +2514,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

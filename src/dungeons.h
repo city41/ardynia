@@ -1191,14 +1191,14 @@ const uint8_t PROGMEM dungeons_room7_7[] = {
 
 const uint8_t PROGMEM dungeons_teleporters[] = {
     // dest x, dest y (in rooms)
-    4, 6,
+    4, 5,
     6, 0,
-    0, 3,
+    0, 2,
     0, 0,
-    3, 4,
-    5, 5,
+    3, 3,
+    5, 4,
     6, 1,
-    4, 4,
+    4, 3,
 };
 
 
