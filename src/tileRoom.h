@@ -41,7 +41,7 @@ struct TileRoom {
         static void renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed);
         static uint8_t getRoomIndex(uint8_t x, uint8_t y);
         static TileDef getTileAt(uint8_t px, uint8_t py);
-        static uint8_t setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile);
+        static void setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile);
 
         static void renderRoom(Renderer& renderer, uint8_t offset);
 

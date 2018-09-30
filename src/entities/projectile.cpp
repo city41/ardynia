@@ -20,7 +20,7 @@ EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
 
     // initial duration? then "spawn"
     if (me->duration == 20) {
-        int8_t* offset = spawnData + (player.dir * 4);
+        const int8_t* offset = spawnData + (player.dir * 4);
         me->x = px + (int8_t)pgm_read_byte(offset++);
         me->y = py + (int8_t)pgm_read_byte(offset++);
         me->vx = (int8_t)pgm_read_byte(offset++);

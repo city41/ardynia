@@ -7,7 +7,7 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     }
 
     if (me->duration == 10) {
-        me->dir = frame & 1;
+        me->dir = static_cast<Direction>(frame & 1);
         me->duration = UP;
     }
 
@@ -41,7 +41,7 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
         shouldUndo = true;
 
         // flip LEFT<->RIGHT
-        me->dir = 1 - me->dir;
+        me->dir = static_cast<Direction>(1 - me->dir);
     }
 
     me->mirror = me->x < player.x ? MIRROR_HORIZONTAL : 0;

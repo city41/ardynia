@@ -98,7 +98,7 @@ void Player::render(Renderer& renderer, byte frame) {
         bool attacking = entities[0].type == SWORD ||
             ((entities[1].type == BOOMERANG || entities[1].type == PROJECTILE) && !movedThisFrame);
 
-        uint8_t* offset = playerSpriteIndexAndMirror + (dir * 3) + attacking;
+        const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 3) + attacking;
         spriteIndex = pgm_read_byte(offset);
         mirror = (MirrorMode)pgm_read_byte(offset + (attacking ? 1 : 2));
 

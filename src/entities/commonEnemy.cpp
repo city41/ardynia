@@ -2,8 +2,8 @@
 #include "../state.h"
 
 EntityType CommonEnemy::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
-    if (other.type == EXPLOSION
-            || (me->type != BLOB_MOTHER && other.damage > 0)
+    if ((other.type == EXPLOSION
+            || (me->type != BLOB_MOTHER && other.damage > 0))
             && me->tookDamageCount == 0
     ) {
         me->health -= other.damage;
