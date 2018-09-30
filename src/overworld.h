@@ -173,8 +173,8 @@ const uint8_t PROGMEM overworld_room1_3[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(0, SKELETON),
-    xy(104, 8),
+    miscAndEntityType(0, BLOB_MOTHER),
+    xy(80, 40),
 };
 
 

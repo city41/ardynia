@@ -206,7 +206,7 @@
    </properties>
    <point/>
   </object>
-  <object id="186" name="test enemy" type="SKELETON" x="214.334" y="198.333">
+  <object id="186" name="test enemy" type="BLOB_MOTHER" x="194.584" y="232.583">
    <properties>
     <property name="CONTAINED_TYPE" value="  "/>
    </properties>

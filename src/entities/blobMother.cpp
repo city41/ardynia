@@ -19,7 +19,7 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     } else {
         nx += 1;
     }
-
+ 
     if (me->duration == UP ) {
         ny -= 1;
     } else {
@@ -29,14 +29,15 @@ EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     me->moveTo(nx, ny);
 
     bool shouldUndo = false;
-    if (Util::isOffScreen(20, ny)) {
+
+    if (ny < 0 || ny >= HEIGHT - 14) {
         shouldUndo = true;
 
         // flip UP<->DOWN
         me->duration = 5 - me->duration;
     }
 
-    if (Util::isOffScreen(nx, 20)) {
+    if (nx < 0 || nx >= WIDTH - 30) {
         shouldUndo = true;
 
         // flip LEFT<->RIGHT
