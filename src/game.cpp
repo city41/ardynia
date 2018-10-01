@@ -11,7 +11,7 @@
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
-const uint8_t FINAL_BOSS_ROOM = 0;
+const uint8_t FINAL_BOSS_ROOM = 59;
 
 const int8_t newGameLabel[] PROGMEM = "NEW GAME";
 const int8_t continueLabel[] PROGMEM = "CONTINUE";
@@ -23,7 +23,7 @@ const uint8_t DELETE_SAVE = 2;
 
 const uint8_t PROGMEM startingRooms[8] = {
     /* 1, 2, // overworld (x, y) */
-    6, 0, // overworld (x, y)
+    4, 5, // overworld (x, y)
     0, 7, // first dungeon
     3, 7, // second dungeon
     6, 0  // third dungeon
