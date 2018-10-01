@@ -1,6 +1,7 @@
 #include "bat.h"
 #include "../util.h"
 #include "../game.h"
+#include "../state.h"
 
 /**
  * bats just fly all over the screen. They pick a direction and go that way for a while, then pick
@@ -66,6 +67,7 @@ EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player, Game& game)
         if (me->health == 0) {
             if (me->type == GIANT_BAT) {
                 game.emergeAllBridges();
+                State::setCurrentRoomTriggered();
             }
 
             me->type = UNSET;

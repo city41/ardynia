@@ -222,9 +222,6 @@
   <object id="307" name="blob" type="BLOB" x="34.6667" y="402.333">
    <point/>
   </object>
-  <object id="308" name="pot" type="POT" x="98.5758" y="497.72">
-   <point/>
-  </object>
   <object id="309" name="pot" type="POT" x="18.053" y="394.364">
    <properties>
     <property name="CONTAINED_TYPE" value="KEY"/>
