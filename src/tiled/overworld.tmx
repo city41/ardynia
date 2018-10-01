@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="187">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="204">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="9" name="Tile Layer 1" width="49" height="24">
   <data encoding="csv">
-5,5,5,12,12,12,12,12,7,12,12,12,12,12,12,12,12,12,12,12,12,12,12,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,7,5,5,5,5,
-5,5,5,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,7,1,5,8,5,
-3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,1,1,1,13,
+5,5,5,12,12,12,12,12,7,12,12,12,12,12,12,12,5,12,12,12,12,12,12,12,12,12,12,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,7,5,5,5,5,
+5,5,5,1,1,1,1,1,7,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,7,1,5,8,5,
+3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,1,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,1,1,1,13,
 3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,5,5,7,7,7,7,7,7,7,7,7,7,5,5,5,
 3,1,1,1,1,1,1,1,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,5,5,7,7,7,7,7,7,7,7,7,7,7,7,7,
 7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,1,1,1,1,1,1,1,1,1,7,7,5,5,5,5,5,5,
@@ -17,14 +17,14 @@
 5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,1,5,5,5,5,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,
 5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,5,5,5,5,5,5,8,5,5,5,5,5,5,1,5,5,5,5,1,1,5,5,5,5,5,5,5,5,5,5,1,5,5,
 2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,7,1,1,1,1,5,1,1,5,1,1,5,1,1,1,1,1,1,1,1,5,1,5,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,7,1,1,1,1,5,1,1,5,1,1,5,1,1,1,1,1,1,1,1,1,1,5,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,7,1,1,1,1,5,1,1,5,1,1,5,1,1,5,5,5,5,1,1,1,1,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,5,5,5,5,5,5,5,5,5,5,1,1,5,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,5,5,5,5,5,5,5,5,5,5,1,1,5,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,1,1,1,1,1,1,1,1,1,1,5,1,5,5,1,1,5,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,5,5,5,5,
 3,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,5,5,5,5,5,5,5,5,5,5,1,1,1,5,5,5,5,1,1,5,5,5,5,
 3,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,5,5,5,5,5,5,8,5,5,5,1,1,1,5,5,5,5,1,1,5,5,5,5,
-7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,5,5,5,5,
+7,7,7,7,7,7,7,7,7,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,5,5,1,5,
 3,1,1,1,1,1,5,5,7,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,5,5,
 7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7
 </data>
@@ -44,9 +44,9 @@
    </properties>
    <point/>
   </object>
-  <object id="133" name="blob" type="BLOB" x="37" y="228">
+  <object id="133" name="blob" type="BLOB" x="8.66667" y="216.667">
    <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
+    <property name="MISC" value="THREE_SWITCHES_ONE_BOOMERANG"/>
    </properties>
    <point/>
   </object>
@@ -69,7 +69,7 @@
   <object id="147" name="secret wall" type="SECRET_WALL" x="738" y="177.666">
    <point/>
   </object>
-  <object id="148" name="skeleton" type="SKELETON" x="614.666" y="357.666">
+  <object id="148" name="skeleton" type="SKELETON" x="576.848" y="352.939">
    <point/>
   </object>
   <object id="151" name="torch" type="TORCH" x="41.6667" y="143.333">
@@ -96,7 +96,7 @@
   </object>
   <object id="156" name="chest with sword" type="CHEST" x="371.75" y="146.583">
    <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
+    <property name="CONTAINED_TYPE" value="SWORD"/>
    </properties>
    <point/>
   </object>
@@ -116,7 +116,7 @@
    </properties>
    <point/>
   </object>
-  <object id="161" name="secret wall" type="SECRET_WALL" x="643.515" y="256.333">
+  <object id="161" name="secret wall" type="SECRET_WALL" x="640.515" y="256.878">
    <point/>
   </object>
   <object id="162" name="blob" type="BLOB" x="150.667" y="283">
@@ -159,7 +159,7 @@
    </properties>
    <point/>
   </object>
-  <object id="172" name="teleporter to secret 4" type="TELEPORTER" x="642.667" y="256.333">
+  <object id="172" name="teleporter to secret 4" type="TELEPORTER" x="640.485" y="256.697">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="7"/>
     <property name="DEST_ROOM_Y" type="int" value="5"/>
@@ -210,6 +210,69 @@
    <properties>
     <property name="CONTAINED_TYPE" value="  "/>
    </properties>
+   <point/>
+  </object>
+  <object id="187" name="chest" type="CHEST" x="289.818" y="218.5">
+   <point/>
+  </object>
+  <object id="188" name="chest" type="CHEST" x="305.273" y="218.273">
+   <point/>
+  </object>
+  <object id="189" name="chest" type="CHEST" x="320.909" y="218.273">
+   <point/>
+  </object>
+  <object id="190" name="sunken bridge" type="SUNKEN_BRIDGE" x="274.455" y="226.273">
+   <properties>
+    <property name="MISC" value="OPEN_CHESTS_IN_RIGHT_ORDER"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="191" name="lock" type="LOCK" x="674.023" y="209.455">
+   <point/>
+  </object>
+  <object id="192" name="chest" type="CHEST" x="593.545" y="219.091">
+   <properties>
+    <property name="CONTAINED_TYPE" value="HEART"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="193" name="secret wall" type="SECRET_WALL" x="736.386" y="336.409">
+   <point/>
+  </object>
+  <object id="194" name="chest" type="CHEST" x="752.909" y="336.818">
+   <properties>
+    <property name="CONTAINED_TYPE" value="BOMB"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="195" name="skeleton" type="SKELETON" x="593.091" y="353.818">
+   <point/>
+  </object>
+  <object id="196" name="blob" type="BLOB" x="274.5" y="81.75">
+   <point/>
+  </object>
+  <object id="197" name="blob" type="BLOB" x="282.25" y="89.5">
+   <point/>
+  </object>
+  <object id="198" name="blob" type="BLOB" x="274" y="92.75">
+   <point/>
+  </object>
+  <object id="199" name="lock" type="LOCK" x="401" y="33.5">
+   <point/>
+  </object>
+  <object id="200" name="chest" type="CHEST" x="289.25" y="18">
+   <properties>
+    <property name="CONTAINED_TYPE" value="HEART"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="201" name="switch" type="SWITCH" x="33.6667" y="226.333">
+   <point/>
+  </object>
+  <object id="202" name="switch" type="SWITCH" x="49.6667" y="226.667">
+   <point/>
+  </object>
+  <object id="203" name="switch" type="SWITCH" x="66" y="226">
    <point/>
   </object>
  </objectgroup>

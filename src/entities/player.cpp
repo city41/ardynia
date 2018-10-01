@@ -13,7 +13,7 @@ void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
     dir = DOWN;
     tookDamageCount = 0;
-    numBombs = 0;
+    numBombs = 6;
     health = 2;
 
     bButtonEntityType = UNSET;
@@ -261,7 +261,8 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
         }
 
         if (receivedItem > SWORD && receivedItem < KEY) {
-            State::gameState.numAcquiredItems += 1;
+            State::gameState.numAcquiredItems = min(3, State::gameState.numAcquiredItems + 1);
+
             bButtonEntityType = receivedItem;
         }
 
