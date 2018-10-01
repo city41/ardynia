@@ -91,7 +91,7 @@ void Player::render(Renderer& renderer, byte frame) {
     if (receiveItemCount > 0) {
         spriteIndex = 2;
         const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem);
-        renderer.drawPlusMask(x - 2, y - 24 - (6 - receiveItemCount/8), itemBmp, 0, 0, (DrawMode)State::isInDungeon());
+        renderer.drawPlusMask(receiveX, receiveY - (6 - receiveItemCount/8), itemBmp, 0, 0, (DrawMode)State::isInDungeon());
     } else {
         // for the boomerang and magic ring, only want to hold the attack pose as long as they don't move
         // as soon as they start moving, they should go into normal movement frames
@@ -216,6 +216,8 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
     ) {
         chest.currentFrame = 1;
         receiveItemCount = 60;
+        receiveX = chest.x + 2;
+        receiveY = chest.y - 4;
 
         if (game.roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
             // THIS RECIPE RELIES ON buildEntityArrays placing the chests
@@ -240,6 +242,8 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
                 // 010 100 -- wrong order! start over!
                 receivedItem = SAD_FACE;
                 Sfx::play(Sfx::playerDamage);
+                health = max(0, health - 1);
+                bounceBack(*this, chest);
                 game.closeAllChests();
                 return;
             }
