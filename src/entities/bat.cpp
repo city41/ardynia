@@ -13,7 +13,7 @@
 EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     // just finished a direction or went off screen? pick a new way to go
     if (me->duration == 0
-            || Util::isOffScreen(me->x, me->y, 8)
+            || Util::isOffScreen(me->x, me->y, 12)
             || (me->type == GIANT_BAT && me->y >= 18)
         ) {
         // was just moving? take a break
