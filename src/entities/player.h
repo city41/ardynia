@@ -15,8 +15,8 @@ class Player: public Entity {
 
         void useSword(void);
         void bButtonAction(void);
-        int16_t receiveX;
-        int16_t receiveY;
+        int8_t receiveX;
+        int8_t receiveY;
 
     public:
         bool movedThisFrame;
