@@ -13,7 +13,7 @@ void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
     dir = DOWN;
     tookDamageCount = 0;
-    numBombs = 6;
+    numBombs = 0;
     health = 2;
 
     bButtonEntityType = UNSET;
@@ -217,7 +217,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
         chest.currentFrame = 1;
         receiveItemCount = 60;
         receiveX = chest.x + 2;
-        receiveY = chest.y - 4;
+        receiveY = chest.y - 10;
 
         if (game.roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
             // THIS RECIPE RELIES ON buildEntityArrays placing the chests

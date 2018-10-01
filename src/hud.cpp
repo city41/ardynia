@@ -40,6 +40,8 @@ void Hud::render(Renderer& renderer, Player& player) {
     if (player.bButtonEntityType != UNSET) {
         renderer.drawPlusMask(7, 15, (const uint8_t*)pgm_read_word(secondaryItem_sprites + player.bButtonEntityType), 0, 0, Invert);
     }
+
+    // the little 'B' indicator
     renderer.drawOverwrite(1, 13, hudBFrame_tiles, 0);
 
     drawItemCount(renderer, key_plus_mask, 1, 48, State::gameState.numKeys[State::gameState.currentDungeon]);

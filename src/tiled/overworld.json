@@ -529,8 +529,8 @@
                  "type":"BLOB",
                  "visible":true,
                  "width":0,
-                 "x":325,
-                 "y":151.333
+                 "x":274.666666666667,
+                 "y":146.666333333333
                 }, 
                 {
                  "height":0,
@@ -603,24 +603,6 @@
                  "width":0,
                  "x":530.5,
                  "y":339.833
-                }, 
-                {
-                 "height":0,
-                 "id":186,
-                 "name":"test enemy",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
-                 "rotation":0,
-                 "type":"BLOB_MOTHER",
-                 "visible":true,
-                 "width":0,
-                 "x":194.584,
-                 "y":232.583
                 }, 
                 {
                  "height":0,
@@ -849,6 +831,42 @@
                  "width":0,
                  "x":66,
                  "y":226
+                }, 
+                {
+                 "height":0,
+                 "id":204,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"THREE_SWITCHES_ONE_BOOMERANG"
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":12.6666666666666,
+                 "y":275.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":205,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"THREE_SWITCHES_ONE_BOOMERANG"
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":12.3333333333333,
+                 "y":291.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1330,7 +1348,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":204,
+ "nextobjectid":206,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
