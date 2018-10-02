@@ -606,13 +606,19 @@ bool Game::roomIsLit() {
         return true;
     }
 
+    bool foundTorch = false;
+
     for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == TORCH) {
-            return entities[e].health == 0;
+            foundTorch = true;
+
+            if (entities[e].health == 0) {
+                return true;
+            }
         }
     }
 
-    return true;
+    return !foundTorch;
 }
 
 void Game::renderPlay(uint8_t frame) {
