@@ -600,7 +600,7 @@ void Game::updatePlay(uint8_t frame) {
             if (roomType == SLAM_SHUT) {
                 removeAllTriggerDoors();
                 State::setCurrentRoomTriggered();
-            } else if (roomType <= LAST_ENEMY_HAS_HEART_CONTAINER) {
+            } else if (roomType <= LAST_ENEMY_HAS_BOSS_KEY) {
                 spawnChest(roomType == LAST_ENEMY_HAS_KEY ? KEY
                         : (roomType == LAST_ENEMY_HAS_BOSS_KEY ? BOSS_KEY : HEART));
             }
