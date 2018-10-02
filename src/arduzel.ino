@@ -16,18 +16,15 @@ Renderer renderer(arduboy);
 Game game(arduboy, renderer);
 
 void setup() {
-    /* randomSeed(analogRead(0)); */
-
     arduboy.boot();
     arduboy.audio.begin();
-    /* arduboy.setFrameRate(60); */
     Sfx::init(&tones);
 
 #ifdef SERIAL_LOG
     Serial.begin(9600);
     delay(1500);
+    LOG("setup done");
 #endif
-//    LOG("setup done");
 }
 
 uint8_t loopCounter = 1;

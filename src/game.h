@@ -60,6 +60,9 @@ class Game {
         void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy, uint8_t tileRoomOffset);
         int8_t spawnNewEntity(EntityType, Entity& spawner);
 
+        void updateLogo(uint8_t frame);
+        void renderLogo(uint8_t frame);
+
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);
 
@@ -112,10 +115,10 @@ class Game {
             firstRoomTransitionFrame(false),
             teleportTransitionCount(0),
             prevUpdate(NULL),
-            currentUpdate(&Game::updateTitle),
+            currentUpdate(&Game::updateLogo),
             nextUpdate(NULL),
             prevRender(NULL),
-            currentRender(&Game::renderTitle),
+            currentRender(&Game::renderLogo),
             nextRender(NULL),
             swapRooms(false),
             lastRoomWasLit(true),

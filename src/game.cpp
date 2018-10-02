@@ -469,6 +469,16 @@ void Game::emergeAllBridges(uint8_t tileRoomOffset) {
     }
 }
 
+void Game::updateLogo(uint8_t frame) {
+    if (frame == 1) {
+        push(&Game::updateTitle, &Game::renderTitle);
+    }
+}
+
+void Game::renderLogo(uint8_t frame) {
+    renderer.drawOverwrite(WIDTH / 2 - 8, HEIGHT / 2 - 4, logo_tiles, 0);
+}
+
 void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
