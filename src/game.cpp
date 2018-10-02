@@ -410,7 +410,11 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
                 currentEntity.type = UNSET;
                 roomType = NORMAL;
                 isDefeatedSlamShutRoom = true;
-            } else if ((roomType == LAST_ENEMY_HAS_KEY || roomType == LAST_ENEMY_HAS_BOSS_KEY) && roomIsTriggered) {
+            } else if (
+                (roomType == LAST_ENEMY_HAS_KEY ||
+                 roomType == LAST_ENEMY_HAS_BOSS_KEY ||
+                 roomType == LAST_ENEMY_HAS_HEART_CONTAINER
+                ) && roomIsTriggered) {
                 roomType = NORMAL;
                 loadEntity(currentEntity, CHEST);
                 currentEntity.currentFrame = 1;
@@ -586,8 +590,9 @@ void Game::updatePlay(uint8_t frame) {
             if (roomType == SLAM_SHUT) {
                 removeAllTriggerDoors();
                 State::setCurrentRoomTriggered();
-            } else if (roomType <= LAST_ENEMY_HAS_BOSS_KEY) {
-                spawnChest(roomType == LAST_ENEMY_HAS_KEY ? KEY : BOSS_KEY);
+            } else if (roomType <= LAST_ENEMY_HAS_HEART_CONTAINER) {
+                spawnChest(roomType == LAST_ENEMY_HAS_KEY ? KEY
+                        : (roomType == LAST_ENEMY_HAS_BOSS_KEY ? BOSS_KEY : HEART));
             }
 
             roomType = NORMAL;

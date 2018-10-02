@@ -92,9 +92,6 @@
    </properties>
    <point/>
   </object>
-  <object id="266" name="skeleton" type="SKELETON" x="133.5" y="265.083">
-   <point/>
-  </object>
   <object id="267" name="To overworld from secret 2" type="TELEPORTER" x="496.792" y="128.917">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="0"/>
@@ -136,10 +133,7 @@
    </properties>
    <point/>
   </object>
-  <object id="277" name="heart container" type="CHEST" x="834" y="339">
-   <properties>
-    <property name="CONTAINED_TYPE" value="HEART"/>
-   </properties>
+  <object id="277" name="blob" type="BLOB" x="834" y="339">
    <point/>
   </object>
   <object id="278" name="To overworld from secret 4" type="TELEPORTER" x="832.667" y="380.292">
@@ -865,7 +859,10 @@
   <object id="488" name="torch" type="TORCH" x="416.5" y="71.0417">
    <point/>
   </object>
-  <object id="489" name="skeleton" type="SKELETON" x="193" y="264.5">
+  <object id="489" name="giant bat" type="GIANT_BAT" x="156.25" y="269.25">
+   <properties>
+    <property name="MISC" value="LAST_ENEMY_HAS_HEART_CONTAINER"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

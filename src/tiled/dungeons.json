@@ -203,18 +203,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":266,
-                 "name":"skeleton",
-                 "point":true,
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":133.5,
-                 "y":265.083
-                }, 
-                {
-                 "height":0,
                  "id":267,
                  "name":"To overworld from secret 2",
                  "point":true,
@@ -358,16 +346,10 @@
                 {
                  "height":0,
                  "id":277,
-                 "name":"heart container",
+                 "name":"blob",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"HEART"
-                        }],
                  "rotation":0,
-                 "type":"CHEST",
+                 "type":"BLOB",
                  "visible":true,
                  "width":0,
                  "x":834,
@@ -2905,14 +2887,20 @@
                 {
                  "height":0,
                  "id":489,
-                 "name":"skeleton",
+                 "name":"giant bat",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"MISC",
+                         "type":"string",
+                         "value":"LAST_ENEMY_HAS_HEART_CONTAINER"
+                        }],
                  "rotation":0,
-                 "type":"SKELETON",
+                 "type":"GIANT_BAT",
                  "visible":true,
                  "width":0,
-                 "x":193,
-                 "y":264.5
+                 "x":156.25,
+                 "y":269.25
                 }],
          "opacity":1,
          "type":"objectgroup",

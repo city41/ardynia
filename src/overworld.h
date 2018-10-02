@@ -131,7 +131,7 @@ const uint8_t PROGMEM overworld_room0_2[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(6, TORCH),
+    miscAndEntityType(7, TORCH),
     xy(40, 16),
 
     // entity 1
@@ -143,7 +143,7 @@ const uint8_t PROGMEM overworld_room0_2[] = {
     xy(48, 0),
 
     // entity 3
-    miscAndEntityType(6, TORCH),
+    miscAndEntityType(7, TORCH),
     xy(64, 16),
 };
 
@@ -153,7 +153,7 @@ const uint8_t PROGMEM overworld_room0_3[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(5, BLOB),
     xy(8, 24),
 
     // entity 1
@@ -175,11 +175,11 @@ const uint8_t PROGMEM overworld_room0_4[] = {
     2, // number of entities
 
     // entity 0
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(5, BLOB),
     xy(16, 20),
 
     // entity 1
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(5, BLOB),
     xy(16, 36),
 };
 
@@ -241,7 +241,7 @@ const uint8_t PROGMEM overworld_room2_2[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(5, BLOB),
     xy(48, 20),
 };
 
@@ -263,7 +263,7 @@ const uint8_t PROGMEM overworld_room2_3[] = {
     xy(96, 28),
 
     // entity 3
-    miscAndEntityType(5, SUNKEN_BRIDGE),
+    miscAndEntityType(6, SUNKEN_BRIDGE),
     xy(48, 36),
 };
 
