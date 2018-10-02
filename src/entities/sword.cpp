@@ -20,7 +20,7 @@ EntityType Sword::update(Entity* me, Entity& player, Game& game, Arduboy2Base& a
             break;
         case UP:
             me->x = px - 5;
-            me->y = py - 20;
+            me->y = py - 22;
             me->currentFrame = 1;
             me->mirror = MIRROR_VERTICAL;
             break;
