@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="490">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="491">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -863,6 +863,9 @@
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_HEART_CONTAINER"/>
    </properties>
+   <point/>
+  </object>
+  <object id="490" name="torch" type="TORCH" x="92.25" y="488.25">
    <point/>
   </object>
  </objectgroup>

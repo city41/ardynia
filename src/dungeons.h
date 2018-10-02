@@ -302,7 +302,7 @@ const uint8_t PROGMEM dungeons_room0_6[] = {
 
 
 const uint8_t PROGMEM dungeons_room0_7[] = {
-    5, // number of entities
+    6, // number of entities
 
     // entity 0
     miscAndEntityType(0, TELEPORTER),
@@ -323,6 +323,10 @@ const uint8_t PROGMEM dungeons_room0_7[] = {
     // entity 4
     miscAndEntityType(0, POT),
     xy(72, 48),
+
+    // entity 5
+    miscAndEntityType(0, TORCH),
+    xy(96, 40),
 };
 
 
