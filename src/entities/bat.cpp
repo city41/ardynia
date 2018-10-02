@@ -17,18 +17,13 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
             || Util::isOffScreen(me->x, me->y, 12)
             || (me->type == GIANT_BAT && me->y >= 18)
         ) {
-        // was just moving? take a break
-        if (frame < 20 && (me->vx || me->vy) && me->type != GIANT_BAT) {
-            me->vx = me->vy = 0;
-        } else {
-            me->vx = random(-1, 2);
-            me->vy = random(-1, 2);
-            
-            // did both end up zero? that means the bat will rest, don't want that
-            // TODO: better way to do this?
-            if (!me->vx && !me->vy) {
-                me->vy = 1;
-            }
+        me->vx = random(-1, 2);
+        me->vy = random(-1, 2);
+        
+        // did both end up zero? that means the bat will rest, don't want that
+        // TODO: better way to do this?
+        if (!me->vx && !me->vy) {
+            me->vy = 1;
         }
 
         // cheap way to get a little randomness
