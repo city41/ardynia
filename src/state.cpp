@@ -62,8 +62,8 @@ void State::load() {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.totalHealth = 2;
-        gameState.hasSword = 1;
-        gameState.numAcquiredItems = 4;
+        gameState.hasSword = 0;
+        gameState.numAcquiredItems = 0;
         gameState.currentDungeon = 0;
 
         uint8_t i = 0;
