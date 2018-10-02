@@ -32,7 +32,9 @@ EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Ba
     me->duration -= 1;
     me->x += me->vx;
     me->y += me->vy;
-    me->rotateViaMirror(frame);
+
+    // cheap way to accomplish flicker
+    me->tookDamageCount = frame;
 
     // fizzle out
     if (me->duration == 0) {

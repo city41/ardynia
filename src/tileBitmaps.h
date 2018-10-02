@@ -84,6 +84,13 @@ const uint8_t PROGMEM pot_tiles[] = {
     0x8f,0x26,0x20,0x20,0x20,0x20,0x26,0x8f,
 };
 
+const uint8_t PROGMEM projectile_tiles[] = {
+    // width, height,
+    8, 8,
+    // frame 0
+    0xc3,0xbd,0x66,0x42,0x42,0x66,0xbd,0xc3,
+};
+
 const uint8_t PROGMEM secretWall_tiles[] = {
     // width, height,
     16, 16,

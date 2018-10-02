@@ -145,7 +145,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     widthAndHeight(8, 8),
     healthAndDamage(0 , 2),
     20,
-    true,
+    false,
 
     // 17, EXPLOSION
     widthAndHeight(16, 16),
@@ -273,7 +273,7 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Lock::onCollide,
 
     // 16, PROJECTILE
-    projectile_plus_mask,
+    projectile_tiles,
     (void*)Projectile::update,
     NULL,
 
