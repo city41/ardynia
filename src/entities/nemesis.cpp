@@ -2,50 +2,50 @@
 #include "../entityTemplates.h"
 #include "../util.h"
 
-NemesisMode Nemesis::mode = HOLD;
+NemesisMode Nemesis::mode = Hold;
 Entity Nemesis::sword;
 
 EntityType Nemesis::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     sword.update(*me, game, arduboy, frame);
 
-    if (mode == ATTACKING && sword.type == UNSET) {
-        mode = HOLD;
+    if (mode == Attacking && sword.type == UNSET) {
+        mode = Hold;
         me->duration = 30;
     }
 
     switch (Nemesis::mode) {
-        case HOLD:
+        case Hold:
             me->duration -= 1;
             if (me->duration == 0) {
-                mode = TELEPORT;
+                mode = Teleport;
             }
             break;
-        case PURSUE:
+        case Pursue:
             if (frame % 3 == 1) {
                 me->moveTowardsOtherEntity(player, 1);
             }
             if (abs(me->x - player.x) < 24 && abs(me->y - player.y) < 24) {
-                mode = START_ATTACK;
+                mode = StartAttack;
             }
             break;
-        case START_ATTACK:
+        case StartAttack:
             loadEntity(Nemesis::sword, SWORD);
-            mode = ATTACKING;
+            mode = Attacking;
             break;
-        case TELEPORT:
+        case Teleport:
             int16_t nx = random(0, 101);
             int16_t ny = random(0, 51);
             me->moveTo(nx, ny);
             me->stunCount = random(20, 61);
             me->tookDamageCount = me->stunCount;
-            mode = PURSUE;
+            mode = Pursue;
             break;
     }
 
     bool attacking = sword.type == SWORD;
 
     me->mirror = 0;
-    if (me->stunCount || mode == HOLD) {
+    if (me->stunCount || mode == Hold) {
         me->currentFrame = 7;
     } else {
         switch (me->dir) {
@@ -72,10 +72,10 @@ EntityType Nemesis::update(Entity* me, Entity& player, Game& game, Arduboy2Base&
 EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
     if (other.type == BOOMERANG) {
         me->duration = 100;
-        mode = HOLD;
+        mode = Hold;
     }
 
-    if ((other.type == SWORD || other.type == BOMB) && mode == HOLD) {
+    if ((other.type == SWORD || other.type == BOMB) && mode == Hold) {
         me->health -= 1;
         me->tookDamageCount = 100;
         me->bounceBack(other, player);

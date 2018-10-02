@@ -8,12 +8,13 @@
 class Game;
 void loadEntity(Entity& entity, EntityType entityType);
 
-typedef uint8_t NemesisMode;
-const NemesisMode PURSUE = 0;
-const NemesisMode START_ATTACK = 1;
-const NemesisMode ATTACKING = 2;
-const NemesisMode TELEPORT = 3;
-const NemesisMode HOLD = 4;
+enum NemesisMode: uint8_t {
+    Pursue,
+    StartAttack,
+    Attacking,
+    Teleport,
+    Hold
+};
 
 struct Nemesis {
     static NemesisMode mode;
