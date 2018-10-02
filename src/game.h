@@ -17,6 +17,12 @@ const uint8_t OVERWORLD_WIDTH_IN_ROOMS = 7;
 const uint8_t OVERWORLD_HEIGHT_IN_ROOMS = 6;
 const uint8_t DUNGEONS_WIDTH_IN_ROOMS = 8;
 
+enum ChestState: uint8_t {
+    AllChestsOpenCorrectly,
+    ChestsOpenCorrectlySoFar,
+    ChestsOpenedWrong
+};
+
 class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);
     typedef void (Game::*RenderPtr)(uint8_t);
@@ -96,7 +102,7 @@ class Game {
         void emergeAllBridges(uint8_t tileRoomOffset = 255);
         void spawnChest(EntityType containedItem);
         uint8_t countEntities(EntityType entityType);
-        uint8_t getChestState(void);
+        ChestState chestOpeningOrderState(void);
         void closeAllChests(void);
         void setAllSwitches(uint8_t triggered);
         bool areAllSwitchesTriggered(void);

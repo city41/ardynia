@@ -14,7 +14,6 @@ EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player, Game& ga
         if (other.type == BOOMERANG && game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
             if (game.areAllSwitchesTriggered()) {
                 game.spawnChest(KEY);
-                State::setCurrentRoomTriggered();
                 game.roomType = NORMAL;
             }
         } else {

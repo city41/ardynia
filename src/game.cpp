@@ -806,17 +806,33 @@ void Game::render(uint8_t frame) {
     }
 }
 
-uint8_t Game::getChestState() {
+ChestState Game::chestOpeningOrderState(void) {
     uint8_t chestCounter = 0;
     uint8_t chestState = 0;
 
+    bool foundClosedChest = false;
+    uint8_t chestCount = 0;
+    uint8_t openChestCount = 0;
+
     for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
         if (entities[e].type == CHEST) {
-            chestState |= entities[e].currentFrame << chestCounter++;
+            bool thisChestIsOpen = entities[e].currentFrame == 1;
+
+            if (thisChestIsOpen && foundClosedChest) {
+                return ChestsOpenedWrong;
+            }
+
+            foundClosedChest = foundClosedChest || !thisChestIsOpen;
+            chestCount += 1;
+            openChestCount += (uint8_t)thisChestIsOpen;
         }
     }
 
-    return chestState;
+    if (openChestCount == chestCount) {
+        return AllChestsOpenCorrectly;
+    } else {
+        return ChestsOpenCorrectlySoFar;
+    }
 }
 
 void Game::closeAllChests() {

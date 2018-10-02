@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="491">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="492">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -31,10 +31,10 @@
 3,1,1,1,1,1,1,1,1,1,1,1,1,13,5,5,5,5,5,5,5,3,1,1,1,1,1,5,3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,13,3,1,1,1,1,1,13,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,3,1,1,1,1,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,13,3,1,1,1,1,1,13,
 9,4,4,4,4,4,11,3,1,1,1,7,7,7,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,5,5,1,1,1,1,1,5,9,4,4,1,4,4,11,
-2,12,7,12,12,12,12,1,1,1,1,7,7,7,2,5,12,12,12,12,5,5,5,5,5,5,5,5,5,5,12,12,12,5,5,5,5,12,12,12,12,5,5,1,1,1,1,1,5,5,12,12,12,12,12,5,
+2,12,7,12,12,12,12,1,1,1,1,7,7,7,2,5,12,12,12,12,5,5,5,5,5,5,5,5,2,12,12,12,12,12,10,5,5,12,12,12,12,5,5,1,1,1,1,1,5,5,12,12,12,12,12,5,
 3,1,7,1,1,1,1,1,1,1,1,7,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
 3,1,7,1,1,1,1,1,1,1,1,6,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,5,5,1,1,1,1,1,1,1,5,1,1,1,5,5,5,1,1,1,1,1,5,5,1,1,1,1,5,5,
-9,4,7,1,4,4,4,4,4,4,4,7,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5
+9,4,7,1,4,4,4,4,4,4,4,7,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5
 </data>
  </layer>
  <objectgroup id="2" name="entities">
@@ -312,7 +312,7 @@
   <object id="336" name="skeleton" type="SKELETON" x="273.333" y="457">
    <point/>
   </object>
-  <object id="337" name="switch" type="SWITCH" x="499.25" y="456.75">
+  <object id="337" name="switch" type="SWITCH" x="524.5" y="492.5">
    <point/>
   </object>
   <object id="338" name="pot" type="POT" x="596" y="457.667">
@@ -745,13 +745,13 @@
   <object id="461" name="lock" type="LOCK" x="656.958" y="464.833">
    <point/>
   </object>
-  <object id="462" name="switch" type="SWITCH" x="518.667" y="472.333">
+  <object id="462" name="switch" type="SWITCH" x="514.167" y="465.583">
    <properties>
     <property name="MISC" value="THREE_SWITCHES_ONE_BOOMERANG"/>
    </properties>
    <point/>
   </object>
-  <object id="463" name="switch" type="SWITCH" x="483.333" y="474">
+  <object id="463" name="switch" type="SWITCH" x="481.833" y="465.25">
    <point/>
   </object>
   <object id="465" name="lock" type="LOCK" x="674.667" y="273.667">
@@ -869,6 +869,9 @@
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_HEART_CONTAINER"/>
    </properties>
+   <point/>
+  </object>
+  <object id="491" name="switch" type="SWITCH" x="499" y="492.5">
    <point/>
   </object>
  </objectgroup>

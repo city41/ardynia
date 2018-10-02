@@ -227,19 +227,15 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
             // would need to make sure it's not always just the left most chest, center chest, right chest
             // but that should be easy to ensure
 
-            const uint8_t chestState = game.getChestState();
+            const uint8_t chestState = game.chestOpeningOrderState();
 
-            if (chestState == 7) {
-                // 111 -- ie all chests opened in right order
+            if (chestState == AllChestsOpenCorrectly) {
                 receivedItem = KEY;
-
-            } else if (chestState == 0 || chestState == 1 || chestState == 3) {
-                // 000 or 001 or 011 -- so far, all chest openings have been correct
+            } else if (chestState == ChestsOpenCorrectlySoFar) {
                 Sfx::play(Sfx::successJingle);
                 receivedItem = HAPPY_FACE;
                 return;
             } else {
-                // 010 100 -- wrong order! start over!
                 receivedItem = SAD_FACE;
                 Sfx::play(Sfx::playerDamage);
                 health = max(0, health - 1);
