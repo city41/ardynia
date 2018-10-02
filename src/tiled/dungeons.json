@@ -2901,18 +2901,6 @@
                  "width":0,
                  "x":156.25,
                  "y":269.25
-                }, 
-                {
-                 "height":0,
-                 "id":490,
-                 "name":"torch",
-                 "point":true,
-                 "rotation":0,
-                 "type":"TORCH",
-                 "visible":true,
-                 "width":0,
-                 "x":92.25,
-                 "y":488.25
                 }],
          "opacity":1,
          "type":"objectgroup",
