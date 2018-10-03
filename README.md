@@ -2,6 +2,12 @@
 
 An adventure game for the [Arduboy](http://arduboy.com)
 
+Website for the game is at http://ardynia.com
+
+## How to play
+
+see http://ardynia.com/help
+
 ## How to build - Arduino IDE
 
 It should build just as-is in the Arduino IDE. If not, please let me know.
