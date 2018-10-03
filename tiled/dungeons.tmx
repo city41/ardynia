@@ -399,47 +399,17 @@
   </object>
   <object id="361" name="trigger door" type="TRIGGER_DOOR" x="338.5" y="354">
    <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
+    <property name="MISC" value="VERTICAL"/>
    </properties>
    <point/>
   </object>
-  <object id="362" name="trigger door" type="TRIGGER_DOOR" x="444.25" y="337.5">
+  <object id="362" name="trigger door" type="TRIGGER_DOOR" x="442.25" y="337.864">
    <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
+    <property name="MISC" value="VERTICAL"/>
    </properties>
    <point/>
   </object>
-  <object id="363" name="skeleton" type="SKELETON" x="386" y="328.25">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="369" name="skeleton" type="SKELETON" x="372" y="328">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="370" name="skeleton" type="SKELETON" x="392" y="328.25">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="371" name="skeleton" type="SKELETON" x="371.75" y="375.25">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="372" name="skeleton" type="SKELETON" x="386.5" y="375.75">
-   <properties>
-    <property name="MISC" value="SLAM_SHUT"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="373" name="skeleton" type="SKELETON" x="393.5" y="375.25">
+  <object id="370" name="blob mother" type="BLOB_MOTHER" x="355" y="355.25">
    <properties>
     <property name="MISC" value="SLAM_SHUT"/>
    </properties>

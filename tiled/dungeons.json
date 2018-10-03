@@ -1297,7 +1297,7 @@
                         {
                          "name":"MISC",
                          "type":"string",
-                         "value":"SLAM_SHUT"
+                         "value":"VERTICAL"
                         }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
@@ -1315,55 +1315,19 @@
                         {
                          "name":"MISC",
                          "type":"string",
-                         "value":"SLAM_SHUT"
+                         "value":"VERTICAL"
                         }],
                  "rotation":0,
                  "type":"TRIGGER_DOOR",
                  "visible":true,
                  "width":0,
-                 "x":444.25,
-                 "y":337.5
-                }, 
-                {
-                 "height":0,
-                 "id":363,
-                 "name":"skeleton",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":386,
-                 "y":328.25
-                }, 
-                {
-                 "height":0,
-                 "id":369,
-                 "name":"skeleton",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":372,
-                 "y":328
+                 "x":442.25,
+                 "y":337.863636363636
                 }, 
                 {
                  "height":0,
                  "id":370,
-                 "name":"skeleton",
+                 "name":"blob mother",
                  "point":true,
                  "properties":[
                         {
@@ -1372,65 +1336,11 @@
                          "value":"SLAM_SHUT"
                         }],
                  "rotation":0,
-                 "type":"SKELETON",
+                 "type":"BLOB_MOTHER",
                  "visible":true,
                  "width":0,
-                 "x":392,
-                 "y":328.25
-                }, 
-                {
-                 "height":0,
-                 "id":371,
-                 "name":"skeleton",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":371.75,
-                 "y":375.25
-                }, 
-                {
-                 "height":0,
-                 "id":372,
-                 "name":"skeleton",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":386.5,
-                 "y":375.75
-                }, 
-                {
-                 "height":0,
-                 "id":373,
-                 "name":"skeleton",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"MISC",
-                         "type":"string",
-                         "value":"SLAM_SHUT"
-                        }],
-                 "rotation":0,
-                 "type":"SKELETON",
-                 "visible":true,
-                 "width":0,
-                 "x":393.5,
-                 "y":375.25
+                 "x":355,
+                 "y":355.25
                 }, 
                 {
                  "height":0,

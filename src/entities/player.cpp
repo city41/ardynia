@@ -13,7 +13,7 @@ void Player::reset() {
     moveTo(WIDTH / 2 - width, HEIGHT / 2 - height, true);
     dir = DOWN;
     tookDamageCount = 0;
-    numBombs = 6;
+    numBombs = 0;
     health = 2;
     receiveItemCount = 0;
 
