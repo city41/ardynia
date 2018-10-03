@@ -107,6 +107,6 @@ Edit the strings `strings.json` then run `make strings`. The resulting `src/stri
 * the "success jingle" sound effect is very bad. I just banged out something quick so I can have it take up space. I will make it nicer before releasing the game
 * the "boss roar" sound effect is pretty bad too, but not sure if I'll have enough room to improve it.
 * still a handful of bugs to fix (tracked in Trello)
-* only have 76 bytes left! Will probably need to hunt up some more bytes soon.
+* only have 68 bytes left! Will probably need to hunt up some more bytes soon.
 * investigate using ArduboyTones instead of PlayTune. Whichever one uses less space is the winner.
 

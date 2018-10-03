@@ -399,8 +399,10 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
             if (roomIsTriggered) {
                 currentEntity.currentFrame = 1;
             }
-        } else if (type == POT && !roomIsTriggered) {
-            currentEntity.health = entityMisc;
+        } else if (type == POT) {
+            if (!roomIsTriggered) {
+                currentEntity.health = entityMisc;
+            }
         } else if ((type == LOCK || type == KEY) && roomIsTriggered) {
             currentEntity.type = UNSET;
         } else if (entityMisc > 0) {
