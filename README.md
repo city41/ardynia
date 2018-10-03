@@ -53,7 +53,7 @@ See the existing entities in the map for reference. All of the available entity 
 1. with the entities layer selected, choose the "insert point" tool, and click where you want the blob.
 2. from the Properties panel in Tiled, set the name to something descriptive (anything you want) and the type to `BLOB`.
 
-Entities can also sport various custom properties depending on the entity and goal of the room. This custom propertie is stored in the top 3 bits of the entity, so it can have a max value of 7.
+Entities can also sport various custom properties depending on the entity and goal of the room. This custom property is stored in the top 3 bits of the entity, so it can have a max value of 7.
 
 * `CONTAINED_TYPE`: used by `POT` and `CHEST`. This should be a string type set to another entity type, such as `KEY`. See the existing pots or chests for reference. Only entities with value 7or less can be used.
 * `DEST_ROOM_X` and `DEST_ROOM_Y`: used by `TELEPORTER`. These are how the player goes from the overworld to a dungeon, and vice versa. These are integer values and are the x/y coordinates of a room. For example, on the overworld, the TELEPORTER for dungeon one goes to `(0,7)`, and if you look on dungeons.tmx, you'll see the room at `(0,7)` is the first room of dungeon 1. There can only be a total of 8 teleporters per map.
@@ -63,7 +63,7 @@ Entities can also sport various custom properties depending on the entity and go
     * `LAST_ENEMY_HAS_KEY`: if set, then once the player defeats all the enemies in the room a chest will appear containing a key
     * `LAST_ENEMY_HAS_HEART_CONTAINER`: same as above, but chest will have a heart container
     * `LAST_ENEMY_HAS_BOSS_KEY`: again, but this time chest has the boss key
-    * `THREE_SWITCHES_ONE_BOOMERANG`: sets the room up to be a puzzle involving switches and the player's boomerange. Despite its name, any number of switches can be set. The player must trip all of the switches with a single boomerange throw, and when they do a chest with a key in it will appear.
+    * `THREE_SWITCHES_ONE_BOOMERANG`: sets the room up to be a puzzle involving switches and the player's boomerang. Despite its name, any number of switches can be set. The player must trip all of the switches with a single boomerang throw, and when they do a chest with a key in it will appear.
     * `OPEN_CHESTS_IN_RIGHT_ORDER`: a puzzle involving chests. Place several chests in the room, the player must open them in order. If they do, they get a key. If they don't, they get shocked and take damage. You can change the order of the chests by dragging them around in Tiled.
     * `LAST_TORCH_OPENS_DOORS`: a puzzle involving the magic ring. Once the player lights all the torches in the room, the trigger doors will open.
 
@@ -108,3 +108,5 @@ Edit the strings `strings.json` then run `make strings`. The resulting `src/stri
 * the "boss roar" sound effect is pretty bad too, but not sure if I'll have enough room to improve it.
 * still a handful of bugs to fix (tracked in Trello)
 * only have 76 bytes left! Will probably need to hunt up some more bytes soon.
+* investigate using ArduboyTones instead of PlayTune. Whichever one uses less space is the winner.
+
