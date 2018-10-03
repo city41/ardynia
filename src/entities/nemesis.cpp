@@ -65,17 +65,16 @@ EntityType Nemesis::update(Entity* me, Entity& player, Game& game, Arduboy2Base&
         }
     }
 
-
     return UNSET;
 }
 
 EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
-    if (other.type == BOOMERANG) {
+    if (other.type == PROJECTILE) {
         me->duration = 100;
         mode = Hold;
     }
 
-    if ((other.type == SWORD || other.type == BOMB) && mode == Hold) {
+    if (other.type == SWORD && mode == Hold) {
         me->health -= 1;
         me->tookDamageCount = 100;
         me->bounceBack(other, player);
