@@ -3,11 +3,11 @@
 #include <ArduboyPlaytune.h>
 #include <math.h>
 
-#include "game.h"
-#include "renderer.h"
-#include "util.h"
-#include "sfx.h"
-#include "tileBitmaps.h"
+#include "src/game.h"
+#include "src/renderer.h"
+#include "src/util.h"
+#include "src/sfx.h"
+#include "src/tileBitmaps.h"
 
 Arduboy2Base arduboy;
 ArduboyPlaytune tones(arduboy.audio.enabled);
