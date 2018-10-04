@@ -11,6 +11,7 @@
 #include "entities/blob.h"
 #include "entities/bat.h"
 #include "entities/skeleton.h"
+#include "entities/spike.h"
 #include "entities/sword.h"
 #include "entities/boomerang.h"
 #include "entities/bomb.h"
@@ -99,85 +100,91 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     0,
     true,
 
-    // 9, GIANT_BAT
+    // 9, SPIKE
+    widthAndHeight(8, 8),
+    healthAndDamage(0, 1),
+    11,
+    false,
+
+    // 10, GIANT_BAT
     widthAndHeight(16, 16),
     healthAndDamage(8, 1),
     10,
     true,
 
-    // 10, BLOB_MOTHER
+    // 11, BLOB_MOTHER
     widthAndHeight(15, 16),
     healthAndDamage(6, 1),
     10,
     true,
 
-    // 11, NEMESIS
+    // 12, NEMESIS
     widthAndHeight(8, 8),
     healthAndDamage(15, 0),
     30,
     true,
 
-    // 12, TELEPORTER
+    // 13, TELEPORTER
     widthAndHeight(16, 4),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 13, LOCK
+    // 14, LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 14, BOSS_LOCK
+    // 15, BOSS_LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 15, PROJECTILE
+    // 16, PROJECTILE
     widthAndHeight(8, 8),
     healthAndDamage(0 , 2),
     20,
     false,
 
-    // 16, EXPLOSION
+    // 17, EXPLOSION
     widthAndHeight(16, 16),
     healthAndDamage(0 , 1),
     20,
     false,
 
-    // 17, SECRET_WALL
+    // 18, SECRET_WALL
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 18, TRIGGER_DOOR
+    // 19, TRIGGER_DOOR
     widthAndHeight(16, 8),
     healthAndDamage(0, 0),
     20,
     false,
 
-    // 19, SWITCH
+    // 20, SWITCH
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 20, POT
+    // 21, POT
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 21, SUNKEN_BRIDGE
+    // 22, SUNKEN_BRIDGE
     widthAndHeight(0, 0),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 22, TORCH
+    // 23, TORCH
     widthAndHeight(8, 8),
     healthAndDamage(1, 0),
     0,
@@ -231,72 +238,77 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Skeleton::update,
     (void*)CommonEnemy::onCollide,
 
-    // 9, GIANT_BAT
+    // 9, SKELETON
+    spike_tiles,
+    (void*)Spike::update,
+    (void*)Spike::onCollide,
+
+    // 10, GIANT_BAT
     giantBat_plus_mask,
     (void*)Bat::update,
     (void*)Bat::onCollide,
 
-    // 10, BLOB_MOTHER
+    // 11, BLOB_MOTHER
     blobMother_plus_mask,
     (void*)BlobMother::update,
     (void*)CommonEnemy::onCollide,
 
-    // 11, NEMESIS
+    // 12, NEMESIS
     player_plus_mask,
     (void*)Nemesis::update,
     (void*)Nemesis::onCollide,
 
-    // 12, TELEPORTER
+    // 13, TELEPORTER
     NULL,
     NULL,
     NULL,
 
-    // 13, LOCK
+    // 14, LOCK
     lock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 14, BOSS_LOCK
+    // 15, BOSS_LOCK
     bossLock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 15, PROJECTILE
+    // 16, PROJECTILE
     projectile_tiles,
     (void*)Projectile::update,
     NULL,
 
-    // 16, EXPLOSION
+    // 17, EXPLOSION
     explosion_tiles,
     (void*)Explosion::update,
     NULL,
 
-    // 17, SECRET_WALL
+    // 18, SECRET_WALL
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
 
-    // 18, TRIGGER_DOOR
+    // 19, TRIGGER_DOOR
     NULL,
     (void*)TriggerDoor::update,
     (void*)TriggerDoor::onCollide,
 
-    // 19, SWITCH
+    // 20, SWITCH
     switch_tiles,
     NULL,
     (void*)Switch::onCollide,
 
-    // 20, POT
+    // 21, POT
     pot_tiles,
     NULL,
     (void*)Pot::onCollide,
 
-    // 21, SUNKEN_BRIDGE
+    // 22, SUNKEN_BRIDGE
     NULL,
     NULL,
     NULL,
 
-    // 22, TORCH
+    // 23, TORCH
     torch_tiles,
     (void*)Torch::update,
     (void*)Torch::onCollide

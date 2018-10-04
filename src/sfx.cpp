@@ -175,6 +175,17 @@ const PROGMEM uint8_t bossRoar_sfx[] = {
 };
 const uint8_t* Sfx::bossRoar = bossRoar_sfx;
 
+const PROGMEM uint8_t metalCling_sfx[] = {
+    startNote(0),
+    MIDDLE_A + 40,
+    delayHigh(0),
+    delayLow(15),
+    stopNote(0),
+    endOfScore
+};
+
+const uint8_t* Sfx::metalCling = metalCling_sfx;
+
 void Sfx::init(ArduboyPlaytune* t) {
     tones = t;
     tones->initChannel(PIN_SPEAKER_1);

@@ -16,32 +16,33 @@ const EntityType KEY = 3;
 const EntityType HEART = 4;
 const EntityType CHEST = 5;
 
-// enemies, to be named
+// enemies
 const EntityType BLOB = 6;
 const EntityType BAT = 7;
 const EntityType SKELETON = 8;
+const EntityType SPIKE = 9;
 
 // bosses
-const EntityType GIANT_BAT = 9;
-const EntityType BLOB_MOTHER = 10;
-const EntityType NEMESIS = 11;
+const EntityType GIANT_BAT = 10;
+const EntityType BLOB_MOTHER = 11;
+const EntityType NEMESIS = 12;
 
 // things related to navigating maps
 // and interacting with the world
-const EntityType TELEPORTER = 12; // aka a door
-const EntityType LOCK = 13;
-const EntityType BOSS_LOCK = 14;
+const EntityType TELEPORTER = 13; // aka a door
+const EntityType LOCK = 14;
+const EntityType BOSS_LOCK = 15;
 
 // projectiles
-const EntityType PROJECTILE = 15;
-const EntityType EXPLOSION = 16; 
+const EntityType PROJECTILE = 16;
+const EntityType EXPLOSION = 17; 
 // misc
-const EntityType SECRET_WALL = 17;
-const EntityType TRIGGER_DOOR = 18;
-const EntityType SWITCH = 19;
-const EntityType POT = 20;
-const EntityType SUNKEN_BRIDGE = 21;
-const EntityType TORCH = 22;
+const EntityType SECRET_WALL = 18;
+const EntityType TRIGGER_DOOR = 19;
+const EntityType SWITCH = 20;
+const EntityType POT = 21;
+const EntityType SUNKEN_BRIDGE = 22;
+const EntityType TORCH = 23;
 
 const uint8_t NUM_ENTITIES = TORCH + 1;
 

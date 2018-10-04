@@ -5,8 +5,7 @@
 
 /**
  * bats just fly all over the screen. They pick a direction and go that way for a while, then pick
- * another direction. Every time they pick a new direction, there's a chance they choose to rest
- * instead.
+ * another direction.
  *
  * Giant Bat moves in the same way except it never rests
  * Having Bat and Giant Bat use the same update is messy code but great byte savings

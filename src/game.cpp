@@ -237,7 +237,16 @@ void Game::detectEntityCollisions(void) {
                 newEntity = player.entities[pe].onCollide(entities[ge], player, *this);
                 spawnNewEntity(newEntity, player.entities[pe]);
             }
+        }
 
+        for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+            if (ge == e) {
+                continue;
+            }
+            if (entities[ge].overlaps(entities[e])) {
+                entities[ge].onCollide(entities[e], player, *this);
+                entities[e].onCollide(entities[ge], player, *this);
+            }
         }
     }
 
@@ -373,7 +382,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
 
-        isBossRoom = isBossRoom || (type > SKELETON && type < TELEPORTER);
+        isBossRoom = isBossRoom || (type > SPIKE && type < TELEPORTER);
 
         if (type == TRIGGER_DOOR && entityMisc) {
             // if a trigger door's misc is set, it wants to be vertical
