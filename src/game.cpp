@@ -334,10 +334,8 @@ int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
     }
 
     loadEntity(entities[e], entityType);
-    int16_t offsetX = (entities[e].width - spawner.width) / 2;
-    int16_t offsetY = (entities[e].height - spawner.height) / 2;
-    entities[e].x = spawner.x - offsetX;
-    entities[e].y = spawner.y - offsetY;
+    entities[e].x = spawner.x;
+    entities[e].y = spawner.y;
 
     return e;
 }
