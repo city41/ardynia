@@ -293,24 +293,6 @@
    </properties>
    <point/>
   </object>
-  <object id="208" name="spike" type="SPIKE" x="204.818" y="248.515">
-   <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
-   </properties>
-   <point/>
-  </object>
-  <object id="209" name="spike" type="SPIKE" x="205.242" y="193.091">
-   <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
-   </properties>
-   <point/>
-  </object>
-  <object id="210" name="spike" type="SPIKE" x="131.818" y="249.091">
-   <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup id="6" name="guidelines" locked="1">
   <object id="21" x="0" y="0" width="112" height="64"/>

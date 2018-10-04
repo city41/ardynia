@@ -903,60 +903,6 @@
                  "width":0,
                  "x":401.182,
                  "y":364.182
-                }, 
-                {
-                 "height":0,
-                 "id":208,
-                 "name":"spike",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
-                 "rotation":0,
-                 "type":"SPIKE",
-                 "visible":true,
-                 "width":0,
-                 "x":204.818181818182,
-                 "y":248.515151515152
-                }, 
-                {
-                 "height":0,
-                 "id":209,
-                 "name":"spike",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
-                 "rotation":0,
-                 "type":"SPIKE",
-                 "visible":true,
-                 "width":0,
-                 "x":205.242424242424,
-                 "y":193.090909090909
-                }, 
-                {
-                 "height":0,
-                 "id":210,
-                 "name":"spike",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
-                 "rotation":0,
-                 "type":"SPIKE",
-                 "visible":true,
-                 "width":0,
-                 "x":131.818181818182,
-                 "y":249.090909090909
                 }],
          "opacity":1,
          "type":"objectgroup",

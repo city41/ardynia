@@ -195,24 +195,6 @@ const uint8_t PROGMEM overworld_room0_5[] = {
 
 
 
-const uint8_t PROGMEM overworld_room1_3[] = {
-    3, // number of entities
-
-    // entity 0
-    miscAndEntityType(0, SPIKE),
-    xy(96, 56),
-
-    // entity 1
-    miscAndEntityType(0, SPIKE),
-    xy(96, 0),
-
-    // entity 2
-    miscAndEntityType(0, SPIKE),
-    xy(16, 56),
-};
-
-
-
 const uint8_t PROGMEM overworld_room1_4[] = {
     2, // number of entities
 
@@ -546,7 +528,7 @@ const uint8_t * const PROGMEM overworld_row2[7] = {
 
 const uint8_t * const PROGMEM overworld_row3[7] = {
     overworld_room0_3,
-    overworld_room1_3,
+    empty_room,
     overworld_room2_3,
     overworld_room3_3,
     overworld_room4_3,

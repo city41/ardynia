@@ -239,13 +239,16 @@ void Game::detectEntityCollisions(void) {
             }
         }
 
-        for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
-            if (ge == e) {
-                continue;
-            }
-            if (entities[ge].overlaps(entities[e])) {
-                entities[ge].onCollide(entities[e], player, *this);
-                entities[e].onCollide(entities[ge], player, *this);
+        if (entities[ge].type == SPIKE) {
+            for (uint8_t e = 0; e < MAX_ENTITIES; ++e) {
+                if (ge == e || entities[e].type != SPIKE) {
+                    continue;
+                }
+
+                if (entities[ge].overlaps(entities[e])) {
+                    entities[ge].onCollide(entities[e], player, *this);
+                    entities[e].onCollide(entities[ge], player, *this);
+                }
             }
         }
     }

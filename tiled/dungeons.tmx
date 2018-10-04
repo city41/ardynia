@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="496">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="503">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -34,7 +34,7 @@
 2,12,7,12,12,12,12,1,1,1,1,7,7,7,2,5,12,12,12,12,5,5,5,5,5,5,5,5,2,12,12,12,12,12,10,5,5,12,12,12,12,5,5,1,1,1,1,1,5,5,12,12,12,12,12,5,
 3,1,7,1,1,1,1,1,1,1,1,7,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
 3,1,7,1,1,1,1,1,1,1,1,6,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,5,5,1,1,1,1,1,1,1,5,1,1,1,5,5,5,1,1,1,1,1,5,5,1,1,1,1,5,5,
-9,4,7,1,4,4,4,4,4,4,4,7,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5
+9,4,7,1,4,4,4,4,4,4,4,6,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5
 </data>
  </layer>
  <objectgroup id="2" name="entities">
@@ -517,7 +517,7 @@
    </properties>
    <point/>
   </object>
-  <object id="404" name="torch" type="TORCH" x="867.333" y="25.6667">
+  <object id="404" name="torch" type="TORCH" x="802" y="19">
    <point/>
   </object>
   <object id="405" name="trigger door" type="TRIGGER_DOOR" x="482" y="33.6667">
@@ -595,16 +595,13 @@
   <object id="426" name="blob" type="BLOB" x="162.667" y="414">
    <point/>
   </object>
-  <object id="427" name="bomb" type="BOMB" x="548" y="24.3333">
-   <point/>
-  </object>
-  <object id="428" name="pot with bombs" type="POT" x="817.5" y="17.5">
+  <object id="428" name="pot with bombs" type="POT" x="850.833" y="35.8333">
    <properties>
     <property name="CONTAINED_TYPE" value="BOMB"/>
    </properties>
    <point/>
   </object>
-  <object id="429" name="pot with bombs" type="POT" x="834.667" y="19">
+  <object id="429" name="pot with bombs" type="POT" x="851.334" y="19.6667">
    <properties>
     <property name="CONTAINED_TYPE" value="BOMB"/>
    </properties>
@@ -823,13 +820,52 @@
   <object id="491" name="switch" type="SWITCH" x="499" y="492.5">
    <point/>
   </object>
-  <object id="493" name="torch" type="TORCH" x="514" y="34.1818">
+  <object id="493" name="torch" type="TORCH" x="513.667" y="50.1818">
    <point/>
   </object>
   <object id="494" name="lock" type="LOCK" x="464.545" y="369.455">
    <point/>
   </object>
   <object id="495" name="lock" type="LOCK" x="529.273" y="369.091">
+   <point/>
+  </object>
+  <object id="496" name="spike" type="SPIKE" x="368.708" y="1.20833">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="497" name="spike" type="SPIKE" x="368.833" y="57.5417">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="498" name="spike" type="SPIKE" x="378.25" y="1.29163">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="499" name="spike" type="SPIKE" x="378.375" y="57.625">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="500" name="spike" type="SPIKE" x="400.75" y="1.04163">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="501" name="spike" type="SPIKE" x="400.875" y="57.375">
+   <properties>
+    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="502" name="spike" type="SPIKE" x="817.667" y="2.66667">
    <point/>
   </object>
  </objectgroup>
