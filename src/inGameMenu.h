@@ -2,7 +2,6 @@
 #define ingamemenu_h
 
 #include <Arduboy2.h>
-#include "renderer.h"
 #include "entityTypes.h"
 #include "entities/player.h"
 
@@ -19,7 +18,7 @@ class InGameMenu {
         {}
 
         void update(Arduboy2Base& arduboy, uint8_t frame);
-        void render(Renderer& renderer, Player& player, uint8_t frame);
+        void render(Player& player, uint8_t frame);
 };
 
 #endif

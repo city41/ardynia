@@ -6,6 +6,9 @@
 #include "../sfx.h"
 #include "../itemSprites.h"
 #include "../game.h"
+#include "../renderer.h"
+
+extern Renderer renderer;
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -79,7 +82,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 6, 0
 };
 
-void Player::render(Renderer& renderer, byte frame) {
+void Player::render(uint8_t frame) {
     // recovering from damage? "flash" the player every third frame
     // TODO: this is duplicated in Entity::render, DRY?
     if (tookDamageCount > 0 && tookDamageCount % 3 == 1) {

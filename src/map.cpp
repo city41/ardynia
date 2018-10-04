@@ -2,10 +2,13 @@
 #include "state.h"
 #include "strings.h"
 #include "tileBitmaps.h"
+#include "renderer.h"
+
+extern Renderer renderer;
 
 uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
 
-void Map::render(Renderer& renderer, uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
+void Map::render(uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
     // "MAP" label
     renderer.drawString(0, 0, map_string);
 

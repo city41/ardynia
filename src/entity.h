@@ -1,13 +1,14 @@
 #ifndef entity_h
 #define entity_h
 
+#include <Arduboy2.h>
 #include "mirrorMode.h"
 #include "direction.h"
 #include "entityTypes.h"
 #include "util.h"
-#include "renderer.h"
 
 class Game;
+
 class Entity {
     protected:
         Direction determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction prevDir) {
@@ -119,7 +120,7 @@ class Entity {
             y = prevY;
         }
 
-        virtual void render(Renderer& renderer, uint8_t frame);
+        virtual void render(uint8_t frame);
         virtual EntityType update(Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
         virtual EntityType onCollide(Entity& other, Entity& player, Game& game);
 

@@ -3,7 +3,6 @@
 
 #include <Arduino.h>
 #include <Arduboy2.h>
-#include "renderer.h"
 #include "dungeons.h"
 
 enum TileDef: uint8_t {
@@ -38,12 +37,12 @@ struct TileRoom {
         static uint8_t currentRoomOffset;
         static uint8_t nextRoomOffset;
 
-        static void renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed);
+        static void renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed);
         static uint8_t getRoomIndex(uint8_t x, uint8_t y);
         static TileDef getTileAt(uint8_t px, uint8_t py);
         static void setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile);
 
-        static void renderRoom(Renderer& renderer, uint8_t offset);
+        static void renderRoom(uint8_t offset);
 
         static void loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset);
         static void loadCurrentRoom(uint8_t roomX, uint8_t roomY);

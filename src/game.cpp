@@ -6,7 +6,10 @@
 #include "tileBitmaps.h"
 #include "strings.h"
 #include "sfx.h"
+#include "renderer.h"
 #include "entities/nemesis.h"
+
+extern Renderer renderer;
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -631,28 +634,28 @@ void Game::renderPlay(uint8_t frame) {
     bool lit = roomIsLit();
 
     if (lit) {
-        TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+        TileRoom::renderRoom(TileRoom::currentRoomOffset);
     }
 
     int8_t e = 0;
     for(; e < MAX_ENTITIES; ++e) {
         if (lit || entities[e].type == TORCH) {
-            entities[e].render(renderer, frame);
+            entities[e].render(frame);
         }
     }
 
-    player.render(renderer, frame);
+    player.render(frame);
 
     for (e = 0; e < MAX_PLAYER_ENTITIES; ++e) {
-        player.entities[e].render(renderer, frame);
+        player.entities[e].render(frame);
     }
 
 
-    Nemesis::sword.render(renderer, frame);
+    Nemesis::sword.render(frame);
 
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
-    Hud::render(renderer, player);
+    Hud::render(player);
 }
 
 void Game::updateMenu(uint8_t frame) {
@@ -670,12 +673,12 @@ void Game::updateMenu(uint8_t frame) {
 }
 
 void Game::renderMenu(uint8_t frame) {
-    menu.render(renderer, player, frame);
+    menu.render(player, frame);
 
     renderer.translateX = 54;
     renderer.translateY = 0;
 
-    Map::render(renderer, mapWidthInRooms, TileRoom::x, TileRoom::y);
+    Map::render(mapWidthInRooms, TileRoom::x, TileRoom::y);
 }
 
 void Game::updateRoomTransition(uint8_t frame) {
@@ -734,7 +737,7 @@ void Game::renderRoomTransition(uint8_t frame) {
     renderer.translateY = translateY;
 
     if (lastRoomWasLit && (translateX || translateY)) {
-        TileRoom::renderRoom(renderer, TileRoom::currentRoomOffset);
+        TileRoom::renderRoom(TileRoom::currentRoomOffset);
     }
 
     // draw next room translated
@@ -745,24 +748,24 @@ void Game::renderRoomTransition(uint8_t frame) {
 
     bool lit = roomIsLit();
     if (lit) {
-        TileRoom::renderRoom(renderer, TileRoom::nextRoomOffset);
+        TileRoom::renderRoom(TileRoom::nextRoomOffset);
     }
 
     for (uint8_t ge = 0; ge < MAX_ENTITIES; ++ge) {
         if (!lit && entities[ge].type != TORCH) {
             continue;
         }
-        entities[ge].render(renderer, frame);
+        entities[ge].render(frame);
     }
     
     // draw player and entities translated
     renderer.translateX = translateX;
     renderer.translateY = translateY;
-    player.render(renderer, frame);
+    player.render(frame);
 
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
-    Hud::render(renderer, player);
+    Hud::render(player);
 }
 
 void Game::update(uint8_t frame) {

@@ -6,6 +6,9 @@
 #include "strings.h"
 #include "hud.h"
 #include "itemSprites.h"
+#include "renderer.h"
+
+extern Renderer renderer;
 
 void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
     const int8_t maxRows = State::gameState.numAcquiredItems;
@@ -25,10 +28,10 @@ void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
     chosenItem = row + 1;
 }
 
-void InGameMenu::render(Renderer& renderer, Player& player, uint8_t frame) {
+void InGameMenu::render(Player& player, uint8_t frame) {
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
-    Hud::render(renderer, player);
+    Hud::render(player);
     renderer.translateX = 0;
 
     const uint8_t x = 20;

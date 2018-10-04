@@ -44,7 +44,7 @@ class Player: public Entity {
             moveTo(px, py, true);
         }
 
-        virtual void render(Renderer& renderer, uint8_t frame) override;
+        virtual void render(uint8_t frame) override;
         virtual EntityType update(Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) override;
         virtual EntityType onCollide(Entity& other, Entity& player, Game& game) override;
 };

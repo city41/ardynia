@@ -3,6 +3,9 @@
 #include "util.h"
 #include "drawBitmap.h"
 #include "state.h"
+#include "renderer.h"
+
+extern Renderer renderer;
 
 // header consists of
 // length of the data (two bytes)
@@ -31,7 +34,7 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(Renderer& renderer, uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {   
+void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
@@ -63,7 +66,7 @@ void TileRoom::setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile) {
     rooms[offset + targetTileIndex] = tile;
 }
 
-void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {
+void TileRoom::renderRoom(uint8_t offset) {
     uint8_t* tiles = rooms + offset;
     uint8_t seed = 0;
 
@@ -73,7 +76,7 @@ void TileRoom::renderRoom(Renderer& renderer, uint8_t offset) {
         uint8_t tileId = tiles[ti];
         seed += tileId + 1;
 
-        renderTile(renderer, tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
+        renderTile(tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
     }
 }
 

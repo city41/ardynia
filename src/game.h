@@ -2,7 +2,6 @@
 #define gameScene_h
 
 #include <Arduboy2.h>
-#include "renderer.h"
 #include "overworld.h"
 #include "dungeons.h"
 #include "tileRoom.h"
@@ -29,7 +28,6 @@ class Game {
 
     private:
         Arduboy2Base& arduboy;
-        Renderer& renderer;
 
         uint8_t titleRow;
 
@@ -108,9 +106,8 @@ class Game {
         bool areAllSwitchesTriggered(void);
         bool areAllTorchesLit(void);
 
-        Game(Arduboy2Base& arduboy, Renderer& renderer):
+        Game(Arduboy2Base& arduboy):
             arduboy(arduboy),
-            renderer(renderer),
             titleRow(0),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
             nextRoomX(0),

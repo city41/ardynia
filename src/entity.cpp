@@ -5,6 +5,9 @@
 #include "tileBitmaps.h"
 #include "state.h"
 #include "game.h"
+#include "renderer.h"
+
+extern Renderer renderer;
 
 const uint8_t BOUNCE_AMOUNT = 16;
 
@@ -88,7 +91,7 @@ void Entity::rotateViaMirror(uint8_t frame) {
     mirror = newMirror;
 }
 
-void Entity::render(Renderer& renderer, uint8_t renderFrame) {
+void Entity::render(uint8_t renderFrame) {
 
     DrawMode drawMode = State::isInDungeon() ? (type == BAT ? Xor : Invert) : Normal;
 
