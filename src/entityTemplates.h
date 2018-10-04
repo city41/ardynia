@@ -63,127 +63,121 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     150,
     true,
 
-    // 3, RING
-    widthAndHeight(6, 8),
-    healthAndDamage(0, 0),
-    150,
-    true,
-
-    // 4, KEY
+    // 3, KEY
     widthAndHeight(3, 8),
     healthAndDamage(0, 0),
     0,
     true,
 
-    // 5, HEART
+    // 4, HEART
     widthAndHeight(7, 8),
     healthAndDamage(0, 0),
     180,
     true,
 
-    // 6, CHEST
+    // 5, CHEST
     widthAndHeight(14, 8),
     healthAndDamage(0, 0),
     20,
     false,
 
-    // 7, BLOB
+    // 6, BLOB
     widthAndHeight(8, 8),
     healthAndDamage(2, 1),
     0,          // duration
     true,       // needsMask
 
-    // 8, BAT
+    // 7, BAT
     widthAndHeight(8, 8),
     healthAndDamage(1, 1),
     0,
     true,
 
-    // 9, SKELETON
+    // 8, SKELETON
     widthAndHeight(16, 16),
     healthAndDamage(2, 1),
     0,
     true,
 
-    // 10, GIANT_BAT
+    // 9, GIANT_BAT
     widthAndHeight(16, 16),
     healthAndDamage(8, 1),
     10,
     true,
 
-    // 11, BLOB_MOTHER
+    // 10, BLOB_MOTHER
     widthAndHeight(15, 16),
     healthAndDamage(6, 1),
     10,
     true,
 
-    // 12, NEMESIS
+    // 11, NEMESIS
     widthAndHeight(8, 8),
     healthAndDamage(15, 0),
     30,
     true,
 
-    // 13, TELEPORTER
+    // 12, TELEPORTER
     widthAndHeight(16, 4),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 14, LOCK
+    // 13, LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 15, BOSS_LOCK
+    // 14, BOSS_LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 16, PROJECTILE
+    // 15, PROJECTILE
     widthAndHeight(8, 8),
     healthAndDamage(0 , 2),
     20,
     false,
 
-    // 17, EXPLOSION
+    // 16, EXPLOSION
     widthAndHeight(16, 16),
     healthAndDamage(0 , 1),
     20,
     false,
 
-    // 18, SECRET_WALL
+    // 17, SECRET_WALL
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 19, TRIGGER_DOOR
+    // 18, TRIGGER_DOOR
     widthAndHeight(16, 8),
     healthAndDamage(0, 0),
     20,
     false,
 
-    // 20, SWITCH
+    // 19, SWITCH
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 21, POT
+    // 20, POT
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 22, SUNKEN_BRIDGE
+    // 21, SUNKEN_BRIDGE
     widthAndHeight(0, 0),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 23, TORCH
+    // 22, TORCH
     widthAndHeight(8, 8),
     healthAndDamage(1, 0),
     0,
@@ -207,107 +201,102 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Bomb::update,
     NULL,
 
-    // 3, RING
-    ring_plus_mask,
-    NULL,
-    NULL,
-
-    // 4, KEY
+    // 3, KEY
     key_plus_mask,
     NULL,
     NULL,
 
-    // 5, HEART
+    // 4, HEART
     heart_plus_mask,
     NULL,
     NULL,
 
-    // 6, CHEST
+    // 5, CHEST
     chest_tiles,
     (void*)Chest::update,
     NULL,
 
-    // 7, BLOB
+    // 6, BLOB
     blob_plus_mask,
     (void*)Blob::update,
     (void*)CommonEnemy::onCollide,
 
-    // 8, BAT
+    // 7, BAT
     bat_plus_mask,
     (void*)Bat::update,
     (void*)Bat::onCollide,
 
-    // 9, SKELETON
+    // 8, SKELETON
     skeleton_plus_mask,
     (void*)Skeleton::update,
     (void*)CommonEnemy::onCollide,
 
-    // 10, GIANT_BAT
+    // 9, GIANT_BAT
     giantBat_plus_mask,
     (void*)Bat::update,
     (void*)Bat::onCollide,
 
-    // 11, BLOB_MOTHER
+    // 10, BLOB_MOTHER
     blobMother_plus_mask,
     (void*)BlobMother::update,
     (void*)CommonEnemy::onCollide,
 
-    // 12, NEMESIS
+    // 11, NEMESIS
     player_plus_mask,
     (void*)Nemesis::update,
     (void*)Nemesis::onCollide,
 
-    // 13, TELEPORTER
+    // 12, TELEPORTER
     NULL,
     NULL,
     NULL,
 
-    // 14, LOCK
+    // 13, LOCK
     lock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 15, BOSS_LOCK
+    // 14, BOSS_LOCK
     bossLock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 16, PROJECTILE
+    // 15, PROJECTILE
     projectile_tiles,
     (void*)Projectile::update,
     NULL,
 
-    // 17, EXPLOSION
+    // 16, EXPLOSION
     explosion_tiles,
     (void*)Explosion::update,
     NULL,
 
-    // 18, SECRET_WALL
+    // 17, SECRET_WALL
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
 
-    // 19, TRIGGER_DOOR
+    // 18, TRIGGER_DOOR
     NULL,
     (void*)TriggerDoor::update,
     (void*)TriggerDoor::onCollide,
 
-    // 20, SWITCH
+    // 19, SWITCH
     switch_tiles,
     NULL,
     (void*)Switch::onCollide,
 
-    // 21, POT
+    // 20, POT
     pot_tiles,
     NULL,
     (void*)Pot::onCollide,
 
-    // 22, SUNKEN_BRIDGE
+    // 21, SUNKEN_BRIDGE
     NULL,
     NULL,
     NULL,
 
-    // 23, TORCH
+    // 22, TORCH
     torch_tiles,
     (void*)Torch::update,
     (void*)Torch::onCollide

@@ -257,7 +257,10 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
             State::gameState.hasSword = 1;
         }
 
-        if (receivedItem > SWORD && receivedItem < KEY) {
+        if (
+            (receivedItem > SWORD && receivedItem < KEY) ||
+            receivedItem == RING
+        ) {
             State::gameState.numAcquiredItems = min(3, State::gameState.numAcquiredItems + 1);
 
             bButtonEntityType = receivedItem;

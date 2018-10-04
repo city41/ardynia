@@ -271,7 +271,7 @@ const uint8_t PROGMEM dungeons_room0_6[] = {
     xy(32, 20),
 
     // entity 1
-    miscAndEntityType(4, POT),
+    miscAndEntityType(3, POT),
     xy(16, 12),
 
     // entity 2
@@ -309,7 +309,7 @@ const uint8_t PROGMEM dungeons_room0_7[] = {
     xy(48, 60),
 
     // entity 1
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(3, CHEST),
     xy(16, 16),
 
     // entity 2
@@ -353,7 +353,7 @@ const uint8_t PROGMEM dungeons_room1_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(4, CHEST),
     xy(32, 20),
 };
 
@@ -453,7 +453,7 @@ const uint8_t PROGMEM dungeons_room1_7[] = {
     xy(80, 20),
 
     // entity 2
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(3, CHEST),
     xy(80, 36),
 };
 
@@ -733,7 +733,7 @@ const uint8_t PROGMEM dungeons_room4_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(3, CHEST),
     xy(48, 12),
 };
 
@@ -747,7 +747,7 @@ const uint8_t PROGMEM dungeons_room4_2[] = {
     xy(48, 0),
 
     // entity 1
-    miscAndEntityType(3, CHEST),
+    miscAndEntityType(5, CHEST),
     xy(80, 36),
 
     // entity 2
@@ -935,7 +935,7 @@ const uint8_t PROGMEM dungeons_room5_3[] = {
     xy(80, 48),
 
     // entity 3
-    miscAndEntityType(4, POT),
+    miscAndEntityType(3, POT),
     xy(80, 20),
 };
 
@@ -985,7 +985,7 @@ const uint8_t PROGMEM dungeons_room5_6[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(4, POT),
+    miscAndEntityType(3, POT),
     xy(16, 20),
 
     // entity 1
@@ -1043,7 +1043,7 @@ const uint8_t PROGMEM dungeons_room6_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(4, CHEST),
     xy(32, 20),
 };
 
@@ -1057,7 +1057,7 @@ const uint8_t PROGMEM dungeons_room6_2[] = {
     xy(64, 32),
 
     // entity 1
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(3, CHEST),
     xy(80, 20),
 };
 
@@ -1205,7 +1205,7 @@ const uint8_t PROGMEM dungeons_room7_4[] = {
     xy(16, 60),
 
     // entity 1
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(4, CHEST),
     xy(64, 20),
 };
 
