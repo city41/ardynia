@@ -13,10 +13,6 @@ const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
 const uint8_t ROOM_HEIGHT_PX = HEIGHT;
 const uint8_t FINAL_BOSS_ROOM = 59;
 
-const int8_t newGameLabel[] PROGMEM = "NEW GAME";
-const int8_t continueLabel[] PROGMEM = "CONTINUE";
-const int8_t deleteSaveLabel[] PROGMEM = "DELETE SAVE";
-
 const uint8_t PLAY_GAME = 0;
 const uint8_t SFX_ON_OFF = 1;
 const uint8_t DELETE_SAVE = 2;
