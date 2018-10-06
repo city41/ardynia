@@ -87,9 +87,7 @@ void Game::pop() {
 }
 
 void Game::updateGameOver(uint8_t frame) {
-    if (teleportTransitionCount > 0) {
-        teleportTransitionCount -= 1;
-    } else if (arduboy.justPressed(UP_BUTTON)) {
+    if (arduboy.justPressed(UP_BUTTON)) {
         titleRow = 0;
     } else if (arduboy.justPressed(DOWN_BUTTON)) {
         titleRow = 1;
@@ -99,28 +97,13 @@ void Game::updateGameOver(uint8_t frame) {
 }
 
 void Game::renderGameOver(uint8_t frame) {
-    renderPlay(frame);
-
-    renderer.translateX = 0;
-    renderer.translateY = 0;
-
-    // draw a black rectangle in the middle of the screen that grows
-    // as the transition progresses
-    // TODO: this is similar to renderTeleportTransition, can this be DRY'd?
-    uint8_t rectW = 128 - (teleportTransitionCount * 4);
-    uint8_t rectH = rectW / 2;
-    uint8_t rectX = 64 - rectW / 2;
-    uint8_t rectY = 32 - rectH / 2;
-
-    renderer.fillRect(rectX, rectY, rectW, rectH, BLACK);
+    renderer.fillRect(0, 0, WIDTH, HEIGHT, BLACK);
 
     renderer.drawString(42, 20, gameOver_string);
 
-    if (teleportTransitionCount == 0) {
-        renderer.drawOverwrite(34, 42 + titleRow * 8, squareIcon_tiles, 2);
-        renderer.drawString(42, 42, continue_string);
-        renderer.drawString(42, 50, quitFromGameOver_string);
-    }
+    renderer.drawOverwrite(34, 42 + titleRow * 8, squareIcon_tiles, 2);
+    renderer.drawString(42, 42, continue_string);
+    renderer.drawString(42, 50, quitFromGameOver_string);
 }
 
 void Game::updateTeleportTransition(uint8_t frame) {
@@ -588,8 +571,6 @@ void Game::updatePlay(uint8_t frame) {
     }
 
     if (player.health <= 0) {
-        teleportTransitionCount = WIDTH / 4;
-        player.movedThisFrame = false;
         titleRow = 0;
         State::saveToEEPROM();
         push(&Game::updateGameOver, &Game::renderGameOver);
