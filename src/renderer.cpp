@@ -17,12 +17,12 @@ void Renderer::drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t
     drawBitmap(x + translateX, y + translateY, bitmap, NULL, true, frame, mirror, drawMode);
 }
 
-void Renderer::drawString(int16_t x, int16_t y, const uint8_t* str) {
+void Renderer::drawString(int8_t x, int8_t y, const uint8_t* str) {
     uint8_t ch = pgm_read_byte(str++);
 
     while (ch != 0xFF) {
         const uint8_t frame = ch >> 1;
-        const int16_t offset = ch & 1 ? -4 : 0; 
+        const int8_t offset = ch & 1 ? -4 : 0; 
         const uint8_t* mask = offset ? font_tiles_lower_mask : font_tiles_upper_mask;
 
         drawBitmap(x + translateX, y + offset + translateY, font_tiles, mask, false, frame, 0, Invert, 0);
