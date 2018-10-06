@@ -69,7 +69,7 @@ void Entity::bounceBack(Entity& bounceAwayFromA, Entity& bounceAwayFromB) {
     }
 
     Direction curDir = dir;
-    moveTo(Util::clamp(x + bounceXAmount, 0, WIDTH - 13 - width), Util::clamp(y + bounceYAmount, 0, HEIGHT - height - 1));
+    moveTo(Util::clamp(x + bounceXAmount, 0, WIDTH - 17 - width), Util::clamp(y + bounceYAmount, 0, HEIGHT - height - 1));
     dir = curDir;
 }
 
