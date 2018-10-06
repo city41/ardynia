@@ -4,7 +4,7 @@ const Canvas = require("canvas");
 const Image = Canvas.Image;
 const tinyFontMap = require("./tinyFontTileMap");
 
-const fontPng = path.join(__dirname, "tinyfont_spaceA_Zcolon.png");
+const fontPng = path.join(__dirname, "tinyfont_spaceA_Zexclamation.png");
 const fileData = fs.readFileSync(fontPng);
 const img = new Image();
 img.src = fileData;

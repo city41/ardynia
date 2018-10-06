@@ -118,7 +118,7 @@ void Game::renderGameOver(uint8_t frame) {
 
     if (teleportTransitionCount == 0) {
         renderer.drawOverwrite(34, 42 + titleRow * 8, squareIcon_tiles, 2);
-        renderer.drawString(42, 42, continueFromGameOver_string);
+        renderer.drawString(42, 42, continue_string);
         renderer.drawString(42, 50, quitFromGameOver_string);
     }
 }

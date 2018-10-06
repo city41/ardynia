@@ -24,6 +24,8 @@ const uint8_t PROGMEM font_tiles[] =  {
     0xe,0x70,0x7e,0xe,
     // 'V' and 'W'
     0x8,0x77,0x37,0x8,
+    // 'X' and '!'
+    0xd6,0xb9,0xd9,0xe6,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -53,27 +55,21 @@ const uint8_t deleteSave_string[12] PROGMEM = {
 };
 
 
-// "SOUND IS ON"
-const uint8_t sfxOn_string[12] PROGMEM = {
-    15, 11, 17, 10, 3, 0, 7, 15, 0, 11, 10, 0xFF
+// "SFX!"
+const uint8_t sfxOn_string[5] PROGMEM = {
+    15, 5, 20, 21, 0xFF
 };
 
 
-// "SOUND IS OFF"
-const uint8_t sfxOff_string[13] PROGMEM = {
-    15, 11, 17, 10, 3, 0, 7, 15, 0, 11, 5, 5, 0xFF
+// "SFX"
+const uint8_t sfxOff_string[4] PROGMEM = {
+    15, 5, 20, 0xFF
 };
 
 
 // "GAME OVER"
 const uint8_t gameOver_string[10] PROGMEM = {
     6, 1, 9, 4, 0, 11, 18, 4, 14, 0xFF
-};
-
-
-// "CONTINUE"
-const uint8_t continueFromGameOver_string[9] PROGMEM = {
-    2, 11, 10, 16, 7, 10, 17, 4, 0xFF
 };
 
 

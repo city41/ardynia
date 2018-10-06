@@ -1,8 +1,8 @@
 module.exports = function buildEncoding(usedCharacters) {
     const spaceUsed = usedCharacters.indexOf(" ") > -1;
-    const colonUsed = usedCharacters.indexOf(":") > -1;
+    const exclamationUsed = usedCharacters.indexOf("!") > -1;
 
-    usedCharacters = usedCharacters.filter(c => c != " " && c != ":").sort();
+    usedCharacters = usedCharacters.filter(c => c != " " && c != "!").sort();
 
     const encoding = {};
     const spaceOffset = spaceUsed ? 1 : 0;
@@ -15,9 +15,15 @@ module.exports = function buildEncoding(usedCharacters) {
         encoding[" "] = 0;
     }
 
-    if (colonUsed) {
-        encoding[":"] = usedCharacters.length + 1;
+    if (exclamationUsed) {
+        encoding["!"] = usedCharacters.length + 1;
     }
+
+    console.log(
+        "total number of characters in encoding",
+        Object.keys(encoding).length
+    );
+    console.log(Object.keys(encoding).join(", "));
 
     return encoding;
 };
