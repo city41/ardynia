@@ -1,12 +1,11 @@
 #ifndef sword_h
 #define sword_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 
 struct Sword {
-    static EntityType update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity& player, uint8_t frame);
 };
 
 #endif

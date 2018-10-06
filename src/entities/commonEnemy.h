@@ -1,7 +1,6 @@
 #ifndef commonEnemy_h
 #define commonEnemy_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 

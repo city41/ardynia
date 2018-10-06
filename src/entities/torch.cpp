@@ -5,7 +5,7 @@
 
 extern Game game;
 
-EntityType Torch::update(Entity* me, Entity* player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Torch::update(Entity* me, Entity* player, uint8_t frame) {
     if (me->health == 0) {
         me->currentFrame = frame & 1;
     } 

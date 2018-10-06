@@ -7,7 +7,7 @@
 
 extern Game game;
 
-EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Boomerang::update(Entity* me, Entity& player, uint8_t frame) {
     int16_t px = player.x;
     int16_t py = player.y;
     

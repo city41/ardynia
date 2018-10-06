@@ -1,6 +1,6 @@
 #include "chest.h"
 
-EntityType Chest::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Chest::update(Entity* me, Entity& player, uint8_t frame) {
     if (me->duration == 20) {
         me->duration = 0;
 

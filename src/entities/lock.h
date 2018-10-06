@@ -1,7 +1,6 @@
 #ifndef lock_h
 #define lock_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 

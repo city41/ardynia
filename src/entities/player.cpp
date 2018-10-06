@@ -9,6 +9,7 @@
 #include "../renderer.h"
 
 extern Renderer renderer;
+extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
 
@@ -122,7 +123,7 @@ void Player::render(uint8_t frame) {
 #endif
 }
 
-EntityType Player::update(Entity& player, Arduboy2Base& arduboy, byte frame) {
+EntityType Player::update(Entity& player, uint8_t frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }

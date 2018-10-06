@@ -1,7 +1,6 @@
 #ifndef nemesis_h
 #define nemesis_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 
@@ -18,7 +17,7 @@ enum NemesisMode: uint8_t {
 struct Nemesis {
     static NemesisMode mode;
     static Entity sword;
-    static EntityType update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity& player, uint8_t frame);
     static EntityType onCollide(Entity* me, Entity& other, Entity& player);
 };
 

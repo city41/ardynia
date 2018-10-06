@@ -1,7 +1,6 @@
 #ifndef switch_h
 #define switch_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 

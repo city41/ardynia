@@ -1,7 +1,6 @@
 #ifndef gameScene_h
 #define gameScene_h
 
-#include <Arduboy2.h>
 #include "overworld.h"
 #include "dungeons.h"
 #include "tileRoom.h"
@@ -27,8 +26,6 @@ class Game {
     typedef void (Game::*RenderPtr)(uint8_t);
 
     private:
-        Arduboy2Base& arduboy;
-
         uint8_t titleRow;
 
         Player player;
@@ -106,8 +103,7 @@ class Game {
         bool areAllSwitchesTriggered(void);
         bool areAllTorchesLit(void);
 
-        Game(Arduboy2Base& arduboy):
-            arduboy(arduboy),
+        Game():
             titleRow(0),
             player(WIDTH / 2 - 4, HEIGHT / 2 - 4, this),
             nextRoomX(0),

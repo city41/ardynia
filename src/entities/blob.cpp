@@ -2,7 +2,7 @@
 #include "../util.h"
 #include "../state.h"
 
-EntityType Blob::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Blob::update(Entity* me, Entity& player, uint8_t frame) {
     if (frame == random(0, 61)) {
         me->moveTowardsOtherEntity(player, 1);
         me->currentFrame = 1;

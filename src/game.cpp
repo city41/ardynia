@@ -1,3 +1,4 @@
+#include <Arduboy2.h>
 #include "game.h"
 #include "util.h"
 #include "entityTemplates.h"
@@ -10,6 +11,7 @@
 #include "entities/nemesis.h"
 
 extern Renderer renderer;
+extern Arduboy2Base arduboy;
 
 const uint8_t ROOM_TRANSITION_VELOCITY = 2;
 const uint8_t ROOM_WIDTH_PX = WIDTH - 16;
@@ -536,7 +538,7 @@ void Game::updatePlay(uint8_t frame) {
         holdACount = 0;
     }
 
-    player.update(player, arduboy, frame);
+    player.update(player, frame);
 
     // player is in the middle of showing off a new item,
     // freeze the game while this is happening
@@ -548,7 +550,7 @@ void Game::updatePlay(uint8_t frame) {
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        EntityType newEntity = entity.update(player, arduboy, frame);
+        EntityType newEntity = entity.update(player, frame);
         loadEntity(player.entities[e], newEntity);
 
         if (newEntity != UNSET) {
@@ -560,7 +562,7 @@ void Game::updatePlay(uint8_t frame) {
     for (e = 0; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        EntityType newEntity = entity.update(player, arduboy, frame);
+        EntityType newEntity = entity.update(player, frame);
         spawnNewEntity(newEntity, entity);
     }
 
@@ -650,7 +652,7 @@ void Game::renderPlay(uint8_t frame) {
 }
 
 void Game::updateMenu(uint8_t frame) {
-    menu.update(arduboy, frame);
+    menu.update(frame);
 
     if (arduboy.justPressed(A_BUTTON)) {
         // respond to the decision

@@ -1,7 +1,7 @@
 #include "sword.h"
 #include "../util.h"
 
-EntityType Sword::update(Entity* me, Entity& player, Arduboy2Base& arduoboy, uint8_t frame) {
+EntityType Sword::update(Entity* me, Entity& player, uint8_t frame) {
     int16_t px = player.x;
     int8_t py = player.y;
 

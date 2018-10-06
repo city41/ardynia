@@ -1,3 +1,4 @@
+#include <Arduboy2.h>
 #include "inGameMenu.h"
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
@@ -9,8 +10,9 @@
 #include "renderer.h"
 
 extern Renderer renderer;
+extern Arduboy2Base arduboy;
 
-void InGameMenu::update(Arduboy2Base& arduboy, byte frame) {
+void InGameMenu::update(byte frame) {
     const int8_t maxRows = State::gameState.numAcquiredItems;
 
     if (maxRows == 0) {

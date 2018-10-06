@@ -13,7 +13,7 @@ Arduboy2Base arduboy;
 ArduboyPlaytune tones(arduboy.audio.enabled);
 
 Renderer renderer(arduboy);
-Game game(arduboy);
+Game game;
 
 void setup() {
     arduboy.boot();

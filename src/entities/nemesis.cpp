@@ -5,8 +5,8 @@
 NemesisMode Nemesis::mode = Hold;
 Entity Nemesis::sword;
 
-EntityType Nemesis::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
-    sword.update(*me, arduboy, frame);
+EntityType Nemesis::update(Entity* me, Entity& player, uint8_t frame) {
+    sword.update(*me, frame);
 
     if (mode == Attacking && sword.type == UNSET) {
         mode = Hold;

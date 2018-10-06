@@ -18,7 +18,7 @@ const uint8_t PROGMEM SnakeMirrors[] = {
 const uint8_t LeisureVelocity = 1;
 const uint8_t PursueVelocity = 3;
 
-EntityType Snake::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Snake::update(Entity* me, Entity& player, uint8_t frame) {
     if ((frame % 4) != 0) {
         return UNSET;
     }

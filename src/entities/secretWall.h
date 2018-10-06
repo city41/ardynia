@@ -1,7 +1,6 @@
 #ifndef secretWall_h
 #define secretWall_h
 
-#include <Arduboy2.h>
 #include "../entity.h"
 #include "../entityTypes.h"
 

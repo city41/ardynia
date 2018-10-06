@@ -127,7 +127,7 @@ void Entity::render(uint8_t renderFrame) {
 #endif
 }
 
-EntityType Entity::update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Entity::update(Entity& player, uint8_t frame) {
     if (type == UNSET) {
         return UNSET;
     }
@@ -138,7 +138,7 @@ EntityType Entity::update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) 
     }
 
     if (updatePtr != NULL) {
-        return updatePtr(this, player, arduboy, frame);
+        return updatePtr(this, player, frame);
     }
 
     return UNSET;

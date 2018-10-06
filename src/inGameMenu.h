@@ -1,7 +1,6 @@
 #ifndef ingamemenu_h
 #define ingamemenu_h
 
-#include <Arduboy2.h>
 #include "entityTypes.h"
 #include "entities/player.h"
 
@@ -17,7 +16,7 @@ class InGameMenu {
             chosenItem(UNSET)
         {}
 
-        void update(Arduboy2Base& arduboy, uint8_t frame);
+        void update(uint8_t frame);
         void render(Player& player, uint8_t frame);
 };
 
