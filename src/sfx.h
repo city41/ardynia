@@ -15,6 +15,7 @@ struct Sfx {
     static const uint8_t* pickUpItem;
     static const uint8_t* bossRoar;
     static const uint8_t* metalCling;
+    static const uint8_t* doorCrash;
 
     static void play(const uint8_t* sfx);
     static void stop(void);

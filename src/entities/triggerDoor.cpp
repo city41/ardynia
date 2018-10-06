@@ -1,5 +1,6 @@
 #include "triggerDoor.h"
 #include "../tileBitmaps.h"
+#include "../sfx.h"
 
 EntityType TriggerDoor::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     // if the door just spawned on top of the player, wait
@@ -7,6 +8,7 @@ EntityType TriggerDoor::update(Entity* me, Entity& player, Arduboy2Base& arduboy
     if (me->health == 0 && !player.overlaps(*me)) {
         me->tiles = me->width == 8 ? verticalTriggerDoor_tiles : horizontalTriggerDoor_tiles;
         me->health = 1;
+        Sfx::play(Sfx::doorCrash);
     }
 
     return UNSET;

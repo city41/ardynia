@@ -44,7 +44,6 @@ const PROGMEM uint8_t sword_sfx[] = {
     MIDDLE_A - 30,
     delayHigh(0),
     delayLow(40),
-    stopNote(0),
     startNote(0),
     MIDDLE_A,
     delayHigh(0),
@@ -121,31 +120,14 @@ const uint8_t* Sfx::playerDamage = playerDamage_sfx;
 
 const PROGMEM uint8_t successJingle_sfx[] = {
     startNote(0),
-    MIDDLE_A - 20,
-    delayHigh(0),
-    delayLow(100),
-    stopNote(0),
-    delayHigh(0),
-    delayLow(150),
-    startNote(0),
-    MIDDLE_A - 30,
-    delayHigh(0),
-    delayLow(100),
-    stopNote(0),
-    delayHigh(0),
-    delayLow(50),
-    startNote(0),
     MIDDLE_A - 2,
     delayHigh(0),
     delayLow(255),
-    startNote(1),
-    MIDDLE_A - 10,
+    startNote(0),
+    MIDDLE_A + 1,
     delayHigh(0),
-    delayLow(50),
+    delayLow(100),
     stopNote(0),
-    delayHigh(0),
-    delayLow(50),
-    stopNote(1),
     endOfScore
 };
 
@@ -194,6 +176,17 @@ const PROGMEM uint8_t metalCling_sfx[] = {
 };
 
 const uint8_t* Sfx::metalCling = metalCling_sfx;
+
+const PROGMEM uint8_t doorCrash_sfx[] = {
+    startNote(0),
+    MIDDLE_A - 40,
+    delayHigh(0),
+    delayLow(35),
+    stopNote(0),
+    endOfScore
+};
+
+const uint8_t* Sfx::doorCrash = doorCrash_sfx;
 
 void Sfx::init(ArduboyPlaytune* t) {
     tones = t;
