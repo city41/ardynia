@@ -102,8 +102,6 @@ const PROGMEM uint8_t boomerang_sfx[] = {
     delayHigh(0),
     delayLow(40),
     stopNote(0),
-    delayHigh(0),
-    delayLow(40),
     stopNote(1),
     endOfScore
 };
@@ -123,26 +121,30 @@ const uint8_t* Sfx::playerDamage = playerDamage_sfx;
 
 const PROGMEM uint8_t successJingle_sfx[] = {
     startNote(0),
-    MIDDLE_A - 5,
+    MIDDLE_A - 20,
     delayHigh(0),
     delayLow(100),
-    startNote(1),
-    MIDDLE_A + 15,
+    stopNote(0),
     delayHigh(0),
-    delayLow(200),
+    delayLow(150),
     startNote(0),
-    MIDDLE_A - 15,
+    MIDDLE_A - 30,
     delayHigh(0),
-    delayLow(40),
-    startNote(1),
-    MIDDLE_A,
-    delayHigh(1),
+    delayLow(100),
+    stopNote(0),
+    delayHigh(0),
     delayLow(50),
     startNote(0),
-    MIDDLE_A + 10,
+    MIDDLE_A - 2,
     delayHigh(0),
     delayLow(255),
+    startNote(1),
+    MIDDLE_A - 10,
+    delayHigh(0),
+    delayLow(50),
     stopNote(0),
+    delayHigh(0),
+    delayLow(50),
     stopNote(1),
     endOfScore
 };
@@ -167,9 +169,16 @@ const uint8_t* Sfx::pickUpItem = pickUpItem_sfx;
 
 const PROGMEM uint8_t bossRoar_sfx[] = {
     startNote(0),
-    MIDDLE_A - 15,
-    delayHigh(8),
+    MIDDLE_A - 30,
+    delayHigh(0),
     delayLow(200),
+    startNote(1),
+    MIDDLE_A - 20,
+    delayHigh(6),
+    delayLow(0),
+    stopNote(1),
+    delayHigh(0),
+    delayLow(100),
     stopNote(0),
     endOfScore
 };

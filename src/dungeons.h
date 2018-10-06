@@ -766,7 +766,7 @@ const uint8_t PROGMEM dungeons_room4_1[] = {
 
 
 const uint8_t PROGMEM dungeons_room4_2[] = {
-    7, // number of entities
+    2, // number of entities
 
     // entity 0
     miscAndEntityType(3, TELEPORTER),
@@ -775,26 +775,6 @@ const uint8_t PROGMEM dungeons_room4_2[] = {
     // entity 1
     miscAndEntityType(RING, CHEST),
     xy(80, 36),
-
-    // entity 2
-    miscAndEntityType(0, HEART),
-    xy(16, 12),
-
-    // entity 3
-    miscAndEntityType(0, HEART),
-    xy(16, 20),
-
-    // entity 4
-    miscAndEntityType(0, HEART),
-    xy(16, 28),
-
-    // entity 5
-    miscAndEntityType(0, HEART),
-    xy(16, 36),
-
-    // entity 6
-    miscAndEntityType(0, HEART),
-    xy(16, 44),
 };
 
 

@@ -105,21 +105,6 @@
    </properties>
    <point/>
   </object>
-  <object id="269" name="heart" type="HEART" x="466.5" y="141.5">
-   <point/>
-  </object>
-  <object id="270" name="heart" type="HEART" x="466" y="147.375">
-   <point/>
-  </object>
-  <object id="271" name="heart" type="HEART" x="466.375" y="155">
-   <point/>
-  </object>
-  <object id="272" name="heart" type="HEART" x="465.625" y="164.875">
-   <point/>
-  </object>
-  <object id="273" name="heart" type="HEART" x="465.375" y="171.75">
-   <point/>
-  </object>
   <object id="275" name="To overworld from secret 3" type="TELEPORTER" x="800.698" y="315.705">
    <properties>
     <property name="DEST_ROOM_X" type="int" value="3"/>

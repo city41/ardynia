@@ -63,7 +63,7 @@ void State::load() {
     } else {
         gameState.totalHealth = 2;
         gameState.hasSword = 0;
-        gameState.numAcquiredItems = 2;
+        gameState.numAcquiredItems = 0;
         gameState.currentDungeon = 0;
 
         uint8_t i = 0;

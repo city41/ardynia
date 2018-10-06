@@ -1,5 +1,6 @@
 #include "snake.h"
 #include "../util.h"
+#include "../state.h"
 
 enum SnakeMode: uint8_t {
     Leisure,
@@ -13,15 +14,17 @@ const uint8_t PROGMEM SnakeMirrors[] = {
     0
 };
 
+const uint8_t LeisureVelocity = 1;
+const uint8_t PursueVelocity = 3;
+
 EntityType Snake::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
-    if (frame % 6 != 0) {
+    if ((frame % 4) != 0) {
         return UNSET;
     }
 
 
     if (me->duration == 11) {
-        me->vx = frame & 1;
-        me->vy = !me->vx;
+        me->vx = LeisureVelocity;
         me->duration = Leisure;
     }
 
@@ -30,13 +33,7 @@ EntityType Snake::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint
         if (me->vx && player.x > me->x && player.x < me->x + 13) {
             me->duration = Pursue;
             me->vx = 0;
-            me->vy = me->y > player.y ? -2 : 2;
-        }
-
-        if (me->vy && player.y > me->y && player.y < me->y + 13) {
-            me->duration = Pursue;
-            me->vy = 0;
-            me->vx = me->x > player.x ? -2 : 2;
+            me->vy = me->y > player.y ? -PursueVelocity : PursueVelocity;
         }
     }
 
@@ -49,13 +46,14 @@ EntityType Snake::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint
         } else {
             me->vx = !me->vx;
             me->vy = !me->vy;
+            me->duration = Leisure;
         }
     }
 
     me->moveTo(me->x + me->vx, me->y + me->vy);
 
     me->mirror = pgm_read_byte(SnakeMirrors + me->dir);
-    me->currentFrame = frame % 10 == 0 ? 1 - me->currentFrame : me->currentFrame;
+    me->currentFrame = (frame - 1) / 30;
 
     return UNSET;
 }
