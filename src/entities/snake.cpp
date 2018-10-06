@@ -1,6 +1,7 @@
 #include "snake.h"
 #include "../util.h"
 #include "../state.h"
+#include "../tileRoom.h"
 
 enum SnakeMode: uint8_t {
     Leisure,
@@ -37,7 +38,7 @@ EntityType Snake::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint
         }
     }
 
-    if (Util::isOffScreen(me->x, me->y, 8)) {
+    if (Util::isOffScreen(me->x, me->y, 8) || TileRoom::getTileAt(me->x, me->y) == Stone) {
         me->undoMove();
 
         if (me->duration == Leisure) {
