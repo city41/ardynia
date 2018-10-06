@@ -253,7 +253,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
 
 
         if (receivedItem == BOMB) {
-            numBombs = 3;
+            numBombs = min(numBombs + 3, MAX_BOMB_COUNT);
         }
 
         if (receivedItem == SWORD) {
