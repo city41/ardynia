@@ -60,7 +60,7 @@ class Game {
         uint8_t holdACount;
 
         void detectEntityCollisions(void);
-        void goToNextRoom(int16_t playerX, int16_t playerY);
+        void goToNextRoom(int16_t playerX, int8_t playerY);
         void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy, uint8_t tileRoomOffset);
         int8_t spawnNewEntity(EntityType, Entity& spawner);
 

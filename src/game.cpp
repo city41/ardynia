@@ -294,7 +294,7 @@ void Game::detectEntityCollisions(void) {
 
 }
 
-void Game::goToNextRoom(int16_t x, int16_t y) {
+void Game::goToNextRoom(int16_t x, int8_t y) {
     if (x < 0) {
         nextRoomX = TileRoom::x - 1;
         nextRoomY = TileRoom::y;
