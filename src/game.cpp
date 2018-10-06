@@ -799,8 +799,6 @@ void Game::render(uint8_t frame) {
 }
 
 ChestState Game::chestOpeningOrderState(void) {
-    uint8_t chestState = 0;
-
     bool foundClosedChest = false;
     uint8_t chestCount = 0;
     uint8_t openChestCount = 0;
