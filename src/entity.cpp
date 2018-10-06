@@ -18,10 +18,10 @@ const EntityType PROGMEM itemDropItems[] = {
 
 void Entity::moveTowardsOtherEntity(Entity& other, uint8_t amount) {
     int16_t ox = other.x;
-    int16_t oy = other.y;
+    int8_t oy = other.y;
 
     int16_t nx = x;
-    int16_t ny = y;
+    int8_t ny = y;
 
     if (nx - ox > 0) {
         nx -= amount;
@@ -50,16 +50,16 @@ bool Entity::overlaps(Entity& other) {
 }
 
 void Entity::bounceBack(Entity& bounceAwayFromA, Entity& bounceAwayFromB) {
-    int16_t acx = bounceAwayFromA.x + bounceAwayFromA.width / 2;
-    int16_t acy = bounceAwayFromA.y + bounceAwayFromA.height / 2;
-    int16_t bcx = bounceAwayFromB.x + bounceAwayFromB.width / 2;
-    int16_t bcy = bounceAwayFromB.y + bounceAwayFromB.height / 2;
+    int8_t acx = bounceAwayFromA.x + bounceAwayFromA.width / 2;
+    int8_t acy = bounceAwayFromA.y + bounceAwayFromA.height / 2;
+    int8_t bcx = bounceAwayFromB.x + bounceAwayFromB.width / 2;
+    int8_t bcy = bounceAwayFromB.y + bounceAwayFromB.height / 2;
 
     int8_t diffX = acx - bcx;
     int8_t diffY = acy - bcy;
 
-    int16_t bounceXAmount = 0;
-    int16_t bounceYAmount = 0;
+    int8_t bounceXAmount = 0;
+    int8_t bounceYAmount = 0;
 
     if (abs(diffX) > abs(diffY)) {
         bounceXAmount = diffX > 0 ? BOUNCE_AMOUNT : -BOUNCE_AMOUNT;
@@ -116,7 +116,7 @@ void Entity::render(uint8_t renderFrame) {
     if (needsMask) {
         bool isNemesis = type == NEMESIS;
         int16_t offsetX = isNemesis ? -4 : 0;
-        int16_t offsetY = isNemesis ? -8 : 0;
+        int8_t offsetY = isNemesis ? -8 : 0;
         renderer.drawPlusMask(x + offsetX, y + offsetY, tiles, currentFrame, mirror, drawMode);
     } else {
         renderer.drawOverwrite(x, y, tiles, currentFrame, mirror, drawMode);
