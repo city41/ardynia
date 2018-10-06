@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="510">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="525">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -19,10 +19,10 @@
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,7,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,1,1,1,1,13,5,5,5,5,5,1,5,1,1,1,1,1,1,13,
 3,1,1,1,1,1,13,3,1,1,1,1,1,13,7,7,7,7,7,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,13,5,5,1,1,1,1,5,5,1,1,1,1,1,13,
 5,5,5,1,5,5,5,9,4,4,4,4,4,11,9,4,4,4,4,1,5,9,4,4,1,4,4,11,9,4,4,1,4,4,5,5,4,4,4,4,4,11,5,1,1,1,1,1,5,5,4,4,4,4,4,11,
-2,12,12,1,12,12,10,2,12,12,12,12,12,10,2,12,12,12,12,1,5,5,5,5,1,5,5,5,2,12,7,1,12,12,10,5,12,12,12,7,12,5,5,1,1,1,1,1,5,2,12,12,12,12,7,5,
-3,1,1,1,1,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,5,5,1,5,5,5,3,1,7,1,1,1,13,3,1,1,1,7,1,1,1,1,7,7,7,1,13,3,1,1,1,1,7,5,
-3,1,1,1,1,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,1,1,1,1,13,7,7,7,1,1,1,13,3,1,1,1,7,1,5,5,1,7,7,7,1,13,3,1,1,1,1,7,5,
-9,4,4,1,4,4,11,9,4,4,1,4,4,11,9,4,4,4,4,4,11,9,4,4,4,4,4,11,5,1,1,1,1,1,5,5,4,4,4,7,4,5,5,1,1,1,1,1,13,9,1,4,4,4,7,5,
+2,12,12,1,12,12,10,2,12,12,12,12,12,10,2,12,12,12,12,1,5,5,5,5,1,5,5,5,2,12,7,1,12,12,10,5,12,12,12,12,12,5,5,1,1,1,1,1,5,2,12,12,12,12,7,5,
+3,1,1,1,1,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,5,5,1,5,5,5,3,1,7,1,1,1,13,3,1,1,1,1,1,1,1,1,7,7,7,1,13,3,1,1,1,1,7,5,
+3,1,1,1,1,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,1,1,1,1,13,7,7,7,1,1,1,13,3,1,1,1,1,1,5,5,1,7,7,7,1,13,3,1,1,1,1,7,5,
+9,4,4,1,4,4,11,9,4,4,1,4,4,11,9,4,4,4,4,4,11,9,4,4,4,4,4,11,5,1,1,1,1,1,5,5,4,4,4,4,4,5,5,1,1,1,1,1,13,9,1,4,4,4,7,5,
 2,12,12,1,12,12,12,12,12,12,12,12,12,10,2,12,12,12,12,12,10,2,12,12,12,12,12,5,5,1,1,1,1,1,5,5,5,5,5,5,5,5,5,1,1,1,1,1,13,5,5,5,12,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,13,3,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,13,3,1,5,5,5,1,13,5,5,5,1,5,5,5,
 3,1,1,1,1,1,1,1,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,1,1,1,1,13,5,1,1,1,1,1,5,9,1,1,1,1,5,13,3,1,5,1,5,1,13,5,5,5,1,5,5,5,
@@ -30,11 +30,11 @@
 2,12,12,12,12,12,10,3,1,1,1,1,1,13,5,5,5,5,5,5,5,5,12,12,12,7,12,5,5,1,5,1,5,1,5,2,12,12,12,12,12,5,5,1,1,1,1,1,13,2,12,12,12,12,12,10,
 3,1,1,1,1,1,1,1,1,1,1,1,1,13,5,5,5,5,5,5,5,3,1,1,1,7,1,5,3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,13,3,1,1,1,1,1,13,
 3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,7,1,5,3,1,1,1,1,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,13,3,1,1,1,1,1,13,
-9,4,4,4,4,4,11,3,1,1,1,7,7,7,5,5,5,5,5,5,5,5,5,5,5,7,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,5,5,1,1,1,1,1,5,9,4,4,1,4,4,11,
-2,12,7,12,12,12,12,1,1,1,1,7,7,7,2,5,12,12,12,12,5,5,5,5,5,5,5,5,2,12,12,12,12,12,10,5,5,12,12,12,12,5,5,1,1,1,1,1,5,5,12,12,12,12,12,5,
-3,1,7,1,1,1,1,1,1,1,1,7,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,
-3,1,7,1,1,1,1,1,1,1,1,6,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,5,5,1,1,1,1,1,1,1,5,1,1,1,5,5,5,1,1,1,1,1,5,5,1,1,1,1,5,5,
-9,4,7,1,4,4,4,4,4,4,4,6,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5
+9,4,4,4,4,4,11,3,1,1,1,7,7,7,5,5,5,5,5,5,5,5,5,5,5,7,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,5,5,9,1,1,1,1,5,9,4,4,1,4,4,11,
+2,12,7,12,12,12,12,1,1,1,1,7,7,7,2,5,12,12,12,12,5,5,5,5,5,5,5,5,2,12,12,12,12,12,10,5,5,12,12,12,12,5,5,12,1,1,1,1,5,5,12,12,12,12,12,5,
+3,1,7,1,1,1,1,1,1,1,1,7,1,13,3,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1,1,1,1,5,
+3,1,7,1,1,1,1,1,1,1,1,6,1,13,3,1,1,1,1,1,5,5,1,1,1,1,1,5,5,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,5,5,
+9,4,7,1,4,4,4,4,4,4,4,6,4,11,9,4,4,4,4,4,5,5,5,5,1,5,5,5,5,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,4,5,5,4,4,4,4,5,5
 </data>
  </layer>
  <objectgroup id="2" name="entities">
@@ -249,7 +249,7 @@
   <object id="325" name="pot" type="POT" x="626.667" y="403">
    <point/>
   </object>
-  <object id="326" name="chest with key" type="CHEST" x="605.333" y="281.667">
+  <object id="326" name="chest with key" type="CHEST" x="577.242" y="284.122">
    <properties>
     <property name="CONTAINED_TYPE" value="BOMB"/>
    </properties>
@@ -270,31 +270,31 @@
   <object id="330" name="lock" type="LOCK" x="833.333" y="193.667">
    <point/>
   </object>
-  <object id="331" name="bat" type="BAT" x="681.667" y="341">
+  <object id="331" name="snake" type="SNAKE" x="689.031" y="353.091">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="332" name="bat" type="BAT" x="771.667" y="373.333">
+  <object id="332" name="snake" type="SNAKE" x="753.031" y="339.333">
    <point/>
   </object>
   <object id="333" name="skeleton" type="SKELETON" x="579" y="420.333">
    <point/>
   </object>
-  <object id="334" name="skeleton" type="SKELETON" x="244" y="483">
+  <object id="334" name="snake" type="SNAKE" x="244" y="483">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="335" name="skeleton" type="SKELETON" x="259" y="484">
+  <object id="335" name="snake" type="SNAKE" x="258" y="500">
    <point/>
   </object>
-  <object id="336" name="skeleton" type="SKELETON" x="273.333" y="457">
+  <object id="336" name="snake" type="SNAKE" x="273.333" y="457">
    <point/>
   </object>
-  <object id="337" name="switch" type="SWITCH" x="524.5" y="492.5">
+  <object id="337" name="switch" type="SWITCH" x="514.5" y="492.227">
    <point/>
   </object>
   <object id="338" name="pot" type="POT" x="596" y="457.667">
@@ -306,10 +306,7 @@
   <object id="340" name="blob" type="BLOB" x="611.667" y="484.667">
    <point/>
   </object>
-  <object id="341" name="sunken bridge" type="SUNKEN_BRIDGE" x="624.758" y="290.303">
-   <point/>
-  </object>
-  <object id="343" name="switch" type="SWITCH" x="594.666" y="290.667">
+  <object id="343" name="spike" type="SPIKE" x="601.723" y="264.156">
    <point/>
   </object>
   <object id="344" name="bat" type="BAT" x="731.833" y="419.167">
@@ -682,7 +679,7 @@
   <object id="460" name="blob" type="BLOB" x="278" y="418.667">
    <point/>
   </object>
-  <object id="461" name="lock" type="LOCK" x="656.958" y="464.833">
+  <object id="461" name="lock" type="LOCK" x="656.39" y="480.538">
    <point/>
   </object>
   <object id="462" name="switch" type="SWITCH" x="514.167" y="465.583">
@@ -697,46 +694,13 @@
   <object id="465" name="lock" type="LOCK" x="674.667" y="273.667">
    <point/>
   </object>
-  <object id="466" name="bat" type="BAT" x="867" y="468.5">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
-   </properties>
+  <object id="466" name="key" type="KEY" x="867" y="468.5">
    <point/>
   </object>
-  <object id="467" name="bat" type="BAT" x="852.5" y="487">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
-   </properties>
+  <object id="467" name="spike" type="SPIKE" x="832.591" y="496.727">
    <point/>
   </object>
-  <object id="468" name="bat" type="BAT" x="835.5" y="458.5">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="469" name="bat" type="BAT" x="838" y="486.5">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="470" name="bat" type="BAT" x="859.5" y="486.5">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_KEY"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="471" name="pot with bombs" type="POT" x="868.5" y="165.5">
-   <properties>
-    <property name="CONTAINED_TYPE" value="BOMB"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="472" name="pot with bombs" type="POT" x="808" y="165">
-   <properties>
-    <property name="CONTAINED_TYPE" value="BOMB"/>
-   </properties>
+  <object id="470" name="spike" type="SPIKE" x="832.5" y="454.682">
    <point/>
   </object>
   <object id="473" name="pot" type="POT" x="420" y="485.5">
@@ -872,6 +836,39 @@
    <point/>
   </object>
   <object id="509" name="switch" type="SWITCH" x="144.875" y="97.125">
+   <point/>
+  </object>
+  <object id="510" name="snake" type="SNAKE" x="305.75" y="498.75">
+   <point/>
+  </object>
+  <object id="512" name="skeleton" type="SKELETON" x="608.545" y="432.909">
+   <point/>
+  </object>
+  <object id="513" name="snake" type="SNAKE" x="768.727" y="352.909">
+   <point/>
+  </object>
+  <object id="514" name="bat" type="BAT" x="726.364" y="289.091">
+   <point/>
+  </object>
+  <object id="515" name="bat" type="BAT" x="733.909" y="296.091">
+   <point/>
+  </object>
+  <object id="516" name="bat" type="BAT" x="723" y="299">
+   <point/>
+  </object>
+  <object id="517" name="snake" type="SNAKE" x="865.182" y="236.091">
+   <point/>
+  </object>
+  <object id="518" name="snake" type="SNAKE" x="801.636" y="241.727">
+   <point/>
+  </object>
+  <object id="520" name="spike" type="SPIKE" x="601.875" y="305.25">
+   <point/>
+  </object>
+  <object id="521" name="spike" type="SPIKE" x="615.625" y="264">
+   <point/>
+  </object>
+  <object id="522" name="spike" type="SPIKE" x="615" y="305.625">
    <point/>
   </object>
  </objectgroup>
