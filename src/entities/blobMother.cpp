@@ -1,7 +1,7 @@
 #include "blobMother.h"
 #include "../util.h"
 
-EntityType BlobMother::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType BlobMother::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     if (frame % 2 == 1 || frame % 3 == 2) {
         return UNSET;
     }

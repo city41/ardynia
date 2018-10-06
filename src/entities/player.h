@@ -17,6 +17,7 @@ class Player: public Entity {
         void bButtonAction(void);
         int8_t receiveX;
         int8_t receiveY;
+        Game* game;
 
     public:
         bool movedThisFrame;
@@ -25,11 +26,12 @@ class Player: public Entity {
         Entity entities[MAX_PLAYER_ENTITIES];
         EntityType bButtonEntityType;
         uint8_t numBombs;
-        void receiveItemFromChest(Entity& chest, Game& game);
+        void receiveItemFromChest(Entity& chest);
         void reset();
 
-        Player(int16_t px, int16_t py):
+        Player(int16_t px, int16_t py, Game* game):
             Entity(),
+            game(game),
             movedThisFrame(false),
             receiveItemCount(0),
             receivedItem(UNSET),
@@ -45,8 +47,8 @@ class Player: public Entity {
         }
 
         virtual void render(uint8_t frame) override;
-        virtual EntityType update(Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) override;
-        virtual EntityType onCollide(Entity& other, Entity& player, Game& game) override;
+        virtual EntityType update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) override;
+        virtual EntityType onCollide(Entity& other, Entity& player) override;
 };
 
 #endif

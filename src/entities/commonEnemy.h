@@ -5,10 +5,8 @@
 #include "../entity.h"
 #include "../entityTypes.h"
 
-class Game;
-
 struct CommonEnemy {
-    static EntityType onCollide(Entity* me, Entity& other, Entity& player, Game& game);
+    static EntityType onCollide(Entity* me, Entity& other, Entity& player);
 };
 
 #endif

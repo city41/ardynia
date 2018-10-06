@@ -3,7 +3,9 @@
 #include "../state.h"
 #include "../sfx.h"
 
-EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+extern Game game;
+
+EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player) {
     if (me->mirror == MIRROR_HORIZONTAL) {
         return UNSET;
     }

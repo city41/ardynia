@@ -4,7 +4,6 @@
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
 #include "state.h"
-#include "game.h"
 #include "renderer.h"
 
 extern Renderer renderer;
@@ -128,7 +127,7 @@ void Entity::render(uint8_t renderFrame) {
 #endif
 }
 
-EntityType Entity::update(Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Entity::update(Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     if (type == UNSET) {
         return UNSET;
     }
@@ -139,19 +138,19 @@ EntityType Entity::update(Entity& player, Game& game, Arduboy2Base& arduboy, uin
     }
 
     if (updatePtr != NULL) {
-        return updatePtr(this, player, game, arduboy, frame);
+        return updatePtr(this, player, arduboy, frame);
     }
 
     return UNSET;
 }
 
-EntityType Entity::onCollide(Entity& other, Entity& player, Game& game) {
+EntityType Entity::onCollide(Entity& other, Entity& player) {
     if (type == UNSET) {
         return UNSET;
     }
 
     if (collideOtherEntityPtr != NULL) {
-        EntityType result = collideOtherEntityPtr(this, other, player, game);
+        EntityType result = collideOtherEntityPtr(this, other, player);
 
         if (type == UNSET) {
             deathCount = 10;
@@ -159,10 +158,9 @@ EntityType Entity::onCollide(Entity& other, Entity& player, Game& game) {
 
         if (result == ITEM_DROP) {
             // in boss room, always drop something
-            const uint8_t minRoll = game.isBossRoom ? 1 : 0;
             const uint8_t maxRoll = State::gameState.numAcquiredItems > 1 ? 3 : 2;
 
-            uint8_t diceRoll = random(minRoll, maxRoll);
+            uint8_t diceRoll = random(0, maxRoll);
             return pgm_read_byte(itemDropItems + diceRoll);
         } else {
             return result;

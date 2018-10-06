@@ -5,8 +5,8 @@
 NemesisMode Nemesis::mode = Hold;
 Entity Nemesis::sword;
 
-EntityType Nemesis::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
-    sword.update(*me, game, arduboy, frame);
+EntityType Nemesis::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
+    sword.update(*me, arduboy, frame);
 
     if (mode == Attacking && sword.type == UNSET) {
         mode = Hold;
@@ -68,7 +68,7 @@ EntityType Nemesis::update(Entity* me, Entity& player, Game& game, Arduboy2Base&
     return UNSET;
 }
 
-EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.type == PROJECTILE) {
         me->duration = 100;
         mode = Hold;

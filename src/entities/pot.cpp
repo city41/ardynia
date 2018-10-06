@@ -1,6 +1,6 @@
 #include "pot.h"
 
-EntityType Pot::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Pot::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.type == PLAYER) {
         other.undoMove();
     }

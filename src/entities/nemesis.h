@@ -5,7 +5,6 @@
 #include "../entity.h"
 #include "../entityTypes.h"
 
-class Game;
 void loadEntity(Entity& entity, EntityType entityType);
 
 enum NemesisMode: uint8_t {
@@ -19,8 +18,8 @@ enum NemesisMode: uint8_t {
 struct Nemesis {
     static NemesisMode mode;
     static Entity sword;
-    static EntityType update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
-    static EntityType onCollide(Entity* me, Entity& other, Entity& player, Game& game);
+    static EntityType update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
+    static EntityType onCollide(Entity* me, Entity& other, Entity& player);
 };
 
 #endif

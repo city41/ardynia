@@ -3,6 +3,8 @@
 #include "../game.h"
 #include "../state.h"
 
+extern Game game;
+
 /**
  * bats just fly all over the screen. They pick a direction and go that way for a while, then pick
  * another direction.
@@ -10,7 +12,7 @@
  * Giant Bat moves in the same way except it never rests
  * Having Bat and Giant Bat use the same update is messy code but great byte savings
  */
-EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Bat::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     // just finished a direction or went off screen? pick a new way to go
     if (me->duration == 0
             || Util::isOffScreen(me->x, me->y, 8)
@@ -44,7 +46,7 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
     }
 }
 
-EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Bat::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.damage > 0 || other.type == BOOMERANG) {
         if (other.type == BOOMERANG) {
             other.duration = 0;

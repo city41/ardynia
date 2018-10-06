@@ -109,7 +109,7 @@ class Game {
         Game(Arduboy2Base& arduboy):
             arduboy(arduboy),
             titleRow(0),
-            player(WIDTH / 2 - 4, HEIGHT / 2 - 4),
+            player(WIDTH / 2 - 4, HEIGHT / 2 - 4, this),
             nextRoomX(0),
             nextRoomY(0),
             bossDelayCount(0),

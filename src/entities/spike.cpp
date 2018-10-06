@@ -10,7 +10,7 @@ enum SpikeMode: uint8_t {
 const int8_t PursueVelocity = 3;
 const int8_t RetreatVelocity = 1;
 
-EntityType Spike::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Spike::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     if (frame % 2 == 0) {
         return UNSET;
     }
@@ -55,7 +55,7 @@ EntityType Spike::update(Entity* me, Entity& player, Game& game, Arduboy2Base& a
     return UNSET;
 }
 
-EntityType Spike::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Spike::onCollide(Entity* me, Entity& other, Entity& player) {
     if (me->health != Pursue) {
         return UNSET;
     }

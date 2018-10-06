@@ -216,11 +216,11 @@ void Game::detectEntityCollisions(void) {
                     player.undoMove();
                 }
             } else {
-                EntityType newEntity = player.onCollide(entities[ge], player, *this);
+                EntityType newEntity = player.onCollide(entities[ge], player);
                 spawnNewEntity(newEntity, player);
             }
 
-            entities[ge].onCollide(player, player, *this);
+            entities[ge].onCollide(player, player);
         }
 
         for (uint8_t pe = 0; pe < MAX_PLAYER_ENTITIES; ++pe) {
@@ -229,11 +229,11 @@ void Game::detectEntityCollisions(void) {
             }
 
             if (entities[ge].overlaps(player.entities[pe])) {
-                EntityType newEntity = entities[ge].onCollide(player.entities[pe], player, *this);
+                EntityType newEntity = entities[ge].onCollide(player.entities[pe], player);
 
                 spawnNewEntity(newEntity, entities[ge]);
 
-                newEntity = player.entities[pe].onCollide(entities[ge], player, *this);
+                newEntity = player.entities[pe].onCollide(entities[ge], player);
                 spawnNewEntity(newEntity, player.entities[pe]);
             }
         }
@@ -245,8 +245,8 @@ void Game::detectEntityCollisions(void) {
                 }
 
                 if (entities[ge].overlaps(entities[e])) {
-                    entities[ge].onCollide(entities[e], player, *this);
-                    entities[e].onCollide(entities[ge], player, *this);
+                    entities[ge].onCollide(entities[e], player);
+                    entities[e].onCollide(entities[ge], player);
                 }
             }
         }
@@ -255,13 +255,13 @@ void Game::detectEntityCollisions(void) {
     // HACK: enable player to get damaged by bombs
     // TODO: clean this up
     if (player.entities[1].type == EXPLOSION && player.overlaps(player.entities[1])) {
-        player.onCollide(player.entities[1], player, *this);
+        player.onCollide(player.entities[1], player);
     }
 
     // HACK: enable player to take damage from Nemesis's sword
     // TODO: clean this up
     if (Nemesis::sword.type == SWORD && Nemesis::sword.overlaps(player)) {
-        player.onCollide(Nemesis::sword, player, *this);
+        player.onCollide(Nemesis::sword, player);
     }
 
     // now let's confirm the player has stayed on the screen
@@ -555,7 +555,7 @@ void Game::updatePlay(uint8_t frame) {
         holdACount = 0;
     }
 
-    player.update(player, *this, arduboy, frame);
+    player.update(player, arduboy, frame);
 
     // player is in the middle of showing off a new item,
     // freeze the game while this is happening
@@ -567,7 +567,7 @@ void Game::updatePlay(uint8_t frame) {
     for (; e < MAX_PLAYER_ENTITIES; ++e) {
         Entity& entity = player.entities[e];
 
-        EntityType newEntity = entity.update(player, *this, arduboy, frame);
+        EntityType newEntity = entity.update(player, arduboy, frame);
         loadEntity(player.entities[e], newEntity);
 
         if (newEntity != UNSET) {
@@ -579,7 +579,7 @@ void Game::updatePlay(uint8_t frame) {
     for (e = 0; e < MAX_ENTITIES; ++e) {
         Entity& entity = entities[e];
 
-        EntityType newEntity = entity.update(player, *this, arduboy, frame);
+        EntityType newEntity = entity.update(player, arduboy, frame);
         spawnNewEntity(newEntity, entity);
     }
 

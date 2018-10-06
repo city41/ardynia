@@ -1,7 +1,7 @@
 #include "commonEnemy.h"
 #include "../state.h"
 
-EntityType CommonEnemy::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType CommonEnemy::onCollide(Entity* me, Entity& other, Entity& player) {
     if ((other.type == EXPLOSION
             || (me->type != BLOB_MOTHER && other.damage > 0))
             && me->tookDamageCount == 0

@@ -13,7 +13,7 @@ const int16_t PROGMEM skeleton_vels[] =  {
     -1, 0
 };
 
-EntityType Skeleton::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     // have current dungeon influence how difficult they are to deal with
     const uint8_t factor = State::gameState.currentDungeon + 1;
 

@@ -14,7 +14,7 @@ const int8_t PROGMEM spawnData[] = {
     -1, 6, 0, PROJECTILE_VELOCITY
 };
 
-EntityType Projectile::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+EntityType Projectile::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     int16_t px = player.x;
     int16_t py = player.y;
 

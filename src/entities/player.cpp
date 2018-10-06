@@ -122,7 +122,7 @@ void Player::render(uint8_t frame) {
 #endif
 }
 
-EntityType Player::update(Entity& player, Game& game, Arduboy2Base& arduboy, byte frame) {
+EntityType Player::update(Entity& player, Arduboy2Base& arduboy, byte frame) {
     if (tookDamageCount > 0) {
         tookDamageCount -= 1;
     }
@@ -169,10 +169,10 @@ EntityType Player::update(Entity& player, Game& game, Arduboy2Base& arduboy, byt
     return UNSET;
 }
 
-EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
+EntityType Player::onCollide(Entity& other, Entity& player) {
     if (other.type == CHEST) {
         undoMove();
-        receiveItemFromChest(other, game);
+        receiveItemFromChest(other);
         return UNSET;
     }
 
@@ -212,7 +212,7 @@ EntityType Player::onCollide(Entity& other, Entity& player, Game& game) {
     return UNSET;
 }
 
-void Player::receiveItemFromChest(Entity& chest, Game& game) {
+void Player::receiveItemFromChest(Entity& chest) {
     if (
         // hardcoding chest height saves 4 bytes, win!
         y >= (chest.y + 8) &&
@@ -223,7 +223,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
         receiveX = chest.x + 2;
         receiveY = chest.y - 10;
 
-        if (game.roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
+        if (game->roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
             // THIS RECIPE RELIES ON buildEntityArrays placing the chests
             // in the proper order.
             // OR!!! it can just rely on the random ordering that buildEntityArrays gets
@@ -231,7 +231,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
             // would need to make sure it's not always just the left most chest, center chest, right chest
             // but that should be easy to ensure
 
-            const uint8_t chestState = game.chestOpeningOrderState();
+            const uint8_t chestState = game->chestOpeningOrderState();
 
             if (chestState == AllChestsOpenCorrectly) {
                 receivedItem = KEY;
@@ -244,7 +244,7 @@ void Player::receiveItemFromChest(Entity& chest, Game& game) {
                 Sfx::play(Sfx::playerDamage);
                 health = max(0, health - 1);
                 bounceBack(*this, chest);
-                game.closeAllChests();
+                game->closeAllChests();
                 return;
             }
         } else {

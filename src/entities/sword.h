@@ -6,7 +6,7 @@
 #include "../entityTypes.h"
 
 struct Sword {
-    static EntityType update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame);
+    static EntityType update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame);
 };
 
 #endif

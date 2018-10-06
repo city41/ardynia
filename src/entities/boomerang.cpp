@@ -5,7 +5,9 @@
 #include "../util.h"
 #include "../state.h"
 
-EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+extern Game game;
+
+EntityType Boomerang::update(Entity* me, Entity& player, Arduboy2Base& arduboy, uint8_t frame) {
     int16_t px = player.x;
     int16_t py = player.y;
     
@@ -67,12 +69,12 @@ EntityType Boomerang::update(Entity* me, Entity& player, Game& game, Arduboy2Bas
     return UNSET;
 }
 
-EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player) {
     EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
     if (otherType >= BOMB && otherType <= HEART) {
-        return player.onCollide(other, player, game);
+        return player.onCollide(other, player);
     }
 
     // hit an enemy? then begin returning to the player

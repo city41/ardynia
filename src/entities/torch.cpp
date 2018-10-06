@@ -3,7 +3,9 @@
 #include "../game.h"
 #include "../sfx.h"
 
-EntityType Torch::update(Entity* me, Entity* player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
+extern Game game;
+
+EntityType Torch::update(Entity* me, Entity* player, Arduboy2Base& arduboy, uint8_t frame) {
     if (me->health == 0) {
         me->currentFrame = frame & 1;
     } 
@@ -11,7 +13,7 @@ EntityType Torch::update(Entity* me, Entity* player, Game& game, Arduboy2Base& a
     return UNSET;
 }
 
-EntityType Torch::onCollide(Entity* me, Entity& other, Entity& player, Game& game) {
+EntityType Torch::onCollide(Entity* me, Entity& other, Entity& player) {
     if (other.type == PLAYER) {
         other.undoMove();
     }
