@@ -66,7 +66,6 @@ void Game::loadSave(bool straightToPlay) {
         currentRender = &Game::renderTitle;
     }
 
-    Map::reset();
     Map::visitRoom(TileRoom::x, TileRoom::y, mapWidthInRooms);
 }
 
@@ -152,7 +151,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
         TileRoom::loadRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
         loadEntitiesInRoom(nextRoomX, nextRoomY, TileRoom::currentRoomOffset);
 
-        Map::reset();
         Map::visitRoom(nextRoomX, nextRoomY, mapWidthInRooms);
 
         // plop player in the center of the rooms
@@ -690,7 +688,7 @@ void Game::renderMenu(uint8_t frame) {
     renderer.translateX = 54;
     renderer.translateY = 0;
 
-    Map::render(mapWidthInRooms, TileRoom::x, TileRoom::y);
+    Map::render(TileRoom::x, TileRoom::y, mapWidthInRooms);
 }
 
 void Game::updateRoomTransition(uint8_t frame) {

@@ -75,6 +75,12 @@ void State::load() {
         for (i = 0; i < ROOM_STATE_BYTE_COUNT; ++i) {
             gameState.roomStates[i] = 0;
         }
+
+        for (i = 0; i < 4; ++i) {
+            for (uint8_t m = 0; m < 8; ++m) {
+                gameState.mapStates[i][m] = 0;
+            }
+        }
     }
 }
 

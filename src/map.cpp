@@ -6,9 +6,15 @@
 
 extern Renderer renderer;
 
-uint8_t Map::visitedRooms[VISITED_ROOMS_BYTE_COUNT];
+const uint8_t MAX_NUM_VISITED_ROOMS = 8 * 8;
 
-void Map::render(uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentRoomY) {
+void Map::render(uint8_t currentRoomX, uint8_t currentRoomY, uint8_t mapWidthInRooms) {
+    const uint8_t dungeonIndex = State::gameState.currentDungeon;
+
+    if (dungeonIndex > 3) {
+        return;
+    }
+
     // "MAP" label
     renderer.drawString(0, 0, map_string);
 
@@ -20,7 +26,7 @@ void Map::render(uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentR
         const uint8_t bitToGrab = roomIndex % 8;
         const uint8_t bitMask = 1 << bitToGrab;
 
-        const bool hasVisited = visitedRooms[byteToGrab] & bitMask;
+        const bool hasVisited = State::gameState.mapStates[dungeonIndex][byteToGrab] & bitMask;
 
         int8_t frame = 0;
         if (roomX == currentRoomX && roomY == currentRoomY) {
@@ -34,14 +40,17 @@ void Map::render(uint8_t mapWidthInRooms, uint8_t currentRoomX, uint8_t currentR
 }
 
 void Map::visitRoom(uint8_t roomX, uint8_t roomY, uint8_t mapWidthInRooms) {
+    const uint8_t dungeonIndex = State::gameState.currentDungeon;
+
+    if (dungeonIndex > 3) {
+        return;
+    }
+
     const uint8_t roomIndex = roomY * mapWidthInRooms + roomX;
     const uint8_t byteToSet = roomIndex >> 3;
     const uint8_t bitToSet = roomIndex % 8;
     const uint8_t bitMask = 1 << bitToSet;
 
-    visitedRooms[byteToSet] |= bitMask;
+    State::gameState.mapStates[dungeonIndex][byteToSet] |= bitMask;
 }
 
-void Map::reset() {
-    memset(visitedRooms, 0, VISITED_ROOMS_BYTE_COUNT);
-}

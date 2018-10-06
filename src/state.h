@@ -30,6 +30,7 @@ struct GameState {
     // The +1 is because the number of rooms is not necessarily divisible by 8, there
     // are some leftover bits we need to store
     uint8_t roomStates[ROOM_STATE_BYTE_COUNT];
+    uint8_t mapStates[4][8];
 };
 
 class State {
