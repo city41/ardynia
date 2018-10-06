@@ -5,7 +5,7 @@
 
 const uint8_t SKELETON_VEL_COUNT = 5;
 
-const int16_t PROGMEM skeleton_vels[] =  {
+const int8_t PROGMEM skeleton_vels[] =  {
     0, 0,
     0, 1,
     0, -1,
@@ -35,7 +35,7 @@ EntityType Skeleton::update(Entity* me, Entity& player, Arduboy2Base& arduboy, u
     me->duration -= 1;
 
     int16_t nx = Util::clamp(me->x + me->vx, 2, WIDTH - 16 - 2 - me->width);
-    int16_t ny = Util::clamp(me->y + me->vy, 2, HEIGHT - 2 - me->height);
+    int8_t ny = Util::clamp(me->y + me->vy, 2, HEIGHT - 2 - me->height);
     me->moveTo(nx, ny);
 
     return UNSET;
