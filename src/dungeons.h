@@ -169,11 +169,11 @@ const uint8_t PROGMEM dungeons_room0_1[] = {
     xy(48, 60),
 
     // entity 2
-    miscAndEntityType(1, SKELETON),
+    miscAndEntityType(SLAM_SHUT, SKELETON),
     xy(80, 36),
 
     // entity 3
-    miscAndEntityType(1, SKELETON),
+    miscAndEntityType(SLAM_SHUT, SKELETON),
     xy(16, 20),
 };
 
@@ -209,7 +209,7 @@ const uint8_t PROGMEM dungeons_room0_3[] = {
     xy(16, 20),
 
     // entity 3
-    miscAndEntityType(6, SUNKEN_BRIDGE),
+    miscAndEntityType(OPEN_CHESTS_IN_RIGHT_ORDER, SUNKEN_BRIDGE),
     xy(8, 40),
 };
 
@@ -231,7 +231,7 @@ const uint8_t PROGMEM dungeons_room0_4[] = {
     xy(88, 24),
 
     // entity 3
-    miscAndEntityType(1, BAT),
+    miscAndEntityType(SLAM_SHUT, BAT),
     xy(24, 24),
 
     // entity 4
@@ -271,7 +271,7 @@ const uint8_t PROGMEM dungeons_room0_6[] = {
     xy(32, 20),
 
     // entity 1
-    miscAndEntityType(5, POT),
+    miscAndEntityType(KEY, POT),
     xy(16, 12),
 
     // entity 2
@@ -309,7 +309,7 @@ const uint8_t PROGMEM dungeons_room0_7[] = {
     xy(48, 60),
 
     // entity 1
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(KEY, CHEST),
     xy(16, 16),
 
     // entity 2
@@ -353,7 +353,7 @@ const uint8_t PROGMEM dungeons_room1_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(HEART, CHEST),
     xy(32, 20),
 };
 
@@ -363,11 +363,11 @@ const uint8_t PROGMEM dungeons_room1_2[] = {
     2, // number of entities
 
     // entity 0
-    miscAndEntityType(1, NEMESIS),
+    miscAndEntityType(SLAM_SHUT, NEMESIS),
     xy(80, 20),
 
     // entity 1
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(0, 16),
 };
 
@@ -395,7 +395,7 @@ const uint8_t PROGMEM dungeons_room1_4[] = {
     xy(48, 60),
 
     // entity 1
-    miscAndEntityType(3, GIANT_BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_HEART_CONTAINER, GIANT_BAT),
     xy(48, 12),
 };
 
@@ -417,7 +417,7 @@ const uint8_t PROGMEM dungeons_room1_5[] = {
     xy(80, 20),
 
     // entity 3
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(96, 36),
 };
 
@@ -453,7 +453,7 @@ const uint8_t PROGMEM dungeons_room1_7[] = {
     xy(80, 20),
 
     // entity 2
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(KEY, CHEST),
     xy(80, 36),
 };
 
@@ -477,7 +477,7 @@ const uint8_t PROGMEM dungeons_room2_1[] = {
     xy(48, 60),
 
     // entity 1
-    miscAndEntityType(1, GIANT_BAT),
+    miscAndEntityType(SLAM_SHUT, GIANT_BAT),
     xy(48, 16),
 
     // entity 2
@@ -541,31 +541,31 @@ const uint8_t PROGMEM dungeons_room2_5[] = {
     8, // number of entities
 
     // entity 0
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BLOB),
     xy(16, 8),
 
     // entity 1
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BLOB),
     xy(16, 52),
 
     // entity 2
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BLOB),
     xy(16, 24),
 
     // entity 3
-    miscAndEntityType(4, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BAT),
     xy(48, 12),
 
     // entity 4
-    miscAndEntityType(4, BLOB),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BLOB),
     xy(56, 52),
 
     // entity 5
-    miscAndEntityType(4, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BAT),
     xy(48, 24),
 
     // entity 6
-    miscAndEntityType(4, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, BAT),
     xy(32, 40),
 
     // entity 7
@@ -593,7 +593,7 @@ const uint8_t PROGMEM dungeons_room2_7[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(4, SKELETON),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, SKELETON),
     xy(24, 36),
 
     // entity 1
@@ -611,27 +611,27 @@ const uint8_t PROGMEM dungeons_room3_0[] = {
     6, // number of entities
 
     // entity 0
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(32, 0),
 
     // entity 1
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(32, 56),
 
     // entity 2
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(40, 0),
 
     // entity 3
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(40, 56),
 
     // entity 4
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(64, 0),
 
     // entity 5
-    miscAndEntityType(7, SPIKE),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, SPIKE),
     xy(64, 56),
 };
 
@@ -641,19 +641,19 @@ const uint8_t PROGMEM dungeons_room3_2[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(16, 36),
 
     // entity 1
-    miscAndEntityType(2, SKELETON),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, SKELETON),
     xy(48, 20),
 
     // entity 2
-    miscAndEntityType(2, SKELETON),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, SKELETON),
     xy(32, 52),
 
     // entity 3
-    miscAndEntityType(2, BLOB),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BLOB),
     xy(40, 28),
 };
 
@@ -663,7 +663,7 @@ const uint8_t PROGMEM dungeons_room3_3[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(4, SKELETON),
+    miscAndEntityType(LAST_ENEMY_HAS_BOSS_KEY, SKELETON),
     xy(16, 20),
 
     // entity 1
@@ -691,15 +691,15 @@ const uint8_t PROGMEM dungeons_room3_5[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(0, 36),
 
     // entity 1
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(104, 16),
 
     // entity 2
-    miscAndEntityType(1, BLOB_MOTHER),
+    miscAndEntityType(SLAM_SHUT, BLOB_MOTHER),
     xy(16, 36),
 };
 
@@ -709,7 +709,7 @@ const uint8_t PROGMEM dungeons_room3_6[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(1, CHEST),
+    miscAndEntityType(BOOMERANG, CHEST),
     xy(48, 24),
 };
 
@@ -741,11 +741,11 @@ const uint8_t PROGMEM dungeons_room4_0[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(32, 32),
 
     // entity 1
-    miscAndEntityType(7, TORCH),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, TORCH),
     xy(16, 24),
 
     // entity 2
@@ -759,7 +759,7 @@ const uint8_t PROGMEM dungeons_room4_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(KEY, CHEST),
     xy(48, 12),
 };
 
@@ -773,7 +773,7 @@ const uint8_t PROGMEM dungeons_room4_2[] = {
     xy(48, 0),
 
     // entity 1
-    miscAndEntityType(3, CHEST),
+    miscAndEntityType(RING, CHEST),
     xy(80, 36),
 
     // entity 2
@@ -829,7 +829,7 @@ const uint8_t PROGMEM dungeons_room4_4[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(16, 20),
 
     // entity 1
@@ -889,7 +889,7 @@ const uint8_t PROGMEM dungeons_room4_6[] = {
     xy(16, 28),
 
     // entity 3
-    miscAndEntityType(6, SUNKEN_BRIDGE),
+    miscAndEntityType(OPEN_CHESTS_IN_RIGHT_ORDER, SUNKEN_BRIDGE),
     xy(96, 44),
 
     // entity 4
@@ -907,7 +907,7 @@ const uint8_t PROGMEM dungeons_room4_7[] = {
     xy(80, 44),
 
     // entity 1
-    miscAndEntityType(5, SWITCH),
+    miscAndEntityType(THREE_SWITCHES_ONE_BOOMERANG, SWITCH),
     xy(64, 16),
 
     // entity 2
@@ -949,7 +949,7 @@ const uint8_t PROGMEM dungeons_room5_3[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(0, 16),
 
     // entity 1
@@ -957,11 +957,11 @@ const uint8_t PROGMEM dungeons_room5_3[] = {
     xy(16, 48),
 
     // entity 2
-    miscAndEntityType(7, TORCH),
+    miscAndEntityType(LAST_TORCH_OPENS_DOORS, TORCH),
     xy(80, 48),
 
     // entity 3
-    miscAndEntityType(5, POT),
+    miscAndEntityType(KEY, POT),
     xy(80, 20),
 };
 
@@ -971,7 +971,7 @@ const uint8_t PROGMEM dungeons_room5_4[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(2, CHEST),
+    miscAndEntityType(BOMB, CHEST),
     xy(48, 24),
 
     // entity 1
@@ -1001,7 +1001,7 @@ const uint8_t PROGMEM dungeons_room5_5[] = {
     xy(64, 36),
 
     // entity 3
-    miscAndEntityType(5, HEART),
+    miscAndEntityType(THREE_SWITCHES_ONE_BOOMERANG, HEART),
     xy(96, 44),
 };
 
@@ -1011,7 +1011,7 @@ const uint8_t PROGMEM dungeons_room5_6[] = {
     4, // number of entities
 
     // entity 0
-    miscAndEntityType(5, POT),
+    miscAndEntityType(KEY, POT),
     xy(16, 20),
 
     // entity 1
@@ -1069,7 +1069,7 @@ const uint8_t PROGMEM dungeons_room6_1[] = {
     1, // number of entities
 
     // entity 0
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(HEART, CHEST),
     xy(32, 20),
 };
 
@@ -1083,7 +1083,7 @@ const uint8_t PROGMEM dungeons_room6_2[] = {
     xy(64, 32),
 
     // entity 1
-    miscAndEntityType(5, CHEST),
+    miscAndEntityType(KEY, CHEST),
     xy(80, 20),
 };
 
@@ -1113,7 +1113,7 @@ const uint8_t PROGMEM dungeons_room6_5[] = {
     2, // number of entities
 
     // entity 0
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(8, 20),
 
     // entity 1
@@ -1159,11 +1159,11 @@ const uint8_t PROGMEM dungeons_room7_0[] = {
     xy(16, 20),
 
     // entity 1
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(64, 36),
 
     // entity 2
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(64, 20),
 
     // entity 3
@@ -1177,11 +1177,11 @@ const uint8_t PROGMEM dungeons_room7_1[] = {
     3, // number of entities
 
     // entity 0
-    miscAndEntityType(1, BLOB_MOTHER),
+    miscAndEntityType(SLAM_SHUT, BLOB_MOTHER),
     xy(48, 20),
 
     // entity 1
-    miscAndEntityType(1, TRIGGER_DOOR),
+    miscAndEntityType(VERTICAL, TRIGGER_DOOR),
     xy(0, 16),
 
     // entity 2
@@ -1199,19 +1199,19 @@ const uint8_t PROGMEM dungeons_room7_2[] = {
     xy(48, 4),
 
     // entity 1
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(24, 28),
 
     // entity 2
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(88, 24),
 
     // entity 3
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(88, 36),
 
     // entity 4
-    miscAndEntityType(2, POT),
+    miscAndEntityType(BOMB, POT),
     xy(24, 36),
 };
 
@@ -1235,7 +1235,7 @@ const uint8_t PROGMEM dungeons_room7_4[] = {
     xy(16, 60),
 
     // entity 1
-    miscAndEntityType(4, CHEST),
+    miscAndEntityType(HEART, CHEST),
     xy(64, 20),
 };
 
@@ -1293,23 +1293,23 @@ const uint8_t PROGMEM dungeons_room7_7[] = {
     5, // number of entities
 
     // entity 0
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(80, 20),
 
     // entity 1
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(72, 40),
 
     // entity 2
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(48, 12),
 
     // entity 3
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(56, 40),
 
     // entity 4
-    miscAndEntityType(2, BAT),
+    miscAndEntityType(LAST_ENEMY_HAS_KEY, BAT),
     xy(72, 40),
 };
 

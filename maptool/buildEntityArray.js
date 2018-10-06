@@ -1,58 +1,6 @@
 const ROOM_WIDTH_PX = 128 - 16;
 const ROOM_HEIGHT_PX = 64;
 
-const EntityTypes = {
-    SWORD: 0,
-    BOOMERANG: 1,
-    BOMB: 2,
-    CHEST: 3,
-    HEART: 4,
-    KEY: 5,
-    BLOB: 6,
-    BAT: 7,
-    SKELETON: 8,
-    GIANT_BAT: 9,
-    BLOB_MOTHER: 10,
-    NEMESIS: 11,
-    TELEPORTER: 12,
-    LOCK: 13,
-    BOSS_LOCK: 14,
-    PROJECTILE: 15,
-    EXPLOSION: 16,
-    SECRET_WALL: 17,
-    TRIGGER_DOOR: 18,
-    SWITCH: 19,
-    POT: 20,
-    SUNKEN_BRIDGE: 21,
-    TORCH: 22,
-    // quasi entities, only needed to exist
-    // here so they can be put into chests
-    RING: 3,
-    BOSS_KEY: 6,
-    SAD_FACE: 7,
-    HAPPY_FACE: 8,
-
-    // quasi entities that only really get used
-    // at runtime
-    ITEM_DROP: 253,
-    PLAYER: 254,
-    UNSET: 255
-};
-
-const MiscValues = {
-    NORMAL: 0,
-    SLAM_SHUT: 1,
-    LAST_ENEMY_HAS_KEY: 2,
-    LAST_ENEMY_HAS_HEART_CONTAINER: 3,
-    LAST_ENEMY_HAS_BOSS_KEY: 4,
-    THREE_SWITCHES_ONE_BOOMERANG: 5,
-    OPEN_CHESTS_IN_RIGHT_ORDER: 6,
-    LAST_TORCH_OPENS_DOORS: 7,
-
-    // trigger door should be vertically oriented
-    VERTICAL: 1
-};
-
 function getRoomAt(mapX, mapY) {
     const roomX = Math.floor(mapX / ROOM_WIDTH_PX);
     const roomY = Math.floor(mapY / ROOM_HEIGHT_PX);
@@ -132,25 +80,23 @@ function getRoomArrayData(
                 obj.properties,
                 "CONTAINED_TYPE"
             );
-            return EntityTypes[containedTypeName] || 0;
+            return containedTypeName || 0;
         }
 
         const miscString = getPropertyValue(obj.properties, "MISC");
-        return MiscValues[miscString] || 0;
+        return miscString || 0;
     }
 
     objects.forEach((obj, i) => {
         const { roomX, roomY, roomPxX, roomPxY } = getRoomAt(obj.x, obj.y);
         const entityX = obj.x - roomPxX;
         const entityY = obj.y - roomPxY;
-        const type = EntityTypes[obj.type];
 
         rooms[roomX] = rooms[roomX] || [];
         rooms[roomX][roomY] = rooms[roomX][roomY] || [];
         rooms[roomX][roomY].push({
             x: entityX,
             y: entityY,
-            type,
             typeName: obj.type,
             miscValue: getMiscValue(obj)
         });

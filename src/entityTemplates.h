@@ -7,12 +7,13 @@
 #include "spriteBitmaps.h"
 #include "tileBitmaps.h"
 
+#include "entities/sword.h"
 #include "entities/commonEnemy.h"
 #include "entities/blob.h"
 #include "entities/bat.h"
 #include "entities/skeleton.h"
 #include "entities/spike.h"
-#include "entities/sword.h"
+#include "entities/snake.h"
 #include "entities/boomerang.h"
 #include "entities/bomb.h"
 #include "entities/explosion.h"
@@ -106,85 +107,91 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     11,
     false,
 
-    // 10, GIANT_BAT
+    // 10, SNAKE
+    widthAndHeight(13, 8),
+    healthAndDamage(1, 1),
+    11,
+    true,
+
+    // 11, GIANT_BAT
     widthAndHeight(16, 16),
     healthAndDamage(8, 1),
     10,
     true,
 
-    // 11, BLOB_MOTHER
+    // 12, BLOB_MOTHER
     widthAndHeight(15, 16),
     healthAndDamage(6, 1),
     10,
     true,
 
-    // 12, NEMESIS
+    // 13, NEMESIS
     widthAndHeight(8, 8),
     healthAndDamage(15, 0),
     30,
     true,
 
-    // 13, TELEPORTER
+    // 14, TELEPORTER
     widthAndHeight(16, 4),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 14, LOCK
+    // 15, LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 15, BOSS_LOCK
+    // 16, BOSS_LOCK
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 16, PROJECTILE
+    // 17, PROJECTILE
     widthAndHeight(8, 8),
     healthAndDamage(0 , 2),
     20,
     false,
 
-    // 17, EXPLOSION
+    // 18, EXPLOSION
     widthAndHeight(16, 16),
     healthAndDamage(0 , 1),
     20,
     false,
 
-    // 18, SECRET_WALL
+    // 19, SECRET_WALL
     widthAndHeight(16, 16),
     healthAndDamage(1, 0),
     0,
     false,
 
-    // 19, TRIGGER_DOOR
+    // 20, TRIGGER_DOOR
     widthAndHeight(16, 8),
     healthAndDamage(0, 0),
     20,
     false,
 
-    // 20, SWITCH
+    // 21, SWITCH
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 21, POT
+    // 22, POT
     widthAndHeight(8, 8),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 22, SUNKEN_BRIDGE
+    // 23, SUNKEN_BRIDGE
     widthAndHeight(0, 0),
     healthAndDamage(0, 0),
     0,
     false,
 
-    // 23, TORCH
+    // 24, TORCH
     widthAndHeight(8, 8),
     healthAndDamage(1, 0),
     0,
@@ -238,77 +245,82 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Skeleton::update,
     (void*)CommonEnemy::onCollide,
 
-    // 9, SKELETON
+    // 9, SPIKE
     spike_tiles,
     (void*)Spike::update,
     (void*)Spike::onCollide,
 
-    // 10, GIANT_BAT
+    // 10, SNAKE
+    snake_plus_mask,
+    (void*)Snake::update,
+    (void*)CommonEnemy::onCollide,
+
+    // 11, GIANT_BAT
     giantBat_plus_mask,
     (void*)Bat::update,
     (void*)Bat::onCollide,
 
-    // 11, BLOB_MOTHER
+    // 12, BLOB_MOTHER
     blobMother_plus_mask,
     (void*)BlobMother::update,
     (void*)CommonEnemy::onCollide,
 
-    // 12, NEMESIS
+    // 13, NEMESIS
     player_plus_mask,
     (void*)Nemesis::update,
     (void*)Nemesis::onCollide,
 
-    // 13, TELEPORTER
+    // 14, TELEPORTER
     NULL,
     NULL,
     NULL,
 
-    // 14, LOCK
+    // 15, LOCK
     lock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 15, BOSS_LOCK
+    // 16, BOSS_LOCK
     bossLock_tiles,
     NULL,
     (void*)Lock::onCollide,
 
-    // 16, PROJECTILE
+    // 17, PROJECTILE
     projectile_tiles,
     (void*)Projectile::update,
     NULL,
 
-    // 17, EXPLOSION
+    // 18, EXPLOSION
     explosion_tiles,
     (void*)Explosion::update,
     NULL,
 
-    // 18, SECRET_WALL
+    // 19, SECRET_WALL
     secretWall_tiles,
     NULL,
     (void*)SecretWall::onCollide,
 
-    // 19, TRIGGER_DOOR
+    // 20, TRIGGER_DOOR
     NULL,
     (void*)TriggerDoor::update,
     (void*)TriggerDoor::onCollide,
 
-    // 20, SWITCH
+    // 21, SWITCH
     switch_tiles,
     NULL,
     (void*)Switch::onCollide,
 
-    // 21, POT
+    // 22, POT
     pot_tiles,
     NULL,
     (void*)Pot::onCollide,
 
-    // 22, SUNKEN_BRIDGE
+    // 23, SUNKEN_BRIDGE
     NULL,
     NULL,
     NULL,
 
-    // 23, TORCH
+    // 24, TORCH
     torch_tiles,
     (void*)Torch::update,
     (void*)Torch::onCollide

@@ -903,6 +903,24 @@
                  "width":0,
                  "x":401.182,
                  "y":364.182
+                }, 
+                {
+                 "height":0,
+                 "id":211,
+                 "name":"snake",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"SNAKE",
+                 "visible":true,
+                 "width":0,
+                 "x":174.5,
+                 "y":236
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1384,7 +1402,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":211,
+ "nextobjectid":212,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

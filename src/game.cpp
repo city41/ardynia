@@ -382,7 +382,7 @@ void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
         // for y, multiply the y nibble by 4
         currentEntity.y = (xy & 0x0F) << 2;
 
-        isBossRoom = isBossRoom || (type > SPIKE && type < TELEPORTER);
+        isBossRoom = isBossRoom || (type > SNAKE && type < TELEPORTER);
 
         if (type == TRIGGER_DOOR && entityMisc) {
             // if a trigger door's misc is set, it wants to be vertical
