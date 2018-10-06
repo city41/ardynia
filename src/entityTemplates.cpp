@@ -14,6 +14,8 @@ void loadEntity(Entity& entity, EntityType entityType) {
     entity.stunCount = 0;
     entity.prevX = 0;
     entity.prevY = 0;
+    entity.vx = 0;
+    entity.vy = 0;
 
     const uint8_t* start = entityProperties + (entityType * NUM_ENTITY_PROPS);
 
