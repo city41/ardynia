@@ -13,7 +13,7 @@
 EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& arduboy, uint8_t frame) {
     // just finished a direction or went off screen? pick a new way to go
     if (me->duration == 0
-            || Util::isOffScreen(me->x, me->y, 12)
+            || Util::isOffScreen(me->x, me->y, 8)
             || (me->type == GIANT_BAT && me->y >= 18)
         ) {
         me->vx = random(-1, 2);
@@ -25,17 +25,14 @@ EntityType Bat::update(Entity* me, Entity& player, Game& game, Arduboy2Base& ard
             me->vy = 1;
         }
 
+        me->stayInside(1, WIDTH - 17, 1, HEIGHT - 1);
+
         // cheap way to get a little randomness
         me->duration = 30 + frame;
-    }
-
-    if (me->duration > 0 && (frame % 5) == 0) {
+    } else if (frame % 5 == 0) {
         me->duration -= 1;
         me->moveTo(me->x + me->vx, me->y + me->vy);
-
-        if (me->vx || me->vy) {
-            me->currentFrame = 1 - me->currentFrame;
-        }
+        me->currentFrame = 1 - me->currentFrame;
     }
 
     me->mirror = (MirrorMode)(player.x < me->x);
