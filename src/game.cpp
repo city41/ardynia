@@ -137,7 +137,6 @@ void Game::updateTeleportTransition(uint8_t frame) {
         // only save current dungeon if actually going into a dungeon
         if ((TileRoom::map == dungeons_map && nextRoomX % 3 == 0) || TileRoom::map == overworld_map) {
             State::gameState.currentDungeon = State::gameState.currentDungeon == 0 ? nextRoomX / 3 + 1 : 0;
-            State::saveToEEPROM();
         } else {
             // 4 to indicate "secret room"
             // this is a little dangerous, but since secret rooms wont
@@ -594,6 +593,7 @@ void Game::updatePlay(uint8_t frame) {
         teleportTransitionCount = WIDTH / 4;
         player.movedThisFrame = false;
         titleRow = 0;
+        State::saveToEEPROM();
         push(&Game::updateGameOver, &Game::renderGameOver);
     }
 
