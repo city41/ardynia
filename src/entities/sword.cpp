@@ -3,7 +3,7 @@
 
 EntityType Sword::update(Entity* me, Entity& player, Arduboy2Base& arduoboy, uint8_t frame) {
     int16_t px = player.x;
-    int16_t py = player.y;
+    int8_t py = player.y;
 
     switch (player.dir) {
         case LEFT:
