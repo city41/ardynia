@@ -64,11 +64,11 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     150,
     true,
 
-    // 3, KEY
-    widthAndHeight(3, 8),
+    // 3, CHEST
+    widthAndHeight(14, 8),
     healthAndDamage(0, 0),
-    0,
-    true,
+    20,
+    false,
 
     // 4, HEART
     widthAndHeight(7, 8),
@@ -76,11 +76,11 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     180,
     true,
 
-    // 5, CHEST
-    widthAndHeight(14, 8),
+    // 5, KEY
+    widthAndHeight(3, 8),
     healthAndDamage(0, 0),
-    20,
-    false,
+    0,
+    true,
 
     // 6, BLOB
     widthAndHeight(8, 8),
@@ -208,9 +208,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Bomb::update,
     NULL,
 
-    // 3, KEY
-    key_plus_mask,
-    NULL,
+    // 3, CHEST
+    chest_tiles,
+    (void*)Chest::update,
     NULL,
 
     // 4, HEART
@@ -218,9 +218,9 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     NULL,
     NULL,
 
-    // 5, CHEST
-    chest_tiles,
-    (void*)Chest::update,
+    // 5, KEY
+    key_plus_mask,
+    NULL,
     NULL,
 
     // 6, BLOB

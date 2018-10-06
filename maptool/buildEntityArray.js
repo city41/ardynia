@@ -5,9 +5,9 @@ const EntityTypes = {
     SWORD: 0,
     BOOMERANG: 1,
     BOMB: 2,
-    KEY: 3,
+    CHEST: 3,
     HEART: 4,
-    CHEST: 5,
+    KEY: 5,
     BLOB: 6,
     BAT: 7,
     SKELETON: 8,
@@ -27,7 +27,7 @@ const EntityTypes = {
     TORCH: 22,
     // quasi entities, only needed to exist
     // here so they can be put into chests
-    RING: 5,
+    RING: 3,
     BOSS_KEY: 6,
     SAD_FACE: 7,
     HAPPY_FACE: 8,

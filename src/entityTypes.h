@@ -12,9 +12,9 @@ const EntityType ENTITY_MISC_MASK = 0b00000111;
 const EntityType SWORD = 0;
 const EntityType BOOMERANG = 1;
 const EntityType BOMB = 2;
-const EntityType KEY = 3;
+const EntityType CHEST = 3;
 const EntityType HEART = 4;
-const EntityType CHEST = 5;
+const EntityType KEY = 5;
 
 // enemies
 const EntityType BLOB = 6;
@@ -52,7 +52,8 @@ const EntityType ITEM_DROP = 253;
 const EntityType PLAYER = 254;
 const EntityType UNSET = 255;
 
-const EntityType RING = 5;
+// these need to match their index in itemSprites.h
+const EntityType RING = 3;
 const EntityType BOSS_KEY = 6;
 const EntityType SAD_FACE = 7;
 const EntityType HAPPY_FACE = 8;
