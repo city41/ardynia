@@ -214,9 +214,6 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
 const uint8_t* const PROGMEM toasts[] = {
     gotBoomerang_string,
     gotBombs_string,
-    NULL,
-    NULL,
-    NULL,
     gotRing_string
 };
 
