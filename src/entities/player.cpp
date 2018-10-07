@@ -199,7 +199,7 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
 
     if (other.type == BOMB) {
         other.type = UNSET;
-        numBombs = 3;
+        numBombs = min(6, numBombs + 3);
         Sfx::play(Sfx::pickUpItem);
     }
 
@@ -254,7 +254,7 @@ void Player::receiveItemFromChest(Entity& chest) {
 
 
         if (receivedItem == BOMB) {
-            numBombs = min(numBombs + 3, MAX_BOMB_COUNT);
+            numBombs = 3;
         }
 
         if (receivedItem == SWORD) {
@@ -262,7 +262,7 @@ void Player::receiveItemFromChest(Entity& chest) {
         }
 
         if (
-            (receivedItem > SWORD && receivedItem < KEY) ||
+            (receivedItem >= BOOMERANG && receivedItem <= BOMB) ||
             receivedItem == RING
         ) {
             State::gameState.numAcquiredItems = min(3, State::gameState.numAcquiredItems + 1);

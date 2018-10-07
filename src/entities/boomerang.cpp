@@ -73,7 +73,7 @@ EntityType Boomerang::onCollide(Entity* me, Entity& other, Entity& player) {
     EntityType otherType = other.type;
 
     // hit something the user can collect? collect it and keep going
-    if (otherType >= BOMB && otherType <= HEART) {
+    if (otherType >= BOMB && otherType <= KEY && otherType != CHEST) {
         return player.onCollide(other, player);
     }
 

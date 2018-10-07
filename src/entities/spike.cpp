@@ -7,7 +7,7 @@ enum SpikeMode: uint8_t {
     Retreat
 };
 
-const int8_t PursueVelocity = 3;
+const int8_t PursueVelocity = 2;
 const int8_t RetreatVelocity = 1;
 
 EntityType Spike::update(Entity* me, Entity& player, uint8_t frame) {
