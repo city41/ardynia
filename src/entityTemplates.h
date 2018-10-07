@@ -325,7 +325,5 @@ const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     (void*)Torch::onCollide
 };
 
-void loadEntity(Entity& entity, EntityType entityType);
-
 #endif
 

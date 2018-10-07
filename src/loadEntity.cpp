@@ -1,3 +1,4 @@
+#include "loadEntity.h"
 #include "entityTemplates.h"
 #include "util.h"
 #include "tileBitmaps.h"

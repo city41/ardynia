@@ -1,5 +1,4 @@
 #include "nemesis.h"
-#include "../entityTemplates.h"
 #include "../util.h"
 
 NemesisMode Nemesis::mode = Hold;
