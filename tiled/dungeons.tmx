@@ -123,8 +123,8 @@
   </object>
   <object id="278" name="To overworld from secret 4" type="TELEPORTER" x="832.667" y="380.292">
    <properties>
-    <property name="DEST_ROOM_X" type="int" value="5"/>
-    <property name="DEST_ROOM_Y" type="int" value="4"/>
+    <property name="DEST_ROOM_X" type="int" value="2"/>
+    <property name="DEST_ROOM_Y" type="int" value="5"/>
    </properties>
    <point/>
   </object>

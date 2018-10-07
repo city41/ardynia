@@ -38,7 +38,8 @@ EntityType Snake::update(Entity* me, Entity& player, uint8_t frame) {
         }
     }
 
-    if (Util::isOffScreen(me->x, me->y, 8) || TileRoom::getTileAt(me->x, me->y) == Stone) {
+    TileDef currentTile = TileRoom::getTileAt(me->x, me->y);
+    if (Util::isOffScreen(me->x, me->y, 8) || currentTile== Stone || currentTile == Water) {
         me->undoMove();
 
         if (me->duration == Leisure) {
