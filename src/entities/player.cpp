@@ -7,6 +7,7 @@
 #include "../itemSprites.h"
 #include "../game.h"
 #include "../renderer.h"
+#include "../strings.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -178,15 +179,11 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
     }
 
     if (other.damage && tookDamageCount == 0) {
-        health = max(health - other.damage, 0);
+        // this only works because all enemies only do one damage
+        // otherwise, this would need to be health = max(0, health - other.damage)
+        health -= 1;
         bounceBack(*this, other);
         Sfx::play(Sfx::playerDamage);
-
-        /* // hack: make the sword bounce back too, in case we */
-        /* // were hit while attacking. If not attacking and sword */
-        /* // is UNSET, then this is basically a noop */
-        /* entities[0].dir = dir; */
-        /* entities[0].bounceBack(*this, other); */
 
         tookDamageCount = 30;
     }
@@ -207,11 +204,21 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
         other.type = UNSET;
         State::gameState.numKeys[State::gameState.currentDungeon] += 1;
         State::setCurrentRoomTriggered();
-        Sfx::play(Sfx::pickUpItem);
+        Sfx::play(Sfx::successJingle);
+        game->toast(gotKey_string);
     }
 
     return UNSET;
 }
+
+const uint8_t* const PROGMEM toasts[] = {
+    gotBoomerang_string,
+    gotBombs_string,
+    NULL,
+    NULL,
+    NULL,
+    gotRing_string
+};
 
 void Player::receiveItemFromChest(Entity& chest) {
     if (
@@ -225,13 +232,6 @@ void Player::receiveItemFromChest(Entity& chest) {
         receiveY = chest.y - 10;
 
         if (game->roomType == OPEN_CHESTS_IN_RIGHT_ORDER) {
-            // THIS RECIPE RELIES ON buildEntityArrays placing the chests
-            // in the proper order.
-            // OR!!! it can just rely on the random ordering that buildEntityArrays gets
-            // it will be consistent for a given build of the game, so this might work, but
-            // would need to make sure it's not always just the left most chest, center chest, right chest
-            // but that should be easy to ensure
-
             const uint8_t chestState = game->chestOpeningOrderState();
 
             if (chestState == AllChestsOpenCorrectly) {
@@ -252,6 +252,8 @@ void Player::receiveItemFromChest(Entity& chest) {
             receivedItem = chest.health;
         }
 
+        const uint8_t* toast = NULL;
+
 
         if (receivedItem == BOMB) {
             numBombs = 3;
@@ -259,32 +261,38 @@ void Player::receiveItemFromChest(Entity& chest) {
 
         if (receivedItem == SWORD) {
             State::gameState.hasSword = 1;
+            toast = gotSword_string;
         }
 
         if (
             (receivedItem >= BOOMERANG && receivedItem <= BOMB) ||
             receivedItem == RING
         ) {
-            State::gameState.numAcquiredItems = min(3, State::gameState.numAcquiredItems + 1);
+            State::gameState.numAcquiredItems += 1;
 
             bButtonEntityType = receivedItem;
+            toast = pgm_read_ptr(toasts + (receivedItem - BOOMERANG));
         }
 
         if (receivedItem == HEART) {
             State::gameState.totalHealth += 1;
             health = State::gameState.totalHealth;
+            toast = gotHeartContainer_string;
         }
 
         if (receivedItem == KEY) { 
             State::gameState.numKeys[State::gameState.currentDungeon] += 1;
+            toast = gotKey_string;
         }
 
         if (receivedItem == BOSS_KEY) {
             State::gameState.bossKeys[State::gameState.currentDungeon] += 1;
+            toast = gotBossKey_string;
         }
 
         Sfx::play(Sfx::successJingle);
         State::setCurrentRoomTriggered();
+        game->toast(toast);
     }
 }
 

@@ -307,6 +307,9 @@ void Game::goToNextRoom(int16_t x, int8_t y) {
 
     firstRoomTransitionFrame = true;
     push(&Game::updateRoomTransition, &Game::renderRoomTransition);
+
+    // letting toasts span rooms looks weird
+    toastCount = 0;
 }
 
 int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
@@ -514,6 +517,10 @@ void Game::renderTitle(uint8_t frame) {
 }
 
 void Game::updatePlay(uint8_t frame) {
+    if (State::isTriggered(FINAL_BOSS_ROOM, false)) {
+        toastCount = 10;
+        toastString = congrats_string;
+    }
 
     if (bossDelayCount > 0) {
         bossDelayCount -= 1;
@@ -646,9 +653,16 @@ void Game::renderPlay(uint8_t frame) {
 
     Nemesis::sword.render(frame);
 
+    if (toastCount > 0) {
+        toastCount -= 1;
+        renderer.fillRect(0, 0, WIDTH - 16, 6, BLACK);
+        renderer.drawString(1, 1, toastString);
+    }
+
     renderer.translateX = WIDTH - 16;
     renderer.translateY = 0;
     Hud::render(player);
+
 }
 
 void Game::updateMenu(uint8_t frame) {
@@ -656,10 +670,8 @@ void Game::updateMenu(uint8_t frame) {
 
     if (arduboy.justPressed(A_BUTTON)) {
         // respond to the decision
-        if (menu.chosenItem != UNSET && menu.chosenItem != player.bButtonEntityType) {
-            player.bButtonEntityType = menu.chosenItem;
-            player.entities[1].type = UNSET;
-        }
+        player.bButtonEntityType = menu.chosenItem;
+        player.entities[1].type = UNSET;
 
         pop();
     }
@@ -668,7 +680,7 @@ void Game::updateMenu(uint8_t frame) {
 void Game::renderMenu(uint8_t frame) {
     menu.render(player, frame);
 
-    renderer.translateX = 54;
+    renderer.translateX = 68;
     renderer.translateY = 0;
 
     Map::render(TileRoom::x, TileRoom::y, mapWidthInRooms);
@@ -781,11 +793,6 @@ void Game::render(uint8_t frame) {
     renderer.translateX = 0;
     renderer.translateY = 0;
 
-    if (State::isTriggered(FINAL_BOSS_ROOM, false)) {
-        renderer.fillRect(0, 0, 42, 6, BLACK);
-        renderer.drawString(1, 1, congrats_string);
-    }
-
     if (nextRender != NULL) {
         prevRender = currentRender;
         currentRender = nextRender;
@@ -877,4 +884,9 @@ uint8_t Game::countEntities(EntityType entityType) {
     }
 
     return count;
+}
+
+void Game::toast(const uint8_t* str) {
+    toastString = str;
+    toastCount = 130;
 }

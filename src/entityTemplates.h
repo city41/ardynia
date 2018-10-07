@@ -151,7 +151,7 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
 
     // 17, PROJECTILE
     widthAndHeight(8, 8),
-    healthAndDamage(0 , 2),
+    healthAndDamage(0, 2),
     20,
     false,
 

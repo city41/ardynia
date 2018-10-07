@@ -6,26 +6,30 @@ const uint8_t PROGMEM font_tiles[] =  {
     4, 8,
     // ' ' and 'A'
     0xf,0xaf,0xaf,0xf,
-    // 'C' and 'D'
-    0x0,0x66,0x66,0x96,
-    // 'E' and 'F'
-    0x0,0xa4,0xa4,0xe6,
-    // 'G' and 'I'
-    0x60,0x6,0x66,0xf2,
-    // 'L' and 'M'
-    0x0,0xe7,0xc7,0x7,
-    // 'N' and 'O'
-    0x0,0x6d,0x6b,0x0,
-    // 'P' and 'Q'
-    0x0,0x6a,0x2a,0x8,
-    // 'R' and 'S'
-    0x40,0x4a,0x22,0x28,
-    // 'T' and 'U'
-    0xe,0x70,0x7e,0xe,
-    // 'V' and 'W'
-    0x8,0x77,0x37,0x8,
-    // 'X' and '!'
-    0xd6,0xb9,0xd9,0xe6,
+    // 'B' and 'C'
+    0x0,0x64,0x64,0x61,
+    // 'D' and 'E'
+    0x0,0x46,0x46,0x69,
+    // 'F' and 'G'
+    0x0,0x6a,0x6a,0x2e,
+    // 'H' and 'I'
+    0x60,0xb,0x6b,0xf0,
+    // 'K' and 'L'
+    0x0,0x7d,0x7a,0x76,
+    // 'M' and 'N'
+    0x0,0xde,0xbc,0x0,
+    // 'O' and 'P'
+    0x0,0xa6,0xa6,0x80,
+    // 'Q' and 'R'
+    0x0,0xa6,0x22,0x80,
+    // 'S' and 'T'
+    0xe4,0x4,0xe2,0xe2,
+    // 'U' and 'V'
+    0x80,0x77,0x77,0x80,
+    // 'W' and 'X'
+    0x60,0x97,0x93,0x60,
+    // 'Y' and '!'
+    0xd8,0xb3,0xdb,0xe8,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -39,61 +43,103 @@ const uint8_t PROGMEM font_tiles_lower_mask[] = {
 
 // "NEW GAME"
 const uint8_t newGame_string[9] PROGMEM = {
-    10, 4, 19, 0, 6, 1, 9, 4, 0xFF
+    13, 5, 22, 0, 7, 1, 12, 5, 0xFF
 };
 
 
 // "CONTINUE"
 const uint8_t continue_string[9] PROGMEM = {
-    2, 11, 10, 16, 7, 10, 17, 4, 0xFF
+    3, 14, 13, 19, 9, 13, 20, 5, 0xFF
 };
 
 
 // "DELETE SAVE"
 const uint8_t deleteSave_string[12] PROGMEM = {
-    3, 4, 8, 4, 16, 4, 0, 15, 1, 18, 4, 0xFF
+    4, 5, 11, 5, 19, 5, 0, 18, 1, 21, 5, 0xFF
 };
 
 
 // "SFX!"
 const uint8_t sfxOn_string[5] PROGMEM = {
-    15, 5, 20, 21, 0xFF
+    18, 6, 23, 25, 0xFF
 };
 
 
 // "SFX"
 const uint8_t sfxOff_string[4] PROGMEM = {
-    15, 5, 20, 0xFF
+    18, 6, 23, 0xFF
 };
 
 
 // "GAME OVER"
 const uint8_t gameOver_string[10] PROGMEM = {
-    6, 1, 9, 4, 0, 11, 18, 4, 14, 0xFF
+    7, 1, 12, 5, 0, 14, 21, 5, 17, 0xFF
 };
 
 
 // "QUIT"
 const uint8_t quitFromGameOver_string[5] PROGMEM = {
-    13, 17, 7, 16, 0xFF
+    16, 20, 9, 19, 0xFF
 };
 
 
 // "EQUIP"
 const uint8_t equip_string[6] PROGMEM = {
-    4, 13, 17, 7, 12, 0xFF
+    5, 16, 20, 9, 15, 0xFF
 };
 
 
 // "MAP"
 const uint8_t map_string[4] PROGMEM = {
-    9, 1, 12, 0xFF
+    12, 1, 15, 0xFF
 };
 
 
 // "CONGRATS"
 const uint8_t congrats_string[9] PROGMEM = {
-    2, 11, 10, 6, 14, 1, 16, 15, 0xFF
+    3, 14, 13, 7, 17, 1, 19, 18, 0xFF
+};
+
+
+// "YOU GOT THE SWORD"
+const uint8_t gotSword_string[18] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 19, 8, 5, 0, 18, 22, 14, 17, 4, 0xFF
+};
+
+
+// "HEARTS UP"
+const uint8_t gotHeartContainer_string[10] PROGMEM = {
+    8, 5, 1, 17, 19, 18, 0, 20, 15, 0xFF
+};
+
+
+// "YOU GOT THE BOOMERANG"
+const uint8_t gotBoomerang_string[22] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 19, 8, 5, 0, 2, 14, 14, 12, 5, 17, 1, 13, 7, 0xFF
+};
+
+
+// "YOU GOT THE BOMBS"
+const uint8_t gotBombs_string[18] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 19, 8, 5, 0, 2, 14, 12, 2, 18, 0xFF
+};
+
+
+// "YOU GOT THE MAGIC RING"
+const uint8_t gotRing_string[23] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 19, 8, 5, 0, 12, 1, 7, 9, 3, 0, 17, 9, 13, 7, 0xFF
+};
+
+
+// "YOU GOT A KEY"
+const uint8_t gotKey_string[14] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 1, 0, 10, 5, 24, 0xFF
+};
+
+
+// "YOU GOT THE BOSS KEY"
+const uint8_t gotBossKey_string[21] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 19, 8, 5, 0, 2, 14, 18, 18, 0, 10, 5, 24, 0xFF
 };
 
 #endif

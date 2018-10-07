@@ -144,7 +144,6 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
             uint8_t nextNextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 2) >> 1));
             uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
 
-            // memset here?
             for (uint8_t c = 0; c < count + 4; ++c) {
                 rooms[offset++] = tileId;
             }

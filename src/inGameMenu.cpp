@@ -38,31 +38,21 @@ void InGameMenu::render(Player& player, uint8_t frame) {
 
     const uint8_t x = 20;
 
-    renderer.drawString(x, 0, equip_string);
-
-    // boundary rectangle
-    // by using fillRect instead of drawRect, keep
-    // drawRect out of the binary and save a ton of bytes
-    renderer.fillRect(x, 6, 1, 40, WHITE);
-    renderer.fillRect(x, 6, 21, 1, WHITE);
-    renderer.fillRect(x + 20, 6, 1, 40, WHITE);
-    renderer.fillRect(x, 46, 21, 1, WHITE);
+    renderer.drawString(x + 4, 2, equip_string);
 
     // sword
     if (State::gameState.hasSword) {
-        renderer.drawPlusMask(6, 10, swordIcon_plus_mask, 0, 0, Invert);
+        renderer.drawPlusMask(6, HEIGHT - 20, swordIcon_plus_mask, 0, 0, Invert);
     }
 
     // items
     for (uint8_t i = 0; i < State::gameState.numAcquiredItems; ++i) {
-
-
         if (i == row) {
-            renderer.drawOverwrite(x + 3, 9 + 12 * i, hudBFrame_tiles, 0);
+            renderer.drawOverwrite(x + 4, 10 + 15 * i, hudBFrame_tiles, 0);
         }
 
         const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + i + 1);
-        renderer.drawPlusMask(x + 10, 9 + 12 * i, itemBmp, 0, 0, Invert);
+        renderer.drawPlusMask(x + 10, 12 + 15 * i, itemBmp, 0, 0, Invert);
     }
 
 }

@@ -16,7 +16,7 @@ void Map::render(uint8_t currentRoomX, uint8_t currentRoomY, uint8_t mapWidthInR
     }
 
     // "MAP" label
-    renderer.drawString(0, 0, map_string);
+    renderer.drawString(0, 2, map_string);
 
     for (uint8_t roomIndex = 0; roomIndex < MAX_NUM_VISITED_ROOMS; ++roomIndex) {
         const uint8_t roomY = roomIndex / mapWidthInRooms;

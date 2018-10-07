@@ -9,6 +9,13 @@
         { "key": "quitFromGameOver", "value": "QUIT" },
         { "key": "equip", "value": "EQUIP" },
         { "key": "map", "value": "MAP" },
-        { "key": "congrats", "value": "CONGRATS" }
+        { "key": "congrats", "value": "CONGRATS" },
+        { "key": "gotSword", "value": "YOU GOT THE SWORD" },
+        { "key": "gotHeartContainer", "value": "HEARTS UP" },
+        { "key": "gotBoomerang", "value": "YOU GOT THE BOOMERANG" },
+        { "key": "gotBombs", "value": "YOU GOT THE BOMBS" },
+        { "key": "gotRing", "value": "YOU GOT THE MAGIC RING" },
+        { "key": "gotKey", "value": "YOU GOT A KEY" },
+        { "key": "gotBossKey", "value": "YOU GOT THE BOSS KEY" }
     ]
 }

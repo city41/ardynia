@@ -55,6 +55,8 @@ class Game {
         bool swapRooms;
         bool lastRoomWasLit;
         uint8_t holdACount;
+        uint8_t toastCount;
+        const uint8_t* toastString;
 
         void detectEntityCollisions(void);
         void goToNextRoom(int16_t playerX, int8_t playerY);
@@ -102,6 +104,7 @@ class Game {
         void setAllSwitches(uint8_t triggered);
         bool areAllSwitchesTriggered(void);
         bool areAllTorchesLit(void);
+        void toast(const uint8_t* str);
 
         Game():
             titleRow(0),
