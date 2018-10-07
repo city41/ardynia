@@ -6,6 +6,7 @@
 void triggerLock(Entity* me) {
     State::setCurrentRoomTriggered();
     me->type = UNSET;
+    Sfx::play(Sfx::pickUpItem);
 }
 
 EntityType Lock::onCollide(Entity* me, Entity& other, Player& player) {
