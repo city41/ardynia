@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="559">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="561">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
@@ -145,12 +145,6 @@
     <property name="DEST_ROOM_X" type="int" value="6"/>
     <property name="DEST_ROOM_Y" type="int" value="1"/>
    </properties>
-   <point/>
-  </object>
-  <object id="288" name="heart" type="HEART" x="801.875" y="409.375">
-   <point/>
-  </object>
-  <object id="289" name="heart" type="HEART" x="875.125" y="408.25">
    <point/>
   </object>
   <object id="291" name="bat" type="BAT" x="90.1818" y="291.455">
@@ -617,9 +611,6 @@
    <point/>
   </object>
   <object id="454" name="pot" type="POT" x="17.5" y="356.75">
-   <point/>
-  </object>
-  <object id="455" name="pot" type="POT" x="34.125" y="355.875">
    <point/>
   </object>
   <object id="456" name="switch" type="SWITCH" x="317.167" y="213">

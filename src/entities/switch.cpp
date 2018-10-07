@@ -12,12 +12,12 @@ EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player) {
 
     if (other.type == BOOMERANG || other.type == SWORD || other.type == PROJECTILE) {
         me->mirror = MIRROR_HORIZONTAL;
+        Sfx::play(Sfx::metalCling);
 
         if (other.type == BOOMERANG && game.roomType == THREE_SWITCHES_ONE_BOOMERANG) {
             if (game.areAllSwitchesTriggered()) {
                 game.spawnChest(KEY);
                 game.roomType = NORMAL;
-                Sfx::play(Sfx::successJingle);
             }
         } else {
             game.removeAllTriggerDoors();

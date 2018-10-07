@@ -391,30 +391,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":288,
-                 "name":"heart",
-                 "point":true,
-                 "rotation":0,
-                 "type":"HEART",
-                 "visible":true,
-                 "width":0,
-                 "x":801.875,
-                 "y":409.375
-                }, 
-                {
-                 "height":0,
-                 "id":289,
-                 "name":"heart",
-                 "point":true,
-                 "rotation":0,
-                 "type":"HEART",
-                 "visible":true,
-                 "width":0,
-                 "x":875.125,
-                 "y":408.25
-                }, 
-                {
-                 "height":0,
                  "id":291,
                  "name":"bat",
                  "point":true,
@@ -2049,18 +2025,6 @@
                  "width":0,
                  "x":17.5,
                  "y":356.75
-                }, 
-                {
-                 "height":0,
-                 "id":455,
-                 "name":"pot",
-                 "point":true,
-                 "rotation":0,
-                 "type":"POT",
-                 "visible":true,
-                 "width":0,
-                 "x":34.125,
-                 "y":355.875
                 }, 
                 {
                  "height":0,
@@ -3898,7 +3862,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":559,
+ "nextobjectid":561,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
