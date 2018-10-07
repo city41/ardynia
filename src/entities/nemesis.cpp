@@ -73,7 +73,7 @@ EntityType Nemesis::onCollide(Entity* me, Entity& other, Entity& player) {
         mode = Hold;
     }
 
-    if (other.type == SWORD && mode == Hold) {
+    if (other.type == SWORD && mode == Hold && me->tookDamageCount == 0) {
         me->health -= 1;
         me->tookDamageCount = 100;
         me->bounceBack(other, player);
