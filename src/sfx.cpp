@@ -120,14 +120,20 @@ const uint8_t* Sfx::playerDamage = playerDamage_sfx;
 
 const PROGMEM uint8_t successJingle_sfx[] = {
     startNote(0),
-    MIDDLE_A - 2,
+    MIDDLE_A + 3,
     delayHigh(0),
-    delayLow(255),
-    startNote(0),
-    MIDDLE_A + 1,
-    delayHigh(0),
-    delayLow(100),
+    delayLow(150),
     stopNote(0),
+    delayHigh(0),
+    delayLow(50),
+    startNote(0),
+    MIDDLE_A + 3,
+    startNote(1),
+    MIDDLE_A + 10,
+    delayHigh(1),
+    delayLow(200),
+    stopNote(0),
+    stopNote(1),
     endOfScore
 };
 
