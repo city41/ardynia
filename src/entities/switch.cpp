@@ -17,6 +17,7 @@ EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player) {
             if (game.areAllSwitchesTriggered()) {
                 game.spawnChest(KEY);
                 game.roomType = NORMAL;
+                Sfx::play(Sfx::successJingle);
             }
         } else {
             game.removeAllTriggerDoors();
@@ -24,7 +25,6 @@ EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player) {
         }
 
         Sfx::stop();
-        Sfx::play(Sfx::successJingle);
     }
 
     return UNSET;
