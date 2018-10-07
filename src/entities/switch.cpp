@@ -23,8 +23,6 @@ EntityType Switch::onCollide(Entity* me, Entity& other, Entity& player) {
             game.removeAllTriggerDoors();
             game.emergeAllBridges();
         }
-
-        Sfx::stop();
     }
 
     return UNSET;

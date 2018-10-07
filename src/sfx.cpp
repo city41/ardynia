@@ -143,13 +143,8 @@ const PROGMEM uint8_t pickUpItem_sfx[] = {
     startNote(0),
     MIDDLE_A,
     delayHigh(0),
-    delayLow(15),
-    startNote(1),
-    MIDDLE_A + 10,
-    delayHigh(0),
-    delayLow(15),
+    delayLow(30),
     stopNote(0),
-    stopNote(1),
     endOfScore
 };
 
@@ -201,6 +196,7 @@ void Sfx::init(ArduboyPlaytune* t) {
 }
 
 void Sfx::play(const uint8_t* sfx) {
+    tones->stopScore();
     tones->playScore(sfx);
 }
 
