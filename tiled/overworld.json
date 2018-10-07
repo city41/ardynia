@@ -91,8 +91,8 @@
                  "type":"SUNKEN_BRIDGE",
                  "visible":true,
                  "width":0,
-                 "x":48.5458181818182,
-                 "y":96.7272727272727
+                 "x":48.5458,
+                 "y":96.7273
                 }, 
                 {
                  "height":0,
@@ -115,7 +115,7 @@
                  "type":"SWITCH",
                  "visible":true,
                  "width":0,
-                 "x":66.5158181818182,
+                 "x":66.5158,
                  "y":75.75
                 }, 
                 {
@@ -328,7 +328,7 @@
                  "type":"SECRET_WALL",
                  "visible":true,
                  "width":0,
-                 "x":304.2025,
+                 "x":304.202,
                  "y":336.378
                 }, 
                 {
@@ -476,8 +476,8 @@
                  "type":"TELEPORTER",
                  "visible":true,
                  "width":0,
-                 "x":304.252045454545,
-                 "y":336.424272727273
+                 "x":304.252,
+                 "y":336.424
                 }, 
                 {
                  "height":0,
@@ -1075,8 +1075,8 @@
                  "type":"HEART",
                  "visible":true,
                  "width":0,
-                 "x":432.545454545455,
-                 "y":149.363636363636
+                 "x":432.545,
+                 "y":149.364
                 }, 
                 {
                  "height":0,
@@ -1101,6 +1101,90 @@
                  "width":0,
                  "x":626.5,
                  "y":366.5
+                }, 
+                {
+                 "height":0,
+                 "id":228,
+                 "name":"snake",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"SNAKE",
+                 "visible":true,
+                 "width":0,
+                 "x":153.5,
+                 "y":14
+                }, 
+                {
+                 "height":0,
+                 "id":229,
+                 "name":"snake",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"SNAKE",
+                 "visible":true,
+                 "width":0,
+                 "x":179,
+                 "y":21.5
+                }, 
+                {
+                 "height":0,
+                 "id":230,
+                 "name":"skeleton",
+                 "point":true,
+                 "rotation":0,
+                 "type":"SKELETON",
+                 "visible":true,
+                 "width":0,
+                 "x":387,
+                 "y":84.5
+                }, 
+                {
+                 "height":0,
+                 "id":231,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":469.5,
+                 "y":36
+                }, 
+                {
+                 "height":0,
+                 "id":232,
+                 "name":"blob",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"CONTAINED_TYPE",
+                         "type":"string",
+                         "value":"  "
+                        }],
+                 "rotation":0,
+                 "type":"BLOB",
+                 "visible":true,
+                 "width":0,
+                 "x":485.5,
+                 "y":36
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1582,7 +1666,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":228,
+ "nextobjectid":233,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

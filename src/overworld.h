@@ -199,6 +199,20 @@ const uint8_t PROGMEM overworld_room0_5[] = {
 
 
 
+const uint8_t PROGMEM overworld_room1_0[] = {
+    2, // number of entities
+
+    // entity 0
+    miscAndEntityType(0, SNAKE),
+    xy(40, 16),
+
+    // entity 1
+    miscAndEntityType(0, SNAKE),
+    xy(64, 20),
+};
+
+
+
 const uint8_t PROGMEM overworld_room1_4[] = {
     2, // number of entities
 
@@ -312,11 +326,15 @@ const uint8_t PROGMEM overworld_room3_0[] = {
 
 
 const uint8_t PROGMEM overworld_room3_1[] = {
-    1, // number of entities
+    2, // number of entities
 
     // entity 0
     miscAndEntityType(0, LOCK),
     xy(96, 32),
+
+    // entity 1
+    miscAndEntityType(0, SKELETON),
+    xy(48, 20),
 };
 
 
@@ -371,6 +389,20 @@ const uint8_t PROGMEM overworld_room3_5[] = {
     // entity 3
     miscAndEntityType(0, BLOB),
     xy(64, 44),
+};
+
+
+
+const uint8_t PROGMEM overworld_room4_0[] = {
+    2, // number of entities
+
+    // entity 0
+    miscAndEntityType(0, BLOB),
+    xy(24, 36),
+
+    // entity 1
+    miscAndEntityType(0, BLOB),
+    xy(40, 36),
 };
 
 
@@ -577,10 +609,10 @@ const uint8_t PROGMEM overworld_teleporters[] = {
 
 const uint8_t * const PROGMEM overworld_row0[7] = {
     overworld_room0_0,
-    empty_room,
+    overworld_room1_0,
     overworld_room2_0,
     overworld_room3_0,
-    empty_room,
+    overworld_room4_0,
     overworld_room5_0,
     overworld_room6_0
 };

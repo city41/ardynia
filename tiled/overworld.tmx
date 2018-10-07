@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="228">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="49" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="233">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="9" name="Tile Layer 1" width="49" height="24">
   <data encoding="csv">
@@ -351,6 +351,33 @@
    <point/>
   </object>
   <object id="227" name="skeleton" type="SKELETON" x="626.5" y="366.5">
+   <point/>
+  </object>
+  <object id="228" name="snake" type="SNAKE" x="153.5" y="14">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="229" name="snake" type="SNAKE" x="179" y="21.5">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="230" name="skeleton" type="SKELETON" x="387" y="84.5">
+   <point/>
+  </object>
+  <object id="231" name="blob" type="BLOB" x="469.5" y="36">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
+   <point/>
+  </object>
+  <object id="232" name="blob" type="BLOB" x="485.5" y="36">
+   <properties>
+    <property name="CONTAINED_TYPE" value="  "/>
+   </properties>
    <point/>
   </object>
  </objectgroup>

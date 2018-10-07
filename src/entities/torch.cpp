@@ -27,7 +27,7 @@ EntityType Torch::onCollide(Entity* me, Entity& other, Entity& player) {
 
         if (game.roomType == LAST_TORCH_OPENS_DOORS && game.areAllTorchesLit()) {
             game.removeAllTriggerDoors();
-            Sfx::play(Sfx::successJingle);
+            Sfx::play(Sfx::pickUpItem);
         }
     }
 

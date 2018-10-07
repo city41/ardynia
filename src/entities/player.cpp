@@ -268,7 +268,7 @@ void Player::receiveItemFromChest(Entity& chest) {
             State::gameState.numAcquiredItems += 1;
 
             bButtonEntityType = receivedItem;
-            toast = pgm_read_ptr(toasts + (receivedItem - BOOMERANG));
+            toast = (const uint8_t*)pgm_read_ptr(toasts + (receivedItem - BOOMERANG));
         }
 
         if (receivedItem == HEART) {
