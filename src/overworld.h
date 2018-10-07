@@ -322,7 +322,7 @@ const uint8_t PROGMEM overworld_room3_1[] = {
 
 
 const uint8_t PROGMEM overworld_room3_2[] = {
-    3, // number of entities
+    2, // number of entities
 
     // entity 0
     miscAndEntityType(SWORD, CHEST),
@@ -331,10 +331,6 @@ const uint8_t PROGMEM overworld_room3_2[] = {
     // entity 1
     miscAndEntityType(0, HEART),
     xy(96, 20),
-
-    // entity 2
-    miscAndEntityType(0, HEART),
-    xy(96, 36),
 };
 
 

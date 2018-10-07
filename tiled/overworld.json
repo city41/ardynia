@@ -1077,18 +1077,6 @@
                  "width":0,
                  "x":432.545454545455,
                  "y":149.363636363636
-                }, 
-                {
-                 "height":0,
-                 "id":225,
-                 "name":"heart",
-                 "point":true,
-                 "rotation":0,
-                 "type":"HEART",
-                 "visible":true,
-                 "width":0,
-                 "x":432.757575757576,
-                 "y":163.878787878788
                 }],
          "opacity":1,
          "type":"objectgroup",
