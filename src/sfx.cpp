@@ -187,7 +187,7 @@ const PROGMEM uint8_t doorCrash_sfx[] = {
     startNote(0),
     MIDDLE_A - 40,
     delayHigh(0),
-    delayLow(35),
+    delayLow(100),
     stopNote(0),
     endOfScore
 };
