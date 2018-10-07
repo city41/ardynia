@@ -279,7 +279,7 @@
   <object id="333" name="skeleton" type="SKELETON" x="579" y="420.333">
    <point/>
   </object>
-  <object id="334" name="snake" type="SNAKE" x="244" y="483">
+  <object id="334" name="snake" type="SNAKE" x="274" y="478.333">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
@@ -288,7 +288,7 @@
   <object id="335" name="snake" type="SNAKE" x="258" y="500">
    <point/>
   </object>
-  <object id="336" name="snake" type="SNAKE" x="273.333" y="457">
+  <object id="336" name="snake" type="SNAKE" x="264.666" y="467.667">
    <point/>
   </object>
   <object id="337" name="switch" type="SWITCH" x="514.5" y="492.227">
@@ -398,12 +398,6 @@
    <point/>
   </object>
   <object id="375" name="blob" type="BLOB" x="242" y="373.25">
-   <properties>
-    <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="376" name="blob" type="BLOB" x="242.75" y="344">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
