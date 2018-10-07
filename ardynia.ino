@@ -46,7 +46,5 @@ void loop() {
     game.update(loopCounter);
     game.render(loopCounter);
     arduboy.display();
-
-    arduboy.idle();
 }
 

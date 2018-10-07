@@ -199,7 +199,7 @@ EntityType Player::onCollide(Entity& other, Entity& player) {
 
     if (other.type == BOMB) {
         other.type = UNSET;
-        numBombs = min(numBombs + 3, MAX_BOMB_COUNT);
+        numBombs = 3;
         Sfx::play(Sfx::pickUpItem);
     }
 
