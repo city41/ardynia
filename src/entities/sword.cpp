@@ -38,3 +38,14 @@ EntityType Sword::update(Entity* me, Entity& player, uint8_t frame) {
 
     return UNSET;
 }
+
+EntityType Sword::onCollide(Entity* me, Entity& other, Entity& player) {
+    EntityType otherType = other.type;
+
+    // hit something the user can collect? collect it and keep going
+    if (otherType >= BOMB && otherType <= HEART) {
+        return player.onCollide(other, player);
+    }
+
+    return UNSET;
+}

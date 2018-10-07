@@ -200,10 +200,9 @@ const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
 
 const void* const PROGMEM entityPointers[NUM_ENTITIES * NUM_ENTITY_POINTERS] = {
     // 0, SWORD
-    sword_plus_mask,    // tiles
+    sword_plus_mask,           // tiles
     (void*)Sword::update,      // update
-    NULL,               // onCollide
-
+    (void*)Sword::onCollide,    // onCollide
 
     // 1, BOOMERANG
     boomerang_plus_mask,
