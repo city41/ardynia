@@ -107,9 +107,9 @@ const uint8_t gotSword_string[18] PROGMEM = {
 };
 
 
-// "HEARTS UP"
-const uint8_t gotHeartContainer_string[10] PROGMEM = {
-    8, 5, 1, 17, 19, 18, 0, 20, 15, 0xFF
+// "YOU GOT A HEART"
+const uint8_t gotHeartContainer_string[16] PROGMEM = {
+    24, 14, 20, 0, 7, 14, 19, 0, 1, 0, 8, 5, 1, 17, 19, 0xFF
 };
 
 

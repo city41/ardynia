@@ -11,7 +11,7 @@
         { "key": "map", "value": "MAP" },
         { "key": "congrats", "value": "CONGRATS" },
         { "key": "gotSword", "value": "YOU GOT THE SWORD" },
-        { "key": "gotHeartContainer", "value": "HEARTS UP" },
+        { "key": "gotHeartContainer", "value": "YOU GOT A HEART" },
         { "key": "gotBoomerang", "value": "YOU GOT THE BOOMERANG" },
         { "key": "gotBombs", "value": "YOU GOT THE BOMBS" },
         { "key": "gotRing", "value": "YOU GOT THE MAGIC RING" },
