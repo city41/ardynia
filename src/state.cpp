@@ -62,13 +62,13 @@ void State::load() {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.totalHealth = 2;
-        gameState.hasSword = 0;
-        gameState.numAcquiredItems = 0;
+        gameState.hasSword = 1;
+        gameState.numAcquiredItems = 3;
         gameState.currentDungeon = 0;
 
         uint8_t i = 0;
         for (; i < MAX_DUNGEON_COUNT; ++i) {
-            gameState.numKeys[i] = 0;
+            gameState.numKeys[i] = 2;
             gameState.bossKeys[i] = 0;
         }
         

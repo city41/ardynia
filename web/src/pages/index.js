@@ -4,8 +4,8 @@ import Layout from "../components/layout";
 import "./common.css";
 import "./index.css";
 import titleImg from "../images/title.png";
-import crossWaterMp4 from "../images/crossWater.mp4";
-import goIntoDungeonMp4 from "../images/goIntoDungeon.mp4";
+import crossWaterGif from "../images/crossWater.gif";
+import goIntoDungeonGif from "../images/goIntoDungeon.gif";
 import inGameMenuImg from "../images/inGameMenu.png";
 import attackBlobImg from "../images/attackBlob.png";
 
@@ -16,31 +16,24 @@ const IndexPage = () => (
             Explore dungeons, solve puzzles, fight bosses, all from your pocket.
             Ardynia is an adventure game for the Arduboy.
         </p>
-        <a className="downloadHere">Download Here</a>
+        <a
+            href="https://github.com/city41/ardynia/releases/tag/v1.0.0"
+            className="downloadHere"
+        >
+            Download Here
+        </a>
 
         <div className="mediaContainer">
-            <video
-                className="crossWater"
-                src={crossWaterMp4}
-                muted
-                width="256"
-                height="128"
-                autoPlay
-                loop
-                playsinline
-                controls
+            <img
+                className="crossWater gif"
+                src={crossWaterGif}
+                alt="crossing a river"
             />
             <div className="divider" />
-            <video
-                className="goIntoDungeon"
-                src={goIntoDungeonMp4}
-                muted
-                width="256"
-                height="128"
-                autoPlay
-                loop
-                playsinline
-                controls
+            <img
+                className="goIntoDungeon gif"
+                src={goIntoDungeonGif}
+                alt="going into a dungeon"
             />
             <img
                 className="inGameMenu"

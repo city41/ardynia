@@ -1,4 +1,4 @@
-.header{background-color:#222;border-bottom:1px dashed #fff}.header ul{display:grid;grid-template-columns:repeat(3,auto);list-style-type:none;margin:0;padding:10px 0}.header ul li{display:block;justify-self:center}.header a{color:#fff;text-decoration:none}.header a:hover{text-decoration:underline}
+.header{background-color:#222;border-bottom:1px dashed #fff}.header ul{display:grid;grid-template-columns:repeat(4,auto);list-style-type:none;margin:0;padding:10px 0}.header ul li{display:block;justify-self:center}.header a{color:#fff;text-decoration:none}.header a:hover{text-decoration:underline}
 *{-webkit-box-sizing:border-box;box-sizing:border-box;font-family:sans-serif}body,html{height:100%;margin:0;padding:0;width:100%}body{background-color:#000;color:#fff}a{color:#fcceba}a::visited{color:#c49f8f}.layout,.layoutContainer{width:100%}.layout{-ms-flex-align:center;align-items:center;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;margin:0 10px}
 
-/*# sourceMappingURL=component---src-pages-404-js.1e956869b3ca7bca2bb7.css.map*/
+/*# sourceMappingURL=component---src-pages-404-js.a1744392d529d6baf4c4.css.map*/

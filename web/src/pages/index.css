@@ -22,6 +22,12 @@
     grid-row: 1;
 }
 
+.gif {
+    width: 256px;
+    height: 128px;
+    image-rendering: pixelated;
+}
+
 .goIntoDungeon {
     grid-column: 3;
     grid-row: 1;

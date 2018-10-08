@@ -3,19 +3,21 @@ import { Link } from "gatsby";
 
 import "./header.css";
 
-const PAGES = ["help", "contact"];
-
 const Header = ({ siteTitle }) => (
     <nav className="header">
         <ul>
             <li>
                 <Link to="/">home</Link>
             </li>
-            {PAGES.map(p => (
-                <li>
-                    <Link to={"/" + p}>{p}</Link>
-                </li>
-            ))}
+            <li>
+                <Link to="/help">help</Link>
+            </li>
+            <li>
+                <a href="https://github.com/city41/ardynia">github</a>
+            </li>
+            <li>
+                <Link to="/contact">contact</Link>
+            </li>
         </ul>
     </nav>
 );

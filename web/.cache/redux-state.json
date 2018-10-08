@@ -715,12 +715,12 @@
       },
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-10-08T02:58:40.376Z",
+      "buildTime": "2018-10-08T04:04:52.408Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "7292a765aa858e0557cd245224bdfdb8",
+        "contentDigest": "4e9c29705954adc917e1778b28035d4e",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
