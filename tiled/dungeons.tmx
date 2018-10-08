@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="561">
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="56" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="563">
  <tileset firstgid="1" source="overworld.tsx"/>
  <layer id="10" name="Tile Layer 1" width="56" height="32">
   <data encoding="csv">
-2,12,12,12,12,12,10,2,12,12,12,12,12,5,5,5,5,5,5,5,5,5,12,12,12,12,12,5,5,5,5,7,7,5,5,5,12,12,7,12,12,12,12,12,12,12,12,12,5,5,5,5,5,5,5,5,
-3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,5,1,1,1,1,1,1,1,1,1,1,1,5,5,1,5,7,7,5,1,1,1,1,7,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,
-3,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,5,7,7,7,7,7,1,1,1,1,1,1,1,1,1,5,5,5,5,5,5,5,5,
+2,12,12,12,12,12,10,2,12,12,12,12,12,5,5,5,5,5,5,5,5,5,12,12,12,12,12,5,5,5,5,7,7,5,5,5,12,12,7,12,12,12,12,12,12,12,12,12,12,12,12,5,5,5,5,5,
+3,1,1,1,1,1,13,3,1,1,1,1,1,5,5,5,1,1,1,1,1,1,1,1,1,1,1,5,5,1,5,7,7,5,1,1,1,1,7,1,1,1,1,1,1,1,1,1,5,3,1,1,1,1,1,5,
+3,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,5,7,7,7,7,7,1,1,1,1,1,1,1,1,1,5,3,1,1,1,1,1,5,
 5,5,5,1,5,5,5,9,4,4,4,4,4,5,5,5,5,5,5,5,5,5,4,4,4,4,1,5,5,1,5,1,1,5,1,1,1,1,7,1,1,1,4,4,4,1,4,4,5,5,5,5,5,5,5,5,
 5,5,2,1,10,5,5,2,12,12,7,5,5,5,2,12,12,12,12,12,10,2,12,12,12,12,1,5,5,1,5,1,1,5,1,1,1,1,7,1,1,13,5,12,12,12,5,5,5,2,12,12,12,12,12,10,
 5,1,1,1,1,1,5,3,1,1,7,1,1,1,1,1,1,1,1,1,13,3,1,1,1,1,1,1,1,1,5,1,1,5,1,1,1,1,7,1,1,13,5,1,1,1,1,1,1,1,1,1,1,1,1,13,
@@ -128,16 +128,10 @@
    </properties>
    <point/>
   </object>
-  <object id="279" name="heart" type="HEART" x="801.25" y="400.875">
-   <point/>
-  </object>
   <object id="281" name="bomb" type="BOMB" x="817.375" y="401">
    <point/>
   </object>
-  <object id="284" name="bomb" type="BOMB" x="858" y="401.25">
-   <point/>
-  </object>
-  <object id="286" name="heart" type="HEART" x="873.625" y="400.875">
+  <object id="284" name="heart" type="HEART" x="858" y="401.25">
    <point/>
   </object>
   <object id="287" name="To overworld from secret 4" type="TELEPORTER" x="832.625" y="445.25">
@@ -291,16 +285,10 @@
   <object id="338" name="pot" type="POT" x="596" y="457.667">
    <point/>
   </object>
-  <object id="339" name="pot" type="POT" x="628" y="483.667">
-   <point/>
-  </object>
   <object id="340" name="blob" type="BLOB" x="611.667" y="484.667">
    <point/>
   </object>
   <object id="343" name="spike" type="SPIKE" x="601.723" y="264.156">
-   <point/>
-  </object>
-  <object id="344" name="bat" type="BAT" x="726.833" y="422.167">
    <point/>
   </object>
   <object id="345" name="bat" type="BAT" x="726.75" y="407.25">
@@ -385,19 +373,19 @@
    </properties>
    <point/>
   </object>
-  <object id="374" name="blob" type="BLOB" x="242.25" y="329.75">
+  <object id="374" name="skeleton" type="SKELETON" x="242.25" y="329.75">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="375" name="blob" type="BLOB" x="242" y="373.25">
+  <object id="375" name="skeleton" type="SKELETON" x="242" y="373.25">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="377" name="bat" type="BAT" x="275.75" y="331">
+  <object id="377" name="snake" type="SNAKE" x="275.75" y="331">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
@@ -409,13 +397,13 @@
    </properties>
    <point/>
   </object>
-  <object id="379" name="bat" type="BAT" x="275" y="342.25">
+  <object id="379" name="snake" type="SNAKE" x="275" y="342.25">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
    <point/>
   </object>
-  <object id="380" name="bat" type="BAT" x="259.5" y="359.25">
+  <object id="380" name="snake" type="SNAKE" x="259.5" y="359.25">
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_BOSS_KEY"/>
    </properties>
@@ -499,7 +487,7 @@
    </properties>
    <point/>
   </object>
-  <object id="409" name="torch" type="TORCH" x="18.6667" y="163.667">
+  <object id="409" name="torch" type="TORCH" x="809.667" y="13.3337">
    <point/>
   </object>
   <object id="410" name="trigger door" type="TRIGGER_DOOR" x="49.0606" y="64.8182">
@@ -673,13 +661,13 @@
    </properties>
    <point/>
   </object>
-  <object id="478" name="switch" type="SWITCH" x="657.5" y="337.75">
+  <object id="478" name="switch" type="SWITCH" x="648" y="337.75">
    <point/>
   </object>
-  <object id="479" name="switch" type="SWITCH" x="658" y="354.75">
+  <object id="479" name="switch" type="SWITCH" x="648" y="354.75">
    <point/>
   </object>
-  <object id="480" name="switch" type="SWITCH" x="627.5" y="354.25">
+  <object id="480" name="switch" type="SWITCH" x="618" y="354.25">
    <point/>
   </object>
   <object id="481" name="heart" type="HEART" x="659" y="362.25">
@@ -745,18 +733,6 @@
    </properties>
    <point/>
   </object>
-  <object id="500" name="spike" type="SPIKE" x="400.75" y="9">
-   <properties>
-    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="501" name="spike" type="SPIKE" x="400.875" y="48.8295">
-   <properties>
-    <property name="MISC" value="LAST_TORCH_OPENS_DOORS"/>
-   </properties>
-   <point/>
-  </object>
   <object id="503" name="trigger door" type="TRIGGER_DOOR" x="337.125" y="416.625">
    <properties>
     <property name="MISC" value="VERTICAL"/>
@@ -782,9 +758,6 @@
    <point/>
   </object>
   <object id="509" name="switch" type="SWITCH" x="144.875" y="97.125">
-   <point/>
-  </object>
-  <object id="510" name="snake" type="SNAKE" x="305.386" y="491.477">
    <point/>
   </object>
   <object id="512" name="skeleton" type="SKELETON" x="608.545" y="432.909">
@@ -886,7 +859,7 @@
   <object id="548" name="snake" type="SNAKE" x="590" y="98">
    <point/>
   </object>
-  <object id="549" name="snake" type="SNAKE" x="589.667" y="18.6667">
+  <object id="549" name="snake" type="SNAKE" x="589" y="10.3334">
    <point/>
   </object>
   <object id="550" name="bat" type="BAT" x="147" y="27.6667">
@@ -920,6 +893,15 @@
    <properties>
     <property name="MISC" value="LAST_ENEMY_HAS_HEART_CONTAINER"/>
    </properties>
+   <point/>
+  </object>
+  <object id="561" name="chest" type="CHEST" x="850.333" y="30">
+   <properties>
+    <property name="CONTAINED_TYPE" value="KEY"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="562" name="snake" type="SNAKE" x="564.333" y="29.6667">
    <point/>
   </object>
  </objectgroup>

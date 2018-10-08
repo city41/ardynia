@@ -372,7 +372,7 @@ const uint8_t PROGMEM overworld_room3_3[] = {
 
 
 const uint8_t PROGMEM overworld_room3_5[] = {
-    4, // number of entities
+    3, // number of entities
 
     // entity 0
     miscAndEntityType(0, BLOB),
@@ -385,24 +385,16 @@ const uint8_t PROGMEM overworld_room3_5[] = {
     // entity 2
     miscAndEntityType(0, BLOB),
     xy(40, 44),
-
-    // entity 3
-    miscAndEntityType(0, BLOB),
-    xy(64, 44),
 };
 
 
 
 const uint8_t PROGMEM overworld_room4_0[] = {
-    2, // number of entities
+    1, // number of entities
 
     // entity 0
     miscAndEntityType(0, BLOB),
     xy(24, 36),
-
-    // entity 1
-    miscAndEntityType(0, BLOB),
-    xy(40, 36),
 };
 
 
@@ -499,6 +491,24 @@ const uint8_t PROGMEM overworld_room5_3[] = {
     // entity 0
     miscAndEntityType(HEART, CHEST),
     xy(32, 28),
+};
+
+
+
+const uint8_t PROGMEM overworld_room5_4[] = {
+    3, // number of entities
+
+    // entity 0
+    miscAndEntityType(0, BAT),
+    xy(72, 24),
+
+    // entity 1
+    miscAndEntityType(0, BAT),
+    xy(88, 36),
+
+    // entity 2
+    miscAndEntityType(0, BAT),
+    xy(104, 24),
 };
 
 
@@ -657,7 +667,7 @@ const uint8_t * const PROGMEM overworld_row4[7] = {
     empty_room,
     empty_room,
     empty_room,
-    empty_room,
+    overworld_room5_4,
     overworld_room6_4
 };
 

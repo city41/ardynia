@@ -858,24 +858,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":207,
-                 "name":"blob",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
-                 "rotation":0,
-                 "type":"BLOB",
-                 "visible":true,
-                 "width":0,
-                 "x":401.182,
-                 "y":364.182
-                }, 
-                {
-                 "height":0,
                  "id":211,
                  "name":"snake",
                  "point":true,
@@ -1170,21 +1152,39 @@
                 }, 
                 {
                  "height":0,
-                 "id":232,
-                 "name":"blob",
+                 "id":233,
+                 "name":"bat",
                  "point":true,
-                 "properties":[
-                        {
-                         "name":"CONTAINED_TYPE",
-                         "type":"string",
-                         "value":"  "
-                        }],
                  "rotation":0,
-                 "type":"BLOB",
+                 "type":"BAT",
                  "visible":true,
                  "width":0,
-                 "x":485.5,
-                 "y":36
+                 "x":633.5,
+                 "y":278
+                }, 
+                {
+                 "height":0,
+                 "id":234,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":650,
+                 "y":293
+                }, 
+                {
+                 "height":0,
+                 "id":235,
+                 "name":"bat",
+                 "point":true,
+                 "rotation":0,
+                 "type":"BAT",
+                 "visible":true,
+                 "width":0,
+                 "x":663,
+                 "y":279.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1666,7 +1666,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":233,
+ "nextobjectid":236,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",

@@ -278,12 +278,6 @@
    </properties>
    <point/>
   </object>
-  <object id="207" name="blob" type="BLOB" x="401.182" y="364.182">
-   <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
-   </properties>
-   <point/>
-  </object>
   <object id="211" name="snake" type="SNAKE" x="195.5" y="364.5">
    <properties>
     <property name="CONTAINED_TYPE" value="  "/>
@@ -369,12 +363,6 @@
    <point/>
   </object>
   <object id="231" name="blob" type="BLOB" x="469.5" y="36">
-   <properties>
-    <property name="CONTAINED_TYPE" value="  "/>
-   </properties>
-   <point/>
-  </object>
-  <object id="232" name="blob" type="BLOB" x="485.5" y="36">
    <properties>
     <property name="CONTAINED_TYPE" value="  "/>
    </properties>
