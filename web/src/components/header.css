@@ -1,0 +1,26 @@
+.header {
+    background-color: #222222;
+    border-bottom: 1px dashed white;
+}
+
+.header ul {
+    margin: 0;
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    list-style-type: none;
+}
+
+.header ul li {
+    display: block;
+    justify-self: center;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}

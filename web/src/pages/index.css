@@ -1,0 +1,65 @@
+.home p {
+    margin-top: 40px;
+    max-width: 442px;
+}
+
+.home .mediaContainer {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: auto 260px 260px auto;
+    grid-template-rows: auto auto;
+    grid-row-gap: 40px;
+    grid-column-gap: 40px;
+    justify-items: center;
+}
+
+.home .mediaContainer video {
+    margin: 6px 20px;
+}
+
+.crossWater {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.goIntoDungeon {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.inGameMenu {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.attackBlob {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+@media (max-width: 800px) {
+    .home .mediaContainer {
+        grid-template-columns: 260px;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .crossWater {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .goIntoDungeon {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .inGameMenu {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .attackBlob {
+        grid-column: 1;
+        grid-row: 4;
+    }
+}

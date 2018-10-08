@@ -1,0 +1,10 @@
+.layout.updates {
+    margin-top: 40px;
+}
+
+.updates section {
+    max-width: 442px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px dashed white;
+}

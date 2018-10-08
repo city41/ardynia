@@ -1,0 +1,11 @@
+.hint {
+    padding: 20px;
+    border: 1px dashed white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.hint--revealed {
+    border: none;
+    cursor: initial;
+}
