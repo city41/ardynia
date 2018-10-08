@@ -1,2 +1,2 @@
-git subtree push --prefix public origin gh-pages
+(cd .. && git subtree push --prefix web/public origin gh-pages)
 

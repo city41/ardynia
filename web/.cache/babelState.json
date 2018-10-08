@@ -1,0 +1,34 @@
+{
+    "develop": {
+        "plugins": [],
+        "presets": [],
+        "options": {
+            "cacheDirectory": true,
+            "sourceType": "unambiguous"
+        }
+    },
+    "develop-html": {
+        "plugins": [],
+        "presets": [],
+        "options": {
+            "cacheDirectory": true,
+            "sourceType": "unambiguous"
+        }
+    },
+    "build-html": {
+        "plugins": [],
+        "presets": [],
+        "options": {
+            "cacheDirectory": true,
+            "sourceType": "unambiguous"
+        }
+    },
+    "build-javascript": {
+        "plugins": [],
+        "presets": [],
+        "options": {
+            "cacheDirectory": true,
+            "sourceType": "unambiguous"
+        }
+    }
+}

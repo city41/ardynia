@@ -7,7 +7,7 @@
     margin: 0;
     padding: 10px 0;
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     list-style-type: none;
 }
 

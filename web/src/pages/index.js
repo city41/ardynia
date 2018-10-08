@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import Layout from "../components/layout";
 
 import "./common.css";
@@ -15,9 +14,9 @@ const IndexPage = () => (
         <img className="titleImage" src={titleImg} alt="Ardynia Title Screen" />
         <p>
             Explore dungeons, solve puzzles, fight bosses, all from your pocket.
-            Ardynia is an upcoming adventure game for the Arduboy. Checkout the{" "}
-            <Link to="/updates">updates page</Link> for the latest.
+            Ardynia is an adventure game for the Arduboy.
         </p>
+        <a className="downloadHere">Download Here</a>
 
         <div className="mediaContainer">
             <video
@@ -54,11 +53,7 @@ const IndexPage = () => (
                 alt="in game menu"
             />
         </div>
-        <p>
-            The game will be free and open source when released.
-            <br />
-            &copy;2018 Matt Greer
-        </p>
+        <p>&copy;2018 Matt Greer</p>
     </Layout>
 );
 

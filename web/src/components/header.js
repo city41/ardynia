@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 import "./header.css";
 
-const PAGES = ["help", "updates", "contact"];
+const PAGES = ["help", "contact"];
 
 const Header = ({ siteTitle }) => (
     <nav className="header">
