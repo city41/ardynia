@@ -1,26 +1,13 @@
-# gatsby-starter-default
-The default Gatsby starter.
+# Ardynia Website
+The website for Ardynia the game, up and running at http://ardynia.com
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+## To Hack On
 
-## Install
+1. `npm install -g gatsby-cli`
+2. `gatsby develop`
 
-Make sure that you have the Gatsby CLI program installed:
-```sh
-npm install --global gatsby-cli
-```
+## To deploy
 
-And run from your CLI:
-```sh
-gatsby new gatsby-example-site
-```
+1. `gatsby build`
+2. `./deploy.sh`
 
-Then you can run it by:
-```sh
-cd gatsby-example-site
-gatsby develop
-```
-
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
