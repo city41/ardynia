@@ -10,9 +10,7 @@ see http://ardynia.com/help
 
 ## How to build - Arduino IDE
 
-It should build just as-is in the Arduino IDE. If not, please let me know.
-
-**NOTE:** Ardynia is being developed using Arduino IDE version 1.8.5. Version 1.8.6 produces a binary that is too large!
+It should build just as-is in the Arduino IDE. If not, please let me know. I have had success building the game with 1.8.5 and 1.8.6. I now use 1.8.6 for developing the game.
 
 ## How to build - Makefile
 
@@ -97,16 +95,9 @@ Edit the strings `strings.json` then run `make strings`. The resulting `src/stri
 
 ## Gotchas
 
-* The code is pretty bad, my apologies. I figured this game out as I went. Also sometimes hard to follow/read code is chosen due to byte savings.
-
-* the entity ID values in `src/entityTypes.h` and the values in `maptool/buildEntityArray.js` need to be kept in sync. Having `buildEntityArray` generate `src/entityTypes.h` is something I want to do, just never got around to it.
+* The code is pretty bad in some areas, my apologies. I figured this game out as I went. Also sometimes hard to follow/read code is chosen due to byte savings.
 
 ## Still TODO
 
-* the third dungeon still has a lot of designing yet to go.
-* the "success jingle" sound effect is very bad. I just banged out something quick so I can have it take up space. I will make it nicer before releasing the game
-* the "boss roar" sound effect is pretty bad too, but not sure if I'll have enough room to improve it.
-* still a handful of bugs to fix (tracked in Trello)
-* only have 68 bytes left! Will probably need to hunt up some more bytes soon.
-* investigate using ArduboyTones instead of PlayTune. Whichever one uses less space is the winner.
+Hopefully nothing. The game is finished. But always the chance of a bug cropping up.
 
