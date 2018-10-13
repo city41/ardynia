@@ -39,7 +39,8 @@ const uint8_t PROGMEM startingRooms[8] = {
 void Game::loadSave(bool straightToPlay) {
     State::load();
 
-    if (State::gameState.currentDungeon == 0) {
+    if (State::gameState.currentDungeon == 0 || State::gameState.currentDungeon > 3) {
+        State::gameState.currentDungeon = 0;
         TileRoom::map = overworld_map;
         entityDefs = overworld_entities;
         doorDefs = overworld_teleporters;

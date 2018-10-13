@@ -89,7 +89,7 @@ class Entity {
          * @param {boolean} resetPrev whether to clear out prevX/prevY, this is needed
          * if the entity is moving to an entirely new location, ie from overworld->dungeon
          */ 
-        inline virtual void moveTo(int16_t newX, int8_t newY, boolean resetPrev = false) {
+        inline void moveTo(int16_t newX, int8_t newY, boolean resetPrev = false) {
             if (resetPrev) {
                 prevX = newX;
                 prevY = newY;
@@ -113,7 +113,7 @@ class Entity {
             return x < 0 || y < 0 || x >= WIDTH - 16 || y >= HEIGHT;
         }
 
-        virtual void undoMove() {
+        void undoMove() {
             x = prevX;
             y = prevY;
         }
