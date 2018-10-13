@@ -68,7 +68,7 @@ void State::load() {
 
         uint8_t i = 0;
         for (; i < MAX_DUNGEON_COUNT; ++i) {
-            gameState.numKeys[i] = 2;
+            gameState.numKeys[i] = 0;
             gameState.bossKeys[i] = 0;
         }
         
