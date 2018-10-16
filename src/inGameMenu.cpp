@@ -51,7 +51,7 @@ void InGameMenu::render(Player& player, uint8_t frame) {
             renderer.drawOverwrite(x + 4, 10 + 15 * i, hudBFrame_tiles, 0);
         }
 
-        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + i + 1);
+        const uint8_t* itemBmp = (uint8_t*)pgm_read_ptr(secondaryItem_sprites + i + 1);
         renderer.drawPlusMask(x + 10, 12 + 15 * i, itemBmp, 0, 0, Invert);
     }
 

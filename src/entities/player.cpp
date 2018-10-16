@@ -96,7 +96,7 @@ void Player::render(uint8_t frame) {
 
     if (receiveItemCount > 0) {
         spriteIndex = 2;
-        const uint8_t* itemBmp = pgm_read_ptr(secondaryItem_sprites + receivedItem);
+        const uint8_t* itemBmp = (uint8_t*)pgm_read_ptr(secondaryItem_sprites + receivedItem);
         renderer.drawPlusMask(receiveX, receiveY - (6 - receiveItemCount/8), itemBmp, 0, 0, (DrawMode)State::isInDungeon());
     } else {
         // for the boomerang and magic ring, only want to hold the attack pose as long as they don't move

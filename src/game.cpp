@@ -338,8 +338,8 @@ int8_t Game::spawnNewEntity(EntityType entityType, Entity& spawner) {
 }
 
 void Game::loadEntitiesInRoom(uint8_t x, uint8_t y, uint8_t tileRoomOffset) {
-    uint8_t** rowPtr = pgm_read_word(entityDefs + y);
-    uint8_t* roomPtr = pgm_read_word(rowPtr + x);
+    uint8_t** rowPtr = (uint8_t**)pgm_read_word(entityDefs + y);
+    uint8_t* roomPtr = (uint8_t*)pgm_read_word(rowPtr + x);
 
     uint8_t roomIndex = mapWidthInRooms * y + x;
 

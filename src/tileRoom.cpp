@@ -15,7 +15,7 @@ extern Renderer renderer;
 const uint8_t MAP_HEADER_SIZE = 4;
 
 const uint8_t* TileRoom::map = NULL;
-uint8_t TileRoom::rooms[TILES_PER_ROOM * 2];
+TileDef TileRoom::rooms[TILES_PER_ROOM * 2];
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
 uint8_t TileRoom::currentRoomOffset = 0;
@@ -34,7 +34,7 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {   
+void TileRoom::renderTile(uint8_t x, uint8_t y, TileDef tileId, uint8_t seed) {   
     // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
     // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
     // doesn't look good
@@ -43,7 +43,7 @@ void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {
         return;
     }
 
-    TileDef tile = tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
+    TileDef tile = tileId < 8 ? tileId : (TileDef)pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2);
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = !State::isInDungeon() || (tileId >= 5 && tileId <= 7);
     DrawMode drawMode = dontInvert ? Normal : Invert;
@@ -67,13 +67,13 @@ void TileRoom::setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile) {
 }
 
 void TileRoom::renderRoom(uint8_t offset) {
-    uint8_t* tiles = rooms + offset;
+    TileDef* tiles = rooms + offset;
     uint8_t seed = 0;
 
     for (uint8_t ti = 0; ti < TILES_PER_ROOM; ++ti) {
         uint8_t tx = ti % TILES_PER_ROW;
         uint8_t ty = ti / TILES_PER_ROW;
-        uint8_t tileId = tiles[ti];
+        TileDef tileId = tiles[ti];
         seed += tileId + 1;
 
         renderTile(tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
@@ -142,7 +142,7 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
             // nibbles as first class
             uint8_t count = ((curNibbleIndex + 1) & 1) ? nextRawTileByte & 0xF : nextRawTileByte >> 4;
             uint8_t nextNextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 2) >> 1));
-            uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
+            TileDef tileId = static_cast<TileDef>(((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4);
 
             for (uint8_t c = 0; c < count + 4; ++c) {
                 rooms[offset++] = tileId;
@@ -154,7 +154,7 @@ void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
             // need to make sure don't go beyond the room offset in the case of when a compression
             // run leaves a dead nibble at the end of the room, otherwise will clobber other memory
             if (offset < maxOffset) {
-                rooms[offset++] = nibble;
+                rooms[offset++] = (TileDef)nibble;
             }
 
             curNibbleIndex += 1;
