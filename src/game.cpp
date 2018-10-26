@@ -656,8 +656,7 @@ void Game::renderPlay(uint8_t frame) {
 
     if (toastCount > 0) {
         toastCount -= 1;
-        renderer.fillRect(0, 0, WIDTH - 16, 6, BLACK);
-        renderer.drawString(1, 1, toastString);
+        drawToast();
     }
 
     renderer.translateX = WIDTH - 16;
@@ -794,6 +793,16 @@ void Game::render(uint8_t frame) {
     renderer.translateX = 0;
     renderer.translateY = 0;
 
+    if ((
+        currentRender == &Game::renderPlay ||
+        currentRender == &Game::renderRoomTransition
+    ) && (
+        toastString == congrats_string
+    )) {
+        drawToast();
+    }
+
+
     if (nextRender != NULL) {
         prevRender = currentRender;
         currentRender = nextRender;
@@ -891,3 +900,10 @@ void Game::toast(const uint8_t* str) {
     toastString = str;
     toastCount = 130;
 }
+
+
+void Game::drawToast() {
+    renderer.fillRect(0, 0, WIDTH - 16, 6, BLACK);
+    renderer.drawString(1, 1, toastString);
+}
+

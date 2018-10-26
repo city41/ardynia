@@ -63,6 +63,8 @@ class Game {
         void loadEntitiesInRoom(uint8_t roomX, uint8_t roomy, uint8_t tileRoomOffset);
         int8_t spawnNewEntity(EntityType, Entity& spawner);
 
+        void drawToast(void);
+
         void updateLogo(uint8_t frame);
         void renderLogo(uint8_t frame);
 
