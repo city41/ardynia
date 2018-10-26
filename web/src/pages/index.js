@@ -17,7 +17,7 @@ const IndexPage = () => (
             Ardynia is an adventure game for the Arduboy.
         </p>
         <a
-            href="https://github.com/city41/ardynia/releases/tag/v1.0.0"
+            href="https://github.com/city41/ardynia/releases/tag/1.1.0"
             className="downloadHere"
         >
             Download Here
