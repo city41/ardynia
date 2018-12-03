@@ -1,11 +1,15 @@
 import React from "react";
-import Layout from "../components/layout";
 
 const NotFoundPage = () => (
-    <Layout>
-        <h1>not found :(</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </Layout>
+    <div>
+        <h1>Ardynia has moved</h1>
+        <p>
+            Ardynia's webpage is now here:{" "}
+            <a href="https://www.city41.games/ardynia">
+                https://www.city41.games/ardynia
+            </a>
+        </p>
+    </div>
 );
 
 export default NotFoundPage;

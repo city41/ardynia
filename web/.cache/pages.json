@@ -1,10 +1,5 @@
 [
     {
-        "componentChunkName": "component---src-pages-index-js",
-        "jsonName": "index",
-        "path": "/"
-    },
-    {
         "componentChunkName": "component---src-pages-404-js",
         "jsonName": "404-html-516",
         "path": "/404.html"
@@ -13,16 +8,6 @@
         "componentChunkName": "component---src-pages-404-js",
         "jsonName": "404-22d",
         "path": "/404/"
-    },
-    {
-        "componentChunkName": "component---src-pages-contact-js",
-        "jsonName": "contact-26a",
-        "path": "/contact/"
-    },
-    {
-        "componentChunkName": "component---src-pages-help-js",
-        "jsonName": "help-7ab",
-        "path": "/help/"
     },
     {
         "componentChunkName": "component---node-modules-gatsby-plugin-offline-app-shell-js",

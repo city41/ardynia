@@ -715,12 +715,12 @@
       },
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-10-26T03:50:12.945Z",
+      "buildTime": "2018-12-03T03:20:02.116Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "c93b22bd8ff780bf2b043c5767bfd125",
+        "contentDigest": "d31b2e4e0c99d9a2a89d5c5d4a0a15da",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -761,66 +761,6 @@
       "internal": {
         "type": "SitePage",
         "contentDigest": "0c441f2f377aceb4d2c0fe1b016a2a8a",
-        "description": "Plugin gatsby-plugin-page-creator",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "SitePage /contact/": {
-      "jsonName": "contact-26a",
-      "internalComponentName": "ComponentContact",
-      "path": "/contact/",
-      "component": "/home/matt/dev/ardynia/web/src/pages/contact.js",
-      "componentChunkName": "component---src-pages-contact-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
-      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/contact.js",
-      "id": "SitePage /contact/",
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "type": "SitePage",
-        "contentDigest": "c017749053effa4cab63c2d03654fd87",
-        "description": "Plugin gatsby-plugin-page-creator",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "SitePage /help/": {
-      "jsonName": "help-7ab",
-      "internalComponentName": "ComponentHelp",
-      "path": "/help/",
-      "component": "/home/matt/dev/ardynia/web/src/pages/help.js",
-      "componentChunkName": "component---src-pages-help-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
-      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/help.js",
-      "id": "SitePage /help/",
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "type": "SitePage",
-        "contentDigest": "de38a3fb1b0814b15c6a6717fe921c18",
-        "description": "Plugin gatsby-plugin-page-creator",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "SitePage /": {
-      "jsonName": "index",
-      "internalComponentName": "ComponentIndex",
-      "path": "/",
-      "component": "/home/matt/dev/ardynia/web/src/pages/index.js",
-      "componentChunkName": "component---src-pages-index-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
-      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/index.js",
-      "id": "SitePage /",
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "type": "SitePage",
-        "contentDigest": "c51d32d246052401b69f697bef0ba912",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -875,18 +815,6 @@
     "/home/matt/dev/ardynia/web/src/pages/404.js": {
       "query": "",
       "componentPath": "/home/matt/dev/ardynia/web/src/pages/404.js"
-    },
-    "/home/matt/dev/ardynia/web/src/pages/contact.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/contact.js"
-    },
-    "/home/matt/dev/ardynia/web/src/pages/help.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/help.js"
-    },
-    "/home/matt/dev/ardynia/web/src/pages/index.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/ardynia/web/src/pages/index.js"
     },
     "/home/matt/dev/ardynia/web/node_modules/gatsby-plugin-offline/app-shell.js": {
       "query": "",

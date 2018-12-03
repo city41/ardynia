@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{136:function(e,a,n){"use strict";n.r(a);var t=n(0),r=n.n(t);a.default=function(){return r.a.createElement("div",null,r.a.createElement("h1",null,"Ardynia has moved"),r.a.createElement("p",null,"Ardynia's webpage is now here:"," ",r.a.createElement("a",{href:"https://www.city41.games/ardynia"},"https://www.city41.games/ardynia")))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-64cc47dfedf6e350f102.js.map
