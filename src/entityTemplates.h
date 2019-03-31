@@ -36,7 +36,7 @@ const uint8_t NUM_ENTITY_POINTERS = 3;
  * it first subtracts one from the value. When unpacking, need to add 1 back on
  */
 constexpr uint8_t widthAndHeight(uint8_t width, uint8_t height) {
-    return (width - 1) << 4 | (height - 1);
+    return (width - 1u) << 4 | (height - 1u);
 }
 
 /**
