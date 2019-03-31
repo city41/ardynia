@@ -1,12 +1,14 @@
 # Ardynia
 
+![screenshot](https://raw.githubusercontent.com/city41/ardynia/master/screenshot.png)
+
 An adventure game for the [Arduboy](http://arduboy.com)
 
-Website for the game is at http://ardynia.com
+Website for the game is at https://www.city41.games/ardynia
 
 ## How to play
 
-see http://ardynia.com/help
+see https://www.city41.games/ardynia/help
 
 ## How to build - Arduino IDE
 
