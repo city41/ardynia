@@ -16,7 +16,7 @@ It should build just as-is in the Arduino IDE. If not, please let me know. I hav
 
 ## How to build - Makefile
 
-The makefile is expecting to find the Arduino IDE at `$HOME/.arduino_ide`. I followed [this blog post](https://www.jonblack.me/how-to-program-the-arduino-using-vim/) to set it all up.
+The makefile is expecting to find the Arduino IDE at `$HOME/.arduino_ide`. I followed [this blog post](https://jonblack.me/how-to-program-the-arduino-using-vim/) to set it all up.
 
 I am building the game on Ubuntu. I also suspect Mac OSX would work fine. No idea about Windows.
 
