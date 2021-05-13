@@ -28,15 +28,15 @@
 #include "entities/blobMother.h"
 #include "entities/nemesis.h"
 
-const uint8_t NUM_ENTITY_PROPS = 4;
-const uint8_t NUM_ENTITY_POINTERS = 3;
+constexpr uint8_t NUM_ENTITY_PROPS = 4;
+constexpr uint8_t NUM_ENTITY_POINTERS = 3;
 
 /**
  * Packs width and height into one byte. Since nibbles have a range of 0-15,
  * it first subtracts one from the value. When unpacking, need to add 1 back on
  */
 constexpr uint8_t widthAndHeight(uint8_t width, uint8_t height) {
-    return (width - 1u) << 4 | (height - 1u);
+    return (width - 1) << 4 | (height - 1);
 }
 
 /**
@@ -46,7 +46,7 @@ constexpr uint8_t healthAndDamage(uint8_t health, uint8_t damage) {
     return (health << 4) | damage;
 }
 
-const uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
+constexpr uint8_t PROGMEM entityProperties[NUM_ENTITIES * NUM_ENTITY_PROPS] = {
     // 0 SWORD
     widthAndHeight(16, 16),
     healthAndDamage(0, 1),
